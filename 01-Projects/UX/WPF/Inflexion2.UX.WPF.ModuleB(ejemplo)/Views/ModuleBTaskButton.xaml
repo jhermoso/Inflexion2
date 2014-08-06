@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="Inflexion.Framework.UX.WPF.ModuleB.Views.ModuleBTaskButton"
+             x:Name="ModuleBTaskButtonView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:fsc="clr-namespace:FsTaskButton;assembly=FsTaskButton"
+             mc:Ignorable="d">
+    <fsc:TaskButton Command="{Binding ShowModuleBView}" 
+                    IsChecked="{Binding IsChecked}"
+                    MinWidth="150" 
+                    Foreground="Black" 
+                    Image="Images/module_b.png" 
+                    Text="Modulo B" 
+                    Margin="5,2,5,2" 
+                    Background="{Binding Path=Background, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
+</UserControl>

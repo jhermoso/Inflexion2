@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BF5456D4-B276-459B-98D4-853FCEF99ADE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Inflexion2</RootNamespace>
+    <AssemblyName>Inflexion2</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\10-Solutions\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\00-Assemblies\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\00-Documentation\Inflexion2.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Asemblies\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\AutoDoc\Inflexion2.XML</DocumentationFile>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>True</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>True</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>True</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>False</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsMissingPublicRequiresAsWarnings>True</CodeContractsMissingPublicRequiresAsWarnings>
+    <CodeContractsInferRequires>True</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
+    <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
+    <CodeContractsSuggestRequires>True</CodeContractsSuggestRequires>
+    <CodeContractsSuggestObjectInvariants>False</CodeContractsSuggestObjectInvariants>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>True</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsSQLServerOption />
+    <CodeContractsBaseLineFile />
+    <CodeContractsCacheAnalysisResults>True</CodeContractsCacheAnalysisResults>
+    <CodeContractsFailBuildOnWarnings>False</CodeContractsFailBuildOnWarnings>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\00-Certificates\Inflexion2.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\..\02-Library\nHibernate\NHibernate-3.3.3.GA-bin\Required_Bins\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\10-Solutions\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Data\DatabaseManager.cs" />
+    <Compile Include="Data\DbProviderExtensions.cs" />
+    <Compile Include="Data\DbProviders.cs" />
+    <Compile Include="Data\IDatabaseManager.cs" />
+    <Compile Include="Data\SQLScriptHelper.cs" />
+    <Compile Include="Domain\Inflector\Inflector.cs" />
+    <Compile Include="Domain\Model\Atributtes\LogicalDeleteAttribute.cs" />
+    <Compile Include="Domain\Model\Atributtes\EntityForbiddenDeleteAttribute.cs" />
+    <Compile Include="Domain\Model\Atributtes\ChildrenRelationshipDeleteBehaviorAttribute.cs" />
+    <Compile Include="Domain\Model\Atributtes\DateGreaterThanAttribute.cs" />
+    <Compile Include="Domain\Model\Atributtes\DomainSignatureAttribute.cs" />
+    <Compile Include="Domain\Model\Atributtes\GreaterOrEqualThanCurrentDateAttribute.cs" />
+    <Compile Include="Domain\Model\Atributtes\GreaterThanAttribute.cs" />
+    <Compile Include="Domain\Model\Atributtes\MinimumCollectionSizeAttribute.cs" />
+    <Compile Include="Domain\Model\EntityDefinitions\Entities\Validetable\Auditable\AuditableEntity.cs" />
+    <Compile Include="Domain\Model\EntityDefinitions\Entities\Entity.cs" />
+    <Compile Include="Domain\Model\EntityDefinitions\Entities\EventSourcedEntity.cs" />
+    <Compile Include="Domain\Model\EntityDefinitions\Entities\Validetable\Auditable\Business\BusinessEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Model\EntityDefinitions\Entities\Validetable\Auditable\IAuditableEntity.cs" />
+    <Compile Include="Domain\Model\EntityDefinitions\Entities\Validetable\Auditable\Business\IBusinessEntity.cs" />
+    <Compile Include="Domain\Model\EntityDefinitions\Entities\IEntity.cs" />
+    <Compile Include="Domain\Model\EntityDefinitions\RootAgregate\AggregateRoot.cs" />
+    <Compile Include="Domain\Model\EntityDefinitions\RootAgregate\IAggregateRoot.cs" />
+    <Compile Include="Domain\Model\EntityDefinitions\Entities\IEntityAuditTrail.cs" />
+    <Compile Include="Domain\Model\EntityDefinitions\Entities\Validetable\ValidatableEntity.cs" />
+    <Compile Include="Domain\Model\EntityDefinitions\RootAgregate\Validetable\Auditable\AuditableAggregateRoot.cs" />
+    <Compile Include="Domain\Model\EntityDefinitions\RootAgregate\Validetable\Auditable\Business\BusinessAggregateRoot.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Model\EntityDefinitions\RootAgregate\Validetable\ValidatableAggregateRoot.cs" />
+    <Compile Include="Domain\Model\Especification\AndSpecification.cs" />
+    <Compile Include="Domain\Model\Especification\CompositeSpecification.cs" />
+    <Compile Include="Domain\Model\Especification\DirectSpecification.cs" />
+    <Compile Include="Domain\Model\Especification\ExpressionBuilder.cs" />
+    <Compile Include="Domain\Model\Especification\IOrderBySpecification.cs" />
+    <Compile Include="Domain\Model\Especification\Core\ISpecification.cs" />
+    <Compile Include="Domain\Model\Especification\NotSpecification.cs" />
+    <Compile Include="Domain\Model\Especification\OrderBySpecification.cs" />
+    <Compile Include="Domain\Model\Especification\OrSpecification.cs" />
+    <Compile Include="Domain\Model\Especification\ParameterRebinder.cs" />
+    <Compile Include="Domain\Model\Especification\Specification.cs" />
+    <Compile Include="Domain\Model\Especification\SpecificationExtensions.cs" />
+    <Compile Include="Domain\Model\Especification\SpecificationModel.cs" />
+    <Compile Include="Domain\Model\Exceptions\CantDeleteTransientException.cs" />
+    <Compile Include="Domain\Model\Extensions\SpecificationsLinqExtensions.cs" />
+    <Compile Include="Domain\Model\Especification\TrueSpecification.cs" />
+    <Compile Include="Domain\Model\Events\DomainEvents.cs" />
+    <Compile Include="Domain\Model\Events\Publisher\ConsumeEventPublisher.cs" />
+    <Compile Include="Domain\Model\Events\Publisher\EmptyEventPublisher.cs" />
+    <Compile Include="Domain\Model\Events\Publisher\IConsumeEvent.cs" />
+    <Compile Include="Domain\Model\Events\Publisher\IEventPublisher.cs" />
+    <Compile Include="Domain\Model\Exceptions\AggregateNotFoundException.cs" />
+    <Compile Include="Domain\Model\Exceptions\ConcurrencyException.cs" />
+    <Compile Include="Domain\Model\Exceptions\ConstraintException.cs" />
+    <Compile Include="Domain\Model\Exceptions\CoreException.cs" />
+    <Compile Include="Domain\Model\Exceptions\DatabaseException.cs" />
+    <Compile Include="Domain\Model\Exceptions\InternalException.cs" />
+    <Compile Include="Domain\Model\Extensions\DateTimeExtension.cs" />
+    <Compile Include="Domain\Model\Extensions\EnumExtension.cs" />
+    <Compile Include="Domain\Model\Extensions\GuidExtensions.cs" />
+    <Compile Include="Domain\Model\Extensions\JSONExtensions.cs" />
+    <Compile Include="Domain\Model\Extensions\ObjectExtensions.cs" />
+    <Compile Include="Domain\Model\Extensions\PagingExtensions.cs" />
+    <Compile Include="Domain\Model\Extensions\PrivateReflectionDynamicObject.cs" />
+    <Compile Include="Domain\Model\Extensions\PrivateReflectionDynamicObjectExtensions.cs" />
+    <Compile Include="Domain\Model\Extensions\PropertyExtension.cs" />
+    <Compile Include="Domain\Model\Extensions\ReflectionExtensions.cs" />
+    <Compile Include="Domain\Model\Extensions\StringExtensions.cs" />
+    <Compile Include="Domain\Model\Globalization\Gettext.cs" />
+    <Compile Include="Domain\Model\Globalization\GettextHelper.cs" />
+    <Compile Include="Domain\Model\InternalObjectsValues\AuditInfo\AuditInfo.cs" />
+    <Compile Include="Domain\Model\InternalObjectsValues\AuditInfo\AuditInfoFactory.cs" />
+    <Compile Include="Domain\Model\InternalObjectsValues\AuditInfo\IAuditInfo.cs" />
+    <Compile Include="Domain\Model\InternalObjectsValues\Interval\IInterval.cs" />
+    <Compile Include="Domain\Model\InternalObjectsValues\Interval\Interval.cs" />
+    <Compile Include="Domain\Model\InternalObjectsValues\Interval\IntervalFactory.cs" />
+    <Compile Include="Domain\Model\InternalObjectsValues\Range\IRange.cs" />
+    <Compile Include="Domain\Model\InternalObjectsValues\ValidPeriod\IValidPeriod.cs" />
+    <Compile Include="Domain\Model\InternalObjectsValues\Range\Range.cs" />
+    <Compile Include="Domain\Model\InternalObjectsValues\Range\RangeFactory.cs" />
+    <Compile Include="Domain\Model\InternalObjectsValues\ValidPeriod\ValidPeriod.cs" />
+    <Compile Include="Domain\Model\InternalObjectsValues\ValidPeriod\ValidPeriodFactory.cs" />
+    <Compile Include="Domain\Model\IUnitOfWork\IUnitOfWork.cs" />
+    <Compile Include="Domain\Model\IUnitOfWork\UnitOfWorkScope.cs" />
+    <Compile Include="Domain\Model\Loggin\ILogger.cs" />
+    <Compile Include="Domain\Model\Loggin\Impl\ConsoleLogger.cs" />
+    <Compile Include="Domain\Model\Loggin\Impl\EmptyLogger.cs" />
+    <Compile Include="Domain\Model\Loggin\LoggerManager.cs" />
+    <Compile Include="Domain\Model\Repositories\BaseRepository.cs" />
+    <Compile Include="Domain\Model\Repositories\EventSourcing\BaseEventStore.cs" />
+    <Compile Include="Domain\Model\Repositories\EventSourcing\EventDescriptor.cs" />
+    <Compile Include="Domain\Model\Repositories\EventSourcing\EventSourcedRepository.cs" />
+    <Compile Include="Domain\Model\Repositories\EventSourcing\IEventSourcedRepository.cs" />
+    <Compile Include="Domain\Model\Repositories\EventSourcing\IEventStore.cs" />
+    <Compile Include="Domain\Model\Repositories\EventSourcing\MemoryEventStore.cs" />
+    <Compile Include="Domain\Model\Repositories\IRepository.cs" />
+    <Compile Include="Domain\Model\Repositories\PagedElements.cs" />
+    <Compile Include="Domain\Model\Services\IAuditTrailFactory.cs" />
+    <Compile Include="Domain\Model\Validation\DataAnnotationHelper.cs" />
+    <Compile Include="Domain\Model\Validation\DataAnnotationsValidator.cs" />
+    <Compile Include="Domain\Model\Validation\Guard.cs" />
+    <Compile Include="Domain\Model\EntityDefinitions\Entities\Validetable\IValidatable.cs" />
+    <Compile Include="Domain\Model\Validation\IValidator.cs" />
+    <Compile Include="Domain\Model\Validation\ValidationError.cs" />
+    <Compile Include="Domain\Model\Validation\ValidationException.cs" />
+    <Compile Include="Domain\Model\Validation\ValidationResult.cs" />
+    <Compile Include="Domain\Model\ValueObjectDefinition\IComparableValueObject.cs" />
+    <Compile Include="Domain\Model\ValueObjectDefinition\IValueObject.cs" />
+    <Compile Include="Domain\Model\ValueObjectDefinition\ValueObject.cs" />
+    <Compile Include="Domain\Security\CertificateHelper.cs" />
+    <Compile Include="Domain\Security\CoreIdentity.cs" />
+    <Compile Include="Domain\Security\CorePrincipal.cs" />
+    <Compile Include="Domain\Security\ICoreIdentity.cs" />
+    <Compile Include="Infrastructure\DataAccess\AdoNet\Manager.cs" />
+    <Compile Include="IoC\ApplicationContext.cs" />
+    <Compile Include="IoC\ServiceLocator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\00-Certificates\Inflexion2.snk">
+      <Link>Properties\Inflexion2.snk</Link>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Domain\Model\EntityDefinitions\entities Herarquie.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Inflexion2.Resources\Inflexion2.Resources.csproj">
+      <Project>{E5F79D13-0E92-4E5C-9251-6922741AFCAA}</Project>
+      <Name>Inflexion2.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
