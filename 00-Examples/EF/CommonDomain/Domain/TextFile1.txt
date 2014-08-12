@@ -1,0 +1,19 @@
+﻿.es
+En el momento de escribir este codigo EntityFramework nos nos permite utilizar interfaces 
+para propiedades que son collecciones, es decir: no nos permite mapear contra una propiedad de dominio 
+declarada en la forma de IEnumerable<IEntityA>NameProperty{get; private set;}.
+
+Por esta razón no se han utilizado Interfaces para escribir el dominio del ejemplo con EntityFramework
+pero si se hace con Nhibernate. En este caso he preferido ser sistematico, peor no hay ninguna otra razón para 
+usar interfaces en el resto de los casos incluso con entityFramework. En todo caso sugiero utilizar nhibernate 
+si se desean utilizar interfaes para escribir las entidades de dominio.
+
+.en
+At the moment to write this code, it is not posible to use interfaces for collections properties.
+For example: IEnumerable<IEntityA> NameProperty{get; private set;} in a POCO declaration.
+
+For this razon I didn' use Interfaces to write the POCO entities at the domain layer. 
+In this case i would prefer to be systematic. 
+But there isn't any to use interfaces in any other case.
+
+If you want to use interfaces to write de Domain I suggest to use nhibernate.

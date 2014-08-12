@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="EF.UX.WPF.Module.Entities.EntityBQueryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:controls="clr-namespace:Inflexion2.UX.WPF.Controls;assembly=Inflexion2.UX.WPF.Controls"
+             xmlns:converter="clr-namespace:Inflexion2.UX.WPF.ValueConverters;assembly=Inflexion2.UX.WPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1050" Padding="5">
+    <Grid>
+
+        <Label Content="Producto Query View"/>
+        <DataGrid Name="dgData"
+                  ItemsSource="{Binding Items}"
+                  SelectedItem="{Binding SelectedItem}" 
+                  controls:DataGridRowDoubleClickHandler.MethodName="NavigateToSelectedItem"         
+                  AutoGenerateColumns="True" 
+                  HorizontalAlignment="Left" VerticalAlignment="Top"
+                  Margin="12,77,0,0" 
+                  Width="987" Height="301">
+            
+        </DataGrid>
+    </Grid>
+</UserControl>
+

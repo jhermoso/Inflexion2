@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{140D7F25-5BAF-4ACA-9A3E-0069363F68F0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EF.UX.WPF.Module</RootNamespace>
+    <AssemblyName>EF.UX.WPF.Module</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\00-Assemblies\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\..\02-Library\Prism\binaries 4.1\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity">
+      <HintPath>..\..\02-Library\Prism\binaries 4.1\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.UnityExtensions">
+      <HintPath>..\..\02-Library\Prism\binaries 4.1\Microsoft.Practices.Prism.UnityExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\02-Library\Unity\v2.1\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\02-Library\Unity\v2.1\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmValidation">
+      <HintPath>..\..\02-Library\Mvvm.Validation\MvvmValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="RibbonControlsLibrary, Version=4.0.0.11019, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EFExampleModule.cs" />
+    <Compile Include="Entities\ViewsModels\EntityBQueryViewModel.cs" />
+    <Compile Include="Entities\ViewsModels\EntityBViewModel.cs" />
+    <Compile Include="Entities\Views\EntityBQueryView.xaml.cs">
+      <DependentUpon>EntityBQueryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Views\EntityBView.xaml.cs">
+      <DependentUpon>EntityBView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NavigationRegions\ViewModels\EFExampleModuleNavigationViewModel.cs" />
+    <Compile Include="NavigationRegions\ViewModels\EFExampleModuleRibbonViewModel.cs" />
+    <Compile Include="NavigationRegions\ViewModels\EFExampleModuleTaskbarViewModel.cs" />
+    <Compile Include="NavigationRegions\Views\EFExampleModuleNavigationView.xaml.cs">
+      <DependentUpon>EFExampleModuleNavigationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NavigationRegions\Views\EFExampleModuleTaskbarView.xaml.cs">
+      <DependentUpon>EFExampleModuleTaskbarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NavigationRegions\Views\ModuleARibbonTab.xaml.cs">
+      <DependentUpon>ModuleARibbonTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EFApplication.Dtos\EFApplication.Dtos.csproj">
+      <Project>{A02D1A77-68AB-4163-8B1A-EC535CBB00F0}</Project>
+      <Name>EFApplication.Dtos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EFApplication\EFApplication.csproj">
+      <Project>{1075E687-688F-4A22-9991-2124F332263F}</Project>
+      <Name>EFApplication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WcfClient\WcfClient.csproj">
+      <Project>{FEC08CA9-5374-470C-989A-2C62720644AD}</Project>
+      <Name>WcfClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\01-Projects\Inflexion2.Application\Inflexion2.Application.csproj">
+      <Project>{35331B03-1EF9-488C-964C-42DE594C98F1}</Project>
+      <Name>Inflexion2.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\01-Projects\Inflexion2\Inflexion2.csproj">
+      <Project>{BF5456D4-B276-459B-98D4-853FCEF99ADE}</Project>
+      <Name>Inflexion2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\01-Projects\UX\WPF\Inflexion2.UX.WPF.Controls\Inflexion2.UX.WPF.Controls.csproj">
+      <Project>{08BF5909-E6ED-4CCC-8CC5-9D07CBFCB39E}</Project>
+      <Name>Inflexion2.UX.WPF.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\01-Projects\UX\WPF\Inflexion2.UX.WPF\Inflexion2.UX.WPF.csproj">
+      <Project>{C55CA135-8975-49C6-A554-11E45164EB70}</Project>
+      <Name>Inflexion2.UX.WPF</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Documentación.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Entities\Views\EntityBQueryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Entities\Views\EntityBView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NavigationRegions\Views\EFExampleModuleNavigationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NavigationRegions\Views\EFExampleModuleTaskbarView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NavigationRegions\Views\ModuleARibbonTab.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

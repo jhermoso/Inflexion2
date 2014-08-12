@@ -1,0 +1,369 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Inflexion.Framework.Application.DataTransfer.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Inflexion.Framework.Application.DataTransfer.Core.Filter">
+            <summary>
+            Clase que representa un filtro para las especificaciones.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="P:Inflexion.Framework.Application.DataTransfer.Core.Filter.Operator">
+            <summary>
+            Propiedad que obtiene o establece el operador que aplicará en el filtro.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener o establecer el
+            operador que aplicará en el filtro.
+            </value>
+        </member>
+        <member name="P:Inflexion.Framework.Application.DataTransfer.Core.Filter.Property">
+            <summary>
+            Propiedad que obtiene o establece el nombre de la propiedad
+            sobre la que se aplicará el filtro.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener o establecer el nombre de la propiedad
+            sobre la que se aplicará el filtro.
+            </value>
+        </member>
+        <member name="P:Inflexion.Framework.Application.DataTransfer.Core.Filter.Value">
+            <summary>
+            Propiedad que obtiene o establece el valor para el filtro.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener o establecer el valor del filtro.
+            </value>
+        </member>
+        <member name="T:Inflexion.Framework.Application.DataTransfer.Core.CompositeFilter">
+            <summary>
+            Clase para los filtros compuestos en las especificaciones para Dto´s.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:Inflexion.Framework.Application.DataTransfer.Core.CompositeFilter.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:CompositeFilter"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="P:Inflexion.Framework.Application.DataTransfer.Core.CompositeFilter.Filters">
+            <summary>
+            Propiedad que obtiene o establece la lista de filtros.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener o establecer la lista de filtros.
+            </value>
+        </member>
+        <member name="P:Inflexion.Framework.Application.DataTransfer.Core.CompositeFilter.LogicalOperator">
+            <summary>
+            Propiedad que obtiene o establece el operador lógico del filtro.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener o establecer el operador lógico del filtro.
+            </value>
+        </member>
+        <member name="T:Inflexion.Framework.Application.DataTransfer.Core.SpecificationDto">
+            <summary>
+            Clase Dto que representa la especificación para la obtención de datos.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:Inflexion.Framework.Application.DataTransfer.Core.SpecificationDto.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:SpecificationDto"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="P:Inflexion.Framework.Application.DataTransfer.Core.SpecificationDto.CompositeFilter">
+            <summary>
+            Propiedad que obtiene el filtro compuesto para la especificación.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener el filtro compuesto para la especificación.
+            </value>
+        </member>
+        <member name="P:Inflexion.Framework.Application.DataTransfer.Core.SpecificationDto.IsSearch">
+            <summary>
+            Propiedad de solo lectura que indica si el filtro es de búsqueda.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para indica si el filtro es de búsqueda.
+            </value>
+        </member>
+        <member name="P:Inflexion.Framework.Application.DataTransfer.Core.SpecificationDto.PageIndex">
+            <summary>
+            Propiedad que obtiene o establece el índice de la página en la búsqueda.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor utilizado para obtener o establecer el índice de la página en la búsqueda.
+            </value>
+        </member>
+        <member name="P:Inflexion.Framework.Application.DataTransfer.Core.SpecificationDto.PageSize">
+            <summary>
+            Propiedad que obtiene o establece el número de páginas que se van a devolver.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor utilizado para obtener o establecer el número de páginas que se van a devolver.
+            </value>
+        </member>
+        <member name="P:Inflexion.Framework.Application.DataTransfer.Core.SpecificationDto.SortColumn">
+            <summary>
+            Propiedad obtiene o establece el nombre de la columna por la que se ordenará.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor utilizado para obtener o establecer el nombre de la columna por la que se ordenará.
+            </value>
+        </member>
+        <member name="P:Inflexion.Framework.Application.DataTransfer.Core.SpecificationDto.SortOrder">
+            <summary>
+            Propiedad obtiene o establece el ordinal
+            de la columna por la que se ordenará.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor utilizado para obtener o establecer
+            el ordinal de la columna por la que se ordenará.
+            </value>
+        </member>
+        <member name="T:Inflexion.Framework.Application.DataTransfer.Core.IDataTransferObject">
+             <summary>
+             Interfaz para representar los objetos de transferencia de datos.
+             </summary>
+             <remarks>
+             <para>
+             La interfaz <c>IDataTransferObject</c> permite representar
+             los objetos de transferencia de datos.
+             </para>
+             </remarks>
+             <example>
+             Ejemplo de implementación de esta interfaz suponiendo la clase Dto
+             <c>AmbitoDto</c> que la implementa:
+             <code>
+               <![CDATA[
+            
+             using System;
+             using System.Runtime.Serialization;
+            
+             /// <summary>
+             /// Clase pública sellada que representa a la entidad <see cref="T:AmbitoDto"/>.
+             /// </summary>
+             /// <remarks>
+             /// Sin comentarios especiales.
+             /// </remarks>
+             [DataContract]
+             public sealed class AmbitoDto : Inflexion.Framework.Application.DataTransfer.Core.IDataTransferObject
+             {
+            
+                 #region CONSTRUCTORS
+            
+                     /// <summary>
+                     /// Inicializa una nueva instancia de la clase <see cref="T:AmbitoDto"/>.
+                     /// </summary>
+                     /// <remarks>
+                     /// Sin comentarios especiales.
+                     /// </remarks>
+                     public AmbitoDto()
+                     {
+                     } // AmbitoDto Constructor
+            
+                 #endregion
+            
+                 #region PROPERTIES
+            
+                     /// <summary>
+                     /// Propiedad pública que permite establecer y obtener el identificador del Dto.
+                     /// </summary>
+                     /// <remarks>
+                     /// Sin comentarios especiales.
+                     /// </remarks>
+                     /// <value>
+                     /// Valor que es utilizado para establecer y obtener el identificador del Dto.
+                     /// </value>
+                     [DataMember]
+                     public int Id { get; set; }
+            
+                     /// <summary>
+                     /// Propiedad pública que permite obtener ó
+                     /// establecer la descripción del ámbito.
+                     /// </summary>
+                     /// <remarks>
+                     /// Sin comentarios especiales.
+                     /// </remarks>
+                     /// <value>
+                     /// Valor que es utilizado para establecer y obtener la descripción del ámbito.
+                     /// </value>
+                     [DataMember]
+                     public string Descripcion { get; set; }
+            
+                     /// <summary>
+                     /// Propiedad pública que permite obtener ó establecer
+                     /// si un registro está activo o no.
+                     /// </summary>
+                     /// <remarks>
+                     /// Sin comentarios especiales.
+                     /// </remarks>
+                     /// <value>
+                     /// Valor que es utilizado para obtener ó
+                     /// establecer si un registro está activo o no.
+                     /// </value>
+                     [DataMember]
+                     public bool Activo { get; set; }
+            
+                 #endregion
+            
+             } // AmbitoDto
+            
+               ]]>
+             </code>
+             </example>
+        </member>
+        <member name="T:Inflexion.Framework.Application.DataTransfer.Core.CompositeFilterLogicalOperator">
+            <summary>
+            Lista enumerada para almacenar los operadores lógicos.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="F:Inflexion.Framework.Application.DataTransfer.Core.CompositeFilterLogicalOperator.And">
+            <summary>
+            Operador lógico AND.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="F:Inflexion.Framework.Application.DataTransfer.Core.CompositeFilterLogicalOperator.Or">
+            <summary>
+            Operador lógico OR.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="T:Inflexion.Framework.Application.DataTransfer.Core.BaseEntityDataTransferObject">
+            <summary>
+            Clase base para los objetos DTO que representan entidades persistidas.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="T:Inflexion.Framework.Application.DataTransfer.Core.IEntityDataTransferObject">
+            <summary>
+            Interfaz para representar los objetos de transferencia de datos para una entidad.
+            </summary>
+            <remarks>
+            <para>
+            La interfaz <c>IEntityDataTransferObject</c> permite representar
+            los objetos de transferencia de datos para una entidad.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:Inflexion.Framework.Application.DataTransfer.Core.IEntityDataTransferObject.Activo">
+            <summary>
+            Propiedad que indica si la entidad representada está activa.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="P:Inflexion.Framework.Application.DataTransfer.Core.IEntityDataTransferObject.Id">
+            <summary>
+            Obtiene el Id de la entidad representada por el dto.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="P:Inflexion.Framework.Application.DataTransfer.Core.IEntityDataTransferObject.IsTransient">
+            <summary>
+            Obtiene el valor que indica si la entidad representada por el dto ha sido persistida previamente o no.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="P:Inflexion.Framework.Application.DataTransfer.Core.BaseEntityDataTransferObject.Activo">
+            <summary>
+            Propiedad que indica si la entidad representada está activa.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para indicar si la entidad representado está activa.
+            </value>
+        </member>
+        <member name="P:Inflexion.Framework.Application.DataTransfer.Core.BaseEntityDataTransferObject.Id">
+            <summary>
+            Propiedad que obtiene o establece el identificador de la entidad representada por el DTO.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener o establecer el identificador de
+            la entidad representada por el DTO.
+            </value>
+        </member>
+        <member name="P:Inflexion.Framework.Application.DataTransfer.Core.BaseEntityDataTransferObject.IsTransient">
+            <summary>
+            Propiedad que obtiene el valor que indica si la entidad representada
+            por el DTO ha sido persistida previamente o no.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtenerel valor que indica si la entidad representada
+            por el DTO ha sido persistida previamente o no.
+            </value>
+        </member>
+    </members>
+</doc>
