@@ -34,14 +34,15 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\00-Assemblies\Release\</OutputPath>
+    <OutputPath>..\..\..\..\00-Assemblies\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\..\..\00-Documentation\Inflexion2.UX.WPF.Controls.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Pre|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\Ensamblados\Pre\</OutputPath>
+    <OutputPath>..\..\..\..\00-Assemblies\Pre\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,7 +55,7 @@
     <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
     <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
-    <DocumentationFile>..\Ensamblados\Pre\Inflexion2.UX.WPF.Controls.xml</DocumentationFile>
+    <DocumentationFile>..\..\..\..\00-Documentation\Inflexion2.UX.WPF.Controls.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
@@ -243,6 +244,7 @@
     <None Include="..\..\..\..\00-Certificates\Inflexion2.snk">
       <Link>Properties\Inflexion2.snk</Link>
     </None>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -252,5 +254,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-
 </Project>

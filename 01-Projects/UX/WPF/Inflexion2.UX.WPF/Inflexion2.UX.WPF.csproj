@@ -40,10 +40,11 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\..\..\00-Documentation\Inflexion2.UX.WPF.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Pre|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>...\..\..\..\00-Assemblies\Pre\</OutputPath>
+    <OutputPath>..\..\..\..\00-Assemblies\Pre\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -82,22 +83,23 @@
       <HintPath>..\..\..\..\02-Library\Prism\binaries 4.1\Microsoft.Practices.Prism.UnityExtensions.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\02-Library\Unity\v2.1\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\02-Library\Prism\binaries 4.1\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Externos\Prism\v4.1\Microsoft.Practices.Unity.dll</HintPath>
+      <HintPath>..\..\..\..\02-Library\Prism\binaries 4.1\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Windows.Shell">
-      <HintPath>..\..\..\..\Externos\Microsoft Ribbon for WPF\V4.0\Microsoft.Windows.Shell.dll</HintPath>
+      <HintPath>..\..\..\..\02-Library\Microsoft Ribbon for WPF\V4.0\Microsoft.Windows.Shell.dll</HintPath>
     </Reference>
     <Reference Include="MvvmValidation">
       <HintPath>..\..\..\..\02-Library\Mvvm.Validation\MvvmValidation.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="RibbonControlsLibrary, Version=4.0.0.11019, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\02-Library\Ribbon\RibbonControlsLibrary.dll</HintPath>
+    <Reference Include="RibbonControlsLibrary">
+      <HintPath>..\..\..\..\02-Library\Microsoft Ribbon for WPF\V4.0\RibbonControlsLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
