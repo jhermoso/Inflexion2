@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EFApplication</name>
+    </assembly>
+    <members>
+        <member name="T:EFApplication.Mappers.EntityCMapper">
+            <summary>
+            los metodos de esta clase solo son invocados desde el agregado al que pertenece.
+            </summary>
+        </member>
+        <member name="M:EFApplication.Mappers.EntityAMapper.DataMapping(EFApplication.Dtos.EntityADto)">
+            <summary>
+            
+            </summary>
+            <param name="entityADto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EFApplication.Services.IEntityAServices">
+            <summary>
+             Define el contrato para los servicios de administración de la entidad 
+             con todos los metodos que se hayan definido para esta clase asi como los 
+             que tienen que ver con la persistencia
+            de tipo <see cref="!:EFExampleWCF.Aplication.IEntityA"/>.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:EFApplication.Services.IEntityAServices.Create(EFApplication.Dtos.EntityADto)" -->
+        <!-- Badly formed XML comment ignored for member "M:EFApplication.Services.IEntityAServices.Delete(System.Int32)" -->
+        <member name="M:EFApplication.Services.IEntityAServices.GetAll">
+            <summary>
+            Función encargada de obtener todas las entidades de tipo IEntity1.
+            </summary>
+            <remarks>
+            Devuelve la totalidad de las entidades.
+            </remarks>
+            <param name="userContextDto">
+            Parámetro de tipo <see cref="!:UserContextDto"/> que representa el contexto del usuario.
+            </param>
+            <returns>
+            Devuelve listado de Dto´s de tipo <see cref="!:Entity1Dto"/>.
+            </returns>
+        </member>
+        <member name="M:EFApplication.Services.IEntityAServices.GetPaged(Inflexion2.Application.DataTransfer.Core.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Entity1, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <param name="userContextDto">
+            Información de contexto del usuario.
+            </param>
+            <returns>
+            La lista paginada de entidades Entity1, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:EFApplication.Services.IEntityAServices.GetById(System.Int32)">
+            <summary>
+            Función encargada de obtener una entidad IEntityA de acuerdo a
+            su identificador.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="entity1Id">
+            Parámetro que indica el identificador único de la entidad.
+            </param>
+            <param name="userContextDto">
+            Parámetro de tipo <see cref="!:UserContextDto"/> que representa el contexto del usuario.
+            </param>
+            <returns>
+            Devuelve objeto Dto <see cref="!:Entity1Dto"/> con la información requerida.
+            </returns>
+        </member>
+        <member name="M:EFApplication.Services.IEntityAServices.Update(EFApplication.Dtos.EntityADto)">
+            <summary>
+            Actualiza una determinada entidad Entity1.
+            </summary>
+            <param name="entity1Dto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+            <param name="userContextDto">
+            Información de contexto del usuario.
+            </param>
+            <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="F:EFApplication.Services.EntityBServices.logger">
+            <summary>
+            Referencia al adaptador para el logging.
+            </summary>
+        </member>
+        <member name="F:EFApplication.Services.EntityBServices.entityBMapper">
+            <summary>
+            Referencia al mapeador de la entidad EntityB.
+            </summary>
+        </member>
+        <member name="M:EFApplication.Services.EntityBServices.#cctor">
+            <summary>
+            Constructor estático de la clase <see cref="T:Categoria>Service"/>.
+            </summary>
+        </member>
+        <member name="M:EFApplication.Services.EntityBServices.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Categoria>Service"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:CategoriaServices"/>.
+            </remarks>
+        </member>
+        <member name="P:EFApplication.Services.EntityBServices.EntityBMapper">
+            <summary>
+            Obtiene la referencia al mapeador de la entidad <see cref="T:IEntityB"/>.
+            </summary>
+        </member>
+    </members>
+</doc>

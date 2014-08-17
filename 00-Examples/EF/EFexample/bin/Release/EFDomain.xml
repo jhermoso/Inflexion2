@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EFDomain</name>
+    </assembly>
+    <members>
+        <member name="M:CommonDomain.EntityB.#ctor">
+            <summary>
+            constructor vacio inicializamos las colecciones con objeto de que puedan ser utilizadas
+            </summary>
+        </member>
+        <member name="M:CommonDomain.EntityB.#ctor(System.String)">
+            <summary>
+            Constructor con parametros de propiedades requeridas
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="T:CommonDomain.EntityCFactory">
+            <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="!:ICategoria"/>.
+            </summary>
+        </member>
+        <member name="M:CommonDomain.EntityCFactory.#cctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="!:CategoriaFactory"/>.
+            </summary>
+            <remarks>
+            Constructor vacío de la clase <see cref="!:CategoriaFactory"/>.
+            </remarks>
+            <returns>
+            Devuelve una instancia de dela clase CategoriaFactory /&gt;
+            </returns>
+        </member>
+        <member name="M:CommonDomain.EntityCFactory.Create(CommonDomain.EntityA,System.String)">
+            <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+            <remarks>
+            Crea una entidad de tipo <see cref="!:ICategoria"/>
+            </remarks>
+            <param name="nombre"> 
+            
+            </param>
+            <returns>
+            Devuelve  una entidad de tipo <see cref="!:ICategoriaFactory"/>
+            </returns>
+        </member>
+        <member name="T:CommonDomain.EntityBFactory">
+            <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="!:ICategoria"/>.
+            </summary>
+        </member>
+        <member name="M:CommonDomain.EntityBFactory.#cctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="!:CategoriaFactory"/>.
+            </summary>
+            <remarks>
+            Constructor vacío de la clase <see cref="!:CategoriaFactory"/>.
+            </remarks>
+            <returns>
+            Devuelve una instancia de dela clase CategoriaFactory /&gt;
+            </returns>
+        </member>
+        <member name="M:CommonDomain.EntityBFactory.Create(System.String)">
+            <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+            <remarks>
+            Crea una entidad de tipo <see cref="!:ICategoria"/>
+            </remarks>
+            <param name="nombre"> 
+            
+            </param>
+            <returns>
+            Devuelve  una entidad de tipo <see cref="!:ICategoriaFactory"/>
+            </returns>
+        </member>
+        <member name="T:CommonDomain.EntityAFactory">
+            <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="!:ICategoria"/>.
+            </summary>
+        </member>
+        <member name="M:CommonDomain.EntityAFactory.#cctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="!:CategoriaFactory"/>.
+            </summary>
+            <remarks>
+            Constructor vacío de la clase <see cref="!:CategoriaFactory"/>.
+            </remarks>
+            <returns>
+            Devuelve una instancia de dela clase CategoriaFactory /&gt;
+            </returns>
+        </member>
+        <member name="M:CommonDomain.EntityAFactory.Create(System.String)">
+            <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+            <remarks>
+            Crea una entidad de tipo <see cref="!:ICategoria"/>
+            </remarks>
+            <param name="nombre"> 
+            
+            </param>
+            <returns>
+            Devuelve  una entidad de tipo <see cref="!:ICategoriaFactory"/>
+            </returns>
+        </member>
+    </members>
+</doc>
