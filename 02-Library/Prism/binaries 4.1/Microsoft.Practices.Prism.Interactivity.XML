@@ -4,6 +4,44 @@
         <name>Microsoft.Practices.Prism.Interactivity</name>
     </assembly>
     <members>
+        <member name="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.InteractionRequest`1">
+            <summary>
+            Implementation of the <see cref="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.IInteractionRequest"/> interface.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.IInteractionRequest">
+            <summary>
+            Represents a request from user interaction.
+            </summary>
+            <remarks>
+            View models can expose interaction request objects through properties and raise them when user interaction
+            is required so views associated with the view models can materialize the user interaction using an appropriate
+            mechanism.
+            </remarks>
+        </member>
+        <member name="E:Microsoft.Practices.Prism.Interactivity.InteractionRequest.IInteractionRequest.Raised">
+            <summary>
+            Fired when the interaction is needed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.InteractionRequest.InteractionRequest`1.Raise(`0)">
+            <summary>
+            Fires the Raised event.
+            </summary>
+            <param name="context">The context for the interaction request.</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.InteractionRequest.InteractionRequest`1.Raise(`0,System.Action{`0})">
+            <summary>
+            Fires the Raised event.
+            </summary>
+            <param name="context">The context for the interaction request.</param>
+            <param name="callback">The callback to execute when the interaction is completed.</param>
+        </member>
+        <member name="E:Microsoft.Practices.Prism.Interactivity.InteractionRequest.InteractionRequest`1.Raised">
+            <summary>
+            Fired when interaction is needed.
+            </summary>
+        </member>
         <member name="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.Confirmation">
             <summary>
             Represents an interaction request used for confirmations.
@@ -27,44 +65,6 @@
         <member name="P:Microsoft.Practices.Prism.Interactivity.InteractionRequest.Confirmation.Confirmed">
             <summary>
             Gets or sets a value indicating that the confirmation is confirmed.
-            </summary>
-        </member>
-        <member name="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.IInteractionRequest">
-            <summary>
-            Represents a request from user interaction.
-            </summary>
-            <remarks>
-            View models can expose interaction request objects through properties and raise them when user interaction
-            is required so views associated with the view models can materialize the user interaction using an appropriate
-            mechanism.
-            </remarks>
-        </member>
-        <member name="E:Microsoft.Practices.Prism.Interactivity.InteractionRequest.IInteractionRequest.Raised">
-            <summary>
-            Fired when the interaction is needed.
-            </summary>
-        </member>
-        <member name="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.InteractionRequest`1">
-            <summary>
-            Implementation of the <see cref="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.IInteractionRequest"/> interface.
-            </summary>
-        </member>
-        <member name="M:Microsoft.Practices.Prism.Interactivity.InteractionRequest.InteractionRequest`1.Raise(`0)">
-            <summary>
-            Fires the Raised event.
-            </summary>
-            <param name="context">The context for the interaction request.</param>
-        </member>
-        <member name="M:Microsoft.Practices.Prism.Interactivity.InteractionRequest.InteractionRequest`1.Raise(`0,System.Action{`0})">
-            <summary>
-            Fires the Raised event.
-            </summary>
-            <param name="context">The context for the interaction request.</param>
-            <param name="callback">The callback to execute when the interaction is completed.</param>
-        </member>
-        <member name="E:Microsoft.Practices.Prism.Interactivity.InteractionRequest.InteractionRequest`1.Raised">
-            <summary>
-            Fired when interaction is needed.
             </summary>
         </member>
         <member name="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.InteractionRequestedEventArgs">

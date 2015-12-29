@@ -9,6 +9,11 @@ namespace Inflexion2.Domain
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.ModelConfiguration;
 
+    /// <summary>
+    /// Generic Base class for configuration classes of entities in EntityFramework.
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TIdentifier"></typeparam>
     public class EntityConfiguration<TEntity, TIdentifier> : EntityTypeConfiguration<TEntity>
         where TEntity : Entity<TEntity, TIdentifier>, IEntity<TIdentifier> // si no usamos interfaces podemos derivar tambien de "Entity<TEntity, TIdentifier>,"
         where TIdentifier : struct, System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
@@ -18,7 +23,7 @@ namespace Inflexion2.Domain
             this.HasKey(x => x.Id);
 
             this.Property(x => x.Id)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+                .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
 
             this.ToTable(Inflector.Underscore(typeof(TEntity).Name).ToUpper(), string.Empty);
         }

@@ -35,7 +35,7 @@ namespace EFexample
 
             // Context Factory
             connString = this.ConnectionString();
-            RootAggregateFrameworkUnitOfWorkFactory<MyDomainUnitOfWork> ctxFactory = new RootAggregateFrameworkUnitOfWorkFactory<MyDomainUnitOfWork>(connString);
+            RootAggregateFrameworkUnitOfWorkFactory<BootstrapUnitOfWork> ctxFactory = new RootAggregateFrameworkUnitOfWorkFactory<BootstrapUnitOfWork>(connString);
 
             if (!ctxFactory.DatabaseExists())
             {
@@ -46,7 +46,7 @@ namespace EFexample
 
             this.unityContainer.RegisterInstance<IDatabaseManager>(ctxFactory);
 
-            this.unityContainer.RegisterType<DbContext, MyDomainUnitOfWork>(this.contextPerTestLifeTimeManager, new InjectionConstructor(connString));
+            this.unityContainer.RegisterType<DbContext, BootstrapUnitOfWork>(this.contextPerTestLifeTimeManager, new InjectionConstructor(connString));
 
             this.unityContainer.RegisterType<IUnitOfWork, EntityFrameworkUnitOfWork>(this.unitOfWorkPerTestLifeTimeManager);
 
@@ -61,7 +61,7 @@ namespace EFexample
             // metodo sin factoria y con constructor publico
             //var entityA = new EntityA();
             // entityA.Name = "Martin";
-           // metodo con factoriay y constructor interno
+           // metodo con factoria y constructor interno
             IEntityA entityA = EntityAFactory.Create("Martin");
            
 

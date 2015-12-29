@@ -258,10 +258,10 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
 
         protected virtual void NavigateToRecord(TIdentifier id)
         {
-            if (this.IsActive)
-            {
+            //if (this.IsActive)
+            //{
                 this.NavigationService.NavigateToWorkSpace(typeof(TView).FullName, id);
-            }
+            //}
         }
 
         public override void OnNewRecord(object parameter)

@@ -1,0 +1,747 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Inflexion2.Application</name>
+    </assembly>
+    <members>
+        <member name="T:Inflexion2.Application.EfApplicationServiceBase">
+            <summary>
+            .es Clase base para los servicios de aplicación de un bounded context con entityFramework 
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Application.DataTransfer.Core.IDataTransferObject">
+             <summary>
+             Interfaz para representar los objetos de transferencia de datos.
+             </summary>
+             <remarks>
+             <para>
+             La interfaz <c>IDataTransferObject</c> permite representar
+             los objetos de transferencia de datos.
+             </para>
+             </remarks>
+             <example>
+             Ejemplo de implementación de esta interfaz suponiendo la clase Dto
+             <c>AmbitoDto</c> que la implementa:
+             <code>
+               <![CDATA[
+            
+             using System;
+             using System.Runtime.Serialization;
+            
+             /// <summary>
+             /// Clase pública sellada que representa a la entidad <see cref="T:AmbitoDto"/>.
+             /// </summary>
+             /// <remarks>
+             /// Sin comentarios especiales.
+             /// </remarks>
+             [DataContract]
+             public sealed class AmbitoDto : Inflexion.Framework.Application.DataTransfer.Core.IDataTransferObject
+             {
+            
+                 #region CONSTRUCTORS
+            
+                     /// <summary>
+                     /// Inicializa una nueva instancia de la clase <see cref="T:AmbitoDto"/>.
+                     /// </summary>
+                     /// <remarks>
+                     /// Sin comentarios especiales.
+                     /// </remarks>
+                     public AmbitoDto()
+                     {
+                     } // AmbitoDto Constructor
+            
+                 #endregion
+            
+                 #region PROPERTIES
+            
+                     /// <summary>
+                     /// Propiedad pública que permite establecer y obtener el identificador del Dto.
+                     /// </summary>
+                     /// <remarks>
+                     /// Sin comentarios especiales.
+                     /// </remarks>
+                     /// <value>
+                     /// Valor que es utilizado para establecer y obtener el identificador del Dto.
+                     /// </value>
+                     [DataMember]
+                     public int Id { get; set; }
+            
+                     /// <summary>
+                     /// Propiedad pública que permite obtener ó
+                     /// establecer la descripción del ámbito.
+                     /// </summary>
+                     /// <remarks>
+                     /// Sin comentarios especiales.
+                     /// </remarks>
+                     /// <value>
+                     /// Valor que es utilizado para establecer y obtener la descripción del ámbito.
+                     /// </value>
+                     [DataMember]
+                     public string Descripcion { get; set; }
+            
+                     /// <summary>
+                     /// Propiedad pública que permite obtener ó establecer
+                     /// si un registro está activo o no.
+                     /// </summary>
+                     /// <remarks>
+                     /// Sin comentarios especiales.
+                     /// </remarks>
+                     /// <value>
+                     /// Valor que es utilizado para obtener ó
+                     /// establecer si un registro está activo o no.
+                     /// </value>
+                     [DataMember]
+                     public bool Activo { get; set; }
+            
+                 #endregion
+            
+             } // AmbitoDto
+            
+               ]]>
+             </code>
+             </example>
+        </member>
+        <member name="T:Inflexion2.Application.Core.IService">
+             <summary>
+             Interfaz para marcar los servicios de aplicación.
+             </summary>
+             <remarks>
+             <para>
+             La interfaz <c>IServicio</c> permite marcar los servicios de aplicación.
+             </para>
+             </remarks>
+             <example>
+             Ejemplo de implementación de esta interfaz suponiendo la interfaz
+             <c>ICreateAmbito</c> que la implementa:
+             <code>
+               <![CDATA[
+            
+             using Inflexion.Framework.Application.Security.Data.Base;
+            
+             /// <summary>
+             /// Interfaz que permite definir las acciones del servicio de creación de
+             /// una entidad de tipo <see cref="Inflexion.Suite.Foo.BoundedContext.Domain.Core.IAmbito"/>.
+             /// </summary>
+             /// <remarks>
+             /// Representa una interfaz de la entidad a utilizar en el servicio de aplicación.
+             /// </remarks>
+             public interface ICreateAmbito : Inflexion.Framework.Application.Core.IService
+             {
+            
+                 #region FUNCTIONS
+            
+                     /// <summary>
+                     /// Función encargada de la creación de una entidad de tipo ámbito.
+                     /// </summary>
+                     /// <remarks>
+                     /// Sin comentarios especiales.
+                     /// </remarks>
+                     /// <param name="description">
+                     /// Parámetro que indica la descripción del ámbito.
+                     /// </param>
+                     /// <param name="userContextDto">
+                     /// Parámetro de tipo <see cref="Inflexion.Framework.Application.Security.Data.Base.UserContextDto"/>
+                     /// que representa el contexto del usuario de la parte cliente.
+                     /// </param>
+                     /// <exception cref="System.ArgumentNullException">
+                     /// Lanzada cuando el valor del parámetro de entrada <c>userContextDto</c>
+                     /// es <c>null</c>.
+                     /// </exception>
+                     /// <returns>
+                     /// Devuelve el identificador único de la entidad creada.
+                     /// </returns>
+                     int Execute(
+                                 string description,
+                                 UserContextDto userContextDto);
+            
+                 #endregion
+            
+             } // ICreateAmbito
+            
+               ]]>
+             </code>
+             </example>
+             <example>
+             Ejemplo de implementación de esta interfaz suponiendo la interfaz
+             <c>IDeleteAmbito</c> que la implementa:
+             <code>
+               <![CDATA[
+            
+             using Inflexion.Framework.Application.Security.Data.Base;
+            
+             /// <summary>
+             /// Interfaz que permite definir las acciones del servicio de borrado de
+             /// una entidad de tipo <see cref="Inflexion.Suite.Foo.BoundedContext.Domain.Core.IAmbito"/>.
+             /// </summary>
+             /// <remarks>
+             /// Sin comentarios especiales.
+             /// </remarks>
+             public interface IDeleteAmbito : Inflexion.Framework.Application.Core.IService
+             {
+            
+                 #region FUNCTIONS
+            
+                     /// <summary>
+                     /// Función encargada de la eliminación de una entidad
+                     /// de tipo <see cref="Inflexion.Suite.Foo.BoundedContext.Domain.Core.IAmbito"/>.
+                     /// </summary>
+                     /// <remarks>
+                     /// Se realizará un borrado lógico de la entidad.
+                     /// </remarks>
+                     /// <param name="ambitoId">
+                     /// Parámetro que indica el identificador único del
+                     /// ámbito a eliminar.
+                     /// </param>
+                     /// <param name="userContextDto">
+                     /// Parámetro de tipo <see cref="UserContextDto"/> que representa
+                     /// el contexto del usuario de la parte cliente.
+                     /// </param>
+                     /// <exception cref="System.ArgumentNullException">
+                     /// Lanzada cuando el valor del parámetro <c>userContextDto</c> es null.
+                     /// </exception>
+                     /// <returns>
+                     /// Devuelve <b>true</b> si la eliminación ha sido correcta y
+                     /// <b>false</b> en caso contrario.
+                     /// </returns>
+                     bool Execute(
+                                  int ambitoId,
+                                  UserContextDto userContextDto);
+            
+                 #endregion
+            
+             } // IDeleteAmbito
+            
+               ]]>
+             </code>
+             </example>
+             <example>
+             Ejemplo de implementación de esta interfaz suponiendo la interfaz
+             <c>IUpdateAmbito</c> que la implementa:
+             <code>
+               <![CDATA[
+            
+             using System;
+             using System.Collections.Generic;
+            
+             using Inflexion.Framework.Application.Security.Data.Base;
+            
+             using Inflexion.Suite.Foo.BoundedContext.Application.Data.Base;
+            
+             /// <summary>
+             /// Interfaz que permite definir las acciones del servicio de actualización
+             /// de la entidad de tipo
+             /// <see cref="Inflexion.Suite.Foo.BoundedContext.Domain.Core.IAmbito"/>.
+             /// </summary>
+             /// <remarks>
+             /// Sin comentarios especiales.
+             /// </remarks>
+             public interface IUpdateAmbito : Inflexion.Framework.Application.Core.IService
+             {
+            
+                 #region FUNCTIONS
+            
+                     /// <summary>
+                     /// Función encargada de la actualizacón de una entidad de tipo
+                     /// de tipo <see cref="Inflexion.Suite.Foo.BoundedContext.Domain.Core.IAmbito"/>.
+                     /// </summary>
+                     /// <remarks>
+                     /// Se realizará una actualización de la entidad.
+                     /// </remarks>
+                     /// <param name="ambitoDto">
+                     /// Parámetro de tipo <see cref="AmbitoDto"/>que representa el DTO
+                     /// de la entidad Ambito.
+                     /// </param>
+                     /// <param name="userContextDto">
+                     /// Parámetro de tipo <see cref="UserContextDto"/> que representa
+                     /// el contexto del usuario de la parte cliente.
+                     /// </param>
+                     /// <exception cref="System.ArgumentNullException">
+                     /// Lanzada cuando alguno de los parámetros de entrada sea <c>null</c>.
+                     /// </exception>
+                     /// <returns>
+                     /// Devuelve <b>true</b> si la eliminación ha sido correcta y
+                     /// <b>false</b> en caso contrario.
+                     /// </returns>
+                     bool Execute(
+                                  AmbitoDto ambitoDto,
+                                  UserContextDto userContextDto);
+            
+                 #endregion
+            
+             } // IUpdateAmbito
+            
+               ]]>
+             </code>
+             </example>
+        </member>
+        <member name="T:Inflexion2.Application.Core.IGenericMapper`3">
+            <summary>
+            Interfaz para los mapeadores entre entidades del dominio.
+            (<see cref="!:Inflexion.Framework.Domain.Core.IEntity&lt;TIdentifier&gt;"/>) y
+            objetos de transferencia de datos (<see cref="T:Inflexion2.Application.DataTransfer.Core.IDataTransferObject"/>).
+            </summary>
+            <remarks>
+            La interfaz <c>IGenericMapper</c> permite mapear entre entidades del dominio.
+            </remarks>
+            <typeparam name="TDataTransferObject">
+            Representa la interfaz de los objetos de transferencia de datos.
+            </typeparam>
+            <typeparam name="TEntity">
+            Representa las entidades del negocio.
+            </typeparam>
+            <typeparam name="TIdentifier">
+            Representa un identificador unívoco de entidad.
+            </typeparam>
+        </member>
+        <member name="T:Inflexion2.Application.Core.IMapper">
+            <summary>
+            Interfaz marcadora para los mapeadores entre entidades del dominio.
+            </summary>
+            <remarks>
+            Sin comentarios especiales.
+            </remarks>
+        </member>
+        <member name="T:Inflexion2.Application.Core.IDataMapper`3">
+            <summary>
+            Interfaz para los mapeadores entre entidades del dominio.
+            (<see cref="!:Inflexion.Framework.Domain.Core.IEntity&lt;TIdentifier&gt;"/>) y
+            objetos de transferencia de datos (<see cref="T:Inflexion2.Application.DataTransfer.Core.IDataTransferObject"/>).
+            </summary>
+            <remarks>
+            Sin comentarios especiales.
+            </remarks>
+            <typeparam name="TDataTransferObject">
+            Representa la interfaz de los objetos de transferencia de datos.
+            </typeparam>
+            <typeparam name="TEntity">
+            Representa las entidades del negocio.
+            </typeparam>
+            <typeparam name="TIdentifier">
+            Representa un identificador unívoco de entidad.
+            </typeparam>
+        </member>
+        <member name="M:Inflexion2.Application.Core.IDataMapper`3.DataMapping(`0)">
+            <summary>
+            Función encargada de mapear un Dto con una entidad.
+            </summary>
+            <remarks>
+            Con esta función, mapeamos un Dto con una entidad.
+            Esta función no se exige debido a que en DDD estricto las factorias son las encargadas de crear las entidades.
+            y no los mappers. Igualmente si se transmite la necesidad de localizar una entida basta con enviar el id para encontrarla pero no "recrearla" 
+            que es lo que se terminaria haciendo con el uso de este método.
+            </remarks>
+            <param name="dataTransferObject">
+            Representa la interfaz de los objetos de transferencia de datos.
+            </param>
+            <returns>
+            Devuelve una entidad de negocio.
+            </returns>
+        </member>
+        <member name="T:Inflexion2.Application.DataTransfer.Core.BaseBussinesEntityDataTransferObject`1">
+            <summary>
+            Clase base para los objetos DTO que representan entidades persistidas.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="T:Inflexion2.Application.DataTransfer.Core.IEntityDataTransferObject`1">
+            <summary>
+            Interfaz para representar los objetos de transferencia de datos para una entidad.
+            </summary>
+            <remarks>
+            <para>
+            La interfaz <c>IEntityDataTransferObject</c> permite representar
+            los objetos de transferencia de datos para una entidad.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.IEntityDataTransferObject`1.Id">
+            <summary>
+            Obtiene el Id de la entidad representada por el dto.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.BaseBussinesEntityDataTransferObject`1.Activo">
+            <summary>
+            Propiedad que indica si la entidad representada está activa.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para indicar si la entidad representado está activa.
+            </value>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.BaseBussinesEntityDataTransferObject`1.Id">
+            <summary>
+            Propiedad que obtiene o establece el identificador de la entidad representada por el DTO.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener o establecer el identificador de
+            la entidad representada por el DTO.
+            </value>
+        </member>
+        <member name="T:Inflexion2.Application.Core.IDataEntityMapper`3">
+            <summary>
+            Interfaz para los mapeadores entre entidades del dominio.
+            (<see cref="!:Inflexion.Framework.Domain.Core.IEntity&lt;TIdentifier&gt;"/>) y
+            objetos de transferencia de datos (<see cref="T:Inflexion2.Application.DataTransfer.Core.IDataTransferObject"/>).
+            </summary>
+            <remarks>
+            La interfaz <c>IMapper</c> permite mapear entre entidades del dominio.
+            </remarks>
+            <typeparam name="TDataTransferObject">Representa la interfaz de los objetos de transferencia de datos.</typeparam>
+            <typeparam name="TEntity">Representa las entidades del negocio.</typeparam>
+            <typeparam name="TIdentifier">Representa un identificador unívoco de entidad.</typeparam>
+        </member>
+        <member name="T:Inflexion2.Application.Core.IEntityMapper`3">
+             <summary>
+             Interfaz para los mapeadores entre entidades del dominio.
+             (<see cref="!:Inflexion.Framework.Domain.Core.IEntity&lt;TIdentifier&gt;"/>) y
+             objetos de transferencia de datos (<see cref="T:Inflexion2.Application.DataTransfer.Core.IDataTransferObject"/>).
+             </summary>
+             <remarks>
+             La interfaz <c>IMapper</c> permite mapear entre entidades del dominio.
+             </remarks>
+             <typeparam name="TDataTransferObject">
+             Representa la interfaz de los objetos de transferencia de datos.
+             </typeparam>
+             <typeparam name="TEntity">
+             Representa las entidades del negocio.
+             </typeparam>
+             <typeparam name="TIdentifier">
+             Representa un identificador unívoco de entidad.
+             </typeparam>
+             <example>
+             Ejemplo de implementación de esta interfaz suponiendo la interfaz
+             <c>IAmbitoMapper</c> que la implementa:
+             <code>
+               <![CDATA[
+            
+             using Inflexion.Framework.Application.Core;
+            
+             using Inflexion.Suite.Foo.BoundedContext.Application.Data.Base;
+             using Inflexion.Suite.Foo.BoundedContext.Domain.Core;
+            
+             /// <summary>
+             /// Interfaz que identifica los mapeos de
+             /// datos con la entidad <see cref="IAmbito"/>.
+             /// </summary>
+             /// <remarks>
+             /// Sin comentarios especiales.
+             /// </remarks>
+             public interface IAmbitoMapper : IEntityMapper<AmbitoDto, IAmbito, int>
+             {
+            
+             } // IAmbitoMapper
+            
+               ]]>
+             </code>
+             </example>
+        </member>
+        <member name="M:Inflexion2.Application.Core.IEntityMapper`3.EntityMapping(`1)">
+            <summary>
+            Función encargada de mapear una entidad con un Dto.
+            </summary>
+            <remarks>
+            Con esta función, mapeamos una entidad con un Dto.
+            </remarks>
+            <param name="entity">Representa las entidades de negocio.</param>
+            <returns>Devuelve un objeto de transferencia de datos.</returns>
+        </member>
+        <member name="T:Inflexion2.Application.Core.IConfiguration">
+            <summary>
+            Interface encargada de la configuración para los servicios Wcf.
+            </summary>
+            <remarks>
+            Interface para la configuración predeterminada de los servicios WCF que
+            forman parte de la fachada remota.
+            </remarks>
+        </member>
+        <member name="M:Inflexion2.Application.Core.IConfiguration.Configure">
+            <summary>
+            Método encargado de la ejecución de la configuración.
+            </summary>
+            <remarks>
+            Configuración predeterminada construyendo la cadena de conexión por usuario.
+            </remarks>
+        </member>
+        <member name="M:Inflexion2.Application.Core.IConfiguration.ConfigureDataAccess(System.String,System.String)">
+            <summary>
+            Método encarga de la ejecución de la configuración del acceso a datos.
+            </summary>
+            <param name="userName">
+            Parámetro que indica el nombre de usuario para el inicio de sesión.
+            </param>
+            <param name="password">
+            Parámetro que indica la password del usuario para el inicio de sesión.
+            </param>
+            <remarks>
+            Configuración predeterminada construyendo la cadena de conexión por usuario.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de <c>userName</c> ó <c>password</c> es null ó vacío.
+            </exception>
+        </member>
+        <member name="T:Inflexion2.Application.DataTransfer.Core.Filter">
+            <summary>
+            Clase que representa un filtro para las especificaciones.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.Filter.Operator">
+            <summary>
+            Propiedad que obtiene o establece el operador que aplicará en el filtro.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener o establecer el
+            operador que aplicará en el filtro.
+            </value>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.Filter.Property">
+            <summary>
+            Propiedad que obtiene o establece el nombre de la propiedad
+            sobre la que se aplicará el filtro.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener o establecer el nombre de la propiedad
+            sobre la que se aplicará el filtro.
+            </value>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.Filter.Value">
+            <summary>
+            Propiedad que obtiene o establece el valor para el filtro.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener o establecer el valor del filtro.
+            </value>
+        </member>
+        <member name="T:Inflexion2.Application.DataTransfer.Core.CompositeFilter">
+            <summary>
+            Clase para los filtros compuestos en las especificaciones para Dto´s.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:Inflexion2.Application.DataTransfer.Core.CompositeFilter.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:CompositeFilter"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.CompositeFilter.Filters">
+            <summary>
+            Propiedad que obtiene o establece la lista de filtros.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener o establecer la lista de filtros.
+            </value>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.CompositeFilter.LogicalOperator">
+            <summary>
+            Propiedad que obtiene o establece el operador lógico del filtro.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener o establecer el operador lógico del filtro.
+            </value>
+        </member>
+        <member name="T:Inflexion2.Application.DataTransfer.Core.IBussinesEntityDataTransferObject">
+            <summary>
+            Interfaz para representar los objetos de transferencia de datos para una entidad.
+            </summary>
+            <remarks>
+            <para>
+            La interfaz <c>IEntityDataTransferObject</c> permite representar
+            los objetos de transferencia de datos para una entidad.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.IBussinesEntityDataTransferObject.Activo">
+            <summary>
+            Propiedad que indica si la entidad representada está activa.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.IBussinesEntityDataTransferObject.Id">
+            <summary>
+            Obtiene el Id de la entidad representada por el dto.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.IBussinesEntityDataTransferObject.IsTransient">
+            <summary>
+            Obtiene el valor que indica si la entidad representada por el dto ha sido persistida previamente o no.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="T:Inflexion2.Application.DataTransfer.Base.BaseEntityDataTransferObject`1">
+            <summary>
+            Clase base para los objetos DTO que representan entidades persistidas.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Base.BaseEntityDataTransferObject`1.Id">
+            <summary>
+            Propiedad que obtiene o establece el identificador de la entidad representada por el DTO.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener o establecer el identificador de
+            la entidad representada por el DTO.
+            </value>
+        </member>
+        <member name="T:Inflexion2.Application.DataTransfer.Core.SpecificationDto">
+            <summary>
+            Clase Dto que representa la especificación para la obtención de datos.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:Inflexion2.Application.DataTransfer.Core.SpecificationDto.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:SpecificationDto"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.SpecificationDto.CompositeFilter">
+            <summary>
+            Propiedad que obtiene el filtro compuesto para la especificación.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener el filtro compuesto para la especificación.
+            </value>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.SpecificationDto.IsSearch">
+            <summary>
+            Propiedad de solo lectura que indica si el filtro es de búsqueda.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para indica si el filtro es de búsqueda.
+            </value>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.SpecificationDto.PageIndex">
+            <summary>
+            Propiedad que obtiene o establece el índice de la página en la búsqueda.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor utilizado para obtener o establecer el índice de la página en la búsqueda.
+            </value>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.SpecificationDto.PageSize">
+            <summary>
+            Propiedad que obtiene o establece el número de páginas que se van a devolver.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor utilizado para obtener o establecer el número de páginas que se van a devolver.
+            </value>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.SpecificationDto.SortColumn">
+            <summary>
+            Propiedad obtiene o establece el nombre de la columna por la que se ordenará.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor utilizado para obtener o establecer el nombre de la columna por la que se ordenará.
+            </value>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.SpecificationDto.SortOrder">
+            <summary>
+            Propiedad obtiene o establece el ordinal
+            de la columna por la que se ordenará.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor utilizado para obtener o establecer
+            el ordinal de la columna por la que se ordenará.
+            </value>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Inflexion2.Application.DataTransfer.Core.SpecificationDtoExtensions" -->
+        <member name="M:Inflexion2.Application.DataTransfer.Core.SpecificationDtoExtensions.ToSpecification``1(Inflexion2.Application.DataTransfer.Core.SpecificationDto)">
+            <summary>
+            Convierte el dto de especification a una especification
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Application.DataTransfer.Core.CompositeFilterLogicalOperator">
+            <summary>
+            Lista enumerada para almacenar los operadores lógicos.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="F:Inflexion2.Application.DataTransfer.Core.CompositeFilterLogicalOperator.And">
+            <summary>
+            Operador lógico AND.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="F:Inflexion2.Application.DataTransfer.Core.CompositeFilterLogicalOperator.Or">
+            <summary>
+            Operador lógico OR.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+    </members>
+</doc>

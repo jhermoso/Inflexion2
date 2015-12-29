@@ -34,10 +34,10 @@ namespace EF.UX.WPF.Module
             // Registro de controles que han de estar siempre disponibles.
             this.RegionManager.RegisterViewWithRegion(RegionNames.TaskbarRegion, typeof(EFExampleModuleTaskbarView));
 
-            // Registro de controles disponibles bajo demanda.
+             //Registro de controles disponibles bajo demanda.
             this.UnityContainer.RegisterType<object, EFExampleModuleNavigationView>(typeof(EFExampleModuleNavigationView).FullName);
             this.UnityContainer.RegisterType<object, ModuleARibbonTab>(typeof(ModuleARibbonTab).FullName);
-            // registro por entidades
+             //registro por entidades
             this.UnityContainer.RegisterType<object, EntityBView>(typeof(EntityBView).FullName);
             this.UnityContainer.RegisterType<object, EntityBQueryView>(typeof(EntityBQueryView).FullName);
 

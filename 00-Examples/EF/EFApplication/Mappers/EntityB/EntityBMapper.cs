@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using EFexample;
+//using EFexample;
 using Inflexion2;
 
 using CommonDomain;
@@ -36,6 +36,12 @@ namespace EFApplication.Mappers
 
         } // EntityMapping
 
+        /// <summary>
+        /// Metodo encargado de obtener una nueva entidad a partir de la información de un Dto 
+        /// L
+        /// </summary>
+        /// <param name="entityBDto"></param>
+        /// <returns></returns>
         public IEntityB DataMapping(EntityBDto entityBDto)
         {
             // Comprobamos el parámetro de entrada.

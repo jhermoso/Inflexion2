@@ -28,24 +28,15 @@ namespace EF.UX.WPF.Module.Entities
     /// Clase que representa el ViewModel de la vista ViewModel de 
     /// <see cref="T:Company.Product.Shared.Producto.UI.WPF.Medio.View.ProductoQueryView"/>.
     /// </summary>
-    /// <remarks>
-    /// Sin comentarios adicionales.
-    /// </remarks>
+
     public class EntityBQueryViewModel : Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel<EntityBViewModel, EntityBView, int>
     {
 
         #region FIELDS
-
         /// <summary>
         /// Variable privada que hace referencia al contexto de seguridad del usuario.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
-        //private UserContextDto userContext; //TODO: descomentar al implementar seguridad
-
-        
-
+        //private UserContextDto userContext; //TODO: descomentar al implementar seguridad     
         #endregion
 
         #region CONSTRUCTORS
@@ -293,9 +284,6 @@ namespace EF.UX.WPF.Module.Entities
         /// <summary>
         /// Método privada para resetear el ViewModel.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         private void ResetEntityB()
         {
             if (CanActivateRecord(null))

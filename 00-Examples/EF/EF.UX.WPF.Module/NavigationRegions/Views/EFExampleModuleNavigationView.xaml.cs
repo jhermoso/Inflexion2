@@ -12,9 +12,6 @@ namespace EF.UX.WPF.Module.Prism
     /// <summary>
     /// Lógica de interacción para <see cref="T:CompanyProductModuleNavigationView.xaml"/>.
     /// </summary>
-    /// <remarks>
-    /// Sin comentarios adicionales.
-    /// </remarks>
     public partial class EFExampleModuleNavigationView : UserControl
     {
         #region Constructor

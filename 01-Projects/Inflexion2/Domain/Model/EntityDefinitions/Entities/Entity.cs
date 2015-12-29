@@ -41,7 +41,7 @@ namespace Inflexion2.Domain
         ///     of collissions.  See http://computinglife.wordpress.com/2008/11/20/why-do-hash-functions-use-prime-numbers/
         ///     for more information.
         /// </summary>
-        private const int HASH_MULTIPLIER = 31;
+        static private readonly int HASH_MULTIPLIER = 31;
 
         #endregion
 

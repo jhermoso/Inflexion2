@@ -36,6 +36,9 @@ namespace Inflexion2.Application.Core
         /// </summary>
         /// <remarks>
         /// Con esta función, mapeamos un Dto con una entidad.
+        /// Esta función no se exige debido a que en DDD estricto las factorias son las encargadas de crear las entidades.
+        /// y no los mappers. Igualmente si se transmite la necesidad de localizar una entida basta con enviar el id para encontrarla pero no "recrearla" 
+        /// que es lo que se terminaria haciendo con el uso de este método.
         /// </remarks>
         /// <param name="dataTransferObject">
         /// Representa la interfaz de los objetos de transferencia de datos.

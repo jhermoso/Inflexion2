@@ -16,8 +16,8 @@ namespace Inflexion2.Domain
     using Specification;
 
     /// <summary>
-    /// Default base class for repostories. This generic repository
-    /// is a default implementation of <see cref="Hexa.Core.Domain.IRepository{TEntity}"/>
+    /// .en Default base class for repositories. This generic repository
+    /// is a default implementation of <see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/>
     /// and your specific repositories can inherit from this base class so automatically will get default implementation.
     /// IMPORTANT: Using this Base Repository class IS NOT mandatory. It is just a useful base class:
     /// You could also decide that you do not want to use this base Repository class, because sometimes you don't want a
@@ -53,9 +53,9 @@ namespace Inflexion2.Domain
         }
 
         /// <summary>
-        /// <see cref="Hexa.Core.Domain.IRepository{TEntity}"/>
+        /// <see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/>
         /// </summary>
-        /// <param name="entity"><see cref="Hexa.Core.Domain.IRepository{TEntity}"/></param>
+        /// <param name="entity"><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></param>
         public virtual void Add(TEntity entity)
         {
             Guard.IsNotNull(entity, "entity");
@@ -66,9 +66,9 @@ namespace Inflexion2.Domain
         }
 
         /// <summary>
-        /// <see cref="Hexa.Core.Domain.IRepository{TEntity}"/>
+        /// <see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/>
         /// </summary>
-        /// <param name="entity"><see cref="Hexa.Core.Domain.IRepository{TEntity}"/></param>
+        /// <param name="entity"><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></param>
         public void Attach(TEntity entity)
         {
             Guard.IsNotNull(entity, "entity");
@@ -79,19 +79,19 @@ namespace Inflexion2.Domain
         }
 
         /// <summary>
-        /// <see cref="Hexa.Core.Domain.IRepository{TEntity}"/>
+        /// <see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/>
         /// </summary>
-        /// <returns><see cref="Hexa.Core.Domain.IRepository{TEntity}"/></returns>
+        /// <returns><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></returns>
         public IEnumerable<TEntity> GetAll()
         {
             return this.Query().ToList();
         }
 
         /// <summary>
-        /// <see cref="Hexa.Core.Domain.IRepository{TEntity}"/>
+        /// <see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/>
         /// </summary>
-        /// <param name="specification"><see cref="Hexa.Core.Domain.IRepository{TEntity}"/></param>
-        /// <returns><see cref="Hexa.Core.Domain.IRepository{TEntity}"/></returns>
+        /// <param name="specification"><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></param>
+        /// <returns><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></returns>
         public IEnumerable<TEntity> GetBySpec(ISpecification<TEntity> specification)
         {
             Guard.IsNotNull(specification, "specification");
@@ -104,10 +104,10 @@ namespace Inflexion2.Domain
         }
 
         /// <summary>
-        /// <see cref="Hexa.Core.Domain.IRepository{TEntity}"/>
+        /// <see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/>
         /// </summary>
-        /// <param name="filter"><see cref="Hexa.Core.Domain.IRepository{TEntity}"/></param>
-        /// <returns><see cref="Hexa.Core.Domain.IRepository{TEntity}"/></returns>b
+        /// <param name="filter"><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></param>
+        /// <returns><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></returns>b
         public IEnumerable<TEntity> GetFilteredElements(Expression<Func<TEntity, bool>> filter)
         {
             // checking query arguments
@@ -122,12 +122,12 @@ namespace Inflexion2.Domain
         }
 
         /// <summary>
-        /// <see cref="Hexa.Core.Domain.IRepository{TEntity}"/>
+        /// <see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/>
         /// </summary>
-        /// <param name="filter"><see cref="Hexa.Core.Domain.IRepository{TEntity}"/></param>
-        /// <param name="orderByExpression"><see cref="Hexa.Core.Domain.IRepository{TEntity}"/></param>
-        /// <param name="ascending"><see cref="Hexa.Core.Domain.IRepository{TEntity}"/></param>
-        /// <returns><see cref="Hexa.Core.Domain.IRepository{TEntity}"/></returns>
+        /// <param name="filter"><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></param>
+        /// <param name="orderByExpression"><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></param>
+        /// <param name="ascending"><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></param>
+        /// <returns><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></returns>
         public IEnumerable<TEntity> GetFilteredElements<S>(
             Expression<Func<TEntity, bool>> filter,
             Expression<Func<TEntity, S>> orderByExpression,
@@ -242,9 +242,9 @@ namespace Inflexion2.Domain
         }
 
         /// <summary>
-        /// <see cref="Hexa.Core.Domain.IRepository{TEntity}"/>
+        /// <see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/>
         /// </summary>
-        /// <param name="entity"><see cref="Hexa.Core.Domain.IRepository{TEntity}"/></param>
+        /// <param name="entity"><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></param>
         public virtual void Remove(TEntity entity)
         {
             // check entity

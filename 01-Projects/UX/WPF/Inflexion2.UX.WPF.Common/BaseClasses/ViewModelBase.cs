@@ -36,7 +36,7 @@ namespace Inflexion2.UX.WPF.Common.BaseClasses
         #region Public Methods
 
         /// <summary>
-        /// eleva el evento de PropertyChanged. La propiedad especificada has sido cambiada.
+        /// eleva el evento de PropertyChanged. La propiedad especificada ha sido cambiada.
         /// </summary>
         /// <param name="propertyName">El nombre de la propiedad que ha cambiado</param>
         public virtual void RaisePropertyChangedEvent(string propertyName)

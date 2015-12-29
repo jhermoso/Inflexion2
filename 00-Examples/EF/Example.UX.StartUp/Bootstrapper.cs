@@ -16,7 +16,7 @@ namespace Company.Product.Shared.UX.Windows
     /// .en Application's boot. (Main point enter)
     /// .es Punto de arranque de la aplicación.
     /// </summary>
-    internal sealed class Bootstrapper : BaseBootstrapper
+    internal sealed class Bootstrapper : Inflexion2.UX.WPF.MVVM.BaseBootstrapper
     {
         #region Constructors
 

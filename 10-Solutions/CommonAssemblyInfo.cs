@@ -10,9 +10,9 @@ using System.Runtime.InteropServices;
 // La información general sobre un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos atributos para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyCompany("Inflexion Software S.L.")]
-[assembly: AssemblyCopyright("Copyright © Inflexion Software S.L. 2014")]
-[assembly: AssemblyTrademark("Inflexion2")]
+[assembly: AssemblyCompany("AENA S.A.")]
+[assembly: AssemblyCopyright("Copyright © AENA S.A. 2015")]
+[assembly: AssemblyTrademark("Gestión de seguridad Aeroportuaria Adaptador Nice")]
 [assembly: CLSCompliant(true)]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

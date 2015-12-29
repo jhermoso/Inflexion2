@@ -83,7 +83,9 @@
     <Compile Include="DataTransfer\CoreBase\SpecificationDto\Filter.cs" />
     <Compile Include="DataTransfer\CoreBase\SpecificationDto\SpecificationDto.cs" />
     <Compile Include="DataTransfer\Extensions\SpecificationDtoExtensions.cs" />
-    <Compile Include="EfApplicationServiceBase.cs" />
+    <Compile Include="EfApplicationServiceBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -103,7 +105,9 @@
     <None Include="..\..\00-Certificates\Inflexion2.snk">
       <Link>Properties\Inflexion2.snk</Link>
     </None>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

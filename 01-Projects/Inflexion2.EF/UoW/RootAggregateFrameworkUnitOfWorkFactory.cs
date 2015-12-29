@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------------------------------
 namespace Inflexion2.Domain
 {
+    //todo: change the namespace
     using System;
     using System.Data.Entity;
     using Data;

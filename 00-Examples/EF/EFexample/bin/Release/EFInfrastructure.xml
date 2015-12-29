@@ -4,5 +4,23 @@
         <name>EFInfrastructure</name>
     </assembly>
     <members>
+        <member name="T:EFInfrastructure.BootstrapUnitOfWork">
+            <summary>
+            class to implement the Unit of Work 
+            </summary>
+        </member>
+        <member name="M:EFInfrastructure.BootstrapUnitOfWork.#ctor(System.String)">
+            <summary>
+            constructor MyDomainUnitOfWork
+            </summary>
+            <param name="nameOrConnectionString"></param>
+        </member>
+        <member name="M:EFInfrastructure.BootstrapUnitOfWork.OnModelCreating(System.Data.Entity.DbModelBuilder)">
+            <summary>
+            .es añadimos todos los ficheros de configuración del ensamblado de la entidad que pasamos.
+            .en add all configuration files from the assembly where is located the entity in the second parameter.
+            </summary>
+            <param name="modelBuilder"></param>
+        </member>
     </members>
 </doc>

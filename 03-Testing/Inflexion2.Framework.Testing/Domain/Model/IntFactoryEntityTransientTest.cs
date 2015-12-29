@@ -42,7 +42,7 @@ namespace Inflexion2.Testing
                  return new IntEntity1(name);
              }
 
-             public static IntEntity1 Create(int id) // esta factoria solo se ha cosntruido para efectso de testing
+             public static IntEntity1 Create(int id) // esta factoria solo se ha construido para efectos de testing
              {
                  return new IntEntity1(id);
              }

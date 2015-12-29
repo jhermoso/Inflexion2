@@ -18,7 +18,7 @@ namespace Inflexion2.Application.Core
     /// <typeparam name="TDataTransferObject">Representa la interfaz de los objetos de transferencia de datos.</typeparam>
     /// <typeparam name="TEntity">Representa las entidades del negocio.</typeparam>
     /// <typeparam name="TIdentifier">Representa un identificador unívoco de entidad.</typeparam>
-    public interface IDataEntityMapper<TDataTransferObject, TEntity, TIdentifier> : IDataMapper<TDataTransferObject, TEntity, TIdentifier>, IEntityMapper<TDataTransferObject, TEntity, TIdentifier>
+    public interface IDataEntityMapper<TDataTransferObject, TEntity, TIdentifier> : IEntityMapper<TDataTransferObject, TEntity, TIdentifier> //,IDataMapper<TDataTransferObject, TEntity, TIdentifier>
         where TDataTransferObject : IDataTransferObject
         where TEntity : Inflexion2.Domain.IEntity<TIdentifier>
         where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>

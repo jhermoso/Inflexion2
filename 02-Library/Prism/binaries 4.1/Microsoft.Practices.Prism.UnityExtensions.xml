@@ -4,6 +4,38 @@
         <name>Microsoft.Practices.Prism.UnityExtensions</name>
     </assembly>
     <members>
+        <member name="T:Microsoft.Practices.Prism.UnityExtensions.UnityContainerHelper">
+            <summary>
+            Extensions methods to extend and facilitate the usage of <see cref="T:Microsoft.Practices.Unity.IUnityContainer"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.UnityExtensions.UnityContainerHelper.IsTypeRegistered(Microsoft.Practices.Unity.IUnityContainer,System.Type)">
+            <summary>
+            Returns whether a specified type has a type mapping registered in the container.
+            </summary>
+            <param name="container">The <see cref="T:Microsoft.Practices.Unity.IUnityContainer"/> to check for the type mapping.</param>
+            <param name="type">The type to check if there is a type mapping for.</param>
+            <returns><see langword="true"/> if there is a type mapping registered for <paramref name="type"/>.</returns>
+            <remarks>In order to use this extension method, you first need to add the
+            <see cref="T:Microsoft.Practices.Unity.IUnityContainer"/> extension to the <see cref="T:Microsoft.Practices.Prism.UnityExtensions.UnityBootstrapperExtension"/>.
+            </remarks>        
+        </member>
+        <member name="M:Microsoft.Practices.Prism.UnityExtensions.UnityContainerHelper.TryResolve``1(Microsoft.Practices.Unity.IUnityContainer)">
+            <summary>
+            Utility method to try to resolve a service from the container avoiding an exception if the container cannot build the type.
+            </summary>
+            <param name="container">The cointainer that will be used to resolve the type.</param>
+            <typeparam name="T">The type to resolve.</typeparam>
+            <returns>The instance of <typeparamref name="T"/> built up by the container.</returns>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.UnityExtensions.UnityContainerHelper.TryResolve(Microsoft.Practices.Unity.IUnityContainer,System.Type)">
+            <summary>
+            Utility method to try to resolve a service from the container avoiding an exception if the container cannot build the type.
+            </summary>
+            <param name="container">The cointainer that will be used to resolve the type.</param>
+            <param name="typeToResolve">The type to resolve.</param>
+            <returns>The instance of <paramref name="typeToResolve"/> built up by the container.</returns>
+        </member>
         <member name="T:Microsoft.Practices.Prism.UnityExtensions.Properties.Resources">
             <summary>
               A strongly-typed resource class, for looking up localized strings, etc.
@@ -125,6 +157,55 @@
               Looks up a localized string similar to Updating Regions..
             </summary>
         </member>
+        <member name="T:Microsoft.Practices.Prism.UnityExtensions.UnityServiceLocatorAdapter">
+            <summary>
+            Defines a <seealso cref="T:Microsoft.Practices.Unity.IUnityContainer"/> adapter for the <see cref="T:Microsoft.Practices.ServiceLocation.IServiceLocator"/> interface to be used by the Composite Application Library.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.UnityExtensions.UnityServiceLocatorAdapter.#ctor(Microsoft.Practices.Unity.IUnityContainer)">
+            <summary>
+            Initializes a new instance of <see cref="T:Microsoft.Practices.Prism.UnityExtensions.UnityServiceLocatorAdapter"/>.
+            </summary>
+            <param name="unityContainer">The <seealso cref="T:Microsoft.Practices.Unity.IUnityContainer"/> that will be used
+            by the <see cref="M:Microsoft.Practices.Prism.UnityExtensions.UnityServiceLocatorAdapter.DoGetInstance(System.Type,System.String)"/> and <see cref="M:Microsoft.Practices.Prism.UnityExtensions.UnityServiceLocatorAdapter.DoGetAllInstances(System.Type)"/> methods.</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.UnityExtensions.UnityServiceLocatorAdapter.DoGetInstance(System.Type,System.String)">
+            <summary>
+            Resolves the instance of the requested service.
+            </summary>
+            <param name="serviceType">Type of instance requested.</param>
+            <param name="key">Name of registered service you want. May be null.</param>
+            <returns>The requested service instance.</returns>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.UnityExtensions.UnityServiceLocatorAdapter.DoGetAllInstances(System.Type)">
+            <summary>
+            Resolves all the instances of the requested service.
+            </summary>
+            <param name="serviceType">Type of service requested.</param>
+            <returns>Sequence of service instance objects.</returns>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.UnityExtensions.UnityBootstrapperExtension">
+            <summary>
+            Implements a <see cref="T:Microsoft.Practices.Unity.UnityContainerExtension"/> that checks if a specific type was registered with the container.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.UnityExtensions.UnityBootstrapperExtension.IsTypeRegistered(Microsoft.Practices.Unity.IUnityContainer,System.Type)">
+            <summary>
+            Evaluates if a specified type was registered in the container.
+            </summary>
+            <param name="container">The container to check if the type was registered in.</param>
+            <param name="type">The type to check if it was registered.</param>
+            <returns><see langword="true"/> if the <paramref name="type"/> was registered with the container.</returns>
+            <remarks>
+            In order to use this extension, you must first call <see cref="M:Microsoft.Practices.Unity.UnityContainerExtensions.AddNewExtension``1(Microsoft.Practices.Unity.IUnityContainer)"/> 
+            and specify <see cref="T:Microsoft.Practices.Unity.UnityContainerExtension"/> as the extension type.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.UnityExtensions.UnityBootstrapperExtension.Initialize">
+            <summary>
+            Initializes the container with this extension's functionality.
+            </summary>
+        </member>
         <member name="T:Microsoft.Practices.Prism.UnityExtensions.UnityBootstrapper">
             <summary>
             Base class that provides a basic bootstrapping sequence that
@@ -182,87 +263,6 @@
             Gets the default <see cref="T:Microsoft.Practices.Unity.IUnityContainer"/> for the application.
             </summary>
             <value>The default <see cref="T:Microsoft.Practices.Unity.IUnityContainer"/> instance.</value>
-        </member>
-        <member name="T:Microsoft.Practices.Prism.UnityExtensions.UnityBootstrapperExtension">
-            <summary>
-            Implements a <see cref="T:Microsoft.Practices.Unity.UnityContainerExtension"/> that checks if a specific type was registered with the container.
-            </summary>
-        </member>
-        <member name="M:Microsoft.Practices.Prism.UnityExtensions.UnityBootstrapperExtension.IsTypeRegistered(Microsoft.Practices.Unity.IUnityContainer,System.Type)">
-            <summary>
-            Evaluates if a specified type was registered in the container.
-            </summary>
-            <param name="container">The container to check if the type was registered in.</param>
-            <param name="type">The type to check if it was registered.</param>
-            <returns><see langword="true"/> if the <paramref name="type"/> was registered with the container.</returns>
-            <remarks>
-            In order to use this extension, you must first call <see cref="M:Microsoft.Practices.Unity.UnityContainerExtensions.AddNewExtension``1(Microsoft.Practices.Unity.IUnityContainer)"/> 
-            and specify <see cref="T:Microsoft.Practices.Unity.UnityContainerExtension"/> as the extension type.
-            </remarks>
-        </member>
-        <member name="M:Microsoft.Practices.Prism.UnityExtensions.UnityBootstrapperExtension.Initialize">
-            <summary>
-            Initializes the container with this extension's functionality.
-            </summary>
-        </member>
-        <member name="T:Microsoft.Practices.Prism.UnityExtensions.UnityServiceLocatorAdapter">
-            <summary>
-            Defines a <seealso cref="T:Microsoft.Practices.Unity.IUnityContainer"/> adapter for the <see cref="T:Microsoft.Practices.ServiceLocation.IServiceLocator"/> interface to be used by the Composite Application Library.
-            </summary>
-        </member>
-        <member name="M:Microsoft.Practices.Prism.UnityExtensions.UnityServiceLocatorAdapter.#ctor(Microsoft.Practices.Unity.IUnityContainer)">
-            <summary>
-            Initializes a new instance of <see cref="T:Microsoft.Practices.Prism.UnityExtensions.UnityServiceLocatorAdapter"/>.
-            </summary>
-            <param name="unityContainer">The <seealso cref="T:Microsoft.Practices.Unity.IUnityContainer"/> that will be used
-            by the <see cref="M:Microsoft.Practices.Prism.UnityExtensions.UnityServiceLocatorAdapter.DoGetInstance(System.Type,System.String)"/> and <see cref="M:Microsoft.Practices.Prism.UnityExtensions.UnityServiceLocatorAdapter.DoGetAllInstances(System.Type)"/> methods.</param>
-        </member>
-        <member name="M:Microsoft.Practices.Prism.UnityExtensions.UnityServiceLocatorAdapter.DoGetInstance(System.Type,System.String)">
-            <summary>
-            Resolves the instance of the requested service.
-            </summary>
-            <param name="serviceType">Type of instance requested.</param>
-            <param name="key">Name of registered service you want. May be null.</param>
-            <returns>The requested service instance.</returns>
-        </member>
-        <member name="M:Microsoft.Practices.Prism.UnityExtensions.UnityServiceLocatorAdapter.DoGetAllInstances(System.Type)">
-            <summary>
-            Resolves all the instances of the requested service.
-            </summary>
-            <param name="serviceType">Type of service requested.</param>
-            <returns>Sequence of service instance objects.</returns>
-        </member>
-        <member name="T:Microsoft.Practices.Prism.UnityExtensions.UnityContainerHelper">
-            <summary>
-            Extensions methods to extend and facilitate the usage of <see cref="T:Microsoft.Practices.Unity.IUnityContainer"/>.
-            </summary>
-        </member>
-        <member name="M:Microsoft.Practices.Prism.UnityExtensions.UnityContainerHelper.IsTypeRegistered(Microsoft.Practices.Unity.IUnityContainer,System.Type)">
-            <summary>
-            Returns whether a specified type has a type mapping registered in the container.
-            </summary>
-            <param name="container">The <see cref="T:Microsoft.Practices.Unity.IUnityContainer"/> to check for the type mapping.</param>
-            <param name="type">The type to check if there is a type mapping for.</param>
-            <returns><see langword="true"/> if there is a type mapping registered for <paramref name="type"/>.</returns>
-            <remarks>In order to use this extension method, you first need to add the
-            <see cref="T:Microsoft.Practices.Unity.IUnityContainer"/> extension to the <see cref="T:Microsoft.Practices.Prism.UnityExtensions.UnityBootstrapperExtension"/>.
-            </remarks>        
-        </member>
-        <member name="M:Microsoft.Practices.Prism.UnityExtensions.UnityContainerHelper.TryResolve``1(Microsoft.Practices.Unity.IUnityContainer)">
-            <summary>
-            Utility method to try to resolve a service from the container avoiding an exception if the container cannot build the type.
-            </summary>
-            <param name="container">The cointainer that will be used to resolve the type.</param>
-            <typeparam name="T">The type to resolve.</typeparam>
-            <returns>The instance of <typeparamref name="T"/> built up by the container.</returns>
-        </member>
-        <member name="M:Microsoft.Practices.Prism.UnityExtensions.UnityContainerHelper.TryResolve(Microsoft.Practices.Unity.IUnityContainer,System.Type)">
-            <summary>
-            Utility method to try to resolve a service from the container avoiding an exception if the container cannot build the type.
-            </summary>
-            <param name="container">The cointainer that will be used to resolve the type.</param>
-            <param name="typeToResolve">The type to resolve.</param>
-            <returns>The instance of <paramref name="typeToResolve"/> built up by the container.</returns>
         </member>
     </members>
 </doc>

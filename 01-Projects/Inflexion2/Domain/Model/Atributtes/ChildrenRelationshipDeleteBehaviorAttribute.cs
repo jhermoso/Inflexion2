@@ -48,14 +48,14 @@ namespace Inflexion2.Domain
     public enum Delete
     {
         /// <summary>
-        /// .es con este comportamiento indicamos que al borrar la clase se borran todos
+        /// .es con este comportamiento indicamos que al borrar la clase se borran todos las entidades hijas.
         /// Este comportamiento solo tiene sentido en relaciones de composición
-        /// .en delete the children entitys o value objects
+        /// .en delete the children entitys 
         /// </summary>
         Cascade = 1,
 
         /// <summary>
-        /// .es indicamos que no podemos borrar la entidad si esta relación/propiedad tiene hijos de la 
+        /// .es indicamos que no podemos borrar la entidad si esta relación/propiedad tiene hijos. 
         /// Este comportamiento solo tiene sentido en relaciones de composición
         /// .en Can´t delete if there is at least one child entity or value object in this property/relationship
         /// </summary>
@@ -65,13 +65,13 @@ namespace Inflexion2.Domain
         /// .es indicamos que para esta propiedad/relación podemos borrar la clase dejando huerfanos 
         /// los hijos es decir que tenemos que asignar un valor nullo a la propiedad de cada hijo que
         /// referencia al padre.
-        /// Este comportamiento solo tiene sentido en relaciones de agregación
+        /// Este comportamiento solo tiene sentido en relaciones de agregación y se adopta por defecto por lo que se ha eliminado.
         /// </summary>
-        OrphanNull = 3,  // you can delete and all the children will be orphans with their parent property seted to null.
+        //OrphanNull = 3,  // you can delete and all the children will be orphans with their parent property seted to null.
 
         /// <summary>
-        /// .es indicamos que para esta propiedad/relacion podemos
+        /// .es indicamos que para esta propiedad/relacion podemos borrar la clase sin cambiar la refere
         /// </summary>
-        Orphan = 4
+        //Orphan = 4
     };
 }

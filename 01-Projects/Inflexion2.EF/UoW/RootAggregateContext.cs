@@ -17,6 +17,11 @@ namespace Inflexion2.Domain
     using Inflexion2.Security;
     //using Inflexion2.Validation;
 
+    /// <summary>
+    /// A tipical entity framework applications uses a class wich inheritences from Dbcontext.
+    /// the relation ship with DDD is that this class works like our unit of work and other importan aspect is 
+    /// that all the operations over our entitys are responsibility from the rootaggregate and not from any other entity.
+    /// </summary>
     public class RootAggregateContext : DbContext
     {
         public RootAggregateContext(string nameOrConnectionString)

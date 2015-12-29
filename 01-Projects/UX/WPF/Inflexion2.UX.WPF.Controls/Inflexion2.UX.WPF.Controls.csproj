@@ -64,21 +64,19 @@
     <AssemblyOriginatorKeyFile>..\..\..\..\00-Certificates\Inflexion2.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Practices.Prism">
-      <HintPath>..\..\..\..\..\02-Library\Prism\binaries 4.1\Microsoft.Practices.Prism.dll</HintPath>
+    <Reference Include="Microsoft.Practices.Prism, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\02-Library\Prism\binaries 4.1\Microsoft.Practices.Prism.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Externos\Microsoft Unity\v2.1\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <HintPath>..\..\..\..\02-Library\Prism\binaries 4.1\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Externos\System.Windows.Interactivity\System.Windows.Interactivity.dll</HintPath>
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\..\..\..\02-Library\System.Windows.Interactivity\System.Windows.Interactivity.dll</HintPath>
     </Reference>
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -235,16 +233,16 @@
     <Folder Include="Controls\TreeListView\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Inflexion2.UX.WPF\Inflexion2.UX.WPF.csproj">
-      <Project>{C55CA135-8975-49C6-A554-11E45164EB70}</Project>
-      <Name>Inflexion2.UX.WPF</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\..\..\..\00-Certificates\Inflexion2.snk">
       <Link>Properties\Inflexion2.snk</Link>
     </None>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Inflexion2.UX.WPF\Inflexion2.UX.WPF.csproj">
+      <Project>{C55CA135-8975-49C6-A554-11E45164EB70}</Project>
+      <Name>Inflexion2.UX.WPF</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

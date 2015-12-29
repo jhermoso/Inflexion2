@@ -24,7 +24,8 @@ using Inflexion2.Data;
 
 namespace EFApplication.Services
 {
-    public partial class EntityBServices : EfApplicationServiceBase, IEntityBServices
+    public partial class EntityBServices : 
+        EFApplication.Services.BoundedContestEfApplicationServiceBase, IEntityBServices
     {
 
         #region Fields
@@ -53,7 +54,6 @@ namespace EFApplication.Services
         /// </summary>
         static EntityBServices()
         {
-
         }
 
         /// <summary>
@@ -62,9 +62,10 @@ namespace EFApplication.Services
         /// <remarks>
         /// Constructor de la clase <see cref="T:CategoriaServices"/>.
         /// </remarks>
-        public EntityBServices(): base()
+        public EntityBServices(): 
+            base()
         {
-            this.unityContainer.RegisterType<DbContext, MyDomainUnitOfWork>(this.contextPerTestLifeTimeManager, new InjectionConstructor(this.connString));
+            this.unityContainer.RegisterType<DbContext, BootstrapUnitOfWork>(this.contextPerTestLifeTimeManager, new InjectionConstructor(this.connString));
 
             // registramos el repositorio de la entidad
             this.unityContainer.RegisterType<IEntityBRepository, EntityBRepository>(new PerResolveLifetimeManager());
@@ -204,7 +205,8 @@ namespace EFApplication.Services
                 // Obtenemos las entidades aplicando la especificación.
                 ISpecification<EntityB> filter = specificationDto.ToSpecification<EntityB>();
 
-                PagedElements<EntityB> entities = repo.GetPagedElements(                                      
+                PagedElements<EntityB> entities = 
+                    repo.GetPagedElements(                                      
                                       specificationDto.PageIndex,
                                       specificationDto.PageSize,
                                       filter.IsSatisfiedBy(),
@@ -333,15 +335,15 @@ namespace EFApplication.Services
         #region methods entity
         #endregion
 
-        protected virtual string ConnectionString()
-        {
-            return ConfigurationManager.ConnectionStrings["Sql.Connection"].ConnectionString;
-        }
+        //protected virtual string ConnectionString()
+        //{
+        //    return ConfigurationManager.ConnectionStrings["Sql.Connection"].ConnectionString;
+        //}
 
-        public void Commit()
-        {
-            IUnitOfWork unitOfWork = this.unityContainer.Resolve<IUnitOfWork>();
-            unitOfWork.Commit();
-        }
+        //public void Commit()
+        //{
+        //    IUnitOfWork unitOfWork = this.unityContainer.Resolve<IUnitOfWork>();
+        //    unitOfWork.Commit();
+        //}
     }
 }

@@ -22,7 +22,6 @@ namespace Inflexion2.Domain
     using Environment = NHibernate.Cfg.Environment;
 
 
-    //TODO: estudiar si es posible eliminar el parametro <tidentifier>
     public sealed class NHibernateUnitOfWorkFactory< TIdentifier> : IDatabaseManager
 
         where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>

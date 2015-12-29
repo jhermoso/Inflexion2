@@ -33,14 +33,14 @@
     <DocumentationFile>..\..\..\00-Documentation\EF.UX.WPF.Module.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Practices.Prism">
-      <HintPath>..\..\..\02-Library\Prism\binaries 4.1\Microsoft.Practices.Prism.dll</HintPath>
+    <Reference Include="Microsoft.Practices.Prism, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\prism\Bin\Desktop\Microsoft.Practices.Prism.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Prism.Interactivity">
-      <HintPath>..\..\..\02-Library\Prism\binaries 4.1\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\prism\Bin\Desktop\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Prism.UnityExtensions">
-      <HintPath>..\..\..\02-Library\Prism\binaries 4.1\Microsoft.Practices.Prism.UnityExtensions.dll</HintPath>
+    <Reference Include="Microsoft.Practices.Prism.UnityExtensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\prism\Bin\Desktop\Microsoft.Practices.Prism.UnityExtensions.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\02-Library\Unity\v2.1\Microsoft.Practices.Unity.dll</HintPath>
@@ -81,10 +81,10 @@
     <Compile Include="EFExampleModule.cs" />
     <Compile Include="Entities\ViewsModels\EntityBQueryViewModel.cs" />
     <Compile Include="Entities\ViewsModels\EntityBViewModel.cs" />
-    <Compile Include="Entities\Views\EntityBQueryView.xaml.cs">
+    <Compile Include="Entities\ViewsModels\Views\EntityBQueryView.xaml.cs">
       <DependentUpon>EntityBQueryView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Views\EntityBView.xaml.cs">
+    <Compile Include="Entities\ViewsModels\Views\EntityBView.xaml.cs">
       <DependentUpon>EntityBView.xaml</DependentUpon>
     </Compile>
     <Compile Include="NavigationRegions\ViewModels\EFExampleModuleNavigationViewModel.cs" />
@@ -138,11 +138,11 @@
     <Content Include="Documentación.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Entities\Views\EntityBQueryView.xaml">
+    <Page Include="Entities\ViewsModels\Views\EntityBQueryView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Entities\Views\EntityBView.xaml">
+    <Page Include="Entities\ViewsModels\Views\EntityBView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
