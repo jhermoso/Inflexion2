@@ -114,7 +114,7 @@ namespace Inflexion2.UX.WPF.MVVM.Commands
         /// .en it gets global command to get the first page of records
         /// </summary>
         /// <value>
-        /// .es Comando global para obtener la primera pagina de registros.
+        /// .es Comando global para obtener la primera página de registros.
         /// .en Global Command to get the first page of records
         /// </value>
         public virtual CompositeCommand GetFirstPageRecordsCommand

@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="70bc9e08-c386-43b6-9aa5-19df6ab61c7d" name="jhermoso@VS2010W8 2015-02-20 01:23:35" runUser="INFLEXION2\jhermoso" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="4178bfa7-869c-4013-9eae-b770f521a560">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="jhermoso_VS2010W8 2015-02-20 01_23_35">
+      <DeploymentItem filename="C:\Pre\Atento\00-Assemblies\Debug\Atento.Servicios.Shared.Infrastructure.dll" />
+      <DeploymentItem filename="C:\Pre\Atento\10-Solutions\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll" />
+      <DeploymentItem filename="C:\Pre\Atento\00-Assemblies\Debug\Inflexion2.EF.dll" />
+      <DeploymentItem filename="C:\Program Files (x86)\Microsoft Unity Application Block 2.1\Bin\Microsoft.Practices.ServiceLocation.dll" />
+      <DeploymentItem filename="C:\Pre\Atento\00-Assemblies\Debug\Inflexion2.dll" />
+      <DeploymentItem filename="C:\Pre\Atento\00-Assemblies\Debug\Atento.Servicios.Shared.Domain.Data.dll" />
+      <DeploymentItem filename="C:\Pre\Atento\00-Assemblies\Debug\Atento.Servicios.Shared.Domain.dll" />
+      <DeploymentItem filename="C:\Pre\Atento\10-Solutions\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll" />
+      <DeploymentItem filename="C:\Pre\Atento\00-Assemblies\Debug\Inflexion2.Resources.dll" />
+      <DeploymentItem filename="C:\Program Files (x86)\Microsoft Unity Application Block 2.1\Bin\Microsoft.Practices.Unity.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2015-02-20T01:23:35.7305111+01:00" queuing="2015-02-20T01:23:36.3655245+01:00" start="2015-02-20T01:23:36.4655251+01:00" finish="2015-02-20T01:23:37.2685412+01:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="50" executed="50" passed="49" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="IntEntityEqualsWithTwoNullsEntitiesDifferentTypeReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="55745a3e-cb76-ce47-5e1c-cb4863c8cc88">
+      <Execution id="24bb730e-d1d9-46f6-8714-8cdbcfe7afc9" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.EntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="IntEntityEqualsWithTwoNullsEntitiesDifferentTypeReturnFalse" />
+    </UnitTest>
+    <UnitTest name="GuidEntityEqualsWithOneNullEntityReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="5c01ed2f-cfa6-faf5-80ee-7526386e5bcb">
+      <Execution id="00387398-160d-4ff2-9d1f-82a43a62acb8" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.GuidEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="GuidEntityEqualsWithOneNullEntityReturnFalse" />
+    </UnitTest>
+    <UnitTest name="IntEntityTransientNewEntitieReturnTrue" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="5e48c4a4-9c69-9469-0648-a457e4f881b1">
+      <Execution id="8dfcda6c-77ec-4988-a8b8-31e454953d19" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.IntEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="IntEntityTransientNewEntitieReturnTrue" />
+    </UnitTest>
+    <UnitTest name="IntEntityEqualsWithSameTransientEntitieReturnTrue" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="ebdf5570-fee7-71a9-954c-39a44616bfc0">
+      <Execution id="68da3514-045e-4bd0-aee3-2316a8914648" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.IntEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="IntEntityEqualsWithSameTransientEntitieReturnTrue" />
+    </UnitTest>
+    <UnitTest name="EqualsWithNestedDifferentRootValueObjectReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="c88e308d-c412-3989-03a6-4812dd297cad">
+      <Execution id="60fd66b3-bf6b-44c6-9c28-e66cd370c54a" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.EqualityValueObject, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="EqualsWithNestedDifferentRootValueObjectReturnFalse" />
+    </UnitTest>
+    <UnitTest name="GuidEntityTransientNewEntitieReturnTrue" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="8e4820fb-b11f-6f11-e59d-db0467de1040">
+      <Execution id="efd2af98-d0eb-49d3-8911-634d7c6b36df" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.GuidEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="GuidEntityTransientNewEntitieReturnTrue" />
+    </UnitTest>
+    <UnitTest name="IntEntityEqualsWithOneNullEntityReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="ab5febae-4b86-5540-aa00-427d834f1128">
+      <Execution id="07f0c806-eb30-4d9d-bc3a-1c32d2f87d3b" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.IntEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="IntEntityEqualsWithOneNullEntityReturnFalse" />
+    </UnitTest>
+    <UnitTest name="EqualsWithNestedValueObjectReturnTrue" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="cfcea3e5-0964-8d2b-bd64-154d5273ea8f">
+      <Execution id="aa6feea0-5566-4d05-834f-299903a48178" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.EqualityValueObject, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="EqualsWithNestedValueObjectReturnTrue" />
+    </UnitTest>
+    <UnitTest name="StringEqualsWithSameTransientEntitieReturnTrue" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="f8a0681f-01a9-96fe-d3cb-5a7507e6aa1a">
+      <Execution id="522cf1d0-7a47-4fb8-bc6b-dcf5b79ff5de" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.StringEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="StringEqualsWithSameTransientEntitieReturnTrue" />
+    </UnitTest>
+    <UnitTest name="IntEntityEqualsWithTwoSetedDifferentIdSameEntitiesTypeReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="6d00cb18-6da1-8f1c-bc52-1100717fe9e3">
+      <Execution id="aa6d3fca-1810-4726-b4f6-1444562dbf93" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.EntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="IntEntityEqualsWithTwoSetedDifferentIdSameEntitiesTypeReturnFalse" />
+    </UnitTest>
+    <UnitTest name="EqualsWithTwoNullsEntitiesDifferentTypeReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="b1a88be6-0573-6eb0-e0ba-a476ebddfcc3">
+      <Execution id="722f3421-9c72-4361-9234-37d3a67f6f28" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.AuditableEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="EqualsWithTwoNullsEntitiesDifferentTypeReturnFalse" />
+    </UnitTest>
+    <UnitTest name="IntEntityEqualsWithTwoSetedSameIdSameEntitiesTypeReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="afa4d5fe-5adf-b232-4499-e60da535e51b">
+      <Execution id="12cfde92-e5b3-4d46-969c-71ce5b13e207" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.IntEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="IntEntityEqualsWithTwoSetedSameIdSameEntitiesTypeReturnFalse" />
+    </UnitTest>
+    <UnitTest name="ValidatableEntityGuidEqualsWithOneNullEntityReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="b53f3b4e-80dd-ada9-22f9-683ce813b819">
+      <Execution id="3c3349c1-accf-4fbb-a138-df03e41175d5" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.ValidatableEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="ValidatableEntityGuidEqualsWithOneNullEntityReturnFalse" />
+    </UnitTest>
+    <UnitTest name="IntEntityEqualsWithTwoNullsEntitiesDifferentTypeReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="b73c4168-36b3-829e-62df-12b0e1f8a7bd">
+      <Execution id="4596736f-601b-4bc7-9fb0-03a81f37543c" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.IntEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="IntEntityEqualsWithTwoNullsEntitiesDifferentTypeReturnFalse" />
+    </UnitTest>
+    <UnitTest name="IntEntityEqualsWithSameTransientEntitieReturnTrue" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="df70d1db-0b89-8d5b-f3c3-11fdd92fed5b">
+      <Execution id="e34bbfb6-a335-44a2-b93b-c5c65c5d2f15" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.EntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="IntEntityEqualsWithSameTransientEntitieReturnTrue" />
+    </UnitTest>
+    <UnitTest name="EqualsWithEqualsValueObjectsReturnTrue" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="be2066fd-b436-06cd-97b4-c7078e10e0f4">
+      <Execution id="cfd57d2c-d3c7-4e58-9180-98c975a407f2" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.EqualityValueObject, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="EqualsWithEqualsValueObjectsReturnTrue" />
+    </UnitTest>
+    <UnitTest name="IntEntityEqualsWithTwoSetedIdDifferentEntitiesTypeReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="894519f8-9501-4713-6a4e-b58cdbc44ab0">
+      <Execution id="841084c7-0384-4d12-9602-79249f4c2383" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.IntEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="IntEntityEqualsWithTwoSetedIdDifferentEntitiesTypeReturnFalse" />
+    </UnitTest>
+    <UnitTest name="EqualsWithTwoTransientEntitiesReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="a5143e69-78bd-03a5-f82d-50e4014f386a">
+      <Execution id="86003237-0344-4c71-8349-890384e05d42" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.AuditableEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="EqualsWithTwoTransientEntitiesReturnFalse" />
+    </UnitTest>
+    <UnitTest name="ValidatableEntityGuidEqualsWithSameTransientEntitieReturnTrue" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="22a8b0cb-7a33-d352-b784-a1f8be065fd9">
+      <Execution id="560fba25-83e1-4cb4-8f05-19a6ce0961dd" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.ValidatableEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="ValidatableEntityGuidEqualsWithSameTransientEntitieReturnTrue" />
+    </UnitTest>
+    <UnitTest name="ValidatableEntityGuidEqualsWithTwoTransientEntitiesReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="39038477-ba46-aac5-eb4c-721235e0936b">
+      <Execution id="91e0badc-3630-480e-a4a0-be3fd50852c2" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.ValidatableEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="ValidatableEntityGuidEqualsWithTwoTransientEntitiesReturnFalse" />
+    </UnitTest>
+    <UnitTest name="IntEntityEqualsWithTwoTransientEntitiesReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="ef418061-d4c4-2027-28ba-907376548f88">
+      <Execution id="02d2f7b3-63aa-42b6-a39c-c6c2b745ac28" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.EntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="IntEntityEqualsWithTwoTransientEntitiesReturnFalse" />
+    </UnitTest>
+    <UnitTest name="EqualsWithOneNullEntityReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="375ff3a2-2357-6f85-11f0-4fdbcfbe878c">
+      <Execution id="9e1971f6-ce7c-4a06-9b4a-2ae566430b8a" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.AuditableEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="EqualsWithOneNullEntityReturnFalse" />
+    </UnitTest>
+    <UnitTest name="IntEntityEqualsWithTwoNullsEntitiesSameTypeReturnTrue" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="1bdcb6c4-49ec-3cfb-4e22-c65e484a2116">
+      <Execution id="e851c264-e756-4b7c-851b-301268fd4ea5" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.IntEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="IntEntityEqualsWithTwoNullsEntitiesSameTypeReturnTrue" />
+    </UnitTest>
+    <UnitTest name="EqualsWithNestedDifferentValueObjectReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="8ce58482-7d3e-3e19-80e5-4b965e8f5059">
+      <Execution id="896b8ba4-6bd9-4536-81ff-63333bf4a681" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.EqualityValueObject, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="EqualsWithNestedDifferentValueObjectReturnFalse" />
+    </UnitTest>
+    <UnitTest name="EqualsWithEmptyValueObjectsReturnTrue" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="c4b00738-bd81-d4dd-934a-1f8ce1e5a004">
+      <Execution id="25213334-1289-4b9e-9d76-4317d7073c6f" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.EqualityValueObject, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="EqualsWithEmptyValueObjectsReturnTrue" />
+    </UnitTest>
+    <UnitTest name="StringEqualsWithTwoNullsEntitiesSameTypeReturnTrue" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="4ccbac64-6d99-8651-0e4e-7a94ce86ca89">
+      <Execution id="d0866a13-24ee-4bd0-8299-39066608ce59" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.StringEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="StringEqualsWithTwoNullsEntitiesSameTypeReturnTrue" />
+    </UnitTest>
+    <UnitTest name="EqualsWithTwoNullsValueObjectsReturnTrue" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="ed5ca231-a40d-1e94-d8cf-62620be065b2">
+      <Execution id="2e481b83-7082-4a8a-a33f-b7b2b8567fa5" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.EqualityValueObject, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="EqualsWithTwoNullsValueObjectsReturnTrue" />
+    </UnitTest>
+    <UnitTest name="EqualsWithTwoNullsEntitiesSameTypeReturnTrue" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="17042057-7aeb-7c30-7303-5d1a8e9e0592">
+      <Execution id="346b997c-c181-414a-8c42-2d549cb3896f" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.AuditableEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="EqualsWithTwoNullsEntitiesSameTypeReturnTrue" />
+    </UnitTest>
+    <UnitTest name="IntEntityEqualsWithTwoSetedSameIdSameEntitiesTypeReturnTrue" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="d41c1e27-6b39-94e3-749b-182cbe402f7f">
+      <Execution id="79a37005-5c77-4d6a-94c8-54746ba1b69a" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.EntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="IntEntityEqualsWithTwoSetedSameIdSameEntitiesTypeReturnTrue" />
+    </UnitTest>
+    <UnitTest name="StringEqualsWithTwoTransientEntitiesReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="4d2dabf7-6001-0f95-8269-92c41508bd3d">
+      <Execution id="3436b709-bb33-4301-b451-4cd2f036c387" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.StringEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="StringEqualsWithTwoTransientEntitiesReturnFalse" />
+    </UnitTest>
+    <UnitTest name="EqualsWithSameTransientEntitieReturnTrue" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="274f79cb-044b-0e7e-9f9e-4afbcabf33e2">
+      <Execution id="7f7fe73c-cb4c-4ebd-8a97-89cca739db18" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.AuditableEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="EqualsWithSameTransientEntitieReturnTrue" />
+    </UnitTest>
+    <UnitTest name="IntEntityTransientNewEntitieReturnTrue" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="cf73ad5c-bdd1-7dfc-d924-ad996d77b595">
+      <Execution id="d2f160fb-086f-477e-be63-649a11f783af" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.AuditableEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="IntEntityTransientNewEntitieReturnTrue" />
+    </UnitTest>
+    <UnitTest name="IntEntityEqualsWithTwoNullsEntitiesSameTypeReturnTrue" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="d72373c0-a703-cca6-215c-a78aa85313eb">
+      <Execution id="844cb512-5568-46c6-b5f4-21949a841f52" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.EntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="IntEntityEqualsWithTwoNullsEntitiesSameTypeReturnTrue" />
+    </UnitTest>
+    <UnitTest name="GuidEntityEqualsWithTwoTransientEntitiesReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="66b79ba3-ccdf-a017-5e08-1702c7c38084">
+      <Execution id="159779f2-0608-486e-98f8-b3cf353115ec" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.GuidEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="GuidEntityEqualsWithTwoTransientEntitiesReturnFalse" />
+    </UnitTest>
+    <UnitTest name="GuidEntityEqualsWithTwoNullsEntitiesSameTypeReturnTrue" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="b6e2ea1d-beee-09a0-2102-a1602abebdcc">
+      <Execution id="4aadbba5-5983-415b-b0b7-1706b4dcd3c1" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.GuidEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="GuidEntityEqualsWithTwoNullsEntitiesSameTypeReturnTrue" />
+    </UnitTest>
+    <UnitTest name="StringEqualsWithTwoNullsEntitiesDifferentTypeReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="3dc9c38f-ffcf-b4ec-4950-2951ba76f7d8">
+      <Execution id="1a9b12e8-ec6a-446a-89c2-e7cc1fbc9062" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.StringEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="StringEqualsWithTwoNullsEntitiesDifferentTypeReturnFalse" />
+    </UnitTest>
+    <UnitTest name="IntEntityEqualsWithTwoTransientEntitiesReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="87242a29-3fd9-012d-ce10-c41ae5a4acc4">
+      <Execution id="cdc7cdd2-882f-49db-a44e-abce40308c80" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.IntEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="IntEntityEqualsWithTwoTransientEntitiesReturnFalse" />
+    </UnitTest>
+    <UnitTest name="GuidEntityEqualsWithSameTransientEntitieReturnTrue" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="b202aa4d-65bf-bc8d-820d-b2b2651d5544">
+      <Execution id="d32aa49b-b355-4e7b-9508-28fd5d13a4a4" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.GuidEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="GuidEntityEqualsWithSameTransientEntitieReturnTrue" />
+    </UnitTest>
+    <UnitTest name="DataBaseCreateTest" storage="c:\pre\atento\00-assemblies\debug\atento.servicios.shared.test.infrastructurelayer.dll" id="c4976b6f-5561-c6e6-d6ad-30ba2246f866">
+      <Execution id="96070512-c70b-4d48-99b4-d0b90336e8d8" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Atento.Servicios.Shared.Test.InfrastructureLayer.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Atento.Servicios.Shared.Test.InfrastructureLayer.SharedCreateDaBase, Atento.Servicios.Shared.Test.InfrastructureLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DataBaseCreateTest" />
+    </UnitTest>
+    <UnitTest name="ValidatableEntityGuidEqualsWithTwoNullsEntitiesSameTypeReturnTrue" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="982f7fbb-ba3f-33fd-9fa4-3f5b26be6e74">
+      <Execution id="fa2b471c-584c-4d32-864f-e9561808ce9a" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.ValidatableEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="ValidatableEntityGuidEqualsWithTwoNullsEntitiesSameTypeReturnTrue" />
+    </UnitTest>
+    <UnitTest name="IntEntityEqualsWithTwoSetedIdDifferentEntitiesTypeReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="8cdf0b73-2a1d-fb4d-b0bf-87142530870b">
+      <Execution id="c9c6563d-8836-4b6f-bf99-c4f0966a0028" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.EntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="IntEntityEqualsWithTwoSetedIdDifferentEntitiesTypeReturnFalse" />
+    </UnitTest>
+    <UnitTest name="StringEqualsWithOneNullEntityReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="ea0a69ac-2bb3-b9d1-b8f7-0e625a29c014">
+      <Execution id="cb7e1762-a3cd-4b32-8a37-741f223b89df" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.StringEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="StringEqualsWithOneNullEntityReturnFalse" />
+    </UnitTest>
+    <UnitTest name="IntEntityEqualsWithSameEntityReturnTrue" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="2121912b-f77f-3ef3-ff35-d1ecd70b7034">
+      <Execution id="123ecfe9-4608-417b-a10c-977b7cce0767" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.IntEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="IntEntityEqualsWithSameEntityReturnTrue" />
+    </UnitTest>
+    <UnitTest name="IntEntityEqualsWithTwoSetedDifferentIdSameEntitiesTypeReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="4c4642c9-c98c-8343-d168-c0f2b8c7b2e7">
+      <Execution id="a8cb2a8c-0dfb-422a-87e6-77ae5a64efa1" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.IntEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="IntEntityEqualsWithTwoSetedDifferentIdSameEntitiesTypeReturnFalse" />
+    </UnitTest>
+    <UnitTest name="IntEntityEqualsWithOneNullEntityReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="28cecd14-0281-33e2-220d-430cb0b76324">
+      <Execution id="7f204f3e-a01e-44a0-afe0-42a0ec068ffc" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.EntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="IntEntityEqualsWithOneNullEntityReturnFalse" />
+    </UnitTest>
+    <UnitTest name="ValidatableEntityGuidEqualsWithTwoNullsEntitiesDifferentTypeReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="861bbbdf-9e17-619d-89af-8b7fa4a205e7">
+      <Execution id="d38395e6-e87a-4165-9139-7449716b5d21" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.ValidatableEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="ValidatableEntityGuidEqualsWithTwoNullsEntitiesDifferentTypeReturnFalse" />
+    </UnitTest>
+    <UnitTest name="GuidEntityEqualsWithTwoNullsEntitiesDifferentTypeReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="a5173249-e457-2bae-6188-e07755a468f1">
+      <Execution id="c02e58d1-0fe2-46c9-82c1-33cba61a7738" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.GuidEntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="GuidEntityEqualsWithTwoNullsEntitiesDifferentTypeReturnFalse" />
+    </UnitTest>
+    <UnitTest name="EqualsWithOneDifferentPropertyReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="f1db9089-b01e-e5ce-8721-8284d6363de2">
+      <Execution id="cccc1aca-faf9-485a-a22c-277275e550de" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.EqualityValueObject, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="EqualsWithOneDifferentPropertyReturnFalse" />
+    </UnitTest>
+    <UnitTest name="EqualsWithOneNullValueObjectReturnFalse" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="9d14cf3b-400a-419e-62e5-56cdb51cd8d7">
+      <Execution id="0b1b98b2-7db0-4440-9d1a-0020ad9b5492" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.EqualityValueObject, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="EqualsWithOneNullValueObjectReturnFalse" />
+    </UnitTest>
+    <UnitTest name="IntEntityTransientNewEntitieReturnTrue" storage="c:\pre\atento\00-assemblies\debug\inflexion2.framework.testing.dll" id="ecb2ec12-6d55-4737-3f23-78b2cd9e5a1c">
+      <Execution id="d22c62bd-9148-4dd2-aecc-13a4131a69f3" />
+      <TestMethod codeBase="C:/Pre/Atento/00-Assemblies/Debug/Inflexion2.Framework.Testing.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inflexion2.Testing.EntityTransientTest, Inflexion2.Framework.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aa5767c617d84bc0" name="IntEntityTransientNewEntitieReturnTrue" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="17042057-7aeb-7c30-7303-5d1a8e9e0592" executionId="346b997c-c181-414a-8c42-2d549cb3896f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1bdcb6c4-49ec-3cfb-4e22-c65e484a2116" executionId="e851c264-e756-4b7c-851b-301268fd4ea5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2121912b-f77f-3ef3-ff35-d1ecd70b7034" executionId="123ecfe9-4608-417b-a10c-977b7cce0767" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="22a8b0cb-7a33-d352-b784-a1f8be065fd9" executionId="560fba25-83e1-4cb4-8f05-19a6ce0961dd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="274f79cb-044b-0e7e-9f9e-4afbcabf33e2" executionId="7f7fe73c-cb4c-4ebd-8a97-89cca739db18" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="28cecd14-0281-33e2-220d-430cb0b76324" executionId="7f204f3e-a01e-44a0-afe0-42a0ec068ffc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="375ff3a2-2357-6f85-11f0-4fdbcfbe878c" executionId="9e1971f6-ce7c-4a06-9b4a-2ae566430b8a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="39038477-ba46-aac5-eb4c-721235e0936b" executionId="91e0badc-3630-480e-a4a0-be3fd50852c2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3dc9c38f-ffcf-b4ec-4950-2951ba76f7d8" executionId="1a9b12e8-ec6a-446a-89c2-e7cc1fbc9062" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4c4642c9-c98c-8343-d168-c0f2b8c7b2e7" executionId="a8cb2a8c-0dfb-422a-87e6-77ae5a64efa1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4ccbac64-6d99-8651-0e4e-7a94ce86ca89" executionId="d0866a13-24ee-4bd0-8299-39066608ce59" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4d2dabf7-6001-0f95-8269-92c41508bd3d" executionId="3436b709-bb33-4301-b451-4cd2f036c387" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="55745a3e-cb76-ce47-5e1c-cb4863c8cc88" executionId="24bb730e-d1d9-46f6-8714-8cdbcfe7afc9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5c01ed2f-cfa6-faf5-80ee-7526386e5bcb" executionId="00387398-160d-4ff2-9d1f-82a43a62acb8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5e48c4a4-9c69-9469-0648-a457e4f881b1" executionId="8dfcda6c-77ec-4988-a8b8-31e454953d19" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="66b79ba3-ccdf-a017-5e08-1702c7c38084" executionId="159779f2-0608-486e-98f8-b3cf353115ec" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6d00cb18-6da1-8f1c-bc52-1100717fe9e3" executionId="aa6d3fca-1810-4726-b4f6-1444562dbf93" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="861bbbdf-9e17-619d-89af-8b7fa4a205e7" executionId="d38395e6-e87a-4165-9139-7449716b5d21" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="87242a29-3fd9-012d-ce10-c41ae5a4acc4" executionId="cdc7cdd2-882f-49db-a44e-abce40308c80" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="894519f8-9501-4713-6a4e-b58cdbc44ab0" executionId="841084c7-0384-4d12-9602-79249f4c2383" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8cdf0b73-2a1d-fb4d-b0bf-87142530870b" executionId="c9c6563d-8836-4b6f-bf99-c4f0966a0028" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8ce58482-7d3e-3e19-80e5-4b965e8f5059" executionId="896b8ba4-6bd9-4536-81ff-63333bf4a681" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8e4820fb-b11f-6f11-e59d-db0467de1040" executionId="efd2af98-d0eb-49d3-8911-634d7c6b36df" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="982f7fbb-ba3f-33fd-9fa4-3f5b26be6e74" executionId="fa2b471c-584c-4d32-864f-e9561808ce9a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9d14cf3b-400a-419e-62e5-56cdb51cd8d7" executionId="0b1b98b2-7db0-4440-9d1a-0020ad9b5492" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a5143e69-78bd-03a5-f82d-50e4014f386a" executionId="86003237-0344-4c71-8349-890384e05d42" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a5173249-e457-2bae-6188-e07755a468f1" executionId="c02e58d1-0fe2-46c9-82c1-33cba61a7738" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ab5febae-4b86-5540-aa00-427d834f1128" executionId="07f0c806-eb30-4d9d-bc3a-1c32d2f87d3b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="afa4d5fe-5adf-b232-4499-e60da535e51b" executionId="12cfde92-e5b3-4d46-969c-71ce5b13e207" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b1a88be6-0573-6eb0-e0ba-a476ebddfcc3" executionId="722f3421-9c72-4361-9234-37d3a67f6f28" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b202aa4d-65bf-bc8d-820d-b2b2651d5544" executionId="d32aa49b-b355-4e7b-9508-28fd5d13a4a4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b53f3b4e-80dd-ada9-22f9-683ce813b819" executionId="3c3349c1-accf-4fbb-a138-df03e41175d5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b6e2ea1d-beee-09a0-2102-a1602abebdcc" executionId="4aadbba5-5983-415b-b0b7-1706b4dcd3c1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b73c4168-36b3-829e-62df-12b0e1f8a7bd" executionId="4596736f-601b-4bc7-9fb0-03a81f37543c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="be2066fd-b436-06cd-97b4-c7078e10e0f4" executionId="cfd57d2c-d3c7-4e58-9180-98c975a407f2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c4976b6f-5561-c6e6-d6ad-30ba2246f866" executionId="96070512-c70b-4d48-99b4-d0b90336e8d8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c4b00738-bd81-d4dd-934a-1f8ce1e5a004" executionId="25213334-1289-4b9e-9d76-4317d7073c6f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c88e308d-c412-3989-03a6-4812dd297cad" executionId="60fd66b3-bf6b-44c6-9c28-e66cd370c54a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cf73ad5c-bdd1-7dfc-d924-ad996d77b595" executionId="d2f160fb-086f-477e-be63-649a11f783af" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cfcea3e5-0964-8d2b-bd64-154d5273ea8f" executionId="aa6feea0-5566-4d05-834f-299903a48178" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d41c1e27-6b39-94e3-749b-182cbe402f7f" executionId="79a37005-5c77-4d6a-94c8-54746ba1b69a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d72373c0-a703-cca6-215c-a78aa85313eb" executionId="844cb512-5568-46c6-b5f4-21949a841f52" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="df70d1db-0b89-8d5b-f3c3-11fdd92fed5b" executionId="e34bbfb6-a335-44a2-b93b-c5c65c5d2f15" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ea0a69ac-2bb3-b9d1-b8f7-0e625a29c014" executionId="cb7e1762-a3cd-4b32-8a37-741f223b89df" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ebdf5570-fee7-71a9-954c-39a44616bfc0" executionId="68da3514-045e-4bd0-aee3-2316a8914648" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ecb2ec12-6d55-4737-3f23-78b2cd9e5a1c" executionId="d22c62bd-9148-4dd2-aecc-13a4131a69f3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ed5ca231-a40d-1e94-d8cf-62620be065b2" executionId="2e481b83-7082-4a8a-a33f-b7b2b8567fa5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ef418061-d4c4-2027-28ba-907376548f88" executionId="02d2f7b3-63aa-42b6-a39c-c6c2b745ac28" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f1db9089-b01e-e5ce-8721-8284d6363de2" executionId="cccc1aca-faf9-485a-a22c-277275e550de" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f8a0681f-01a9-96fe-d3cb-5a7507e6aa1a" executionId="522cf1d0-7a47-4fb8-bc6b-dcf5b79ff5de" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="346b997c-c181-414a-8c42-2d549cb3896f" testId="17042057-7aeb-7c30-7303-5d1a8e9e0592" testName="EqualsWithTwoNullsEntitiesSameTypeReturnTrue" computerName="VS2010W8" duration="00:00:00.0092958" startTime="2015-02-20T01:23:36.5435265+01:00" endTime="2015-02-20T01:23:36.7165298+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="346b997c-c181-414a-8c42-2d549cb3896f">
+    </UnitTestResult>
+    <UnitTestResult executionId="e851c264-e756-4b7c-851b-301268fd4ea5" testId="1bdcb6c4-49ec-3cfb-4e22-c65e484a2116" testName="IntEntityEqualsWithTwoNullsEntitiesSameTypeReturnTrue" computerName="VS2010W8" duration="00:00:00.0002627" startTime="2015-02-20T01:23:36.7225302+01:00" endTime="2015-02-20T01:23:36.7245303+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e851c264-e756-4b7c-851b-301268fd4ea5">
+    </UnitTestResult>
+    <UnitTestResult executionId="123ecfe9-4608-417b-a10c-977b7cce0767" testId="2121912b-f77f-3ef3-ff35-d1ecd70b7034" testName="IntEntityEqualsWithSameEntityReturnTrue" computerName="VS2010W8" duration="00:00:00.0013203" startTime="2015-02-20T01:23:36.7275302+01:00" endTime="2015-02-20T01:23:36.7295302+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="123ecfe9-4608-417b-a10c-977b7cce0767">
+    </UnitTestResult>
+    <UnitTestResult executionId="560fba25-83e1-4cb4-8f05-19a6ce0961dd" testId="22a8b0cb-7a33-d352-b784-a1f8be065fd9" testName="ValidatableEntityGuidEqualsWithSameTransientEntitieReturnTrue" computerName="VS2010W8" duration="00:00:00.0003282" startTime="2015-02-20T01:23:36.7325302+01:00" endTime="2015-02-20T01:23:36.7355304+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="560fba25-83e1-4cb4-8f05-19a6ce0961dd">
+    </UnitTestResult>
+    <UnitTestResult executionId="7f7fe73c-cb4c-4ebd-8a97-89cca739db18" testId="274f79cb-044b-0e7e-9f9e-4afbcabf33e2" testName="EqualsWithSameTransientEntitieReturnTrue" computerName="VS2010W8" duration="00:00:00.0003018" startTime="2015-02-20T01:23:36.7385304+01:00" endTime="2015-02-20T01:23:36.7395310+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7f7fe73c-cb4c-4ebd-8a97-89cca739db18">
+    </UnitTestResult>
+    <UnitTestResult executionId="7f204f3e-a01e-44a0-afe0-42a0ec068ffc" testId="28cecd14-0281-33e2-220d-430cb0b76324" testName="IntEntityEqualsWithOneNullEntityReturnFalse" computerName="VS2010W8" duration="00:00:00.0012272" startTime="2015-02-20T01:23:36.7565308+01:00" endTime="2015-02-20T01:23:36.7585357+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7f204f3e-a01e-44a0-afe0-42a0ec068ffc">
+    </UnitTestResult>
+    <UnitTestResult executionId="9e1971f6-ce7c-4a06-9b4a-2ae566430b8a" testId="375ff3a2-2357-6f85-11f0-4fdbcfbe878c" testName="EqualsWithOneNullEntityReturnFalse" computerName="VS2010W8" duration="00:00:00.0001817" startTime="2015-02-20T01:23:36.7605309+01:00" endTime="2015-02-20T01:23:36.7635309+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9e1971f6-ce7c-4a06-9b4a-2ae566430b8a">
+    </UnitTestResult>
+    <UnitTestResult executionId="91e0badc-3630-480e-a4a0-be3fd50852c2" testId="39038477-ba46-aac5-eb4c-721235e0936b" testName="ValidatableEntityGuidEqualsWithTwoTransientEntitiesReturnFalse" computerName="VS2010W8" duration="00:00:00.0005147" startTime="2015-02-20T01:23:36.7665312+01:00" endTime="2015-02-20T01:23:36.7685311+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="91e0badc-3630-480e-a4a0-be3fd50852c2">
+    </UnitTestResult>
+    <UnitTestResult executionId="1a9b12e8-ec6a-446a-89c2-e7cc1fbc9062" testId="3dc9c38f-ffcf-b4ec-4950-2951ba76f7d8" testName="StringEqualsWithTwoNullsEntitiesDifferentTypeReturnFalse" computerName="VS2010W8" duration="00:00:00.0009672" startTime="2015-02-20T01:23:36.7715313+01:00" endTime="2015-02-20T01:23:36.7735311+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1a9b12e8-ec6a-446a-89c2-e7cc1fbc9062">
+    </UnitTestResult>
+    <UnitTestResult executionId="a8cb2a8c-0dfb-422a-87e6-77ae5a64efa1" testId="4c4642c9-c98c-8343-d168-c0f2b8c7b2e7" testName="IntEntityEqualsWithTwoSetedDifferentIdSameEntitiesTypeReturnFalse" computerName="VS2010W8" duration="00:00:00.0002364" startTime="2015-02-20T01:23:36.7755343+01:00" endTime="2015-02-20T01:23:36.7785315+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a8cb2a8c-0dfb-422a-87e6-77ae5a64efa1">
+    </UnitTestResult>
+    <UnitTestResult executionId="d0866a13-24ee-4bd0-8299-39066608ce59" testId="4ccbac64-6d99-8651-0e4e-7a94ce86ca89" testName="StringEqualsWithTwoNullsEntitiesSameTypeReturnTrue" computerName="VS2010W8" duration="00:00:00.0002039" startTime="2015-02-20T01:23:36.7815316+01:00" endTime="2015-02-20T01:23:36.7835314+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d0866a13-24ee-4bd0-8299-39066608ce59">
+    </UnitTestResult>
+    <UnitTestResult executionId="3436b709-bb33-4301-b451-4cd2f036c387" testId="4d2dabf7-6001-0f95-8269-92c41508bd3d" testName="StringEqualsWithTwoTransientEntitiesReturnFalse" computerName="VS2010W8" duration="00:00:00.0008929" startTime="2015-02-20T01:23:36.7865314+01:00" endTime="2015-02-20T01:23:36.7885314+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3436b709-bb33-4301-b451-4cd2f036c387">
+    </UnitTestResult>
+    <UnitTestResult executionId="24bb730e-d1d9-46f6-8714-8cdbcfe7afc9" testId="55745a3e-cb76-ce47-5e1c-cb4863c8cc88" testName="IntEntityEqualsWithTwoNullsEntitiesDifferentTypeReturnFalse" computerName="VS2010W8" duration="00:00:00.0002840" startTime="2015-02-20T01:23:36.7905313+01:00" endTime="2015-02-20T01:23:36.7935314+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="24bb730e-d1d9-46f6-8714-8cdbcfe7afc9">
+    </UnitTestResult>
+    <UnitTestResult executionId="00387398-160d-4ff2-9d1f-82a43a62acb8" testId="5c01ed2f-cfa6-faf5-80ee-7526386e5bcb" testName="GuidEntityEqualsWithOneNullEntityReturnFalse" computerName="VS2010W8" duration="00:00:00.0002315" startTime="2015-02-20T01:23:36.7965318+01:00" endTime="2015-02-20T01:23:36.7975315+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="00387398-160d-4ff2-9d1f-82a43a62acb8">
+    </UnitTestResult>
+    <UnitTestResult executionId="8dfcda6c-77ec-4988-a8b8-31e454953d19" testId="5e48c4a4-9c69-9469-0648-a457e4f881b1" testName="IntEntityTransientNewEntitieReturnTrue" computerName="VS2010W8" duration="00:00:00.0007494" startTime="2015-02-20T01:23:36.8145321+01:00" endTime="2015-02-20T01:23:36.8165347+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8dfcda6c-77ec-4988-a8b8-31e454953d19">
+    </UnitTestResult>
+    <UnitTestResult executionId="159779f2-0608-486e-98f8-b3cf353115ec" testId="66b79ba3-ccdf-a017-5e08-1702c7c38084" testName="GuidEntityEqualsWithTwoTransientEntitiesReturnFalse" computerName="VS2010W8" duration="00:00:00.0002064" startTime="2015-02-20T01:23:36.8185320+01:00" endTime="2015-02-20T01:23:36.8215320+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="159779f2-0608-486e-98f8-b3cf353115ec">
+    </UnitTestResult>
+    <UnitTestResult executionId="aa6d3fca-1810-4726-b4f6-1444562dbf93" testId="6d00cb18-6da1-8f1c-bc52-1100717fe9e3" testName="IntEntityEqualsWithTwoSetedDifferentIdSameEntitiesTypeReturnFalse" computerName="VS2010W8" duration="00:00:00.0002656" startTime="2015-02-20T01:23:36.8255323+01:00" endTime="2015-02-20T01:23:36.8265346+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="aa6d3fca-1810-4726-b4f6-1444562dbf93">
+    </UnitTestResult>
+    <UnitTestResult executionId="d38395e6-e87a-4165-9139-7449716b5d21" testId="861bbbdf-9e17-619d-89af-8b7fa4a205e7" testName="ValidatableEntityGuidEqualsWithTwoNullsEntitiesDifferentTypeReturnFalse" computerName="VS2010W8" duration="00:00:00.0007546" startTime="2015-02-20T01:23:36.8305324+01:00" endTime="2015-02-20T01:23:36.8325322+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d38395e6-e87a-4165-9139-7449716b5d21">
+    </UnitTestResult>
+    <UnitTestResult executionId="cdc7cdd2-882f-49db-a44e-abce40308c80" testId="87242a29-3fd9-012d-ce10-c41ae5a4acc4" testName="IntEntityEqualsWithTwoTransientEntitiesReturnFalse" computerName="VS2010W8" duration="00:00:00.0003395" startTime="2015-02-20T01:23:36.8345326+01:00" endTime="2015-02-20T01:23:36.8395361+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cdc7cdd2-882f-49db-a44e-abce40308c80">
+    </UnitTestResult>
+    <UnitTestResult executionId="841084c7-0384-4d12-9602-79249f4c2383" testId="894519f8-9501-4713-6a4e-b58cdbc44ab0" testName="IntEntityEqualsWithTwoSetedIdDifferentEntitiesTypeReturnFalse" computerName="VS2010W8" duration="00:00:00.0002143" startTime="2015-02-20T01:23:36.8425324+01:00" endTime="2015-02-20T01:23:36.8435327+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="841084c7-0384-4d12-9602-79249f4c2383">
+    </UnitTestResult>
+    <UnitTestResult executionId="c9c6563d-8836-4b6f-bf99-c4f0966a0028" testId="8cdf0b73-2a1d-fb4d-b0bf-87142530870b" testName="IntEntityEqualsWithTwoSetedIdDifferentEntitiesTypeReturnFalse" computerName="VS2010W8" duration="00:00:00.0009647" startTime="2015-02-20T01:23:36.8465329+01:00" endTime="2015-02-20T01:23:36.8495327+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c9c6563d-8836-4b6f-bf99-c4f0966a0028">
+    </UnitTestResult>
+    <UnitTestResult executionId="896b8ba4-6bd9-4536-81ff-63333bf4a681" testId="8ce58482-7d3e-3e19-80e5-4b965e8f5059" testName="EqualsWithNestedDifferentValueObjectReturnFalse" computerName="VS2010W8" duration="00:00:00.0014021" startTime="2015-02-20T01:23:36.8505329+01:00" endTime="2015-02-20T01:23:36.8545325+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="896b8ba4-6bd9-4536-81ff-63333bf4a681">
+    </UnitTestResult>
+    <UnitTestResult executionId="efd2af98-d0eb-49d3-8911-634d7c6b36df" testId="8e4820fb-b11f-6f11-e59d-db0467de1040" testName="GuidEntityTransientNewEntitieReturnTrue" computerName="VS2010W8" duration="00:00:00.0002362" startTime="2015-02-20T01:23:36.8585328+01:00" endTime="2015-02-20T01:23:36.8605329+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="efd2af98-d0eb-49d3-8911-634d7c6b36df">
+    </UnitTestResult>
+    <UnitTestResult executionId="fa2b471c-584c-4d32-864f-e9561808ce9a" testId="982f7fbb-ba3f-33fd-9fa4-3f5b26be6e74" testName="ValidatableEntityGuidEqualsWithTwoNullsEntitiesSameTypeReturnTrue" computerName="VS2010W8" duration="00:00:00.0007910" startTime="2015-02-20T01:23:36.8645328+01:00" endTime="2015-02-20T01:23:36.8665328+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fa2b471c-584c-4d32-864f-e9561808ce9a">
+    </UnitTestResult>
+    <UnitTestResult executionId="0b1b98b2-7db0-4440-9d1a-0020ad9b5492" testId="9d14cf3b-400a-419e-62e5-56cdb51cd8d7" testName="EqualsWithOneNullValueObjectReturnFalse" computerName="VS2010W8" duration="00:00:00.0002476" startTime="2015-02-20T01:23:36.8685328+01:00" endTime="2015-02-20T01:23:36.8715330+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0b1b98b2-7db0-4440-9d1a-0020ad9b5492">
+    </UnitTestResult>
+    <UnitTestResult executionId="86003237-0344-4c71-8349-890384e05d42" testId="a5143e69-78bd-03a5-f82d-50e4014f386a" testName="EqualsWithTwoTransientEntitiesReturnFalse" computerName="VS2010W8" duration="00:00:00.0002418" startTime="2015-02-20T01:23:36.8765400+01:00" endTime="2015-02-20T01:23:36.8775334+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="86003237-0344-4c71-8349-890384e05d42">
+    </UnitTestResult>
+    <UnitTestResult executionId="c02e58d1-0fe2-46c9-82c1-33cba61a7738" testId="a5173249-e457-2bae-6188-e07755a468f1" testName="GuidEntityEqualsWithTwoNullsEntitiesDifferentTypeReturnFalse" computerName="VS2010W8" duration="00:00:00.0007697" startTime="2015-02-20T01:23:36.8815334+01:00" endTime="2015-02-20T01:23:36.8835331+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c02e58d1-0fe2-46c9-82c1-33cba61a7738">
+    </UnitTestResult>
+    <UnitTestResult executionId="07f0c806-eb30-4d9d-bc3a-1c32d2f87d3b" testId="ab5febae-4b86-5540-aa00-427d834f1128" testName="IntEntityEqualsWithOneNullEntityReturnFalse" computerName="VS2010W8" duration="00:00:00.0002109" startTime="2015-02-20T01:23:36.8855336+01:00" endTime="2015-02-20T01:23:36.8895333+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="07f0c806-eb30-4d9d-bc3a-1c32d2f87d3b">
+    </UnitTestResult>
+    <UnitTestResult executionId="12cfde92-e5b3-4d46-969c-71ce5b13e207" testId="afa4d5fe-5adf-b232-4499-e60da535e51b" testName="IntEntityEqualsWithTwoSetedSameIdSameEntitiesTypeReturnFalse" computerName="VS2010W8" duration="00:00:00.0001915" startTime="2015-02-20T01:23:36.8925337+01:00" endTime="2015-02-20T01:23:36.8945334+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="12cfde92-e5b3-4d46-969c-71ce5b13e207">
+    </UnitTestResult>
+    <UnitTestResult executionId="722f3421-9c72-4361-9234-37d3a67f6f28" testId="b1a88be6-0573-6eb0-e0ba-a476ebddfcc3" testName="EqualsWithTwoNullsEntitiesDifferentTypeReturnFalse" computerName="VS2010W8" duration="00:00:00.0009270" startTime="2015-02-20T01:23:36.8975339+01:00" endTime="2015-02-20T01:23:36.8995336+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="722f3421-9c72-4361-9234-37d3a67f6f28">
+    </UnitTestResult>
+    <UnitTestResult executionId="d32aa49b-b355-4e7b-9508-28fd5d13a4a4" testId="b202aa4d-65bf-bc8d-820d-b2b2651d5544" testName="GuidEntityEqualsWithSameTransientEntitieReturnTrue" computerName="VS2010W8" duration="00:00:00.0001659" startTime="2015-02-20T01:23:36.9015335+01:00" endTime="2015-02-20T01:23:36.9035335+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d32aa49b-b355-4e7b-9508-28fd5d13a4a4">
+    </UnitTestResult>
+    <UnitTestResult executionId="3c3349c1-accf-4fbb-a138-df03e41175d5" testId="b53f3b4e-80dd-ada9-22f9-683ce813b819" testName="ValidatableEntityGuidEqualsWithOneNullEntityReturnFalse" computerName="VS2010W8" duration="00:00:00.0001451" startTime="2015-02-20T01:23:36.9065339+01:00" endTime="2015-02-20T01:23:36.9075336+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3c3349c1-accf-4fbb-a138-df03e41175d5">
+    </UnitTestResult>
+    <UnitTestResult executionId="4aadbba5-5983-415b-b0b7-1706b4dcd3c1" testId="b6e2ea1d-beee-09a0-2102-a1602abebdcc" testName="GuidEntityEqualsWithTwoNullsEntitiesSameTypeReturnTrue" computerName="VS2010W8" duration="00:00:00.0007599" startTime="2015-02-20T01:23:36.9105335+01:00" endTime="2015-02-20T01:23:36.9125337+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4aadbba5-5983-415b-b0b7-1706b4dcd3c1">
+    </UnitTestResult>
+    <UnitTestResult executionId="4596736f-601b-4bc7-9fb0-03a81f37543c" testId="b73c4168-36b3-829e-62df-12b0e1f8a7bd" testName="IntEntityEqualsWithTwoNullsEntitiesDifferentTypeReturnFalse" computerName="VS2010W8" duration="00:00:00.0002221" startTime="2015-02-20T01:23:36.9145338+01:00" endTime="2015-02-20T01:23:36.9165339+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4596736f-601b-4bc7-9fb0-03a81f37543c">
+    </UnitTestResult>
+    <UnitTestResult executionId="cfd57d2c-d3c7-4e58-9180-98c975a407f2" testId="be2066fd-b436-06cd-97b4-c7078e10e0f4" testName="EqualsWithEqualsValueObjectsReturnTrue" computerName="VS2010W8" duration="00:00:00.0001961" startTime="2015-02-20T01:23:36.9205337+01:00" endTime="2015-02-20T01:23:36.9215340+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cfd57d2c-d3c7-4e58-9180-98c975a407f2">
+    </UnitTestResult>
+    <UnitTestResult executionId="96070512-c70b-4d48-99b4-d0b90336e8d8" testId="c4976b6f-5561-c6e6-d6ad-30ba2246f866" testName="DataBaseCreateTest" computerName="VS2010W8" duration="00:00:00.0823172" startTime="2015-02-20T01:23:36.9245339+01:00" endTime="2015-02-20T01:23:37.1025371+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="96070512-c70b-4d48-99b4-d0b90336e8d8">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method Atento.Servicios.Shared.Test.InfrastructureLayer.SharedCreateDaBase.DataBaseCreateTest threw exception: 
+System.NullReferenceException: Object reference not set to an instance of an object.</Message>
+          <StackTrace>    at Atento.Servicios.Shared.Test.InfrastructureLayer.SharedCreateDaBase.ConnectionString() in C:\Pre\Atento\03-GeneratedProjects\Atento.Servicios.Shared.Test.InfrastructureLayer\CreateDatabaseTest001.cs:line 75
+   at Atento.Servicios.Shared.Test.InfrastructureLayer.SharedCreateDaBase.DataBaseCreateTest() in C:\Pre\Atento\03-GeneratedProjects\Atento.Servicios.Shared.Test.InfrastructureLayer\CreateDatabaseTest001.cs:line 62
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="25213334-1289-4b9e-9d76-4317d7073c6f" testId="c4b00738-bd81-d4dd-934a-1f8ce1e5a004" testName="EqualsWithEmptyValueObjectsReturnTrue" computerName="VS2010W8" duration="00:00:00.0002278" startTime="2015-02-20T01:23:37.1155376+01:00" endTime="2015-02-20T01:23:37.1175380+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="25213334-1289-4b9e-9d76-4317d7073c6f">
+    </UnitTestResult>
+    <UnitTestResult executionId="60fd66b3-bf6b-44c6-9c28-e66cd370c54a" testId="c88e308d-c412-3989-03a6-4812dd297cad" testName="EqualsWithNestedDifferentRootValueObjectReturnFalse" computerName="VS2010W8" duration="00:00:00.0002513" startTime="2015-02-20T01:23:37.1225378+01:00" endTime="2015-02-20T01:23:37.1235380+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="60fd66b3-bf6b-44c6-9c28-e66cd370c54a">
+    </UnitTestResult>
+    <UnitTestResult executionId="d2f160fb-086f-477e-be63-649a11f783af" testId="cf73ad5c-bdd1-7dfc-d924-ad996d77b595" testName="IntEntityTransientNewEntitieReturnTrue" computerName="VS2010W8" duration="00:00:00.0007659" startTime="2015-02-20T01:23:37.1265382+01:00" endTime="2015-02-20T01:23:37.1285379+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d2f160fb-086f-477e-be63-649a11f783af">
+    </UnitTestResult>
+    <UnitTestResult executionId="aa6feea0-5566-4d05-834f-299903a48178" testId="cfcea3e5-0964-8d2b-bd64-154d5273ea8f" testName="EqualsWithNestedValueObjectReturnTrue" computerName="VS2010W8" duration="00:00:00.0002752" startTime="2015-02-20T01:23:37.1305382+01:00" endTime="2015-02-20T01:23:37.1335380+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="aa6feea0-5566-4d05-834f-299903a48178">
+    </UnitTestResult>
+    <UnitTestResult executionId="79a37005-5c77-4d6a-94c8-54746ba1b69a" testId="d41c1e27-6b39-94e3-749b-182cbe402f7f" testName="IntEntityEqualsWithTwoSetedSameIdSameEntitiesTypeReturnTrue" computerName="VS2010W8" duration="00:00:00.0001745" startTime="2015-02-20T01:23:37.1365381+01:00" endTime="2015-02-20T01:23:37.1385380+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="79a37005-5c77-4d6a-94c8-54746ba1b69a">
+    </UnitTestResult>
+    <UnitTestResult executionId="844cb512-5568-46c6-b5f4-21949a841f52" testId="d72373c0-a703-cca6-215c-a78aa85313eb" testName="IntEntityEqualsWithTwoNullsEntitiesSameTypeReturnTrue" computerName="VS2010W8" duration="00:00:00.0006483" startTime="2015-02-20T01:23:37.1415381+01:00" endTime="2015-02-20T01:23:37.1425383+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="844cb512-5568-46c6-b5f4-21949a841f52">
+    </UnitTestResult>
+    <UnitTestResult executionId="e34bbfb6-a335-44a2-b93b-c5c65c5d2f15" testId="df70d1db-0b89-8d5b-f3c3-11fdd92fed5b" testName="IntEntityEqualsWithSameTransientEntitieReturnTrue" computerName="VS2010W8" duration="00:00:00.0002141" startTime="2015-02-20T01:23:37.1445383+01:00" endTime="2015-02-20T01:23:37.1475382+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e34bbfb6-a335-44a2-b93b-c5c65c5d2f15">
+    </UnitTestResult>
+    <UnitTestResult executionId="cb7e1762-a3cd-4b32-8a37-741f223b89df" testId="ea0a69ac-2bb3-b9d1-b8f7-0e625a29c014" testName="StringEqualsWithOneNullEntityReturnFalse" computerName="VS2010W8" duration="00:00:00.0001718" startTime="2015-02-20T01:23:37.1495382+01:00" endTime="2015-02-20T01:23:37.1515385+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cb7e1762-a3cd-4b32-8a37-741f223b89df">
+    </UnitTestResult>
+    <UnitTestResult executionId="68da3514-045e-4bd0-aee3-2316a8914648" testId="ebdf5570-fee7-71a9-954c-39a44616bfc0" testName="IntEntityEqualsWithSameTransientEntitieReturnTrue" computerName="VS2010W8" duration="00:00:00.0006989" startTime="2015-02-20T01:23:37.1545382+01:00" endTime="2015-02-20T01:23:37.1555383+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="68da3514-045e-4bd0-aee3-2316a8914648">
+    </UnitTestResult>
+    <UnitTestResult executionId="d22c62bd-9148-4dd2-aecc-13a4131a69f3" testId="ecb2ec12-6d55-4737-3f23-78b2cd9e5a1c" testName="IntEntityTransientNewEntitieReturnTrue" computerName="VS2010W8" duration="00:00:00.0001901" startTime="2015-02-20T01:23:37.1575385+01:00" endTime="2015-02-20T01:23:37.1605386+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d22c62bd-9148-4dd2-aecc-13a4131a69f3">
+    </UnitTestResult>
+    <UnitTestResult executionId="2e481b83-7082-4a8a-a33f-b7b2b8567fa5" testId="ed5ca231-a40d-1e94-d8cf-62620be065b2" testName="EqualsWithTwoNullsValueObjectsReturnTrue" computerName="VS2010W8" duration="00:00:00.0001647" startTime="2015-02-20T01:23:37.1625385+01:00" endTime="2015-02-20T01:23:37.1645384+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2e481b83-7082-4a8a-a33f-b7b2b8567fa5">
+    </UnitTestResult>
+    <UnitTestResult executionId="02d2f7b3-63aa-42b6-a39c-c6c2b745ac28" testId="ef418061-d4c4-2027-28ba-907376548f88" testName="IntEntityEqualsWithTwoTransientEntitiesReturnFalse" computerName="VS2010W8" duration="00:00:00.0007591" startTime="2015-02-20T01:23:37.1675693+01:00" endTime="2015-02-20T01:23:37.1695387+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="02d2f7b3-63aa-42b6-a39c-c6c2b745ac28">
+    </UnitTestResult>
+    <UnitTestResult executionId="cccc1aca-faf9-485a-a22c-277275e550de" testId="f1db9089-b01e-e5ce-8721-8284d6363de2" testName="EqualsWithOneDifferentPropertyReturnFalse" computerName="VS2010W8" duration="00:00:00.0002124" startTime="2015-02-20T01:23:37.1715389+01:00" endTime="2015-02-20T01:23:37.1735388+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cccc1aca-faf9-485a-a22c-277275e550de">
+    </UnitTestResult>
+    <UnitTestResult executionId="522cf1d0-7a47-4fb8-bc6b-dcf5b79ff5de" testId="f8a0681f-01a9-96fe-d3cb-5a7507e6aa1a" testName="StringEqualsWithSameTransientEntitieReturnTrue" computerName="VS2010W8" duration="00:00:00.0001723" startTime="2015-02-20T01:23:37.1765390+01:00" endTime="2015-02-20T01:23:37.1775392+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="522cf1d0-7a47-4fb8-bc6b-dcf5b79ff5de">
+    </UnitTestResult>
+  </Results>
+</TestRun>

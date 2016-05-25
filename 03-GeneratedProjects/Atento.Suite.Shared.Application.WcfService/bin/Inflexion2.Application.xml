@@ -4,49 +4,170 @@
         <name>Inflexion2.Application</name>
     </assembly>
     <members>
-        <member name="T:Inflexion2.Application.DataTransfer.Core.Filter">
+        <member name="T:Inflexion2.Application.Core.IConfiguration">
             <summary>
-            Clase que representa un filtro para las especificaciones.
+            Interface encargada de la configuración para los servicios Wcf.
             </summary>
             <remarks>
-            Sin comentarios adicionales.
+            Interface para la configuración predeterminada de los servicios WCF que
+            forman parte de la fachada remota.
             </remarks>
         </member>
-        <member name="P:Inflexion2.Application.DataTransfer.Core.Filter.Operator">
+        <member name="M:Inflexion2.Application.Core.IConfiguration.Configure">
             <summary>
-            Propiedad que obtiene o establece el operador que aplicará en el filtro.
+            Método encargado de la ejecución de la configuración.
             </summary>
             <remarks>
-            Sin comentarios adicionales.
+            Configuración predeterminada construyendo la cadena de conexión por usuario.
             </remarks>
-            <value>
-            Valor que es utilizado para obtener o establecer el
-            operador que aplicará en el filtro.
-            </value>
         </member>
-        <member name="P:Inflexion2.Application.DataTransfer.Core.Filter.Property">
+        <member name="M:Inflexion2.Application.Core.IConfiguration.ConfigureDataAccess(System.String,System.String)">
             <summary>
-            Propiedad que obtiene o establece el nombre de la propiedad
-            sobre la que se aplicará el filtro.
+            Método encarga de la ejecución de la configuración del acceso a datos.
             </summary>
+            <param name="userName">
+            Parámetro que indica el nombre de usuario para el inicio de sesión.
+            </param>
+            <param name="password">
+            Parámetro que indica la password del usuario para el inicio de sesión.
+            </param>
             <remarks>
-            Sin comentarios adicionales.
+            Configuración predeterminada construyendo la cadena de conexión por usuario.
             </remarks>
-            <value>
-            Valor que es utilizado para obtener o establecer el nombre de la propiedad
-            sobre la que se aplicará el filtro.
-            </value>
+            <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de <c>userName</c> ó <c>password</c> es null ó vacío.
+            </exception>
         </member>
-        <member name="P:Inflexion2.Application.DataTransfer.Core.Filter.Value">
+        <member name="T:Inflexion2.Application.Core.IDataEntityMapper`3">
             <summary>
-            Propiedad que obtiene o establece el valor para el filtro.
+            Interfaz para los mapeadores entre entidades del dominio.
+            (<see cref="!:Inflexion.Framework.Domain.Core.IEntity&lt;TIdentifier&gt;"/>) y
+            objetos de transferencia de datos (<see cref="T:Inflexion2.Application.DataTransfer.Core.IDataTransferObject"/>).
             </summary>
             <remarks>
-            Sin comentarios adicionales.
+            La interfaz <c>IMapper</c> permite mapear entre entidades del dominio.
             </remarks>
-            <value>
-            Valor que es utilizado para obtener o establecer el valor del filtro.
-            </value>
+            <typeparam name="TDataTransferObject">Representa la interfaz de los objetos de transferencia de datos.</typeparam>
+            <typeparam name="TEntity">Representa las entidades del negocio.</typeparam>
+            <typeparam name="TIdentifier">Representa un identificador unívoco de entidad.</typeparam>
+        </member>
+        <member name="T:Inflexion2.Application.Core.IDataMapper`3">
+            <summary>
+            Interfaz para los mapeadores entre entidades del dominio.
+            (<see cref="!:Inflexion.Framework.Domain.Core.IEntity&lt;TIdentifier&gt;"/>) y
+            objetos de transferencia de datos (<see cref="T:Inflexion2.Application.DataTransfer.Core.IDataTransferObject"/>).
+            </summary>
+            <remarks>
+            Sin comentarios especiales.
+            </remarks>
+            <typeparam name="TDataTransferObject">
+            Representa la interfaz de los objetos de transferencia de datos.
+            </typeparam>
+            <typeparam name="TEntity">
+            Representa las entidades del negocio.
+            </typeparam>
+            <typeparam name="TIdentifier">
+            Representa un identificador unívoco de entidad.
+            </typeparam>
+        </member>
+        <member name="M:Inflexion2.Application.Core.IDataMapper`3.DataMapping(`0)">
+            <summary>
+            Función encargada de mapear un Dto con una entidad.
+            </summary>
+            <remarks>
+            Con esta función, mapeamos un Dto con una entidad.
+            Esta función no se exige debido a que en DDD estricto las factorias son las encargadas de crear las entidades.
+            y no los mappers. Igualmente si se transmite la necesidad de localizar una entida basta con enviar el id para encontrarla pero no "recrearla" 
+            que es lo que se terminaria haciendo con el uso de este método.
+            </remarks>
+            <param name="dataTransferObject">
+            Representa la interfaz de los objetos de transferencia de datos.
+            </param>
+            <returns>
+            Devuelve una entidad de negocio.
+            </returns>
+        </member>
+        <member name="T:Inflexion2.Application.Core.IEntityMapper`3">
+             <summary>
+             Interfaz para los mapeadores entre entidades del dominio.
+             (<see cref="!:Inflexion.Framework.Domain.Core.IEntity&lt;TIdentifier&gt;"/>) y
+             objetos de transferencia de datos (<see cref="T:Inflexion2.Application.DataTransfer.Core.IDataTransferObject"/>).
+             </summary>
+             <remarks>
+             La interfaz <c>IMapper</c> permite mapear entre entidades del dominio.
+             </remarks>
+             <typeparam name="TDataTransferObject">
+             Representa la interfaz de los objetos de transferencia de datos.
+             </typeparam>
+             <typeparam name="TEntity">
+             Representa las entidades del negocio.
+             </typeparam>
+             <typeparam name="TIdentifier">
+             Representa un identificador unívoco de entidad.
+             </typeparam>
+             <example>
+             Ejemplo de implementación de esta interfaz suponiendo la interfaz
+             <c>IAmbitoMapper</c> que la implementa:
+             <code>
+               <![CDATA[
+            
+             using Inflexion.Framework.Application.Core;
+            
+             using Inflexion.Suite.Foo.BoundedContext.Application.Data.Base;
+             using Inflexion.Suite.Foo.BoundedContext.Domain.Core;
+            
+             /// <summary>
+             /// Interfaz que identifica los mapeos de
+             /// datos con la entidad <see cref="IAmbito"/>.
+             /// </summary>
+             /// <remarks>
+             /// Sin comentarios especiales.
+             /// </remarks>
+             public interface IAmbitoMapper : IEntityMapper<AmbitoDto, IAmbito, int>
+             {
+            
+             } // IAmbitoMapper
+            
+               ]]>
+             </code>
+             </example>
+        </member>
+        <member name="M:Inflexion2.Application.Core.IEntityMapper`3.EntityMapping(`1)">
+            <summary>
+            Función encargada de mapear una entidad con un Dto.
+            </summary>
+            <remarks>
+            Con esta función, mapeamos una entidad con un Dto.
+            </remarks>
+            <param name="entity">Representa las entidades de negocio.</param>
+            <returns>Devuelve un objeto de transferencia de datos.</returns>
+        </member>
+        <member name="T:Inflexion2.Application.Core.IGenericMapper`3">
+            <summary>
+            Interfaz para los mapeadores entre entidades del dominio.
+            (<see cref="!:Inflexion.Framework.Domain.Core.IEntity&lt;TIdentifier&gt;"/>) y
+            objetos de transferencia de datos (<see cref="T:Inflexion2.Application.DataTransfer.Core.IDataTransferObject"/>).
+            </summary>
+            <remarks>
+            La interfaz <c>IGenericMapper</c> permite mapear entre entidades del dominio.
+            </remarks>
+            <typeparam name="TDataTransferObject">
+            Representa la interfaz de los objetos de transferencia de datos.
+            </typeparam>
+            <typeparam name="TEntity">
+            Representa las entidades del negocio.
+            </typeparam>
+            <typeparam name="TIdentifier">
+            Representa un identificador unívoco de entidad.
+            </typeparam>
+        </member>
+        <member name="T:Inflexion2.Application.Core.IMapper">
+            <summary>
+            Interfaz marcadora para los mapeadores entre entidades del dominio.
+            </summary>
+            <remarks>
+            Sin comentarios especiales.
+            </remarks>
         </member>
         <member name="T:Inflexion2.Application.Core.IService">
              <summary>
@@ -221,131 +342,36 @@
              </code>
              </example>
         </member>
-        <member name="T:Inflexion2.Application.Core.IConfiguration">
-            <summary>
-            Interface encargada de la configuración para los servicios Wcf.
-            </summary>
-            <remarks>
-            Interface para la configuración predeterminada de los servicios WCF que
-            forman parte de la fachada remota.
-            </remarks>
-        </member>
-        <member name="M:Inflexion2.Application.Core.IConfiguration.Configure">
-            <summary>
-            Método encargado de la ejecución de la configuración.
-            </summary>
-            <remarks>
-            Configuración predeterminada construyendo la cadena de conexión por usuario.
-            </remarks>
-        </member>
-        <member name="M:Inflexion2.Application.Core.IConfiguration.ConfigureDataAccess(System.String,System.String)">
-            <summary>
-            Método encarga de la ejecución de la configuración del acceso a datos.
-            </summary>
-            <param name="userName">
-            Parámetro que indica el nombre de usuario para el inicio de sesión.
-            </param>
-            <param name="password">
-            Parámetro que indica la password del usuario para el inicio de sesión.
-            </param>
-            <remarks>
-            Configuración predeterminada construyendo la cadena de conexión por usuario.
-            </remarks>
-            <exception cref="T:System.ArgumentNullException">
-            Lanzada cuando el valor de <c>userName</c> ó <c>password</c> es null ó vacío.
-            </exception>
-        </member>
-        <member name="T:Inflexion2.Application.DataTransfer.Core.SpecificationDto">
-            <summary>
-            Clase Dto que representa la especificación para la obtención de datos.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-        </member>
-        <member name="M:Inflexion2.Application.DataTransfer.Core.SpecificationDto.#ctor">
-            <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:SpecificationDto"/>.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-        </member>
-        <member name="P:Inflexion2.Application.DataTransfer.Core.SpecificationDto.CompositeFilter">
-            <summary>
-            Propiedad que obtiene el filtro compuesto para la especificación.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <value>
-            Valor que es utilizado para obtener el filtro compuesto para la especificación.
-            </value>
-        </member>
-        <member name="P:Inflexion2.Application.DataTransfer.Core.SpecificationDto.IsSearch">
-            <summary>
-            Propiedad de solo lectura que indica si el filtro es de búsqueda.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <value>
-            Valor que es utilizado para indica si el filtro es de búsqueda.
-            </value>
-        </member>
-        <member name="P:Inflexion2.Application.DataTransfer.Core.SpecificationDto.PageIndex">
-            <summary>
-            Propiedad que obtiene o establece el índice de la página en la búsqueda.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <value>
-            Valor utilizado para obtener o establecer el índice de la página en la búsqueda.
-            </value>
-        </member>
-        <member name="P:Inflexion2.Application.DataTransfer.Core.SpecificationDto.PageSize">
-            <summary>
-            Propiedad que obtiene o establece el número de páginas que se van a devolver.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <value>
-            Valor utilizado para obtener o establecer el número de páginas que se van a devolver.
-            </value>
-        </member>
-        <member name="P:Inflexion2.Application.DataTransfer.Core.SpecificationDto.SortColumn">
-            <summary>
-            Propiedad obtiene o establece el nombre de la columna por la que se ordenará.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <value>
-            Valor utilizado para obtener o establecer el nombre de la columna por la que se ordenará.
-            </value>
-        </member>
-        <member name="P:Inflexion2.Application.DataTransfer.Core.SpecificationDto.SortOrder">
-            <summary>
-            Propiedad obtiene o establece el ordinal
-            de la columna por la que se ordenará.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <value>
-            Valor utilizado para obtener o establecer
-            el ordinal de la columna por la que se ordenará.
-            </value>
-        </member>
-        <member name="T:Inflexion2.Application.DataTransfer.Base.BaseEntityDataTransferObject`1">
+        <member name="T:Inflexion2.Application.DataTransfer.Core.BaseBussinesEntityDataTransferObject`1">
             <summary>
             Clase base para los objetos DTO que representan entidades persistidas.
             </summary>
             <remarks>
             Sin comentarios adicionales.
             </remarks>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.BaseBussinesEntityDataTransferObject`1.Activo">
+            <summary>
+            Propiedad que indica si la entidad representada está activa.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para indicar si la entidad representado está activa.
+            </value>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.BaseBussinesEntityDataTransferObject`1.Id">
+            <summary>
+            Propiedad que obtiene o establece el identificador de la entidad representada por el DTO.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener o establecer el identificador de
+            la entidad representada por el DTO.
+            </value>
         </member>
         <member name="T:Inflexion2.Application.DataTransfer.Core.IEntityDataTransferObject`1">
             <summary>
@@ -356,6 +382,14 @@
             La interfaz <c>IEntityDataTransferObject</c> permite representar
             los objetos de transferencia de datos para una entidad.
             </para>
+            </remarks>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.IEntityDataTransferObject`1.Id">
+            <summary>
+            Obtiene el Id de la entidad representada por el dto.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
             </remarks>
         </member>
         <member name="T:Inflexion2.Application.DataTransfer.Core.IDataTransferObject">
@@ -450,26 +484,6 @@
              </code>
              </example>
         </member>
-        <member name="P:Inflexion2.Application.DataTransfer.Core.IEntityDataTransferObject`1.Id">
-            <summary>
-            Obtiene el Id de la entidad representada por el dto.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-        </member>
-        <member name="P:Inflexion2.Application.DataTransfer.Base.BaseEntityDataTransferObject`1.Id">
-            <summary>
-            Propiedad que obtiene o establece el identificador de la entidad representada por el DTO.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <value>
-            Valor que es utilizado para obtener o establecer el identificador de
-            la entidad representada por el DTO.
-            </value>
-        </member>
         <member name="T:Inflexion2.Application.DataTransfer.Core.IBussinesEntityDataTransferObject">
             <summary>
             Interfaz para representar los objetos de transferencia de datos para una entidad.
@@ -504,170 +518,6 @@
             <remarks>
             Sin comentarios adicionales.
             </remarks>
-        </member>
-        <member name="T:Inflexion2.Application.EfApplicationServiceBase">
-            <summary>
-            .es Clase base para los servicios de aplicación de un bounded context con entityFramework 
-            </summary>
-        </member>
-        <!-- Badly formed XML comment ignored for member "T:Inflexion2.Application.DataTransfer.Core.SpecificationDtoExtensions" -->
-        <member name="M:Inflexion2.Application.DataTransfer.Core.SpecificationDtoExtensions.ToSpecification``1(Inflexion2.Application.DataTransfer.Core.SpecificationDto)">
-            <summary>
-            Convierte el dto de especification a una especification
-            </summary>
-            <typeparam name="TEntity"></typeparam>
-            <param name="specificationDto"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Inflexion2.Application.Core.IDataEntityMapper`3">
-            <summary>
-            Interfaz para los mapeadores entre entidades del dominio.
-            (<see cref="!:Inflexion.Framework.Domain.Core.IEntity&lt;TIdentifier&gt;"/>) y
-            objetos de transferencia de datos (<see cref="T:Inflexion2.Application.DataTransfer.Core.IDataTransferObject"/>).
-            </summary>
-            <remarks>
-            La interfaz <c>IMapper</c> permite mapear entre entidades del dominio.
-            </remarks>
-            <typeparam name="TDataTransferObject">Representa la interfaz de los objetos de transferencia de datos.</typeparam>
-            <typeparam name="TEntity">Representa las entidades del negocio.</typeparam>
-            <typeparam name="TIdentifier">Representa un identificador unívoco de entidad.</typeparam>
-        </member>
-        <member name="T:Inflexion2.Application.Core.IEntityMapper`3">
-             <summary>
-             Interfaz para los mapeadores entre entidades del dominio.
-             (<see cref="!:Inflexion.Framework.Domain.Core.IEntity&lt;TIdentifier&gt;"/>) y
-             objetos de transferencia de datos (<see cref="T:Inflexion2.Application.DataTransfer.Core.IDataTransferObject"/>).
-             </summary>
-             <remarks>
-             La interfaz <c>IMapper</c> permite mapear entre entidades del dominio.
-             </remarks>
-             <typeparam name="TDataTransferObject">
-             Representa la interfaz de los objetos de transferencia de datos.
-             </typeparam>
-             <typeparam name="TEntity">
-             Representa las entidades del negocio.
-             </typeparam>
-             <typeparam name="TIdentifier">
-             Representa un identificador unívoco de entidad.
-             </typeparam>
-             <example>
-             Ejemplo de implementación de esta interfaz suponiendo la interfaz
-             <c>IAmbitoMapper</c> que la implementa:
-             <code>
-               <![CDATA[
-            
-             using Inflexion.Framework.Application.Core;
-            
-             using Inflexion.Suite.Foo.BoundedContext.Application.Data.Base;
-             using Inflexion.Suite.Foo.BoundedContext.Domain.Core;
-            
-             /// <summary>
-             /// Interfaz que identifica los mapeos de
-             /// datos con la entidad <see cref="IAmbito"/>.
-             /// </summary>
-             /// <remarks>
-             /// Sin comentarios especiales.
-             /// </remarks>
-             public interface IAmbitoMapper : IEntityMapper<AmbitoDto, IAmbito, int>
-             {
-            
-             } // IAmbitoMapper
-            
-               ]]>
-             </code>
-             </example>
-        </member>
-        <member name="T:Inflexion2.Application.Core.IGenericMapper`3">
-            <summary>
-            Interfaz para los mapeadores entre entidades del dominio.
-            (<see cref="!:Inflexion.Framework.Domain.Core.IEntity&lt;TIdentifier&gt;"/>) y
-            objetos de transferencia de datos (<see cref="T:Inflexion2.Application.DataTransfer.Core.IDataTransferObject"/>).
-            </summary>
-            <remarks>
-            La interfaz <c>IGenericMapper</c> permite mapear entre entidades del dominio.
-            </remarks>
-            <typeparam name="TDataTransferObject">
-            Representa la interfaz de los objetos de transferencia de datos.
-            </typeparam>
-            <typeparam name="TEntity">
-            Representa las entidades del negocio.
-            </typeparam>
-            <typeparam name="TIdentifier">
-            Representa un identificador unívoco de entidad.
-            </typeparam>
-        </member>
-        <member name="T:Inflexion2.Application.Core.IMapper">
-            <summary>
-            Interfaz marcadora para los mapeadores entre entidades del dominio.
-            </summary>
-            <remarks>
-            Sin comentarios especiales.
-            </remarks>
-        </member>
-        <member name="M:Inflexion2.Application.Core.IEntityMapper`3.EntityMapping(`1)">
-            <summary>
-            Función encargada de mapear una entidad con un Dto.
-            </summary>
-            <remarks>
-            Con esta función, mapeamos una entidad con un Dto.
-            </remarks>
-            <param name="entity">Representa las entidades de negocio.</param>
-            <returns>Devuelve un objeto de transferencia de datos.</returns>
-        </member>
-        <member name="T:Inflexion2.Application.DataTransfer.Core.CompositeFilterLogicalOperator">
-            <summary>
-            Lista enumerada para almacenar los operadores lógicos.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-        </member>
-        <member name="F:Inflexion2.Application.DataTransfer.Core.CompositeFilterLogicalOperator.And">
-            <summary>
-            Operador lógico AND.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-        </member>
-        <member name="F:Inflexion2.Application.DataTransfer.Core.CompositeFilterLogicalOperator.Or">
-            <summary>
-            Operador lógico OR.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-        </member>
-        <member name="T:Inflexion2.Application.DataTransfer.Core.BaseBussinesEntityDataTransferObject`1">
-            <summary>
-            Clase base para los objetos DTO que representan entidades persistidas.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-        </member>
-        <member name="P:Inflexion2.Application.DataTransfer.Core.BaseBussinesEntityDataTransferObject`1.Activo">
-            <summary>
-            Propiedad que indica si la entidad representada está activa.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <value>
-            Valor que es utilizado para indicar si la entidad representado está activa.
-            </value>
-        </member>
-        <member name="P:Inflexion2.Application.DataTransfer.Core.BaseBussinesEntityDataTransferObject`1.Id">
-            <summary>
-            Propiedad que obtiene o establece el identificador de la entidad representada por el DTO.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <value>
-            Valor que es utilizado para obtener o establecer el identificador de
-            la entidad representada por el DTO.
-            </value>
         </member>
         <member name="T:Inflexion2.Application.DataTransfer.Core.CompositeFilter">
             <summary>
@@ -707,41 +557,191 @@
             Valor que es utilizado para obtener o establecer el operador lógico del filtro.
             </value>
         </member>
-        <member name="T:Inflexion2.Application.Core.IDataMapper`3">
+        <member name="T:Inflexion2.Application.DataTransfer.Core.CompositeFilterLogicalOperator">
             <summary>
-            Interfaz para los mapeadores entre entidades del dominio.
-            (<see cref="!:Inflexion.Framework.Domain.Core.IEntity&lt;TIdentifier&gt;"/>) y
-            objetos de transferencia de datos (<see cref="T:Inflexion2.Application.DataTransfer.Core.IDataTransferObject"/>).
+            Lista enumerada para almacenar los operadores lógicos.
             </summary>
             <remarks>
-            Sin comentarios especiales.
+            Sin comentarios adicionales.
             </remarks>
-            <typeparam name="TDataTransferObject">
-            Representa la interfaz de los objetos de transferencia de datos.
-            </typeparam>
-            <typeparam name="TEntity">
-            Representa las entidades del negocio.
-            </typeparam>
-            <typeparam name="TIdentifier">
-            Representa un identificador unívoco de entidad.
-            </typeparam>
         </member>
-        <member name="M:Inflexion2.Application.Core.IDataMapper`3.DataMapping(`0)">
+        <member name="F:Inflexion2.Application.DataTransfer.Core.CompositeFilterLogicalOperator.And">
             <summary>
-            Función encargada de mapear un Dto con una entidad.
+            Operador lógico AND.
             </summary>
             <remarks>
-            Con esta función, mapeamos un Dto con una entidad.
-            Esta función no se exige debido a que en DDD estricto las factorias son las encargadas de crear las entidades.
-            y no los mappers. Igualmente si se transmite la necesidad de localizar una entida basta con enviar el id para encontrarla pero no "recrearla" 
-            que es lo que se terminaria haciendo con el uso de este método.
+            Sin comentarios adicionales.
             </remarks>
-            <param name="dataTransferObject">
-            Representa la interfaz de los objetos de transferencia de datos.
-            </param>
-            <returns>
-            Devuelve una entidad de negocio.
-            </returns>
+        </member>
+        <member name="F:Inflexion2.Application.DataTransfer.Core.CompositeFilterLogicalOperator.Or">
+            <summary>
+            Operador lógico OR.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="T:Inflexion2.Application.DataTransfer.Core.Filter">
+            <summary>
+            Clase que representa un filtro para las especificaciones.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.Filter.Operator">
+            <summary>
+            Propiedad que obtiene o establece el operador que aplicará en el filtro.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener o establecer el
+            operador que aplicará en el filtro.
+            </value>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.Filter.Property">
+            <summary>
+            Propiedad que obtiene o establece el nombre de la propiedad
+            sobre la que se aplicará el filtro.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener o establecer el nombre de la propiedad
+            sobre la que se aplicará el filtro.
+            </value>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.Filter.Value">
+            <summary>
+            Propiedad que obtiene o establece el valor para el filtro.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener o establecer el valor del filtro.
+            </value>
+        </member>
+        <member name="T:Inflexion2.Application.DataTransfer.Core.SpecificationDto">
+            <summary>
+            Clase Dto que representa la especificación para la obtención de datos.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:Inflexion2.Application.DataTransfer.Core.SpecificationDto.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:SpecificationDto"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.SpecificationDto.CompositeFilter">
+            <summary>
+            Propiedad que obtiene el filtro compuesto para la especificación.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener el filtro compuesto para la especificación.
+            </value>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.SpecificationDto.IsSearch">
+            <summary>
+            Propiedad de solo lectura que indica si el filtro es de búsqueda.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para indica si el filtro es de búsqueda.
+            </value>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.SpecificationDto.PageIndex">
+            <summary>
+            Propiedad que obtiene o establece el índice de la página en la búsqueda.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor utilizado para obtener o establecer el índice de la página en la búsqueda.
+            </value>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.SpecificationDto.PageSize">
+            <summary>
+            Propiedad que obtiene o establece el número de páginas que se van a devolver.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor utilizado para obtener o establecer el número de páginas que se van a devolver.
+            </value>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.SpecificationDto.SortColumn">
+            <summary>
+            Propiedad obtiene o establece el nombre de la columna por la que se ordenará.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor utilizado para obtener o establecer el nombre de la columna por la que se ordenará.
+            </value>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Core.SpecificationDto.SortOrder">
+            <summary>
+            Propiedad obtiene o establece el ordinal
+            de la columna por la que se ordenará.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor utilizado para obtener o establecer
+            el ordinal de la columna por la que se ordenará.
+            </value>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Inflexion2.Application.DataTransfer.Core.SpecificationDtoExtensions" -->
+        <member name="M:Inflexion2.Application.DataTransfer.Core.SpecificationDtoExtensions.ToSpecification``1(Inflexion2.Application.DataTransfer.Core.SpecificationDto)">
+            <summary>
+            Convierte el dto de especification a una especification
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Application.DataTransfer.Base.BaseEntityDataTransferObject`1">
+            <summary>
+            Clase base para los objetos DTO que representan entidades persistidas.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="P:Inflexion2.Application.DataTransfer.Base.BaseEntityDataTransferObject`1.Id">
+            <summary>
+            Propiedad que obtiene o establece el identificador de la entidad representada por el DTO.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener o establecer el identificador de
+            la entidad representada por el DTO.
+            </value>
+        </member>
+        <member name="T:Inflexion2.Application.EfApplicationServiceBase">
+            <summary>
+            .es Clase base para los servicios de aplicación de un bounded context con entityFramework 
+            </summary>
         </member>
     </members>
 </doc>

@@ -11,7 +11,7 @@ namespace Inflexion2.Domain
 
     /// <summary>
     /// http://msdn.microsoft.com/en-us/magazine/hh547108.aspx
-    /// any aggregate root is an entity wich is the root for any write operation in the repository
+    /// any aggregate root is an entity which is the root for any write operation in the repository
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
     /// <typeparam name="TIdentifier"></typeparam>
@@ -93,7 +93,7 @@ namespace Inflexion2.Domain
          
         ///<summary>
         /// este metodo nos obliga a definir la entidad como un generico en el que se incluye como primer parametro la propia entidad
-        /// este metodo necesita la refelxión sobre la clase que hereda y que queda marcada como root agregate.
+        /// este metodo necesita la reflexión sobre la clase que hereda y que queda marcada como root agregate.
         ///</summary>
         /// <returns></returns>
         virtual public bool IsLogicalDelete()

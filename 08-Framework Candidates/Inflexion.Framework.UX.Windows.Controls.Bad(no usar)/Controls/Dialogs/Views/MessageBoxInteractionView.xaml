@@ -1,0 +1,79 @@
+﻿<int:MessageBoxDialog x:Class="Inflexion.Framework.UX.Windows.Controls.Dialogs.Views.MessageBoxInteractionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:int="clr-namespace:Inflexion.Framework.UX.Windows.Controls.Dialogs"
+             xmlns:cc="clr-namespace:Inflexion.Framework.UX.Windows.ValueConverters;assembly=Inflexion.Framework.UX.Windows"
+             xmlns:fc="clr-namespace:Inflexion.Framework.UX.Windows.ValueConverters;assembly=Inflexion.Framework.UX.Windows"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="600">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Inflexion.Framework.UX.Windows.Controls;component/Styles/Colours.xaml" />
+                <ResourceDictionary Source="/Inflexion.Framework.UX.Windows.Controls;component/Styles/Fonts.xaml" />
+                <!--ResourceDictionary Source="/Inflexion.Framework.UX.Windows.Controls;component/Styles/Controls.xaml" /-->
+                <!--ResourceDictionary-->
+                    <!-- cc:SystemIconConverter x:Key="systemIconConverter" /-->
+                    <!--fc:BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" /-->
+                <!--/ResourceDictionary-->
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Background="{DynamicResource BgModal}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Row="1" Grid.Column="1" CornerRadius="5" BorderThickness="2" 
+                Effect="{StaticResource ModalDropShadowBrush}" 
+                BorderBrush="{StaticResource BlackForegroundColor}"
+                Background="{StaticResource BlackForegroundColor}">
+            <Grid Background="White" Margin="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="0.20*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="0.43*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="0.43*"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.ColumnSpan="7" Text="{Binding WindowTitle}" 
+                           Background="{StaticResource BlackForegroundColor}" Foreground="{StaticResource GrayForegroundColor}"/>
+                <Image Visibility="Visible" Grid.Row="1" Grid.Column="1" Grid.RowSpan="4"
+                        VerticalAlignment="Center" HorizontalAlignment="Center"
+                        Source="{Binding Icon, Converter={StaticResource systemIconConverter}}"/>
+                <TextBlock Text="{Binding Message}" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" 
+                           HorizontalAlignment="Left"/>
+                <StackPanel Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="Si" Command="{Binding YesCommand}" 
+                            Background="{DynamicResource GreenForegroundColor}"
+                            Visibility="{Binding ShowYes, Converter={StaticResource booleanToVisibilityConverter}}"/>
+                    <Button Content="No" Command="{Binding NoCommand}" Margin="10,0,0,0"
+                            Visibility="{Binding ShowNo, Converter={StaticResource booleanToVisibilityConverter}}"/>
+                    <Button Content="Aceptar" Command="{Binding OkCommand}" Margin="10,0,0,0" 
+                            Background="{DynamicResource GreenForegroundColor}"
+                            Visibility="{Binding ShowAccept, Converter={StaticResource booleanToVisibilityConverter}}"/>
+                    <Button Content="Cancelar" Command="{Binding CancelCommand}" Margin="10,0,0,0"
+                            Visibility="{Binding ShowCancel, Converter={StaticResource booleanToVisibilityConverter}}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</int:MessageBoxDialog>

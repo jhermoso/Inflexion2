@@ -1,0 +1,77 @@
+﻿<int:MultiSelectQueryDialog x:Class="I3TV.Framework.Windows.UI.Controls.Dialogs.Views.QueryMultipleInteractionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+
+             xmlns:controls="clr-namespace:I3TV.Framework.Windows.UI.Controls"
+             xmlns:int="clr-namespace:I3TV.Framework.Windows.UI.Controls.Dialogs"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:view="clr-namespace:I3TV.Framework.Windows.UI.Controls.Dialogs.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="600">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/I3TV.Framework.Windows.UI.Controls;component/Styles/Colours.xaml" />
+                <ResourceDictionary Source="/I3TV.Framework.Windows.UI.Controls;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="/I3TV.Framework.Windows.UI.Controls;component/Styles/Controls.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Background="{DynamicResource BgModal}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Row="1" Grid.Column="1" CornerRadius="5" BorderThickness="2" 
+                Effect="{StaticResource ModalDropShadowBrush}" 
+                BorderBrush="{StaticResource BlackForegroundColor}"
+                Background="{StaticResource BlackForegroundColor}">
+            <Grid Background="White" Margin="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="0.20*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="0.43*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="0.43*"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.ColumnSpan="7" Text="{Binding WindowTitle}" 
+                           Background="{StaticResource BlackForegroundColor}" Foreground="{StaticResource GrayForegroundColor}"/>
+                <TextBlock Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="5" Text="{Binding Message}"/>
+
+                <StackPanel Grid.ColumnSpan="3" Grid.Row="4" Grid.Column="2" Orientation="Vertical">
+
+                    
+                    <Button Content="Busqueda" Margin="0,0,0,10" Width="80" Style="{DynamicResource SButtonStyle}" HorizontalAlignment="Right"/>
+
+                </StackPanel>
+
+
+                <StackPanel Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="Aceptar" Command="{Binding OkCommand}" Margin="10,0,0,0"  Style="{DynamicResource MainButtonStyle}"/>
+                    <!--Background="{DynamicResource GreenForegroundColor}"-->
+                    <Button Content="Cancelar" Command="{Binding CancelCommand}" Margin="10,0,0,0"  Style="{DynamicResource ButtonStyle}" />
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</int:MultiSelectQueryDialog>

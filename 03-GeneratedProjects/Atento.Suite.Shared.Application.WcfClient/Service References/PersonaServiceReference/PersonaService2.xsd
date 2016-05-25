@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Atento.Suite.Shared.Application.Dtos" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Atento.Suite.Shared.Application.Dtos" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:19585/Persona/PersonaService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Inflexion2.Application.DataTransfer.Base" />
+  <xs:complexType name="PersonaDto">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Inflexion2.Application.DataTransfer.Base" base="q1:BaseEntityDataTransferObjectOfint">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Atributte1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CP" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Calle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Codigo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Comunidad" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Fax" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Fisica" type="xs:boolean" />
+          <xs:element minOccurs="0" name="FormaJuridica" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Genero" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Juridica" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LogoImagen" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Matricula" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Mobil" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Pais" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Provincia" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sector" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Site" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PersonaDto" nillable="true" type="tns:PersonaDto" />
+  <xs:complexType name="ArrayOfPersonaDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PersonaDto" nillable="true" type="tns:PersonaDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPersonaDto" nillable="true" type="tns:ArrayOfPersonaDto" />
+</xs:schema>

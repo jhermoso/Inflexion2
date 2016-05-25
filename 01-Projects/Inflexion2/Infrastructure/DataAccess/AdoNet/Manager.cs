@@ -36,7 +36,7 @@ namespace Inflexion2.Infrastructure
         /// </summary>
         /// <remarks>
         /// http://juank.io/csharp-c-palabra-clave-volatile-explicacion-ejemplos/
-        /// advertencia ProviderFactoryDictionary es un alias de DbProviderFactory
+        /// advertencia ProviderFactoryDictionary es un alias de DbProviderFactory declarado al principio de este fichero de código.
         /// </remarks>
         private static volatile ProviderFactoryDictionary providerFactories;
 

@@ -36,7 +36,7 @@ namespace Inflexion2.Domain
         private const int HASH_MULTIPLIER = 31;
 
         /// <summary>
-        /// implementation of iequality interface, DEfinition of distinct operator
+        /// implementation of iequality interface, Definition of distinct operator
         /// </summary>
         /// <param name="x">first value object to check</param>
         /// <param name="y">second value object to check</param>
