@@ -1,0 +1,76 @@
+﻿<#+
+/// <sumary>Esta plantilla genera los comentarios dels cosntructor de propiedades mandatorys y de cada uno de sus parametros </sumary>
+public class MandatoryParameters : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public MandatoryParameters(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+#>
+
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="<#= cbc.pascalSecureEntityName #>"/>.
+        /// con un constructor parametrizado con los campos de tipo mandatory.
+        /// </summary>
+        /// <remarks>
+        /// Constructor de la clase <see cref="<#= cbc.pascalSecureEntityName #>"/>.
+        /// </remarks>
+        /// <param name="Id">
+        /// Parámetro que indica el identificador raiz de la entidad.
+        /// </param>
+<#+
+if(cbc.TotalMandatoryProperties>0)     // el identificador es siempre mandatory por tanto como mínimo deberiamos incluir el mandatory del identificador.
+    {                                  // son mandatory todos los atributos requeridos en la construcción del objeto y los
+                                       // atributos que provienen de una relación cuya mutiplicidad mínima es uno.
+#>
+
+<#+// Este primer bucle es para escribir la lista de propiedades de la documentación provenientes de los atributos normales de la entidad que son mandatory.
+        foreach (var property in cbc.mandatoryPropertyObjects)
+        {
+#>
+        /// <param name="<#= T4Help.ToCamelCase(property.AtributteName) #>"> 
+        /// Parametro <see cref="<#= cbc.pascalSecureEntityName #>.<#= T4Help.ToPascalCase(property.AtributteName) #>/> del constructor de campos mandatory de la clase <see cref="<#= cbc.pascalSecureEntityName #>"/>
+        /// Propiedad deducida del rol source de una relación
+        /// </param>
+<#+
+        }
+#>
+<#+
+        foreach (var property in cbc.mandatoryPropertyFromSources)
+        {
+            if(string.IsNullOrEmpty(property.SourceRolName))                 {                    continue;                }
+#>
+        /// <param name="<#= T4Help.ToCamelCase(property.SourceRolName) #>">
+        /// Parametro <see cref="<#= cbc.pascalSecureEntityName #>.<#= T4Help.ToPascalCase(property.SourceRolName) #>/> del constructor de campos mandatory de la clase <see cref="<#= cbc.pascalSecureEntityName #>"/>
+        /// Propiedad <#= (IsMaxMultiplicityMany(property.SourceMultiplicity))?" de colección":"de unica instancia" #> deducida del source rol source de una relación
+        /// </param>
+<#+ 
+        }// end del foreach (var property in cbc.mandatoryPropertyFromSources)
+#>
+<#+
+        foreach (var property in cbc.mandatoryPropertyFromTargets)
+        {
+            if(string.IsNullOrEmpty(property.TargetRolName))                 {                    continue;                }
+#>
+        /// <param name="<#= T4Help.ToCamelCase(property.TargetRolName) #>">
+        /// Parametro <see cref="<#= cbc.pascalSecureEntityName #>.<#= T4Help.ToPascalCase(property.TargetRolName) #>/> del constructor de campos mandatory de la clase <see cref="<#= cbc.pascalSecureEntityName #>"/>
+        /// Propiedad <#= (IsMaxMultiplicityMany(property.TargetMultiplicity))?" de colección":"de unica instancia" #> deducida del target rol source de una relación
+        /// </param>
+<#+ 
+        }
+#>
+<#+ 
+    } // end if(cbc.TotalMandatoryProperties>0)
+#>
+
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

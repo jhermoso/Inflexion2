@@ -1,0 +1,475 @@
+﻿<#+
+    public static class CreateSchemaResx
+    {
+           ///<parameter> tag para indicar la separación <parameter/>
+           /// <parameter> tag para indicar que no se puede traducir si no que se copia del original<parameter/>
+           /// <parameter> tag para indicar que se porcesa a partir del key o en combinación con el lenguaje a traducir.<parameter/> 
+        public static string def()
+        {
+
+            // esta clase solo devuelve una unica cadena separada por los split tag y que se organiza en 3 cadenas
+            // para construirlos recursos 
+            // estos son clave valor y comentario que se organizan en una unica linea para ayudar a visualizar
+            // si un valor no se debe traducir se marca al principio con el tag de copyTag
+            // la razón por la que se construyen en una unica cadena es que de esta forma se envia al traductor en una unica operación de traducción.
+            string result= 
+                "flow"                          + ResxHelp.spliTag + ResxHelp.processTag +"LeftToRight"         + ResxHelp.spliTag + "dirección de lectura del idioma al que pertenece el fichero de recursos" +   ResxHelp.spliTag +
+                "Any"                           + ResxHelp.spliTag + "(es)"+"ninguno"                                  + ResxHelp.spliTag + ResxHelp.copyTag + "ComboBoxItem.Content"+                                    ResxHelp.spliTag +
+                "Open"                          + ResxHelp.spliTag + "(es)"+"Open"                                     + ResxHelp.spliTag + ResxHelp.copyTag + "Button.Content"+                                          ResxHelp.spliTag +
+                "SelectLanguage"                + ResxHelp.spliTag + "(es)"+"Seleccione su idioma"                     + ResxHelp.spliTag + ResxHelp.copyTag + "Label.Content"+                                           ResxHelp.spliTag +
+                "SelectTheme"                   + ResxHelp.spliTag + "(es)"+"Seleccione el estilo de interface"        + ResxHelp.spliTag + ResxHelp.copyTag + "Label.Content"+                                           ResxHelp.spliTag +
+                "SistemaOperativo"              + ResxHelp.spliTag + "(es)"+"Sistema Operativo"                        + ResxHelp.spliTag + ResxHelp.copyTag + "ComboBoxItem.Content"+                                    ResxHelp.spliTag +
+                "GestordeEsquemasdeBD"          + ResxHelp.spliTag + "(es)"+"Gestor de Esquemas de BD"                 + ResxHelp.spliTag + ResxHelp.copyTag + "Window.Title"+                                            ResxHelp.spliTag +
+                "ContextoLimitado"              + ResxHelp.spliTag + "(es)"+"Contexto Limitado"                        + ResxHelp.spliTag + ResxHelp.copyTag + "TabItem.Header"+                                          ResxHelp.spliTag +
+                "Tecnologíadelabasededatos"     + ResxHelp.spliTag + "(es)"+"Tecnología de la base de datos:"          + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
+                "Nombredelabasededatos"         + ResxHelp.spliTag + "(es)"+"Nombre de la base de datos:"              + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
+                "Nombredelservidor"             + ResxHelp.spliTag + "(es)"+"Nombre del servidor:"                     + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
+                "usuario"                       + ResxHelp.spliTag + "(es)"+"usuario:"                                 + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
+                "contraseña"                    + ResxHelp.spliTag + "(es)"+"contraseña:"                              + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
+                "ScriptCreación"                + ResxHelp.spliTag + "(es)"+"Script Creación:"                         + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
+                "ScriptActualización"           + ResxHelp.spliTag + "(es)"+"Script Actualización:"                    + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
+                "MsSql2008"                     + ResxHelp.spliTag + "(es)"+"MsSql2008"                                + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
+                "NH3BeginnersGuide"             + ResxHelp.spliTag + "(es)"+"NH3BeginnersGuide"                        + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
+                "QUAD"                    + ResxHelp.spliTag + "(es)"+"QUAD"                             + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
+                "usuario"                        + ResxHelp.spliTag + "(es)"+"usuario"                                  + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
+                "contraseña"                     + ResxHelp.spliTag + "(es)"+"contraseña"                               + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
+                "BorraryCrearEsquemaProduct"     + ResxHelp.spliTag + "(es)"+"Borrar y Crear Esquema Product"           + ResxHelp.spliTag + ResxHelp.copyTag + "Button.Content"+                                          ResxHelp.spliTag +
+                "ActualizarEsquemaProduct"       + ResxHelp.spliTag + "(es)"+"Actualizar Esquema Product"               + ResxHelp.spliTag + ResxHelp.copyTag + "Button.Content"+                                          ResxHelp.spliTag +
+                "AñadirDatosMaquetaProduct"      + ResxHelp.spliTag + "(es)"+"Añadir Datos Maqueta Product"             + ResxHelp.spliTag + ResxHelp.copyTag + "Button.Content"+                                          ResxHelp.spliTag +
+                "BorrarDatosMaquetaProduct"      + ResxHelp.spliTag + "(es)"+"Borrar Datos Maqueta Product"             + ResxHelp.spliTag + ResxHelp.copyTag + "Button.Content"+                                          ResxHelp.spliTag +
+                "ScriptSqlBorraryCrearEsquemaPr" + ResxHelp.spliTag + "(es)"+"Script Sql Borrar y Crear Esquema Product"+ ResxHelp.spliTag + ResxHelp.copyTag + "Button.Content"+                                          ResxHelp.spliTag +
+                "Ayuda"                          + ResxHelp.spliTag + "(es)"+"Ayuda"                                    + ResxHelp.spliTag + ResxHelp.copyTag + "TabItem.Header"+                                          ResxHelp.spliTag +
+                "Elobjetodeestaaplicacióneselde" + ResxHelp.spliTag + "(es)"+"El objeto de esta aplicación es el de generar y actualizar las bases"+
+                                                             "de datos de cada uno de los contextos limitado o de los módulos de "+
+                                                             "la aplicación."+                                       
+                                                             "Para ello se tiene una pestaña para cada uno de los contextos "+
+                                                             "limitados que se han modelado y dentro de cada uno de estos contextos"+
+                                                             "se puede crear una estructura de base de datos. Si existe la versión "+
+                                                             "existente se destruye previamente. Actualizar el esquema de la base "+
+                                                             "de datos el cual no destruye la versión anterior ni borra los datos "+
+                                                             "existentes mientras la actualización no destruya ninguan tabla en cuyo "+
+                                                             "caso si se destruiria. Y por ultimo añadir registros con contenido "+
+                                                             "aleatorio para poder realizar pruebas."+
+                                                             "Todas estas operaciones exigen que en el sistema de bases datos se "+
+                                                             "haya dado de alta dicha base de datos aunque no es ncesario que dicha "+
+                                                             "base de datos tenga ningún esquema"           + ResxHelp.spliTag + ResxHelp.copyTag + "Button.Content"+ ResxHelp.spliTag;
+                 
+            return result;
+
+        }
+}
+#>
+<#+
+    /// CDB create DataBase constants
+    public static class CDBcons
+    {
+        public static string AssetsFolder         = "Assets" ;
+        public static string ImagesFolder         = System.IO.Path.DirectorySeparatorChar + "Images" ;
+        public static string NestedIconsFolder    = System.IO.Path.DirectorySeparatorChar + "Icons" ;
+        public static string NestedFlagsFolder    = System.IO.Path.DirectorySeparatorChar + "Flags";
+        public static string NestedLogosFolder    = System.IO.Path.DirectorySeparatorChar + "Logos";
+        public static string ResourcesFolder      = System.IO.Path.DirectorySeparatorChar + "Resources";
+        public static string WpfThemesFolder      = System.IO.Path.DirectorySeparatorChar + "WpfThemes";
+    }
+#>
+<#+
+    public static class ResxHelp
+    {
+        public const string spliTag = "[%]"; // los tags han de ser simetricos para que si se traducen a un lenguage que cambia la dirección de lectura siguan siendo reconocibles
+        public const string copyTag = "[*]";
+        public const string processTag = "[&]";
+
+
+
+        /// este metodo separa la parte a traducir ddel estring que tiene el trio key, value remark.
+        /// les incluye el separador con objeto de volver a construir la cadena
+        /// su metodo opuesto es SetTranslatedTxt que vuelve a construir el trio pero sustituyendo
+        public static string GetTxtToTranslate(string txt)
+        {
+            StringBuilder result= new StringBuilder();
+            string[] LanguageArray = GetRexArray( txt );
+
+            for( int i=1 ; i<LanguageArray.Length; i=i+3)
+            {
+                //if (!(LanguageArray[i].StartsWith(copyTag) || LanguageArray[i].StartsWith(processTag)))
+                    result.Append(LanguageArray[i]).Append(spliTag);
+
+            }
+            return result.ToString();
+        }
+
+        /// Metodo complementario al GetTxtToTranslate
+        public static string SetTranslatedTxt(string TranslatedTxt, string TargetTxt, string targetLangaugeIsoCode2)
+        {
+            if (string.IsNullOrEmpty(TranslatedTxt)  || string.IsNullOrEmpty(TargetTxt) )
+            {
+                Debug.WriteLine(string.Format("Error Llamada SetTranslatedTxt con un valor nulo "));
+                throw new Exception("Error Llamada SetTranslatedTxt con un valor nulo ");
+            }
+
+            StringBuilder result= new StringBuilder();
+            string[] TranslatedArray = TranslatedTxt.Split( new string[] {spliTag} , StringSplitOptions.RemoveEmptyEntries);
+            string[] TargetArray = TargetTxt.Split( new string[] {spliTag} , StringSplitOptions.RemoveEmptyEntries);
+
+            if (true)
+            {
+                Debug.WriteLine(string.Format("TranslatedArray.lenght= {0} ",TranslatedArray.Length));
+                Debug.WriteLine(string.Format("TargetArray.lenght    = {0} ",TargetArray.Length));
+                Debug.WriteLine(string.Format("(TargetArray.Length-1)*3) = {0} ",(TargetArray.Length-1)*3));
+                for(int i =0; i<TranslatedArray.Length; i++)
+                {
+                    Debug.WriteLine(string.Format("TranslatedArray[{0}] = {1} ",i, TranslatedArray[i]));
+                }
+                for(int i =0; i<TargetArray.Length; i++)
+                {
+                    Debug.WriteLine(string.Format("    TargetArray[{0}] = {1} ",i, TargetArray[i]));
+                }
+            }
+
+            // precondición
+            if ( (TranslatedArray.Length-1)*3 != TargetArray.Length ) 
+            {
+                Debug.WriteLine(string.Format("SetTranslatedTxt(): posible error de coincidencia entre la longitud de TranslatedTxt y TargetTxt ")); 
+                throw new Exception("SetTranslatedTxt(): posible error de coincidencia entre la longitud de TranslatedTxt y TargetTxt");
+            }
+
+            int key= 0; //indice posición del key de resx
+            int rem= 0; //indice posición del remark de resx
+            int contador=0;
+            string RexNewValue =null;
+            string RexNewKey =null;
+            string RexNewRem =null;
+            for( int i=1 ; i<TargetArray.Length; i=i+3)
+            {
+                    key = i-1;
+                    rem = i+1;
+
+                RexNewKey   = RemoveSplitCopyProcessTags(TargetArray[key]).Trim();
+                RexNewRem   = RemoveSplitCopyProcessTags(TargetArray[rem]).Trim();
+                TargetArray[i] = TargetArray[i].Trim();
+
+                if (!(TargetArray[i].StartsWith(copyTag) || TargetArray[i].StartsWith(processTag)))
+                {
+                    RexNewValue = TranslatedArray[contador];
+                }
+                else if (TargetArray[i].StartsWith(copyTag))
+                {
+                    RexNewValue = RemoveSplitCopyProcessTags(TargetArray[i]);
+                }
+                else if (TargetArray[i].StartsWith(processTag))
+                {
+                    RexNewValue = GetValueProcessTag ( TargetArray[key], TargetArray[i], targetLangaugeIsoCode2 );
+                }
+
+                result = result.Append( linkResxstring(RexNewKey.Trim(), RexNewValue.Trim(), RexNewRem.Trim() ));
+                contador++; 
+                 
+            }
+            return result.ToString();
+        }
+
+        /// Metodo complementario al En una cadena de resx con fromato de triplete key, value , rem separado por el splittag
+        /// Subsituituimoslos valores de la old txt por los valores de la new txt y lo devolvemos
+        public static string SubstituteValueTxt(string OldValue, string NewValue, string targetLangaugeIsoCode2)
+        {
+            if (string.IsNullOrEmpty(OldValue)  || string.IsNullOrEmpty(NewValue) )
+            {
+                Debug.WriteLine(string.Format("Error Llamada SubstituteValueTxt con un valor nulo "));
+                throw new Exception("Error Llamada SubstituteValueTxt con un valor nulo ");
+            }
+
+            StringBuilder result= new StringBuilder();
+
+            string[] OldArray = OldValue.Split( new string[] {spliTag} , StringSplitOptions.RemoveEmptyEntries );
+            string[] NewArray = NewValue.Split( new string[] {spliTag} , StringSplitOptions.RemoveEmptyEntries );
+
+            if (true)
+            {
+                Debug.WriteLine(string.Format("OldArray.lenght= {0} ",OldArray.Length));
+                Debug.WriteLine(string.Format("NewArray.lenght    = {0} ",NewArray.Length));
+                for(int i =0; i<OldArray.Length; i++)
+                {                    Debug.WriteLine(string.Format("OldArray[{0}] = {1} ",i, OldArray[i]));                }
+                for(int i =0; i<NewArray.Length; i++)
+                {                    Debug.WriteLine(string.Format("    NewArray[{0}] = {1} ",i, NewArray[i]));                }
+            }
+            // precondición
+            if ( (OldArray.Length) != NewArray.Length ) 
+            {
+                Debug.WriteLine(string.Format("SubstituteValueTxt(): posible error de coincidencia entre la longitud de OldArray y NewArray ")); 
+                throw new Exception("SubstituteValueTxt(): posible error de coincidencia entre la longitud de OldArray y NewArray");
+            }
+
+            int key= 0; //indice posición del key de resx
+            int rem= 0; //indice posición del remark de resx
+
+            string RexNewValue =null;
+            string RexNewKey =null;
+            string RexNewRem =null;
+            for( int i=1 ; i<OldArray.Length; i=i+3)
+            {
+
+               key = i-1;
+               rem = i+1;
+
+           if (true)
+                {
+                    Debug.WriteLine(string.Format("i = {0}, key={1} , rem= {2} ",key,i,rem));
+                }
+
+                RexNewKey   = RemoveSplitCopyProcessTags(OldArray[key]).Trim();
+                RexNewRem   = RemoveSplitCopyProcessTags(OldArray[rem]).Trim();
+
+                if (!(OldArray[i].StartsWith(copyTag) || OldArray[i].StartsWith(processTag)))
+                {
+                    RexNewValue = RemoveSplitCopyProcessTags(NewArray[i]);
+                }
+                else if (OldArray[i].StartsWith(copyTag))
+                {
+                    RexNewValue = RemoveSplitCopyProcessTags(OldArray[i]);
+                }
+                else if (OldArray[i].StartsWith(processTag))
+                {
+                    RexNewValue = GetValueProcessTag ( OldArray[key], OldArray[i], targetLangaugeIsoCode2 );
+                }
+                    result = result.Append(linkResxstring(RexNewKey, RexNewValue, RexNewRem));
+            }
+            return result.ToString().Trim();
+        }
+
+        // este metodo devuelve el valor final que indica el tag por el que empieza
+        // si no tiene ningun tag devuelve el texto sin cambios.
+        public static string GetValueFromProcecsOrCopyTag(string key, string txt, string isoCode2LanguageOrigin ,string isoCode2LanguageTarget, string XmlCacheFile)
+        {
+            string Result = txt;
+            if (!(txt.StartsWith(copyTag) || txt.StartsWith(processTag)))
+            {
+                XElement Translations = Translator.GetTranslationsNode (XmlCacheFile );
+                // lo tenemos que traducir
+                Result = RemoveSplitCopyProcessTags(txt);
+                if (!(isoCode2LanguageOrigin.Equals(isoCode2LanguageTarget)))
+                        Result = Translator.GetTranslate(txt, isoCode2LanguageOrigin, isoCode2LanguageTarget, Translations, XmlCacheFile);
+            }
+            else if (txt.StartsWith(copyTag))
+            {
+                Result = RemoveSplitCopyProcessTags(txt);
+            }
+            else if (txt.StartsWith(processTag))
+            {
+                Result = GetValueProcessTag ( key, txt, isoCode2LanguageTarget );
+            }
+            return Result;
+        }
+
+
+        /// encadena los tres parametros que se le pasan separados por la cadena de split
+        public static string linkResxstring ( string tkey, string tvalue, string trem)
+        {
+            StringBuilder result= new StringBuilder();
+
+            result.Append(tkey).Append(spliTag).Append(tvalue).Append(spliTag).Append(trem).Append(spliTag);
+
+            return result.ToString();
+        }
+
+        /// eliminamos los tags del texto que se nos pasa
+        public static string RemoveSplitCopyProcessTags(string txt)
+        {
+            return txt.Replace(spliTag, string.Empty).Replace(copyTag, string.Empty).Replace(processTag, string.Empty).Replace("  "," ");
+        }
+
+        /// en este método recorremos los lenguajes seleccionados en el diagrama principal
+        /// y generamos el string del cual obtendremos posteriormente los recursos.
+        /// este string sigue el formato de key, value remmark separados por el split tag.
+        /// por cada lenguaje se forman dos recursos el del nombre del idioma el del codigo iso.
+        /// los codigos iso tambien se incluyen por si acaso existen grafias diferentes de la standar occidental. (cirilico, hebreo, arabe etc.)
+        /// el parametro traslation list es una lista de nombre de idiomas en ingles
+        public static string GetResxTxtFromLanguagesSelected(List<string> TranslationList)
+        {
+            StringBuilder result= new StringBuilder();
+
+            string Isocode = "";
+            string IsocodeFormated = "";
+            string SecureIsocode = "";
+            string ResKeytrimed = "";
+            foreach(string ResxKeyTranslation in TranslationList)
+            {
+
+                if (string.IsNullOrEmpty(ResxKeyTranslation)) break;
+                    
+                ResKeytrimed = ResxKeyTranslation.Trim();
+                Isocode = T4Help.GetCultureISOCode2FromEnglishLanguageName( ResKeytrimed );
+                SecureIsocode = Isocode.Replace("-","");
+                IsocodeFormated = String.Format( "({0})", Isocode );
+
+                result.Append(linkResxstring(ResKeytrimed, "(en) "+ResKeytrimed, "Language name in english"));
+                result.Append(linkResxstring(SecureIsocode, copyTag+" "+ IsocodeFormated, "2 chars Language-culture Iso code "));
+            }
+
+            return result.ToString();
+        }
+
+        /// obtenemos el array de recursos con el triple de key, value, remark.
+        public static string[]  GetRexArray(string txt)
+        {
+            return txt.Split( new string[] {spliTag} , StringSplitOptions.RemoveEmptyEntries);
+        }
+    
+        ///añadimos espacios a los separadores del texto para facilitar la traducción y que el traductor no transforme los separadores
+        public static string  PreprocesTxtToTranslate(string txt)
+        {
+            string result = txt.Replace(spliTag , " "+spliTag+" ");
+            result = result.Replace(copyTag , " "+copyTag+" ");
+            result = result.Replace(processTag , " "+processTag+" ");
+            return result;
+        }
+
+        /// en este metodo iremos añadiendo las diferntes situaciones en las quele valor de un 
+        /// un recurso se obtien a apartir del key y del lenguaje al que pertenece.
+        public static string GetValueProcessTag (string resxKey, string resxValue, string targetLangaugeIsoCode2 )
+        {
+            string result= null;
+            // comprobamos que efectivamente tiene el process.tag
+            if(resxValue.StartsWith(processTag))
+            {
+                CultureInfo myCIintl = new System.Globalization.CultureInfo(targetLangaugeIsoCode2, false);
+                switch(resxKey)
+                {
+                    case "flow":
+                        result = "LeftToRight";
+                        if ( myCIintl.TextInfo.IsRightToLeft ) result = "RightToLeft";
+                        break;
+                    default: 
+                            Debug.WriteLine("GetValueProcessTag: error se ha pasado como ProcessTag un key keyRes que no existe");
+                            throw new Exception("GetValueProcessTag: error se ha pasado como ProcessTag un key keyRes que no existe");
+                }
+            }
+            // primero comprobamos que en 
+
+            return result;
+        }
+
+        /// obetenemos la lista entera de idiomas a los que traducir en un array en el que metemos 
+        /// el iso code formateado y no formateado, y el nombre del idioma.
+        /// este array tien dos fuentes:
+        /// una la lista de idiomas elegidos en el diagrama
+        /// cualquier fichero de recursos adicional que se encuentre en la carpeta de  recursos una vez generada la aplicación.
+        public static List<string[]> GetLanguagesAndIsoCodeFullList( ClassBaseContext  cbc)
+        {
+            List<string[]> Result = new List<string[]>();
+            string CurrentPath = cbc.diagram.AbsProyectsPath + System.IO.Path.DirectorySeparatorChar  +"Create" + cbc.diagram.Product + "DataBase" + System.IO.Path.DirectorySeparatorChar + "Assets"+System.IO.Path.DirectorySeparatorChar+"Resources"+System.IO.Path.DirectorySeparatorChar;// Directory.GetCurrentDirectory(); al ejecutar esta instrucción en una t4 se obtiene el directorio de ejecución del visual estudio y no la carpeta donde se encuentra el proyecto.
+            string searchPattern = "*.resx";
+            string[] ListFiles = Directory.GetFiles(CurrentPath, searchPattern); // <-- Case-insensitive
+
+            string ResourceExtension = ".resx";
+            string ResourceMainName = "Create"+ cbc.diagram.Product +"DataBase."; // utilizamos el punto porque esta es la cadena que utilizamos como marca para extraer el codigo del lenguaje.
+            string ResourceFileName = null;
+            string CultureIsoCode = null;
+            string LanguageName= null;
+            string LanguageNameSecure = null;
+            string CultureIsoCodeSecure = null;
+            foreach( var item in ListFiles )
+            {
+                ResourceFileName = System.IO.Path.GetFileName(item);
+                CultureIsoCode = T4Help.GetStringInBetween(ResourceMainName, ResourceExtension, ResourceFileName, false, false);
+                if (false)Debug.WriteLine(String.Format( "CultureIsoCode = '{0}'", CultureIsoCode));
+                if (String.IsNullOrEmpty(CultureIsoCode) )
+                {
+                    CultureIsoCode = cbc.diagram.App.Culture;
+                }
+
+                // TODO: Comprobar que el leguaje no esta añadido previamente
+                    LanguageName = T4Help.GetCultureEnglishLanguageNameFromISOCode2( CultureIsoCode );
+                    if (false)Debug.WriteLine(String.Format( "LanguageName = '{0}'", LanguageName));
+                    if (!String.IsNullOrEmpty(LanguageName))
+                    {
+                        LanguageNameSecure = CleanIsoCode( LanguageName );
+                        if (false)Debug.WriteLine(String.Format( "LanguageNameSecure = '{0}'", LanguageNameSecure));
+                        CultureIsoCodeSecure = CleanIsoCode( CultureIsoCode );
+                        if (false)Debug.WriteLine(String.Format( "CultureIsoCodeSecure = '{0}'", CultureIsoCodeSecure));
+                        //CultureIsoCode = string.Format("({0})",CultureIsoCode);
+                        var ar = new string[]{CultureIsoCode,CultureIsoCodeSecure,LanguageNameSecure};
+                        Result.Add(ar);
+
+                        if (false)
+                        {
+                            for(int i = 0 ; i<ar.Length; i++)
+                            {
+                                Debug.WriteLine(string.Format("ar[{0}] ='{1}' ",i, ar[i]));
+                            }
+                        }
+                    }
+                
+            }
+                // hemos terminado de recopilar los ficheros de recursos,
+                // pero en caso de que todavia no se haya generado puede que no haya ningun fichero 
+                //por lo que procesamos tambien los lenguajes seleccionados en el diagrama
+            List<string> TranslationList = Translator.GetSelectedLanguages( cbc.diagram );
+
+            bool addnewlanguage= true;
+            foreach(string ResxKeyTranslation in TranslationList)
+            {
+                // miramos si ya esta metido la lista 
+                if (ListFiles.Length > 0)
+                {
+                    foreach( var item in Result )
+                    {
+                        if (item[2].Equals(ResxKeyTranslation)) // la trasnlationList contiene los nombres de los idiomas en ingles 
+                        {
+                            addnewlanguage= false;
+                        }
+                    }
+                }
+                if (addnewlanguage)
+                {
+                    CultureIsoCode = T4Help.GetCultureISOCode2FromEnglishLanguageName( ResxKeyTranslation.Trim() );
+                    CultureIsoCodeSecure =  CleanIsoCode( CultureIsoCode ) ;
+                    //CultureIsoCode = string.Format("({0})",CultureIsoCode);
+                    LanguageNameSecure = CleanIsoCode( ResxKeyTranslation );
+                    Result.Add(new string[]{CultureIsoCode,CultureIsoCodeSecure,LanguageNameSecure});
+                }
+                addnewlanguage= true;
+            }
+                if (true)
+                {
+                    foreach(var item in Result)
+                    {
+                        for(int i = 0 ; i<item.Length; i++)
+                        {
+                            Debug.WriteLine(string.Format("item[{0}] ='{1}' ",i, item[i]));
+                        }
+                            Debug.WriteLine("");
+                    }
+                        }
+                return Result;
+        }
+
+        static private string CleanIsoCode(string isocode)
+        {
+            if (isocode != null)
+            return isocode.Replace(" ", string.Empty).Replace("-", string.Empty).Replace("(", string.Empty).Replace(")", string.Empty);
+            
+            return null;
+        }
+
+
+        /// este obtiene el string con los nombres de los temas siguiendo el formato de definición de recursos
+        static public string GetResxTxtFromWpfThemesFiles(string folderOrigin)
+        {
+            StringBuilder Result= new StringBuilder();
+            string extension= ".xaml";
+            string searchPattern = "*"+extension;
+            string[] ListFiles = Directory.GetFiles(folderOrigin, searchPattern); // <-- Case-insensitive
+            string ResKey;
+            string ResValue;
+            foreach(string file in ListFiles)
+            {
+                ResKey = System.IO.Path.GetFileName(file).Replace(extension, string.Empty);
+                ResValue = copyTag + ResKey;
+                Result.Append(linkResxstring(ResKey, ResValue, "Wpf theme for front end style "));
+            }
+            return Result.ToString();
+        }
+
+    }
+
+#>

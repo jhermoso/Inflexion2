@@ -1,0 +1,255 @@
+﻿<#@ include file="CreateBase\CreateExecutePreconditions.tt" #>
+<#@ include file="CreateBase\CreateDuplicatedDataPrecondition.tt" #>
+<#@ include file="CreateBase\CreateRelatedCollections.tt" #>
+<#+
+public class ServiceRegionCreateMethod : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public ServiceRegionCreateMethod(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+        string ResxFileName = prjCon.boundedContextName.Replace(".","")+"Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+
+        var CreateExecutePreconditionsTemplate                   = new CreateExecutePreconditions( cbc, projectNamespace, Skt);                      string CreateExecutePreconditionsTxt                         = CreateExecutePreconditionsTemplate.TransformText();
+        var CreateDuplicatedDataPreconditionTemplate             = new CreateDuplicatedDataPrecondition( cbc, projectNamespace, Skt);                string CreateDuplicatedDataPreconditionTxt                   = CreateDuplicatedDataPreconditionTemplate.TransformText();
+        var CreateRelatedCollectionsTemplate                     = new CreateRelatedCollections( cbc, projectNamespace, Skt);                        string CreateRelatedCollectionsTxt                           = CreateRelatedCollectionsTemplate.TransformText();
+
+#>
+        #region Create Method
+        // from template Application\UpdateBase\ServiceRegionCreateMethod.tt
+
+        /// <summary>
+        /// Crea una entidad <#= cbc.pascalSecureEntityName #>.
+        /// </summary>
+        /// <param name="<#= cbc.camelSecureEntityName #>Dto">
+        /// DTO que contiene la información para crear la entidad.
+        /// </param>
+        /// <param name="userContextDto">
+        /// Información de contexto del usuario.
+        /// </param>
+        /// <returns>
+        /// El identificador de la entidad creada.
+        /// </returns>
+        public int Create(<#= cbc.pascalSecureEntityName #>Dto <#= cbc.camelSecureEntityName #>Dto, UserContextDto userContextDto)
+        {
+            <#= cbc.idtype #> identifier = <#= cbc.nullidtype #>;
+
+            try
+            {
+<#= CreateExecutePreconditionsTxt.TrimEnd() #>
+
+                // Comprobar contexto de usuario y obtener la conexión por defecto.
+                var serverContext = base.Execute(this.GetFullyQualifiedMethodName(MethodBase.GetCurrentMethod()), userContextDto);
+                using (IAdapter unitOfWork = Manager.DefaultController.CreateTransactional(serverContext.Connection.ProviderName, serverContext.ConnectionString))
+                {
+                    // Comprobamos los atributos que no permiten valores repetidos
+<#= CreateDuplicatedDataPreconditionTxt.TrimEnd() #>
+
+                    // Creación de la entidad.
+                    // lista de padres por orden 
+<#+
+
+    if ( cbc.PathsFromFatherToClass != null)
+    foreach (var item in cbc.PathsFromFatherToClass )
+    {
+ #>
+                    //creamos la clase[<#= item.Clase.Name #>] SourceRol = /<#= string.IsNullOrEmpty(item.SourceRolName)? "": item.SourceRolName #>/ TargetRol = /<#=  string.IsNullOrEmpty(item.TargetRolName)? "": item.TargetRolName #>/ 
+<#+     } #>
+<#+
+            string parametros3 = (cbc.isDerivedFromOneEntity)? cbc.MandatoryEntityBaseConstructorParamansDefinitionDTO : cbc.MandatoryConstructorParamnsDTO;
+            string nuevosparametros3  = parametros3;
+            List<string> EntidadesProcesadas= new List<string>();
+            string parameters4father = null;
+            int spaceformatcounter = 0 ;
+            StringBuilder prefijo = new StringBuilder();
+            bool addStart=  false;
+            bool ThereIsDtoProperties = false;
+            string ParametroBuscado = null;
+            string ParametroSustituto = null;
+            string parametrosSustituidos = null;
+
+           
+    if ( cbc.PathsFromFatherToClass != null)
+    foreach (var item in cbc.PathsFromFatherToClass )
+    {                
+                    // construimos el prefijo
+                    prefijo.Clear();
+                    addStart =  false;
+
+                    foreach (var entityclass in cbc.PathsFromFatherToClass ) // CAMBIAMOS AQUI POR ParentsStack LIMItando a entidades para extraer el rol
+                    {
+                        if (item.Clase.Name.Equals(entityclass.Clase.Name ) || addStart )
+                        {
+                            addStart = true; // una vez que empezamos a añadir prefijos seguimos añadiendo
+                            if (entityclass.Clase.Name.Equals(cbc.pascalSecureEntityName) ) // si el nombre de la entidad a añadir corresponde al de la entidad que estamos creando entonces la referncia es la del dto y no añadimos un punto despues.
+                            {
+                                prefijo.Insert(0, entityclass.TargetRolName).Insert(0, "Dto.").Insert(0, cbc.camelSecureEntityName );
+                            }
+                            else
+                            {
+                                // contamos cuantas veces aparece 
+                                int doblecomposicion = cbc.PathsFromFatherToClass.Where(c => c.Clase.Name.Equals(entityclass.Clase.Name) ).Count();
+
+                                // si solo aparece una vez lo añadimos y seguimos.
+                                if (doblecomposicion == 1)
+                                {
+                                            prefijo.Insert(0, "."); 
+                                            prefijo.Insert(0, entityclass.TargetRolName); 
+                                }
+                                else
+                                {
+                                    // si aprece mas de una comprobamos que no se repita
+
+                                    if (item.TargetRolName != null && entityclass.TargetRolName != null)
+                                        if ( item.TargetRolName.Equals(entityclass.TargetRolName ) ) // con este if, si tenemos composiciones dobles solo se utiliza el target de la composición en curso.
+                                        {
+                                            prefijo.Insert(0, "."); 
+                                            prefijo.Insert(0, entityclass.TargetRolName); 
+                                        }
+                                }
+                            }
+                        }
+                    }
+
+                    spaceformatcounter= item.Clase.Name.Length+3+8+18;
+                    parameters4father = 
+                        GetConstructorParametersString( 
+                        item.Clase,                                    /* entidad */
+                        cbc.diagram.IdKind.Equals("Autonumerical"),    /* tipo id */
+                        SelectionCriteriaAttributes.Mandatory,          /* Selección de criterios */
+                        80,                                             /* Longitud máxima para activar el salto de parametros */
+                        false,                                           /* Incluir el tipo del parametro. Por ejemplo:incluye string, int etc*/
+                        spaceformatcounter,                             /* Indentación de los parametros cuando se salta */
+                        true,                                           /* incluirDefaultValues */
+                        false,                                          /* incluirId */
+                        true,                                           /* incluirTargetAssociations */
+                        true,                                           /* incluirSourceAssociations */
+                        true,                                           /* pascalCase */
+                        prefijo.ToString(),
+                        ""
+                        );
+
+                    parametrosSustituidos = parameters4father;
+                    // en este momento sustituimos en los parametros que corresponden a las entidades temp creadas anteriormente.
+                    // para ello primero miramos si esta entidad tiene relaciones de composición.
+                    var propertyAssociationSources = Association.GetLinksToSources(item.Clase).Where(p=> !(p.TargetRolName == null || p.TargetRolName.Trim().Length == 0)); // lista de propiedades provenientes de las relaciones de origen
+                    //this.mandatoryPropertyFromSources = this.propertyAssociationSources.Where( p=> p.SourceMultiplicity==kayak.MoneyGen.Multiplicity.OneOne || p.SourceMultiplicity==kayak.MoneyGen.Multiplicity.OneMany);// subconjunto de propiedades de tipo mandatory de las anteriores, esdecir cuya multiplicidad minima es uno 
+                    var mandatoryPropertyFromSources = propertyAssociationSources.Where( p=> IsMinMultiplicityOne(p.SourceMultiplicity));
+                    ThereIsDtoProperties = mandatoryPropertyFromSources.Where(c => c.Source is Entity ).Any();
+                    // si tiene relaciones de composición (es decir ThereIsDtoProperties = true)
+                    // entonces recorremos las entidades de composición las buscamos entre los 
+                    // parametros que acabamos de obtener y los sustiuimos por los temp de los cuales hemos llamado a sus factorias que hemos creado anteriormente.
+                    // para buscar los parametros podemos utilizar el prefijo recien creado + el nombre de la entidad a sustituir.
+
+
+                    if (ThereIsDtoProperties)
+                    {
+                        // ahora buscamos entre la lista de entidades en composición y creamos el prefijo para cada una de ellas
+                        foreach(var entityProperty in mandatoryPropertyFromSources.Where( p=> p.Source is Entity ))
+                        {
+                            ParametroBuscado = prefijo + entityProperty.TargetRolName;
+                            // y lo sustituimos por el nombre de la entidad creada que es el nombre de la entidad en camel + la palabra temp.
+                            ParametroSustituto = T4Help.ToCamelCase(entityProperty.TargetRolName) +"Temp";//
+                            parametrosSustituidos = parametrosSustituidos.Replace(ParametroBuscado, ParametroSustituto);
+#>
+
+    // Parametro buscado <#= ParametroBuscado #>, Parametro sustituto /<#= ParametroSustituto #>/
+<#+
+                        }
+                    }
+#>
+
+<#+ if (!item.Clase.Name.Equals(cbc.pascalSecureEntityName))                  {
+                        if (true) Debug.WriteLine( string.Format("clase = {0} item.TargetRolName ='{1}'",item.Clase.Name, item.TargetRolName, item.SourceRolName));
+#>
+<#+
+            System.Collections.ObjectModel.ReadOnlyCollection<kayak.MoneyGen.Association> propertyAssociationTargets = Association.GetLinksToTargets(item.Clase);
+            foreach( var property in propertyAssociationTargets)
+                        {
+#>
+                    // target rol name= <#= property.TargetRolName #> target class = <#= property.Target.Name #>
+<#+                      } #>
+
+                    // TargetRolName = /<#= (string.IsNullOrEmpty(item.TargetRolName))?"":item.TargetRolName #>/ SourceRolName = /<#= (string.IsNullOrEmpty(item.SourceRolName))?"":item.SourceRolName #>/ chid class = /<#= ((item.ClaseHija == null ))?"":item.ClaseHija.Name #>/ father =/<#= ((item.Clase == null ))?"":item.Clase.Name #>/ 
+                    <#= I #><#= T4Help.ToPascalCase(item.Clase.Name) #> <#= T4Help.ToCamelCase(item.TargetRolName) #>Temp = <#= T4Help.ToPascalCase(item.Clase.Name) #>Factory.Create( <#= parametrosSustituidos #>);
+
+<#+                } else {#>
+                    var entity = <#= cbc.pascalSecureEntityName #>Factory.Create(<#= parametrosSustituidos #>); 
+
+<#+                } #>
+<#+  }   // end foreach#> 
+
+<#+if (!ThereIsDtoProperties) { #>
+                    var entity = <#= cbc.pascalSecureEntityName #>Factory.Create(<#=(cbc.isDerivedFromOneEntity)? cbc.MandatoryEntityBaseConstructorParamansDefinitionDTO : cbc.MandatoryConstructorParamnsDTO #>); 
+<#+            } #>
+
+                    // realizamos la asignación de todas las propiedades de la entidad cuyo ciclo de vida es variable, obviando las constantes y los derivados.
+<#+ foreach(var property in cbc.propertyObjects.Where(c=>c.RequestUponCreation==RequestUponCreation.no)){ #>
+<#+     if(property.LiveCycleAtributte.Equals(LiveCycleAtributte.Variable) /*|| property.LiveCycleAtributte.Equals(LiveCycleAtributte.Derivado)*/) {#>
+<#+
+            if (!property.AutoProperty && property.OnlyGetProperty) 
+                {
+#>
+                    Set<#= T4Help.SecureName(property.AtributteName) #> ( <#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.AtributteName) #> )
+<#+             }#>
+<#+
+            if (property.AutoProperty && !property.OnlyGetProperty) // en este caso establecemos las propiedades automáticas
+                {
+#>
+                    entity.<#= T4Help.ToPascalCase(property.AtributteName) #> = <#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.AtributteName) #>;
+<#+             }#>
+<#+
+                if (!property.AutoProperty && !property.OnlyGetProperty) 
+                {
+#>
+                    entity.<#= T4Help.ToPascalCase(property.AtributteName) #> = <#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.AtributteName) #>;
+<#+             }#>
+<#+
+            if ( property.AutoProperty && property.OnlyGetProperty ) 
+                {
+#>
+                    entity.<#= T4Help.ToPascalCase(property.AtributteName) #> = <#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.AtributteName) #>;
+<#+             }#>
+<#+     } // end live cycle #>
+<#+ } // end foreach propertyobject#>
+                    // ahora recorremos cada una de las colecciones que tiene la entidad y las mapeamos.
+
+<#= CreateRelatedCollectionsTxt.TrimEnd() #>
+
+                    // validamos la entidad antes de persistirla.
+                    entity.AssertValidation();
+
+                    // Persistir los datos y confirmar la transacción.
+                    var entityRepository = this.<#= cbc.pascalSecureEntityName #>RepositoryFactory.Create(unitOfWork);
+                    entityRepository.Insert(entity, userContextDto.UserId.ToString());
+                    identifier = entity.Id;
+                    unitOfWork.CommitTransaction();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Escribimos en el Log.
+                logger.Error(ex.Message, ex);
+                throw ex;
+            }
+
+            // Devolvemos el resultado.
+            return identifier;
+        }
+
+        #endregion
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

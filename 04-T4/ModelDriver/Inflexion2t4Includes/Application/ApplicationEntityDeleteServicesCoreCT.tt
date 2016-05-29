@@ -1,0 +1,99 @@
+﻿<#+
+
+public class ApplicationEntityDeleteServicesCoreCT : Template
+{
+    // parametros de la plantilla
+    public ClassBaseContext  cbc ;
+    public string projectNamespace;
+    public ITree<BoundedContextMetadata> Skt;
+        
+    // constructor de la plantilla
+    public ApplicationEntityDeleteServicesCoreCT( ClassBaseContext  classBaseContext, string nombreProjecto, ITree<BoundedContextMetadata> skt )
+    {
+        cbc = classBaseContext;             // contexto de la clase base a interpretar
+        projectNamespace = nombreProjecto;  // nombre del proyecto para el que estamos interpretando
+        Skt = skt;                          // shared kernel tree
+
+    }
+
+    // metodo de generación de la plantilla
+    public override string TransformText()
+    {
+
+        IList<string> sharedKernelUsings =  GetSharedKernelReferencesByProject(projectNamespace, Skt, cbc.diagram);
+        IList<string> NameSpaceSection = SplitNamesProjects(projectNamespace, cbc.diagram);
+        string company              = NameSpaceSection[0];
+        string product              = NameSpaceSection[1];
+        string boundedContextName   = NameSpaceSection[2];
+        string layer                = NameSpaceSection[3];
+        string kindProject          = NameSpaceSection[4];
+
+        var cpyrigth = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity, T4Help.getLeftStringSlice(this.ToString(), '+', -1).Substring(1));
+        string cpyrigthText = cpyrigth.TransformText();
+#>
+<#= cpyrigthText #>
+namespace <#= projectNamespace #>
+{
+
+#region SharedKernel references
+<#+
+if (sharedKernelUsings != null)
+foreach (var item in sharedKernelUsings)
+    {
+#>
+    using <#= item #>;
+<#+
+    }// end foreach para los using del shared kernel
+#>
+#endregion
+
+    using System;
+
+    using <#= company #>.<#= product #>.<#= boundedContextName #>.<#= layer #>.Data.Base;
+    using <#= company #>.<#= product #>.<#= boundedContextName #>.Domain.Core;
+
+    using Inflexion.Framework.Application.Security.Data.Base;
+    //using Inflexion.Framework.Core;
+    using Inflexion.Framework.Infrastructure.DataAccess.UoW;
+    using Inflexion.Framework.Infrastructure.IoC;
+    //using Inflexion.Framework.Logging;
+
+    /// <summary>
+    /// Interfaz que permite definir las acciones del servicio de aplicación 
+    /// encargado del borrado de una entidad de tipo <#= cbc.pascalSecureEntityName #>.
+    /// </summary>
+    /// <remarks>
+    /// Sin comentarios adicionales.
+    /// </remarks>
+    public interface IDelete<#= cbc.secureEntityName #> : Inflexion.Framework.Application.Core.IService
+    {
+
+            /// <summary>
+            /// Función encargada del borrado de una entidad de tipo <#= cbc.pascalSecureEntityName #>.
+            /// </summary>
+            /// <remarks>
+            /// Se trata de un borrado lógico.
+            /// </remarks>
+            /// <param name="<#= cbc.pascalSecureEntityName #>Id">
+            /// Parámetro que indica el identificador único de la entidad.
+            /// </param>
+            /// <param name="userContextDto">
+            /// Parámetro de tipo <see cref="UserContextDto"/> que representa el contexto del usuario.
+            /// </param>
+            /// <exception cref="System.ArgumentNullException">
+            /// Lanzada cuando el valor del argumento de entrada <c>userContextDto<c> es <b>null</b>.
+            /// </exception>
+            /// <returns>
+            /// Devuelve <b>True</b> si la eliminación ha sido correcta y
+            /// <b>False</b> en caso contrario.
+            /// </returns>
+        bool Execute( <#= cbc.idtype #> <#= cbc.pascalSecureEntityName #>Id, UserContextDto userContextDto);
+
+    } // end interface IDelete<#= cbc.pascalSecureEntityName #> 
+} //  <#= projectNamespace #>
+
+<#+
+        return this.GenerationEnvironment.ToString();
+    } //end method override TransformText method
+} // end class ApplicationEntityDeleteServicesCoreCT
+#>

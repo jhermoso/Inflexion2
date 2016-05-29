@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="f54c761e-a795-4589-8317-07d2554323f2" sGDB="Oracle" culture="es" rootNameSpace="Inflexion.Suite" company="Inflexion" product="Alfiler" copyright="Inflexion software" branding="Inflexion2" version="0.1" solutionFolderInfraestructure="Infrastructure" solutionFolderCommon="SPE\Alfiler" libraryPath="..\Librarys" isModule="false" generateCode="Always" xmlns="http://schemas.microsoft.com/dsltools/MoneyGen">
+  <classBases>
+    <applicationHasElements Id="825f4d78-7204-4228-967f-9be7708fe286">
+      <entity Id="151ff2fc-cc6d-4a9a-931b-adaed8e1936d" name="Estanque" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="10000" remarks="Estanque es un ejemplo de padre en una relación de agregación." tooltip="Ejemplo de padre en relación de agregación." programRemarks="Estanque es un ejemplo de padre en una relación de agregación." referencedRootEntity="" folderNameSpaceAggregatedName="RefugioAves">
+        <targets>
+          <aggregation Id="0d93a7f6-b022-4621-bb83-5ae87d67fd3e" targetRolName="MiEstanque" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List">
+            <entityMoniker name="/f54c761e-a795-4589-8317-07d2554323f2/Pato" />
+          </aggregation>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="b7e4e596-bce6-4def-b98c-e666a37a898d">
+            <atributte Id="4d4e5f44-2051-46d0-8515-8c3c217004e9" atributteName="Name" atributteAlias="Nombre Estanque" isGrouping="true" isIdentification="false" isFilter="true" position="0" tooltip="Nombre del estanque" userRemarks="Introduzca el nombre con el que identifica al estanque." programerRemarks="Nombre es el campo que almacena el nombre del estanque y actua como identificador" requestUponCreation="yes" nameAndType="string Name" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="61020ae8-6bbc-48bd-9504-21409f6249e0">
+            <atributte Id="aca825db-9f5e-49b1-9d65-c8d07a62faf3" atributteName="Description" atributteAlias="Descripción" isIdentification="false" position="0" tooltip="Descripción del estanque." userRemarks="Campo descripción." isNullable="true" defaultValue="&quot;Descripción de la entidad&quot;" nameAndType="string Description" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="a44159e6-0f89-4260-8ba4-69992705abdf">
+      <entity Id="cff1cd9c-65b1-4226-a3fa-702a077b0efc" name="Pato" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" remarks="Pato es un ejemplo de hijo en una relación de agregación." tooltip="Ejemplo de hijo en relación de agregación." programRemarks="Pato es un ejemplo de hijo en una relación de agregación." referencedRootEntity="" folderNameSpaceAggregatedName="RefugioAves">
+        <atributtes>
+          <classBaseHasAtributtes Id="e8da86ae-8118-4362-baae-60a7ee358a25">
+            <atributte Id="0141d712-3834-4ffc-8e1a-55685e0906c2" atributteName="PatoNombre" atributteType="String" isIdentification="false" position="0" tooltip="Nombre del Pato. Obligatorio." userRemarks="Campo nombre del Pato. Es obligatorio cumplimentarlo." programerRemarks="Campo nombre de la entidad Pato (Tipo Variable. Obligatorio. No permite repeticiones) " requestUponCreation="yes" nameAndType="String PatoNombre" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="f9b1884c-e386-4b65-8cee-216d14f467c1">
+      <entity Id="1200c833-dca3-4474-8bca-79fddf4bf8b1" name="Sector" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" remarks="Sector es un ejemplo de padre en una relación de composición con multiplicidad minima  de hijos cero." tooltip="Ejemplo de padre en una relación de composición simple." programRemarks="Sector es un ejemplo de padre en una relación de composición con multiplicidad minima  de hijos cero." referencedRootEntity="">
+        <targets>
+          <composition Id="9f4eaafe-4742-4480-b7dc-585e25b2699e" sourceMultiplicity="OneOne" targetRolName="SectorRol" realtionshipName="Se compone de">
+            <entityMoniker name="/f54c761e-a795-4589-8317-07d2554323f2/Subsector" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="2c8b8195-0845-4630-8c40-e07834b81926">
+            <atributte Id="bfd99831-1f8b-4762-bb97-0c2b0e1f5686" atributteName="Nombre" atributteAlias="Nombre" atributteType="String" isIdentification="false" position="0" requestUponCreation="yes" nameAndType="String Nombre" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="6fb5f6d3-95da-449d-967f-a5d7f78e57f6">
+      <entity Id="414167e7-7ab3-4d82-b9f1-3d78e1db1d74" name="Subsector" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" remarks="Subsector es un ejemplo de de entidad hija en una relación de composición con multiplicidad minima  de padre uno." tooltip="Ejemplo de de entidad hija en relación de composición simple." programRemarks="Subsector es un ejemplo de de entidad hija en una relación de composición con multiplicidad minima  de padre uno" referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="ab364730-f9dc-41cf-b33e-17a0c47f056a">
+            <atributte Id="2cfebe84-0fc5-423a-a1e2-2a0b1424e435" atributteName="Nombre" atributteAlias="Nombre" atributteType="String" isIdentification="false" position="0" requestUponCreation="yes" nameAndType="String Nombre" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="9eb35296-8d6b-4c3f-999d-b21b81db5f95">
+      <entity Id="a845481b-da04-45e1-9df8-68f35568d8be" name="Pieza" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" remarks="Pieza es un ejemplo de entidad con relación reflexiva de Agregación." tooltip="Pieza es un ejemplo de entidad con relación reflexiva de Agregación." programRemarks="Pieza es un ejemplo de entidad con relación reflexiva de Agregación." referencedRootEntity="">
+        <targets>
+          <aggregation Id="dd3f1f99-68be-41f2-abf4-23d2c65aabc6" targetRolName="RolPieza" realtionshipName="Se compone de ">
+            <entityMoniker name="/f54c761e-a795-4589-8317-07d2554323f2/Pieza" />
+          </aggregation>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="3670b666-10d1-47ce-9102-84c984e9e5fc">
+            <atributte Id="868293c2-2778-42b8-880c-2d0c73718943" atributteName="NombrePieza" atributteType="String" isIdentification="false" position="0" requestUponCreation="yes" nameAndType="String NombrePieza" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="c7ff78a0-4a22-4387-bb5a-52210680af8e">
+            <atributte Id="808c7220-f52a-4b6f-8641-c875008d3e9e" atributteName="Codigo" atributteType="String" isIdentification="false" position="0" requestUponCreation="yes" nameAndType="String Codigo" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="556d6bff-fc67-45e7-81f4-c0a7553dcf15">
+      <entity Id="5eccc0e8-f839-4ed4-9c37-e9f34e78fbea" name="Player" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" remarks="Player CRM" tooltip="Player CRM" programRemarks="Player CRM" referencedRootEntity="">
+        <targets>
+          <composition Id="369bfe42-4b68-44df-b130-e5bce12ed885" sourceMultiplicity="OneOne" targetRolName="Roles">
+            <entityMoniker name="/f54c761e-a795-4589-8317-07d2554323f2/Rol" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="e634bc66-6aad-4217-acdb-2a0d9994715d">
+            <atributte Id="6d42d3fc-dce1-468e-9465-0f8f62e8ff08" atributteName="Nombre" atributteType="String" isIdentification="false" position="0" requestUponCreation="yes" nameAndType="String Nombre" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="c9e40a3b-7ca9-42d1-85d2-53796720f222">
+            <atributte Id="ca1199ae-77a5-4db8-b7f8-dcadb0e9618f" atributteName="CIF" atributteType="String" isIdentification="false" position="0" nameAndType="String CIF" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="3f090336-df63-47d3-9d17-c085873a1665">
+      <entity Id="1d0b3c76-b139-469e-b61b-b7d51052cd19" name="Rol" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" remarks="Rol de CRM" tooltip="Rol de CRM" programRemarks="Rol de CRM" referencedRootEntity="">
+        <targets>
+          <composition Id="47bdb31a-acca-429e-a87f-1336ebbc1076" sourceMultiplicity="OneOne" targetRolName="ToRelation" realtionshipName="To">
+            <entityMoniker name="/f54c761e-a795-4589-8317-07d2554323f2/Relationship" />
+          </composition>
+          <composition Id="66c0c684-06c7-496d-9041-98ee899258bf" sourceMultiplicity="OneOne" targetRolName="FromRelation" realtionshipName="From">
+            <entityMoniker name="/f54c761e-a795-4589-8317-07d2554323f2/Relationship" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="476a6656-ea4c-4139-8ff3-8a33a7d2a716">
+            <atributte Id="d8d0eecf-e601-452d-8c37-fd0258fea2d4" atributteName="RolName" atributteType="String" isIdentification="false" position="0" nameAndType="String RolName" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="f90690d4-67b2-40f5-8842-ab16e4441301">
+      <entity Id="0a77fbff-1fd2-4ca2-a9f5-2028c47116f3" name="Relationship" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" remarks="CRM Realtionship" tooltip="CRM Realtionship" programRemarks="CRM Realtionship" referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="b10683d0-097e-4980-9329-aadbc57f086e">
+            <atributte Id="7c194379-cbf4-42a3-8686-0c6cbfb4d4a2" atributteName="RelationshipName" atributteType="String" isIdentification="false" position="0" nameAndType="String RelationshipName" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="bb7b847f-5144-458b-8d2e-cbbc4f235f89">
+      <entity Id="72cba0ad-2607-4256-9917-a8f4e6366c9b" name="Persona" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" referencedRootEntity="" folderNameSpaceAggregatedName="SegundoEspacio">
+        <classBases>
+          <classBaseHasNestedClassBases Id="786f8b38-0d62-45b4-a432-3f984b20c7b3">
+            <entity Id="13770e17-8539-47bf-83a8-c5e9469901bc" name="Fisica" inheritanceClassModifier="Sealed, Public" Stereotype="Discriminant" volumen="0" referencedRootEntity="">
+              <atributtes>
+                <classBaseHasAtributtes Id="5cd54155-2eb3-4ed6-9a88-79450d8b3b6d">
+                  <atributte Id="b3d41746-66ba-4b22-b53c-48ae33c993c3" atributteName="Nif" atributteType="String" isIdentification="false" position="0" nameAndType="String Nif" />
+                </classBaseHasAtributtes>
+              </atributtes>
+            </entity>
+          </classBaseHasNestedClassBases>
+          <classBaseHasNestedClassBases Id="ccf22c17-ecff-409d-9c36-fa0b8f9d8169">
+            <entity Id="1e33d052-6a01-4377-82df-20b4db4d509b" name="Juridica" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" referencedRootEntity="">
+              <classBases>
+                <classBaseHasNestedClassBases Id="f76ccbd7-d1d2-46b0-a1d9-c83217cfb559">
+                  <entity Id="c150b900-59cb-4352-bc59-927454b85e7e" name="Privada" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" referencedRootEntity="">
+                    <classBases>
+                      <classBaseHasNestedClassBases Id="966a4f7f-16bf-480d-99c5-143795d5eca8">
+                        <entity Id="72bf6532-22c6-4fb4-b82b-31dd8bd247c4" name="Autonomo" inheritanceClassModifier="Public" Stereotype="Discriminant" volumen="0" referencedRootEntity="" />
+                      </classBaseHasNestedClassBases>
+                    </classBases>
+                  </entity>
+                </classBaseHasNestedClassBases>
+                <classBaseHasNestedClassBases Id="ad8d0df7-9433-4143-afc0-e34767300efd">
+                  <entity Id="8c8ab3b3-4a52-4c05-baef-9f25dfb299de" name="ONG" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" referencedRootEntity="" />
+                </classBaseHasNestedClassBases>
+                <classBaseHasNestedClassBases Id="ba4650e4-c13c-49c4-9964-8a4856f503a0">
+                  <entity Id="b4737856-edd0-401e-85ac-dfaa0487bfbd" name="AgenciaGubernamental" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" referencedRootEntity="" />
+                </classBaseHasNestedClassBases>
+              </classBases>
+              <atributtes>
+                <classBaseHasAtributtes Id="c2700025-224f-4003-81fc-be2f4269fe99">
+                  <atributte Id="0c3aee84-c1bf-445a-8753-5950a82d557a" atributteName="Cif" atributteType="String" isIdentification="false" position="0" nameAndType="String Cif" />
+                </classBaseHasAtributtes>
+              </atributtes>
+            </entity>
+          </classBaseHasNestedClassBases>
+        </classBases>
+        <atributtes>
+          <classBaseHasAtributtes Id="30ad2c39-47a7-433a-800b-aca0252d9596">
+            <atributte Id="c9927b34-67a5-4a23-a452-39ca27e65c38" atributteName="Nombre" atributteType="String" isIdentification="false" position="0" nameAndType="String Nombre" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="047cdddb-3cab-4a4f-9785-21d8d015c3cc">
+      <entity Id="8f3184d2-b168-4960-86c1-ab69e4a8ed54" name="Clasificacion" inheritanceClassModifier="Abstract, Public, Partial" Stereotype="Discriminant" volumen="0" programRemarks="Ejemplo de herencia con " referencedRootEntity="" folderNameSpaceAggregatedName="OtroEspacio">
+        <atributtes>
+          <classBaseHasAtributtes Id="2dba6061-ea93-49a1-bf90-d763f1690b05">
+            <atributte Id="3d7e0ab1-ae1a-4f95-a6af-de4bee91983f" atributteName="Nombre" atributteType="String" isGrouping="true" isIdentification="false" position="0" requestUponCreation="yes" nameAndType="String Nombre" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="921fcce4-09ff-4c14-b88c-51cd19508ac6">
+      <entity Id="9f56d5ba-d4a3-497c-af7f-4a18fcd7c8b4" name="PersonaJuridica" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="5c0c98ba-9b89-4478-b5b2-5ae750e04104">
+            <atributte Id="e46e1dd7-9472-4383-99a6-a08321a05072" atributteName="NumEmpleados" atributteType="int" isIdentification="false" position="0" nameAndType="int NumEmpleados" />
+          </classBaseHasAtributtes>
+        </atributtes>
+        <superClasses>
+          <inherintance Id="c10084f9-adfa-4f3d-a73d-7e9d345a3a6b">
+            <entityMoniker name="/f54c761e-a795-4589-8317-07d2554323f2/Clasificacion" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="c5954a4f-6dec-4d92-9f5b-583272f1ec68">
+      <entity Id="c5812c4f-ecda-4e09-b248-4e8311fc0524" name="PersonaFisica" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="89baf534-e28b-4dae-beb3-2924a3d36d01">
+            <entityMoniker name="/f54c761e-a795-4589-8317-07d2554323f2/Clasificacion" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="c100dc0c-28aa-47cf-8801-e5f12e721c28">
+      <entity Id="0d98dfee-396b-4254-8a7a-7dd1880931be" name="SegmentoDemografico" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="0b2c0e56-2ea6-47e6-8490-8ab4c0203576">
+            <atributte Id="6423e891-5b7c-42f8-85d7-8adcb9790304" atributteName="Segmento" atributteType="String" isIdentification="false" position="0" nameAndType="String Segmento" />
+          </classBaseHasAtributtes>
+        </atributtes>
+        <superClasses>
+          <inherintance Id="e4475fa4-e0a3-449a-8d56-01476dc9575c">
+            <entityMoniker name="/f54c761e-a795-4589-8317-07d2554323f2/PersonaFisica" />
+          </inherintance>
+          <inherintance Id="997c9eb3-c83c-4868-bbf9-238edb556e1f" inherintanceType="DelegationComposition">
+            <entityMoniker name="/f54c761e-a795-4589-8317-07d2554323f2/PersonaJuridica" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="eb30881c-90bf-4a9f-b8cc-236bd4863faf">
+      <entity Id="74501080-8564-45c7-96fe-957fa2cf9a97" name="Empresa" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" remarks="Empresa es un ejemplo de de entidad Padre en una relación de composición (fuerte) con multiplicidad minima  de  un hijo. Es decir el padre tiene que tener como mínimo un hijo." tooltip="Ejemplo de de entidad Padre en una relación de composición fuerte." programRemarks="Socios es un ejemplo de de entidad &quot;Hija&quot; en una relación de Composición (FUERTE) con multiplicidad minima  de  un hijo para cada padre. Es decir el padre tiene que tener como mínimo un hijo." referencedRootEntity="">
+        <targets>
+          <composition Id="26f877dd-e33c-43b4-9121-a756f4e9378b" sourceMultiplicity="OneOne" targetMultiplicity="OneMany" targetRolName="Empresa" realtionshipName="Invierte">
+            <entityMoniker name="/f54c761e-a795-4589-8317-07d2554323f2/Socio" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="1d1f32f6-a77b-4026-a92c-931f9a6bae46">
+            <atributte Id="0ca46bf0-50f3-4c2a-8587-d40e019abafd" atributteName="Nombre" atributteAlias="Nombre" atributteType="String" isIdentification="false" position="0" requestUponCreation="yes" nameAndType="String Nombre" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="2e4a87a3-bcde-45db-beb2-29610a3975ac">
+      <entity Id="eff3c2e9-e362-48c1-b11d-dda5cda4a831" name="Socio" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" remarks="Socios es un ejemplo de de entidad &quot;Hija&quot; en una relación de Composición (FUERTE) con multiplicidad minima  de  un hijo para cada padre. Es decir el padre tiene que tener como mínimo un hijo." tooltip="Socios es un ejemplo de de entidad &quot;Hija&quot; en una relación de Composición fuerte." programRemarks="Socios es un ejemplo de de entidad &quot;Hija&quot; en una relación de Composición (FUERTE) con multiplicidad minima  de  un hijo para cada padre. Es decir el padre tiene que tener como mínimo un hijo." referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="86c8535c-27bc-4790-a62f-d39ff1b99212">
+            <atributte Id="2d0400b9-a1c1-45e0-89b3-27c8829ec68c" atributteName="Nombre" atributteAlias="Nombre" atributteType="String" isIdentification="false" position="0" requestUponCreation="yes" nameAndType="String Nombre" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="f42deb82-d849-4f63-9c02-6d742c755051">
+      <service Id="fa10afa9-f16b-44c9-b35c-ee0502ea74d4" name="ServicioPublico" inheritanceClassModifier="Public" Stereotype="Discriminant" volumen="0" remarks="Ejemplo de servicio de dominio" tooltip="Ejemplo de servicio de dominio" programRemarks="Ejemplo de servicio de dominio" referencedRootEntity="">
+        <classBases>
+          <classBaseHasNestedClassBases Id="417e6689-7f75-4497-a8db-53675ec17971">
+            <service Id="0da9c981-dec8-44b8-ab33-a6a6839e69bb" name="ServicioPrivado" inheritanceClassModifier="Private" Stereotype="Discriminant" volumen="0" remarks="ejemplo de servicio de dominio anidado" tooltip="ejemplo de servicio de dominio anidado" programRemarks="ejemplo de servicio de dominio anidado" referencedRootEntity="" />
+          </classBaseHasNestedClassBases>
+        </classBases>
+        <operations>
+          <classBaseHasOperations Id="cc770ba9-0ef3-4df3-8163-239a186ed621">
+            <operation Id="8c0ac6c1-fc7b-4af2-a0cd-3b226e736366" serviceType="Evento" liveCicleType="Create" alias="Alias del Metodo del un servicio de dominio" name="MetodoDeEjemplo" tooltip="Metodo del un servicio de dominio" userHelp="Metodo del un servicio de dominio" programRemarks="Metodo del un servicio de dominio" serviceVisibility="Public" devolutionType="Ninguno" typeReturnNameAndParameters="Ninguno MetodoDeEjemplo()" estimatedHours="0" finalHours="0" />
+          </classBaseHasOperations>
+        </operations>
+      </service>
+    </applicationHasElements>
+    <applicationHasElements Id="ab471994-d2d0-4dff-9f6c-aa613b7c7e42">
+      <objectValue Id="a57a8bad-cf04-4fd0-bbf5-efe7e417d2df" name="Periodo" inheritanceClassModifier="Public" Stereotype="Discriminant" volumen="0" referencedRootEntity="">
+        <classBases>
+          <classBaseHasNestedClassBases Id="054aadd0-b096-4dfd-8cc4-f88bfacfa79d">
+            <objectValue Id="f7d28ac7-7916-4796-98d6-7a36974f7a7a" name="evento" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" referencedRootEntity="" />
+          </classBaseHasNestedClassBases>
+        </classBases>
+      </objectValue>
+    </applicationHasElements>
+    <applicationHasElements Id="8bff3008-1ef0-4fb8-aa59-5149303c612a">
+      <entity Id="3bdbbbf2-d3e2-4c2e-9fb8-694ace3eeb40" name="Alumno" inheritanceClassModifier="Public" Stereotype="Discriminant" volumen="0" remarks="entidad M en ejemplo de relacion m:n" tooltip="entidad M en ejemplo de relacion m:n " programRemarks="entidad M en ejemplo de relacion m:n " referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="2389efc5-8e55-451b-918e-a496e084975d">
+            <atributte Id="54c44a5f-07bf-4d1e-9340-f51d09c9e9ea" atributteName="Nombre" atributteType="String" isIdentification="false" position="0" nameAndType="String Nombre" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="6c7ca04a-1f93-4988-aac2-3958c0d093b3">
+      <entity Id="799c6acc-2e93-4431-b002-82296bb6240e" name="Aula" inheritanceClassModifier="Public" Stereotype="Discriminant" volumen="0" remarks="entidad N en ejemplo de relacion m:n " tooltip="entidad N en ejemplo de relacion m:n " programRemarks="entidad N en ejemplo de relacion m:n " referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="a6df7239-ef8a-4590-ba37-2d1693bf083f">
+            <atributte Id="f79cfce5-22fc-4e85-b12e-c5e5f2038123" atributteName="Nombre" atributteType="String" isIdentification="false" position="0" nameAndType="String Nombre" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="0e3238a2-16fe-4111-a562-603d6ab7f67f">
+      <entity Id="09b78aa4-6600-4b7a-91da-4f43ef18be45" name="AlumnoAula" inheritanceClassModifier="Public" Stereotype="Discriminant" volumen="0" remarks="entidad intermedia en ejemplo de relacion m:n " tooltip="entidad intermedia en ejemplo de relacion m:n " programRemarks="entidad intermedia en ejemplo de relacion m:n " referencedRootEntity="">
+        <targets>
+          <aggregation Id="bdd2c342-3b8b-4edd-ac40-2b9478533b7e" targetRolName="Aulas" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List">
+            <entityMoniker name="/f54c761e-a795-4589-8317-07d2554323f2/Alumno" />
+          </aggregation>
+          <aggregation Id="8f199d9b-6379-469f-b955-acf1562435d0" targetRolName="Alumnos" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List">
+            <entityMoniker name="/f54c761e-a795-4589-8317-07d2554323f2/Aula" />
+          </aggregation>
+        </targets>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="5e2a7692-9565-4fd4-a7bb-549f644fc8fe">
+      <entity Id="a6598320-494c-4c01-b1ce-f2fde343f2cb" name="Empleado" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" remarks="Entidad simple con un enumerado" tooltip="Entidad simple con un enumerado" programRemarks="Entidad simple con un enumerado" referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="c1917858-1044-4751-a5a7-089d12025dca">
+            <atributte Id="9311f050-dff3-411b-b1d9-583795c9f59f" atributteName="Nombre" atributteType="String" isIdentification="false" position="0" requestUponCreation="yes" nameAndType="String Nombre" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="78827935-7711-48c2-9f05-3d5dec501b68">
+      <enumeration Id="5f89e18b-d3ba-4e98-b034-9ec6406240fe" name="Cargo" inheritanceClassModifier="Public, Partial" Stereotype="TipoCategoria" volumen="0" remarks="ejemplo de enumerado" tooltip="ejemplo de enumerado" programRemarks="ejemplo de enumerado" referencedRootEntity="" serializable="false">
+        <enumValue>
+          <enumerationHasEnumValue Id="b56836f5-4fda-4ec9-bb47-c839e29e4a47">
+            <enumValues Id="aa5f2869-51ad-4a98-b044-d4b99e997162" sorting="1" value="Director" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="590cde16-f1e5-4274-9436-4929bd945198">
+            <enumValues Id="a8f3ecab-8688-43a6-bbdd-bf6c3aaecc92" sorting="0" />
+          </enumerationHasEnumValue>
+        </enumValue>
+      </enumeration>
+    </applicationHasElements>
+  </classBases>
+  <boundedContexts>
+    <applicationHasBoundedContexts Id="69582716-8dda-496e-8a9e-6875f5994a1f">
+      <boundedContext Id="1a8981eb-e9d6-4db9-b210-44b1bf907fc7" name="From SPE" mBR="modelbus://kayak.MoneyGen.MoneyGenAdapter/SPE//.\SPE.kyk" />
+    </applicationHasBoundedContexts>
+  </boundedContexts>
+  <agregate>
+    <applicationHasAgregate Id="bae9687c-8724-4517-b249-57ff6cb6708d">
+      <agregate Id="f23f68bd-8a52-49cd-9600-243986dceeab" name="Agregate1">
+        <agregatedEntities>
+          <agregateHasAgregatedEntities Id="803cdb4c-adab-484d-8b31-b221e3d8ac7c">
+            <agregatedEntity Id="14e86208-6a73-482b-be57-4b237b9fe157" agregated="Rol" />
+          </agregateHasAgregatedEntities>
+          <agregateHasAgregatedEntities Id="27bf47ed-6449-4a78-b93e-97a8c16bfb46">
+            <agregatedEntity Id="8a6ce876-6cdc-4a52-9db2-aad9510da657" />
+          </agregateHasAgregatedEntities>
+        </agregatedEntities>
+      </agregate>
+    </applicationHasAgregate>
+  </agregate>
+</application>

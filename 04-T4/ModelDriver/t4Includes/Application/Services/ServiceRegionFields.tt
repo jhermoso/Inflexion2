@@ -1,0 +1,72 @@
+﻿<#+
+public class ServiceRegionFields : Template
+{
+    // variables de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public ServiceRegionFields(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        // conceptos propios del proyecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+#>
+        #region Fields
+
+        /// <summary>
+        /// Referencia al adaptador para el logging.
+        /// </summary>
+        private static ILogger logger;
+
+        /// <summary>
+        /// Referencia al mapeador de la entidad <#= cbc.pascalSecureEntityName #>.
+        /// </summary>
+        private readonly <#= I #><#= cbc.pascalSecureEntityName #>Mapper <#= cbc.camelSecureEntityName #>Mapper;
+
+        /// <summary>
+        /// Referencia a la factoría de repositorios de la entidad <#= cbc.pascalSecureEntityName #>.
+        /// </summary>
+        private readonly <#= I #><#= cbc.pascalSecureEntityName #>RepositoryFactory <#= cbc.camelSecureEntityName #>RepositoryFactory;
+
+<#+ 
+
+    if (cbc.propertyAssociationSources.Any() || cbc.propertyAssociationTargets.Any())
+    {
+#>
+        // Lista de factorias de repositorios de entidades relacionadas
+<#+
+    foreach (var property in cbc.propertyAssociationSources )
+    {
+#>
+<#+     if (property.Source is Entity) {#>
+        /// <summary>
+        /// Referencia a la factoría de repositorios de la entidad <#= T4Help.ToCamelCase(property.Source.Name) #>.
+        /// </summary>
+        static <#= I #><#= T4Help.SecureName(property.Source.Name) #>RepositoryFactory <#= T4Help.ToCamelCase(property.TargetRolName) #>RepositoryFactory;
+<#+     } // end if entity#>
+<#+ } // end foreach#>
+
+<#+
+            foreach (var property in cbc.propertyAssociationTargets )
+            {
+#>
+<#+     if (property.Target is Entity) {#>
+        /// <summary>
+        /// Referencia a la factoría de repositorios de la entidad <#= T4Help.ToCamelCase(property.Target.Name) #>.
+        /// </summary>
+        static <#= I #><#= T4Help.SecureName(property.Target.Name) #>RepositoryFactory <#= T4Help.ToCamelCase(property.SourceRolName) #>RepositoryFactory;
+<#+     } // end if entity // solo los objetos valor tienen repositorios#>
+
+<#+ } #>
+<#+ } #>
+        #endregion
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

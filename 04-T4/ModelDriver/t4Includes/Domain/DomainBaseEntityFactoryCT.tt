@@ -1,0 +1,192 @@
+﻿<#+
+
+public class DomainBaseEntityFactoryCT : Template
+{
+    // parametros de la plantilla
+    public ClassBaseContext  cbc ;
+    public string projectNamespace;
+    public ITree<BoundedContextMetadata> Skt;
+        
+    public DomainBaseEntityFactoryCT(ClassBaseContext  classBaseContext, string nombreProjecto, ITree<BoundedContextMetadata> skt)
+    {
+        cbc = classBaseContext;             // contexto de la clase base a interpretar
+        projectNamespace = nombreProjecto;  // nombre del proyecto para el que estamos interpretando
+        Skt = skt;                          // shared kernel tree
+    }
+
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        IList<string> sharedKernelUsings = null;
+        if (Skt != null)
+        {
+            sharedKernelUsings =  GetSharedKernelReferencesByProject(projectNamespace, Skt, cbc.diagram);
+        }
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+
+        var cpyrigth = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity);
+        string cpyrigthText = cpyrigth.TransformText();
+#>
+<#= cpyrigthText #>
+
+namespace <#= projectNamespace #>
+{
+    #region using de los sharedKernels 
+<#+
+if (sharedKernelUsings != null)
+foreach (var item in sharedKernelUsings)
+    {
+#>
+    using <#= item #>;
+<#+
+    }// end foreach para los using del shared kernel
+#>
+    #endregion
+
+    #region Usings de arquitectura
+    using System;
+    using System.Diagnostics.Contracts;
+    <#= (cbc.targetLinksCounter > 0)? "using System.Collections.Generic;":"" #>
+    <#= (cbc.targetLinksCounter > 0)? "using System.Collections.ObjectModel;":"" #>
+    using Inflexion.Framework.Core;
+    using Inflexion.Framework.Domain.Base;
+    using Inflexion.Framework.Domain.Core.ValueObjects;
+    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Core;
+<#+ if (cbc.OwnBoundedContextHasEnums) {#>
+    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain.Data;
+<#+            } #>
+    #endregion
+
+    /// <summary>
+    /// Clase factoría para la creación de <#= (cbc.IsEntity)?" una entidad":"un objeto valor." #> de tipo <see cref="<#= I #><#= cbc.secureEntityName #>"/>.
+    /// </summary>
+    static public class <#= cbc.secureEntityName #>Factory 
+    {
+
+        #region Constructor vacio de la clase
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="<#= cbc.secureEntityName #>Factory"/>.
+        /// </summary>
+        /// <remarks>
+        /// Constructor vacío de la clase <see cref="<#= cbc.secureEntityName #>Factory"/>.
+        /// </remarks>
+        /// <returns>
+        /// Devuelve una instancia de dela clase <#= cbc.secureEntityName #>Factory />
+        /// </returns>
+        static <#= cbc.secureEntityName #>Factory()
+        {
+        }
+        #endregion
+
+        #region Método (Patrón Factory)
+<#+ 
+    // acontinuación vamos a crear un metodo create solo para aquellos campos que son mandatory o aquellas relaciones (Asoc. Agreg. Compo.) cuya multiplicidad minima es 1
+    // para ello es necesario que comprobemos primero si todas y cada una de los atributos son mandatory y si es asi si todas y cada una de las relaciones coinciden con su multiplicidad minima.
+    // en caso de que la multiplicidad minima conincida en todas (ya sea cero o uno) y todos los campos sean mandatory no es necesario hacer mas creates de los que hemos hecho.
+    // esta situación es común en los discriminantes y en los typos.
+    // Nota: si fuera necesario tener un metodo create con todos los campos se puede obtener de la copia de este fichero.
+//if (!((AreAllMandatory(entity)| AreAnyMandatory(entity))& AreAllTargetMinMultiplicityEqual(entity) & AreAllSourceMinMultiplicityEqual(entity) ))
+    //{
+#>
+        /// <summary>
+        /// Función para crear<#= (cbc.IsEntity)?" una entidad":"un objeto valor." #> dentro de la factoría a partir 
+        /// de los argumentos especificados.
+        /// </summary>
+        /// <remarks>
+        /// Crea<#= (cbc.IsEntity)?" una entidad":"un objeto valor." #> de tipo <see cref="<#= I #><#= cbc.secureEntityName #>"/>
+        /// </remarks>
+<#+                // este bucle es para escribir la lista de propiedades de la documentación que son mandatory en primer lugar.
+foreach (var property in cbc.propertyObjects.Where( p=> p.RequestUponCreation==RequestUponCreation.yes ) )
+    {
+#>
+        /// <param name="<#= T4Help.ToCamelCase(property.AtributteName) #>"> 
+        /// <#= property.ProgramerRemarks #>
+        /// </param>
+<#+
+    } 
+#>
+<#+  // Este bucle es para escribir la lista de propiedades de la documentación que provienen de los roles de tipo source en las relaciones de esta entidad con otra.
+foreach ( var property in cbc.propertyAssociationSources.Where( p=> IsMinMultiplicityOne(p.TargetMultiplicity) ) )
+    {
+#>
+        /// <param name="<#= T4Help.ToCamelCase(property.TargetRolName) #>"> 
+        /// referencia al rol source de la relación.
+        /// </param>
+<#+
+    } // a continuación escribimos el tipo de devolución del create que ha de coincidir con el tipo.
+#>
+<#+  // Este bucle es para escribir la lista de propiedades de la documentación que provienen de los roles de tipo target en las relaciones de esta entidad con otra.
+foreach ( var property in cbc.propertyAssociationTargets.Where( p=> IsMinMultiplicityOne(p.SourceMultiplicity) ) )
+{
+    if(string.IsNullOrEmpty(property.SourceRolName))         {            continue;        }
+#>
+        /// <param name="<#= T4Help.ToCamelCase(property.SourceRolName) #>"> 
+        /// referencia al rol target de la relación.
+        /// </param>
+<#+
+} // a continuación escribimos el tipo de devolución del create que ha de coincidir con el tipo.
+#>
+        /// <returns>
+        /// Devuelve <#= (cbc.IsEntity)?" una entidad":"un objeto valor." #> de tipo <see cref="<#= I #><#= cbc.secureEntityName #>Factory"/>
+        /// </returns>
+        public static <#= I #><#= cbc.pascalSecureEntityName #> Create(  <#= (cbc.isDerivedFromOneEntity)? cbc.MandatoryEntityBaseConstructorParamansDefinition : cbc.MandatoryConstructorParamns #>  )
+        {
+<#+ 
+if(cbc.IsEntity) // si es un entidad 
+{
+    if(cbc.TotalMandatoryProperties==0) // y no tiene ninguan propiedad excepto el id solo llamamos al constructor vacio.
+    {
+#>
+            // Creamos la nueva entidad.
+            <#= I #><#= cbc.secureEntityName #> Entity<#= cbc.pascalSecureEntityName #> = new <#= cbc.pascalSecureEntityName #>();
+            //devolvemos la entidad recien creada
+            return Entity<#= cbc.pascalSecureEntityName #>;
+<#+
+    }
+    else
+    {
+#>
+<#+ 
+        if (false && !cbc.isDerivedFromOneEntity)
+        {
+#>
+            // El Id viene dado cuando se inserte en la BBDD... de momento tiene uno temporal.
+            <#= cbc.idtype #> id<#= cbc.pascalSecureEntityName #> = (<#= cbc.nullidtype #>);
+<#+
+        }
+ #>
+            // Creamos la nueva entidad.
+            <#= I #><#= cbc.secureEntityName #> Entity<#= cbc.pascalSecureEntityName #> = new <#= cbc.pascalSecureEntityName #>(  <#= (cbc.isDerivedFromOneEntity)? cbc.MandatoryEntityBaseConstructorParamansCall : cbc.MandatoryConstructorParamnsCall  #> );
+            //devolvemos la entidad recien cbc.MandatoryEntityBaseConstructorParamansDTO
+            return Entity<#= cbc.pascalSecureEntityName #>;
+<#+
+    }
+}
+if(cbc.IsObjectValue)
+{
+ #>
+            // Creamos el nuevo objeto valor .
+            <#= I #><#= cbc.secureEntityName #> Entity<#= cbc.pascalSecureEntityName #> = new <#= cbc.pascalSecureEntityName #>(  <#= (cbc.isDerivedFromOneEntity)? cbc.MandatoryConstructorParamnsWithOutDefaultValues : cbc.MandatoryConstructorParamnsCallnoID #> );
+            //devolvemos el Objeto Valor recien creado
+            return Entity<#= cbc.pascalSecureEntityName #>;
+<#+
+}
+#>
+        }
+<#+ 
+    //}
+#>
+        #endregion
+
+    } // end class <#= cbc.pascalSecureEntityName #>Factory
+} //  <#= projectNamespace #>
+
+<#+
+        return this.GenerationEnvironment.ToString();
+    } //end method override TransformText method
+} // end class DomainBaseEntityFactoryCT
+#>

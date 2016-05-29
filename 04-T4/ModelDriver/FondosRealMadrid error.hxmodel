@@ -1,0 +1,110 @@
+﻿<?xml version="1.0"?>
+<Model Name="Hexa.Core.Dsl.Sample" TargetUIType="Mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<Entities>
+    <Entity Name="Fondo" IsRoot="false">
+      <Associations>
+            <Association Type="TipoDeporte" AssociationType="ManyToOne"/>
+            <Association Type="ClasificacionGenerica" AssociationType="ManyToOne"/>
+            <Association Type="Campeonato" AssociationType="ManyToOne"/>
+            <Association Type="FondoCategoria" AssociationType="ManyToOne"/>
+            <Association Type="FondoSignatura" AssociationType="HasMany"/>
+      </Associations>
+      <Properties>
+            <Property IsRequired = "true"  Name="NumeroFondo" Type="string" />
+            <Property IsRequired = "false"  Name="OtraNumeracion" Type="string" />
+      </Properties>
+    </Entity>
+    <Entity Name="TipoDeporte" IsRoot="false">
+      <Associations>
+            <Association Type="Fondo" AssociationType="HasMany"/>
+      </Associations>
+      <Properties>
+            <Property IsRequired = "true"  Name="Descripcion" Type="string" />
+      </Properties>
+    </Entity>
+    <Entity Name="ClasificacionGenerica" IsRoot="false">
+      <Associations>
+            <Association Type="Fondo" AssociationType="HasMany"/>
+      </Associations>
+      <Properties>
+            <Property IsRequired = "true"  Name="Descripcion" Type="string" />
+      </Properties>
+    </Entity>
+    <Entity Name="Campeonato" IsRoot="false">
+      <Associations>
+            <Association Type="Fondo" AssociationType="HasMany"/>
+      </Associations>
+      <Properties>
+            <Property IsRequired = "true"  Name="Descripcion" Type="string" />
+      </Properties>
+    </Entity>
+    <Entity Name="FondoCategoria" IsRoot="false">
+      <Associations>
+            <Association Type="Fondo" AssociationType="HasMany"/>
+      </Associations>
+      <Properties>
+            <Property IsRequired = "true"  Name="Descripcion" Type="string" />
+      </Properties>
+    </Entity>
+    <Entity Name="FondoSignatura" IsRoot="false">
+      <Associations>
+            <Association Type="Fondo" AssociationType="ManyToOne"/>
+            <Association Type="Signatura" AssociationType="ManyToOne"/>
+      </Associations>
+      <Properties>
+            <Property IsRequired = "false"  Name="Fecha" Type="DateTime" />
+            <Property IsRequired = "false"  Name="DescripcionHistorico" Type="string" />
+            <Property IsRequired = "false"  Name="NotasHistorico" Type="string" />
+      </Properties>
+    </Entity>
+    <Entity Name="Signatura" IsRoot="false">
+      <Associations>
+            <Association Type="SignaturaContenedor" AssociationType="HasMany"/>
+            <Association Type="FondoSignatura" AssociationType="HasMany"/>
+      </Associations>
+      <Properties>
+            <Property IsRequired = "false"  Name="Nombre" Type="string" />
+            <Property IsRequired = "false"  Name="Orden" Type="int" />
+            <Property IsRequired = "false"  Name="Estado" Type="bool" />
+            <Property IsRequired = "false"  Name="FechaEstado" Type="DateTime" />
+      </Properties>
+    </Entity>
+    <Entity Name="SignaturaContenedor" IsRoot="false">
+      <Associations>
+            <Association Type="Signatura" AssociationType="ManyToOne"/>
+            <Association Type="TipoIdentificacion" AssociationType="ManyToOne"/>
+            <Association Type="TipoContenedor" AssociationType="ManyToOne"/>
+      </Associations>
+      <Properties>
+            <Property IsRequired = "false"  Name="NumeroIdentificacion" Type="string" />
+            <Property IsRequired = "false"  Name="Descripcion" Type="string" />
+            <Property IsRequired = "false"  Name="Orden" Type="int" />
+      </Properties>
+    </Entity>
+    <Entity Name="SignaturaRelacion" IsRoot="false">
+      <Associations>
+            <Association Type="Signatura" AssociationType="HasOne"/>
+            <Association Type="Signatura" AssociationType="ManyToOne"/>
+      </Associations>
+      <Properties>
+            <Property IsRequired = "false"  Name="Orden" Type="int" />
+      </Properties>
+    </Entity>
+    <Entity Name="TipoIdentificacion" IsRoot="false">
+      <Associations>
+            <Association Type="SignaturaContenedor" AssociationType="HasMany"/>
+      </Associations>
+      <Properties>
+            <Property IsRequired = "false"  Name="Descripcion" Type="string" />
+      </Properties>
+    </Entity>
+    <Entity Name="TipoContenedor" IsRoot="false">
+      <Associations>
+            <Association Type="SignaturaContenedor" AssociationType="HasMany"/>
+      </Associations>
+      <Properties>
+            <Property IsRequired = "false"  Name="Descripcion" Type="string" />
+      </Properties>
+    </Entity>
+</Entities>
+</Model>

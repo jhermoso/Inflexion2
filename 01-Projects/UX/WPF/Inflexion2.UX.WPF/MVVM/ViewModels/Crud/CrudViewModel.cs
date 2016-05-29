@@ -33,6 +33,9 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
 
         #region Constructors
 
+        /// <summary>
+        /// .en parameter less constructor 
+        /// </summary>
         public CrudViewModel()
         {
             if (!this.IsDesignTime)
@@ -41,6 +44,10 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             }
         }
 
+        /// <summary>
+        /// .en Typed parameter constructor. 
+        /// </summary>
+        /// <param name="element"> domain entity to manage with this constructor</param>
         public CrudViewModel(T element)
         {
             if (!this.IsDesignTime)
@@ -127,6 +134,9 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             cmd.RaiseCanExecuteChanged();
         }
 
+        /// <summary>
+        /// .en self reference to the own entity to manage with the viemodel derived from this class.
+        /// </summary>
         public T ObjectElement
         {
             get
@@ -140,6 +150,9 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             }
         }
 
+        /// <summary>
+        /// .en strore for the title of the derived vm. this property is binded in the view.
+        /// </summary>
         public override string Title
         {
             get { return string.Empty; }
@@ -147,51 +160,93 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
 
         #endregion
 
+        #region can methods for commands
+        /// <summary>
+        /// .en overridible can method for common command on ribbon to ask is is it possible to save the current record
+        /// </summary>
+        /// <param name="parameter">.en addtional info to pass to the method</param>
+        /// <returns></returns>
         public override bool CanSaveRecord(object parameter)
         {
             return this.ObjectElement != null && Validation.ValidateAll().IsValid;// para entidades que no se borran && this.Activo;
         }
 
+        /// <summary>
+        /// method to calculate if is possible to delete the current entity.
+        /// </summary>
+        /// <param name="parameter">.en addtional info to pass to the method</param>
+        /// <returns></returns>
         public override bool CanDeleteRecord(object parameter)
         {
-            return false; // this.entity != null && !this.entity.IsTransient;
+            return this.entity != null && !this.entity.IsTransient();
         }
 
+        /// <summary>
+        /// .en addtional info to pass to the method
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public override bool CanGetRecords(object parameter)
         {
             return false;
         }
 
+        /// <summary>
+        /// .en method to calculate if is possible to add a new record ata thi time.
+        /// ususally this method has to be overrided in the derived viemodel.
+        /// </summary>
+        /// <param name="parameter">.en Addtional info to pass to the method.</param>
+        /// <returns></returns>
         public override bool CanNewRecord(object parameter)
         {
             return true;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns>.en Addtional info to pass to the method.</returns>
         public override bool CanActivateRecord(object parameter)
         {
             return false;
         }
+        #endregion
 
-        public virtual T GetById(int id)
+        /// <summary>
+        /// .en General method to get a record by is id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public virtual T GetById(TIdentifier id)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// General method.
+        /// </summary>
+        /// <param name="parameter">.en Addtional info to pass to the method.</param>
         public override void OnNewRecord(object parameter)
         {
             this.ObjectElement = Activator.CreateInstance<T>();
             this.Rebind();
         }
 
+        /// <summary>
+        /// .en Navigate method to go to view a record with his id.
+        /// </summary>
+        /// <param name="navigationContext">.en Id of the record to go to.</param>
         public override void OnNavigatedTo(Microsoft.Practices.Prism.Regions.NavigationContext navigationContext)
         {
             string id = navigationContext.Parameters["Id"];
-            if (string.IsNullOrWhiteSpace(id) || id == "0")
+            if (string.IsNullOrWhiteSpace(id) || id == default(TIdentifier).ToString())
             {
                 return;
             }
 
-            this.ObjectElement = GetById(int.Parse(id));
+            TIdentifier tid = (TIdentifier)(object)id;
+            this.ObjectElement = GetById(tid);
 
             this.Rebind();
         }

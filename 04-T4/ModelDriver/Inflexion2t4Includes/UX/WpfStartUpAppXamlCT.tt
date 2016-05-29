@@ -1,0 +1,23 @@
+﻿<#+
+public class WpfStartUpAppXamlCT : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    public ClassBaseContext cbc; public string projectNamespace; public ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public WpfStartUpAppXamlCT(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+#>
+<Application x:Class="<#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.FrontEnd.WpfStartUp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+</Application>
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

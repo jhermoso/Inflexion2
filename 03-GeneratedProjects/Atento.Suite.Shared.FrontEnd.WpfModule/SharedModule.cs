@@ -35,32 +35,41 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
     #endregion
 
     /// <summary>
-    /// .en module.
-    /// .es modulo.
+    /// .en class module implementation. This implementation become the compiled dll of this project on a module dynamically loaded by main programm.
+    /// .es implementación de la clases "module". Esta implementación convierte la ddl de la compilación de este proyecto en un modulo que puede ser cargado por el programa principal de forma dinamica. (en tiempo de ejecución)
     /// </summary>
     public sealed class SharedModule : Inflexion2.UX.WPF.MVVM.BaseModule
     {
         #region Imodule & Basemodule Implementation
         /// <summary>
-        /// Inicializa el módulo.
+        /// .en module initialization.
+        /// .es Inicializa el módulo.
         /// </summary>
         /// <remarks>
-        /// Registramos los controles que han de estar siempre disponibles
+        /// .en Register the controls whose has to be always available
+        /// with iregionmanager of Prism and the controls whose has to available on demand
+        /// with the inyection unity container. The controls on-demand will be loaded when
+        /// the method IregionManager.RequestNavigate() would be executed.
+        /// 
+        /// .es Registramos los controles que han de estar siempre disponibles
         /// con el gestor de regiones Prism (IRegionManager), y los controles que
         /// han de solicitarse (bajo demanda) con el contenedor de inyección de
         /// dependencias Unity.  Los controles bajo demanda serán cargados cuando
         /// se invoque el método "IregionManager.RequestNavigate()".
         /// </remarks>
         public override void Initialize()
-        {  
-            // Registro de controles que han de estar siempre disponibles.
+        {
+            // .en registering of controls always available
+            // .es Registro de controles que han de estar siempre disponibles.
             this.RegionManager.RegisterViewWithRegion(RegionNames.TaskbarRegion, typeof(SharedModuleTaskBarView));
 
-            // Registro de controles disponibles bajo demanda.
+            // .en registering of controls available on-demand.
+            // .es Registro de controles disponibles bajo demanda.
             this.UnityContainer.RegisterType<object, SharedModuleNavigationView>(typeof(SharedModuleNavigationView).FullName);
             this.UnityContainer.RegisterType<object, SharedModuleRibbonTab>(typeof(SharedModuleRibbonTab).FullName);
-            
-            // registro por entidades
+
+            // .en registering of entities. 
+            // .es registro por entidades
             this.UnityContainer.RegisterType<object, PersonaView>(typeof(PersonaView).FullName);
             this.UnityContainer.RegisterType<object, PersonaQueryView>(typeof(PersonaQueryView).FullName);         
         }

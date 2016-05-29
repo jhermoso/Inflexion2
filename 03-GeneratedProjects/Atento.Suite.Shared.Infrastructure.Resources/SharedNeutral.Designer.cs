@@ -90,378 +90,351 @@ namespace Atento.Suite.Shared.Infrastructure.Resources {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_Atributte1Alias {
+        public static string Persona_BooleanFieldAlias {
             get {
-                return ResourceManager.GetString("Persona_Atributte1Alias", resourceCulture);
+                return ResourceManager.GetString("Persona_BooleanFieldAlias", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_Atributte1Remarks {
+        public static string Persona_BooleanFieldRemarks {
             get {
-                return ResourceManager.GetString("Persona_Atributte1Remarks", resourceCulture);
+                return ResourceManager.GetString("Persona_BooleanFieldRemarks", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_Atributte1Tooltip {
+        public static string Persona_BooleanFieldTooltip {
             get {
-                return ResourceManager.GetString("Persona_Atributte1Tooltip", resourceCulture);
+                return ResourceManager.GetString("Persona_BooleanFieldTooltip", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_CalleAlias {
+        public static string Persona_ByteFieldAlias {
             get {
-                return ResourceManager.GetString("Persona_CalleAlias", resourceCulture);
+                return ResourceManager.GetString("Persona_ByteFieldAlias", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_CalleRemarks {
+        public static string Persona_ByteFieldRemarks {
             get {
-                return ResourceManager.GetString("Persona_CalleRemarks", resourceCulture);
+                return ResourceManager.GetString("Persona_ByteFieldRemarks", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_CalleTooltip {
+        public static string Persona_ByteFieldTooltip {
             get {
-                return ResourceManager.GetString("Persona_CalleTooltip", resourceCulture);
+                return ResourceManager.GetString("Persona_ByteFieldTooltip", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_CodigoAlias {
+        public static string Persona_DatetimeFieldAlias {
             get {
-                return ResourceManager.GetString("Persona_CodigoAlias", resourceCulture);
+                return ResourceManager.GetString("Persona_DatetimeFieldAlias", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_CodigoRemarks {
+        public static string Persona_DatetimeFieldRemarks {
             get {
-                return ResourceManager.GetString("Persona_CodigoRemarks", resourceCulture);
+                return ResourceManager.GetString("Persona_DatetimeFieldRemarks", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_CodigoTooltip {
+        public static string Persona_DatetimeFieldTooltip {
             get {
-                return ResourceManager.GetString("Persona_CodigoTooltip", resourceCulture);
+                return ResourceManager.GetString("Persona_DatetimeFieldTooltip", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_ComunidadAlias {
+        public static string Persona_DateTimeOffsetFieldAlias {
             get {
-                return ResourceManager.GetString("Persona_ComunidadAlias", resourceCulture);
+                return ResourceManager.GetString("Persona_DateTimeOffsetFieldAlias", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_ComunidadRemarks {
+        public static string Persona_DateTimeOffsetFieldRemarks {
             get {
-                return ResourceManager.GetString("Persona_ComunidadRemarks", resourceCulture);
+                return ResourceManager.GetString("Persona_DateTimeOffsetFieldRemarks", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_ComunidadTooltip {
+        public static string Persona_DateTimeOffsetFieldTooltip {
             get {
-                return ResourceManager.GetString("Persona_ComunidadTooltip", resourceCulture);
+                return ResourceManager.GetString("Persona_DateTimeOffsetFieldTooltip", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_CPAlias {
+        public static string Persona_DecimalFieldAlias {
             get {
-                return ResourceManager.GetString("Persona_CPAlias", resourceCulture);
+                return ResourceManager.GetString("Persona_DecimalFieldAlias", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_CPRemarks {
+        public static string Persona_DecimalFieldRemarks {
             get {
-                return ResourceManager.GetString("Persona_CPRemarks", resourceCulture);
+                return ResourceManager.GetString("Persona_DecimalFieldRemarks", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_CPTooltip {
+        public static string Persona_DecimalFieldTooltip {
             get {
-                return ResourceManager.GetString("Persona_CPTooltip", resourceCulture);
+                return ResourceManager.GetString("Persona_DecimalFieldTooltip", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_DireccionAlias {
+        public static string Persona_DobleFieldAlias {
             get {
-                return ResourceManager.GetString("Persona_DireccionAlias", resourceCulture);
+                return ResourceManager.GetString("Persona_DobleFieldAlias", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_DireccionRemarks {
+        public static string Persona_DobleFieldRemarks {
             get {
-                return ResourceManager.GetString("Persona_DireccionRemarks", resourceCulture);
+                return ResourceManager.GetString("Persona_DobleFieldRemarks", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_DireccionTooltip {
+        public static string Persona_DobleFieldTooltip {
             get {
-                return ResourceManager.GetString("Persona_DireccionTooltip", resourceCulture);
+                return ResourceManager.GetString("Persona_DobleFieldTooltip", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_FaxAlias {
+        public static string Persona_FloatFieldAlias {
             get {
-                return ResourceManager.GetString("Persona_FaxAlias", resourceCulture);
+                return ResourceManager.GetString("Persona_FloatFieldAlias", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_FaxRemarks {
+        public static string Persona_FloatFieldRemarks {
             get {
-                return ResourceManager.GetString("Persona_FaxRemarks", resourceCulture);
+                return ResourceManager.GetString("Persona_FloatFieldRemarks", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_FaxTooltip {
+        public static string Persona_FloatFieldTooltip {
             get {
-                return ResourceManager.GetString("Persona_FaxTooltip", resourceCulture);
+                return ResourceManager.GetString("Persona_FloatFieldTooltip", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_FisicaAlias {
+        public static string Persona_GuidFieldAlias {
             get {
-                return ResourceManager.GetString("Persona_FisicaAlias", resourceCulture);
+                return ResourceManager.GetString("Persona_GuidFieldAlias", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_FisicaRemarks {
+        public static string Persona_GuidFieldRemarks {
             get {
-                return ResourceManager.GetString("Persona_FisicaRemarks", resourceCulture);
+                return ResourceManager.GetString("Persona_GuidFieldRemarks", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_FisicaTooltip {
+        public static string Persona_GuidFieldTooltip {
             get {
-                return ResourceManager.GetString("Persona_FisicaTooltip", resourceCulture);
+                return ResourceManager.GetString("Persona_GuidFieldTooltip", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_FormaJuridicaAlias {
+        public static string Persona_Int16FieldAlias {
             get {
-                return ResourceManager.GetString("Persona_FormaJuridicaAlias", resourceCulture);
+                return ResourceManager.GetString("Persona_Int16FieldAlias", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_FormaJuridicaRemarks {
+        public static string Persona_Int16FieldRemarks {
             get {
-                return ResourceManager.GetString("Persona_FormaJuridicaRemarks", resourceCulture);
+                return ResourceManager.GetString("Persona_Int16FieldRemarks", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_FormaJuridicaTooltip {
+        public static string Persona_Int16FieldTooltip {
             get {
-                return ResourceManager.GetString("Persona_FormaJuridicaTooltip", resourceCulture);
+                return ResourceManager.GetString("Persona_Int16FieldTooltip", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_GeneroAlias {
+        public static string Persona_Int32FieldAlias {
             get {
-                return ResourceManager.GetString("Persona_GeneroAlias", resourceCulture);
+                return ResourceManager.GetString("Persona_Int32FieldAlias", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_GeneroRemarks {
+        public static string Persona_Int32FieldRemarks {
             get {
-                return ResourceManager.GetString("Persona_GeneroRemarks", resourceCulture);
+                return ResourceManager.GetString("Persona_Int32FieldRemarks", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_GeneroTooltip {
+        public static string Persona_Int32FieldTooltip {
             get {
-                return ResourceManager.GetString("Persona_GeneroTooltip", resourceCulture);
+                return ResourceManager.GetString("Persona_Int32FieldTooltip", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_JuridicaAlias {
+        public static string Persona_Int64FieldAlias {
             get {
-                return ResourceManager.GetString("Persona_JuridicaAlias", resourceCulture);
+                return ResourceManager.GetString("Persona_Int64FieldAlias", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_JuridicaRemarks {
+        public static string Persona_Int64FieldRemarks {
             get {
-                return ResourceManager.GetString("Persona_JuridicaRemarks", resourceCulture);
+                return ResourceManager.GetString("Persona_Int64FieldRemarks", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_JuridicaTooltip {
+        public static string Persona_Int64FieldTooltip {
             get {
-                return ResourceManager.GetString("Persona_JuridicaTooltip", resourceCulture);
+                return ResourceManager.GetString("Persona_Int64FieldTooltip", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_LogoImagenAlias {
+        public static string Persona_IntFieldAlias {
             get {
-                return ResourceManager.GetString("Persona_LogoImagenAlias", resourceCulture);
+                return ResourceManager.GetString("Persona_IntFieldAlias", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_LogoImagenRemarks {
+        public static string Persona_IntFieldRemarks {
             get {
-                return ResourceManager.GetString("Persona_LogoImagenRemarks", resourceCulture);
+                return ResourceManager.GetString("Persona_IntFieldRemarks", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_LogoImagenTooltip {
+        public static string Persona_IntFieldTooltip {
             get {
-                return ResourceManager.GetString("Persona_LogoImagenTooltip", resourceCulture);
+                return ResourceManager.GetString("Persona_IntFieldTooltip", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_MatriculaAlias {
+        public static string Persona_LongFieldAlias {
             get {
-                return ResourceManager.GetString("Persona_MatriculaAlias", resourceCulture);
+                return ResourceManager.GetString("Persona_LongFieldAlias", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_MatriculaRemarks {
+        public static string Persona_LongFieldRemarks {
             get {
-                return ResourceManager.GetString("Persona_MatriculaRemarks", resourceCulture);
+                return ResourceManager.GetString("Persona_LongFieldRemarks", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_MatriculaTooltip {
+        public static string Persona_LongFieldTooltip {
             get {
-                return ResourceManager.GetString("Persona_MatriculaTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Persona_MobilAlias {
-            get {
-                return ResourceManager.GetString("Persona_MobilAlias", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Persona_MobilRemarks {
-            get {
-                return ResourceManager.GetString("Persona_MobilRemarks", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Persona_MobilTooltip {
-            get {
-                return ResourceManager.GetString("Persona_MobilTooltip", resourceCulture);
+                return ResourceManager.GetString("Persona_LongFieldTooltip", resourceCulture);
             }
         }
         
@@ -504,135 +477,54 @@ namespace Atento.Suite.Shared.Infrastructure.Resources {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_PaisAlias {
+        public static string Persona_ShortFieldAlias {
             get {
-                return ResourceManager.GetString("Persona_PaisAlias", resourceCulture);
+                return ResourceManager.GetString("Persona_ShortFieldAlias", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_PaisRemarks {
+        public static string Persona_ShortFieldRemarks {
             get {
-                return ResourceManager.GetString("Persona_PaisRemarks", resourceCulture);
+                return ResourceManager.GetString("Persona_ShortFieldRemarks", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_PaisTooltip {
+        public static string Persona_ShortFieldTooltip {
             get {
-                return ResourceManager.GetString("Persona_PaisTooltip", resourceCulture);
+                return ResourceManager.GetString("Persona_ShortFieldTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Télefono.
+        /// </summary>
+        public static string Persona_TimeSpanFieldAlias {
+            get {
+                return ResourceManager.GetString("Persona_TimeSpanFieldAlias", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_ProvinciaAlias {
+        public static string Persona_TimeSpanFieldRemarks {
             get {
-                return ResourceManager.GetString("Persona_ProvinciaAlias", resourceCulture);
+                return ResourceManager.GetString("Persona_TimeSpanFieldRemarks", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Persona_ProvinciaRemarks {
+        public static string Persona_TimeSpanFieldTooltip {
             get {
-                return ResourceManager.GetString("Persona_ProvinciaRemarks", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Persona_ProvinciaTooltip {
-            get {
-                return ResourceManager.GetString("Persona_ProvinciaTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Persona_SectorAlias {
-            get {
-                return ResourceManager.GetString("Persona_SectorAlias", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Persona_SectorRemarks {
-            get {
-                return ResourceManager.GetString("Persona_SectorRemarks", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Persona_SectorTooltip {
-            get {
-                return ResourceManager.GetString("Persona_SectorTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Persona_SiteAlias {
-            get {
-                return ResourceManager.GetString("Persona_SiteAlias", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Persona_SiteRemarks {
-            get {
-                return ResourceManager.GetString("Persona_SiteRemarks", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Persona_SiteTooltip {
-            get {
-                return ResourceManager.GetString("Persona_SiteTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Persona_TelefonoAlias {
-            get {
-                return ResourceManager.GetString("Persona_TelefonoAlias", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Persona_TelefonoRemarks {
-            get {
-                return ResourceManager.GetString("Persona_TelefonoRemarks", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Persona_TelefonoTooltip {
-            get {
-                return ResourceManager.GetString("Persona_TelefonoTooltip", resourceCulture);
+                return ResourceManager.GetString("Persona_TimeSpanFieldTooltip", resourceCulture);
             }
         }
         

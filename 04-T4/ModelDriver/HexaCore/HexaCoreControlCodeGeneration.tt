@@ -1,0 +1,289 @@
+﻿<#+
+
+public void HexaCoreControlCodeGeneration(DslContextDefinitionDiagram MainDiagram, ActiveSolution SolutionInfo, ITree<LocalizedBounded> TreeApp)
+{
+    bool okDebug = false;
+    if (okDebug) Debug.WriteLine("entramos en HexaCoreControlCodeGeneration ");
+
+    string bdName = MainDiagram.SolutionFolderCommon; // este es el parametro que junto con diagrama, solución y arq pasamos como parametros a las clases de plantillas de generación.
+    string secureBdName = bdName.Replace('\\','.');
+    // VARIABLES INTERNAS
+    string OutputFile= null;  // nombre del fichero output donde vamos a escribir el fuente correspondiente
+    string prjName= null;
+    Project prj;              // proyecto donde se escribe el codigo fuente
+    
+    // CUERPO DEL METODO
+    ITree<ClassBase> boundedContextElements = null;
+
+    int BoundedContextCount = 0;
+    int TotalEntitysAllBoundedContext = GetTotalEntitysAllBoundedContext(TreeApp);
+    int counterEntitysAllBoundedContext =0;
+    int contadorDeEntidades = 0;
+    int totalDeEntidades = 0;
+
+    if (okDebug) Debug.WriteLine(string.Format("TotalEntitysAllBoundedContext ='{0}'",TotalEntitysAllBoundedContext));
+
+    string estadoDeDesarrollo = "desarrollo";
+    string estadoDeDesarrolloResx = "desarrollo";
+
+    foreach( INode<LocalizedBounded> context in TreeApp.All.Nodes )
+    {
+        kayak.MoneyGen.Application boundedContext = context.Data.Context.Value;
+        bdName = context.Data.Context.Key;
+        BoundedContextCount++;
+        contadorDeEntidades = 0;
+
+        if (boundedContext != null & bdName != null)
+        {
+            boundedContextElements = ReadClassesHierarchie(boundedContext);
+            secureBdName = bdName.Replace('\\','.');
+
+            totalDeEntidades = boundedContextElements.All.Nodes.Where(p=> (p.Data is Entity || p.Data is ObjectValue || p.Data is Enumeration) & p.Data.ReferencedRootEntity == null).Count();
+            if (okDebug) Debug.WriteLine(string.Format("bd ='{0}'",secureBdName));
+            if (okDebug) Debug.WriteLine(string.Format("totalDeEntidades ='{0}'",totalDeEntidades));
+
+            ClassBaseContext CBC;
+                foreach (INode<ClassBase> item in boundedContextElements.All.Nodes.Where(p=>( p.Data is Entity || p.Data is ObjectValue || p.Data is Enumeration) & p.Data.ReferencedRootEntity == null))
+                {
+                    if (item.Data.ReferencedRootEntity != null) continue; // Si la entidad u objeto valor es una entidad de referencia entonces la ignoramos.
+                    contadorDeEntidades++; // este contador se utiliza para generar de forma incremental los ficheros de recursos de un contexto dado por lo que tenemos que incluir todas las entidaes que aprezcan, incluso las referenciadas.
+                    counterEntitysAllBoundedContext++;
+
+            if (okDebug) Debug.WriteLine(string.Format("contadorDeEntidades ='{0}'",contadorDeEntidades));
+            if (okDebug) Debug.WriteLine(string.Format("counterEntitysAllBoundedContext ='{0}'",counterEntitysAllBoundedContext));
+
+
+                    if( counterEntitysAllBoundedContext == 1) estadoDeDesarrollo = "inicioTotal";
+                    if( counterEntitysAllBoundedContext > 1) estadoDeDesarrollo = "enProceso";
+                    if( counterEntitysAllBoundedContext == TotalEntitysAllBoundedContext) estadoDeDesarrollo = "finTotal";
+                     
+                    if( TotalEntitysAllBoundedContext == 1 & counterEntitysAllBoundedContext == 1) estadoDeDesarrollo = "soloUna";
+
+                    if( contadorDeEntidades == 1) estadoDeDesarrolloResx = "inicio"; 
+                    if( contadorDeEntidades > 1) estadoDeDesarrolloResx = "enProceso"; 
+                    if( contadorDeEntidades == totalDeEntidades ) estadoDeDesarrolloResx = "fin";
+                    if( contadorDeEntidades == 1 & totalDeEntidades == 1) estadoDeDesarrolloResx = "soloUna";
+
+                    ClassBase entity = item.Data;
+                    bool EntidadNoAbstracta = (( entity.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Abstract) != kayak.MoneyGen.InheritClassKeywords.Abstract &
+                                             ( entity.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Public) == kayak.MoneyGen.InheritClassKeywords.Public     ); // si la clase es abstracta no tiene factorias
+
+                    CBC = new ClassBaseContext(MainDiagram, SolutionInfo, entity, secureBdName);
+                    //if (okDebug) CBC.DebugContext();
+                // cada entidad tiene un reflejo en cada capa por lo tanto para cada entidad recorremos cada una de las capas y sus proyectos asociados.
+
+                ICollection<Architecture.ArqLayer> LayersList = Architecture.HexaCoreMVCLayers ; // recorremos la definición de pureDDD o HexaCore
+                if (MainDiagram.Architecture == ArchitectureOptions.PureDDD)
+                {
+                    LayersList = Architecture.ArqLayers; // Esta es la propiedad que almacena la definción de proyectos para la arquitectura de pureDDD. 
+                }
+                foreach (Architecture.ArqLayer layer in LayersList) 
+                {
+                    WriteLine("\n\n{0}",layer.LayerType );
+                    string FolderLayerName = GetFolderLayerName(MainDiagram, layer.LayerType);
+                    //switch (layer.LayerType)
+                    //{
+                        //case LayerKind.UX:
+                            //FolderLayerName= "UX";
+                            //break;
+                        //case LayerKind.UxWpf:
+                            //FolderLayerName= "UX"+System.IO.Path.DirectorySeparatorChar+"Wpf";
+                            //break;
+                        //case LayerKind.UxSilverlight:
+                            //FolderLayerName= "UX"+System.IO.Path.DirectorySeparatorChar+"Sl";
+                            //break;
+                        //case LayerKind.UxHtml5:
+                            //FolderLayerName= "UX"+System.IO.Path.DirectorySeparatorChar+"Html5";
+                            //break;
+                        //case LayerKind.Application:
+                            //FolderLayerName = MainDiagram.SolutionFolderApplication; // al pasar a metodo sustituir MainDiagram por diagram
+                            //break;
+                        //case LayerKind.DistributedServices:
+                            //FolderLayerName= "WebSvc";
+                            //break;
+                        //case LayerKind.Domain:
+                            //FolderLayerName = MainDiagram.SolutionFolderDomain;// al pasar a metodo sustituir MainDiagram por diagram
+                            //break;
+                        //case LayerKind.Infrastructure:     
+                            //FolderLayerName = MainDiagram.SolutionFolderInfraestructure;// al pasar a metodo sustituir MainDiagram por diagram
+                            //break;
+                        //case LayerKind.None:     
+                            //FolderLayerName = MainDiagram.SolutionFolderBoundedContext;// al pasar a metodo sustituir MainDiagram por diagram
+                            //break;
+                        //default:
+                            //FolderLayerName =null;
+                            //throw new ArgumentNullException("EL TIPO DE LAYER NO ESTA CONTEMPLADO");
+                            //break;
+                    //}// END switch (layer.LayerType)
+
+                        if (FolderLayerName!=null)
+                        {
+                            // string contextPath = GetBoundedContextLayerPath(diagram.SolutionFolderBoundedContext, bdName, FolderLayerName);
+                            if (layer.LayerProyects != null)
+                                foreach (Architecture.ArqLayer.ArqProject project in layer.LayerProyects)
+                                {
+                                    // Debug.WriteLine("\n  {0},\t{1}",project.Name, project.Template );
+                                    string nombreprojecto; 
+                                    switch (layer.LayerType)
+                                    {
+                                        case LayerKind.Domain:
+                                            nombreprojecto = MainDiagram.RootNameSpace+"." + secureBdName +"."+MainDiagram.SolutionFolderDomain + "."+project.Name; // al pasar a metodo sustituir MainDiagram por diagram 2
+                                            break;
+                                        case LayerKind.Infrastructure:
+                                            nombreprojecto = MainDiagram.RootNameSpace+"." + secureBdName +"."+MainDiagram.SolutionFolderInfraestructure + "."+project.Name; // al pasar a metodo sustituir MainDiagram por diagram 2
+                                            break;
+                                        case LayerKind.Application:
+                                            nombreprojecto = MainDiagram.RootNameSpace+"." + secureBdName +"."+MainDiagram.SolutionFolderApplication + "."+project.Name; // al pasar a metodo sustituir MainDiagram por diagram 2
+                                            break;
+                                        case LayerKind.UxWpf:
+                                            nombreprojecto = MainDiagram.RootNameSpace+"." + secureBdName +"."+"UX.Wpf" + "."+project.Name;
+                                            break;
+                                        case LayerKind.None:
+                                            nombreprojecto = project.Name;
+                                            break;
+                                        default:
+                                            nombreprojecto = null;
+                                            throw new ArgumentNullException("EL NOMBRE DEL PROYECTO NO PUEDE SER NULO");
+                                            break;
+                                    }// END switch (layer.LayerType)
+
+                                    string temppath = MainDiagram.AbsProyectsPath +System.IO.Path.DirectorySeparatorChar+nombreprojecto ;
+                                    string nombreprojectoConExtension = nombreprojecto + ".csproj";
+
+                                    // en este punto cuando ya tenemos el nombre del proyecto renderizamos las plantillas que generar código o ficheros de configuración especificos del proyecto
+                                    // sin necesidad de recorrer la entidades u otros objetos del diagrama.
+
+
+                                    string superfolder = null;
+                                    ClassBase entitySuperClass = null;
+                                    var kindComposition = WhatTypeComponented(entity);
+                                    if(!string.IsNullOrEmpty( entity.FolderNameSpaceAggregatedName))
+                                    {
+                                        superfolder = entity.FolderNameSpaceAggregatedName + System.IO.Path.DirectorySeparatorChar;
+                                    }
+
+                                    if (entity is Entity & (IsDerived( entity) || entity.SourceClassBase != null))// consultamos si esta entidad hereda de alguna otra por herencia simple del lenguaje.
+                                    {
+                                        if (entity.SourceClassBase != null)
+                                        {
+                                            entitySuperClass = GetSuperEntity(entity); 
+                                        }
+                                        else
+                                        {
+                                            entitySuperClass = entity.SourceClassBase; // Tambien puede obtenerse por (Entity)item.Parent.Data 
+                                        }
+                                        superfolder = superfolder + GetSuperFolders(entity); // en cuyo caso obtenemos su estructura de carpetas anidadas
+
+                                        superfolder = superfolder + System.IO.Path.DirectorySeparatorChar;
+                                    } 
+                                    else if (entity is  Entity & ( kindComposition.Equals(KindComponented.isOneChild) | kindComposition.Equals(KindComponented.allAreOneFather )))
+                                    {
+                                        string fatherCompouser = GetFatherCompouserFolder(entity);
+                                        if (!string.IsNullOrEmpty(fatherCompouser))
+                                            superfolder =  fatherCompouser + System.IO.Path.DirectorySeparatorChar ;
+                                    } // END if (IsDerived( entity))
+
+                                    if (context.Depth > 0)
+                                    {                   
+                                        // si el digrama que estamos procesando esta anidado incluimos todos sus elementos en una carpeta que coincida con su nombre.
+                                        // execpto si se trata de un enumerado cual colocamos en la carpeta "enum".
+                                        superfolder = context.Data.Context.Key + System.IO.Path.DirectorySeparatorChar + superfolder;
+                                    }
+                          if (okDebug) Debug.WriteLine(string.Format(" superfolder = '{0}' of entity '{1}' ",superfolder, entity.Name ));
+                          if (okDebug) Debug.WriteLine(string.Format(" layer.LayerTyper = '{0}'  project.Name '{1}' ",layer.LayerType.ToString(), project.Name ));
+
+                                    switch (layer.LayerType)
+                                    {
+                                        case LayerKind.Domain:
+                                            break;
+                                        case LayerKind.Infrastructure:
+                                            break;
+                                        case LayerKind.Application:
+                                            break;
+                                        case LayerKind.UxWpf:
+                                            break;
+                                        case LayerKind.None:
+                                            // La generación del fichero de recursos es acumulativa por tanto es necesario controlar la tres fases del mismo.
+                                            // es decir en la primera fase inicializamos la cabecera  y la primera entidad que recorremos, en la segunda introducimos el contenido 
+                                            // y en la tercera cerramos el fichero despues de meter la info de la ultima entidad recorrida.
+
+                                         switch (project.Name) // en este punto tenemos el projecto el nombre del projecto y la entidad
+                                            {
+                                                case "Domain":
+                                                
+                                                if (okDebug) Debug.WriteLine(string.Format("entidad ='{0}', estadoDeDesarrolloResx = '{1}'",entity.Name, estadoDeDesarrolloResx));
+                                                if (okDebug) Debug.WriteLine(string.Format("entidad ='{0}', estadoDeDesarrollo     = '{1}'",entity.Name, estadoDeDesarrollo));
+                                                if (CBC.IsEnumeration)
+                                                {
+                                                    var tenum  = new DomainEnumerationCT(CBC, nombreprojecto, null);
+                                                    tenum.Output.File = "Enums"+System.IO.Path.DirectorySeparatorChar+ entity.Name+System.IO.Path.DirectorySeparatorChar+ "Enum"+entity.Name+".cs";
+                                                    tenum.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                    tenum.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                    tenum.Render();
+                                                }
+                                               
+                                                        if (CBC.IsEntity || CBC.IsObjectValue)
+                                                        {
+                                                            // renderización de entidades y objetos valor para dominio
+                                                            var t5  = new DomainBaseEntityCT(CBC, nombreprojecto, null);
+                                                            t5.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+ entity.Name+".cs";
+                                                            if (okDebug) Debug.WriteLine(string.Format("el t5.Output.File  ='{0}'",t5.Output.File ));
+                                                            if (okDebug) Debug.WriteLine(string.Format("el temppath ='{0}', el nombreprojectoConExtension = '{1}'",temppath, nombreprojectoConExtension));
+                                                            //t5.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            t5.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            t5.Render();
+                                                        }
+
+                                                        var t20   = new InfraestructureResourcesCT(CBC, nombreprojecto, null, estadoDeDesarrolloResx);
+                                                        t20.Output.File = secureBdName+"Neutral.resx";
+                                                        if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",t20.Output.File ));
+                                                        t20.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre estadoDeDesarrolloResxdel mismo.
+                                                        t20.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                        t20.Output.ItemType = ItemType.EmbeddedResource;
+                                                        t20.Output.CustomTool = "PublicResXFileCodeGenerator";
+                                                        //t20.Output.CustomToolNamespace = secureBdName;
+                                                        t20.Output.Encoding = Encoding.UTF8;
+                                                        t20.Render();
+                                                    
+                                                    var thxmodel   = new HxModelCT(CBC, nombreprojecto, null, estadoDeDesarrollo);
+                                                    thxmodel.Output.File = "Model.hxmodel";
+                                                    thxmodel.projectNamespace = nombreprojecto; 
+                                                    //thxmodel.Output.ItemType = ItemType.EmbeddedResource;
+                                                    //thxmodel.Output.CustomTool = "PublicResXFileCodeGenerator";
+                                                    //t20.Output.CustomToolNamespace = secureBdName;
+                                                    thxmodel.Output.Encoding = Encoding.UTF8;
+                                                    thxmodel.Render();
+                                                    
+                                                    
+                                                        var tOneContexthxmodel   = new OneContextHxModelCT(CBC, nombreprojecto, null, estadoDeDesarrolloResx);
+                                                        tOneContexthxmodel.Output.File = secureBdName+"Model.hxmodel";
+                                                        tOneContexthxmodel.projectNamespace = nombreprojecto; 
+                                                        //thxmodel.Output.ItemType = ItemType.EmbeddedResource;
+                                                        //thxmodel.Output.CustomTool = "PublicResXFileCodeGenerator";
+                                                        //t20.Output.CustomToolNamespace = secureBdName;
+                                                        tOneContexthxmodel.Output.Encoding = Encoding.UTF8;
+                                                        tOneContexthxmodel.Render();
+                                                    
+
+                                                break;
+                                                case "Data":
+                                                     if (okDebug) Debug.WriteLine("proyecto Data");
+                                                break;
+                                                case "Bootstrapper":
+                                                     if (okDebug) Debug.WriteLine("proyecto Bootstrapper");
+                                                break;
+                                            }
+                                            break;
+                                        default:
+                                            break;
+
+                                    } // END switch (layer.LayerType)
+                                } // END  foreach (Architecture.ArqLayer.ArqProject project in layer )
+                        } //END  if (FolderLayerName!=null)
+                    }  // End foreach layer
+                }// End foreach( entity )
+            } // if (BoundedContext != null & bdName != null)
+        }// end foreach (context)
+}
+#>
+

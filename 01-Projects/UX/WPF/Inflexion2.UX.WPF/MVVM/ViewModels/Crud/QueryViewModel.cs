@@ -15,29 +15,40 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
     using Microsoft.Practices.Prism.Regions;
 
     /// <summary>
-    /// Clase pública que representa la Vista Modelo Base de la cuál tiran el
-    /// resto de ViewModels.
+    /// .en Generic abstract Base class for the Query View Models.
+    /// this kind of ViewModel are prepared to manage collection of entities whose are Root Aggreagates.
+    /// .es Clase generica y abstracta de la que derivan los query view models. 
+    /// Este tipo de view models se utiza para manejar conjuntos de entidades que son root aggregates
+    /// es decir que puedne tener operaciones CRUD sobre el repositorio.
     /// </summary>
-    /// <remarks>
-    /// Sin comentarios adicionales.
-    /// </remarks>
     public abstract class QueryViewModel<T, TView, TIdentifier> : WorkspaceViewModel 
         where T : IEntityViewModel<TIdentifier>
         where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
     {
+        #region Fields
 
         private T item;
-        private ObservableCollection<T> items;
-        private SpecificationDto specification = new SpecificationDto();
+        // esta collección se inicializa en el metodo getRecords de los view models derivados y que se aplican ya entidades concretas
+        private ObservableCollection<T> items ;
+        // La inizialización de este campo hace que se ejecute antes que la cadena de constructores.
+        // y debe estar inizializado para evitar que prism genere una excepción de navegación.
+        private SpecificationDto specification = new SpecificationDto() ;
+
+        /// <summary>
+        /// .es Variable privada utilizada para obtener y establecer el número de 
+        /// registros cargados.
+        /// </summary>
+        private int totalRecordCount = 0;
+        private int pageIndex = 0;
+        private int pageSize;// = 10
+
+        #endregion
 
         #region CONSTRUCTORS
 
         /// <summary>
-        /// Inicializa una nueva instancia de la clase.
+        /// .es Inicializacion de base para una nueva instancia de un nuevo query view model.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         public QueryViewModel()
         {
             if (!this.IsDesignTime)
@@ -54,6 +65,13 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
 
         #region PROPERTIES
 
+        /// <summary>
+        /// .es todos los viewmodels de query manejan siempre una colleción de entidades 
+        /// que son root aggregate y que se guardan en un repositorio.
+        /// Para cualquier collección es importante saber sobre que registro se desea aplicar una operación.
+        /// Esta propiedad mantiene una sicronización con el control de usuario (datagrid o cualquier otro tipo)
+        /// indicandonos cual es el registro o entidad seleccionado.
+        /// </summary>
         public T SelectedItem
         {
             get
@@ -69,6 +87,11 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             }
         }
 
+        /// <summary>
+        /// .es Mantiene la coleccion de viewmodels de las entidades que deseamos manejar.
+        /// En este caso cada linea de el datagrid o del control seleccionado tiene su propio view model.
+        /// Este tiene asu vez la información del registro correspondiente o de la entidad que vamos a mostrar en una linea concreta.
+        /// </summary>
         public ObservableCollection<T> Items
         {
             get
@@ -77,19 +100,24 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             }
             set
             {
+                // este set se lleva a acabo en el metodo getrecords de los view models derivados sobre entidades concretas
                 this.items = value;
                 RaisePropertyChanged(() => this.Items);
             }
         }
 
+        /// <summary>
+        /// Esta es la propiedad que proporciona el nombre a la ventana o al control de usuario donde 
+        /// se va a visualizar este view model.
+        /// </summary>
         public override string Title
         {
             get { return string.Empty; }
         }
 
         /// <summary>
+        /// .en Variable to calculate the total pages.
         /// .es Variable calculada para obtener el numero de paginas en función del numero de registros y el numero de registros paginados.
-        /// .en Private variable to calculate the total pages
         /// </summary>
         public int TotalPagesCount
         {
@@ -101,24 +129,12 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
                 }
                 return 0;
             }
-        } // TotalRecordCount
-
-        /// <summary>
-        /// .es Variable privada utilizada para obtener y establecer el número de 
-        /// registros cargados.
-        /// </summary>
-        /// <remarks>
-        /// .es Sin comentarios adicionales.
-        /// </remarks>
-        private int totalRecordCount = 0;
+        } // end TotalPagesCount
 
         /// <summary>
         /// Propiedad pública encargada de obtener e indicar el número de registros 
         /// cargados en el control de datos.
         /// </summary>
-        /// <remarks>
-        /// .es Sin comentarios adicionales.
-        /// </remarks>
         public int TotalRecordCount
         {
             get
@@ -135,7 +151,10 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             }
         } // TotalRecordCount
 
-        private int pageIndex = 0;
+
+        /// <summary>
+        /// .es Indice actual correspondiente a la página en la que nos encontramos.
+        /// </summary>
         public int PageIndex
         {
             get
@@ -159,7 +178,9 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             }
         } // PageIndex
 
-        private int pageSize ;// = 10
+        /// <summary>
+        /// .es Tamaño en registros que se desean visualizar en una página.
+        /// </summary>
         public int PageSize
         {
             get
@@ -177,6 +198,11 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             }
         } // PageSize
 
+        /// <summary>
+        /// propiedad de specification Dto este es un dto con el que se informa a la capa de aplicación que se 
+        /// ha solicitado la ejecución de una operación, generalmente aplicandose a uno o varias entidades y que puede afectar a
+        /// a la información almacenada sobre cada uno de ellos en el correspondiente repositorio.
+        /// </summary>
         public Inflexion2.Application.DataTransfer.Core.SpecificationDto Specification
         {
             get
@@ -195,6 +221,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
 
         #endregion
 
+        #region Can Methods  for commands
         public override bool CanActivateRecord(object parameter)
         {
             return (this.SelectedItem != null /* && !this.SelectedItem.Activo */); // todo: incluir en nuevos view models para business entity
@@ -256,6 +283,8 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             return this.pageIndex != TotalPagesCount;
         }
 
+        #endregion
+
         protected virtual void NavigateToRecord(TIdentifier id)
         {
             //if (this.IsActive)
@@ -279,9 +308,9 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             NavigateToRecord(this.item.Id);
         }
 
-
-
-
+        /// <summary>
+        /// refrescamos los susbcriptores de los comandos CRUD recalculando para cada uno de ellos si se habilita o no.
+        /// </summary>
         protected void RefreshCommands()
         {
             var cmd = this.deleteRecordCommand as Microsoft.Practices.Prism.Commands.DelegateCommand<object>;
@@ -299,6 +328,10 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             this.RefreshPagingCommands();
         }
 
+        /// <summary>
+        /// refrescamos los subscriptores de los comandos de navegación recalculando para cada uno de ellos 
+        /// si se habilitan sus suscriptores o no.
+        /// </summary>
         protected void RefreshPagingCommands()
         {
             var cmd = this.getFirstPageRecordsCommand as Microsoft.Practices.Prism.Commands.DelegateCommand<object>;

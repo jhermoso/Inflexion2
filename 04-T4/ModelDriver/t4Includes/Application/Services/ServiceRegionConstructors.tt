@@ -1,0 +1,84 @@
+﻿<#+
+public class ServiceRegionConstructors : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public ServiceRegionConstructors(ClassBaseContext  cBc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cBc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+        // subplantillas particulares
+        var mandatoryParameters = new MandatoryParameters( cbc, projectNamespace, Skt); string MandatoryParametersTxt = mandatoryParameters.TransformText();
+        bool isSharedKernel = this.projectNamespace.Contains(cbc.diagram.SolutionFolderCommon);
+        int spaceformatcounter = 8 + cbc.secureEntityName.Length;
+
+        if (isSharedKernel)
+        {
+            spaceformatcounter = spaceformatcounter + " protected internal ".Length;
+        }
+        else
+        {
+            if (cbc.isAbstract ) 
+                {
+                    spaceformatcounter = spaceformatcounter + " protected ".Length;
+                }                       
+            else 
+                {
+                spaceformatcounter = spaceformatcounter + " internal ".Length;
+                }
+        }
+
+        //string MandatoryEntityBaseConstructorParamansDefinition = GetConstructorParametersStringTaxonomi(
+                //cbc.diagram.TreeApp,                           
+                //cbc.entity,                                     /* entidad */
+                //cbc.diagram.IdKind.Equals("Autonumerical"),     /* tipo id */
+                //SelectionCriteriaAttributes.Mandatory,          /* Selección de criterios */
+                //80,                                             /* Longitud máxima para activar el salto de parametros */
+                //true,                                           /* Incluir el tipo del parametro. Por ejemplo:incluye string, int etc*/
+                //spaceformatcounter,                             /* Indentación de los parametros cuando se salta */
+                //false,                                          /* incluirDefaultValues */
+                //false,                                          /* incluirId */
+                //true,                                           /* incluirTargetAssociations */
+                //true                                            /* incluirSourceAssociations */
+                //).Trim();                                       /* pascalCase */
+                                                                ///* prefijo */
+                                                                ///* sufijo */
+#>
+        #region Constructors
+
+        /// <summary>
+        /// Constructor estático de la clase <see cref="T:<#= cbc.pascalSecureEntityName #>>Service"/>.
+        /// </summary>
+        static <#= cbc.pascalSecureEntityName #>Services()
+        {
+            ILoggerFactory loggerFactory = ManagerIoC.Container.Resolve<ILoggerFactory>();
+            logger = loggerFactory.Create(typeof(<#= cbc.pascalSecureEntityName #>Services));
+        }
+
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="T:<#= cbc.pascalSecureEntityName #>>Service"/>.
+        /// </summary>
+        /// <remarks>
+        /// Constructor de la clase <see cref="T:<#= cbc.pascalSecureEntityName #>Services"/>.
+        /// </remarks>
+        public <#= cbc.pascalSecureEntityName #>Services()
+        {
+            this.<#= cbc.camelSecureEntityName #>Mapper = ManagerIoC.Container.Resolve<<#= I #><#= cbc.pascalSecureEntityName #>Mapper>();
+            this.<#= cbc.camelSecureEntityName #>RepositoryFactory = ManagerIoC.Container.Resolve<<#= I #><#= cbc.pascalSecureEntityName #>RepositoryFactory>();
+        }
+
+        #endregion
+
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

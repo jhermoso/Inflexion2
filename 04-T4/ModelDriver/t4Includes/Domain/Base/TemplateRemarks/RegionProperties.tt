@@ -1,0 +1,150 @@
+﻿<#+
+public class RegionProperties : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public RegionProperties(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+#>
+        #region PROPIEDADES
+
+<#+
+            // solo las propiedades que provienen de atributos que son de tipo valor pueden ser nullables.
+            // igualmente todas las propiedades que se basan en estructs pueden ser get o set 
+            // mientras que aquellas que no son structs no pueden tener un set público.
+            foreach (var property in cbc.propertyObjects)
+            {
+               cbc.t = System.Type.GetType("System."+property.AtributteType);
+                    if (cbc.t!= null)
+                    {
+                        cbc.propertyIsValueType = cbc.t.IsValueType;
+                    }
+#>
+<#+  if(property.OnlyGetProperty) 
+     {
+#>
+        /// <summary>
+        /// Propiedad pública con set privado que permite obtener <#= T4Help.SecureName(property.AtributteName) #>.
+        /// </summary>
+        /// <remarks>
+        /// <#= property.ProgramerRemarks #>
+        /// </remarks>
+        /// <value>
+        /// Valor que es utilizado para establecer y obtener <#= T4Help.SecureName(property.AtributteName) #>.
+        /// </value>
+<#+ 
+if (cbc.diagram.ValidationContracts.Equals("DataAnotations"))
+    {
+        if (property.RequestUponCreation==RequestUponCreation.yes) //(property.IsMandatory) 
+        {
+#>
+        [Required(ErrorMessageResourceName = "FieldIsMandatory", ErrorMessageResourceType = typeof(CoreResources.Neutral))]
+<#+
+        }
+    }
+#>
+        public <#=(cbc.diagram.ORM.Length >0)?"virtual":"" #> <#= property.AtributteType #><#= (property.IsNullable & cbc.propertyIsValueType )?"?":"" #> <#= T4Help.SecureName(property.AtributteName) #> 
+            {
+<#+
+if (cbc.diagram.ValidationContracts.Equals("CodeContracts")) 
+{
+#>
+            get 
+                {
+                    return this.<#= T4Help.ToCamelCase(property.AtributteName) #>;
+                }
+            <#=(cbc.diagram.ORM.Contains("ibernate"))?"protected":"private" #> set 
+                {
+
+<#+
+    if (property.RequestUponCreation == RequestUponCreation.yes & !( property.IsNullable) & String.IsNullOrEmpty(property.DefaultValue.Trim()))
+    { // comprobamos si la propiedad es mandatory en cuyo caso su valor no puede ser nulo
+        if ((!T4Help.IsValueType(property.AtributteType) & !property.IsNullable) | (T4Help.IsValueType(property.AtributteType) & property.IsNullable) ) /* solo escribimos la condición del invariante en caso de que la propiedad sea nullable. Los tipos valor no lo son*/
+        {
+#>
+                    Contract.Requires<System.ArgumentNullException>(value != null, "La propiedad <#= T4Help.SecureName(property.AtributteName) #> no puede ser nulo"); // Este campo no puede ser nulo y es mandatory
+<#+ 
+        }
+    } /*end if madatory & nullable*/
+#>
+
+                    this.<#= T4Help.ToCamelCase(property.AtributteName) #> = value;
+                }
+            }
+<#+ } /* end if code contracts*/ #>
+<#+
+if (cbc.diagram.ValidationContracts.Equals("DataAnotations")) // en este caso establcemos las propiedades automáticas
+{
+#>
+            get;
+            set;
+<#+ } /* end if DataAnotations*/ #>
+<#+ 
+    }// end if only get property
+     else
+     {
+#>
+        /// <summary>
+        /// Propiedad pública con set publico que permite establecer y obtener <#= T4Help.SecureName(property.AtributteName) #>.
+        /// </summary>
+        /// <remarks>
+        /// <#= property.ProgramerRemarks #>
+        /// </remarks>
+        /// <value>
+        /// Valor que es utilizado para establecer y obtener <#= T4Help.SecureName(property.AtributteName) #>.
+        /// </value>
+        public <#=(cbc.diagram.ORM.Length >0)?"virtual":"" #> <#= property.AtributteType #><#= (property.IsNullable & cbc.propertyIsValueType )?"?":"" #> <#= T4Help.SecureName(property.AtributteName) #> 
+            {
+<#+
+if (cbc.diagram.ValidationContracts.Equals("CodeContracts")) 
+{
+#>
+            get 
+                {
+                    return this.<#= T4Help.ToCamelCase(property.AtributteName) #>;
+                }
+            set 
+                {
+<#+
+if (cbc.diagram.ValidationContracts.Equals("CodeContracts")) 
+{
+#>
+<#+
+    if (property.RequestUponCreation == RequestUponCreation.yes & !( property.IsNullable) )
+    { // comprobamos si la propiedad es mandatory en cuyo caso su valor no puede ser nulo
+        if ((!T4Help.IsValueType(property.AtributteType) & !property.IsNullable) | (T4Help.IsValueType(property.AtributteType) & property.IsNullable) ) /* solo escribimos la condición del invariante en caso de que la propiedad sea nullable. Los tipos valor no lo son*/
+        {
+#>
+                    Contract.Requires<System.ArgumentNullException>(value != null, "La propiedad <#= T4Help.SecureName(property.AtributteName) #> no puede ser nulo"); // Este campo no puede ser nulo y es mandatory
+<#+ 
+        }
+    } /*end if mandatory & nullable*/
+}
+#>
+                    this.<#= T4Help.ToCamelCase(property.AtributteName) #> = value;
+                }
+            }
+<#+ } /* end if conde contracts */ #>
+<#+
+if (cbc.diagram.ValidationContracts.Equals("DataAnotations")) // en este caso establcemos las propiedades automáticas
+{
+#>
+            get;
+            <#=(cbc.diagram.ORM.Contains("ibernate"))?"protected":"private" #> set;
+<#+ } /* end if DataAnotations*/ #>
+<#+ 
+    } /* end if  */
+#>
+
+        #endregion
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

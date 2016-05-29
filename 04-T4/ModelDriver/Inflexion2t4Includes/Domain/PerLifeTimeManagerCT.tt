@@ -1,0 +1,72 @@
+﻿<#+
+
+    public class PerLifeTimeManagerCT : Template
+    {
+        // parametros de la plantilla
+        public ClassBaseContext  cbc ;
+        public string projectNamespace;
+        public ITree<BoundedContextMetadata> Skt;        
+
+        // constructor de la plantilla
+        public PerLifeTimeManagerCT(ClassBaseContext  classBaseContext, string nombreProjecto , ITree<BoundedContextMetadata> skt)
+        {
+            cbc = classBaseContext;             // contexto de la clase base a interpretar
+            projectNamespace = nombreProjecto;  // nombre del proyecto para el que estamos interpretando
+            Skt = skt;                          // shared kernel tree            
+        }
+        
+        // metodo de generación de la plantilla
+        public override string TransformText()
+        {
+            var cpyrigth = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity, T4Help.getLeftStringSlice(this.ToString(), '+', -1).Substring(1));
+            string cpyrigthText = cpyrigth.TransformText();
+#>
+<#= cpyrigthText #>
+namespace <#= projectNamespace #>
+{
+using Microsoft.Practices.Unity;
+
+    /// <summary>
+    /// LifetimeManager implementation
+    /// </summary>
+    public class PerLifeTimeManager: LifetimeManager
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        private object value;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override object GetValue()
+        {
+            return value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void RemoveValue()
+        {
+            value = null;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newValue"></param>
+        public override void SetValue(object newValue)
+        {
+            value = newValue;
+        }
+        
+    }
+} // End <#= projectNamespace #>
+
+<#+
+        return this.GenerationEnvironment.ToString();
+    } //end method override TransformText method
+} // end class DomainBaseEntity
+#>

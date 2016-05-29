@@ -212,10 +212,13 @@
                                 <avalonDock:LayoutAnchorablePane>
                                     <avalonDock:LayoutAnchorable  CanClose="False" CanAutoHide="False" CanHide="False" CanFloat="False">
                                         <DockPanel ClipToBounds="True" LastChildFill="True"  Background="White">
-                                            <StackPanel Background="White" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,0,0,5" DockPanel.Dock="Bottom">
+                                            <StackPanel Background="White" Margin="0,0,0,5" DockPanel.Dock="Bottom" VerticalAlignment="Center">
                                                 <ItemsControl  Background="White" x:Name="TaskRegion" prism:RegionManager.RegionName="{x:Static region:RegionNames.TaskbarRegion}" />
-                                                <Image  Height="26" Source="Images\ProductLogo.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
-                                                   Margin="5,10,0,5"/>
+                                                <StackPanel Background="White" Margin="0,0,0,5" DockPanel.Dock="Bottom" Orientation="Horizontal" VerticalAlignment="Center">
+                                                    <Image  Source="images\inflexion2.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                                                	    Margin="5,10,0,5" RenderTransformOrigin="0.5,0.5" Width="26" Height="26"/>
+                                                    <Label Content="Inflexion 2 Success" VerticalAlignment="Bottom" FontFamily="Arial" />
+                                                </StackPanel>
                                             </StackPanel>
                                             <ScrollViewer  VerticalScrollBarVisibility="Auto" >
                                                 <!--Style="{StaticResource ScrollViewerStyle}"-->

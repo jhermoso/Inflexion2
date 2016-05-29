@@ -1,0 +1,60 @@
+﻿<#+
+public class WpfEntityQueryViewXamlCsCT : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    public ClassBaseContext cbc; public string projectNamespace; public ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public WpfEntityQueryViewXamlCsCT(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+        // subplantillas generales
+        var cpyrigthTemplate    = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity, T4Help.getLeftStringSlice(this.ToString(), '+', -1).Substring(1));  string cpyrigthText = cpyrigthTemplate.TransformText();
+        // subplantillas epsecificas
+        var usingTemplate       = new usings( cbc, projectNamespace, Skt);                         string usingTxt     = usingTemplate.TransformText(); //solo los shared kernel
+#>
+
+<#= cpyrigthText #>
+namespace <#= projectNamespace #>
+{
+<#= usingTxt #>
+    #region usings   
+    using System.Windows;
+    using System.Windows.Controls;
+    #endregion
+
+    /// <summary>
+    /// .en Interaction logic for <#= cbc.pascalSecureEntityName #>QueryView.xaml
+    /// .es Logica de interación para la vista <#= cbc.pascalSecureEntityName #>QueryView.xaml
+    /// </summary>
+    public partial class <#= cbc.pascalSecureEntityName #>QueryView : UserControl
+    {
+        #region CONSTRUCTORS
+        /// <summary>
+        /// .en Initialize a new instace for the class <see cref="T:<#= cbc.pascalSecureEntityName #>QueryView"/>.
+        /// .es Inicializa una nueva instancia de la clase <see cref="T:<#= cbc.pascalSecureEntityName #>QueryView"/>.
+        /// </summary>
+        public <#= cbc.pascalSecureEntityName #>QueryView()
+        {
+            InitializeComponent();
+            this.DataContext = new <#= cbc.pascalSecureEntityName #>QueryViewModel();
+            // .en Here you can configure future filters.
+            // .es Aquí se puede introducir la configuración de futuros filtros.
+  
+        } // <#= cbc.pascalSecureEntityName #>QueryView Constructor
+        #endregion
+    }
+
+} //  <#= projectNamespace #>
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

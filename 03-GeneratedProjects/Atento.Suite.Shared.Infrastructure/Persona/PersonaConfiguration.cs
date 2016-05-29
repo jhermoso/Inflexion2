@@ -50,43 +50,35 @@ namespace Atento.Suite.Shared.Infrastructure
             this.ToTable("Persona");
             this.Property(e => e.Nombre).IsRequired();
 
-            this.Property(e => e.Juridica).IsRequired();
+            this.Property(e => e.BooleanField).IsRequired();
 
-            this.Property(e => e.Direccion).IsRequired();
+            this.Property(e => e.DatetimeField).IsRequired();
 
-            this.Property(e => e.Calle).IsRequired();
+            this.Property(e => e.ByteField).IsRequired();
 
-            this.Property(e => e.CP).IsRequired();
+            this.Property(e => e.GuidField).IsRequired();
 
-            this.Property(e => e.Provincia).IsRequired();
+            this.Property(e => e.DecimalField).IsRequired();
 
-            this.Property(e => e.Comunidad).IsRequired();
+            this.Property(e => e.DobleField).IsRequired();
 
-            this.Property(e => e.Pais).IsRequired();
+            this.Property(e => e.FloatField).IsRequired();
 
-            this.Property(e => e.Matricula).IsRequired();
+            this.Property(e => e.IntField).IsRequired();
 
-            this.Property(e => e.Codigo).IsRequired();
+            this.Property(e => e.LongField).IsRequired();
 
-            this.Property(e => e.Sector).IsRequired();
+            this.Property(e => e.DateTimeOffsetField).IsRequired();
 
-            this.Property(e => e.Site).IsRequired();
+            this.Property(e => e.ShortField).IsRequired();
 
-            this.Property(e => e.LogoImagen).IsRequired();
+            this.Property(e => e.TimeSpanField).IsRequired();
 
-            this.Property(e => e.Telefono).IsRequired();
+            this.Property(e => e.Int16Field).IsRequired();
 
-            this.Property(e => e.Fax).IsRequired();
+            this.Property(e => e.Int32Field).IsRequired();
 
-            this.Property(e => e.Mobil).IsRequired();
-
-            this.Property(e => e.Atributte1).IsRequired();
-
-            this.Property(e => e.FormaJuridica).IsRequired();
-
-            this.Property(e => e.Fisica).IsRequired();
-
-            this.Property(e => e.Genero).IsRequired();
+            this.Property(e => e.Int64Field).IsRequired();
         }
         #endregion
     } // 

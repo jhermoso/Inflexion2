@@ -1,0 +1,238 @@
+﻿<#+
+public class RegionProperties : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public RegionProperties(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+        string ResxFileName = prjCon.boundedContextName.Replace(".","")+"Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+
+#>
+        #region Propiedades
+<#+ if (cbc.IsEntity && cbc.LogicDelete){/*si la entidad es de borrado logico añadimos una poropiedad de nombre IsActive*/#>
+        /// <summary>
+        /// .en Property to indicate if this entity is activated. 
+        /// .es Propiedad que indica si esta entidad esta activa o borrada. 
+        /// </summary>
+        /// <remarks>
+        /// .en This entity has logical delete.
+        /// .es Esta entidad tiene borrado logico.
+        /// </remarks>
+        /// <value>
+        /// .en Value used to indicate if the entity is deleted or activated.
+        /// it has not setter becouse his value is setted to true in the constructor an in the destructor of the class.
+        /// .es Valor usado para indicar si la entidad esta borrada o activada.
+        /// no tiene setter por que su valor se establece a true en el constructor y a false en el destructor.
+        /// </value>
+        public virtual bool IsActive
+        {
+            get
+            {
+                return isActive;
+            }
+        }
+<#+ } #>
+<#+
+    // solo las propiedades que provienen de atributos que son de tipo valor pueden ser nullables.
+    // igualmente todas las propiedades que se basan en estructs pueden ser get o set 
+    // mientras que aquellas que no son structs no pueden tener un set público.
+    foreach (var property in cbc.propertyObjects)
+    {
+#>
+<#+     if(property.LiveCycleAtributte.Equals(LiveCycleAtributte.Variable) || property.LiveCycleAtributte.Equals(LiveCycleAtributte.Derivado)) {#>
+
+        /// <summary>
+        /// Propiedad pública<#=(property.AutoProperty)?"":"con set privado" #> que permite obtener <#= T4Help.SecureName(property.AtributteName) #>.
+        /// </summary>
+        /// <remarks>
+        /// <#= property.ProgramerRemarks #>
+        /// </remarks>
+        /// <value>
+        /// Valor que es utilizado para establecer y obtener <#= T4Help.SecureName(property.AtributteName) #>.
+        /// </value>
+<#+ if (cbc.diagram.ValidationContracts.Equals("DataAnotations")  )    {#>
+<#+     if (property.RequestUponCreation==RequestUponCreation.yes || !property.IsNullable) /*(property.IsMandatory) */        {#>
+        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
+                  ErrorMessageResourceName = "FieldIsMandatory" )]
+<#+        }/*end if (property.IsMandatory) */#>
+<#+        if (!string.IsNullOrEmpty(property.MinValue) || !string.IsNullOrEmpty(property.MaxValue)) /*(property.IsMandatory) */        {#>
+        [Range(<#= (!string.IsNullOrEmpty(property.MinValue))? property.MinValue: property.AtributteType+".MinValue" #>, <#= (!string.IsNullOrEmpty(property.MaxValue))?property.MaxValue: property.AtributteType+".MaxValue" #>, ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
+               <#=T4Help.Indent(property.MinValue.Length + property.MaxValue.Length + 4) #>ErrorMessageResourceName = "ValueOutOfRange" )]
+<#+        }/*end if (range min max) */#>
+<#+        if ( property.AtributteType.ToLower().Equals("string") && (property.MinLength>0 && property.MaxLength>0)) /*(property.is string and have a range length) */        {#>
+        [StringLength( <#= property.MaxLength#>, MinimumLength=<#= property.MinLength#>, ErrorMessageResourceType = typeof(<#= ResxFileName #>), ErrorMessageResourceName = "<#= cbc.pascalSecureEntityName+ "_" + property.AtributteName #>RangeStringLengthError" )]
+<#+        }/*end if (range min max) */#>
+<#+        if (property.AtributteType.ToLower().Equals("string") && (property.MinLength>0 && !(property.MaxLength>0))) /*(property.is string and have a min length) */        {#>
+        [MinLength( <#= property.MinLength#>, ErrorMessageResourceType = typeof(<#= ResxFileName #>), ErrorMessageResourceName = "<#= cbc.pascalSecureEntityName+ "_" +property.AtributteName #>MinStringLengthError" )]
+<#+        }/*end if (length min) */#>
+<#+        if (property.AtributteType.ToLower().Equals("string") && (!(property.MinLength>0) && property.MaxLength>0)) /*(property.is string and have a max length) */        {#>
+        [MaxLength( <#= property.MinLength#>, ErrorMessageResourceType = typeof(<#= ResxFileName #>), ErrorMessageResourceName = "<#= cbc.pascalSecureEntityName+ "_" +property.AtributteName #>MaxStringLengthError" )]
+<#+        }/*end if (length max ) */#>
+<#+    } /* end if if (cbc.diagram.ValidationContracts.Equals("DataAnotations"))*/ #>
+<#+         foreach( var invariant in cbc.ClassInvariants.Where(c => c.AfectedProperties.Contains(property.AtributteName) && c.AttributedExpresion ).OrderBy(c => c.SortOrder) ){ #>
+<#+             if (invariant.AttributedExpresion ){ #>
+        [<#= invariant.LogicExpresion #><#=(string.IsNullOrEmpty(invariant.ExceptionMenssage.Trim()))?"(ErrorMessageResourceType = typeof("+ResxFileName+",ErrorMessageResourceName = "+cbc.pascalSecureEntityName +"InvariantError"+invariant.SortOrder.ToString()+" )":"" #>] /* <#= invariant.ExceptionMenssage #> */
+<#+             } // if AttributedExpresion#> 
+<#+         } #>
+        <#= property.AccesKeywords.ToString().ToLower() #> <#=(cbc.diagram.ORM.Length >0 && property.AccesKeywords.Equals(AccessKeywords.Public))?"virtual":"" #> <#= property.AtributteType #><#= ( property.IsNullable )?"?":"" #> <#= T4Help.SecureName(property.AtributteName) #> 
+<#+ if (!property.AutoProperty && property.OnlyGetProperty || property.LiveCycleAtributte.Equals(LiveCycleAtributte.Derivado))                 { #>
+            {
+             get // !property.AutoProperty && property.OnlyGetProperty
+                {
+<#+     if( property.LiveCycleAtributte.Equals(LiveCycleAtributte.Variable) ) { #>
+                    return this.<#= T4Help.ToCamelCase(property.AtributteName) #>;
+<#+        }/*end if (LiveCycleAtributte.Variable)*/ #>
+<#+     if( property.LiveCycleAtributte.Equals(LiveCycleAtributte.Derivado) ) { #>
+                    return this.<#= T4Help.ToCamelCase(property.AtributteName) #> ?? (this.<#= T4Help.ToCamelCase(property.AtributteName) #> = <#= property.DefaultValue #>);
+<#+        }/*end if (LiveCycleAtributte.Derivado)*/ #>
+                }
+                <#= (cbc.diagram.ORM.Contains("ibernate"))?"protected":"private" #> set 
+                {
+<#+
+    if (cbc.diagram.ValidationContracts.Equals("CodeContracts") && !cbc.diagram.IfContracts )
+    {
+        if (property.RequestUponCreation == RequestUponCreation.yes && String.IsNullOrEmpty(property.DefaultValue.Trim()))
+        { // comprobamos si la propiedad es mandatory en cuyo caso su valor no puede ser nulo
+            if ( property.IsNullable)
+            {
+                // si la propiedad es mandatory no puede ser nullable esto es un error de modelado.
+                string mensaje = "ERROR DE MODELADO:La propiedad "+property.AtributteName+" de la entidad '"+cbc.entity.Name+"' es mandatory y nullable al tiempo lo que no es posible";
+                throw new System.ApplicationException(mensaje);
+            }
+            if ((!T4Help.IsValueType(property.AtributteType) & !property.IsNullable) | (T4Help.IsValueType(property.AtributteType) & property.IsNullable) ) /* solo escribimos la condición del invariante en caso de que la propiedad sea nullable. Los tipos valor no lo son*/
+            {
+#>
+                    Contract.Requires<System.ArgumentNullException>(value != null, "La propiedad <#= T4Help.SecureName(property.AtributteName) #> no puede ser nulo"); // Este campo no puede ser nulo y es mandatory
+<#+ 
+            }
+        } /*end if mandatory & nullable*/
+#>
+<#+        if (!string.IsNullOrEmpty(property.MinValue) && !string.IsNullOrEmpty(property.MaxValue)) /*(property.IsMandatory) */        {#>
+        Contract.Requires<ArgumentOutOfRangeException>(<#= T4Help.SecureName(property.AtributteName) #> ><#=property.MinValue #>, "La propiedad <#= T4Help.SecureName(property.AtributteName) #> esta fuera de rango");
+        Contract.Requires<ArgumentOutOfRangeException>(<#= T4Help.SecureName(property.AtributteName) #> <<#=property.MaxValue #>, "La propiedad <#= T4Help.SecureName(property.AtributteName) #> esta fuera de rango");
+<#+        }/*end if (property.IsMandatory)*/ #>
+<#+         foreach( var invariant in cbc.ClassInvariants.Where(c => c.AfectedProperties.Contains(property.AtributteName)).OrderBy(c => c.SortOrder) ){ #>
+<#+             if (!invariant.AttributedExpresion && !string.IsNullOrEmpty(invariant.Exception) ){ #>
+                    Contract.Requires<<#= invariant.Exception #>>(<#= invariant.LogicExpresion #><#=(string.IsNullOrEmpty(invariant.ExceptionMenssage.Trim()))?"(ErrorMessageResourceType = typeof("+ResxFileName+",ErrorMessageResourceName = "+cbc.pascalSecureEntityName +"InvariantError"+invariant.SortOrder.ToString()+" )":"" #>) /* <#= invariant.ExceptionMenssage #> */
+<#+             } // if !AttributedExpresion#> 
+<#+         } #>
+<#+    } /* end if (cbc.diagram.ValidationContracts.Equals("CodeContracts"))*/#>
+<#+    if (cbc.diagram.ValidationContracts.Equals("DataAnotations") && cbc.diagram.IfContracts )    {#>
+<#+         foreach( var invariant in cbc.ClassInvariants.Where(c => c.AfectedProperties.Contains(property.AtributteName) && !c.AttributedExpresion && !string.IsNullOrEmpty(c.Exception)).OrderBy(c => c.SortOrder) ){ #>
+<#+             if (!invariant.AttributedExpresion && !string.IsNullOrEmpty(invariant.Exception)){ #>
+                    if (!(<#= invariant.LogicExpresion #>))
+                          new <#= invariant.Exception.Trim() #>(<#= ResxFileName #>.<#= cbc.pascalSecureEntityName #>InvariantError<#= invariant.SortOrder #>); /* <#= invariant.ExceptionMenssage #> */
+<#+             } // if !AttributedExpresion#> 
+<#+         } #>
+<#+ } // end if data noatations con if para invariantes#>
+                    this.<#= T4Help.ToCamelCase(property.AtributteName) #> = value;
+                }
+            }
+
+<#+ } /* end if (!property.AutoProperty && property.OnlyGetProperty)*/ #>
+
+<#+
+if (property.AutoProperty && !property.OnlyGetProperty && !property.LiveCycleAtributte.Equals(LiveCycleAtributte.Derivado)) // en este caso establecemos las propiedades automáticas
+    {
+#>
+            {
+                get;
+                set;
+            }
+
+<#+ } /* (property.AutoProperty && !property.OnlyGetProperty)*/ #>
+<#+    if (!property.AutoProperty && !property.OnlyGetProperty)     { #>
+            {
+                get  /* (!property.AutoProperty && !property.OnlyGetProperty)*/
+                {
+<#+                 if( property.LiveCycleAtributte.Equals(LiveCycleAtributte.Variable) ) { #>
+                    return this.<#= T4Help.ToCamelCase(property.AtributteName) #>;
+<#+                 }/*end if (LiveCycleAtributte.Variable)*/ #>
+<#+                 if( property.LiveCycleAtributte.Equals(LiveCycleAtributte.Derivado) ) { #>
+                    return this.<#= T4Help.ToCamelCase(property.AtributteName) #> ?? (this.<#= T4Help.ToCamelCase(property.AtributteName) #> = <#= property.DefaultValue #>);
+<#+                 }/*end if (LiveCycleAtributte.Derivado)*/ #>
+                }
+                set
+                {
+
+<#+
+        if (cbc.diagram.ValidationContracts.Equals("CodeContracts"))
+        {
+            if (property.RequestUponCreation == RequestUponCreation.yes )
+            { // comprobamos si la propiedad es mandatory en cuyo caso su valor no puede ser nulo
+                if ( property.IsNullable)
+                {
+                    // si la propiedad es mandatory no puede ser nullable esto es un error de modelado.
+                    string mensaje = "ERROR DE MODELADO:La propiedad "+property.AtributteName+" de la entidad '"+cbc.entity.Name+"' es mandatory y nullable al tiempo lo que no es posible";
+                    throw new System.ApplicationException(mensaje);
+                }
+                if ((!T4Help.IsValueType(property.AtributteType) & !property.IsNullable) | (T4Help.IsValueType(property.AtributteType) & property.IsNullable) ) /* solo escribimos la condición del invariante en caso de que la propiedad sea nullable. Los tipos valor no lo son*/
+                {
+#>
+                    Contract.Requires<System.ArgumentNullException>(value != null, "La propiedad <#= T4Help.SecureName(property.AtributteName) #> no puede ser nulo"); // Este campo no puede ser nulo y es mandatory
+<#+ 
+                } /* end if is value type */
+            } /*end if mandatory & nullable*/
+#>
+<#+
+            if (!string.IsNullOrEmpty(property.MinValue) && !string.IsNullOrEmpty(property.MaxValue)) //(property.IsMandatory) 
+            {
+#>
+        Contract.Requires<ArgumentOutOfRangeException>(<#= T4Help.SecureName(property.AtributteName) #> ><#=property.MinValue #>, "La propiedad <#= T4Help.SecureName(property.AtributteName) #> esta fuera de rango");
+        Contract.Requires<ArgumentOutOfRangeException>(<#= T4Help.SecureName(property.AtributteName) #> <<#=property.MaxValue #>, "La propiedad <#= T4Help.SecureName(property.AtributteName) #> esta fuera de rango");
+<#+
+            }//end if (property.IsMandatory) 
+#>
+<#+     } // end if (cbc.diagram.ValidationContracts.Equals("CodeContracts"))#>
+<#+    if (cbc.diagram.ValidationContracts.Equals("DataAnotations") && cbc.diagram.IfContracts )
+        { #>
+<#+         foreach( var invariant in cbc.ClassInvariants.Where(c => c.AfectedProperties.Contains(property.AtributteName) && !c.AttributedExpresion && !string.IsNullOrEmpty(c.Exception)).OrderBy(c => c.SortOrder) )
+            { #>                                    
+<#+             if (!invariant.AttributedExpresion && !string.IsNullOrEmpty(invariant.Exception))
+                { #>
+                    if (!(<#= invariant.LogicExpresion #>))
+                        {
+                          new <#= invariant.Exception.Trim() #>(<#= ResxFileName #>.<#= cbc.pascalSecureEntityName #>InvariantError<#= invariant.SortOrder #>); /* <#= invariant.ExceptionMenssage #> */
+                        }
+<#+             } // if !AttributedExpresion#> 
+<#+         } // end for each invariant#>
+<#+     } // end DataAnotations#>
+
+<#+     if(property.LiveCycleAtributte.Equals(LiveCycleAtributte.Variable) ) { #>
+                    this.<#= T4Help.ToCamelCase(property.AtributteName) #> = value;
+<#+        }/*end if (LiveCycleAtributte.Variable)*/ #>
+<#+     if( property.LiveCycleAtributte.Equals(LiveCycleAtributte.Derivado) ) { #>
+                    this.<#= T4Help.ToCamelCase(property.AtributteName) #> = <#= property.DefaultValue #>;
+<#+        }/*end if (LiveCycleAtributte.Derivado)*/ #>
+                }
+            }
+
+<#+ } /* end if (!property.AutoProperty && !property.OnlyGetProperty) */ #>
+<#+
+        if ( property.AutoProperty && property.OnlyGetProperty && !property.LiveCycleAtributte.Equals(LiveCycleAtributte.Derivado)) 
+            {
+#>
+            {
+                get;
+                <#=(cbc.diagram.ORM.Contains("ibernate"))?"protected":"private" #> set;
+            }
+
+<#+         } /* end if (!property.AutoProperty && property.OnlyGetProperty) */ #>
+<#+     } /* end if live cicle is variable or derived  */ #>
+<#+ } /* end foreach  */ #>
+        #endregion
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

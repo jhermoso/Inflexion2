@@ -1,0 +1,111 @@
+﻿<#+
+public class ApplicationServiceBaseCT : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    public ClassBaseContext cbc; public string projectNamespace; public ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public ApplicationServiceBaseCT(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+        // subplantillas generales
+        var cpyrigthTemplate    = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity, T4Help.getLeftStringSlice(this.ToString(), '+', -1).Substring(1));  string cpyrigthText = cpyrigthTemplate.TransformText();
+        // subplantillas epsecificas
+        var usingTemplate       = new usings( cbc, projectNamespace, Skt);                         string usingTxt     = usingTemplate.TransformText(); //solo los shared kernel
+#>
+
+<#= cpyrigthText #>
+namespace <#= projectNamespace #>
+{
+<#= usingTxt #>
+    #region usings
+    using System;
+    using System.Data.Entity;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Configuration;
+
+    using Microsoft.Practices.Unity;
+    using Inflexion2;
+    using Inflexion2.Domain;
+    using Inflexion2.Data;
+    using Inflexion2.Application;
+
+<#+ if (cbc.OwnBoundedContextHasEnums) {#>
+    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain.Data;
+<#+ } #>
+    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain;
+    #endregion
+
+    /// <summary>
+    /// .es Clase base para los servicios de aplicación de un bounded context con <#=(I=="I")?"NHibernate":"Entity Framework" #> 
+    /// </summary>
+     public class <#=(I=="I")?"Nh":"Ef" #>ApplicationServiceBase
+    {
+        #region fields
+        protected <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain.PerLifeTimeManager unitOfWorkPerTestLifeTimeManager = new <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain.PerLifeTimeManager();
+        protected <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain.PerLifeTimeManager contextPerTestLifeTimeManager = new <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain.PerLifeTimeManager();
+        protected UnityContainer unityContainer;
+        protected string connString = null;
+        protected RootAggregateFrameworkUnitOfWorkFactory<<#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Infrastructure.BootstrapUnitOfWork> ctxFactory = null;
+        #endregion
+
+        #region Constructor
+        public <#=(I=="I")?"Nh":"Ef" #>ApplicationServiceBase()
+        {
+            this.unityContainer = new UnityContainer();
+
+            ServiceLocator.Initialize(
+                (x, y) => this.unityContainer.RegisterType(x, y),
+                (x, y) => this.unityContainer.RegisterInstance(x, y),
+                (x) => { return this.unityContainer.Resolve(x); },
+                (x) => { return this.unityContainer.ResolveAll(x); });
+
+            // Context Factory
+            this.connString = this.ConnectionString();
+            ctxFactory = new RootAggregateFrameworkUnitOfWorkFactory<<#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Infrastructure.BootstrapUnitOfWork>(this.connString);//1
+
+            //ctxFactory.ValidateDatabaseSchema();//1
+            if (!ctxFactory.DatabaseExists())
+            {
+                ctxFactory.CreateDatabase();
+            }
+
+            this.unityContainer.RegisterInstance<IDatabaseManager>(ctxFactory);//1
+
+            // esta linea se ha de incluir en el constructor de la clase de servicios.
+            //this.unityContainer.RegisterType<DbContext, DomainUnitOfWork>(this.contextPerTestLifeTimeManager, new InjectionConstructor(connString));
+
+            this.unityContainer.RegisterType<IUnitOfWork, EntityFrameworkUnitOfWork>(this.unitOfWorkPerTestLifeTimeManager);
+        }
+        #endregion
+    
+        #region Methods
+        protected virtual string ConnectionString()
+        {
+            return ConfigurationManager.ConnectionStrings["<#= cbc.OwnBoundedContext.Data #>.Connection"].ConnectionString;
+        }
+
+        public void Commit()
+        {
+            IUnitOfWork unitOfWork = this.unityContainer.Resolve<IUnitOfWork>();
+            unitOfWork.Commit();
+        }
+        #endregion 
+
+    } // end class 
+
+} //  <#= projectNamespace #>
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

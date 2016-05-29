@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Inflexion2.UX.WPF.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Inflexion2.UX.WPF.Common.Events.NavigationCompletedEvent">
+            <summary>
+            Evento CompositePresentationevent 
+            </summary>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.Common.BaseClasses.ViewModelBase">
+            <summary>
+            Esta clase nos proporciona una implementación sobreescribible de las propiedades 
+            de INotifyPropertyChanging, INotifyPropertyChanged. La implementación proporcionada nos 
+            permite contar en los viewModels que la incorporen de las propiedades y metodos para elevar los eventos de pre-modificación 
+            y modificación de una propiedad cuyo nombre se pasa como string.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.Common.BaseClasses.ViewModelBase.IgnorePropertyChangeEvents">
+            <summary>
+            Si el viewModel debiera ignorar los eventos de Property-Change.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Common.BaseClasses.ViewModelBase.RaisePropertyChangedEvent(System.String)">
+            <summary>
+            eleva el evento de PropertyChanged. La propiedad especificada ha sido cambiada.
+            </summary>
+            <param name="propertyName">El nombre de la propiedad que ha cambiado</param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Common.BaseClasses.ViewModelBase.RaisePropertyChangingEvent(System.String)">
+            <summary>
+            elevar el evento de PropertyChanging. La propiedad especificada va a ser cambiada.
+            </summary>
+            <param name="propertyName">El nombre de la propiedad que ha cambiado.</param>
+        </member>
+    </members>
+</doc>

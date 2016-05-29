@@ -6,7 +6,7 @@
              xmlns:controls="clr-namespace:Inflexion2.UX.WPF.Controls;assembly=Inflexion2.UX.WPF.Controls"
              xmlns:converter="clr-namespace:Inflexion2.UX.WPF.ValueConverters;assembly=Inflexion2.UX.WPF"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="1050" Padding="5">
+             d:DesignHeight="300" d:DesignWidth="525" Padding="5">
     <Grid>
 
         <Label Content="Persona Query View"/>
@@ -14,11 +14,7 @@
                   ItemsSource="{Binding Items}"
                   SelectedItem="{Binding SelectedItem}" 
                   controls:DataGridRowDoubleClickHandler.MethodName="NavigateToSelectedItem"         
-                  AutoGenerateColumns="True" 
-                  HorizontalAlignment="Left" VerticalAlignment="Top"
-                  Margin="12,77,0,0" 
-                  Width="987" Height="301">
-            
-        </DataGrid>
+                  AutoGenerateColumns="True"
+                  Margin="0"/>
     </Grid>
 </UserControl>

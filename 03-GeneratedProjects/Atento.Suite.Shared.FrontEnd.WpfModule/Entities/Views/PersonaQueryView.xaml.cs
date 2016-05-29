@@ -27,10 +27,6 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
     /// .en Interaction logic for PersonaQueryView.xaml
     /// .es Logica de interación para la vista PersonaQueryView.xaml
     /// </summary>
-    /// <remarks>
-    /// .en No coment
-    /// .es Sin comentarios adicionales.
-    /// </remarks>
     public partial class PersonaQueryView : UserControl
     {
         #region CONSTRUCTORS
@@ -38,16 +34,12 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
         /// .en Initialize a new instace for the class <see cref="T:PersonaQueryView"/>.
         /// .es Inicializa una nueva instancia de la clase <see cref="T:PersonaQueryView"/>.
         /// </summary>
-        /// <remarks>
-        /// .en No coment
-        /// .es Sin comentarios adicionales.
-        /// </remarks>
         public PersonaQueryView()
         {
             InitializeComponent();
             this.DataContext = new PersonaQueryViewModel();
-            // Here you can configure future filters.
-            // Aqui puede introducir la configuración de futuros filtros.
+            // Here it is possible to configure future filters.
+            // Aqui se puede introducir la configuración de futuros filtros.
   
         } // PersonaQueryView Constructor
         #endregion

@@ -1,0 +1,64 @@
+﻿<#+
+
+    public class ApplicationEnumerationDtoCT : Template
+    {
+        // parametros de la plantilla
+        public ClassBaseContext  cbc ;
+        public string projectNamespace;
+        public ITree<BoundedContextMetadata> Skt;
+        public Enumeration enumeracion;
+
+        // constructor de la plantilla
+        public ApplicationEnumerationDtoCT(ClassBaseContext  classBaseContext, string nombreProjecto , ITree<BoundedContextMetadata> skt)
+        {
+            cbc = classBaseContext;             // contexto de la clase base a interpretar
+            projectNamespace = nombreProjecto;  // nombre del proyecto para el que estamos interpretando
+            Skt = skt;                          // shared kernel tree
+            enumeracion = (Enumeration)cbc.entity;
+        }
+        
+        // metodo de generación de la plantilla
+        public override string TransformText()
+        {
+
+       IList<string> sharedKernelUsings =  GetSharedKernelReferencesByProject(projectNamespace, Skt, cbc.diagram);
+
+            var cpyrigth = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity);
+            string cpyrigthText = cpyrigth.TransformText();
+#>
+<#=cpyrigthText #>
+namespace <#= projectNamespace #>
+{
+    using System.Runtime.Serialization;
+    using System.ComponentModel;
+
+    /// <summary>
+    /// <#= cbc.entity.Remarks #>
+    /// </summary>    <#= (enumeracion.IsFlag)?"//[Flags]":"" #>
+    [DataContract(Name = "<#= cbc.pascalSecureEntityName #>")]
+    public enum <#= cbc.pascalSecureEntityName #>Dto 
+    {
+    
+<#+
+    int totalEnum  = enumeracion.EnumValue.Count();
+    int centinela = 0;
+    foreach (var enumerado in enumeracion.EnumValue)
+    {
+        centinela++;
+#>
+        //<#= (!string.IsNullOrEmpty(enumerado.Description.Trim()))?"[Description(\""+ enumerado.Description.Trim() +"\")]":"" #>
+        //<#= T4Help.ToPascalCase(enumerado.Value) #> = <#= enumerado.Sorting.ToString() #><#= (centinela < totalEnum)?",":"" #>
+        [EnumMember] // los valores que no sea precedidos por estos atributos no pueden serializarse.
+        <#= T4Help.ToPascalCase(enumerado.Value) #> = <#= enumerado.Sorting.ToString() #><#= (centinela < totalEnum)?",":"" #>
+<#+
+    }
+#>
+
+    } // <#= cbc.pascalSecureEntityName #>
+
+} // <#= projectNamespace #>
+<#+
+                return this.GenerationEnvironment.ToString();
+            }
+        }
+#>

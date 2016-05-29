@@ -1,0 +1,46 @@
+﻿<#+
+public class ServiceDelete : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public ServiceDelete(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+        string ResxFileName = prjCon.boundedContextName.Replace(".","")+"Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+#>
+        #region Service Delete
+        /// <summary>
+        /// Elimina una determinada entidad <#= cbc.pascalSecureEntityName #>.
+        /// </summary>
+        /// <param name="id">
+        /// Identificador de la entidad que se va a eliminar.
+        /// </param>
+        /// <param name="userContextDto">
+        /// Información de contexto del usuario.
+        /// </param>
+        /// <returns>
+        /// Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+        /// </returns>
+        public bool Delete(int id, UserContextDto userContextDto)
+        {
+            // Crear la acción de eliminar.
+            Action<<#= I #><#= cbc.pascalSecureEntityName #>> deleteEntity = (entity) => entity.Disable();
+
+            // Ejecutar la acción de eliminar.
+            return this.DeleteActivateWrapper(id, userContextDto, deleteEntity);
+        }
+        #endregion
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

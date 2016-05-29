@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="8e098ed1-cff1-47b3-8d88-e446100457d6" sGDB="MsSql2008" culture="es" rootNameSpace="Atento.Suite" company="Atento" product="Suite" copyright="Inflexion2" branding="prueba" version="0.1" documentationPath="..\00-Documentation" asemblysPath="..\00-Assemblies" solutionFolderApplication="02. Application" solutionFolderDomain="03. Domain" solutionFolderInfraestructure="04. Infrastructure" libraryPath="..\02-Library" proyectsPath="..\03-GeneratedProjects" solutionFolderUX="01. FrontEnd" isModule="false" architecture="Inflexion2" oRM="EntityFramewokCodeFirst" mapper="Manual" getCodeTree="false" generateCode="Always" ifContracts="false" conectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=AtentoSuite;Integrated Security=True" schemaName="AtentoSuite" dataBaseServer="(localdb)\MSSQLLocalDB" translationsSet1="English, French, German, Hebrew, Italian" translationsSet2="Portuguese" xmlns="http://schemas.microsoft.com/dsltools/MoneyGen">
+  <classBases>
+    <applicationHasElements Id="1277f757-483a-4e08-896a-7e2f1c485aa1">
+      <entity Id="077131d2-5467-41ba-a6b7-b15270e47d11" name="Persona" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Persona" volumen="0" remarks="datos acerca de personas fisica y juridicas." tooltip="Repositorio de personas físicas o juridicas." logicDelete="false" pluralName="Personas" programRemarks="datos acerca de personas fisica y juridicas." referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="Persona" gender="Femenino" grammarCategory="sustantivo" mainEntityStereotype="AggregateRoot">
+        <atributtes>
+          <classBaseHasAtributtes Id="4599c6f2-f55c-4705-a7eb-4077252facd2">
+            <atributte Id="d18593af-30fc-41c1-b24b-4870fd656982" atributteName="Nombre" isIdentification="false" position="0" programerRemarks="Test with auto property and public setter." requestUponCreation="yes" nameAndType="string Nombre" minLength="3" maxLength="80" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="1a6680cb-2a56-4b84-81bd-28e2a3b16bed">
+            <atributte Id="2a26fd84-64ca-4efe-b474-c1c4d97ecd91" atributteName="BooleanField" atributteType="bool" isIdentification="false" position="0" nameAndType="bool BooleanField" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="3be55609-820f-4e2e-857f-696d07bc1eb6">
+            <atributte Id="9033bb24-366e-424f-b35b-950dea115bdd" atributteName="DatetimeField" atributteType="DateTime" isIdentification="false" position="0" nameAndType="DateTime DatetimeField" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="30f4b500-7803-48c9-9424-21b565c30266">
+            <atributte Id="b4330099-d552-44a5-ae6f-fc810c3f6db1" atributteName="ByteField" atributteType="byte" isIdentification="false" position="0" nameAndType="byte ByteField" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="6919f02e-1fc7-47a4-b1d1-25d32fefe9fb">
+            <atributte Id="2569ee2d-4ade-4c9a-bfd4-aa79921daf82" atributteName="GuidField" atributteType="Guid" isIdentification="false" position="0" nameAndType="Guid GuidField" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="b8242301-aeb6-404f-9303-5a703f52db47">
+            <atributte Id="2dba0744-ee8e-46f5-ad74-1543581f9ec2" atributteName="DecimalField" atributteType="decimal" isIdentification="false" position="0" nameAndType="decimal DecimalField" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="7cfaf97e-dc42-4789-9485-a4f402ab3d24">
+            <atributte Id="f8e85e57-a2d6-4623-a5ce-063b08be1583" atributteName="DobleField" atributteType="double" isIdentification="false" position="0" nameAndType="double DobleField" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="9f00859a-7206-4a68-94cf-c4d2769e27a3">
+            <atributte Id="bbc5a810-5a1f-4eef-906b-03954b48dcb7" atributteName="FloatField" atributteType="float" isIdentification="false" position="0" nameAndType="float FloatField" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="81b14ac8-1421-4192-85d8-7622b28cce22">
+            <atributte Id="86b2495d-580f-40d0-9339-79cb6ae8bf20" atributteName="IntField" atributteType="int" isIdentification="false" position="0" nameAndType="int IntField" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="443aed97-d53d-41e0-9dc8-5917706147f0">
+            <atributte Id="f271d650-6bc1-47e8-ac4b-e2d85514bb28" atributteName="LongField" atributteType="long" isIdentification="false" position="0" nameAndType="long LongField" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="ceddc494-d154-4d76-88ac-774dc31b8da8">
+            <atributte Id="cc6ab4b2-9a8b-4f78-a34b-dda82d643067" atributteName="DateTimeOffsetField" atributteType="DateTimeOffset" isIdentification="false" position="0" nameAndType="DateTimeOffset DateTimeOffsetField" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="b3397250-1809-4699-8658-99dd5c091210">
+            <atributte Id="b9db5b89-e552-4222-acd6-4accef8bf6a0" atributteName="ShortField" atributteType="short" isIdentification="false" position="0" nameAndType="short ShortField" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="4f24942d-8e52-45f9-8d46-712495f2f79a">
+            <atributte Id="6d6b00f7-40f6-4ad1-a606-46c1576f3dec" atributteName="TimeSpanField" atributteAlias="Télefono" atributteType="TimeSpan" isIdentification="false" position="0" nameAndType="TimeSpan TimeSpanField" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="41dd77a2-9796-44c8-9830-3b88834cb301">
+            <atributte Id="3f8044c2-c3ba-4412-b4b0-5df06cb00fcf" atributteName="Int16Field" atributteType="Int16" isIdentification="false" position="0" nameAndType="Int16 Int16Field" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="d4e2cf7c-0e06-438b-bbdd-599a3c6459ba">
+            <atributte Id="e9e0c367-5437-48b3-b37a-e7cee4a8e13e" atributteName="Int32Field" atributteType="Int32" isIdentification="false" position="0" nameAndType="Int32 Int32Field" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="5855d1a1-cab1-4c50-99b6-6ca601dca5a0">
+            <atributte Id="3289bfdc-12f0-4a50-9cc6-ef01481d706d" atributteName="Int64Field" atributteType="Int64" isIdentification="false" position="0" nameAndType="Int64 Int64Field" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="cdf10070-0209-4ce5-8d69-71c9561fc68a">
+      <enumeration Id="12c29ffe-49bd-47fc-a1c5-a1447dda71d8" name="Enumeracion" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="" mainEntityStereotype="None" serializable="false">
+        <enumValue>
+          <enumerationHasEnumValue Id="d41643ac-12df-423c-80ab-3c23d771b785">
+            <enumValues Id="a258c273-70e7-4faf-9eba-5a02c61ea90f" sorting="0" value="valor1" />
+          </enumerationHasEnumValue>
+        </enumValue>
+      </enumeration>
+    </applicationHasElements>
+  </classBases>
+</application>

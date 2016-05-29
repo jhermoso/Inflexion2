@@ -1,0 +1,392 @@
+﻿<#+
+
+public class ApplicationEntityCreateServicesBaseCT : Template
+{
+    // parametros de la plantilla
+    public DslContextDefinitionDiagram  diagram ;
+    public ActiveSolution               solutionInfo ;
+    public ClassBase                       entity ;
+    public string                       projectNamespace;
+    public string                       secureBdName;
+        
+    public ApplicationEntityCreateServicesBaseCT(DslContextDefinitionDiagram  d, ActiveSolution s, ClassBase e, string bd)
+    {
+        diagram = d;
+        solutionInfo = s;
+        entity = e;
+        secureBdName = bd;
+    }
+        
+    public override string TransformText()
+    {
+            bool IsEntity = entity is Entity; // ClassBase
+        string company = SecureName(this.diagram.Company.ToString());
+        string idtype = (diagram.IdKind.Equals("Autonumerical"))  ? "int" : "Guid";
+        string secureEntityName = SecureName(entity.Name);
+        string pascalSecureEntityName = ConvertToPascalCase(secureEntityName);
+        string camelSecureEntityName = PascalCase2CamelCase(secureEntityName);
+        
+        LinkedElementCollection<Atributte> propertyObjects = ClassBaseHasAtributtes.GetAtributtes(entity); // este metodo es definido en el dsl domainRealtionship public partial class ClassBaseHasAtributtes 
+        var mandatoryPropertyObjects = propertyObjects.Where(att => att.RequestUponCreation == RequestUponCreation.yes);
+        var nonMandatoryPropertyObjects = propertyObjects.Where(att => att.RequestUponCreation != RequestUponCreation.yes);
+        int numEntityFieldsMandatory= propertyObjects.Where(att => att.RequestUponCreation == RequestUponCreation.yes).Count();
+        int numEntityFields= propertyObjects.Count;
+
+        System.Collections.ObjectModel.ReadOnlyCollection<kayak.MoneyGen.Association> propertyAssociationTargets = Association.GetLinksToTargets(entity); // lista de propiedades obtenidas de las relaciones de destino
+        var mandatoryPropertyFromTargets = propertyAssociationTargets.Where( p=> p.TargetMultiplicity==kayak.MoneyGen.Multiplicity.OneOne | p.TargetMultiplicity==kayak.MoneyGen.Multiplicity.OneMany); // subconjunto de propiedades de tipo mandatory de las anteriores es decri cuya multiplicidad minima es uno
+        System.Collections.ObjectModel.ReadOnlyCollection<kayak.MoneyGen.Association> propertyAssociationSources = Association.GetLinksToSources(entity); // lista de propiedades provenientes de las relaciones de origen
+        var mandatoryPropertyFromSources = propertyAssociationSources.Where( p=> p.SourceMultiplicity==kayak.MoneyGen.Multiplicity.OneOne | p.SourceMultiplicity==kayak.MoneyGen.Multiplicity.OneMany);// subconjunto de propiedades de tipo mandatory de las anteriores es decri cuya multiplicidad minima es uno 
+
+        int sourceLinksCounter= propertyAssociationSources.Count();
+        int targetLinksCounter= propertyAssociationTargets.Count();
+        int mandatorySourceLinksCounter= mandatoryPropertyFromSources.Count();
+        int mandatoryTargetLinksCounter= mandatoryPropertyFromTargets.Count();
+
+        int spaceformatcounter= secureEntityName.ToString().Length;
+        int counter = 0;
+        System.Type t;
+        bool propertyIsValueType = false;
+
+        KindComponented kindComponent = WhatTypeComponented(entity);
+        string superfolder;
+        string MandatoryConstructorParamns = GetConstructorParametersString( entity, diagram.IdKind.Equals("Autonumerical"),SelectionCriteriaAttributes.Mandatory, 80, false, spaceformatcounter+23, true, false, true, true, true,camelSecureEntityName+"Dto.","");//le sumamos 21 por que son loscaracteres que hay hasta el comienzo del texto donde utilizamos esta variable. 
+        string MadatoryEntityBaseConstructorParamans = "";
+        string MadatoryEntityBaseConstructorParamansDefinition = "";
+
+        bool isDerivedFromOneEntity= IsDerived( entity); // consultamos si esta entidad hereda de alguna otra por herencia simple del lenguaje.
+        bool isEntityRoot =  kindComponent.Equals(KindComponented.isOneFather) ; // los padres unicos son agregate roots
+        bool entityBelong2Agregate = !kindComponent.Equals(KindComponented.any) & !kindComponent.Equals(KindComponented.isOneFather); // si tiene una relación de composición pero no son roots la entida es parte de un agregado.
+        ClassBase entitySuperClass = null;
+        string entityCore =null;
+        if (isDerivedFromOneEntity)
+            {
+                entitySuperClass = GetSuperEntity(entity);
+                superfolder = GetSuperFolders(entity);
+                MadatoryEntityBaseConstructorParamansDefinition = GetConstructorParametersString( entitySuperClass, diagram.IdKind.Equals("Autonumerical"),SelectionCriteriaAttributes.Mandatory, 80, true, spaceformatcounter+23, false, false, true, true );
+                MadatoryEntityBaseConstructorParamans = GetConstructorParametersString( entitySuperClass, diagram.IdKind.Equals("Autonumerical"),SelectionCriteriaAttributes.Mandatory, 80, false, spaceformatcounter+23, false, false, true, true );
+            }
+
+        if(entity.Auditable)
+        {
+            entityCore = "AuditableEntityBase<"+idtype +">";
+        }
+        else
+        {
+            entityCore = "EntityBase<"+idtype +">";
+        }
+
+
+        var cpyrigth = new CopyrightHeader(diagram,solutionInfo,entity);
+        string cpyrigthText = cpyrigth.TransformText();
+#>
+<#= cpyrigthText #>
+namespace <#= projectNamespace #>
+{
+    using System.Linq;
+    using System.Diagnostics.Contracts;
+    using <#= company #>.Framework.Application.Security.Data.Base;
+    using <#= company #>.Framework.Application.Security.Services.Base;
+    using <#= company #>.Framework.Core;
+    using <#= company #>.Framework.Infrastructure.DataAccess.UoW;
+    using <#= company #>.Framework.Infrastructure.IoC;
+    using <#= company #>.Framework.Logging;
+
+   // using CoreResources /* Esta linea aparece comentada pues se utiliza el name espace en cada sitio para distinguirlo de los resources propios del contexto limitado ya que todos los ficheros de recursos generados desde la t4 tiene el nombre de neutral */
+   // TODO: Esto siginifica que para una instalación es necesario generar los core resources en función del idioma neutral.
+   // tambien podemo introducir el \<\#= ConvertToPascalCase(secureBdName) \#\>. como namespace corto del los ficheros de recursos
+   // using <#= projectNamespace.Substring(0, projectNamespace.Length - 5)/*le quitamos el '.Base' y lo sustituimos por '.Core'*/ #>.Core;                               
+    using <#= projectNamespace.Substring(0, projectNamespace.Length - 14)/*le quitamos el '.Mapper.Base' y lo sustituimos por '.Data.Base' */ #>.Data.Base;
+    using <#= projectNamespace.Substring(0, projectNamespace.Length - 14)/*le quitamos el '.Mapper.Base' y lo sustituimos por '.Services.Core' */ #>.Services.Core;
+    using <#= projectNamespace.Substring(0, projectNamespace.Length - 26)/*le quitamos el '.Application.Mapper.Base' y lo sustituimos por '.Domain.Core' */ #>.Domain.Core;
+    using <#= projectNamespace.Substring(0, projectNamespace.Length - 26)/*le quitamos el '.Application.Mapper.Base' y lo sustituimos por '.Infrastructure.Resources' */ #>.Infrastructure.Resources;
+
+    /// <summary>
+    /// Interfaz que permite definir las acciones del servicio de creación de 
+    /// una entidad de tipo <see cref="<#= projectNamespace.Substring(0, projectNamespace.Length - 25)#>.I<#= secureEntityName #>"/>.
+    /// </summary>
+    /// <remarks>
+    /// Mapea los datos del Dto <see cref="<#= secureEntityName #>Dto"/> con una entidad <see cref="I<#= secureEntityName #>Mapper"/>.
+    /// </remarks>
+    public sealed class Create<#= secureEntityName #> : ApplicationServiceBase, ICreate<#= secureEntityName #>
+    {
+        #region FIELDS
+
+            /// <summary>
+            /// Variable privada estática que representa el logger.
+            /// </summary>
+            /// <remarks>
+            /// Sin comentarios adicionales.
+            /// </remarks>
+            private static ILogger logger;
+
+        #endregion
+
+        #region CONSTRUCTORS
+
+            /// <summary>
+            /// Inicializa una nueva instancia de la clase <see cref="Create<#= secureEntityName #>"/>.
+            /// </summary>
+            /// <remarks>
+            /// Sin comentarios especiales.
+            /// </remarks>
+            public Create<#= secureEntityName #>()
+            {
+                if (logger == null)
+                {
+                    // Intanciamos el logger.
+                    logger = ManagerIoC.Container.Resolve<ILoggerFactory>().Create(this.GetType());
+                }
+            } // end constructor Create<#= secureEntityName #>
+
+        #endregion
+
+        #region PUBLIC ICreate<#= secureEntityName #> Members
+
+            /// <summary>
+            /// Función encargada de la creación de una entidad de <see cref="I<#= secureEntityName #>"/>
+            /// </summary>
+            /// <remarks>
+            /// Sin comentarios adicionales.
+            /// </remarks>
+            /// <param name="<#= PascalCase2CamelCase(secureEntityName) #>Dto">
+            /// Parámetro de tipo <see cref="<#= secureEntityName #>Dto"/> con los datos necesarios
+            /// para la creación de la entidad.
+            /// </param>
+            /// <param name="userContextDto">
+            /// Parámetro de tipo <see cref="<#= company #>.Framework.Application.Security.Data.Base.UserContextDto"/> 
+            /// que representa el contexto del usuario.
+            /// </param>
+            /// <exception cref="System.ArgumentNullException">
+            /// Lanzada cuando el valor de alguno de los parámetros de 
+            /// entrada es <b>null</b> y no esta permitido que lo sea.
+            /// </exception>
+            /// <returns>
+            /// Devuelve el identificador único de la entidad creada.
+            /// </returns>
+            public <#= idtype #> Execute( <#= secureEntityName #>Dto <#= PascalCase2CamelCase(secureEntityName) #>Dto, UserContextDto userContextDto)
+            {
+             #region Preconditions
+
+                Contract.Requires<System.ArgumentNullException>(<#= PascalCase2CamelCase(secureEntityName) #>Dto != null, "el parametro '<#= PascalCase2CamelCase(secureEntityName) #>Dto' de la función 'Execute' en la clase 'Create<#= secureEntityName #>' no puede ser nulo");
+<#+
+   foreach(var property in mandatoryPropertyObjects)
+            {
+                t = System.Type.GetType("System."+property.AtributteType); //
+                if (t!= null) { propertyIsValueType = t.IsValueType; }
+                if (!propertyIsValueType | (propertyIsValueType & property.IsNullable) ) /* solo escribimos la condición del invariante en caso de que la propiedad sea nullable*/
+                    {
+#>
+
+                Contract.Requires<System.ArgumentNullException>(<#= PascalCase2CamelCase(secureEntityName) #>Dto.<#= SecureName(property.AtributteName) #> != null, "el campo '<#= PascalCase2CamelCase(secureEntityName) #>Dto.<#= SecureName(property.AtributteName) #>' de la función 'Execute' en la clase 'Create<#= secureEntityName #>' no puede ser nulo");
+<#+ 
+                    }
+            }
+#>
+
+             #endregion
+
+             #region Repository Preconditions
+<#+
+if (mandatorySourceLinksCounter>0) // comprobamos si tenemos relaciones de composición de tipo target o padres que no pueden ser nulos. (TODO) o si estamos dentro de un agregado y es necesario traerse el resto de los datos.
+{
+   // si efectivamene las tenemos comprobamos si bienen en el DTO.
+    foreach(var property in mandatoryPropertyFromSources)
+    {
+#>
+
+                // en este punto Comprobamos si tenemos entidades u objetos valor que son padres 
+                Contract.Requires<System.ArgumentNullException>(<#= camelSecureEntityName #>Dto.<#= ConvertToPascalCase(property.TargetRolName) #> != null, "el campo <#= camelSecureEntityName #>Dto.<#= ConvertToPascalCase(property.TargetRolName) #>' de la función 'Execute' en la clase 'Create<#= secureEntityName #>' no puede ser nulo");
+<#+
+    }
+}
+#>
+
+             #endregion
+
+                // TODO: PREGUNTA ¿LAS CONDICIONES QUE INCORPORAN UNA EXCEPCIÓN SE HAN DE ENCERRAR EN UN TRY CATCH?
+                // para cada propiedad realizamos las comprobaciones marcadas por el modelo en los invariantes.
+                // si no permiten nulos(son mandatory),  
+                // si su valores deben cumplir algun tipo de expresión, estar entre un rango o cumplir una expresión regular o ser validados por un servicio externo.
+
+                // Variable de respuesta.
+                <#= idtype #> identifier = <#=(idtype.Equals("int"))?"0":"null" #>;
+                try
+                {
+                    using (IAdapter unitOfWork = Manager.DefaultController.CreateTransactional())
+                    {
+                        // Creamos la factoría del repositorio de la entidad I<#= secureEntityName #>.
+                        var factory = ManagerIoC.Container.Resolve<I<#= secureEntityName #>RepositoryFactory>();
+                        // Creamos el repositorio de la entidad a partir de la factoría.
+                        var repository = factory.Create(unitOfWork);
+                        // en este punto comprobamos las propiedades cuyos valores no pueden estar repetidos en la base de datos,
+                        // la razon de hacerlo aqui y no en las precondiciones es que este tipo de comprobación no se puede hacer por contrato
+                        // ya que necesita acceder al repository (a noser que se obtenga como un metodo que devuelva un valor bool)
+                        // el convertir esto en un metodo implica que la entidad de dominio debería tener su método de tipo equal
+                        // que no solo compruebe si el id es el mismo sino si ya existe por ejemplo en los strings deberiamos marcar si la igualdad es
+                        // case sensitive.
+<#+
+   foreach(var property in mandatoryPropertyObjects) // las propiedades que no se pueden repetir no permiten valores nulos.
+            {
+                if (!property.AllowRepedValues) // si no permite valores repetidos 
+                    {                           // comprobamos que no existe previamente en la base de datos
+                                                // TODO: SI ES CASE SENSITIVE SE IMPLEMENTA COMO CONDICIÓN INVARIANTE.
+                    if (property.AtributteType.ToString().ToLower() == "string") // si es una cadena previamente la pasamos a minusculas para hacer la comprobación.
+                        {
+#>
+                        string field = <#= camelSecureEntityName #>Dto.<#= ConvertToPascalCase(property.AtributteName) #>.Trim().ToLower();
+                        IQueryable<I<#= secureEntityName #>> data = repository.GetFiltered(c => c.<#= ConvertToPascalCase(property.AtributteName) #>.ToLower() == field && c.IsActive);
+<#+                     }
+                     else
+                    {
+#>
+                        <#= property.AtributteType #> field = <#= camelSecureEntityName #>Dto.<#= ConvertToPascalCase(property.AtributteName) #>;
+                        IQueryable<I<#= secureEntityName #>> data = repository.GetFiltered(c => c.<#= ConvertToPascalCase(property.AtributteName) #> == field && c.IsActive);
+<#+
+                    }
+#>
+                        // Comprobamos los datos.
+                        if (data.Any() )
+                        {
+                            // Error, ya existe una entidad <#= secureEntityName #> con el campo <#= ConvertToPascalCase(property.AtributteName) #> con el valor repetido .
+                            string errorMessage = string.Format(
+                                                                CoreResources.Neutral.ErrorEnEntidadNombreDuplicado,
+                                                                Neutral.<#= secureEntityName #>_<#= ConvertToPascalCase(property.AtributteName) #>Alias,
+                                                                <#= camelSecureEntityName #>Dto.<#= ConvertToPascalCase(property.AtributteName) #>);
+                            // Lanzamos la excepción.
+                            throw new System.InvalidOperationException(errorMessage);
+                        }
+<#+     
+                    }
+            }
+#>
+                        //hacemos la asignación de las propiedades que no son mandatory y que por tanto no son creadas en la factoria.
+                        // si las propiedades son de tipo get set se puede hacer una simple asignación 
+                        // en caso contrario hay que llamar al metodo set.
+                        // Descripción de la entidad.
+
+                        // Creamos la factoría de la entidad I<#= secureEntityName #>.
+                        var factoryEntity = ManagerIoC.Container.Resolve<I<#= secureEntityName #>Factory>();
+                        // Creamos la entidad I<#= secureEntityName #>.
+                        var entity = factoryEntity.Create(<#= MandatoryConstructorParamns #>);
+
+<#+
+   foreach(var property in nonMandatoryPropertyObjects)
+            {
+                if(property.OnlyGetProperty) // si se trata de una entidad de tipo (get set) solo realizamos un asignación en caso contrario invocamos el metodo set.
+                {
+#>
+                        entity.Set<#= SecureName(property.AtributteName) #>( <#= PascalCase2CamelCase(secureEntityName) #>Dto.<#= SecureName(property.AtributteName) #> );
+<#+
+                }
+                else
+                {
+#>
+                        entity.<#= SecureName(property.AtributteName) #> = <#= PascalCase2CamelCase(secureEntityName) #>Dto.<#= SecureName(property.AtributteName) #>;
+<#+
+                }
+            }
+#>
+
+<#+
+if (mandatoryTargetLinksCounter>0) // comprobamos si tenemos relaciones de composición de tipo target(TODO) o si estamos dentro de un agregado y es necesario traerse el resto de los datos.
+{
+    foreach(var property in mandatoryPropertyFromTargets)
+   {
+#>
+                       // en este punto Comprobamos si tenemos entidades u objetos valor bajo composición o si formamos parte de un aggregate
+                        if (<#= camelSecureEntityName #>Dto.<#= ConvertToPascalCase(property.SourceRoleName) #> != null && <#= camelSecureEntityName #>Dto.<#= ConvertToPascalCase(property.SourceRoleName) #>.Any())
+                        {
+                            // Recorremos la colección de acciones.
+                            foreach (var item in <#= camelSecureEntityName #>Dto.<#= ConvertToPascalCase(property.SourceRoleName) #>)
+                            {
+                                // Obtenemos los datos de la entidad realacionada desde el Dto
+                                var <#=PascalCase2CamelCase(property.TargetRolName) #>Entity = this.Get<#= ConvertToPascalCase(property.TargetRolName) #>ByKey(unitOfWork, item.Key);
+                                // Añadimos la acción a la colección de acciones.
+                                entity.Add<#= SecureName(property.Target.Name) #>To<#= SecureName(property.SourceRoleName) #>(<#=PascalCase2CamelCase(property.TargetRolName) #>Entity);
+                            }
+                        }
+<#+
+   }
+}
+#>
+                        // Persistimos la información.
+                        repository.Insert(entity, userContextDto.UserId.ToString(CultureInfo.InvariantCulture));
+                        // Obtenemos el identificador de la entidad creada.
+                        identifier = entity.Id;
+                        // Confirmamos la transacción.
+                        unitOfWork.CommitTransaction();
+                    }
+                }
+                catch (System.Exception ex)
+                {
+                  // Escribimos en el Log.
+                  logger.Error(ex.Message, ex);
+                  // Propagamos la excepción
+                  throw ex;
+                }
+                // Devolvemos el resultado.
+                return identifier;
+            } //end method Execute
+
+        #endregion
+
+        #region PRIVATE FUNCTIONS
+        // EN LAS FUNCIONES PRIVADAS NOS TRAEMOS LAS ENTIDADES DE LOS AGREGADOS QUE CORRESPONDE A  ESTA ENTIDAD RAIZ 
+        // POR EJEMPLO LAS RELACIONES DE COMPOSICIÓN
+<#+
+if (mandatoryTargetLinksCounter>0) // comprobamos si tenemos relaciones de composición de tipo target(TODO) o si estamos dentro de un agregado y es necesario traerse el resto de los datos.
+{
+    foreach(var property in mandatoryPropertyFromTargets)
+   {
+#>
+        /// <summary>
+        /// Función privada encargada de obtener las entidades de tipo 
+        /// <see cref="I<#= ConvertToPascalCase(property.TargetRolName) #>"/> asociadas al tipo de bloqueo a crear.
+        /// </summary>
+        /// <param name="unitOfWork">
+        /// Parámetro de tipo <see cref="IAdapter"/> que identifica la unidad
+        /// de trabajo para el acceso a los datos persistidos.
+        /// </param>
+        /// <param name="<#= PascalCase2CamelCase(property.Target.Name) #>Id">
+        /// Parámetro que indica el identificador único de <#= ConvertToPascalCase(property.Target.Name) #> 
+        /// </param>
+        /// <exception cref="System.ArgumentException">
+        /// Lanzada cuando no se obtienen datos de la acción 
+        /// segun el identificador proporcionado.
+        /// </exception>
+        /// <exception cref="System.InvalidOperationException">
+        /// Lanzada cuando la entidad obtenida esta inactiva.
+        /// </exception>
+        /// <returns>
+        /// Devuelve entidad <see cref="I<#= ConvertToPascalCase(property.Target.Name) #>"/>.
+        /// </returns>            
+        private I<#= ConvertToPascalCase(property.Target.Name) #> Get<#= ConvertToPascalCase(property.TargetRolName) #>ByKey(IAdapter unitOfWork, <#= idtype #> <#= PascalCase2CamelCase(property.Target.Name) #>Id)
+        {
+            // Creamos la factoría de repositorios de la entidad I<#= ConvertToPascalCase(property.Target.Name) #>.
+            var factory = ManagerIoC.Container.Resolve<I<#= ConvertToPascalCase(property.Target.Name) #>RepositoryFactory>();
+            // Creamos el repositorio a partir de la factoría.
+            var repository = factory.Create(unitOfWork);
+            // Obtenemos los datos de la entidad mediante el repositorio.
+            var entity = repository.GetById(<#= PascalCase2CamelCase(property.Target.Name) #>Id);
+            // Comprobamos si hemos obtenido datos.
+            Contract.EnsuresOnThrow<System.ArgumentException>(entity == null ,string.Format(CoreResources.Neutral.NoHayDatosPorId, Neutral.<#= ConvertToPascalCase(property.Target.Name) #>Alias));
+            // Validamos si la entidad está activa.
+            Contract.EnsuresOnThrow<System.ArgumentException>(!entity.IsActive ,string.Format(CoreResources.Neutral.NoHayDatosPorId, Neutral.<#= ConvertToPascalCase(property.Target.Name) #>Alias));
+            // Devolvemos el resultado.
+            return entity;
+        } // GetAcciones
+
+<#+
+   }
+}
+#>
+        #endregion
+
+    } // end class Create<#= secureEntityName #>
+} //  <#= projectNamespace #>
+
+<#+
+        return this.GenerationEnvironment.ToString();
+    } //end method override TransformText method
+} // end class ApplicationEntityCreateServicesBaseCT
+#>

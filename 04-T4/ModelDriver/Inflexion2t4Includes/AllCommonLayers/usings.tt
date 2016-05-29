@@ -1,0 +1,34 @@
+﻿<#+
+public class usings : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public usings(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts( cbc, projectNamespace, Skt);
+        if (prjCon.sharedKernelUsings != null)
+        if (prjCon.sharedKernelUsings.Count > 0)
+        {
+#>
+    #region sharedKernels references
+<#+
+
+foreach (var item in prjCon.sharedKernelUsings)
+    {
+#>
+    using <#= item #>;
+<#+
+    }// end foreach para los using del shared kernel
+#>
+    #endregion
+<#+
+        }
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

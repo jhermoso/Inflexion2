@@ -1,0 +1,29 @@
+﻿<#
+
+    SolutionInfo.AddSolutionFolderPath("a");
+    SolutionInfo.AddSolutionFolderPath("a\\b");
+    SolutionInfo.AddSolutionFolderPath("c\\d\\e");
+
+
+if (SolutionInfo.ExistSolutionFolderName("a")>-1)
+    WriteLine("Obtenemos el nombre del proyecto a es :'{0}'", SolutionInfo.GetSolutionProject("a").Name);
+     WriteLine("El valor devuelto por buscar a\\b es:{0}",SolutionInfo.ExistSolutionFolderName("a\\b"));
+if (SolutionInfo.ExistSolutionFolderName("a\\b")>-1)
+    {
+       
+        //WriteLine("Obtenemos el nombre del proyecto a\\b es :'{0}'", SolutionInfo.GetSolutionProject("a\\b").Name);
+    }
+//
+      WriteLine("------------------------");
+    foreach(Project p in SolutionInfo.OwnSolution.Projects )
+    {
+        WriteLine("El proyecto es :{0}",p.Name);
+    }
+
+
+     WriteLine("------------------------");
+    foreach(Project p in SolutionInfo.ProjectsList )
+    {
+        WriteLine("El proyecto es :{0}",p.Name);
+    }
+#>

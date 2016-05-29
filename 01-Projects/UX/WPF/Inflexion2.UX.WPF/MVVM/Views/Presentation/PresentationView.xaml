@@ -4,12 +4,22 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:Inflexion2.UX.WPF.MVVM.ViewModels"
-             mc:Ignorable="d" >
+             
+             mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="525" >
+    <UserControl.Background>
+        <ImageBrush ImageSource="../../Views/Images/presentacionV2.png" Opacity=".2"/>
+    </UserControl.Background>
     <UserControl.DataContext>
         <vm:PresentationViewModel/>
     </UserControl.DataContext>
     
+    
     <Grid>
-        <Image  Name="BackgroundImage" Source="../../Views/Images/presentacionV2.png" Width="1020"  Opacity="0.5"/>
+
+        <!-- Image 
+               Name="BackgroundImage" 
+               Stretch="Uniform"
+               Source="../../Views/Images/presentacionV2.png"  
+               Opacity="0.5" IsEnabled="False"/ -->
     </Grid>
 </UserControl>

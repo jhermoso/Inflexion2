@@ -52,233 +52,185 @@ namespace Atento.Suite.Shared.Domain
         /// </value>
         string Nombre { get; set; }
         /// <summary>
-        /// .en Property to get & set Juridica.
-        /// .es Propiedad que permite obtener y establecer Juridica.
+        /// .en Property to get & set BooleanField.
+        /// .es Propiedad que permite obtener y establecer BooleanField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set Juridica.
-        /// .es Valor que es utilizado para obtener y establecer Juridica.
+        /// .en Value used to get & set BooleanField.
+        /// .es Valor que es utilizado para obtener y establecer BooleanField.
         /// </value>
-        bool Juridica { get; set; }
+        bool BooleanField { get; set; }
         /// <summary>
-        /// .en Property to get & set Direccion.
-        /// .es Propiedad que permite obtener y establecer Direccion.
+        /// .en Property to get & set DatetimeField.
+        /// .es Propiedad que permite obtener y establecer DatetimeField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set Direccion.
-        /// .es Valor que es utilizado para obtener y establecer Direccion.
+        /// .en Value used to get & set DatetimeField.
+        /// .es Valor que es utilizado para obtener y establecer DatetimeField.
         /// </value>
-        string Direccion { get; set; }
+        DateTime DatetimeField { get; set; }
         /// <summary>
-        /// .en Property to get & set Calle.
-        /// .es Propiedad que permite obtener y establecer Calle.
+        /// .en Property to get & set ByteField.
+        /// .es Propiedad que permite obtener y establecer ByteField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set Calle.
-        /// .es Valor que es utilizado para obtener y establecer Calle.
+        /// .en Value used to get & set ByteField.
+        /// .es Valor que es utilizado para obtener y establecer ByteField.
         /// </value>
-        string Calle { get; set; }
+        byte ByteField { get; set; }
         /// <summary>
-        /// .en Property to get & set CP.
-        /// .es Propiedad que permite obtener y establecer CP.
+        /// .en Property to get & set GuidField.
+        /// .es Propiedad que permite obtener y establecer GuidField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set CP.
-        /// .es Valor que es utilizado para obtener y establecer CP.
+        /// .en Value used to get & set GuidField.
+        /// .es Valor que es utilizado para obtener y establecer GuidField.
         /// </value>
-        string CP { get; set; }
+        Guid GuidField { get; set; }
         /// <summary>
-        /// .en Property to get & set Provincia.
-        /// .es Propiedad que permite obtener y establecer Provincia.
+        /// .en Property to get & set DecimalField.
+        /// .es Propiedad que permite obtener y establecer DecimalField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set Provincia.
-        /// .es Valor que es utilizado para obtener y establecer Provincia.
+        /// .en Value used to get & set DecimalField.
+        /// .es Valor que es utilizado para obtener y establecer DecimalField.
         /// </value>
-        string Provincia { get; set; }
+        decimal DecimalField { get; set; }
         /// <summary>
-        /// .en Property to get & set Comunidad.
-        /// .es Propiedad que permite obtener y establecer Comunidad.
+        /// .en Property to get & set DobleField.
+        /// .es Propiedad que permite obtener y establecer DobleField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set Comunidad.
-        /// .es Valor que es utilizado para obtener y establecer Comunidad.
+        /// .en Value used to get & set DobleField.
+        /// .es Valor que es utilizado para obtener y establecer DobleField.
         /// </value>
-        string Comunidad { get; set; }
+        double DobleField { get; set; }
         /// <summary>
-        /// .en Property to get & set Pais.
-        /// .es Propiedad que permite obtener y establecer Pais.
+        /// .en Property to get & set FloatField.
+        /// .es Propiedad que permite obtener y establecer FloatField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set Pais.
-        /// .es Valor que es utilizado para obtener y establecer Pais.
+        /// .en Value used to get & set FloatField.
+        /// .es Valor que es utilizado para obtener y establecer FloatField.
         /// </value>
-        string Pais { get; set; }
+        float FloatField { get; set; }
         /// <summary>
-        /// .en Property to get & set Matricula.
-        /// .es Propiedad que permite obtener y establecer Matricula.
+        /// .en Property to get & set IntField.
+        /// .es Propiedad que permite obtener y establecer IntField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set Matricula.
-        /// .es Valor que es utilizado para obtener y establecer Matricula.
+        /// .en Value used to get & set IntField.
+        /// .es Valor que es utilizado para obtener y establecer IntField.
         /// </value>
-        string Matricula { get; set; }
+        int IntField { get; set; }
         /// <summary>
-        /// .en Property to get & set Codigo.
-        /// .es Propiedad que permite obtener y establecer Codigo.
+        /// .en Property to get & set LongField.
+        /// .es Propiedad que permite obtener y establecer LongField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set Codigo.
-        /// .es Valor que es utilizado para obtener y establecer Codigo.
+        /// .en Value used to get & set LongField.
+        /// .es Valor que es utilizado para obtener y establecer LongField.
         /// </value>
-        string Codigo { get; set; }
+        long LongField { get; set; }
         /// <summary>
-        /// .en Property to get & set Sector.
-        /// .es Propiedad que permite obtener y establecer Sector.
+        /// .en Property to get & set DateTimeOffsetField.
+        /// .es Propiedad que permite obtener y establecer DateTimeOffsetField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set Sector.
-        /// .es Valor que es utilizado para obtener y establecer Sector.
+        /// .en Value used to get & set DateTimeOffsetField.
+        /// .es Valor que es utilizado para obtener y establecer DateTimeOffsetField.
         /// </value>
-        string Sector { get; set; }
+        DateTimeOffset DateTimeOffsetField { get; set; }
         /// <summary>
-        /// .en Property to get & set Site.
-        /// .es Propiedad que permite obtener y establecer Site.
+        /// .en Property to get & set ShortField.
+        /// .es Propiedad que permite obtener y establecer ShortField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set Site.
-        /// .es Valor que es utilizado para obtener y establecer Site.
+        /// .en Value used to get & set ShortField.
+        /// .es Valor que es utilizado para obtener y establecer ShortField.
         /// </value>
-        string Site { get; set; }
+        short ShortField { get; set; }
         /// <summary>
-        /// .en Property to get & set LogoImagen.
-        /// .es Propiedad que permite obtener y establecer LogoImagen.
+        /// .en Property to get & set TimeSpanField.
+        /// .es Propiedad que permite obtener y establecer TimeSpanField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set LogoImagen.
-        /// .es Valor que es utilizado para obtener y establecer LogoImagen.
+        /// .en Value used to get & set TimeSpanField.
+        /// .es Valor que es utilizado para obtener y establecer TimeSpanField.
         /// </value>
-        string LogoImagen { get; set; }
+        TimeSpan TimeSpanField { get; set; }
         /// <summary>
-        /// .en Property to get & set Telefono.
-        /// .es Propiedad que permite obtener y establecer Telefono.
+        /// .en Property to get & set Int16Field.
+        /// .es Propiedad que permite obtener y establecer Int16Field.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set Telefono.
-        /// .es Valor que es utilizado para obtener y establecer Telefono.
+        /// .en Value used to get & set Int16Field.
+        /// .es Valor que es utilizado para obtener y establecer Int16Field.
         /// </value>
-        string Telefono { get; set; }
+        Int16 Int16Field { get; set; }
         /// <summary>
-        /// .en Property to get & set Fax.
-        /// .es Propiedad que permite obtener y establecer Fax.
+        /// .en Property to get & set Int32Field.
+        /// .es Propiedad que permite obtener y establecer Int32Field.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set Fax.
-        /// .es Valor que es utilizado para obtener y establecer Fax.
+        /// .en Value used to get & set Int32Field.
+        /// .es Valor que es utilizado para obtener y establecer Int32Field.
         /// </value>
-        string Fax { get; set; }
+        Int32 Int32Field { get; set; }
         /// <summary>
-        /// .en Property to get & set Mobil.
-        /// .es Propiedad que permite obtener y establecer Mobil.
+        /// .en Property to get & set Int64Field.
+        /// .es Propiedad que permite obtener y establecer Int64Field.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set Mobil.
-        /// .es Valor que es utilizado para obtener y establecer Mobil.
+        /// .en Value used to get & set Int64Field.
+        /// .es Valor que es utilizado para obtener y establecer Int64Field.
         /// </value>
-        string Mobil { get; set; }
-        /// <summary>
-        /// .en Property to get & set Atributte1.
-        /// .es Propiedad que permite obtener y establecer Atributte1.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <value>
-        /// .en Value used to get & set Atributte1.
-        /// .es Valor que es utilizado para obtener y establecer Atributte1.
-        /// </value>
-        string Atributte1 { get; set; }
-        /// <summary>
-        /// .en Property to get & set FormaJuridica.
-        /// .es Propiedad que permite obtener y establecer FormaJuridica.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <value>
-        /// .en Value used to get & set FormaJuridica.
-        /// .es Valor que es utilizado para obtener y establecer FormaJuridica.
-        /// </value>
-        string FormaJuridica { get; set; }
-        /// <summary>
-        /// .en Property to get & set Fisica.
-        /// .es Propiedad que permite obtener y establecer Fisica.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <value>
-        /// .en Value used to get & set Fisica.
-        /// .es Valor que es utilizado para obtener y establecer Fisica.
-        /// </value>
-        bool Fisica { get; set; }
-        /// <summary>
-        /// .en Property to get & set Genero.
-        /// .es Propiedad que permite obtener y establecer Genero.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <value>
-        /// .en Value used to get & set Genero.
-        /// .es Valor que es utilizado para obtener y establecer Genero.
-        /// </value>
-        string Genero { get; set; }
+        Int64 Int64Field { get; set; }
         #endregion
 
         #region Methods

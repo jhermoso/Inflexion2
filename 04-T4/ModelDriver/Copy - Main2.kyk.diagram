@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<moneyGenDiagram dslVersion="1.0.0.0" Id="32d46ed7-c49d-4c8f-bf6e-b8d44ab1c303" absoluteBounds="0, 0, 11, 8.5" name="Main2">
+  <applicationMoniker Id="8e098ed1-cff1-47b3-8d88-e446100457d6" />
+  <nestedChildShapes>
+    <entityShape Id="15c45921-655a-477f-b945-202f3dcab7b1" absoluteBounds="1.5, 2.5, 1.5, 1.2533821614583331" outlineColor="LightSteelBlue" outlineThickness="0.01" outlineDashStyle="Solid" fillGradientMode="ForwardDiagonal" fillColor="Lavender" textColor="Black">
+      <entityMoniker name="/8e098ed1-cff1-47b3-8d88-e446100457d6/Categoria" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2913128f-2343-4c06-9553-8e6a3ca28b47" absoluteBounds="1.5150000000000001, 2.76, 1.4700000000000002, 0.44169108072916663" name="Attributtes" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="736a9282-6897-4177-919d-eb976bc42d71" absoluteBounds="1.515, 3.2116910807291665, 1.4700000000000002, 0.44169108072916663" name="Invariants" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </entityShape>
+    <entityShape Id="3626ce5e-bfa8-439a-87f7-56c54e845a5a" absoluteBounds="5.625, 3.875, 3.375, 1.0610807291666662" outlineColor="LightSteelBlue" outlineThickness="0.01" outlineDashStyle="Solid" fillGradientMode="ForwardDiagonal" fillColor="Lavender" textColor="Black">
+      <entityMoniker name="/8e098ed1-cff1-47b3-8d88-e446100457d6/Producto" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9fc0eadb-3211-4d49-aebd-9c80d07cdf99" absoluteBounds="5.64, 4.135, 3.3449999999999998, 0.44169108072916663" name="Attributtes" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="bd97af90-0d21-4fef-b917-25b2c16b5a45" absoluteBounds="5.64, 4.5866910807291665, 3.3449999999999998, 0.2493896484375" name="Invariants" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </entityShape>
+    <enumerationShape Id="b9cabf39-71d2-4962-bf78-4098ba9d9873" absoluteBounds="1.5, 0.75, 1.5, 1.2439925130208329">
+      <enumerationMoniker name="/8e098ed1-cff1-47b3-8d88-e446100457d6/ProductType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8894c9e6-c32c-4b51-9f8f-929e521fafd4" absoluteBounds="1.5150000000000006, 1.2599999999999998, 1.4700000000000002, 0.63399251302083326" name="EnumerationValues" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </enumerationShape>
+    <compositionConnector Id="1c01a2ca-cf16-4a1b-8219-5b95cbd838a8" edgePoints="[(3 : 1.37199625651042); (8.57298809159861 : 1.37199625651042); (8.57298809159861 : 3.875)]" fixedFrom="NotFixed" fixedTo="NotFixed" color="113, 111, 110">
+      <compositionMoniker Id="9310f8b6-edc3-4254-9fdb-c87712917af1" />
+      <relativeChildShapes />
+      <nodes>
+        <enumerationShapeMoniker Id="b9cabf39-71d2-4962-bf78-4098ba9d9873" />
+        <entityShapeMoniker Id="3626ce5e-bfa8-439a-87f7-56c54e845a5a" />
+      </nodes>
+    </compositionConnector>
+    <aggregationConnector Id="8a2a003e-ddbe-4fdc-bdc5-d354025605e8" edgePoints="[(3 : 2.69943210466534); (7.04685745354213 : 2.69943210466534); (7.04685745354213 : 3.875)]" fixedFrom="Caller" fixedTo="Caller" color="113, 111, 110">
+      <aggregationMoniker Id="0c1bd2ae-48ff-47d7-b59d-b351c3b3099f" />
+      <relativeChildShapes />
+      <nodes>
+        <entityShapeMoniker Id="15c45921-655a-477f-b945-202f3dcab7b1" />
+        <entityShapeMoniker Id="3626ce5e-bfa8-439a-87f7-56c54e845a5a" />
+      </nodes>
+    </aggregationConnector>
+  </nestedChildShapes>
+</moneyGenDiagram>

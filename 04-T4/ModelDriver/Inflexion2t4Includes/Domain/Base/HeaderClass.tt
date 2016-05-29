@@ -1,0 +1,40 @@
+﻿<#+
+public class HeaderClass : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public HeaderClass(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+    {
+        this.cbc= cbc; 
+        this.projectNamespace = projectNamespace;  
+        this.Skt = Skt; 
+
+        
+    }
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        // conceptos propios del projecto en curso.
+        ProjectConcepts prjCon = new ProjectConcepts( cbc, projectNamespace, Skt );
+        string baseEntity = "";
+        // ignoramos los valores de none y legacy
+        if (cbc.IsRoot || cbc.MainEntityStereotype.Contains("AggregateRoot") || cbc.MainEntityStereotype.Contains("Entity") )
+        {
+            baseEntity = String.Format("Inflexion2.Domain.{0}<{1}, {2}>{3}", cbc.MainEntityStereotype, cbc.pascalSecureEntityName, cbc.idtype, (cbc.isDerivedFromOneEntity)?",":"");  
+        }
+#>
+    /// <summary>
+    /// <see cref="<#= I #><#= cbc.pascalSecureEntityName #>".
+    /// </summary>
+    [Serializable]
+    <#= cbc.accesModifier #>class <#= cbc.pascalSecureEntityName #> : <#= (cbc.isDerivedFromOneEntity)? cbc.parentEntityName : baseEntity /*cbc.entityBase*/ #>, I<#= cbc.pascalSecureEntityName #>
+    {
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

@@ -1,0 +1,84 @@
+﻿<#@ template language="C#" hostspecific="True" debug="True" #>
+<#@ output extension ="txt" #>
+<#@ include file     ="T4Toolbox.tt" #>
+<#@ Assembly Name    ="System.Core.dll" #>
+<#@ Assembly Name    ="System.Xml.Linq.dll" #>
+<#@ assembly name    ="System.Xml" #>
+<#@ assembly name    ="Microsoft.VisualStudio.Shell.Interop.8.0" #>
+<#@ assembly name    ="EnvDTE" #>
+<#@ assembly name    ="EnvDTE80" #>
+<#@ assembly name    ="VSLangProj" #>
+<#@ assembly name    ="Microsoft.VisualStudio.Modeling.SDK.Integration.10.0" #>
+<#@ import namespace ="System.Collections.Generic" #>
+<#@ import namespace ="System.Text" #>
+<#@ import namespace ="System.Text.RegularExpressions" #>
+<#@ import namespace ="System.Xml" #>
+<#@ import namespace ="Microsoft.VisualStudio.Shell.Interop" #>
+<#@ import namespace ="EnvDTE" #>
+<#@ import namespace ="EnvDTE80" #>
+<#@ import namespace ="Microsoft.VisualStudio.TextTemplating" #>
+<#@ import namespace ="System" #>
+<#@ import namespace ="System.IO" #>
+<#@ import namespace ="System.Diagnostics" #>
+<#@ import namespace ="System.Linq" #>
+<#@ import namespace ="System.Xml.Linq" #>
+<#@ import namespace ="System.Collections" #>
+<#@ import namespace ="System.Collections.Generic" #>
+
+<#
+// ADVERTENCIA: cuidar de no meter espacios al final de las directivas pues se reflejan como lineas blancas en texto de salida.
+// alternativa con castclass
+IServiceProvider hostServiceProvider = (IServiceProvider)Host;
+var dte = (EnvDTE.DTE)hostServiceProvider.GetService(typeof(SDTE)); // SDTE es una interfaz.
+
+    
+string SolutionFullName = dte.Solution.FullName; // path incluyendo el nombre de la solución 
+string SolutionDir = System.IO.Path.GetDirectoryName(SolutionFullName);
+
+string NuevoProjecto = @"MiNuevoProyecto";
+string PathNuevoProjecto = SolutionDir+@"\"+NuevoProjecto; // no se permite 
+string s1 = dte.Solution.Projects.Count.ToString();
+int i = dte.Solution.Projects.Count;
+string s2 = dte.ActiveDocument.Name.ToString();
+string s3 = dte.Debugger.Breakpoints.Count.ToString();
+
+Solution2 soln = (Solution2)dte.Solution;
+string csTemplatePath;
+csTemplatePath = soln.GetProjectTemplate("ConsoleApplication.zip", "CSharp");
+string cstemplatepath1 = soln.GetProjectTemplate("ClassLibrary.zip", "CSharp");
+Projects ps = soln.Projects;
+Project proyecto = soln.Item(1);
+//proyecto.ProjectItems.AddFromTemplate(cstemplatepath1, "MiPropiaClase.cs");
+
+// trasladamos la creación de los proyectos a una clase especifica con un metodo al que se le pasa los datos del proyecto a crear y compruebe que no existe.
+if (i > 0 )
+{
+    if (!System.IO.Directory.Exists(PathNuevoProjecto))// COMPROBAR SI EXISTE FISICAMENTE Y ESTA AÑADIDO  A LA SOLUCIÓN
+    {
+        soln.AddFromTemplate(cstemplatepath1, PathNuevoProjecto,NuevoProjecto, false);
+        // trazabilidad del proceso de generación
+        #>"Añadimos a la solución el projecto <#= NuevoProjecto #> <#
+        soln.FindProjectItem("Class1.cs").Remove();
+        // trazabilidad del proceso de generación
+        #>"Borramos del proyecto añadido La clase por defecto "Class1.cs" <#
+            string PathNewClass1 = PathNuevoProjecto + @"\" + "Class1.cs";
+            System.IO.File.Delete(PathNewClass1);
+    }
+    else
+    {
+        // trazabilidad del proceso de generación
+        #>El directorio "<#= NuevoProjecto #>" ya existe"
+        Si desea volver a generar el proyecto desde la definición borre dicho directorio <#
+    }
+}
+
+
+
+#>
+El path de la solución junto con el nombre es :<#= SolutionFullName #>
+el directorio de la solución es : <#= SolutionDir #>
+el numero de projectos es :<#= s1 #>
+El documento Activo es    :<#= s2 #>
+El número de break points:<#= s3 #>
+el path de la plantilla de proyecto de console es:<#= csTemplatePath #>
+el path de la plantilla de proyecto de console es:<#= cstemplatepath1 #>

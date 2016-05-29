@@ -1,0 +1,39 @@
+﻿<#+
+public class WpfEntityViewXamlCT : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    public ClassBaseContext cbc; public string projectNamespace; public ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public WpfEntityViewXamlCT(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+#>
+<UserControl x:Class="<#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.FrontEnd.WpfModule.<#= cbc.pascalSecureEntityName #>View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:controls="clr-namespace:Inflexion2.UX.WPF.Controls;assembly=Inflexion2.UX.WPF.Controls"
+             xmlns:converter="clr-namespace:Inflexion2.UX.WPF.ValueConverters;assembly=Inflexion2.UX.WPF"
+             mc:Ignorable="d" 
+             Padding="5">
+    <Grid Background="White">
+
+        <StackPanel Orientation="Vertical" VerticalAlignment="Top" >
+            <TextBlock Text="Nombre"/>
+            <TextBox 
+                            x:Name="txtNombreEdit" 
+                            Text="{Binding Nombre, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}"
+                            ToolTip="Nombre"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

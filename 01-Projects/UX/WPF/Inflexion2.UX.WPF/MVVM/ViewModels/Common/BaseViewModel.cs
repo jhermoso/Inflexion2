@@ -28,6 +28,9 @@ namespace Inflexion2.UX.WPF.MVVM
 
         #region Constructors
 
+        /// <summary>
+        /// .en abstract base view model class common to all viewmodels with basic functions.
+        /// </summary>
         public BaseViewModel()
         {
             Validation = new ValidationHelper();
@@ -40,7 +43,7 @@ namespace Inflexion2.UX.WPF.MVVM
         #region Events
 
         /// <summary>
-        /// Se produce después de que una propiedad cambia de valor.
+        /// .es Se produce después de que una propiedad cambia de valor.
         /// </summary>
         /// <remarks>
         /// Miembro de la interfaz <see cref="T:System.ComponentModel.INotifyPropertyChanged"/>.
@@ -48,7 +51,7 @@ namespace Inflexion2.UX.WPF.MVVM
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
-        /// Se produce antes de que una propiedad cambia de valor.
+        /// .es Se produce antes de que una propiedad cambia de valor.
         /// </summary>
         /// <remarks>
         /// Miembro de la interfaz <see cref="T:System.ComponentModel.INotifyPropertyChanging"/>.
@@ -60,10 +63,10 @@ namespace Inflexion2.UX.WPF.MVVM
         #region Properties
 
         /// <summary>
-        /// Obtiene un valor que indica si la vista es una vista en tiempo de diseño.
+        /// .es Obtiene un valor que indica si la vista es una vista en tiempo de diseño.
         /// </summary>
         /// <value>
-        /// Es true si la vista es una vista en tiempo de diseño; en caso contrario, false.
+        /// .es Es true si la vista es una vista en tiempo de diseño; en caso contrario, false.
         /// </value>
         protected bool IsDesignTime
         {
@@ -75,7 +78,7 @@ namespace Inflexion2.UX.WPF.MVVM
         }
 
         /// <summary>
-        /// Gets the error message for the property with the given name.
+        /// .en Gets the error message for the property with the given name.
         /// </summary>
         /// <returns>The error message for the property. The default is an empty string ("").</returns>
         public string this[string columnName]
@@ -84,7 +87,7 @@ namespace Inflexion2.UX.WPF.MVVM
         }
 
         /// <summary>
-        /// Gets an error message indicating what is wrong with this object.
+        /// .en Gets an error message indicating what is wrong with this object.
         /// </summary>
         /// <returns>An error message indicating what is wrong with this object. The default is an empty string ("").</returns>
         public string Error
@@ -97,26 +100,26 @@ namespace Inflexion2.UX.WPF.MVVM
         }
 
         /// <summary>
-        /// Gets or sets the validation helper.
+        /// .en Gets or sets the validation helper.
         /// </summary>
         /// <value>
-        /// The validation helper.
+        /// .en The validation helper.
         /// </value>
         public ValidationHelper Validation { get; set; }
 
         /// <summary>
-        /// Gets or sets the data error info validation adapter.
+        /// .en Gets or sets the data error info validation adapter.
         /// </summary>
         /// <value>
-        /// The data error info validation adapter.
+        /// .en The data error info validation adapter.
         /// </value>
         private DataErrorInfoAdapter DataErrorInfoValidationAdapter { get; set; }
 
         /// <summary>
-        /// Proporciona acceso al controlador de eventos <see cref="M:PropertyChanged"/> para las clases derivadas.
+        /// .es Proporciona acceso al controlador de eventos <see cref="M:PropertyChanged"/> para las clases derivadas.
         /// </summary>
         /// <value>
-        /// La referencia al controlador de eventos <see cref="M:PropertyChanged"/>.
+        /// .es La referencia al controlador de eventos <see cref="M:PropertyChanged"/>.
         /// </value>
         protected PropertyChangedEventHandler PropertyChangedHandler
         {
@@ -127,10 +130,10 @@ namespace Inflexion2.UX.WPF.MVVM
         }
 
         /// <summary>
-        /// Proporciona acceso al controlador de eventos <see cref="M:PropertyChanging"/> para las clases derivadas.
+        /// .es Proporciona acceso al controlador de eventos <see cref="M:PropertyChanging"/> para las clases derivadas.
         /// </summary>
         /// <value>
-        /// La referencia al controlador de eventos <see cref="M:PropertyChanging"/>.
+        /// .es La referencia al controlador de eventos <see cref="M:PropertyChanging"/>.
         /// </value>
         protected PropertyChangingEventHandler PropertyChangingHandler
         {
@@ -140,6 +143,9 @@ namespace Inflexion2.UX.WPF.MVVM
             }
         }
 
+        /// <summary>
+        /// .en Inyect the MessageBox Service to be able to tell something to the user.
+        /// </summary>
         protected IMessageBoxService MessageBoxService
         {
             get 
@@ -152,17 +158,33 @@ namespace Inflexion2.UX.WPF.MVVM
 
         #region Protected Methods
 
+        /// <summary>
+        /// .en Raise the property change event with out a property to update the dependency properties.
+        /// </summary>
         protected void Rebind()
         {
             this.RaisePropertyChanged(string.Empty);
         }
 
+
+        /// <summary>
+        /// .en raise a property change event with a function which returns the property name.
+        /// in this way it is possible to write the event strong typed.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="propertyExpresssion"></param>
         protected virtual void RaisePropertyChanged<T>(Expression<Func<T>> propertyExpresssion)
         {
             var propertyName = PropertySupport.ExtractPropertyName(propertyExpresssion);
             this.RaisePropertyChanged(propertyName);
         }
 
+        /// <summary>
+        /// .en raise a property change event with a function which returns the property name.
+        /// in this way it is possible to write the event strong typed.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="propertyExpresssion"></param>
         protected virtual void RaisePropertyChanging<T>(Expression<Func<T>> propertyExpresssion)
         {
             var propertyName = PropertySupport.ExtractPropertyName(propertyExpresssion);
@@ -170,7 +192,7 @@ namespace Inflexion2.UX.WPF.MVVM
         }
 
         /// <summary>
-        /// Setups the validation.
+        /// .en Setups the validation.
         /// </summary>
         /// <param name="validation">The validation.</param>
         protected virtual void SetupValidation(ValidationHelper validation)
@@ -183,13 +205,13 @@ namespace Inflexion2.UX.WPF.MVVM
         #region Private Methods
 
         /// <summary>
-        /// Provoca el evento <see cref="M:PropertyChanged"/> si es necesario.
+        /// .es Provoca el evento <see cref="M:PropertyChanged"/> si es necesario.
         /// </summary>
         /// <param name="propertyName">
-        /// El nombre de la propiedad modificada.
+        /// .es El nombre de la propiedad modificada.
         /// </param>
         /// <remarks>
-        /// Si el parámetro <paramref name="propertyName"/> no se corresponde
+        /// .es Si el parámetro <paramref name="propertyName"/> no se corresponde
         /// con una propiedad existente en la clase actual, se produce una excepción
         /// en la configuración de depuración.
         /// </remarks>
@@ -211,13 +233,13 @@ namespace Inflexion2.UX.WPF.MVVM
         }
 
         /// <summary>
-        /// Provoca el evento <see cref="M:PropertyChanging"/> si es necesario.
+        /// .es Lanza el evento <see cref="M:PropertyChanging"/> si es necesario.
         /// </summary>
         /// <param name="propertyName">
-        /// El nombre de la propiedad que se va a modificar.
+        /// .es El nombre de la propiedad que se va a modificar.
         /// </param>
         /// <remarks>
-        /// Si el parámetro <paramref name="propertyName"/> no se corresponde
+        /// .es Si el parámetro <paramref name="propertyName"/> no se corresponde
         /// con una propiedad existente en la clase actual, se produce una excepción
         /// en la configuración de depuración.
         /// </remarks>
@@ -238,13 +260,13 @@ namespace Inflexion2.UX.WPF.MVVM
         }
 
         /// <summary>
-        /// Comprueba que un nombre determinado de propiedad existe en esta instancia.
+        /// .es Comprueba que un nombre determinado de propiedad existe en esta instancia.
         /// </summary>
         /// <param name="propertyName">
-        /// El nombre de la propiedad que se va a comprobar.
+        /// .es El nombre de la propiedad que se va a comprobar.
         /// </param>
         /// <remarks>
-        /// Este método solamente se aplica a la configuración de depuración.
+        /// .es Este método solamente se aplica a la configuración de depuración.
         /// </remarks>
         [DebuggerStepThrough]
         [Conditional("DEBUG")]

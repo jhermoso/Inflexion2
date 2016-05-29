@@ -1,0 +1,76 @@
+﻿<#+
+public class RegionPropertiesFromSources : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public RegionPropertiesFromSources(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+#>
+        #region Propiedades procedentes de los roles de tipo 'source' en una asociación
+<#+
+    foreach (var property in cbc.propertyAssociationSources)
+    {
+        // Debug.WriteLine("composition target link encontrado",property.ToString() );
+#>
+        // Esta propiedad proviene de una relación de tipo <#=(property is Aggregation)?"Agregación":"" #><#=(property is Composition)?"Composición":"" #> y <#=(property is Association)?"Asociación":"" #> Sources
+        /// <summary>
+        /// Propiedad pública que permite establecer y obtener <#= T4Help.SecureName(property.TargetRolName) #>.
+        /// </summary>
+        /// <remarks>
+        /// Nos permite establecer y obtener <#= T4Help.SecureName(property.TargetRolName) #>.
+        /// </remarks>
+        /// <value>
+        /// Valor que es utilizado para establecer y obtener <#= T4Help.SecureName(property.TargetRolName) #>.
+        /// </value>
+<#+
+if (cbc.diagram.ValidationContracts.Equals("DataAnotations"))
+    {
+        if (IsMinMultiplicityOne(property.SourceMultiplicity)) //(property.IsMandatory) 
+        {
+#>
+        [Required(ErrorMessageResourceName = "FieldIsMandatory", ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework))]
+<#+
+        }
+    }
+#>
+        public <#=(cbc.diagram.ORM.Length >0)?"virtual":"" #> <#= (property.Source is Enumeration)?"": I #><#= T4Help.SecureName(property.Source.Name) #> <#= T4Help.SecureName(property.TargetRolName) #> 
+            {
+                get 
+                {
+                    return this.<#= T4Help.ToCamelCase(property.TargetRolName) #>;
+                }
+                <#=(cbc.diagram.ORM.Contains("ibernate"))?"protected":"private" #> set 
+                {
+<#+
+        if (cbc.diagram.ValidationContracts.Equals("CodeContracts")) 
+        { // comprobamos si la propiedad es mandatory en cuyo caso su valor no puede ser nulo
+#>
+<#+
+         if (IsMinMultiplicityOne(property.SourceMultiplicity))
+            { // comprobamos si la propiedad es mandatory en cuyo caso su valor no puede ser nulo
+#>
+            Contract.Requires<System.ArgumentNullException>(value != null, "La propiedad <#= T4Help.SecureName(property.TargetRolName) #> no puede ser nula"); // Esta propiedad proviene de una relación de composición y es mandatory.
+<#+         } /*end if madatory & nullable*/ #>
+<#+     } /*end if CodeContracts*/#>
+                   this.<#= T4Help.ToCamelCase(property.TargetRolName) #> = value;
+                }
+            }
+<#+ 
+    } /*end foreach*/ 
+#>
+        #endregion
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

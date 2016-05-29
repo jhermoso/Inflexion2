@@ -1,0 +1,111 @@
+﻿<#@ include file="Base\HeaderClass.tt" #>
+<#@ include file="Base\RegionFields.tt" #>
+<#@ include file="Base\RegionConstructors.tt" #>
+<#@ include file="Base\RegionProperties.tt" #>
+<#@ include file="Base\RegionPropertiesFromSources.tt" #>
+<#@ include file="Base\RegionSetMethods.tt" #>
+<#@ include file="Base\RegionSourcesSetMethods.tt" #>
+<#@ include file="Base\RegionPropertiesFromTargets.tt" #>
+<#@ include file="Base\RegionTargetAddRemove.tt" #>
+<#@ include file="Base\BodyMethod.tt" #>
+<#+
+public class DomainBaseEntityCT : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public DomainBaseEntityCT(ClassBaseContext cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+    {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    // metodo de ClassBaseContext cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt de la plantilla
+    public override string TransformText()
+        {
+            // conceptos propios del projecto en curso
+            ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+            // subplantillas generales
+            var cpyrigthTemplate    = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity);  string cpyrigthText = cpyrigthTemplate.TransformText();
+            // subplantillas particulares
+            var usingTemplate                   = new usings( cbc, projectNamespace, Skt);                      string usingTxt                         = usingTemplate.TransformText(); //solo los shared kernel
+            var headerClass                     = new HeaderClass( cbc, projectNamespace, Skt);                 string HeaderClassTxt                   = headerClass.TransformText();
+            var regionFields                    = new RegionFields( cbc, projectNamespace, Skt);                string RegionFieldsTxt                  = regionFields.TransformText();
+            var regionConstructors              = new RegionConstructors( cbc, projectNamespace, Skt);          string RegionConstructorsTxt            = regionConstructors.TransformText();
+            var regionProperties                = new RegionProperties( cbc, projectNamespace, Skt);            string RegionPropertiesTxt              = regionProperties.TransformText();
+            var regionPropertiesFromSources     = new RegionPropertiesFromSources( cbc, projectNamespace, Skt); string RegionPropertiesFromSourcesTxt   = regionPropertiesFromSources.TransformText();
+            var regionSetMethods                = new RegionSetMethods( cbc, projectNamespace, Skt);            string RegionSetMethodsTxt              = regionSetMethods.TransformText();
+            var regionSourcesSetMethods         = new RegionSourcesSetMethods( cbc, projectNamespace, Skt);     string RegionSourcesSetMethodsTxt       = regionSourcesSetMethods.TransformText();
+            var regionPropertiesFromTargets     = new RegionPropertiesFromTargets( cbc, projectNamespace, Skt); string RegionPropertiesFromTargetsTxt   = regionPropertiesFromTargets.TransformText();
+            var regionTargetAddRemove           = new RegionTargetAddRemove( cbc, projectNamespace, Skt);       string RegionTargetAddRemoveTxt         = regionTargetAddRemove.TransformText();
+#>
+
+<#=            cpyrigthText #>
+namespace <#=            projectNamespace #>
+{
+
+<#= usingTxt #>
+    #region usings de arquitectura
+<#+
+    if(cbc.diagram.Architecture == ArchitectureOptions.PureDDD)
+            {
+#>
+    using System;
+    using System.Linq;
+    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Core;
+<#+ if (cbc.OwnBoundedContextHasEnums) {#>
+    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain.Data;
+<#+            } #>
+    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain.Resources;
+    using Inflexion.Framework.Domain.Core.ValueObjects;
+    using Inflexion.Framework.Domain.Base;
+    using Inflexion.Framework.Core;
+<#+
+    }
+#>
+<#+ if (cbc.diagram.ValidationContracts.Equals("CodeContracts")) {#>
+    using System.Diagnostics.Contracts;
+<#+ } #>
+<#+ if (cbc.diagram.ValidationContracts.Equals("DataAnotations")) {#>
+    using System.ComponentModel.DataAnnotations;
+<#+ } #>
+<#+ if (cbc.sourceLinksCounter>0)    {#>
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+<#+ }#>
+    #endregion
+
+<#= HeaderClassTxt.TrimEnd(' ') #>
+<#= RegionFieldsTxt.TrimEnd(' ') #>
+<#+ 
+    if (cbc.HasConstructorDefinition)
+    { 
+#>
+ // Los constructores y destructores se encuentran en clase parciales
+<#+ 
+    }
+     else
+    { 
+#>
+<#= RegionConstructorsTxt.TrimEnd(' ') #>
+<#+ } //end if tiene métodos para los constructores#>
+<#= RegionPropertiesTxt.TrimEnd(' ') #>
+<#+ if (cbc.sourceLinksCounter>0)    {#>
+<#= RegionPropertiesFromSourcesTxt.TrimEnd(' ') #>
+<#+ } #>
+<#+ if (cbc.targetLinksCounter>0)    {#>
+<#= RegionPropertiesFromTargetsTxt.TrimEnd(' ') #>
+<#+ } #>
+<#= RegionSetMethodsTxt.TrimEnd(' ') #>
+<#+ if (cbc.sourceLinksCounter>0)    {#>
+<#= RegionSourcesSetMethodsTxt.TrimEnd(' ') #>
+<#+ } #>
+<#+ if (cbc.targetLinksCounter>0)    {#>
+<#= RegionTargetAddRemoveTxt.TrimEnd(' ') #>
+<#+ } #>
+    } // class <#= cbc.pascalSecureEntityName #> 
+
+} //  <#= projectNamespace #>
+
+<#+
+        return this.GenerationEnvironment.ToString();
+    } //end method override TransformText method
+} // end class DomainBaseEntity
+#>

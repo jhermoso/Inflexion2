@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Inflexion2.UX.WPF.Utilities</name>
+    </assembly>
+    <members>
+        <member name="T:Inflexion.Framework.UserInterface.Wpf.Utilities.ThemeSelector">
+            <summary>
+            Esta clase contiene el método para aplicar un fichero de estilo implementado como diccionario de recursos
+            </summary>
+        </member>
+        <member name="F:Inflexion.Framework.UserInterface.Wpf.Utilities.ThemeSelector.ApplyGlobalThemeProperty">
+            <summary>
+            Propiedad de dependencia "attachable" de tipo booleano para especificar si el framework element al que se asocia
+            es actualizable con el estilo de skin aue se ha asociado  a la propiedad CurrentThemeDictionaryProperty.
+            el funcionamiento es que CurrentThemeDictionaryProperty contiene el uri del estilo que se desea aplicar como skin.
+            y para las ventanas que en un momento dado se encuentran activas si tienen ApplyGlobalThemeProperty =  true 
+            estaran referenciadas por la propiedad interna de elementsWithGlobalTheme que mantiene un registro de las ventanas abiertas que se han 
+            marcado como actualizables en el skin.
+            Como es una propiedad observable cada vez que se produce un cambio del contenido del uri el callback de aplyGlobalthemeProperty se encarga de actualizar 
+            todas las ventanas que mantiene en su registro.
+            La forma correcta de aplicar esta propiedad es asociarla a elemento raiz de la ventana o user control cuyo skin queremos controlar.
+            No es posible asociar varios valores de ture y false simultanemente dentro de un mismo arbol visual.
+            </summary>
+        </member>
+        <member name="F:Inflexion.Framework.UserInterface.Wpf.Utilities.ThemeSelector.CurrentThemeDictionaryProperty">
+            <summary>
+            Registramos la propiedad de dependencia con el uri que ha de apuntar al tema cargado en un momento dado
+            La implementación de una propiedad de dependencia tiene tres pasos
+            1º)el registo de la propiedad.
+            2º)implemtar el metodo de callback.
+            3º)(opcional)la implantación de los seters y geters. 
+                nota:  el codigo generado desde xaml no pasa por estos getters y seters. 
+                por lo que para implementar logica es necesario buscar otros metodos.
+            </summary>
+        </member>
+        <member name="F:Inflexion.Framework.UserInterface.Wpf.Utilities.ThemeSelector.elementsWithGlobalTheme">
+            <summary>
+            Registro donde almacenamos la lisa de ventanas abiertas con skin actualizable de forma dinamica.
+            Este registro se actualiza en el proceos de inicilización de la ventana cuando la propiedad ApplyGlobalThemeProperty vale "True"
+            </summary>
+        </member>
+        <member name="F:Inflexion.Framework.UserInterface.Wpf.Utilities.ThemeSelector.globalThemeDictionary">
+            <summary>
+            Guardamos en esta uri la referencia al estilo que queremos aplicar de forma global.
+            </summary>
+        </member>
+        <member name="P:Inflexion.Framework.UserInterface.Wpf.Utilities.ThemeSelector.GlobalThemeDictionary">
+            <summary>
+            soporte publico al campo privado globalThemeDictionary
+            </summary>
+        </member>
+        <member name="M:Inflexion.Framework.UserInterface.Wpf.Utilities.ThemeSelector.GetCurrentThemeDictionary(System.Windows.DependencyObject)">
+            <summary>
+            Obtenemos el uri que actualmente esta activado como tema de la aplicación
+            </summary>
+            <param name="obj">La propiedad de dependencia </param>
+            <returns>El uri con el tema cargado</returns>
+        </member>
+        <member name="M:Inflexion.Framework.UserInterface.Wpf.Utilities.ThemeSelector.SetCurrentThemeDictionary(System.Windows.DependencyObject,System.Uri)">
+            <summary>
+            Establecemos el nuevo valor de al propiedad de dependencia
+            </summary>
+            <param name="obj">La propiedad de dependencia que deseamos establecer</param>
+            <param name="value">El uri con el nuevo tema a aplicar</param>
+        </member>
+        <member name="M:Inflexion.Framework.UserInterface.Wpf.Utilities.ThemeSelector.GetApplyGlobalTheme(System.Windows.DependencyObject)">
+            <summary>
+            obtiene el tema que esta aplicado al objeto de dependencia que pasamos como parametro
+            </summary>
+            <param name="obj"> objeto del arbol visual del que queremos conocer el skin asignado</param>
+            <returns>devuelve el tipo de tema aplicado al objeto</returns>
+        </member>
+        <member name="M:Inflexion.Framework.UserInterface.Wpf.Utilities.ThemeSelector.SetApplyGlobalTheme(System.Windows.DependencyObject,System.Boolean)">
+            <summary>
+            Almacena para el objeto al se ha asociado la propiedad de dependencia si se aplica el skin "valor true" o no se aplica "valor false"
+            </summary>
+            <param name="obj">elemento del arból visual que se deseaman tener sincronizado con el tema o no.</param>
+            <param name="value">valor true para mantener la sincronización false para no mantenerla</param>
+        </member>
+        <member name="M:Inflexion.Framework.UserInterface.Wpf.Utilities.ThemeSelector.ApplyTheme(System.Windows.FrameworkElement,System.Uri)">
+            <summary>
+            Aplicamos un "tema" referenciado por el nombre de fichero "lose" xaml 
+            con los estilos del tema 
+            a un objeto de tipo FrameworkElement
+            Si este elemento es el contenedor raiz de la ventana, o control de usuario
+            el nuevo estilo se aplica a todo el contenido
+            </summary>
+            <param name="targetElement"> corresponde al valor de la propiedad "Name" de un panel en xaml </param>
+            <param name="dictionaryUri">coorresponde al path con el que localizamos el fichero loose xaml con el estilo deseado
+            el fichero se ha de localizar dentro de la carpeta Themes ubicada a su vez en la carpeta en la que se ejecuta la aplicación.
+            el formato del uri coresponde a la cadena formada por ("/ThemeSelector;component/Themes/" + FileNameTheme)
+            Para mas información sobre los uris consultar http://msdn.microsoft.com/en-us/library/aa970069.aspx
+            </param>
+        </member>
+        <member name="M:Inflexion.Framework.UserInterface.Wpf.Utilities.ThemeSelector.CurrentThemeDictionaryChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            2º Paso Implementamos el metodo de callback mediante un evento de cambio en una propiedad de dependencia.
+            el objeto del callBack es realizar una validación sobre el objeto que se la pasa
+            en este caso si el objeto es correcto aplicamos el tema y si no lo es no hacemos nada.
+            si implementamos esta llamda en el elemento raiz del la ventana nunca tendremos ningun problema.
+            una posibilidad seria comprobara que ademas de ser un frameworlelement es un elemento raiz pero de esta forma 
+            no podriamos utilizar esta clase para cambiar el tema a otro conjunto de elementos.
+            </summary>
+            <param name="obj">Objeto sobre el que se aplica el nuevo tema</param>
+            <param name="e">Referencia uri del nuevo tema</param>
+        </member>
+        <member name="M:Inflexion.Framework.UserInterface.Wpf.Utilities.ThemeSelector.ApplyGlobalThemeChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            manejador del evnto de cambio del skin 
+            </summary>
+            <param name="obj">objeto origen del evento</param>
+            <param name="e">evento de cambio </param>
+        </member>
+    </members>
+</doc>

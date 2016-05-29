@@ -1,0 +1,48 @@
+﻿<#+
+public class ServiceRegionPropertiesFromTargets : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public ServiceRegionPropertiesFromTargets(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+#>
+        #region Propiedades procedentes de los roles de tipo 'target' en una asociación
+<#+
+    foreach (var property in cbc.propertyAssociationTargets)
+    {
+        if(string.IsNullOrEmpty(property.SourceRolName)) // Validación: Comprobamos que si no existe el nombre del rol source (significa que es una relación unidireccional y por tanto solo genera propiedad en la clase destino (target) y no en la clase  origen (source) la multiplicidad minima del target ha de ser cero. 
+            {
+                continue;
+            }
+#>
+<#+     if (property.Target is Entity){ #>
+        /// <summary>
+        /// Obtiene la referencia a la factoría de repositorios de la entidad <#= T4Help.SecureName(property.SourceRolName) #>.
+        /// </summary>
+        public <#= I #><#= T4Help.SecureName(property.Target.Name) #>RepositoryFactory <#= T4Help.SecureName(property.SourceRolName) #>RepositoryFactory 
+        { 
+            get
+            {
+                // Si es null, lo instanciamos y devolvemos, sino, solo lo devolvemos
+                return <#= cbc.pascalSecureEntityName #>Services.<#= T4Help.ToCamelCase(property.SourceRolName) #>RepositoryFactory ?? (<#= cbc.pascalSecureEntityName #>Services.<#= T4Help.ToCamelCase(property.SourceRolName) #>RepositoryFactory = ManagerIoC.Container.Resolve<<#= I #><#= T4Help.ToPascalCase(property.Target.Name) #>RepositoryFactory>() ); 
+            }
+        }
+<#+                }// is entity#>
+
+<#+ } /*end foreach */#>
+        #endregion
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

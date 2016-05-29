@@ -83,7 +83,8 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
             private set;
         }
         #endregion
-        #region Methods
+
+        #region Methods for commands from ribbon
 
        /// <summary>
         /// Método público encargado del borrado de una entidad .
@@ -165,6 +166,11 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
             }
         } // OnGetRecords
 
+        /// <summary>
+        /// .en Get first Page records command. this command answer to an invokation from the ribbon region tab.
+        /// .es ejecutamos el servicio de ir a la primera pagina de la lista de registros. responde al comand invokado desde la region del ribbon.
+        /// </summary>
+        /// <param name="parameter">.en adicional info .es informacion adicional </param>
         public override void OnGetFirstPageRecords(object parameter)
         {
             this.PageIndex = 0;            
@@ -198,7 +204,7 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
         /// </summary>
         private void ResetPersona()
         {
- if (CanDeleteRecord(null))
+            if (CanDeleteRecord(null))
             {
                 OnDeleteRecord(null);
             }

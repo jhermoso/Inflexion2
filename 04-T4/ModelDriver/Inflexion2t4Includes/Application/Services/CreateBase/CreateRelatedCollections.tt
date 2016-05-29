@@ -1,0 +1,70 @@
+﻿<#+
+public class CreateRelatedCollections : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public CreateRelatedCollections(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+
+        string ResxFileName = prjCon.boundedContextName.Replace(".","")+"Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+#>
+<#+
+    if (cbc.propertyAssociationSources.Any() || cbc.propertyAssociationTargets.Any())
+    {
+#>
+                    #region collections mapping
+
+<#+
+    foreach (var property in cbc.propertyAssociationSources )
+    {
+#>
+<#+     if (property.Source is Entity) { // opción preparada para el futuro
+#>
+<#+     } // end if entity#>
+<#+ } // end foreach#>
+
+<#+
+                int contador = 0;
+            foreach (var property in cbc.propertyAssociationTargets )
+            {
+#>
+<#+                    if (property.Target is Entity) { contador++;#>
+
+                    // <#= contador #>. Obtenemos los datos de la colección de entidades <#= T4Help.ToCamelCase(property.Target.Name) #>
+                    // Recorremos la colección y mapeamos.
+                    List<<#= I #><#= T4Help.SecureName(property.Target.Name) #>> <#= T4Help.ToCamelCase(property.SourceRolName) #> = new List<<#= I #><#= T4Help.SecureName(property.Target.Name) #>>();
+                    foreach (var item in <#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.SourceRolName) #>)
+                    {
+                        // Mapeamos.
+                        <#= I #><#= T4Help.ToPascalCase(property.Target.Name) #> <#= T4Help.ToCamelCase(property.Source.Name) #> = Get<#= T4Help.ToPascalCase(property.Target.Name) #>ById(item.Id);
+                        // Validamos si la entidad relacionada esta activa
+                        Guard.Against(
+                                        !<#= T4Help.ToCamelCase(property.Source.Name) #>.IsActive,
+                                        string.Format(
+                                                    CoreResources.Neutral.EntidadNoActiva,
+                                                    <#=ResxFileName #>.<#= T4Help.ToPascalCase(property.Source.Name) #>Alias));
+                        // Añadimos el Dto mapeado a la colección de salida.
+                        <#= T4Help.ToCamelCase(property.SourceRolName) #>.Add(<#= T4Help.ToCamelCase(property.Source.Name) #>);
+                    }
+
+<#+     } // end if entity // solo los objetos valor tienen repositorios#>
+
+<#+ } #>
+#endregion
+<#+ } #>
+
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

@@ -1,0 +1,107 @@
+﻿<#@ template inherits="Microsoft.VisualStudio.TextTemplating.Modeling.ModelBusEnabledTextTransformation" language="C#" debug="true" hostspecific="True" #>
+<#@ output extension=".txt" #>
+<#@ MoneyGen processor="MoneyGenDirectiveProcessor"  requires="fileName='Main2.kyk'"  #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="t4helpers\T4Application\Assemblys.tt" #>
+<#@ include file="t4helpers\T4Application\Imports.ttinclude" #>
+<#
+
+
+//bool okDebug = true;
+//if (okDebug)
+//    {    
+//      //  Debug.WriteLine(""); 
+//      //  Debug.WriteLine("Empezamos con la transformación de AccesMBR");
+//        //Debug.WriteLine("1ª Leemos la estructura de contextos limitados y la metemos en un árbol");
+//        //Debug.WriteLine("");
+//    }
+
+
+  kayak.MoneyGen.Application source = this.Application; // Usual access to source model.
+  // In the source DSL Definition, the root element has a model reference:
+
+    // inicialización del arbol de contextos
+    //A partir de la raiz de un modelo obtenemos la jerarquia de contextos que cuelgan del mismo
+    ITree<LocalizedBounded> TreeApp = GetSolutionContextTree( source);
+
+  //  if (okDebug)
+  //  {
+  //      string mensajeDepuracion;
+  //      foreach( INode<LocalizedBounded> context in TreeApp.All.Nodes )
+  //      {
+  //          if (context.Data.Context.Value != null)
+  //              mensajeDepuracion = context.Data.Context.Value.Elements.Count().ToString();
+  //          else
+  //              mensajeDepuracion = null;
+  //          if (okDebug) Debug.WriteLine(String.Format( "{0} (key) es '{1}' Con {2} hijos directos. Y tiene '{3}' elementos",T4Help.Indent(context.Depth*4), context.Data.Context.Key, context.DirectChildCount, mensajeDepuracion, context.Depth ));
+  //      }
+  //  }
+
+
+    // primera parte: recolectamos información acerca de la solucion los diagramas y las definiciones
+    // almacenandolas en estructuras de datos facilmente accesibles.
+    // 1º acerca del diagrama
+    DslContextDefinitionDiagram MainDiagram = new DslContextDefinitionDiagram(this.Application, TreeApp);
+
+    //Debug.WriteLine(MainDiagram.ToString());
+    // 2º acerca de la propia solución
+    ActiveSolution SolutionInfo = new ActiveSolution(this.Host);
+    //Debug.WriteLine(SolutionInfo.ToString());
+    // 3º obtenemos en la clase de maindiagram los path absolutos de las principales carpetas de la solución. 
+    MainDiagram.SetAbsolutePath(SolutionInfo.DirectoryName);
+
+    // 4º instanciamos la clases con la definición de la arquitectura
+    //Architecture Arq = new Architecture();
+
+//if (okDebug)
+//    {
+//        Debug.WriteLine(String.Format("El path de Proyects es '{0}'", MainDiagram.ProyectsPath));
+//        Debug.WriteLine(String.Format("El path de la solución es '{0}'", SolutionInfo.DirectoryName));
+//        Debug.WriteLine(String.Format("El path abs de projectos es '{0}'", MainDiagram.AbsProyectsPath));
+//        Debug.WriteLine("");
+//        Debug.WriteLine("          árbol de proyectos");
+//        foreach(var pr in  SolutionInfo.SolutionTree.All.Nodes )
+//        {
+//            Debug.WriteLine(String.Format("{0}{1}", T4Help.Indent( pr.Depth*5 ), pr.Data.Name));
+//        }
+//        Debug.WriteLine("");
+//    }
+
+    IList<Project> Projectos = SolutionProjects.ProjectsList(); // este es un método estático que nos permite acceder de forma rapida a la lista de proyectos para buscar uno concreto.
+        
+    // Segunda parte utilizamos la información recolectada para generar los proyectos de la solución.
+    
+    // Comprobamos y chequeamos la existencia de las carpetas de apoyo a la solución.
+    // primero con la carpeta de Documentación
+    IOWindows.NewChequedFolder(SolutionInfo.DirectoryName+System.IO.Path.DirectorySeparatorChar+MainDiagram.DocumentationPath);
+
+    // Acontinuación con la carpeta de Documentación
+    IOWindows.NewChequedFolder(SolutionInfo.DirectoryName+System.IO.Path.DirectorySeparatorChar+MainDiagram.AsemblysPath);
+
+    // Seguidamente con la carpeta de librerias de terceros
+    IOWindows.NewChequedFolder(SolutionInfo.DirectoryName+System.IO.Path.DirectorySeparatorChar+MainDiagram.LibraryPath);
+
+    // Por último con la carpeta de projectos
+    IOWindows.NewChequedFolder(SolutionInfo.DirectoryName+System.IO.Path.DirectorySeparatorChar+MainDiagram.ProyectsPath);
+    
+     //Comprobamos y chequemos la existencia de las carpetas de solución en la raiz
+     //obteniendo la referencia como projecto de cada una de ellas
+
+    // 1º con la carpeta de contextos limitados
+    MainDiagram.SFBoundedContextRef = SolutionInfo.AddSolutionFolderPath(MainDiagram.SolutionFolderBoundedContext);
+
+   // if (MainDiagram.SFBoundedContextRef!=null & okDebug)
+   //     Debug.WriteLine(String.Format("añadimos u obtenemos la carpeta '{0}' cuyo nombre es {1}",MainDiagram.SolutionFolderBoundedContext, MainDiagram.SFBoundedContextRef.Name));
+
+    // 3º con la carpeta de Framework 
+    MainDiagram.SFFrameworkRef = SolutionInfo.AddSolutionFolderPath(MainDiagram.SolutionFolderFramework);
+
+   // if (MainDiagram.SFFrameworkRef!=null & okDebug)
+   //     Debug.WriteLine(String.Format("añadimos u obtenemos la carpeta '{0}' cuyo nombre es {1}",MainDiagram.SolutionFolderFramework, MainDiagram.SFFrameworkRef.Name));
+
+    // 1º añadimos las carpetas de los contextos para cada uno de los contextos anidados
+    // la carpeta de 'Common' es a todos los efectos otro Bounded Context y se trata como tal.
+
+    AddContextsFoldersAndProjects(  MainDiagram,  SolutionInfo,   TreeApp);
+
+#>

@@ -1,0 +1,254 @@
+﻿<#+
+        [System.ServiceModel.ServiceContractAttribute(Namespace = "http://api.microsofttranslator.com/v1/soap.svc")]
+        public interface ILanguageService
+        {
+
+            [System.ServiceModel.OperationContractAttribute(Action = "http://api.microsofttranslator.com/v1/soap.svc/LanguageService/GetLanguages", ReplyAction = "http://api.microsofttranslator.com/v1/soap.svc/LanguageService/GetLanguagesRespon" +
+                "se")]
+            string[] GetLanguages(string appId);
+
+            [System.ServiceModel.OperationContractAttribute(Action = "http://api.microsofttranslator.com/v1/soap.svc/LanguageService/GetLanguageNames", ReplyAction = "http://api.microsofttranslator.com/v1/soap.svc/LanguageService/GetLanguageNamesRe" +
+                "sponse")]
+            string[] GetLanguageNames(string appId, string locale);
+
+            [System.ServiceModel.OperationContractAttribute(Action = "http://api.microsofttranslator.com/v1/soap.svc/LanguageService/Detect", ReplyAction = "http://api.microsofttranslator.com/v1/soap.svc/LanguageService/DetectResponse")]
+            string Detect(string appId, string text);
+
+            [System.ServiceModel.OperationContractAttribute(Action = "http://api.microsofttranslator.com/v1/soap.svc/LanguageService/Translate", ReplyAction = "http://api.microsofttranslator.com/v1/soap.svc/LanguageService/TranslateResponse")]
+            string Translate(string appId, string text, string from, string to);
+        }
+
+#>
+<#+
+///<sumary > 
+/// clases para hacer el wrapping de los servicios de traducción
+///<sumary/>
+    static public class Translator
+    {
+        //public static string Nombrefichero = @"Assets\XML\TranslationsCache.XML";
+        /// Wraper de traducción del servicio de bing 
+        /// todo: cambiar el acceso del token para extraerlo del diagrama 
+        public static string BingService(string txt2Translate, string isoCode2LanguageOrigin, string isoCode2LanguageTarget)
+        {
+            // precondiciones
+                if ( string.IsNullOrEmpty(txt2Translate) )
+                {
+                    Debug.WriteLine(string.Format("bing service ERROR EL TEXTO A TRADUCIR ES NULO "));
+                    Debug.WriteLine(string.Format("bing service ERROR EL TEXTO A TRADUCIR ES NULO "));
+                }
+                if ( string.IsNullOrEmpty(isoCode2LanguageOrigin) )
+                {
+                    Debug.WriteLine(string.Format("bing service ERROR EL LENGUAGE DE ORIGEN ES NULO "));
+                    Debug.WriteLine(string.Format("bing service ERROR EL LENGUAGE DE ORIGEN ES NULO "));
+                }
+                if ( string.IsNullOrEmpty(isoCode2LanguageTarget) )
+                {
+                    Debug.WriteLine(string.Format("bing service ERROR EL LENGUAGE DE DESTINO ES NULO "));
+                    Debug.WriteLine(string.Format("bing service ERROR EL LENGUAGE DE DESTINO ES NULO "));
+                }
+            string result = txt2Translate;
+            if (!isoCode2LanguageOrigin.Equals(isoCode2LanguageTarget))
+            try
+            {
+                if (false)
+                {
+                    Debug.WriteLine(string.Format("bing service call traducir de {0} a {1} ", isoCode2LanguageOrigin, isoCode2LanguageTarget));
+                    Debug.WriteLine(string.Format("txt2Translate =\n{0}\n ", txt2Translate));
+                }
+                //TranslatorService.LanguageServiceClient client = new TranslatorService.LanguageServiceClient();
+                //client = new TranslatorService.LanguageServiceClient();
+                //result = client.Translate("6C3435D23B32F0432D7F4E6DA9D946109EB0C77F", txt2Translate, isoCode2LanguageOrigin, isoCode2LanguageTarget);
+                /* metodo 2*/
+                //WSHttpBinding binding = new WSHttpBinding();
+                //binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
+
+                EndpointAddress ep = new EndpointAddress("http://api.microsofttranslator.com/V1/SOAP.svc");
+                var client = ChannelFactory<ILanguageService>.CreateChannel( new BasicHttpBinding(), ep);
+
+                result = client.Translate("6C3435D23B32F0432D7F4E6DA9D946109EB0C77F", txt2Translate, isoCode2LanguageOrigin, isoCode2LanguageTarget);
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error en la traducción con bing");
+                Debug.WriteLine("Excepción obtenida");
+                Debug.WriteLine(ex);
+                result = "";
+            }
+                if (true)
+                {
+                    Debug.WriteLine(string.Format("traducción obtenida =\n{0}\n ", result));
+                }
+            return result;
+        }
+
+        // el primero del array es el lenguage-cultura por defecto
+        public static List<string> GetSelectedLanguages( DslContextDefinitionDiagram mainDiagram)
+        {
+            string LanguagesSet1 = mainDiagram.App.TranslationsSet1.ToString();
+            string LanguagesSet2 = mainDiagram.App.TranslationsSet2.ToString();
+
+            string[] LanguageArray1 = LanguagesSet1.Split(new char[]{',',' ' }, StringSplitOptions.RemoveEmptyEntries);// el split lo realiza incluyendo el espacio 
+            string[] LanguageArray2 = LanguagesSet2.Split(new char[]{',',' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+            List<string> TranslationList = new List<string>();
+
+            TranslationList.Add(T4Help.GetCultureEnglishLanguageNameFromISOCode2(mainDiagram.App.Culture));
+            TranslationList.AddRange(LanguageArray1);
+            TranslationList.AddRange(LanguageArray2);
+
+            return TranslationList;
+        }
+        // este metodo devuelve el par de cultura-lenguaje encerrado entre parentesis si lo encuentra al principio de la cadena
+        public static string GetCultureLanguajeTxt(string txt)
+        {
+            string result = null;
+            string patron = @"^(\(\w{2}?\))|(\(\w{2}?-\w{2}?\))";
+            // ^() => La esubexpresión encerrada entre parentesis tiene que estar al principio de la linea del string
+
+            //      1º subexpresión
+            //          /( => Empieza por parentesis de apertura
+            //              \w{2}? => exacatamente dos caracteres alfanumericos
+            //          /) => Termina por parentesis de apertura
+            //          | => or
+            //      2º subexepresion
+            //          /( => Empieza por parentesis de apertura
+            //              \w{2}? => exactamente dos caracteres alfanumericos
+            //                      - => un guión
+            //              \w{2}? => exactamente dos caracteres alfanumericos
+            //          /) => Termina por parentesis de apertura
+
+            Match m;
+                m = Regex.Match(txt, patron);
+                if (m.Success)
+                    result = m.Value;
+            return result;
+        }
+
+
+            private static XElement SearchInCache(string OriginalTxt, string OriginalLanguage, XElement TranslationsNode)
+            {
+                XElement Result = null;
+                IEnumerable<XElement> traduccion;
+
+                //XElement TranslationsNode = root.Element("Translations");
+                //Console.WriteLine(" Buscamos en la cache");
+                IEnumerable<XElement> Group = from elemento in TranslationsNode.Elements() select elemento;
+                foreach (var translationGroup in Group)
+                {
+                    traduccion = from SubElemento in Group.Elements("Txt") select SubElemento;
+                    foreach (var item in traduccion)
+                    {
+                        string v = item.Attribute("IsoCode2").Value;
+                        if (item.Value.Equals(OriginalTxt) && item.Attribute("IsoCode2").Value.Equals(OriginalLanguage))
+                        {
+                            //                            Console.WriteLine(" Encontramos en la cache");
+                            Result = item.Parent;
+                            break;
+                        }                        
+                    }
+                    if (Result != null) break;
+                }
+
+                return Result;
+            }
+
+            private static XElement CreateNode(string OriginalTxt, string OriginalLanguage)
+            {
+                XElement Result= new XElement("Txt", OriginalTxt);
+                Result.SetAttributeValue("IsoCode2", OriginalLanguage);
+                return Result;
+            }
+
+            private static string SearchInTranslationGroup( string targetLanguage, XElement translationGroup)
+            {
+                string Result = null;
+
+                IEnumerable<XElement> BrotherElement = from elemento in translationGroup.Elements("Txt") where (string)elemento.Attribute("IsoCode2") == targetLanguage select elemento;
+
+                if (BrotherElement.Any<XElement>() )
+                    Result = BrotherElement.FirstOrDefault<XElement>().Value;
+
+                return Result;
+            }
+
+
+// parametor XElement Translations es el nodo en el ficehor xml en el que se almacenan las traduciones.
+// string Nombrefichero es el nombre del ficehro xml junto con el path en el que se guardan las traducciones y el codigo de personalización.
+            public static string GetTranslate(string OriginalTxt, string OriginalLanguage, string TargetLanguage, XElement Translations, string Nombrefichero)
+            {
+                string Result = null;
+                XElement TraduccionEnCache = SearchInCache(OriginalTxt, OriginalLanguage, Translations);
+                XElement nuevoTxt;
+                XElement nuevoTxtTranslated;
+
+
+                if (TraduccionEnCache == null)
+                {
+                    //Console.Write(" Traducimos");
+                    Result = BingService(OriginalTxt, OriginalLanguage, TargetLanguage);
+                    if (Result != null)
+                    {
+                        XElement nuevatraduccion = new XElement("translation");
+                        nuevoTxt = CreateNode(OriginalTxt, OriginalLanguage);
+                        nuevoTxtTranslated = CreateNode(Result, TargetLanguage);
+                        nuevatraduccion.Add(nuevoTxt);
+                        nuevatraduccion.Add(nuevoTxtTranslated);
+                        Translations.Add(nuevatraduccion);
+                        XElement root = Translations.Parent;
+                        root.Save(Nombrefichero);
+                    }
+                    //Translations.Save(Nombrefichero);
+                }
+                else
+                {
+                    //Console.Write(" Leemos traducción de la cache");
+
+                    Result = SearchInTranslationGroup(TargetLanguage, TraduccionEnCache);
+                    if (Result == null)
+                    {
+                        // traducimos
+                        Result = BingService(OriginalTxt, OriginalLanguage, TargetLanguage);
+                        if (Result != null)
+                        {
+                            nuevoTxtTranslated = CreateNode(Result, TargetLanguage);
+                            TraduccionEnCache.Add(nuevoTxtTranslated);
+                            //TraduccionEnCache.Save(Nombrefichero);
+                            XElement root = Translations.Parent;
+                            root.Save(Nombrefichero);
+                        }
+                    }
+                }
+                return Result;
+            }
+
+            public static XElement GetTranslationsNode( string Nombrefichero )
+            {
+                XElement root;
+                XElement Translations = null;
+                if (!File.Exists(Nombrefichero))
+                {
+                    // lo creamos
+                    //Console.WriteLine(" Creamos el fichero");
+                    Translations = new XElement("Translations");
+                    root = new XElement("Root", Translations);
+                    root.Save(Nombrefichero);
+                }
+                else
+                {
+                    // lo leemos
+                    //Console.WriteLine(" Leemos el fichero");
+                    root = XElement.Load(Nombrefichero);
+                    Translations = root.Element("Translations");
+                }
+
+                return Translations;
+            }
+
+    } // end static class translator
+#>
+
+
+
+
+

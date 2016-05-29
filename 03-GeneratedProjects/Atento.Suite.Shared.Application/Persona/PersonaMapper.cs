@@ -87,25 +87,21 @@ namespace Atento.Suite.Shared.Application
                 // Mapeamos cada propiedad.
                 dtoPersona.Id = entityPersona.Id;
                 dtoPersona.Nombre = entityPersona.Nombre;
-                dtoPersona.Juridica = entityPersona.Juridica;
-                dtoPersona.Direccion = entityPersona.Direccion;
-                dtoPersona.Calle = entityPersona.Calle;
-                dtoPersona.CP = entityPersona.CP;
-                dtoPersona.Provincia = entityPersona.Provincia;
-                dtoPersona.Comunidad = entityPersona.Comunidad;
-                dtoPersona.Pais = entityPersona.Pais;
-                dtoPersona.Matricula = entityPersona.Matricula;
-                dtoPersona.Codigo = entityPersona.Codigo;
-                dtoPersona.Sector = entityPersona.Sector;
-                dtoPersona.Site = entityPersona.Site;
-                dtoPersona.LogoImagen = entityPersona.LogoImagen;
-                dtoPersona.Telefono = entityPersona.Telefono;
-                dtoPersona.Fax = entityPersona.Fax;
-                dtoPersona.Mobil = entityPersona.Mobil;
-                dtoPersona.Atributte1 = entityPersona.Atributte1;
-                dtoPersona.FormaJuridica = entityPersona.FormaJuridica;
-                dtoPersona.Fisica = entityPersona.Fisica;
-                dtoPersona.Genero = entityPersona.Genero;
+                dtoPersona.BooleanField = entityPersona.BooleanField;
+                dtoPersona.DatetimeField = entityPersona.DatetimeField;
+                dtoPersona.ByteField = entityPersona.ByteField;
+                dtoPersona.GuidField = entityPersona.GuidField;
+                dtoPersona.DecimalField = entityPersona.DecimalField;
+                dtoPersona.DobleField = entityPersona.DobleField;
+                dtoPersona.FloatField = entityPersona.FloatField;
+                dtoPersona.IntField = entityPersona.IntField;
+                dtoPersona.LongField = entityPersona.LongField;
+                dtoPersona.DateTimeOffsetField = entityPersona.DateTimeOffsetField;
+                dtoPersona.ShortField = entityPersona.ShortField;
+                dtoPersona.TimeSpanField = entityPersona.TimeSpanField;
+                dtoPersona.Int16Field = entityPersona.Int16Field;
+                dtoPersona.Int32Field = entityPersona.Int32Field;
+                dtoPersona.Int64Field = entityPersona.Int64Field;
                 // Devolvemos el resultado.
                 return dtoPersona;
             }

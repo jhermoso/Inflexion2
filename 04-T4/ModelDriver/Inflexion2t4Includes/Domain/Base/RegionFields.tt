@@ -1,0 +1,114 @@
+﻿<#+
+public class RegionFields : Template
+{
+    // variables de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public RegionFields(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        // conceptos propios del proyecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+#>
+        #region Campos y constantes
+<#+ if (cbc.IsEntity && cbc.LogicDelete){/*si la entidad es de borrado logico añadimos una poropiedad de nombre IsActive*/#>
+        /// <summary>
+        /// .en Field to indicate if this entity is activated. 
+        /// .es Campo que indica si esta entidad esta activa o borrada. 
+        /// </summary>
+        /// <remarks>
+        /// .en This entity has logical delete.
+        /// .es Esta entidad tiene borrado logico.
+        /// </remarks>
+        /// <value>
+        /// .en Value used to indicate if the entity is deleted or activated.
+        /// it has not setter becouse his value is setted to true in the constructor an in the destructor of the class.
+        /// .es Valor usado para indicar si la entidad esta borrada o activada.
+        /// no tiene setter por que su valor se establece a true en el constructor y a false en el destructor.
+        /// </value>
+        private bool isActive;
+
+<#+ } #>
+<#+        foreach (var property in cbc.propertyObjects)        {#>
+<#+     if(property.LiveCycleAtributte.Equals(LiveCycleAtributte.Constante) ) {#>
+        /// <summary>
+        /// Constante que identifica <#= property.AtributteName #>.
+        /// <#= T4Help.StrCleanLfCR(property.ProgramerRemarks) #>
+        /// </summary>
+        /// <remarks>
+        /// <#= T4Help.StrCleanLfCR(property.UserRemarks) #>
+        /// </remarks>
+        <#= property.AccesKeywords.ToString().ToLower() #> const <#= property.AtributteType #><#= (property.IsNullable & cbc.propertyIsValueType )?"?":"" #> <#= T4Help.ToCamelCase(property.AtributteName) #> = <#= property.DefaultValue #>; 
+
+<#+    }// end if live cycle is variable or derived #>
+<#+    }// end for each #>
+<#+
+        foreach (var property in cbc.propertyObjects)
+        {
+if (!property.AutoProperty || property.LiveCycleAtributte.Equals(LiveCycleAtributte.Derivado)) // si utilizamos las propiedades automáticas no generamos campos a no ser que sea un campo derivado.        cbc.diagram.ValidationContracts.Equals("DataAnotations") cuando utilizamos DataAnnotations las propiedades son automáticas para los atributos no derivados de relaciones.
+    {
+#>
+<#+     if(property.LiveCycleAtributte.Equals(LiveCycleAtributte.Variable) || property.LiveCycleAtributte.Equals(LiveCycleAtributte.Derivado)) {#>
+        /// <summary>
+        /// Variable privada que identifica <#= property.AtributteName #>.
+        /// <#= T4Help.StrCleanLfCR(property.ProgramerRemarks) #>
+        /// </summary>
+        /// <remarks>
+        /// <#= T4Help.StrCleanLfCR(property.UserRemarks) #>
+        /// </remarks>
+        private <#= property.AtributteType #><#= (property.IsNullable & cbc.propertyIsValueType )?"?":"" #> <#= T4Help.ToCamelCase(property.AtributteName) #>; 
+
+<#+    }// end if live cycle is variable or derived #>
+<#+
+        } // end if (!cbc.AutoProperty) 
+    }// end for each 
+#>
+<#+
+    foreach (var property in cbc.propertyAssociationSources)
+            {        if(string.IsNullOrEmpty(property.TargetRolName))             {                continue;            } // si no hay nombre de rol la relación no tiene dirección en este sentido.
+#>
+        /// <summary>
+        /// campo privado que almacena el valor de <#= T4Help.ToCamelCase(property.TargetRolName) #>.
+        /// </summary>
+        /// <remarks>
+        /// campo privado proveniente de una relación <#= T4Help.ToCamelCase(property.TargetRolName) #>.
+        /// La relación es de tipo <#= (property is Aggregation)?"Agregación":"" #><#= (property is Composition)?"Composición":"" #> y <#= (property is Association)?"Asociación":"" #>
+        /// </remarks>
+<#+ if(IsMaxMultiplicityOne(property.SourceMultiplicity)){#>
+        private <#= (property.Source is Enumeration)?"": I #><#= T4Help.SecureName(property.Source.Name) #> <#= T4Help.ToCamelCase(property.TargetRolName) #>;
+<#+            } #>
+<#+ if(IsMaxMultiplicityMany(property.SourceMultiplicity)){#>
+        private <#= GetTypeFromAssociationLink(property, (I=="I"), cbc.idtype, false, true) #> <#= T4Help.ToCamelCase(property.SourceRolName) #>; 
+<#+            } #>
+<#+ } #>
+<#+
+    foreach (var property in cbc.propertyAssociationTargets)
+    {        if(string.IsNullOrEmpty(property.SourceRolName))           {                   continue;           }
+#>
+        // Este campo proviene de una relación de tipo <#=(property is Aggregation)?"Agregación":"" #><#=(property is Composition)?"Composición":"" #> y <#=(property is Association)?"Asociación":"" #>
+        /// <summary>
+        /// Campo privado para almacenar la colección de  <#= T4Help.ToCamelCase(property.SourceRolName) #>.
+        /// </summary>
+        /// <remarks>
+        /// campo privado proveniente de una relación <#= T4Help.ToCamelCase(property.SourceRolName) #>.
+        /// La relación es una <#=(property is Association)?"Asociación":"" #> <#=(property is Aggregation)?" de tipo Agregación":"" #><#=(property is Composition)?" de tipo Composición":"" #> 
+        /// </remarks>
+<#+ if(IsMaxMultiplicityMany(property.TargetMultiplicity)){#>
+        private <#= GetTypeFromAssociationLink(property, (I=="I"), cbc.idtype, false, true) #> <#= T4Help.ToCamelCase(property.SourceRolName) #>; 
+<#+            } #>
+<#+ if(IsMaxMultiplicityOne(property.TargetMultiplicity)){#>
+        private <#= (property.Source is Enumeration)?"": I #><#= T4Help.SecureName(property.Source.Name) #> <#= T4Help.ToCamelCase(property.TargetRolName) #>;
+<#+            } #>
+<#+ } #>
+        #endregion
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

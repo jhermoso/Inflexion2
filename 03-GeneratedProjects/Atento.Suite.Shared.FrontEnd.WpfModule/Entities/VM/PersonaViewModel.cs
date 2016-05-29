@@ -50,7 +50,7 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
         /// Inicializa una nueva instancia de la clase <see cref="T:PersonaViewModel"/>.
         /// </summary>
         /// <param name="element">
-        /// Parámetro de tipo <see cref="PersonaDto"/> que contiene la información necesaria.
+        /// Parámetro de tipo <see cref="PersonaDto"/> que contiene la información necesaria para gestionar dicho rootaggregate.
         /// </param>
         public PersonaViewModel(PersonaDto element)
             : base(element)
@@ -61,7 +61,9 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
         #region PROPERTIES
 
         /// <summary>
-        /// Propiedad para establecer el Titulo de la ventana
+        /// Propiedad para establecer el Titulo de la ventana cuando este view model se utiliza 
+        /// en un control de usuario o ventana exclusivamente para el.
+        /// cuando este view model se utiliza solo en una lista esta propiedad no se utiliza.
         /// </summary>
         public override string Title
         {
@@ -93,363 +95,287 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
         /// <summary>
         /// 
         /// </summary>
-        public bool Juridica
+        public bool BooleanField
         {
             get
             {
-                return this.ObjectElement.Juridica;
+                return this.ObjectElement.BooleanField;
             }
             set
             {
-                if (this.ObjectElement.Juridica != value)
+                if (this.ObjectElement.BooleanField != value)
                 {
-                    this.ObjectElement.Juridica = value;
-                    this.RaisePropertyChanged(() => this.Juridica);
+                    this.ObjectElement.BooleanField = value;
+                    this.RaisePropertyChanged(() => this.BooleanField);
                 }
             }
-        } // Juridica
+        } // BooleanField
 
         /// <summary>
         /// 
         /// </summary>
-        public string Direccion
+        public DateTime DatetimeField
         {
             get
             {
-                return this.ObjectElement.Direccion;
+                return this.ObjectElement.DatetimeField;
             }
             set
             {
-                if (this.ObjectElement.Direccion != value)
+                if (this.ObjectElement.DatetimeField != value)
                 {
-                    this.ObjectElement.Direccion = value;
-                    this.RaisePropertyChanged(() => this.Direccion);
+                    this.ObjectElement.DatetimeField = value;
+                    this.RaisePropertyChanged(() => this.DatetimeField);
                 }
             }
-        } // Direccion
+        } // DatetimeField
 
         /// <summary>
         /// 
         /// </summary>
-        public string Calle
+        public byte ByteField
         {
             get
             {
-                return this.ObjectElement.Calle;
+                return this.ObjectElement.ByteField;
             }
             set
             {
-                if (this.ObjectElement.Calle != value)
+                if (this.ObjectElement.ByteField != value)
                 {
-                    this.ObjectElement.Calle = value;
-                    this.RaisePropertyChanged(() => this.Calle);
+                    this.ObjectElement.ByteField = value;
+                    this.RaisePropertyChanged(() => this.ByteField);
                 }
             }
-        } // Calle
+        } // ByteField
 
         /// <summary>
         /// 
         /// </summary>
-        public string CP
+        public Guid GuidField
         {
             get
             {
-                return this.ObjectElement.CP;
+                return this.ObjectElement.GuidField;
             }
             set
             {
-                if (this.ObjectElement.CP != value)
+                if (this.ObjectElement.GuidField != value)
                 {
-                    this.ObjectElement.CP = value;
-                    this.RaisePropertyChanged(() => this.CP);
+                    this.ObjectElement.GuidField = value;
+                    this.RaisePropertyChanged(() => this.GuidField);
                 }
             }
-        } // CP
+        } // GuidField
 
         /// <summary>
         /// 
         /// </summary>
-        public string Provincia
+        public decimal DecimalField
         {
             get
             {
-                return this.ObjectElement.Provincia;
+                return this.ObjectElement.DecimalField;
             }
             set
             {
-                if (this.ObjectElement.Provincia != value)
+                if (this.ObjectElement.DecimalField != value)
                 {
-                    this.ObjectElement.Provincia = value;
-                    this.RaisePropertyChanged(() => this.Provincia);
+                    this.ObjectElement.DecimalField = value;
+                    this.RaisePropertyChanged(() => this.DecimalField);
                 }
             }
-        } // Provincia
+        } // DecimalField
 
         /// <summary>
         /// 
         /// </summary>
-        public string Comunidad
+        public double DobleField
         {
             get
             {
-                return this.ObjectElement.Comunidad;
+                return this.ObjectElement.DobleField;
             }
             set
             {
-                if (this.ObjectElement.Comunidad != value)
+                if (this.ObjectElement.DobleField != value)
                 {
-                    this.ObjectElement.Comunidad = value;
-                    this.RaisePropertyChanged(() => this.Comunidad);
+                    this.ObjectElement.DobleField = value;
+                    this.RaisePropertyChanged(() => this.DobleField);
                 }
             }
-        } // Comunidad
+        } // DobleField
 
         /// <summary>
         /// 
         /// </summary>
-        public string Pais
+        public float FloatField
         {
             get
             {
-                return this.ObjectElement.Pais;
+                return this.ObjectElement.FloatField;
             }
             set
             {
-                if (this.ObjectElement.Pais != value)
+                if (this.ObjectElement.FloatField != value)
                 {
-                    this.ObjectElement.Pais = value;
-                    this.RaisePropertyChanged(() => this.Pais);
+                    this.ObjectElement.FloatField = value;
+                    this.RaisePropertyChanged(() => this.FloatField);
                 }
             }
-        } // Pais
+        } // FloatField
 
         /// <summary>
         /// 
         /// </summary>
-        public string Matricula
+        public int IntField
         {
             get
             {
-                return this.ObjectElement.Matricula;
+                return this.ObjectElement.IntField;
             }
             set
             {
-                if (this.ObjectElement.Matricula != value)
+                if (this.ObjectElement.IntField != value)
                 {
-                    this.ObjectElement.Matricula = value;
-                    this.RaisePropertyChanged(() => this.Matricula);
+                    this.ObjectElement.IntField = value;
+                    this.RaisePropertyChanged(() => this.IntField);
                 }
             }
-        } // Matricula
+        } // IntField
 
         /// <summary>
         /// 
         /// </summary>
-        public string Codigo
+        public long LongField
         {
             get
             {
-                return this.ObjectElement.Codigo;
+                return this.ObjectElement.LongField;
             }
             set
             {
-                if (this.ObjectElement.Codigo != value)
+                if (this.ObjectElement.LongField != value)
                 {
-                    this.ObjectElement.Codigo = value;
-                    this.RaisePropertyChanged(() => this.Codigo);
+                    this.ObjectElement.LongField = value;
+                    this.RaisePropertyChanged(() => this.LongField);
                 }
             }
-        } // Codigo
+        } // LongField
 
         /// <summary>
         /// 
         /// </summary>
-        public string Sector
+        public DateTimeOffset DateTimeOffsetField
         {
             get
             {
-                return this.ObjectElement.Sector;
+                return this.ObjectElement.DateTimeOffsetField;
             }
             set
             {
-                if (this.ObjectElement.Sector != value)
+                if (this.ObjectElement.DateTimeOffsetField != value)
                 {
-                    this.ObjectElement.Sector = value;
-                    this.RaisePropertyChanged(() => this.Sector);
+                    this.ObjectElement.DateTimeOffsetField = value;
+                    this.RaisePropertyChanged(() => this.DateTimeOffsetField);
                 }
             }
-        } // Sector
+        } // DateTimeOffsetField
 
         /// <summary>
         /// 
         /// </summary>
-        public string Site
+        public short ShortField
         {
             get
             {
-                return this.ObjectElement.Site;
+                return this.ObjectElement.ShortField;
             }
             set
             {
-                if (this.ObjectElement.Site != value)
+                if (this.ObjectElement.ShortField != value)
                 {
-                    this.ObjectElement.Site = value;
-                    this.RaisePropertyChanged(() => this.Site);
+                    this.ObjectElement.ShortField = value;
+                    this.RaisePropertyChanged(() => this.ShortField);
                 }
             }
-        } // Site
+        } // ShortField
 
         /// <summary>
         /// 
         /// </summary>
-        public string LogoImagen
+        public TimeSpan TimeSpanField
         {
             get
             {
-                return this.ObjectElement.LogoImagen;
+                return this.ObjectElement.TimeSpanField;
             }
             set
             {
-                if (this.ObjectElement.LogoImagen != value)
+                if (this.ObjectElement.TimeSpanField != value)
                 {
-                    this.ObjectElement.LogoImagen = value;
-                    this.RaisePropertyChanged(() => this.LogoImagen);
+                    this.ObjectElement.TimeSpanField = value;
+                    this.RaisePropertyChanged(() => this.TimeSpanField);
                 }
             }
-        } // LogoImagen
+        } // TimeSpanField
 
         /// <summary>
         /// 
         /// </summary>
-        public string Telefono
+        public Int16 Int16Field
         {
             get
             {
-                return this.ObjectElement.Telefono;
+                return this.ObjectElement.Int16Field;
             }
             set
             {
-                if (this.ObjectElement.Telefono != value)
+                if (this.ObjectElement.Int16Field != value)
                 {
-                    this.ObjectElement.Telefono = value;
-                    this.RaisePropertyChanged(() => this.Telefono);
+                    this.ObjectElement.Int16Field = value;
+                    this.RaisePropertyChanged(() => this.Int16Field);
                 }
             }
-        } // Telefono
+        } // Int16Field
 
         /// <summary>
         /// 
         /// </summary>
-        public string Fax
+        public Int32 Int32Field
         {
             get
             {
-                return this.ObjectElement.Fax;
+                return this.ObjectElement.Int32Field;
             }
             set
             {
-                if (this.ObjectElement.Fax != value)
+                if (this.ObjectElement.Int32Field != value)
                 {
-                    this.ObjectElement.Fax = value;
-                    this.RaisePropertyChanged(() => this.Fax);
+                    this.ObjectElement.Int32Field = value;
+                    this.RaisePropertyChanged(() => this.Int32Field);
                 }
             }
-        } // Fax
+        } // Int32Field
 
         /// <summary>
         /// 
         /// </summary>
-        public string Mobil
+        public Int64 Int64Field
         {
             get
             {
-                return this.ObjectElement.Mobil;
+                return this.ObjectElement.Int64Field;
             }
             set
             {
-                if (this.ObjectElement.Mobil != value)
+                if (this.ObjectElement.Int64Field != value)
                 {
-                    this.ObjectElement.Mobil = value;
-                    this.RaisePropertyChanged(() => this.Mobil);
+                    this.ObjectElement.Int64Field = value;
+                    this.RaisePropertyChanged(() => this.Int64Field);
                 }
             }
-        } // Mobil
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Atributte1
-        {
-            get
-            {
-                return this.ObjectElement.Atributte1;
-            }
-            set
-            {
-                if (this.ObjectElement.Atributte1 != value)
-                {
-                    this.ObjectElement.Atributte1 = value;
-                    this.RaisePropertyChanged(() => this.Atributte1);
-                }
-            }
-        } // Atributte1
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public string FormaJuridica
-        {
-            get
-            {
-                return this.ObjectElement.FormaJuridica;
-            }
-            set
-            {
-                if (this.ObjectElement.FormaJuridica != value)
-                {
-                    this.ObjectElement.FormaJuridica = value;
-                    this.RaisePropertyChanged(() => this.FormaJuridica);
-                }
-            }
-        } // FormaJuridica
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public bool Fisica
-        {
-            get
-            {
-                return this.ObjectElement.Fisica;
-            }
-            set
-            {
-                if (this.ObjectElement.Fisica != value)
-                {
-                    this.ObjectElement.Fisica = value;
-                    this.RaisePropertyChanged(() => this.Fisica);
-                }
-            }
-        } // Fisica
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Genero
-        {
-            get
-            {
-                return this.ObjectElement.Genero;
-            }
-            set
-            {
-                if (this.ObjectElement.Genero != value)
-                {
-                    this.ObjectElement.Genero = value;
-                    this.RaisePropertyChanged(() => this.Genero);
-                }
-            }
-        } // Genero
+        } // Int64Field
 
         #endregion
         
@@ -502,6 +428,7 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
         // si esta entidad necesita cargar otras entidades o colecciones es aqui donde se implementan los metodos de carga.
 
         #endregion
+
         #region Protected Methods
 
         protected override void SetupValidation(MvvmValidation.ValidationHelper validation)

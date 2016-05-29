@@ -1,0 +1,236 @@
+﻿<#+
+    // TODO: falta comprobar que los parametros corresponden a propiedades de la clase
+    //
+    //
+public class DomainBaseEntitySpecificationsCT : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public DomainBaseEntitySpecificationsCT(
+                                            ClassBaseContext                                                    cbc, 
+                                            string                                                              projectNamespace, 
+                                            ITree<BoundedContextMetadata>                                       Skt
+                                           )
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt;  }
+
+    // metodo de ClassBaseContext cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt de la plantilla
+    public override string TransformText()
+    {
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+        // subplantillas generales
+        var cpyrigthTemplate    = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity);  string cpyrigthText = cpyrigthTemplate.TransformText();
+        // subplantillas particulares
+        var usingTemplate                   = new usings( cbc, projectNamespace, Skt);                      string usingTxt                         = usingTemplate.TransformText(); //solo los shared kernel
+        var headerClass                     = new HeaderClass( cbc, projectNamespace, Skt);                 string HeaderClassTxt                   = headerClass.TransformText();
+#>
+
+<#= cpyrigthText #>
+namespace <#= projectNamespace #>
+{
+
+<#= usingTxt #>
+
+    #region usings
+    // en una clase parcial los using solo son necesarios una vez pero se dejan por si sirven de ayuda
+<#+
+    if(cbc.diagram.Architecture == ArchitectureOptions.PureDDD)
+    {
+#>
+    using System;
+    using System.Linq;
+    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Core;
+    using Inflexion.Framework.Domain.Base;
+    using Inflexion.Framework.Core;
+    using Inflexion.Framework.Domain.Base.Specification;
+<#+
+    }
+#>
+<#+ if (cbc.diagram.ValidationContracts.Equals("CodeContracts")) {#>
+    using System.Diagnostics.Contracts;
+<#+ } #>
+<#+ if (cbc.diagram.ValidationContracts.Equals("DataAnotations")) {#>
+    using System.ComponentModel.DataAnnotations;
+<#+ } #>
+<#+ if (cbc.sourceLinksCounter>0)    {#>
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+<#+ }#>
+    #endregion
+
+    /// <summary>
+    /// Clase que representa las especificaciones para la entidad <see cref="T:<#= cbc.pascalSecureEntityName #>"/>.
+    /// </summary>
+    /// <remarks>
+    /// Sin comentarios adicionales.
+    /// </remarks>
+    public static class <#= cbc.pascalSecureEntityName #>Specifications
+    {
+
+
+        #region <#= cbc.pascalSecureEntityName #> Basic Specifications
+        /// <summary>
+        /// Método que devuelve la especificación de objetos de tipo "<#= cbc.pascalSecureEntityName #>" con estado activo.
+        /// </summary>
+        /// <remarks>
+        /// Sin comentarios especiales.
+        /// </remarks>
+        /// <returns>
+        /// Especificación <see cref="Specification{I<#= cbc.pascalSecureEntityName #>}"/> asociada al criterio.
+        /// </returns>
+        public static Specification<I<#= cbc.pascalSecureEntityName #>> Enabled()
+        {
+            // Devolvemos la respuesta.
+            return new DirectSpecification<I<#= cbc.pascalSecureEntityName #>>(c => c.IsActive);
+        } // Enabled
+
+
+        // ha continuación se incorporan las especificaciones correspondientes a los campos marcados como filter o como identification
+<#+
+    // solo las propiedades que provienen de atributos que son de tipo valor pueden ser nullables.
+    // igualmente todas las propiedades que se basan en estructs pueden ser get o set 
+    // mientras que aquellas que no son structs no pueden tener un set público.
+    foreach (var property in cbc.propertyObjects.Where(p => p.IsFilter || p.IsIdentification))
+    {
+        cbc.t = System.Type.GetType("System."+property.AtributteType);
+        if (cbc.t!= null)
+        {
+            cbc.propertyIsValueType = cbc.t.IsValueType;
+        }
+#> 
+        /// <summary>
+        /// Método que devuelve la especificación de objetos de tipo "<#= cbc.pascalSecureEntityName #>" con un valor concreto para el campo "<#= T4Help.SecureName(property.AtributteName) #>".
+        /// </summary>
+        /// <remarks>
+        /// Sin comentarios especiales.
+        /// </remarks>
+        /// <returns>
+        /// Especificación <see cref="Specification{I<#= cbc.pascalSecureEntityName #>}"/> asociada al criterio.
+        /// </returns>
+        public static Specification<I<#= cbc.pascalSecureEntityName #>> FindEnabledBy<#= T4Help.SecureName(property.AtributteName) #>(<#= property.AtributteType #><#= (property.IsNullable & cbc.propertyIsValueType )?"?":"" #> <#= T4Help.ToCamelCase(property.AtributteName) #>)
+        {
+            // Especificación de entidaes activas.
+            var enabledSpecification = Enabled();
+            // Especificación para objetos de tipo <#= cbc.pascalSecureEntityName #> por el campo <#= T4Help.SecureName(property.AtributteName) #>
+            Specification<I<#= cbc.pascalSecureEntityName #>> specification =
+                            new DirectSpecification<I<#= cbc.pascalSecureEntityName #>>(c => c.<#= T4Help.SecureName(property.AtributteName) #> == <#= T4Help.ToCamelCase(property.AtributteName) #>);
+            // Montamos la especificación.
+            specification &= enabledSpecification;
+            // Devolvemos la especificación.
+            return specification;
+        } // FindEnabledBy<#= T4Help.SecureName(property.AtributteName) #>
+
+        /// <summary>
+        /// Método que devuelve especificación de aquellos objetos de tipo <#= cbc.pascalSecureEntityName #>  
+        /// seleccionados por el valor del campo <#= T4Help.SecureName(property.AtributteName) #>.
+        /// </summary>
+        /// <param name="<#= T4Help.ToCamelCase(property.AtributteName) #>Id">
+        /// Parámetro que indica el valor del campo <#= T4Help.SecureName(property.AtributteName) #>.
+        /// </param>
+        /// <returns>
+        /// Devuelve <see cref="Specification{I<#= cbc.pascalSecureEntityName #>}"/> asociado con este criterio.
+        /// </returns>
+        public static Specification<I<#= cbc.pascalSecureEntityName #>> FindAllBy<#= T4Help.SecureName(property.AtributteName) #>(<#= property.AtributteType #><#= (property.IsNullable & cbc.propertyIsValueType )?"?":"" #> <#= T4Help.ToCamelCase(property.AtributteName) #>)
+        {
+            // Especificación para <#= cbc.pascalSecureEntityName #> por <#= T4Help.SecureName(property.AtributteName) #>
+            Specification<I<#= cbc.pascalSecureEntityName #>> specification =
+                            new DirectSpecification<I<#= cbc.pascalSecureEntityName #>>(c => c.<#= T4Help.SecureName(property.AtributteName) #> == <#= T4Help.ToCamelCase(property.AtributteName) #>);
+            // Devolvemos la especificación.
+            return specification;
+        } // FindAllBy<#= T4Help.SecureName(property.AtributteName) #>
+
+
+<#+ } // end for each propertyObjects#>
+        
+        #endregion
+
+        #region <#= cbc.pascalSecureEntityName #> Complex Specifications
+<#+
+foreach (var method in cbc.ClassMethods.Where(m=>m.MethodStereotype.Equals(MethodStereotype.SpecificationSearch)) )
+            {
+#>
+
+        /// <summary>
+        /// <#= method.ProgramRemarks.Trim() #>
+        /// </summary>
+<#+
+                // para la documetación de los parametros lo hacemos en dos fases, 1º par los no opcionales y 2º para los opcionales que han de tener un valor por defecto
+                global::Microsoft.VisualStudio.Modeling.LinkedElementCollection<Parameter> ParametersList = kayak.MoneyGen.OperationHasParameters.GetParameters ( method );
+                foreach (var parameter in ParametersList.Where(p => p.DefaultValue.Length==0))
+                {
+ #>
+        /// <param >
+        /// name="<#= parameter.Name #>" (Parametro no opcional)
+        /// <#= parameter.ProgramRemarks.Trim() #>
+        /// </param>
+<#+ } /* end for each parameters */ #>
+<#+
+    // segunda pasada para valores por defecto que han de aparecer en último lugar.
+    foreach (var parameter in ParametersList.Where(p => p.DefaultValue.Length>0))
+    {
+ #>
+        /// <param>
+        /// name="<#= parameter.Name #>" (Parametro opcional cuyo valor por defecto es: <#= parameter.DefaultValue #>)
+        /// <#= parameter.ProgramRemarks.Trim() #>
+        /// </param>
+<#+ } /* end for each parameters */ #>
+    public static Specification<I<#= cbc.pascalSecureEntityName #>> <#= method.Name #>( <#= GetMethodParametersString( method , true) #> )
+        {
+            // introducir en este punto el codigo correspondiente al método.
+            // si es necesario modificar los parametros o tipo de devolución sera necesario 
+            // actualizar el módelo igualmente.
+
+            Specification<I<#= cbc.pascalSecureEntityName #>> specification =
+                        new DirectSpecification<I<#= cbc.pascalSecureEntityName #>>(
+<#+
+    if(method.Preconditions.Any() )
+    {
+
+        foreach (var pre in method.Preconditions.OrderBy(c => c.SortOrder))
+        {
+#>
+                                                 <#= T4Help.Indent(cbc.pascalSecureEntityName.Length) #>     <#= pre.LogicExpresion.Trim() #> 
+<#+
+        }
+    }
+    else
+    {
+#>
+                                                 <#= T4Help.Indent(cbc.pascalSecureEntityName.Length) #>    c =>
+<#+
+        int total = ParametersList.Count();
+        int counter= 0;
+        foreach (var parameter in ParametersList)
+        {
+                        counter++;
+            if (parameter.Type.ToLower().Equals("string")) // si el tipo de parametro es string entonces miramos si empieza por y en caso contrario si es igual.
+                        {
+#>
+                                                 <#= T4Help.Indent(cbc.pascalSecureEntityName.Length) #>    c.<#= T4Help.SecureName(parameter.Name) #>.StartsWith( <#= T4Help.ToCamelCase(parameter.Name) #> ) <#= (counter<total)?"&&":"" #>
+<#+
+                        }
+                        else
+                        {
+#>
+                                                 <#= T4Help.Indent(cbc.pascalSecureEntityName.Length) #>    c.<#= T4Help.SecureName(parameter.Name) #> == <#= T4Help.ToCamelCase(parameter.Name) #> <#= (counter<total)?"&&":"" #>
+<#+
+                        }
+        }
+    }
+#>
+                                                 <#= T4Help.Indent(cbc.pascalSecureEntityName.Length) #> );
+            return specification;
+        }
+<#+ }// end foreach method equals specification #>
+        #endregion
+
+    } // class <#= cbc.pascalSecureEntityName #>
+
+} //  <#= projectNamespace #>
+
+<#+
+        return this.GenerationEnvironment.ToString();
+    } //end method override TransformText method
+} // end class DomainBaseEntity
+#>

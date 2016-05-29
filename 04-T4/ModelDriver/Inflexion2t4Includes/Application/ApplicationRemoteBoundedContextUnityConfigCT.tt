@@ -1,0 +1,136 @@
+﻿<#+
+
+public class ApplicationRemoteBoundedContextUnityConfigCT : Template
+{
+    // parametros de la plantilla
+    public ClassBaseContext  cbc ;
+    public string projectNamespace;
+    public ITree<BoundedContextMetadata> Skt;
+    public string KindTimeCall ; /* Los valores posibles son "inicio", "desarrollo", "fin" y "soloUna" */
+        
+    // constructor de la plantilla
+    public ApplicationRemoteBoundedContextUnityConfigCT(ClassBaseContext  classBaseContext, string nombreProjecto , ITree<BoundedContextMetadata> skt, string kindTimeCall)
+    {
+        cbc = classBaseContext;             // contexto de la clase base a interpretar
+        projectNamespace = nombreProjecto;  // nombre del proyecto para el que estamos interpretando
+        Skt = skt;                          // shared kernel tree
+        KindTimeCall = kindTimeCall;
+    }
+        
+    // metodo de generación de la plantilla
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        IList<string> sharedKernelUsings =  GetSharedKernelReferencesByProject(projectNamespace, Skt, cbc.diagram);
+        IList<string> NameSpaceSection = SplitNamesProjects(projectNamespace, cbc.diagram);
+        string company              = NameSpaceSection[0];
+        string product              = NameSpaceSection[1];
+        string boundedContextName   = NameSpaceSection[2];
+        string layer                = NameSpaceSection[3];
+        string kindProject          = NameSpaceSection[4];
+
+#>
+<#+
+            if(KindTimeCall.Equals("inicio") | KindTimeCall.Equals("inicioTotal") | KindTimeCall.Equals("soloUna") )
+            {
+#>
+<?xml version="1.0" ?>
+<configuration>
+
+  <configSections>
+    <section name="unity" type="Microsoft.Practices.Unity.Configuration.UnityConfigurationSection, Microsoft.Practices.Unity.Configuration" />
+  </configSections>
+
+  <unity xmlns="http://schemas.microsoft.com/practices/2010/unity">
+      <!-- ENSAMBLADOS DEL CONTEXTO DE <#= boundedContextName #> -->
+          <!-- Ensamblados de la capa de Aplicación -->
+          <assembly name="<#= company #>.<#= product #>.<#= boundedContextName #>.Application.Data.Base" />
+          <assembly name="<#= company #>.<#= product #>.<#= boundedContextName #>.Application.Mappers.Base" />
+          <assembly name="<#= company #>.<#= product #>.<#= boundedContextName #>.Application.Mappers.Core" />
+          <assembly name="<#= company #>.<#= product #>.<#= boundedContextName #>.Application.RemoteFacade.WCF" />
+          <assembly name="<#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Base" />
+          <assembly name="<#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Core" />
+      
+          <!-- Ensamblados de la capa de Dominio -->
+          <assembly name="<#= company #>.<#= product #>.<#= boundedContextName #>.Domain.Base" />
+          <assembly name="<#= company #>.<#= product #>.<#= boundedContextName #>.Domain.Core" />  
+
+           <!-- Ensamblados de la capa de Infraestructura --> 
+          <assembly name="<#= company #>.<#= product #>.<#= boundedContextName #>.Infrastructure.Data.Repositories" />
+          <assembly name="<#= company #>.<#= product #>.<#= boundedContextName #>.Domain.Resources" />
+    <container>
+<#+
+            }
+ if( true ) //KindTimeCall.Equals( "desarrollo") | KindTimeCall.Equals("inicio") | KindTimeCall.Equals("soloUna")
+            {
+#>
+ <#+
+                if (cbc.IsObjectValue || cbc.IsEntity)
+                {
+#>
+           <!-- Dominio: Registro <#= (cbc.IsEntity)? "de la entidad":"del objeto valor" #> <#= cbc.secureEntityName #> -->
+      <register type="<#= company #>.<#= product #>.<#= boundedContextName #>.Domain.Core.<#= I #><#= cbc.secureEntityName #>Factory<#= cbc.secureEntityName #>,     <#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Core"
+               mapTo="<#= company #>.<#= product #>.<#= boundedContextName #>.Domain.Base.<#= cbc.secureEntityName #>Factory<#= cbc.secureEntityName #>,      <#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Base" />
+
+<#+
+                } // end domain register cbc.IsObjectValue || cbc.IsEntity
+#>
+<#+
+                if (cbc.IsEntity )
+                {
+ #>
+           <!--SERVICIOS DE APLICACIÓN de <#= (cbc.IsEntity)? "la entidad":"del objeto valor" #> <#= cbc.secureEntityName #> -->
+      <register type="<#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Core.ICreate<#= cbc.secureEntityName #>,     <#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Core"
+               mapTo="<#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Base.Create<#= cbc.secureEntityName #>,      <#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Base" />
+
+      <register type="<#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Core.IUpdate<#= cbc.secureEntityName #>,     <#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Core"
+               mapTo="<#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Base.Update<#= cbc.secureEntityName #>,      <#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Base" />
+
+      <register type="<#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Core.IDelete<#= cbc.secureEntityName #>,     <#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Core"
+               mapTo="<#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Base.Delete<#= cbc.secureEntityName #>,      <#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Base" />
+
+      <register type="<#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Core.IGetAll<#= cbc.secureEntityName #>,     <#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Core"
+               mapTo="<#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Base.GetAll<#= cbc.secureEntityName #>,      <#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Base" />
+
+      <register type="<#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Core.IGetAllPaged<#= cbc.secureEntityName #>, <#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Core"
+               mapTo="<#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Base.GetAllPaged<#= cbc.secureEntityName #>,  <#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Base" />
+
+      <register type="<#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Core.IGetEnabledPaged<#= cbc.secureEntityName #>, <#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Core"
+               mapTo="<#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Base.GetEnabledPaged<#= cbc.secureEntityName #>,  <#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Base" />
+
+      <register type="<#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Core.IGetById<#= cbc.secureEntityName #>,    <#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Core"
+               mapTo="<#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Base.GetById<#= cbc.secureEntityName #>,     <#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Base" />
+
+      <!--Mappers entidad <#= cbc.secureEntityName #> -->
+      <register type="<#= company #>.<#= product #>.<#= boundedContextName #>.Application.Mappers.Core.<#= I #><#= cbc.secureEntityName #>Mapper,      <#= company #>.<#= product #>.<#= boundedContextName #>.Application.Mappers.Core"
+               mapTo="<#= company #>.<#= product #>.<#= boundedContextName #>.Application.Mappers.Base.<#= cbc.secureEntityName #>Mapper,       <#= company #>.<#= product #>.<#= boundedContextName #>.Application.Mappers.Base" />
+
+ <#+
+                }// end is entity
+                if (cbc.IsObjectValue )
+                {
+#>
+           <!-- Dominio: Objetos valor  <#= (cbc.IsEntity)? "la entidad":"del objeto valor" #> <#= cbc.secureEntityName #> -->
+      <register type="<#= company #>.<#= product #>.<#= boundedContextName #>.Domain.Core.<#= I #><#= cbc.secureEntityName #>Factory<#= cbc.secureEntityName #>,     <#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Core"
+               mapTo="<#= company #>.<#= product #>.<#= boundedContextName #>.Domain.Base.<#= cbc.secureEntityName #>Factory<#= cbc.secureEntityName #>,      <#= company #>.<#= product #>.<#= boundedContextName #>.Application.Services.Base" />
+
+<#+
+                } // end is object value
+#>
+<#+
+            } 
+ if(KindTimeCall.Equals("fin")  | KindTimeCall.Equals("soloUna") )
+            {
+#>
+    </container>
+  </unity>
+</configuration>
+<#+          } #>
+<#+
+                return this.GenerationEnvironment.ToString();
+            }
+        }
+#>

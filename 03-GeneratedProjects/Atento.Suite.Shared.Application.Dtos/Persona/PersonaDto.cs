@@ -65,175 +65,139 @@ namespace Atento.Suite.Shared.Application.Dtos
         public string Nombre {get; set;}
 
         /// <summary>
-        /// Variable privada que identifica Juridica.
+        /// Variable privada que identifica BooleanField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         [DataMember]
-        public bool Juridica {get; set;}
+        public bool BooleanField {get; set;}
 
         /// <summary>
-        /// Variable privada que identifica Direccion.
+        /// Variable privada que identifica DatetimeField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         [DataMember]
-        public string Direccion {get; set;}
+        public DateTime DatetimeField {get; set;}
 
         /// <summary>
-        /// Variable privada que identifica Calle.
+        /// Variable privada que identifica ByteField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         [DataMember]
-        public string Calle {get; set;}
+        public byte ByteField {get; set;}
 
         /// <summary>
-        /// Variable privada que identifica CP.
+        /// Variable privada que identifica GuidField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         [DataMember]
-        public string CP {get; set;}
+        public Guid GuidField {get; set;}
 
         /// <summary>
-        /// Variable privada que identifica Provincia.
+        /// Variable privada que identifica DecimalField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         [DataMember]
-        public string Provincia {get; set;}
+        public decimal DecimalField {get; set;}
 
         /// <summary>
-        /// Variable privada que identifica Comunidad.
+        /// Variable privada que identifica DobleField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         [DataMember]
-        public string Comunidad {get; set;}
+        public double DobleField {get; set;}
 
         /// <summary>
-        /// Variable privada que identifica Pais.
+        /// Variable privada que identifica FloatField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         [DataMember]
-        public string Pais {get; set;}
+        public float FloatField {get; set;}
 
         /// <summary>
-        /// Variable privada que identifica Matricula.
+        /// Variable privada que identifica IntField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         [DataMember]
-        public string Matricula {get; set;}
+        public int IntField {get; set;}
 
         /// <summary>
-        /// Variable privada que identifica Codigo.
+        /// Variable privada que identifica LongField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         [DataMember]
-        public string Codigo {get; set;}
+        public long LongField {get; set;}
 
         /// <summary>
-        /// Variable privada que identifica Sector.
+        /// Variable privada que identifica DateTimeOffsetField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         [DataMember]
-        public string Sector {get; set;}
+        public DateTimeOffset DateTimeOffsetField {get; set;}
 
         /// <summary>
-        /// Variable privada que identifica Site.
+        /// Variable privada que identifica ShortField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         [DataMember]
-        public string Site {get; set;}
+        public short ShortField {get; set;}
 
         /// <summary>
-        /// Variable privada que identifica LogoImagen.
+        /// Variable privada que identifica TimeSpanField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         [DataMember]
-        public string LogoImagen {get; set;}
+        public TimeSpan TimeSpanField {get; set;}
 
         /// <summary>
-        /// Variable privada que identifica Telefono.
+        /// Variable privada que identifica Int16Field.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         [DataMember]
-        public string Telefono {get; set;}
+        public Int16 Int16Field {get; set;}
 
         /// <summary>
-        /// Variable privada que identifica Fax.
+        /// Variable privada que identifica Int32Field.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         [DataMember]
-        public string Fax {get; set;}
+        public Int32 Int32Field {get; set;}
 
         /// <summary>
-        /// Variable privada que identifica Mobil.
+        /// Variable privada que identifica Int64Field.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         [DataMember]
-        public string Mobil {get; set;}
-
-        /// <summary>
-        /// Variable privada que identifica Atributte1.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        [DataMember]
-        public string Atributte1 {get; set;}
-
-        /// <summary>
-        /// Variable privada que identifica FormaJuridica.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        [DataMember]
-        public string FormaJuridica {get; set;}
-
-        /// <summary>
-        /// Variable privada que identifica fisica.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        [DataMember]
-        public bool Fisica {get; set;}
-
-        /// <summary>
-        /// Variable privada que identifica Genero.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        [DataMember]
-        public string Genero {get; set;}
+        public Int64 Int64Field {get; set;}
         #endregion
 
     } // end class PersonaDto

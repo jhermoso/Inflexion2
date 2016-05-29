@@ -391,25 +391,21 @@ namespace Atento.Suite.Shared.Application
                     entity2Update.Nombre = personaDto.Nombre;
 
                     // asignación de Datos no mandatory con ciclo de vida variable, no se incluyen aquellas propiedaes constantes o derivadas
-                    entity2Update.Juridica = personaDto.Juridica; // property.AutoProperty = True; property.OnlyGetProperty = False
-                    entity2Update.Direccion = personaDto.Direccion; // property.AutoProperty = True; property.OnlyGetProperty = False
-                    entity2Update.Calle = personaDto.Calle; // property.AutoProperty = True; property.OnlyGetProperty = False
-                    entity2Update.CP = personaDto.CP; // property.AutoProperty = True; property.OnlyGetProperty = False
-                    entity2Update.Provincia = personaDto.Provincia; // property.AutoProperty = True; property.OnlyGetProperty = False
-                    entity2Update.Comunidad = personaDto.Comunidad; // property.AutoProperty = True; property.OnlyGetProperty = False
-                    entity2Update.Pais = personaDto.Pais; // property.AutoProperty = True; property.OnlyGetProperty = False
-                    entity2Update.Matricula = personaDto.Matricula; // property.AutoProperty = True; property.OnlyGetProperty = False
-                    entity2Update.Codigo = personaDto.Codigo; // property.AutoProperty = True; property.OnlyGetProperty = False
-                    entity2Update.Sector = personaDto.Sector; // property.AutoProperty = True; property.OnlyGetProperty = False
-                    entity2Update.Site = personaDto.Site; // property.AutoProperty = True; property.OnlyGetProperty = False
-                    entity2Update.LogoImagen = personaDto.LogoImagen; // property.AutoProperty = True; property.OnlyGetProperty = False
-                    entity2Update.Telefono = personaDto.Telefono; // property.AutoProperty = True; property.OnlyGetProperty = False
-                    entity2Update.Fax = personaDto.Fax; // property.AutoProperty = True; property.OnlyGetProperty = False
-                    entity2Update.Mobil = personaDto.Mobil; // property.AutoProperty = True; property.OnlyGetProperty = False
-                    entity2Update.Atributte1 = personaDto.Atributte1; // property.AutoProperty = True; property.OnlyGetProperty = False
-                    entity2Update.FormaJuridica = personaDto.FormaJuridica; // property.AutoProperty = True; property.OnlyGetProperty = False
-                    entity2Update.Fisica = personaDto.Fisica; // property.AutoProperty = True; property.OnlyGetProperty = False
-                    entity2Update.Genero = personaDto.Genero; // property.AutoProperty = True; property.OnlyGetProperty = False
+                    entity2Update.BooleanField = personaDto.BooleanField; // property.AutoProperty = True; property.OnlyGetProperty = False
+                    entity2Update.DatetimeField = personaDto.DatetimeField; // property.AutoProperty = True; property.OnlyGetProperty = False
+                    entity2Update.ByteField = personaDto.ByteField; // property.AutoProperty = True; property.OnlyGetProperty = False
+                    entity2Update.GuidField = personaDto.GuidField; // property.AutoProperty = True; property.OnlyGetProperty = False
+                    entity2Update.DecimalField = personaDto.DecimalField; // property.AutoProperty = True; property.OnlyGetProperty = False
+                    entity2Update.DobleField = personaDto.DobleField; // property.AutoProperty = True; property.OnlyGetProperty = False
+                    entity2Update.FloatField = personaDto.FloatField; // property.AutoProperty = True; property.OnlyGetProperty = False
+                    entity2Update.IntField = personaDto.IntField; // property.AutoProperty = True; property.OnlyGetProperty = False
+                    entity2Update.LongField = personaDto.LongField; // property.AutoProperty = True; property.OnlyGetProperty = False
+                    entity2Update.DateTimeOffsetField = personaDto.DateTimeOffsetField; // property.AutoProperty = True; property.OnlyGetProperty = False
+                    entity2Update.ShortField = personaDto.ShortField; // property.AutoProperty = True; property.OnlyGetProperty = False
+                    entity2Update.TimeSpanField = personaDto.TimeSpanField; // property.AutoProperty = True; property.OnlyGetProperty = False
+                    entity2Update.Int16Field = personaDto.Int16Field; // property.AutoProperty = True; property.OnlyGetProperty = False
+                    entity2Update.Int32Field = personaDto.Int32Field; // property.AutoProperty = True; property.OnlyGetProperty = False
+                    entity2Update.Int64Field = personaDto.Int64Field; // property.AutoProperty = True; property.OnlyGetProperty = False
 
                 // igualmente hemos de mapear las entidades emparentadas.
                 if (!entity2Update.CanBeSaved())

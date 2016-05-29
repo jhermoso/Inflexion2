@@ -1,0 +1,60 @@
+﻿<#@ template inherits="Microsoft.VisualStudio.TextTemplating.Modeling.ModelBusEnabledTextTransformation" language="C#" debug="true" hostspecific="True" #>
+<#@ output extension=".txt" #>
+<#@ MoneyGen processor="MoneyGenDirectiveProcessor"  requires="fileName='Main2.kyk'"  #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="t4helpers\T4Application\Assemblys.tt" #>
+<#@ include file="t4helpers\T4Application\Imports.ttinclude" #>
+<#@ include file="Documentation\GetGeneralDocumentation.tt" #>
+<#
+
+#if DEBUG
+bool okDebug = true;
+if (okDebug)
+    {    
+        Debug.WriteLine(""); 
+        Debug.WriteLine("Empezamos con la transformación de DocGenerator");
+    }
+#endif
+
+  var source = this.Application; // Usual access to source model.
+  // In the source DSL Definition, the root element has a model reference:
+
+    // inicialización del arbol de contextos
+    //A partir de la raiz de un modelo obtenemos la jerarquia de constextos que cuelgan del mismo
+    ITree<LocalizedBounded> TreeApp = GetSolutionContextTree( source);
+
+    // primera parte: recolectamos información acerca de la solucion los diagramas y las definiciones
+    // almacenandolas en estructuras de datos facilmente accesibles.
+    // 1º acerca del diagrama
+    DslContextDefinitionDiagram MainDiagram = new DslContextDefinitionDiagram(this.Application, TreeApp);
+    //Debug.WriteLine(MainDiagram.ToString());
+    // 2º acerca de la propia solución
+    ActiveSolution SolutionInfo = new ActiveSolution(this.Host);
+    //Debug.WriteLine(SolutionInfo.ToString());
+    // 3º obtenemos en la clase de maindiagram los path absolutos de las principales carpetas de la solución.
+    MainDiagram.SetAbsolutePath(SolutionInfo.DirectoryName);
+
+    // 4º instanciamos la clases con la definición de la arquitectura
+    //Architecture Arq = new Architecture();
+
+    IList<Project> Projectos = SolutionProjects.ProjectsList(); // este es un método estático que nos permite acceder de forma rapida a la lista de proyectos para buscar uno concreto.
+
+    // Segunda parte utilizamos la información recolectada para generar los proyectos de la solución.
+
+    // Comprobamos y chequeamos la existencia de las carpetas de apoyo a la solución.
+    // primero con la carpeta de Documentación
+    IOWindows.NewChequedFolder(SolutionInfo.DirectoryName+System.IO.Path.DirectorySeparatorChar+MainDiagram.DocumentationPath);
+    // Acontinuación con la carpeta de Documentación
+    IOWindows.NewChequedFolder(SolutionInfo.DirectoryName+System.IO.Path.DirectorySeparatorChar+MainDiagram.AsemblysPath);
+    // Seguidamente con la carpeta de librerias de terceros
+    IOWindows.NewChequedFolder(SolutionInfo.DirectoryName+System.IO.Path.DirectorySeparatorChar+MainDiagram.LibraryPath);
+    // Por último con la carpeta de projectos
+    IOWindows.NewChequedFolder(SolutionInfo.DirectoryName+System.IO.Path.DirectorySeparatorChar+MainDiagram.ProyectsPath);
+
+    ITree<BoundedContextMetadata> SharedKernelTree = GetSharedKernelProjects(  MainDiagram,  SolutionInfo,  TreeApp);
+
+    GetGeneralDocumentation(  MainDiagram,  SolutionInfo,  TreeApp, SharedKernelTree);
+
+    //GetGeneralDocumentationIMG(  MainDiagram,  SolutionInfo,  TreeApp, SharedKernelTree);
+
+#>

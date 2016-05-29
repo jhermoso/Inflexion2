@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="3aa0e0de-9261-4ff3-bc43-2fa533b9b38c" sGDB="Oracle" company="Hexa" product="Core" copyright="Hexa.Core" branding="Hexa.Core" version="0.1" libraryPath="..\Externos" isModule="false" Architecture="HexaCore" generateCode="Always" xmlns="http://schemas.microsoft.com/dsltools/MoneyGen">
+  <classBases>
+    <applicationHasElements Id="de6d209f-8b59-4504-89c9-72b431a29534">
+      <entity Id="ace20a11-4a42-424f-a617-b22c2428174a" name="Product" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="" isRoot="true">
+        <targets>
+          <association Id="fed724b1-2fa6-48b4-9f25-c08fd6b3ff7b" sourceMultiplicity="CeroMany" sourceRolName="Targets" targetRolName="Products" sourceRolAlias="Targets" targetRolAlias="Products">
+            <entityMoniker name="/3aa0e0de-9261-4ff3-bc43-2fa533b9b38c/Target" />
+          </association>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="0c126c1f-78db-43df-9441-b4fcaff472cd">
+            <atributte Id="e862913c-e94e-47f0-8a72-89f0544dde6a" atributteName="Code" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepeatedValues="false" requestUponCreation="yes" nameAndType="string Code" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="a11aeddf-9470-4c25-bce6-e138a3e8c5fa">
+            <atributte Id="3cf81f14-8f78-40ec-80c4-fd5a700d68a9" atributteName="Name" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepeatedValues="false" nameAndType="string Name" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="ded5490d-07fb-4578-8dfb-07574a025dc0">
+            <atributte Id="25d525c2-ed85-4c0d-98a7-621e30fcfdfb" atributteName="Description" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepeatedValues="false" nameAndType="string Description" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="1afd0be9-2403-4682-8c49-cef45949808e">
+            <atributte Id="2fcb6548-895b-493f-ac01-574b97f4b408" atributteName="IsService" atributteType="bool" isID="false" isIdentification="false" position="0" isNullable="false" allowRepeatedValues="false" nameAndType="bool IsService" autoProperty="false" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="f9acf067-d272-4da4-8527-544cd6f1ac06">
+      <entity Id="831ed08c-87f2-4916-a517-5cbc119dd81a" name="ProductLine" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="" isRoot="true">
+        <targets>
+          <composition Id="c2563105-06c9-4910-96bb-0e7f0a5174f5" sourceMultiplicity="OneOne" targetRolName="ProductLine" targetICollection="System.Collections.Generic.List" targetCollection="System.Collections.Generic.IList">
+            <entityMoniker name="/3aa0e0de-9261-4ff3-bc43-2fa533b9b38c/Product" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="a74ab60b-a6f7-49b3-8136-182cb7e0ddc1">
+            <atributte Id="59e9f15e-f8c4-4c33-8d1c-f213e9b4c7cc" atributteName="Code" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepeatedValues="false" nameAndType="string Code" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="35e2ff02-a940-4d52-8731-2f7c804ffd03">
+            <atributte Id="58aff3a7-3468-4efd-a7d5-88a22ceda9ca" atributteName="Name" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepeatedValues="false" nameAndType="string Name" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="8a8b8beb-88dc-4799-9896-f5f6a7cb0c38">
+            <atributte Id="f6c54d3c-99db-48e3-a86f-7a89b6cd7d20" atributteName="Description" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepeatedValues="false" nameAndType="string Description" autoProperty="false" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="d020a2dc-0ef3-47f5-a58c-2f2eb76fdba6">
+      <entity Id="49aa2229-c999-448c-9bf8-d5d461c7decc" name="SatisfaccionScale" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="" isRoot="true">
+        <targets>
+          <aggregation Id="06a3b161-d45a-456a-aee9-3af45f865330" targetRolName="SatisfaccionScale">
+            <entityMoniker name="/3aa0e0de-9261-4ff3-bc43-2fa533b9b38c/Product" />
+          </aggregation>
+          <composition Id="c9d5dbdf-d45b-4e85-94ca-83398c33a130" sourceMultiplicity="OneOne" sourceRolName="SatisfaccionScaleValues" targetRolName="SatisfaccionScale">
+            <entityMoniker name="/3aa0e0de-9261-4ff3-bc43-2fa533b9b38c/SatisfaccionScaleValue" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="0ecf56e1-eefb-4f34-9e8b-17d706007407">
+            <atributte Id="87258b5a-7f68-484b-b608-16f410794b23" atributteName="Code" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepeatedValues="false" nameAndType="string Code" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="2eca0d5d-d019-42e6-8701-cdbb05a7e41d">
+            <atributte Id="10e9077e-986d-431d-9510-be602ee62582" atributteName="Name" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepeatedValues="false" nameAndType="string Name" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="296c3cd4-8ec6-4716-87fe-a73f07883920">
+            <atributte Id="656ecc32-7584-4156-ab53-4891d1c11cc6" atributteName="Description" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepeatedValues="false" nameAndType="string Description" autoProperty="false" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="2479cfa3-aaab-43a8-a603-ba4c5c71a4ec">
+      <entity Id="947d8b8c-f694-4038-9f30-b2f63978a7aa" name="Target" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="" isRoot="true">
+        <atributtes>
+          <classBaseHasAtributtes Id="8b52950f-8f50-406e-92fa-ee799959d71e">
+            <atributte Id="f31a96f4-f166-4756-a78f-083754c287cb" atributteName="Code" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepeatedValues="false" nameAndType="string Code" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="03c96b67-f3af-4266-8caa-dbcfde35d19e">
+            <atributte Id="220dcc97-f16c-408d-a628-fc03dc678ae7" atributteName="Name" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepeatedValues="false" nameAndType="string Name" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="21aaf427-5a54-4e35-925a-88a2ff406e6c">
+            <atributte Id="82c0027f-a965-4f07-b7c4-bd31ca68d76d" atributteName="Description" isID="false" isIdentification="false" position="0" isNullable="false" allowRepeatedValues="false" nameAndType="String Description" autoProperty="false" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="a90c3045-54b9-4531-9eb2-40d911f8a49f">
+      <entity Id="315c58ba-b1d3-4aff-8e71-2f37556410c0" name="SatisfaccionScaleValue" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="">
+        <targets>
+          <composition Id="39af938b-8832-4264-80c1-9f6c1703ced1" sourceMultiplicity="OneOne" sourceRolName="Enumerados" targetICollection="System.Collections.Generic.List" targetCollection="System.Collections.Generic.IList">
+            <enumerationMoniker name="/3aa0e0de-9261-4ff3-bc43-2fa533b9b38c/Enumerado" />
+          </composition>
+          <composition Id="1b24e978-0720-4be4-9c98-410bba91a0af" sourceMultiplicity="OneOne" sourceRolName="ObjetosValores" targetICollection="System.Collections.Generic.List" targetCollection="System.Collections.Generic.IList">
+            <objectValueMoniker name="/3aa0e0de-9261-4ff3-bc43-2fa533b9b38c/ObjetoValor" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="54150dcd-a7c4-426e-9a65-9905aacc9296">
+            <atributte Id="e13f0d19-24fd-464e-bdbb-6919457e6dd4" atributteName="Code" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepeatedValues="false" nameAndType="string Code" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="6380e1b7-ed91-44d0-b27f-0a80c6fd3d19">
+            <atributte Id="21cbb9d9-8603-44fd-a5b7-9a2195dd610f" atributteName="Name" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepeatedValues="false" nameAndType="string Name" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="fadd42c5-1f74-480b-a187-1fb5cfec0c58">
+            <atributte Id="a1d6ab32-182a-4590-9bbd-1d9329a0d535" atributteName="Description" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepeatedValues="false" nameAndType="string Description" autoProperty="false" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="ac42a271-1e4f-4661-a350-e15b80de641b">
+      <enumeration Id="0b07c657-a23c-4540-a738-5e372cbcf32d" name="Enumerado" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="" serializable="false">
+        <enumValue>
+          <enumerationHasEnumValue Id="fda1e2b0-965f-42a1-a365-b0eec2c99d75">
+            <enumValues Id="6f4a0856-35a7-4be4-898a-36c4eb06103b" sorting="1" value="Primero" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="9a24d1d9-fed7-45f6-8d76-49709e1d2a45">
+            <enumValues Id="8e725f35-c603-41d7-860b-531c4293fec0" sorting="2" value="Segundo" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="3d6dce28-0a7a-4b69-9ff8-5bd542c6e921">
+            <enumValues Id="0505c71b-a18e-45ba-a570-edfc17cadb2e" sorting="3" value="Tercero" />
+          </enumerationHasEnumValue>
+        </enumValue>
+      </enumeration>
+    </applicationHasElements>
+    <applicationHasElements Id="4e15b285-d4d0-4f39-9424-b8f9e7db5127">
+      <objectValue Id="13ad6b7e-266f-4f88-9ee3-d0b14085a599" name="ObjetoValor" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="fce64369-57c3-40f1-aa6b-53ea5498ce55">
+            <atributte Id="31d63ae4-4a4d-4b3a-8888-0f4686f837ee" atributteName="Inicio" atributteType="DateTime" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="DateTime Inicio" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="94c35e6d-1d10-4b68-b126-ce22d0923a9b">
+            <atributte Id="a437ec57-3fbb-4154-8494-2f21db0d5feb" atributteName="Cadena" atributteType="string" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="string Cadena" autoProperty="false" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </objectValue>
+    </applicationHasElements>
+  </classBases>
+  <boundedContexts>
+    <applicationHasBoundedContexts Id="d8b369ef-0a9c-4f3d-8c9b-944740c31d36">
+      <boundedContext Id="1f048c74-b34a-4f71-b604-5adf3fddc888" name="From Main2" mBR="modelbus://kayak.MoneyGen.MoneyGenAdapter/Main2//.\Main2.kyk" />
+    </applicationHasBoundedContexts>
+  </boundedContexts>
+</application>

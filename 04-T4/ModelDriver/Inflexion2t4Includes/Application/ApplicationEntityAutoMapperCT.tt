@@ -1,0 +1,306 @@
+﻿<#+
+
+public class ApplicationEntityAutoMapperCT : Template
+{
+    // parametros de la plantilla
+    public ClassBaseContext  cbc ;
+    public string projectNamespace;
+    public ITree<BoundedContextMetadata> Skt;
+        
+    // constructor de la plantilla
+    public ApplicationEntityAutoMapperCT(ClassBaseContext  classBaseContext, string nombreProjecto, ITree<BoundedContextMetadata> skt)
+    {
+        cbc = classBaseContext;             // contexto de la clase base a interpretar
+        projectNamespace = nombreProjecto;  // nombre del proyecto para el que estamos interpretando
+        Skt = skt;                          // shared kernel tree
+    }
+
+    // metodo de generación de la plantilla
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        IList<string> sharedKernelUsings =  GetSharedKernelReferencesByProject(projectNamespace, Skt, cbc.diagram);
+
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+
+        string ResxFileName = prjCon.boundedContextName.Replace(".","")+"Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+
+        //IList<string> NameSpaceSection = SplitNamesProjects(projectNamespace, cbc.diagram);
+        //string company              = NameSpaceSection[0];
+        //string product              = NameSpaceSection[1];
+        //string boundedContextName   = NameSpaceSection[2];
+        //string layer                = NameSpaceSection[3];
+        //string kindProject          = NameSpaceSection[4];
+
+        var cpyrigth = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity);
+        string cpyrigthText = cpyrigth.TransformText();
+#>
+<#= cpyrigthText #>
+namespace <#= projectNamespace #>
+{
+
+    #region sharedKernels references
+<#+
+            if (sharedKernelUsings != null)
+                foreach (var item in sharedKernelUsings)
+                {
+#>
+    using <#= item #>;
+<#+
+                }// end foreach para los using del shared kernel
+#>
+    #endregion
+    using AutoMapper;
+    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Mappers.Core;
+    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Data.Base;
+    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain.Core;
+    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain.Resources;
+
+    using Inflexion.Framework.Core;
+    using Inflexion.Framework.Logging;
+    using Inflexion.Framework.Infrastructure.DataAccess.UoW;
+    using Inflexion.Framework.Infrastructure.IoC;
+
+    /// <summary>
+    /// Clase pública encargada de mapear los datos de una entidad <see cref="<#= I #><#= cbc.secureEntityName #>Mapper"/>.
+    /// </summary>
+    /// <remarks>
+    /// Mapea los datos del Dto <see cref="<#= cbc.secureEntityName #>Dto"/> con una entidad <see cref="<#= I #><#= cbc.secureEntityName #>Mapper"/>.
+    /// </remarks>
+    public sealed class <#= cbc.secureEntityName #>Mapper : <#= I #><#= cbc.secureEntityName #>Mapper
+    {
+
+        #region CONSTRUCTORS
+
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="T:<#= cbc.secureEntityName #>Mapper"/>.
+        /// </summary>
+        /// <remarks>
+        /// Sin comentarios especiales.
+        /// </remarks>
+        public <#= cbc.secureEntityName #>Mapper()
+        {
+        } // <#= cbc.secureEntityName #>Mapper Constructor
+
+        #endregion
+
+        #region FUNCTIONS
+
+          /// <summary>
+          /// Función pública que mapea las entidades para devolver el
+          /// correspondiente Dto.
+          /// </summary>
+          /// <remarks>
+          /// Se encarga de mapear objetos <see cref="<#= I #><#= cbc.secureEntityName #>"/> 
+          /// devolviendo un objeto <see cref="<#= cbc.secureEntityName #>Dto"/>.
+          /// </remarks>
+          /// <param name="entity<#= cbc.secureEntityName #>">
+          /// Objeto de la entidad <see cref="<#= I #><#= cbc.secureEntityName #>"/>.
+          /// </param>
+          /// <exception cref="System.ArgumentNullException">
+          /// Lanzada cuando el valor de <c>entity<#= cbc.secureEntityName #></c> es null.
+          /// </exception>
+          /// <returns>
+          /// Devuelve un objeto de tipo <see cref="<#= cbc.secureEntityName #>Dto"/> 
+          /// con los datos mapeados.
+          /// </returns>
+          public <#= cbc.secureEntityName #>Dto EntityMapping(<#= I #><#= cbc.secureEntityName #> entity<#= cbc.secureEntityName #>)
+          {
+<#+
+            if (cbc.diagram.ValidationContracts.Equals("DataAnotations"))
+            {
+                if (false)
+                {
+#>
+            // Comprobamos el valor del argumento de entrada.
+            if (entity<#= cbc.secureEntityName #> == null)
+            {
+                // Error, lanzamos la excepción.
+                throw new System.ArgumentNullException("entity<#= cbc.secureEntityName #>");
+            }
+<#+
+                }
+                if (true)
+                {
+#>
+            // Comprobamos el parámetro de entrada.
+            Guard.ArgumentIsNotNull(
+                                    entity<#= cbc.secureEntityName #>, 
+                                    string.Format(
+                                                    CoreResources.Neutral.MapperErrorEntityNull,
+                                                    <#= ResxFileName #>.<#= cbc.secureEntityName #>Alias)
+                                                 );
+
+<#+
+                }
+            }
+#>
+<#+
+                if (cbc.diagram.ValidationContracts.Equals("CodeContracts"))
+                {
+#>
+            // Comprobamos el valor del argumento de entrada.
+            Contract.EnsuresOnThrow<System.ArgumentException>(entity<#= cbc.secureEntityName #> == null ,string.Format(CoreResources.Neutral.nullArgument, <#= ResxFileName #>.<#= cbc.secureEntityName #>Alias));
+
+<#+
+                }
+#>
+
+            // PASO 1. Se crea primero el mapeo desde la entidad de dominio al DTO.
+            //         En este punto se ponen las excepciones de campos que no se asocian por convención, como son Activo (de la entidad)
+            //         con IsActive (del DTO).
+            //         Las propiedades que son referencias a otra entidad y su valor puede ser nulo NO SE MAPEAN por convención, 
+            //         por lo que hay que indicar que se ignoren y realizar manualmente el mapeado a continuación.
+
+            // Mapeamos cada propiedad.
+<#+    if(cbc.IsEntity) { #>
+<#+
+        int SourceRolCollections = cbc.propertyAssociationSources.Where(p => IsMaxMultiplicityMany(p.SourceMultiplicity)).Count();
+        int TargetRolCollections = cbc.propertyAssociationTargets.Where(p => IsMaxMultiplicityMany(p.TargetMultiplicity)).Count();
+        if (SourceRolCollections == 0 && TargetRolCollections == 0 )   {#>
+            Mapper.CreateMap<<#= I #><#= cbc.secureEntityName #>, <#= cbc.secureEntityName #>Dto>()
+                .ForMember(c => c.Activo, m => m.MapFrom(o => o.IsActive));
+<#+     } else // end if la entidad no tiene roles de relación
+        {       #>
+            Mapper.CreateMap<<#= I #><#= cbc.secureEntityName #>, <#= cbc.secureEntityName #>Dto>()
+                .ForMember(c => c.Activo, m => m.MapFrom(o => o.IsActive))
+<#+
+    int Centinela = 0;
+    int TotalPropertiesNotConstant = cbc.propertyObjects.Where(c => !(c.LiveCycleAtributte.Equals(LiveCycleAtributte.Constante))).Count();
+    foreach (var property in cbc.propertyAssociationSources.Where(p => IsMinMultiplicityCero(p.SourceMultiplicity)) )
+            {
+                Centinela++;
+                // este mapeado supone que 
+                // inverse significa que la responsabilidad de salvar esta en la otra entidad.
+                // Acces.camelCaseField() el aceso se hace a traves del campo privado que publica las operaciones por que la propiedad es solo un enumerable.
+                // CAscadeAllDeleteOrphan significa que cuando se salva/borra la entidad se salvan/borran todos sus hijos.
+#>
+<#+                        if ( property.Source is Entity ) {#>
+
+                .ForMember(c => c.<#= T4Help.ToPascalCase(property.TargetRolName) #>, m => m.Ignore())<#= (SourceRolCollections == Centinela && TargetRolCollections == 0 /* && TotalPropertiesNotConstant == 0*/ )?";":"" #>
+<#+                        } // end if ( property.Source is Entity  #>
+
+<#+ } // end foreach (var property in cbc.propertyAssociationSources)#>
+<#+
+    Centinela = 0;
+    foreach (var property in cbc.propertyAssociationTargets.Where(p => IsMinMultiplicityCero(p.TargetMultiplicity)) )
+    {
+        Centinela++;
+#>
+                .ForMember(c => c.<#= T4Help.ToPascalCase(property.SourceRolName) #>, m => m.Ignore())<#= (TargetRolCollections == Centinela /* && TotalPropertiesNotConstant == 0 */)?";":"" #>
+<#+ } // end foreach propertyAssociationTargets #>
+<#+
+    Centinela = 0;
+    foreach (var property in cbc.propertyObjects)    {#>
+<#+     if( property.LiveCycleAtributte.Equals(LiveCycleAtributte.Constante)) 
+        {
+            Centinela++;
+#>
+                //.ForMember(c => c.<#= T4Help.ToPascalCase(property.AtributteName) #>, m => m.Ignore())<#= (  Centinela == TotalPropertiesNotConstant )?";":"" #>
+<#+     } /*end if LiveCycleAtributte.Constante*/#>
+<#+ } /*end foreach properties*/ #>
+
+<#+ } // end // end else la entidad si tiene roles de relación#>
+<#+ } // end if cbc.IsEntity#>
+
+            // PASO 2. Se crea el DTO de <#= cbc.secureEntityName #> siguiendo las reglas del mapeo creado en la línea anterior.
+            <#= cbc.secureEntityName #>Dto <#= cbc.camelSecureEntityName #>Dto = Mapper.Map<<#= I #><#= cbc.secureEntityName #>, <#= cbc.secureEntityName #>Dto>(entity<#= cbc.secureEntityName #>);
+
+            // PASO 3. Se meten una a una todas las propiedades que se han ignorado, ya que AUTOMAPPER no mapea las enumeraciones.
+<#+
+
+    foreach (var property in cbc.propertyAssociationSources.Where(p => IsMinMultiplicityCero(p.SourceMultiplicity)) )
+            {
+#>
+<#+                        if ( property.Source is Entity ) {#>
+                if (entity<#= cbc.secureEntityName #>.<#= T4Help.ToPascalCase(property.TargetRolName) #> != null)
+                {
+<#+  if (IsMaxMultiplicityMany(property.SourceMultiplicity)) {#>
+                var <#= T4Help.ToCamelCase(property.TargetRolName) #>Mapper = ManagerIoC.Container.Resolve<<#= I #><#= T4Help.ToPascalCase(property.Target.Name) #>Mapper>();
+
+                foreach (var item in entity<#= cbc.secureEntityName #>.<#= T4Help.ToPascalCase(property.TargetRolName) #>)
+                {
+                    if (item.IsActive)
+                    {
+                        var <#= T4Help.ToCamelCase(property.TargetRolName) #>Dto = <#= T4Help.ToCamelCase(property.TargetRolName) #>Mapper.EntityMapping(item);
+                        <#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.TargetRolName) #>.Add( <#= T4Help.ToCamelCase(property.TargetRolName) #>Dto );
+                    }
+                }
+<#+  }#>
+<#+  if (IsMaxMultiplicityOne(property.SourceMultiplicity)) {#>
+                    if ( entity<#= cbc.secureEntityName #>.<#= T4Help.ToPascalCase(property.TargetRolName) #>.IsActive)
+                    {
+                        var <#= T4Help.ToCamelCase(property.TargetRolName) #>Mapper = ManagerIoC.Container.Resolve<<#= I #><#= T4Help.ToPascalCase(property.Source.Name) #>Mapper>();
+
+                        var <#= T4Help.ToCamelCase(property.TargetRolName) #>Dto = <#= T4Help.ToCamelCase(property.TargetRolName) #>Mapper.EntityMapping(entity<#= cbc.secureEntityName #>.<#= T4Help.ToPascalCase(property.TargetRolName) #>);
+                        <#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.TargetRolName) #> = <#= T4Help.ToCamelCase(property.TargetRolName) #>Dto;
+                    }
+<#+  }#>
+                }
+
+<#+                        } // end if ( property.Source is Entity  #>
+<#+ } // end foreach (var property in cbc.propertyAssociationSources)#>
+
+<#+
+
+    foreach (var property in cbc.propertyAssociationTargets.Where(p => IsMinMultiplicityCero(p.TargetMultiplicity)) )
+            {
+#>
+<#+ if ( property.Target is Entity ) {#>
+                if (entity<#= cbc.secureEntityName #>.<#= T4Help.ToPascalCase(property.SourceRolName) #> != null)
+                {
+<#+  if (IsMaxMultiplicityMany(property.TargetMultiplicity)) {#>
+                var <#= T4Help.ToCamelCase(property.SourceRolName) #>Mapper = ManagerIoC.Container.Resolve<<#= I #><#= T4Help.ToPascalCase(property.Target.Name) #>Mapper>();
+
+                foreach (var item in entity<#= cbc.secureEntityName #>.<#= T4Help.ToPascalCase(property.SourceRolName) #>)
+                {
+                    if (item.IsActive)
+                    {
+                        var <#= T4Help.ToCamelCase(property.SourceRolName) #>Dto = <#= T4Help.ToCamelCase(property.SourceRolName) #>Mapper.EntityMapping(item);
+                        <#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.SourceRolName) #>.Add( <#= T4Help.ToCamelCase(property.SourceRolName) #>Dto );
+                    }
+                }
+<#+  }#>
+<#+  if (IsMaxMultiplicityOne(property.TargetMultiplicity)) {#>
+                    if ( entity<#= cbc.secureEntityName #>.<#= T4Help.ToPascalCase(property.SourceRolName) #>.IsActive)
+                    {
+                        var <#= T4Help.ToCamelCase(property.SourceRolName) #>Mapper = ManagerIoC.Container.Resolve<<#= I #><#= T4Help.ToPascalCase(property.SourceRolName) #>Mapper>();
+
+                        var <#= T4Help.ToCamelCase(property.SourceRolName) #>Dto = <#= T4Help.ToCamelCase(property.SourceRolName) #>Mapper.EntityMapping(entity<#= cbc.secureEntityName #>.<#= T4Help.ToPascalCase(property.SourceRolName) #>);
+                        <#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.SourceRolName) #> = <#= T4Help.ToCamelCase(property.SourceRolName) #>Dto;
+                    }
+<#+  }#>
+                }
+
+<#+                        } // end if ( property.Target is Entity  #>
+<#+ } // end foreach (var property in cbc.propertyAssociationTargets)#>
+            // Devolvemos el resultado.
+            return <#= cbc.camelSecureEntityName #>Dto;
+            
+          } // EntityMapping
+
+        /// <summary>
+        /// Interfaz que identifica los mapeos de datos con la entidad <see cref="<#= I #><#= cbc.secureEntityName #>"/>.
+        /// </summary>
+        /// <remarks>
+        /// Sin comentarios adicionales.
+        /// </remarks>
+        public <#= I #><#= cbc.secureEntityName #> DataMapping(<#= cbc.secureEntityName #>Dto dataTransferObject)
+        {
+            throw new System.NotImplementedException();
+        } // <#= I #><#= cbc.secureEntityName #>
+
+        #endregion
+
+
+    } // end class <#= cbc.secureEntityName #>Mapper
+} //  <#= projectNamespace #>
+<#+
+            return this.GenerationEnvironment.ToString();
+        } //end method override TransformText method
+    }// end class ApplicationEntityMapperCT
+#>

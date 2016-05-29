@@ -1,0 +1,308 @@
+﻿<#+
+
+public class ApplicationRemoteFacadeBaseSvcCsCT : Template
+{
+    // parametros de la plantilla
+    public ClassBaseContext  cbc ;
+    public string projectNamespace;
+    public ITree<BoundedContextMetadata> Skt;
+        
+        // constructor de la plantilla
+    public ApplicationRemoteFacadeBaseSvcCsCT(ClassBaseContext  classBaseContext, string nombreProjecto, ITree<BoundedContextMetadata> skt)
+    {
+        cbc = classBaseContext;             // contexto de la clase base a interpretar
+        projectNamespace = nombreProjecto;  // nombre del proyecto para el que estamos interpretando
+        Skt = skt;                          // shared kernel tree
+    }
+        
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        IList<string> sharedKernelUsings =  GetSharedKernelReferencesByProject(projectNamespace, Skt, cbc.diagram);
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+        //IList<string> NameSpaceSection = SplitNamesProjects(projectNamespace, cbc.diagram);
+        //string company              = NameSpaceSection[0];
+        //string product              = NameSpaceSection[1];
+        //string boundedContextName   = NameSpaceSection[2];
+        //string layer                = NameSpaceSection[3];
+        //string kindProject          = NameSpaceSection[4];
+
+
+        var cpyrigth = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity, T4Help.getLeftStringSlice(this.ToString(), '+', -1).Substring(1));
+        string cpyrigthText = cpyrigth.TransformText();
+        bool Secured = cbc.MainEntityStereotype.Contains("Bussiness"); // si es una entidad de negocio entoces esta securizada es decir necesita identificación y autorización
+
+#>
+<#= cpyrigthText #>
+namespace <#= projectNamespace #>
+{
+    #region sharedKernel usings
+<#+
+if (sharedKernelUsings != null & false)
+foreach (var item in sharedKernelUsings)
+    {
+#>
+    using <#= item #>;
+<#+
+    }// end foreach para los using del shared kernel
+#>
+    #endregion 
+
+    #region general usings
+    using System;
+    using System.Collections.Generic;
+    using System.ServiceModel;
+
+    using Inflexion2.Domain;
+    //using Inflexion2.Application.Security.Data.Base;
+    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Dtos;
+
+    using Inflexion2.Application;
+    using Inflexion2.Application.DataTransfer.Core;
+    //using Inflexion2.Application.Security.RemoteFacade;
+    using Inflexion2.Infrastructure;
+
+    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Application;
+    //using AppSrvCore = <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Application;
+    #endregion
+
+    /// <summary>
+    /// Clase pública del servicio Wcf encargada de realizar las tareas 
+    /// relacionadas con la entidad <#= I #><#= cbc.secureEntityName #>.
+    /// </summary>
+    /// <remarks>
+    /// Sin comentarios adicionales.
+    /// </remarks>
+    //[ApplicationErrorHandlerAttribute]
+    public partial class <#= cbc.secureEntityName #>Service : I<#= cbc.secureEntityName #>Service
+    {
+        #region Fields
+
+        /// <summary>
+        /// Referencia a los servicios de administración de la entidad <#= cbc.secureEntityName #>.
+        /// </summary>
+        private readonly <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Application.I<#= cbc.secureEntityName #>Services service;
+
+        #endregion
+
+        #region CONSTRUCTORS
+
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="T:<#= cbc.secureEntityName #>Service"/>.
+        /// </summary>
+        /// <remarks>
+        /// Constructor de la clase <see cref="T:<#= cbc.secureEntityName #>Service"/>.
+        /// </remarks>
+        public <#= cbc.secureEntityName #>Service()
+        {
+            // HibernatingRhinos.Profiler.Appender.NHibernate.NHibernateProfiler.Initialize();
+            // configuramos aqui el servicio o lo hacemos en el global asax
+            // resolvemos con el ioc la interface de servicios de 
+            this.service = new <#= cbc.secureEntityName #>Services();
+        } // end <#= cbc.secureEntityName #>Service Constructor
+
+        #endregion
+
+        #region Methods
+<#+if (cbc.LogicDelete){ #>
+        /// <summary>
+        /// Activa una determinada entidad <#= cbc.secureEntityName #>.
+        /// </summary>
+        /// <param name="id">
+        /// Identificador de la entidad que se va a activar.
+        /// </param>
+<#+ if (Secured){#>        /// <param name="userContextDto"> Parámetro de tipo <see cref="UserContextDto"/> que representa el contexto del usuario. </param><#+ }#>
+        /// <returns>
+        /// Es <b>true</b> si la activación ha sido correcta, en caso contrario <b>false</b>.
+        /// </returns>
+        public bool Activate(int id<#= (Secured)?", UserContextDto userContextDto":""#>)
+        {
+            return this.service.Activate(id<#= (Secured)?", userContextDto":""#>);
+        }
+<#+ } #>
+        /// <summary>
+        /// Función encargada de la creación de una entidad de tipo <#= cbc.secureEntityName #>.
+        /// </summary>
+        /// <remarks>
+        /// Sin comentarios adicionales.
+        /// </remarks>
+        /// <param name="<#= cbc.camelSecureEntityName #>Dto">
+        /// Parámetro de tipo <see cref="<#= cbc.secureEntityName #>Dto"/> con los datos necesarios
+        /// para la creación de la entidad <#= cbc.secureEntityName #>.
+        /// </param>
+<#+ if (Secured){#>        /// <param name="userContextDto"> Parámetro de tipo <see cref="UserContextDto"/> que representa el contexto del usuario. </param><#+ }#>
+        /// <return>
+        /// Devuelve el identificador único de la entidad creada.
+        /// </return>
+        public int Create( <#= cbc.secureEntityName #>Dto <#= cbc.camelSecureEntityName #>Dto<#= (Secured)?", UserContextDto userContextDto":""#>)
+        {
+            // opción 1
+            // Instanciamos el servicio de aplicación de creación mediante el contenedor de IoC.
+            // var data = ManagerIoC.Container.Resolve<ICreate<#= cbc.secureEntityName #>>();
+            // Ejecutamos el servicio y obtenemos la respuesta.
+            // int identifier = data.Execute( <#= cbc.camelSecureEntityName #>Dto<#= (Secured)?", userContextDto":""#>);
+            // Devolvemos la respuesta.
+            // return identifier;
+
+            //opción 2
+            return this.service.Create(<#= cbc.camelSecureEntityName #>Dto<#= (Secured)?", userContextDto":""#>);
+
+        } // end Create
+
+
+        /// <summary>
+        /// Función encargada de la actualziación de una entidad de tipo <#= cbc.secureEntityName #>.
+        /// </summary>
+        /// <remarks>
+        /// Sin comentarios adicionales.
+        /// </remarks>
+        /// <param name="<#= cbc.camelSecureEntityName #>Dto">
+        /// Parámetro de tipo <see cref="<#= cbc.secureEntityName #>Dto"/> con los datos necesarios
+        /// para el borrado de la entidad <#= cbc.secureEntityName #>r.
+        /// </param>
+<#+ if (Secured){#>        /// <param name="userContextDto"> Parámetro de tipo <see cref="UserContextDto"/> que representa el contexto del usuario. </param><#+ }#>
+        /// <returns>
+        /// Devuelve <b>true</b> si la actualización ha sido correcta y
+        /// <b>false</b> en caso contrario.
+        /// </returns>
+        public bool Update( <#= cbc.secureEntityName #>Dto <#= cbc.camelSecureEntityName #>Dto<#= (Secured)?", UserContextDto userContextDto":""#>)
+        {
+            // opción 1
+            // Instanciamos el servicio de aplicación de actualización mediante el contenedor de IoC.
+            // var data = ManagerIoC.Container.Resolve<IUpdate<#= cbc.secureEntityName #>>();
+            // Ejecutamos el servicio y obtenemos la respuesta.
+            // bool response = data.Execute( <#= cbc.camelSecureEntityName #>Dto<#= (Secured)?", userContextDto":""#>);
+            // Devolvemos la respuesta.
+            // return response;
+
+            // opción 2
+            return this.service.Update(<#= cbc.camelSecureEntityName #>Dto<#= (Secured)?", userContextDto":""#>);
+        } // end Update
+
+        /// <summary>
+        /// Función encargada del borrado de una entidad de tipo <#= cbc.secureEntityName #>.
+        /// </summary>
+        /// <remarks>
+        /// Se trata de un borrado lógico.
+        /// </remarks>
+        /// <param name="<#= cbc.secureEntityName #>Id">
+        /// Parámetro que indica el identificador único de la entidad a borrar.
+        /// </param>
+<#+ if (Secured){#>        /// <param name="userContextDto"> Parámetro de tipo <see cref="UserContextDto"/> que representa el contexto del usuario. </param><#+ }#>
+        /// <returns>
+        /// Devuelve <b>true</b> si la eliminación ha sido correcta y
+        /// <b>false</b> en caso contrario.
+        /// </returns>
+        //public bool Delete( <#= cbc.secureEntityName #>Dto <#= cbc.camelSecureEntityName #>Dto<#= (Secured)?", UserContextDto userContextDto":""#>)
+        public bool Delete(int id<#= (Secured)?", UserContextDto userContextDto":""#>)
+        {
+            // opción 1
+            // Instanciamos el servicio de aplicación de borrado mediante el contenedor de IoC.
+            // var data = ManagerIoC.Container.Resolve<IDelete<#= cbc.secureEntityName #>>();
+            // Ejecutamos el servicio y obtenemos la respuesta.
+            // bool response = data.Execute( <#= cbc.camelSecureEntityName #>Id<#= (Secured)?", userContextDto":""#>);
+            // Devolvemos la respuesta.
+            //return response;
+
+            //opcion 2
+            return this.service.Delete(id<#= (Secured)?", userContextDto":""#>);
+
+        } // Delete
+
+
+        /// <summary>
+        /// Método encargado de obtener todas las entidades <#= cbc.secureEntityName #>.
+        /// </summary>
+        /// <remarks>
+        /// Sin comentarios adicionales.
+        /// </remarks>
+<#+ if (Secured){#>        /// <param name="userContextDto"> Parámetro de tipo <see cref="UserContextDto"/> que representa el contexto del usuario. </param><#+ }#>
+        /// <returns>
+        /// Devuelve listado de Dto´s de la entidad <#= cbc.secureEntityName #>.
+        /// </returns>
+        public IEnumerable<<#= cbc.secureEntityName #>Dto> GetAll( <#= (Secured)?", UserContextDto userContextDto":""#> )
+        {
+            // opcion 1
+            // Instanciamos el servicio de aplicación correspondiente mediante el contenedor de IoC.
+            //var service = ManagerIoC.Container.Resolve<IGetAll<#= cbc.secureEntityName #>>();
+            // Ejecutamos el servicio y obtenemos la respuesta.
+            //IEnumerable<<#= cbc.secureEntityName #>Dto> result = service.Execute(<#= (Secured)?", userContextDto":""#>);
+            // Devolvemos el resultado.
+            //return result;
+            
+            // opcion 2
+            return this.service.GetAll(<#= (Secured)?", userContextDto":""#>);
+        } // GetAll
+
+        /// <summary>
+        /// Método encargado de obtener una entidad <#= I #><#= cbc.secureEntityName #> de acuerdo a
+        /// su identificador.
+        /// </summary>
+        /// <remarks>
+        /// Sin comentarios adicionales.
+        /// </remarks>
+        /// <param name="<#= cbc.camelSecureEntityName #>Id">
+        /// Parámetro que indica el identificador único de la entidad cuya
+        /// información se desea obtener.
+        /// </param>
+<#+ if (Secured){#>        /// <param name="userContextDto"> Parámetro de tipo <see cref="UserContextDto"/> que representa el contexto del usuario. </param><#+ }#>
+        /// <returns>
+        /// Devuelve objeto dto <see cref="<#= cbc.secureEntityName #>Dto"/> con la información
+        /// requerida.
+        /// </returns>
+        public <#= cbc.secureEntityName #>Dto GetById( <#= cbc.idtype #> <#= cbc.camelSecureEntityName #>Id<#= (Secured)?", UserContextDto userContextDto":""#> )
+        {
+            // opcion 1
+            // Instanciamos el servicio de aplicación correspondiente mediante el contenedor de IoC.
+            //var service = ManagerIoC.Container.Resolve<IGetBy<#= cbc.secureEntityName #>Id>();
+            // Ejecutamos el servicio y obtenemos la respuesta.
+            //<#= cbc.secureEntityName #>Dto <#= cbc.camelSecureEntityName #>Dto = service.Execute( <#= cbc.camelSecureEntityName #>Id<#= (Secured)?", userContextDto":""#>);
+            // Devolvemos el resultado.
+            //return <#= cbc.camelSecureEntityName #>Dto;
+
+            // opcion 2
+            return this.service.GetById(<#= cbc.camelSecureEntityName #>Id<#= (Secured)?", userContextDto":""#>);
+        } // GetById
+
+<#+if (cbc.LogicDelete){ #>
+        /// <summary>
+        /// Recupera todas las entidades <#= cbc.pascalSecureEntityName #> activas.
+        /// </summary>
+<#+ if (Secured){#>        /// <param name="userContextDto"> Parámetro de tipo <see cref="UserContextDto"/> que representa el contexto del usuario. </param><#+ }#>
+        /// <returns>
+        /// Todas las entidades <#= cbc.pascalSecureEntityName #> activas.
+        /// </returns>
+        public IEnumerable<<#= cbc.pascalSecureEntityName #>Dto> GetEnabled(<#= (Secured)?", UserContextDto userContextDto":""#>)
+        {
+            return this.service.GetEnabled(<#= (Secured)?", userContextDto":""#>);
+        }
+<#+ }#>
+        /// <summary>
+        /// Recupera una lista paginada de entidades <#= cbc.pascalSecureEntityName #>, según la especificación indicada.
+        /// </summary>
+        /// <param name="specificationDto">
+        /// Especificación que se va a aplicar.
+        /// </param>
+<#+ if (Secured){#>        /// <param name="userContextDto"> Parámetro de tipo <see cref="UserContextDto"/> que representa el contexto del usuario. </param><#+ }#>
+        /// <returns>
+        /// La lista paginada de entidades <#= cbc.pascalSecureEntityName #>, según la especificación indicada.
+        /// </returns>
+        public PagedElements<<#= cbc.pascalSecureEntityName #>Dto> GetPaged(SpecificationDto specificationDto<#= (Secured)?", UserContextDto userContextDto":""#>)
+        {
+            return this.service.GetPaged(specificationDto<#= (Secured)?", userContextDto":""#>);
+        }
+
+
+        #endregion
+
+    } // end public partial interface <#= I #><#= cbc.secureEntityName #>Service
+} // end <#= projectNamespace #>
+
+<#+
+        return this.GenerationEnvironment.ToString();
+    } //end method override TransformText method
+} // end class ApplicationEntityCreateServicesCoreCT
+#>

@@ -1,0 +1,85 @@
+﻿<#+
+public class ServiceActivateEntityPrivate : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public ServiceActivateEntityPrivate(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+        bool Secured = cbc.MainEntityStereotype.Contains("Bussiness"); // si es una entidad de negocio entoces esta securizada es decir necesita identificación y autorización
+        bool Trazable = cbc.MainEntityStereotype.Contains("Bussiness") || cbc.MainEntityStereotype.Contains("Auditable"); // si es una entidad de negocio entoces esta securizada es decir necesita identificación y autorización
+
+        string ResxFileName = prjCon.boundedContextName.Replace(".","")+"Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+        if (cbc.LogicDelete)
+            {  
+#>
+        #region private methods to activate or delete
+        // ServiceActivateEntityPrivateCT.tt
+        /// <summary>
+        /// Elimina o activa una determinada entidad.
+        /// </summary>
+        /// <param name="id">
+        /// Identificador de la entidad que se va a eliminar o activar.
+        /// </param>
+        /// <param name="userContextDto">
+        /// Información de contexto del usuario.
+        /// </param>
+        /// <returns>
+        /// Es <b>true</b> si la eliminación/activación ha sido correcta; en caso contrario <b>false</b>.
+        /// </returns>
+        private bool DeleteActivateWrapper(int id, UserContextDto userContextDto, Action<<#=                I #><#=                cbc.pascalSecureEntityName #>> action)
+        {
+            bool result = false;
+
+            try
+            {
+                // Comprobar contexto de usuario y obtener la conexión por defecto.
+                var serverContext = base.Execute(this.GetFullyQualifiedMethodName(MethodBase.GetCurrentMethod()), userContextDto);
+                using (IAdapter unitOfWork = Manager.DefaultController.CreateTransactional(serverContext.Connection.ProviderName, serverContext.ConnectionString))
+                {
+                    // Obtener y comprobar la entidad.
+                    var entityRepository = this.<#=                cbc.camelSecureEntityName #>RepositoryFactory.Create(unitOfWork);
+                    var entity = entityRepository.GetById(id);
+                    Guard.ArgumentIsNotNull(
+                                            entity,
+                                            string.Format(
+                                                          CoreResources.Neutral.NoHayDatosPorId,
+                                                          <#=                ResxFileName #>.<#=                cbc.pascalSecureEntityName #>Alias));
+
+                    // Desactivar o activar la entidad
+                    action.Invoke(entity);
+
+                    // Persistir los datos y confirmar la transacción.
+                    entityRepository.Modify(entity, userContextDto.UserId.ToString());
+                    unitOfWork.CommitTransaction();
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Escribir en el Log.
+                logger.Error(ex.Message, ex);
+                throw ex;
+            }
+
+            // Devolver resultado.
+            return result;
+        }
+        #endregion
+<#+
+            return this.GenerationEnvironment.ToString();
+        }
+            else
+                return string.Empty;
+    } // end de TransformText
+}// end template
+#>

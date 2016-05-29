@@ -37,6 +37,20 @@ namespace Inflexion2.Application.DataTransfer.Base
             set;
         }
 
+        /// <summary>
+        ///     Transient objects are not associated with an item already in storage.  For instance,
+        ///     a Customer is transient if its Id is 0.  It's virtual to allow NHibernate-backed 
+        ///     objects to be lazily loaded.
+        /// </summary>
+        public virtual bool IsTransient()
+        {
+            if (this.Id == null && default(TIdentifier) == null)
+            {
+                return true;
+            }
+            return this.Id.Equals(default(TIdentifier));
+        }
+
         #endregion Properties
     }
 }

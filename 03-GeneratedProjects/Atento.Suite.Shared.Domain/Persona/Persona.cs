@@ -108,17 +108,17 @@ namespace Atento.Suite.Shared.Domain
 
 
         /// <summary>
-        /// Propiedad pública que permite obtener Juridica.
+        /// Propiedad pública que permite obtener BooleanField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// Valor que es utilizado para establecer y obtener Juridica.
+        /// Valor que es utilizado para establecer y obtener BooleanField.
         /// </value>
         [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
-        public virtual bool Juridica 
+        public virtual bool BooleanField 
             {
                 get;
                 set;
@@ -126,17 +126,17 @@ namespace Atento.Suite.Shared.Domain
 
 
         /// <summary>
-        /// Propiedad pública que permite obtener Direccion.
+        /// Propiedad pública que permite obtener DatetimeField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// Valor que es utilizado para establecer y obtener Direccion.
+        /// Valor que es utilizado para establecer y obtener DatetimeField.
         /// </value>
         [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
-        public virtual string Direccion 
+        public virtual DateTime DatetimeField 
             {
                 get;
                 set;
@@ -144,17 +144,17 @@ namespace Atento.Suite.Shared.Domain
 
 
         /// <summary>
-        /// Propiedad pública que permite obtener Calle.
+        /// Propiedad pública que permite obtener ByteField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// Valor que es utilizado para establecer y obtener Calle.
+        /// Valor que es utilizado para establecer y obtener ByteField.
         /// </value>
         [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
-        public virtual string Calle 
+        public virtual byte ByteField 
             {
                 get;
                 set;
@@ -162,17 +162,17 @@ namespace Atento.Suite.Shared.Domain
 
 
         /// <summary>
-        /// Propiedad pública que permite obtener CP.
+        /// Propiedad pública que permite obtener GuidField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// Valor que es utilizado para establecer y obtener CP.
+        /// Valor que es utilizado para establecer y obtener GuidField.
         /// </value>
         [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
-        public virtual string CP 
+        public virtual Guid GuidField 
             {
                 get;
                 set;
@@ -180,17 +180,17 @@ namespace Atento.Suite.Shared.Domain
 
 
         /// <summary>
-        /// Propiedad pública que permite obtener Provincia.
+        /// Propiedad pública que permite obtener DecimalField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// Valor que es utilizado para establecer y obtener Provincia.
+        /// Valor que es utilizado para establecer y obtener DecimalField.
         /// </value>
         [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
-        public virtual string Provincia 
+        public virtual decimal DecimalField 
             {
                 get;
                 set;
@@ -198,17 +198,17 @@ namespace Atento.Suite.Shared.Domain
 
 
         /// <summary>
-        /// Propiedad pública que permite obtener Comunidad.
+        /// Propiedad pública que permite obtener DobleField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// Valor que es utilizado para establecer y obtener Comunidad.
+        /// Valor que es utilizado para establecer y obtener DobleField.
         /// </value>
         [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
-        public virtual string Comunidad 
+        public virtual double DobleField 
             {
                 get;
                 set;
@@ -216,17 +216,17 @@ namespace Atento.Suite.Shared.Domain
 
 
         /// <summary>
-        /// Propiedad pública que permite obtener Pais.
+        /// Propiedad pública que permite obtener FloatField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// Valor que es utilizado para establecer y obtener Pais.
+        /// Valor que es utilizado para establecer y obtener FloatField.
         /// </value>
         [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
-        public virtual string Pais 
+        public virtual float FloatField 
             {
                 get;
                 set;
@@ -234,17 +234,17 @@ namespace Atento.Suite.Shared.Domain
 
 
         /// <summary>
-        /// Propiedad pública que permite obtener Matricula.
+        /// Propiedad pública que permite obtener IntField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// Valor que es utilizado para establecer y obtener Matricula.
+        /// Valor que es utilizado para establecer y obtener IntField.
         /// </value>
         [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
-        public virtual string Matricula 
+        public virtual int IntField 
             {
                 get;
                 set;
@@ -252,17 +252,17 @@ namespace Atento.Suite.Shared.Domain
 
 
         /// <summary>
-        /// Propiedad pública que permite obtener Codigo.
+        /// Propiedad pública que permite obtener LongField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// Valor que es utilizado para establecer y obtener Codigo.
+        /// Valor que es utilizado para establecer y obtener LongField.
         /// </value>
         [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
-        public virtual string Codigo 
+        public virtual long LongField 
             {
                 get;
                 set;
@@ -270,17 +270,17 @@ namespace Atento.Suite.Shared.Domain
 
 
         /// <summary>
-        /// Propiedad pública que permite obtener Sector.
+        /// Propiedad pública que permite obtener DateTimeOffsetField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// Valor que es utilizado para establecer y obtener Sector.
+        /// Valor que es utilizado para establecer y obtener DateTimeOffsetField.
         /// </value>
         [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
-        public virtual string Sector 
+        public virtual DateTimeOffset DateTimeOffsetField 
             {
                 get;
                 set;
@@ -288,17 +288,17 @@ namespace Atento.Suite.Shared.Domain
 
 
         /// <summary>
-        /// Propiedad pública que permite obtener Site.
+        /// Propiedad pública que permite obtener ShortField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// Valor que es utilizado para establecer y obtener Site.
+        /// Valor que es utilizado para establecer y obtener ShortField.
         /// </value>
         [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
-        public virtual string Site 
+        public virtual short ShortField 
             {
                 get;
                 set;
@@ -306,17 +306,17 @@ namespace Atento.Suite.Shared.Domain
 
 
         /// <summary>
-        /// Propiedad pública que permite obtener LogoImagen.
+        /// Propiedad pública que permite obtener TimeSpanField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// Valor que es utilizado para establecer y obtener LogoImagen.
+        /// Valor que es utilizado para establecer y obtener TimeSpanField.
         /// </value>
         [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
-        public virtual string LogoImagen 
+        public virtual TimeSpan TimeSpanField 
             {
                 get;
                 set;
@@ -324,17 +324,17 @@ namespace Atento.Suite.Shared.Domain
 
 
         /// <summary>
-        /// Propiedad pública que permite obtener Telefono.
+        /// Propiedad pública que permite obtener Int16Field.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// Valor que es utilizado para establecer y obtener Telefono.
+        /// Valor que es utilizado para establecer y obtener Int16Field.
         /// </value>
         [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
-        public virtual string Telefono 
+        public virtual Int16 Int16Field 
             {
                 get;
                 set;
@@ -342,17 +342,17 @@ namespace Atento.Suite.Shared.Domain
 
 
         /// <summary>
-        /// Propiedad pública que permite obtener Fax.
+        /// Propiedad pública que permite obtener Int32Field.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// Valor que es utilizado para establecer y obtener Fax.
+        /// Valor que es utilizado para establecer y obtener Int32Field.
         /// </value>
         [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
-        public virtual string Fax 
+        public virtual Int32 Int32Field 
             {
                 get;
                 set;
@@ -360,89 +360,17 @@ namespace Atento.Suite.Shared.Domain
 
 
         /// <summary>
-        /// Propiedad pública que permite obtener Mobil.
+        /// Propiedad pública que permite obtener Int64Field.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// Valor que es utilizado para establecer y obtener Mobil.
+        /// Valor que es utilizado para establecer y obtener Int64Field.
         /// </value>
         [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
-        public virtual string Mobil 
-            {
-                get;
-                set;
-            }
-
-
-        /// <summary>
-        /// Propiedad pública que permite obtener Atributte1.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <value>
-        /// Valor que es utilizado para establecer y obtener Atributte1.
-        /// </value>
-        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
-                  ErrorMessageResourceName = "FieldIsMandatory" )]
-        public virtual string Atributte1 
-            {
-                get;
-                set;
-            }
-
-
-        /// <summary>
-        /// Propiedad pública que permite obtener FormaJuridica.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <value>
-        /// Valor que es utilizado para establecer y obtener FormaJuridica.
-        /// </value>
-        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
-                  ErrorMessageResourceName = "FieldIsMandatory" )]
-        public virtual string FormaJuridica 
-            {
-                get;
-                set;
-            }
-
-
-        /// <summary>
-        /// Propiedad pública que permite obtener Fisica.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <value>
-        /// Valor que es utilizado para establecer y obtener Fisica.
-        /// </value>
-        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
-                  ErrorMessageResourceName = "FieldIsMandatory" )]
-        public virtual bool Fisica 
-            {
-                get;
-                set;
-            }
-
-
-        /// <summary>
-        /// Propiedad pública que permite obtener Genero.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <value>
-        /// Valor que es utilizado para establecer y obtener Genero.
-        /// </value>
-        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
-                  ErrorMessageResourceName = "FieldIsMandatory" )]
-        public virtual string Genero 
+        public virtual Int64 Int64Field 
             {
                 get;
                 set;

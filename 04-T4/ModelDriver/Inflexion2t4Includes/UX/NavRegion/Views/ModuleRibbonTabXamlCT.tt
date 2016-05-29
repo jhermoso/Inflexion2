@@ -1,0 +1,39 @@
+﻿<#+
+public class ModuleRibbonTabXamlCT : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    public ClassBaseContext cbc; public string projectNamespace; public ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public ModuleRibbonTabXamlCT(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+#>
+<ribbon:RibbonTab x:Class="<#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.FrontEnd.WpfModule.<#= prjCon.boundedContextName #>ModuleRibbonTab"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                  xmlns:ribbon="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary"
+                  mc:Ignorable="d" 
+                 Header="<#= cbc.pascalSecureEntityName #>RibbonTab">
+    <!-- .es Mirar el code-behind para la implementación de la interface IRegionMemberLifetime . 
+    Esta interfacce hace que el RibbonTab se descargue del Ribbon cuando se intercambia la vista. -->
+    
+    <!--.en  Look at code-behind to implement the interface IRegionMemberLifetime . 
+    this interface is in charge that the RibbonTab was been unloaded when the view change. -->
+
+    <ribbon:RibbonGroup Header="Group A1">
+        <ribbon:RibbonButton  Label="Example1" />
+        <ribbon:RibbonButton  Label="Example2" />
+    </ribbon:RibbonGroup>
+
+</ribbon:RibbonTab >
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="799dc920-757f-4447-83fd-9427f4168719" sGDB="Oracle" culture="es" company="RealMadrid" product="Fondos" copyright="Real Madrid" branding="Real Madrid" version="0.1" libraryPath="..\Externos" proyectsPath="..\Projectos" solutionFolderUX="UI" isModule="false" arquitecture="HexaCore" getCodeTree="false" generateCode="Always" xmlns="http://schemas.microsoft.com/dsltools/MoneyGen">
+  <classBases>
+    <applicationHasElements Id="66210132-0f74-42e8-ab03-883d13751375">
+      <entity Id="d9382afb-41a5-49b9-9ba5-757bbd6fb9d4" name="Fondo" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="">
+        <targets>
+          <association Id="71884ae2-ef5e-4eb3-adde-0d8f238446ab" sourceMultiplicity="CeroMany" sourceRolName="Inscripcions" targetRolName="Fondo">
+            <entityMoniker name="/799dc920-757f-4447-83fd-9427f4168719/Inscripcion" />
+          </association>
+          <composition Id="6d0b035b-fa81-4b8b-a02a-0e94cea5c5a3" sourceMultiplicity="OneOne" sourceRolName="ValorDeportivo" targetRolName="Fondo" targetICollection="System.Collections.Generic.List" targetCollection="System.Collections.Generic.IList">
+            <entityMoniker name="/799dc920-757f-4447-83fd-9427f4168719/FondoSignatura" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="bddc3bd7-28df-426c-baf9-2b661e63de1b">
+            <atributte Id="6a5dca85-3a58-429c-a85b-514ae19d7836" atributteName="NumeroFondo" atributteAlias="NumeroFondo" atributteType="string" isID="false" isIdentification="false" position="0" allowRepeatedValues="true" requestUponCreation="yes" nameAndType="string NumeroFondo" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="47f312fa-92f9-4aeb-a101-fe89e6982a4e">
+            <atributte Id="c661eaa1-b9e0-4291-8d30-837491ddbb2f" atributteName="OtraNumeracion" atributteAlias="Otra Numeración" atributteType="string" isID="false" isIdentification="false" position="0" allowRepeatedValues="true" nameAndType="string OtraNumeracion" autoProperty="false" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="4d0783cb-4982-42c9-b139-b816ccb0e246">
+      <entity Id="440807b0-9d6a-44ae-b38b-d7e1cb2aad65" name="TipoDeporte" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="">
+        <targets>
+          <composition Id="120da458-76ba-4560-8f9d-97e37ae223a3" sourceMultiplicity="OneOne" sourceRolName="Fondos4" targetRolName="TipoDeporte" targetICollection="System.Collections.Generic.List" targetCollection="System.Collections.Generic.IList">
+            <entityMoniker name="/799dc920-757f-4447-83fd-9427f4168719/Fondo" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="1c26156a-397a-4093-920f-f5fca7cbf0b9">
+            <atributte Id="995bfd14-f5de-45ff-9aee-4fb1b9b99656" atributteName="Descripcion" atributteType="string" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" requestUponCreation="yes" nameAndType="string Descripcion" autoProperty="false" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="049acb02-7120-480b-8fea-6c18db593963">
+      <entity Id="366be687-5bed-489d-9470-3f312b191b06" name="ClasificacionGenerica" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="">
+        <targets>
+          <composition Id="1e8062a5-1218-4c8c-a1f3-931432c72f72" sourceMultiplicity="OneOne" sourceRolName="Fondos" targetRolName="ClasificacionGenerica" targetICollection="System.Collections.Generic.List" targetCollection="System.Collections.Generic.IList">
+            <entityMoniker name="/799dc920-757f-4447-83fd-9427f4168719/Fondo" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="200d0312-5a0b-4db1-a8ee-ce5fa7966a75">
+            <atributte Id="d47b1ed7-984e-4129-b2c8-e062cb5b1125" atributteName="Descripcion" atributteType="string" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" requestUponCreation="yes" nameAndType="string Descripcion" autoProperty="false" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="da1b2d6c-45d4-4ca6-bdde-3c78285e9122">
+      <entity Id="4ee8fcc1-6848-4b40-804d-e26668ab774d" name="Campeonato" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="">
+        <targets>
+          <composition Id="70d5a48c-44a2-41d5-8e76-cb8ac975820b" sourceMultiplicity="OneOne" sourceRolName="Fondos" targetRolName="Campeonato" targetICollection="System.Collections.Generic.List" targetCollection="System.Collections.Generic.IList">
+            <entityMoniker name="/799dc920-757f-4447-83fd-9427f4168719/Fondo" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="f1b896ce-4ec3-4750-9848-0089b678f1f2">
+            <atributte Id="d6715ab1-2c9b-4146-b7f8-f60be17bdbff" atributteName="Descripcion" atributteType="string" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" requestUponCreation="yes" nameAndType="string Descripcion" autoProperty="false" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="dcbd3533-2ae7-4ded-b6ae-caee420f2113">
+      <entity Id="60548411-3d65-4210-8561-a5bdc569c9a3" name="FondoCategoria" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="">
+        <targets>
+          <composition Id="f3f92df6-7cbf-4404-b708-30d3d80586c9" sourceMultiplicity="OneOne" sourceRolName="Fondos4" targetRolName="FondoCategoria" targetICollection="System.Collections.Generic.List" targetCollection="System.Collections.Generic.IList">
+            <entityMoniker name="/799dc920-757f-4447-83fd-9427f4168719/Fondo" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="cf5da5d0-9b2b-417d-8b51-f95fd71323df">
+            <atributte Id="f6d400dc-a1ef-4091-9921-43b31262e16f" atributteName="Descripcion" atributteType="string" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" requestUponCreation="yes" nameAndType="string Descripcion" autoProperty="false" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="0aeb474d-2dd9-47c4-b429-4a93ed684722">
+      <entity Id="012a52a9-ac80-4a22-aee0-3e6a171bb681" name="Inscripcion" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="fd2e6f8c-9dd5-406b-a8ae-a4883792a36b">
+            <atributte Id="7e58b35c-f9f6-4c08-8653-53a4b6cd7259" atributteName="Localizacion" atributteType="string" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" requestUponCreation="yes" nameAndType="string Localizacion" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="1928a521-9044-48d7-938e-07aff8c5f607">
+            <atributte Id="7814db9a-d91d-41e1-b661-4f37f4f34cd8" atributteName="Notas" atributteType="string" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="string Notas" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="c07feb31-c06d-4e4b-bf52-606fb5fa0311">
+            <atributte Id="250d54a2-0393-4c13-8cca-b375a31d0fcc" atributteName="Tipo" atributteType="bool" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="bool Tipo" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="4dbaa755-c773-43ef-bd38-13aeeb0d6342">
+            <atributte Id="d3daa83a-0b17-4d2a-b88a-e660ab59d2f3" atributteName="Traduccion" atributteType="string" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="string Traduccion" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="4405a5c3-63eb-4fc0-9e86-91fb7451508c">
+            <atributte Id="bab741c1-6d0f-42d4-a2cb-d2b3d08366db" atributteName="Transcripcion" atributteType="string" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="string Transcripcion" autoProperty="false" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="7d089aaa-957c-4a7e-beac-0d10d5369039">
+      <entity Id="b223d6e2-486d-4b99-8fdf-2ec5e6de5cd1" name="Idioma" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="">
+        <targets>
+          <composition Id="12cdcd47-a752-4b8c-afdf-7fba8f214a40" sourceMultiplicity="OneOne" targetRolName="Idioma" targetICollection="System.Collections.Generic.List" targetCollection="System.Collections.Generic.IList">
+            <entityMoniker name="/799dc920-757f-4447-83fd-9427f4168719/Inscripcion" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="99491ccb-701f-4dee-bd42-c44ebe4ac94e">
+            <atributte Id="45482fef-326d-4d44-9d98-733a1c7c4c45" atributteName="Descripcion" atributteType="string" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="string Descripcion" autoProperty="false" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="3412a225-43eb-40af-a5b7-573e125edaf3">
+      <entity Id="1212b546-7e34-42ab-84dd-33ade78054ec" name="Tecnica" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="">
+        <targets>
+          <composition Id="ca13be0c-6b29-44d7-979d-085b75bd7a7c" sourceMultiplicity="OneOne" targetRolName="Tecnica" targetICollection="System.Collections.Generic.List" targetCollection="System.Collections.Generic.IList">
+            <entityMoniker name="/799dc920-757f-4447-83fd-9427f4168719/Inscripcion" />
+          </composition>
+          <composition Id="2ff1f7f8-6601-411e-b5c4-ce209f7fcff6" sourceMultiplicity="OneOne" targetRolName="Tecnica1" targetICollection="System.Collections.Generic.List" targetCollection="System.Collections.Generic.IList">
+            <entityMoniker name="/799dc920-757f-4447-83fd-9427f4168719/TecnicaTH" />
+          </composition>
+          <composition Id="b0488e9f-0bae-4493-9e42-6a46f7e8f36b" sourceMultiplicity="OneOne" targetRolName="Tecnica2" targetICollection="System.Collections.Generic.List" targetCollection="System.Collections.Generic.IList">
+            <entityMoniker name="/799dc920-757f-4447-83fd-9427f4168719/TecnicaTH" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="8b95e957-0a42-4b1b-a956-a7ef40502daa">
+            <atributte Id="1b9397ee-80ba-4099-b766-2a68654370e4" atributteName="Descripcion" atributteType="string" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="string Descripcion" autoProperty="false" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="25e71c88-5ae7-4ed2-8493-6beae383cdeb">
+      <entity Id="e42a8b69-cc67-4890-be24-c2c12cdad0b3" name="TecnicaTH" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="7e530dfa-8dc8-450e-9c9a-5a413af5eb6d">
+            <atributte Id="8afda8d0-a2f2-4aba-ba95-70295d5f131e" atributteName="Relacion" atributteType="string" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="string Relacion" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="c98b336b-e909-4ac7-a3a6-5cdf2201c531">
+            <atributte Id="27cd57b5-dec8-4566-8b74-a30ca0b47382" atributteName="Orden" atributteType="int" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="int Orden" autoProperty="false" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="24cf9e82-e456-4154-bd95-b8b3446a0ea3">
+      <entity Id="dde2db5b-6491-4207-b1c8-5fc7815ad450" name="FondoSignatura" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="3c037fbe-f92c-4033-a550-71d579d17fb5">
+            <atributte Id="584da54b-4889-4ea7-a99d-d3d0ab186e1e" atributteName="Fecha" atributteType="DateTime" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="DateTime Fecha" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="6f34a386-b141-4098-9b79-ed59dbbcee89">
+            <atributte Id="2aea2b10-34b7-4448-923d-4bb00f9b66ff" atributteName="DescripcionHistorico" atributteType="string" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="string DescripcionHistorico" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="19a5625e-e9de-4a56-897b-7dc345404ce8">
+            <atributte Id="3688556f-69b6-4e79-b5ae-5b12e2c62018" atributteName="NotasHistorico" atributteType="string" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="string NotasHistorico" autoProperty="false" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="9e59cef0-14b2-4fcf-9e15-1c4915aec7e1">
+      <entity Id="40af55b8-aeec-48f9-bb59-7a0a0fc396a6" name="Signatura" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="">
+        <targets>
+          <composition Id="66bea7cd-0f01-4280-a80e-a111b286d3ad" sourceMultiplicity="OneOne" sourceRolName="Contenedores" targetRolName="Signatura" targetICollection="System.Collections.Generic.List" targetCollection="System.Collections.Generic.IList">
+            <entityMoniker name="/799dc920-757f-4447-83fd-9427f4168719/SignaturaContenedor" />
+          </composition>
+          <composition Id="29ede216-d9bb-4668-8b0d-a5d1ba7586dc" sourceMultiplicity="OneOne" targetMultiplicity="CeroOne" targetRolName="SignaturaPadre" targetICollection="System.Collections.Generic.List" targetCollection="System.Collections.Generic.IList">
+            <entityMoniker name="/799dc920-757f-4447-83fd-9427f4168719/SignaturaRelacion" />
+          </composition>
+          <composition Id="7cbbdc93-32fa-4d90-90fc-f55e0451a932" sourceMultiplicity="OneOne" targetRolName="Signaturahijos" targetICollection="System.Collections.Generic.List" targetCollection="System.Collections.Generic.IList">
+            <entityMoniker name="/799dc920-757f-4447-83fd-9427f4168719/SignaturaRelacion" />
+          </composition>
+          <composition Id="3af8de0a-f8a4-48d9-8519-571d1aabe63e" sourceMultiplicity="OneOne" sourceRolName="FondoSignaturas" targetRolName="Signatura" targetICollection="System.Collections.Generic.List" targetCollection="System.Collections.Generic.IList">
+            <entityMoniker name="/799dc920-757f-4447-83fd-9427f4168719/FondoSignatura" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="8fac8a27-a757-476d-a182-17751600487c">
+            <atributte Id="0c2f72b2-a965-4b44-b4b6-5fba51d04dac" atributteName="Nombre" atributteType="string" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="string Nombre" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="5235ddad-30fc-47f0-a9f1-d8eff8dd323d">
+            <atributte Id="67f7bb71-9d87-421d-a4d2-4f57b2dad92c" atributteName="Orden" atributteType="int" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="int Orden" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="09347c67-7c07-4e97-a4cb-a6d0a1e96e58">
+            <atributte Id="4b5c764c-0b7d-42f4-9c58-1a97b90a7257" atributteName="Estado" atributteType="bool" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="bool Estado" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="4df15a87-bb69-4acf-ae0f-d76dcd97e43d">
+            <atributte Id="38812af4-ec59-4d04-a6f5-6aa4ff5c4c77" atributteName="FechaEstado" atributteType="DateTime" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="DateTime FechaEstado" autoProperty="false" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="a3a4f1fe-6adf-43e6-81b1-e1477b1ef32a">
+      <entity Id="24d23d3e-affb-4b2a-8ed5-330cc8b00741" name="SignaturaContenedor" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="620b9d5a-9e89-4439-a7fc-6701edfda80f">
+            <atributte Id="a4a7ec56-94ca-4e4f-bbe7-4709acb4a348" atributteName="NumeroIdentificacion" atributteType="string" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="string NumeroIdentificacion" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="544fe9d7-64fa-477f-be8b-56c948a07912">
+            <atributte Id="a68c4c23-0098-4758-b214-3be9651008c8" atributteName="Descripcion" atributteType="string" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="string Descripcion" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="a9f975ae-784a-4a79-ad88-0462356d5bec">
+            <atributte Id="a875c554-545b-47d5-becf-5cc76bfc276b" atributteName="Orden" atributteType="int" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="int Orden" autoProperty="false" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="2ae956e4-4584-4e97-b0c2-7a3d276bf1dd">
+      <entity Id="5a74811c-ba51-47ca-82bb-f3c290375b32" name="SignaturaRelacion" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="3349c0e9-94bf-4dc4-b6ef-c3c640d27d65">
+            <atributte Id="4a7128ae-2bb4-4bb5-9f5d-35cc33048a3e" atributteName="Orden" atributteType="int" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="int Orden" autoProperty="false" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="0bf9043b-6b8b-4c85-b7d5-2a3ca1efc89d">
+      <entity Id="5c494937-0edd-4914-a6d0-8c4b69b25e09" name="TipoIdentificacion" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="">
+        <targets>
+          <composition Id="2fc26b15-0b6f-41d6-a3a3-c2ee049fce59" sourceMultiplicity="OneOne" sourceRolName="SignaturaContenedores" targetRolName="TipoIdentificacion" targetICollection="System.Collections.Generic.List" targetCollection="System.Collections.Generic.IList">
+            <entityMoniker name="/799dc920-757f-4447-83fd-9427f4168719/SignaturaContenedor" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="1c549e42-8fb0-4a9c-a840-d9528ca88aea">
+            <atributte Id="d03e2401-588e-4a10-853b-cae9fd226b4e" atributteName="Descripcion" atributteType="string" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="string Descripcion" autoProperty="false" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="069110b6-4691-4fe9-8fa5-970a943a3da4">
+      <entity Id="0dd4310b-c89c-4052-b470-acc57405b975" name="TipoContenedor" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="">
+        <targets>
+          <composition Id="8d9cf0d5-a339-460c-a5d5-2ece30262771" sourceMultiplicity="OneOne" sourceRolName="SignaturaContenedores" targetRolName="TipoContenedor" targetICollection="System.Collections.Generic.List" targetCollection="System.Collections.Generic.IList">
+            <entityMoniker name="/799dc920-757f-4447-83fd-9427f4168719/SignaturaContenedor" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="af700b43-f828-4c64-a895-daa648c2c437">
+            <atributte Id="de8c5e65-a530-4172-b29e-91f2abe01fca" atributteName="Descripcion" atributteType="string" isID="false" isIdentification="false" position="0" allowRepeatedValues="false" nameAndType="string Descripcion" autoProperty="false" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+  </classBases>
+</application>

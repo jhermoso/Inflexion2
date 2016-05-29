@@ -23,7 +23,6 @@ namespace Inflexion2.Domain
     /// Representación del tipo del identificador de la entidad.
     /// Representation of Entity's type.
     /// </typeparam>
-
     public interface IEntity<TIdentifier> : System.IComparable,
                                             System.IEquatable<IEntity<TIdentifier>>, 
                                             System.IComparable<IEntity<TIdentifier>>

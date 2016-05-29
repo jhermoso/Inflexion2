@@ -147,7 +147,7 @@ namespace Inflexion2.UX.WPF.MVVM.Commands
             // Obtener el gestor de regiones Prism del contenedor actual.
             var regionManager = ServiceLocator.Current.GetInstance<IRegionManager>();
 
-            // Mostramos la vista.
+            // Al ejecutar el commando de viauliar una entidad en el menu vertical Mostramos la vista correspondiente a dicha entidad.
             var moduleNavigator = new Uri(this.viewName, UriKind.Relative);
             regionManager.RequestNavigate(this.regionName, moduleNavigator, this.navigationCallback);
         }

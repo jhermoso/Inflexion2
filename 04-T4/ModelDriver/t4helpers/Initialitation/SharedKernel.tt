@@ -1,0 +1,575 @@
+﻿<#+
+
+///<sumary>
+/// Esta clase alberga las estrucuturas de datos y los métodos necesarios para
+/// recopilar y establecer las referencias entre los proyectos
+///</sumary>
+
+public class BoundedContextMetadata
+{
+    public kayak.MoneyGen.Application BC{get;set;}
+    public bool IsSharedKernel {get;set;}
+    public string sharedNameContext;
+    public string Name{get;set;}
+    public IList<Layer> LayerList{get;set;}
+    public class Layer
+    {
+        public string Name{get; set;}
+        public IList<ProjectNameAndProject> BCSharedProjects{get; set;} // Lista de projectos compartidos.
+        public class ProjectNameAndProject
+        {
+            public string Name{get; set;}
+            public Project ProjectReference{get; set;}
+        }
+    }
+
+    /*#region constructores*/
+    public BoundedContextMetadata(kayak.MoneyGen.Application bc, string name, DslContextDefinitionDiagram mainDiagram, ActiveSolution solutionInfo)
+    {
+        this.BC = bc;
+        this.IsSharedKernel = false;
+        this.Name = name; // este tiene que coincidir con el valor en mainDiagram.SolutionFolderCommon
+        this.LayerList = null;
+            //if (okDebug) Debug.Write("Vamos a añadir el contexto Raiz de nombre :'"); Debug.Write( mainDiagram.SolutionFolderCommon);Debug.WriteLine("'");
+            if ((bc.Elements.Count() > 0) & bc.BoundedContexts.Where(p => !p.Name.StartsWith("From") ).Count()>0)
+                {
+                    this.IsSharedKernel = true;
+                    this.sharedNameContext = this.Name +System.IO.Path.DirectorySeparatorChar+mainDiagram.SolutionFolderCommon;
+                    this.LayerList = GetSharedKernelList(this.sharedNameContext, mainDiagram, solutionInfo);
+                }
+    }// end constructor vacio
+
+    public BoundedContextMetadata()
+    {}//end costructor parametrizado
+    /*#endregion constructores*/
+}
+
+#>
+<#+
+
+public static ITree<BoundedContextMetadata> GetSharedKernelProjects(DslContextDefinitionDiagram mainDiagram, ActiveSolution solutionInfo,  ITree<LocalizedBounded> treeApp)
+{
+#if DEBUG
+bool okDebug = false;
+bool okDebug2 = false;
+if (okDebug)    {        Debug.WriteLine("Entramos en GetSharedKernelProjects");    }
+#endif
+    ITree<BoundedContextMetadata> SharedKernelsTree  = NodeTree<BoundedContextMetadata>.NewTree();  //Creamos el árbol
+    BoundedContextMetadata SharedKernel;
+    INode<BoundedContextMetadata> workingNode = (INode<BoundedContextMetadata>) SharedKernelsTree;  // creamos el nodo de trabajo que utilizaremos para añadir nuevos nodos y ahora el nodo raiz.
+    INode<BoundedContextMetadata> lastWorkingNode = null;
+    Stack<INode<BoundedContextMetadata>> stackWorkingNode = new Stack<INode<BoundedContextMetadata>>();
+    int depReached = 0; //profundidad del árbol alcanzada al ser recorrido para poder obtener el padre
+
+    foreach( INode<LocalizedBounded> context in treeApp.All.Nodes )// vamos a recorrer el árbol de contextos limitados.
+    {
+        SharedKernel = new BoundedContextMetadata(
+                                                    context.Data.Context.Value, 
+                                                    context.Data.Context.Key,
+                                                    mainDiagram, 
+                                                    solutionInfo
+                                                 );                         // Creamos la data correspondiente al nodo. y por ultimo añadiremos el workin nodo al árbol
+
+       // if (okDebug)    {        Debug.WriteLine(string.Format("{0}{4}(key) es '{1}' Con {2} hijos directos. Y tiene '{3}' elementos", T4Help.Indent(context.Depth*4),context.Data.Context.Key,context.DirectChildCount, context.Data.Context.Value.Elements.Count(), context.Depth ));    }
+
+        if (context.Depth == 0) // si nos encontramos en la raiz Creamos el primer nodo, creamos el stack y guardamos en el stack este primer nodo.
+        {
+          //  if (okDebug2) Debug.WriteLine(string.Format("Estamos en el nodo raiz añadimos '{0}'", context.Data.Context.Key));
+            workingNode = workingNode.AddChild(SharedKernel);
+            stackWorkingNode.Push( workingNode);
+        }
+        else if (context.Depth > depReached)                    // si la profundidad se incrementa,
+        {                                                       //
+          //  if (okDebug2) Debug.WriteLine(string.Format("hemos incrementado la profundidad añadimos '{0}'", context.Data.Context.Key));
+            lastWorkingNode = workingNode;
+            workingNode = workingNode.AddChild(SharedKernel);   // añadimos al workingnode un nuevo nodo y el nuevo working node pasa a ser recien creado,
+            stackWorkingNode.Push( workingNode);                // lo copiamos en el stack
+            depReached = context.Depth;                         // y guardamos el valor de la profundidad alcanzada
+        }
+        else if(context.Depth == depReached)                    // si la profundidad se mantiene,
+        {
+           // if (okDebug2) Debug.WriteLine(string.Format(" la profundidad se mantiene añadimos '{0}'", context.Data.Context.Key));
+            lastWorkingNode.AddChild(SharedKernel);                 // seguimos añadiendo al mismo nodo
+        }
+        else if(context.Depth < depReached)                     // si la profundidad se decrementa,
+        {
+          //  if (okDebug2) Debug.WriteLine(string.Format(" la profundidad se decrementa añadimos '{0}'", context.Data.Context.Key));
+            int salto  = depReached -context.Depth ;            // saltamos en el stack tanto como se haya decrementado la profundidad
+          //  if (okDebug2) Debug.WriteLine(string.Format(" ,context.Depth es '{0}'- depReached es {1} = la amplitud del salto es '{2}'",  context.Depth,depReached,salto));
+            for (int i=0; i<= salto; i++)                       
+            {
+                workingNode = stackWorkingNode.Pop();
+                depReached--;
+            }
+          //  if (okDebug2) Debug.WriteLine(string.Format(" depReached es {0} ",  depReached));
+
+            lastWorkingNode = stackWorkingNode.Peek();
+            lastWorkingNode.AddChild(SharedKernel);                 // entonces añadimos a dicho nodo el nuevo nodo.
+        }
+
+    }
+    return SharedKernelsTree;
+}
+
+#>
+
+<#+
+// rutina para sacar por la consola el arbol de shared kernels
+public static void TestDebugConsoleSK(ITree<BoundedContextMetadata> SharedKernelTree)
+{
+// Debug.WriteLine(String.Format( "el numero de nodos del arbol es {0}",SharedKernelTree.Count));
+    string mensajeDepuracion =null;
+    foreach( INode<BoundedContextMetadata> sharedContext in SharedKernelTree.All.Nodes )
+    {
+        if (sharedContext.Data != null)
+            mensajeDepuracion = sharedContext.Data.BC.Elements.Count().ToString();
+        else
+            mensajeDepuracion = null;
+
+      //  Debug.WriteLine(String.Format( "{0} el contexto '{1}' Con {2} hijos directos. Y tiene '{3}' elementos", T4Help.Indent(sharedContext.Depth*4),sharedContext.Data.Name,sharedContext.DirectChildCount, mensajeDepuracion, sharedContext.Depth ));
+
+
+        if (sharedContext.Data.IsSharedKernel)
+        {
+            foreach(var layer in sharedContext.Data.LayerList)
+            {
+             //   Debug.WriteLine(String.Format( "{0}   La capa {1} es shared kernel y tiene los projectos", T4Help.Indent(sharedContext.Depth*4),layer.Name ));
+                foreach(var prj in layer.BCSharedProjects)
+                {
+               //      Debug.WriteLine(String.Format( "{0}            el projecto {1}, '{2}' tiene referencia. ", T4Help.Indent(sharedContext.Depth*4),prj.Name, (prj.ProjectReference!= null)?"SI":"NO" ));
+                }
+            }
+        }
+    }
+}
+
+#>
+
+<#+
+
+public static IList<BoundedContextMetadata.Layer> GetSharedKernelList(string bdName, DslContextDefinitionDiagram diagram, ActiveSolution SolutionInfo)
+{
+    if(bdName       == null)    {        throw new ArgumentNullException("EL NOMBRE DEL CONTEXTO NO PUEDE SER NULO");                     }
+    if(diagram      ==null )    {        throw new ArgumentNullException("EL PARAMETRO DIAGRAMA NO PUEDE SER NULO");                      }
+    if(SolutionInfo == null)    {        throw new ArgumentNullException("EL PARAMETRO 'SOLUTIONINFO' DEL CONTEXTO NO PUEDE SER NULO");   }
+    bool okDebug = false;
+    //if (okDebug)    {        
+    //    Debug.WriteLine("");
+    //    Debug.WriteLine(string.Format("entramos en GetSharedKernelList con bdname ='{0}'",bdName));}
+
+     if (bdName.Equals(diagram.Product)) return null;
+
+    List<BoundedContextMetadata.Layer> ProjectsListByLayer  = new List<BoundedContextMetadata.Layer>(); // creamos la lista
+
+    string nombreprojecto = null; 
+    BoundedContextMetadata.Layer l;
+    BoundedContextMetadata.Layer.ProjectNameAndProject pyp;
+    foreach (Architecture.ArqLayer layer in Architecture.ArqLayers) // recorremos cada una de las capas del projecto
+    {
+        l = new BoundedContextMetadata.Layer();// cada vez que encontramos un layer en la arquitectura añadimos un layer nuesTra metadata
+        l.BCSharedProjects = new List<BoundedContextMetadata.Layer.ProjectNameAndProject>();
+        string FolderLayerName = GetFolderLayerName(diagram, layer.LayerType);
+   //    switch (layer.LayerType)
+   //    {
+   //        case LayerKind.UX:
+   //            FolderLayerName= diagram.SolutionFolderUX;
+   //            break;
+   //        case LayerKind.UxWpf:
+   //            FolderLayerName= diagram.SolutionFolderUX;
+   //            break;
+   //        case LayerKind.UxSilverlight:
+   //            FolderLayerName= diagram.SolutionFolderUX;
+   //            break;
+   //        case LayerKind.UxHtml5:
+   //            FolderLayerName= diagram.SolutionFolderUX;
+   //            break;
+   //        case LayerKind.Application:
+   //            FolderLayerName = diagram.SolutionFolderApplication;
+   //            break;
+   //        case LayerKind.DistributedServices:
+   //            FolderLayerName= "WebSvc";
+   //            break;
+   //        case LayerKind.Domain:
+   //            FolderLayerName = diagram.SolutionFolderDomain;
+   //            break;
+   //        case LayerKind.Infrastructure:     
+   //            FolderLayerName = diagram.SolutionFolderInfraestructure;
+   //            break;
+   //        default:
+   //            FolderLayerName =null;
+   //            throw new ArgumentNullException("EL TIPO DE LAYER NO ESTA CONTEMPLADO");
+   //            
+   //    }
+        if (FolderLayerName!=null)
+        {
+          //   if (okDebug)    {        Debug.WriteLine(string.Format("buscamos los proyectos para la capa ='{0}'",FolderLayerName));}
+            l.Name = FolderLayerName;
+            //string contextPath = GetBoundedContextLayerPath(diagram.SolutionFolderBoundedContext, bdName, FolderLayerName);
+            if (bdName.StartsWith(diagram.Product)) bdName = bdName.Substring(diagram.Product.Length+1); // si el nombre del proyecto coincide con el del producto es que se trata de sharedkernel de toda la aplicación.
+
+            string secureBdName= bdName.Replace(System.IO.Path.DirectorySeparatorChar,'.');
+            if (layer.LayerProyects != null) //  si nuestra arquitectura ha previsto una serie de proyectos para este layer los recorremos. 
+                foreach (Architecture.ArqLayer.ArqProject project in layer.LayerProyects)
+                {
+                    switch (layer.LayerType)
+                    {
+                        case LayerKind.Domain:
+                            nombreprojecto = diagram.RootNameSpace+"." + secureBdName +"."+diagram.SolutionFolderDomain + "."+project.Name;
+                            break;
+                        case LayerKind.Infrastructure:
+                            nombreprojecto = diagram.RootNameSpace+"." + secureBdName +"."+diagram.SolutionFolderInfraestructure + "."+project.Name;
+                            break;
+                        case LayerKind.Application:
+                            nombreprojecto = diagram.RootNameSpace+"." + secureBdName +"."+diagram.SolutionFolderApplication + "."+project.Name;
+                            break;
+                        case LayerKind.UxWpf:
+                            nombreprojecto = diagram.RootNameSpace+"." + secureBdName  + "."+project.Name;//+" prism.unity"
+                            break;
+                        case LayerKind.Testing:
+                                nombreprojecto = diagram.RootNameSpace+"." + secureBdName  + "."+project.Name;
+                                break;
+
+                        default:
+                                    nombreprojecto = null;
+                        break;
+
+                    }
+
+                //    if (false)    {        Debug.WriteLine(string.Format("encontramos el proyecto'{0}' y lo buscamos",nombreprojecto));}
+                    // cada projecto que encontramos lo añadimos a nuestra lista l
+                    pyp = new BoundedContextMetadata.Layer.ProjectNameAndProject();
+                    pyp.Name = nombreprojecto;
+                    // buscamos el projecto por el nombre
+                //    if (false)    {        Debug.WriteLine(string.Format("el numero de projectos con este nombre es {0}",SolutionInfo.ProjectsList.Cast<Project>().Where(p=> p.CodeModel!=null && p.Name.Equals(nombreprojecto) ).Count()));}
+                    //if (!nombreprojecto.Equals())
+                    foreach(Project prj in SolutionInfo.ProjectsList.Cast<Project>().Where(p=> p.CodeModel!=null && p.Name.Equals(nombreprojecto) ))
+                    {
+                        pyp.ProjectReference = prj;
+                    }
+                 //   if (okDebug &  pyp.ProjectReference != null)    {        Debug.WriteLine(string.Format("añadimos a la lista el proyecto'{0}' ",nombreprojecto));}
+
+                     l.BCSharedProjects.Add(pyp);
+                    
+                } //
+
+
+        }// end if (FolderLayerName!=null)
+        else
+        {         throw new ArgumentNullException("El nombre de la capa no puede ser nulo");        }
+
+        ProjectsListByLayer.Add(l); // añadimos el layer con sus proyectos a la lista de layers
+
+    }// end foreach (Architecture.ArqLayer layer in Architecture.ArqLayers)
+
+    return ProjectsListByLayer;
+}
+
+#>
+<#+
+
+public static IList<string> GetSharedKernelReferencesByProject(string prjName, ITree<BoundedContextMetadata> Skt, DslContextDefinitionDiagram mainDiagram) /*nombre del proyecto y el sharede kernel tree*/
+{
+//bool okDebug = true;
+
+//if (okDebug) Debug.WriteLine(String.Format(" ENTRAMOS EN GetSharedKernelReferencesByProject"));
+
+//if (prjName.EndsWith("Resources")| prjName.StartsWith(mainDiagram.Company+"."+mainDiagram.Product+"."+mainDiagram.SolutionFolderCommon))
+if (prjName.EndsWith("Resources"))
+    return null;
+   IList<string> listaPrj = new List<string>();
+
+//if (okDebug) Debug.WriteLine(String.Format(" Nos preguntan los proyectos de /{0}/",prjName));
+
+    IList<string> NameSpaceSection = SplitNamesProjects(prjName, mainDiagram);
+    string company              = NameSpaceSection[0];
+    string product              = NameSpaceSection[1];
+    string boundedContextName   = NameSpaceSection[2];
+    string projectLayer         = NameSpaceSection[3];
+    string ProjectName          = NameSpaceSection[4];
+
+//if (okDebug)
+//{
+    Debug.WriteLine(String.Format("company            '{0}'",company));
+    Debug.WriteLine(String.Format("product            '{0}'",product));
+    Debug.WriteLine(String.Format("boundedContextName '{0}'",boundedContextName));
+    Debug.WriteLine(String.Format("projectLayer       '{0}'",projectLayer));
+    Debug.WriteLine(String.Format("ProjectName        '{0}'",ProjectName));
+    Debug.WriteLine(String.Format(""));
+    Debug.WriteLine(String.Format("el arbol de sk es :"));
+//}
+
+// 1º determinamos en que parte del árbol del SharedKernel nos encontramos para luego poder recorrerlo hacia atras.
+    INode<BoundedContextMetadata> StartingNode = null; // si quisieramos recorrer los nodos hacia atras este seria el punto de comienzo, en vez de eso hemos optado por hacer un stack.
+    foreach (var Context in Skt.All.Nodes)
+    {
+      //  if (okDebug) Debug.WriteLine(String.Format("{0}{1} que corresponde a '{2}'", T4Help.Indent(Context.Depth*4), Context.Data.Name,GetBoundedContextNameFromContext( mainDiagram, Context)));
+        
+        if ( boundedContextName.Equals(GetBoundedContextNameFromContext( mainDiagram, Context).Replace('\\','.')) )
+        {
+         //   if (okDebug) Debug.WriteLine(String.Format("Rompemos"));
+            StartingNode = Context; // no guardamos en el stack el nodo del bc al que pertenece por que no es necesario incluir sus referencias
+            break; // una vez que encontramos el contexto al que pertenecemos no es necesario continuar buscando y rompemos el foreach
+        }
+    }// end  foreach (var sharedContext in Skt.All.Nodes)
+
+
+  //  if (okDebug) Debug.WriteLine(String.Format("Vamos a intentar recorrer el stack desde el nodo final"));
+    INode<BoundedContextMetadata> sharedContext = StartingNode;
+    INode<BoundedContextMetadata> anteriorSharedContext = StartingNode;
+    if (sharedContext != null )
+    while (sharedContext.Data != null )
+    {
+        bool TieneEntidades = sharedContext.Data.BC.Elements.Where(e => e is ClassBase).Count() > 0 ;  // si no tiene entidades y solo tiene objetos valor entonces no es ncesario añadir algunos de los proyectos.
+     //  if (okDebug)
+     //  {
+     //      Debug.WriteLine(String.Format("sharedContext.Data.Name    = '{0}'", sharedContext.Data.Name));
+     //      Debug.WriteLine(String.Format("BoundedContextName from sc = '{0}'", GetBoundedContextNameFromContext( mainDiagram, sharedContext).Replace('\\','.')));
+     //      Debug.WriteLine(String.Format("boundedContextName         = '{0}'", sharedContext.Data.Name));
+     //      Debug.WriteLine(String.Format("este BC Tiene Entidades    = '{0}'", TieneEntidades.ToString()));
+     //  }
+        if ( !(boundedContextName.Equals(sharedContext.Data.Name)) ) // si el 
+        if (sharedContext.Data.IsSharedKernel)
+        {
+                    // introducimos los projectos equivalentes por capas
+     //       if (okDebug)Debug.WriteLine(String.Format("Miramos las capas"));
+            foreach(var layer in sharedContext.Data.LayerList.Where(p => (p.Name.Equals(projectLayer)) ))
+            {
+      //         if (okDebug)
+      //         { 
+      //          Debug.WriteLine(String.Format("Investigamos el layer  = '{0}'", layer.Name));
+      //          Debug.WriteLine(String.Format("Entramos en el foreach = '{0}'", ( TieneEntidades | (!TieneEntidades & !layer.Equals(mainDiagram.SolutionFolderInfraestructure)) ).ToString()));
+      //         }
+                if  ( TieneEntidades | (!TieneEntidades & !layer.Equals(mainDiagram.SolutionFolderInfraestructure)) ) // solo añadimos referencias de infraestructura si tenemos entidades en contexto que procesamos
+                foreach(var prj in layer.BCSharedProjects.Where(p => p.Name.EndsWith(ProjectName)  ))
+                {
+                    if (!(prj.Name.Equals(prjName)))
+                    {
+                    if (
+                            TieneEntidades                                                                                             | 
+                            (!TieneEntidades & layer.Name.Equals(mainDiagram.SolutionFolderDomain))                                    |
+                            (!TieneEntidades & layer.Name.Equals(mainDiagram.SolutionFolderUX))                                        |
+                            (!TieneEntidades & layer.Name.Equals(mainDiagram.SolutionFolderApplication) & prj.Name.Equals("Data.Base"))
+                        )
+                        {
+           //                 if (okDebug) {Debug.WriteLine(String.Format("/añadimos          '{0}' /",prj.Name));}
+                        listaPrj.Add(prj.Name);
+                        // ahora es necesario obtener la lista de own projects de la solución que segun la arquitectura cada uno de estos proyectos tiene.
+                        // por ejemplo los domain.base tiene todos que tener la referencia y el using de domain.core
+                        // obtenemos la lista de proyectos de tipo ownproject que segun la arquitectura tiene el projecto que acabamos de añadir. 
+                        // y añadimos esta lista 
+                        List<string>SubListPrj = GetOwnProjectReferencesByProject( prj.Name, mainDiagram);
+                        if (SubListPrj != null)
+                            foreach (string reference in SubListPrj)
+                                {
+                                    listaPrj.Add(reference);
+                                }
+                        }
+                    }
+                }
+            }
+
+
+            foreach(var layer in sharedContext.Data.LayerList.Where(p => p.Name.Equals(mainDiagram.SolutionFolderInfraestructure )))
+            {
+                //la anidación de estos dos foreach recorre exclusivamente los proyectos de recursos en infraestructura
+                foreach(var prj in layer.BCSharedProjects.Where(p => p.Name.EndsWith(".Resources")))
+                {
+                    if (!(prj.Name.Equals(prjName)))
+                    {
+                        listaPrj.Add(prj.Name);
+                    }
+                }
+            }
+        }
+        anteriorSharedContext = sharedContext;
+        sharedContext = sharedContext.Parent; 
+     //   if (okDebug) Debug.WriteLine(String.Format(" anteriorSharedContext = {0}", anteriorSharedContext.Data.Name));
+        //if (okDebug & sharedContext != null) Debug.WriteLine(String.Format(" sharedContext        = {0}", sharedContext.Data.Name));
+
+    }
+
+
+  //  if (okDebug) Debug.WriteLine(String.Format(""));
+  // 1º determinamos a que layer pertenece buscamos los textos correspondientes a las opciones que se han dado para las capas domain, application, ux,e infraestructure.
+
+
+
+
+
+//if (false) {Debug.WriteLine(String.Format("/ La lista contiene '{0} elementos' /",listaPrj.Count()));}
+   return listaPrj;
+}
+
+#>
+<#+
+
+public static int GetIndexLayerFromNameProject(string[] sections, DslContextDefinitionDiagram diagram)
+{
+    for (int i =2 ;i < sections.Length; i++)
+    {
+        //    Debug.WriteLine("Section "+i.ToString()+" = "+sections[i]);
+        if (
+                sections[i].ToLower().Equals( SecureName( diagram.SolutionFolderDomain ,true ).ToLower() )               |
+                sections[i].ToLower().Equals( SecureName( diagram.SolutionFolderApplication , true ).ToLower() )         |
+                sections[i].ToLower().Equals( SecureName( diagram.SolutionFolderInfraestructure, true ).ToLower() )      |
+                sections[i].ToLower().Equals( "wcfService")                                                    |
+                sections[i].ToLower().Equals( SecureName( diagram.SolutionFolderUX, true ).ToLower() )         |
+                sections[i].ToLower().Equals( "test") 
+            ) 
+            return i;
+    }
+    return 0;
+}
+
+#>
+<#+
+
+public static void AddSharedKernelReferences( DslContextDefinitionDiagram MainDiagram, ActiveSolution SolutionInfo, ITree<BoundedContextMetadata> SharedKernelTree)
+{
+    bool okDebug = true;
+
+     //  if (okDebug) 
+     //  {
+     //      Debug.WriteLine("");
+     //      Debug.WriteLine(String.Format("          árbol de proyectos para '{0}'", MainDiagram.RootNameSpace));
+     //      foreach(var pr in  SolutionInfo.SolutionTree.All.Nodes)
+     //      {
+     //           Debug.WriteLine(String.Format("    {0}", pr.Data.Name));
+     //      }
+     //  }
+        IList<string> listaProyectos = null;
+        EnvDTE.Project RefPrj = null;
+        EnvDTE.Project ReferencedProject = null;
+        // recorremos el árbol de projectos de la solución.
+
+
+        foreach(var pr in  SolutionInfo.SolutionTree.All.Nodes.Where(p => p.Data.Name.StartsWith(MainDiagram.RootNameSpace) ) )//MainDiagram.Company + "." + MainDiagram.Product
+        {
+         //   if (okDebug) Debug.WriteLine(String.Format("{0}", pr.Data.Name));
+            foreach(Project p in SolutionInfo.ProjectsList.Cast<Project>().Where(p=> p.CodeModel!=null && p.Name.Equals(pr.Data.Name) ))
+                {
+                    RefPrj =p;
+                }
+            VSLangProj.VSProject vsproject = (VSLangProj.VSProject)RefPrj.Object;
+
+        //    if (okDebug) Debug.WriteLine("\t Llamamos a GetSharedKernelReferencesByProject \t");
+            listaProyectos = GetSharedKernelReferencesByProject(pr.Data.Name, SharedKernelTree, MainDiagram);
+        //                if (false & listaProyectos != null) Debug.WriteLine(string.Format("\t  GetSharedKernelReferencesByProject  nos devuelve un lista de {0} elementos\t",listaProyectos.Count()));
+         //              if (false & listaProyectos == null) Debug.WriteLine(string.Format("\t  GetSharedKernelReferencesByProject  nos devuelve un lista de 0 elementos\t"));
+
+            if (listaProyectos!= null)
+                {
+                    foreach (string item in listaProyectos)
+                    {
+         //               if (okDebug) Debug.WriteLine(String.Format("*{0}{1}*", T4Help.Indent(5), item));
+                        foreach(Project p in SolutionInfo.ProjectsList.Cast<Project>().Where(p=> p.CodeModel!=null && p.Name.Equals(item) ))
+                        {
+                            ReferencedProject =p;
+                        }
+                        if (ReferencedProject != null)
+                        {   
+         //                   if (okDebug) Debug.WriteLine(String.Format("  *{0}{1} / {2}*", T4Help.Indent(5), ReferencedProject.Name, item));
+                            
+                            foreach (VSLangProj.Reference referencia in vsproject.References) // chequeamos si la referencia existe antes de añadirla //NOTA : NAddProject noda error cuando la dll que se añade como referencia ya existe pero tras una generación es facil que algunos elemenots no coincidan.
+                                {
+                                    if (referencia.Name.Equals(item) ) //item tiene el nombre del projecto que vamos a añadir como referencia
+                                    {
+                                        referencia.Remove();
+                                    }
+                                }
+                                
+                                    vsproject.References.AddProject(ReferencedProject);
+                                
+                        }
+                        ReferencedProject = null;
+                    }
+                    //
+                }
+          //  else
+        //    {if (okDebug) Debug.WriteLine("LA LISTA DE REFERENCIAS ESTA VACIA");}
+        }
+}// end AddSharedKernelReferences()
+
+#>
+<#+
+
+public static List<string> GetOwnProjectReferencesByProject(string ProjectName, DslContextDefinitionDiagram mainDiagram)
+{
+if (ProjectName.EndsWith("Resources")) // | prjName.StartsWith(mainDiagram.Company+"."+mainDiagram.Product+"."+mainDiagram.SolutionFolderCommon)
+    return null;
+    bool okDebug = false;//ProjectName.Contains("Domain.Base") & ProjectName.Contains("SPE.Programacion");
+
+ //   if (okDebug) Debug.WriteLine("");
+ //   if (okDebug) Debug.WriteLine("          *** Entramos en GetOwnProjectReferencesByProject *** ");
+ //   if (okDebug) Debug.WriteLine(string.Format("\t ProjectName = /{0}/ \t", ProjectName));
+
+    IList<string> NameSpaceSection = SplitNamesProjects(ProjectName, mainDiagram);
+    string company              = NameSpaceSection[0];
+    string product              = NameSpaceSection[1];
+    string boundedContextName   = NameSpaceSection[2];
+    string projectLayer         = NameSpaceSection[3];
+    string kindProject          = NameSpaceSection[4];
+
+ //   if (okDebug) Debug.WriteLine(string.Format("\t company              = /{0}/ \t", company));
+ //   if (okDebug) Debug.WriteLine(string.Format("\t product              = /{0}/ \t", product));
+ //   if (okDebug) Debug.WriteLine(string.Format("\t boundedContextName   = /{0}/ \t", boundedContextName));
+    //if (okDebug) Debug.WriteLine(string.Format("\t projectLayer         = /{0}/ \t", projectLayer));
+    //if (okDebug) Debug.WriteLine(string.Format("\t kindProject          = /{0}/ \t", kindProject));
+
+    List<string> listaprj = new List<string>();
+    string rootnamespace = company+"."+product+"."+boundedContextName; // no añadimos el nombre de la capa por que las referencias de los contextos own en la arquitectura incluyen el nombre de la capa.
+  //  if (okDebug) Debug.WriteLine(string.Format("\t El rootnamespace = {0} \t", rootnamespace));
+
+
+
+    // para la capa del projecto
+    foreach (Architecture.ArqLayer layer in Architecture.ArqLayers.Where( p => p.LayerType.ToString().Equals(projectLayer)))
+    {
+    //if (okDebug) Debug.WriteLine(string.Format("\t layer.LayerType          = /{0}/ \t", layer.LayerType.ToString()));
+        foreach (Architecture.ArqLayer.ArqProject project in layer.LayerProyects.Where( p => p.Name.Equals(kindProject)))
+        {
+            //if (okDebug) Debug.WriteLine(string.Format("\t project          = /{0}/ \t", project.Name));
+            foreach (Architecture.ArqLayer.ArqProject.ArqReference reference in project.References.Where( p => p.ReferenceType == ReferenceKind.OwnContext))
+            {
+                //if (okDebug) Debug.WriteLine(string.Format("\t reference          = /{0}/ \t", reference.Name));
+                if (!reference.Name.EndsWith("Resources")) // añadimos todos los proyectos referenciados excepto los de recursos que ya estan. TODO: podemos probar a quitar la parte que pone los ficheros de recursos ydejar esta.
+                    {
+                    //if (okDebug) Debug.WriteLine(string.Format("\t AÑADIMOS          = /*{0}*/ \t", rootnamespace+"."+reference.Name));
+                    listaprj.Add(rootnamespace+"."+reference.Name);
+                    }
+            }
+        }
+    }
+
+    //if (okDebug) Debug.WriteLine("");
+    //if (okDebug) Debug.WriteLine("          *** SALIMOS en GetOwnProjectReferencesByProject *** ");
+return  listaprj;
+}
+
+#>
+<#+
+  // Note: You can call this method from the outside of the template,
+  //       please add parameters as needed.	
+  // To include this templaate just drag this file on another editor
+  // then call this.SecureName()
+public static string SecureName( string arbitraryString, bool noDigits = false)
+{
+	if (arbitraryString == null)
+		throw new ArgumentNullException("EL PARAMETRO arbitraryString NO PUEDE SER NULO");
+
+    var validIdentifier = Regex.Replace(arbitraryString, @"[^A-Za-z0-9-._]", " ");// cualquier caracter mayusculas minusculas o numero ... es substituido por 
+    if (noDigits)
+        {
+            validIdentifier = Regex.Replace(arbitraryString, @"[^A-Za-z]", String.Empty);
+        }
+   else if (Regex.IsMatch(validIdentifier, @"^\d")) 
+        {
+            validIdentifier = "_" + validIdentifier; // si comienza por digito le añadimos un underscore
+        }
+    // utilizamos los espacios para marcar las letras a capitalizar
+	if (validIdentifier == null) throw new Exception("La variable validIdentifier NO PUEDE SER NULO");
+
+    return T4Help.ToPascalCase(validIdentifier);
+        //Regex.Replace(entity.Name, @"\W","");// \w es word caracter, equivalente a [a-zA-Z0-9_] \W match any 'non word character' si no se permite el underscore la alternativa es [^a-zA-Z0-9]
+}
+#>

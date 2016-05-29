@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Atento.Servicios.Shared.Infrastructure</name>
+    </assembly>
+    <members>
+        <member name="T:Atento.Servicios.Shared.Infrastructure.PersonaRepository">
+            <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:Atento.Servicios.Shared.Domain.Persona"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:Atento.Servicios.Shared.Infrastructure.PersonaRepository.#ctor(System.Data.Entity.DbContext)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Atento.Servicios.Shared.Infrastructure.PersonaRepository"/>.
+            </summary>
+            <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+            <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext"/> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Atento.Servicios.Shared.Infrastructure.PersonaConfiguration" -->
+        <member name="M:Atento.Servicios.Shared.Infrastructure.PersonaConfiguration.#ctor">
+            <summary>
+            inicializa una nueva instancia de <see cref="T:Atento.Servicios.Shared.Infrastructure.PersonaConfiguration"/>.
+            </summary>
+        </member>
+        <member name="T:Atento.Servicios.Shared.Infrastructure.BootstrapUnitOfWork">
+            <summary>
+            .en Class to implement unit of work and give the assemblys where are the configuration clases to Entity Framework
+            </summary>
+        </member>
+        <member name="M:Atento.Servicios.Shared.Infrastructure.BootstrapUnitOfWork.#ctor(System.String)">
+            <summary>
+            constructor BootstrapUnitOfWork
+            </summary>
+            <param name="nameOrConnectionString"></param>
+        </member>
+        <member name="M:Atento.Servicios.Shared.Infrastructure.BootstrapUnitOfWork.OnModelCreating(System.Data.Entity.DbModelBuilder)">
+            <summary>
+            .en add all configuration files from the assembly where is located the entity in the second parameter.
+            .es añadimos todos los ficheros de configuración del ensamblado de la entidad que pasamos.
+            </summary>
+            <param name="modelBuilder"></param>
+        </member>
+    </members>
+</doc>

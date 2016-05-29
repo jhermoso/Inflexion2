@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Suite Documentation </title>
+</head>
+<body>
+    <h2>Caracteristicas de la Entidad 'Persona'  </h2>
+    <img src="Images\Persona.png">
+    <table>
+
+        <tr><td> Contexto Limitado </td><td> Suite </td></tr>
+        <tr><td> comentarios programador </td><td> datos acerca de personas fisica y juridicas. </td></tr>
+        <tr><td> comentarios usuario </td><td> datos acerca de personas fisica y juridicas. </td></tr>
+        <tr><td> tooltip </td><td> Repositorio de personas físicas o juridicas. </td></tr>
+        <tr><td> &nbsp; </td><td>  </td></tr>
+        <tr><td> tipo de composición en el que interviene </td><td>  any </td></tr>
+        <tr><td> superfolder </td><td>  </td></tr>
+        <tr><td> entityHasChildren </td><td> False </td></tr>
+        <tr><td> isAbstract </td><td> False </td></tr>
+        <tr><td> Modificadores de acceso </td><td> public partial  </td></tr>
+        <tr><td> idtype </td><td> Int32 </td></tr>
+        <tr><td> Es auditable </td><td> True </td></tr>
+        <tr><td> Forzada a ser root </td><td> True </td></tr>
+
+        <tr><td> idtype </td><td> Int32 </td></tr>
+        <tr><td> valor nulo del id </td><td> 0 </td></tr>
+        <tr><td> secureEntityName </td><td> Persona </td></tr>
+        <tr><td> pascalSecureEntityName </td><td> Persona </td></tr>
+        <tr><td> camelSecureEntityName </td><td> persona </td></tr>
+
+        <tr><td> entityHasChildren </td><td> False </td></tr>
+        <tr><td> numEntityFields </td><td> 20 </td></tr>
+        <tr><td> numEntityFieldsMandatory </td><td> 1 </td></tr>
+
+        <tr><td> isDerivedFromOneEntity </td><td> False </td></tr>
+        <tr><td> entitySuperClass </td><td>  </td></tr>
+        <tr><td> entityCore </td><td> Atento.Framework.Domain.Core.IAuditableEntity<Int32> </td></tr>
+        <tr><td> entityCoreFactory </td><td> Atento.Framework.Domain.Core.IEntityFactory<IPersona, Int32> </td></tr>
+        <tr><td> entityCoreRepository </td><td> Atento.Framework.Domain.Core.IReadWriteAuditableRepository<IPersona, Int32> </td></tr>
+        <tr><td> entityBaseRepository </td><td> Atento.Framework.Domain.Base.ReadWriteAuditableRepositoryBase<IPersona, Int32> </td></tr>
+
+
+
+        <tr><td> MandatoryConstructorParamnsSimple </td><td> nombre </td></tr>
+        <tr><td> MandatoryConstructorParamns </td><td> string nombre </td></tr>
+        <tr><td> MandatoryConstructorParamnsWithAll </td><td> int idPersona, string nombre </td></tr>
+        <tr><td> MandatoryConstructorParamnsWithAllnoId </td><td> string nombre </td></tr>
+        <tr><td> MandatoryConstructorParamnsWithOutDefaultValues </td><td> string nombre </td></tr>
+        <tr><td> MandatoryConstructorParamnsCall </td><td> idPersona, nombre </td></tr>
+        <tr><td> MandatoryConstructorParamnsCallnoID </td><td> nombre </td></tr>
+        <tr><td> MandatoryConstructorParamnsCallnoIDForDto </td><td> personaDto.Nombre </td></tr>
+
+        <tr><td> MandatoryEntityBaseConstructorParamans </td><td>  </td></tr>
+        <tr><td> MandatoryEntityBaseConstructorParamansDefinition </td><td>  </td></tr>
+        <tr><td> MandatoryEntityBaseConstructorParamansCall </td><td>  </td></tr>
+        <tr><td> MandatoryConstructorParamnsDTO </td><td> personaDto.Nombre </td></tr>
+        <tr><td> MandatoryEntityBaseConstructorParamansDTO </td><td>  </td></tr>
+        <tr><td> MandatoryEntityBaseConstructorParamansDefinitionDTO </td><td>  </td></tr>
+
+    </table>
+
+    <h3>Lista de atributos mandatory</h3>
+    <table>
+        <tr><td> Public </td><td> string </td><td> <strong>Nombre</strong>   (Estereotipo='None')</td></tr>
+        <tr><td> Permite valor nulo </td><td> Get set automático </td><td> alias = '' </td></tr>
+        <tr><td> No es filtro </td><td> No es agrupador </td><td>  el valor por defecto es:  </td></tr>
+        <tr><td colspan = 2> Test with auto property and public setter. </td><tr> 
+        <tr><td colspan = 2>  </td><tr> 
+    </table>
+
+    <h3>Lista de atributos no mandatory</h3>
+    <table>
+        <tr><td> Public </td><td> bool </td><td> <strong>Juridica</strong>   (Estereotipo='None')</td></tr>
+        <tr><td> Permite valor nulo </td><td> Get set automático </td><td> alias = '' </td></tr>
+        <tr><td> No es filtro </td><td> No es agrupador </td><td>  el valor por defecto es:  </td></tr>
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td> Public </td><td> string </td><td> <strong>Direccion</strong>   (Estereotipo='None')</td></tr>
+        <tr><td> Permite valor nulo </td><td> Get set automático </td><td> alias = '' </td></tr>
+        <tr><td> No es filtro </td><td> No es agrupador </td><td>  el valor por defecto es:  </td></tr>
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td> Public </td><td> string </td><td> <strong>Calle</strong>   (Estereotipo='None')</td></tr>
+        <tr><td> Permite valor nulo </td><td> Get set automático </td><td> alias = '' </td></tr>
+        <tr><td> No es filtro </td><td> No es agrupador </td><td>  el valor por defecto es:  </td></tr>
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td> Public </td><td> string </td><td> <strong>CP</strong>   (Estereotipo='None')</td></tr>
+        <tr><td> Permite valor nulo </td><td> Get set automático </td><td> alias = '' </td></tr>
+        <tr><td> No es filtro </td><td> No es agrupador </td><td>  el valor por defecto es:  </td></tr>
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td> Public </td><td> string </td><td> <strong>Provincia</strong>   (Estereotipo='None')</td></tr>
+        <tr><td> Permite valor nulo </td><td> Get set automático </td><td> alias = '' </td></tr>
+        <tr><td> No es filtro </td><td> No es agrupador </td><td>  el valor por defecto es:  </td></tr>
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td> Public </td><td> string </td><td> <strong>Comunidad</strong>   (Estereotipo='None')</td></tr>
+        <tr><td> Permite valor nulo </td><td> Get set automático </td><td> alias = '' </td></tr>
+        <tr><td> No es filtro </td><td> No es agrupador </td><td>  el valor por defecto es:  </td></tr>
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td> Public </td><td> string </td><td> <strong>Pais</strong>   (Estereotipo='None')</td></tr>
+        <tr><td> Permite valor nulo </td><td> Get set automático </td><td> alias = '' </td></tr>
+        <tr><td> No es filtro </td><td> No es agrupador </td><td>  el valor por defecto es:  </td></tr>
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td> Public </td><td> string </td><td> <strong>Matricula</strong>   (Estereotipo='None')</td></tr>
+        <tr><td> Permite valor nulo </td><td> Get set automático </td><td> alias = '' </td></tr>
+        <tr><td> No es filtro </td><td> No es agrupador </td><td>  el valor por defecto es:  </td></tr>
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td> Public </td><td> string </td><td> <strong>Codigo</strong>   (Estereotipo='None')</td></tr>
+        <tr><td> Permite valor nulo </td><td> Get set automático </td><td> alias = '' </td></tr>
+        <tr><td> No es filtro </td><td> No es agrupador </td><td>  el valor por defecto es:  </td></tr>
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td> Public </td><td> string </td><td> <strong>Sector</strong>   (Estereotipo='None')</td></tr>
+        <tr><td> Permite valor nulo </td><td> Get set automático </td><td> alias = '' </td></tr>
+        <tr><td> No es filtro </td><td> No es agrupador </td><td>  el valor por defecto es:  </td></tr>
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td> Public </td><td> string </td><td> <strong>Site</strong>   (Estereotipo='None')</td></tr>
+        <tr><td> Permite valor nulo </td><td> Get set automático </td><td> alias = '' </td></tr>
+        <tr><td> No es filtro </td><td> No es agrupador </td><td>  el valor por defecto es:  </td></tr>
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td> Public </td><td> string </td><td> <strong>LogoImagen</strong>   (Estereotipo='None')</td></tr>
+        <tr><td> Permite valor nulo </td><td> Get set automático </td><td> alias = '' </td></tr>
+        <tr><td> No es filtro </td><td> No es agrupador </td><td>  el valor por defecto es:  </td></tr>
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td> Public </td><td> string </td><td> <strong>Telefono</strong>   (Estereotipo='None')</td></tr>
+        <tr><td> Permite valor nulo </td><td> Get set automático </td><td> alias = '' </td></tr>
+        <tr><td> No es filtro </td><td> No es agrupador </td><td>  el valor por defecto es:  </td></tr>
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td> Public </td><td> string </td><td> <strong>Fax</strong>   (Estereotipo='None')</td></tr>
+        <tr><td> Permite valor nulo </td><td> Get set automático </td><td> alias = '' </td></tr>
+        <tr><td> No es filtro </td><td> No es agrupador </td><td>  el valor por defecto es:  </td></tr>
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td> Public </td><td> string </td><td> <strong>Mobil</strong>   (Estereotipo='None')</td></tr>
+        <tr><td> Permite valor nulo </td><td> Get set automático </td><td> alias = '' </td></tr>
+        <tr><td> No es filtro </td><td> No es agrupador </td><td>  el valor por defecto es:  </td></tr>
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td> Public </td><td> string </td><td> <strong>Atributte1</strong>   (Estereotipo='None')</td></tr>
+        <tr><td> Permite valor nulo </td><td> Get set automático </td><td> alias = '' </td></tr>
+        <tr><td> No es filtro </td><td> No es agrupador </td><td>  el valor por defecto es:  </td></tr>
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td> Public </td><td> string </td><td> <strong>FormaJuridica</strong>   (Estereotipo='None')</td></tr>
+        <tr><td> Permite valor nulo </td><td> Get set automático </td><td> alias = '' </td></tr>
+        <tr><td> No es filtro </td><td> No es agrupador </td><td>  el valor por defecto es:  </td></tr>
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td> Public </td><td> bool </td><td> <strong>Fisica</strong>   (Estereotipo='None')</td></tr>
+        <tr><td> Permite valor nulo </td><td> Get set automático </td><td> alias = '' </td></tr>
+        <tr><td> No es filtro </td><td> No es agrupador </td><td>  el valor por defecto es:  </td></tr>
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td> Public </td><td> string </td><td> <strong>Genero</strong>   (Estereotipo='None')</td></tr>
+        <tr><td> Permite valor nulo </td><td> Get set automático </td><td> alias = '' </td></tr>
+        <tr><td> No es filtro </td><td> No es agrupador </td><td>  el valor por defecto es:  </td></tr>
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td colspan = 2>  </td><tr> 
+    </table>
+
+    <h3>Lista de atributos mandatory from sources (composición)</h3>
+    <table>
+    </table>
+
+    <h3>Lista de atributos non mandatory from sources(agregación)</h3>
+    <table>
+    </table>
+    total de asociaciones source = 0
+
+    <h3>Lista de atributos mandatory from Targets (composición)</h3>
+    <table>
+    </table>
+
+    <h3>Lista de atributos non mandatory from targets (agregación)</h3>
+    <table>
+    </table>
+    <h3>árbol de superclasesclases </h3>
+    <h3>Lista de clases del agregado </h3>
+
+     <h3>Lista de clases padre </h3>
+
+     <h3>Instrucciones de construcción desde el root agregate </h3>
+
+     <h3>Lista de clases accesibles </h3>
+Persona </br>
+Enumeracion </br>
+
+ </br>
+ </br>
+ YumlDefinition =/[Persona{bg:blue}]/
+<table>
+<tr><td></td><td> <a href="Intro.html"> Intro </a>  </td></tr>
+
+<tr><td></td><td> <a href="Architecture.html"> Architecture </a>  </td></tr>
+</table>
+</body>
+</html>

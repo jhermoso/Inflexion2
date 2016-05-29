@@ -1,0 +1,158 @@
+﻿<#+
+public class ServiceUpdateMethod : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public ServiceUpdateMethod(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+       // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+        string ResxFileName = prjCon.boundedContextName.Replace(".","")+"Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+        bool Secured = cbc.MainEntityStereotype.Contains("Bussiness"); // si es una entidad de negocio entoces esta securizada es decir necesita identificación y autorización
+        bool Trazable = cbc.MainEntityStereotype.Contains("Bussiness") || cbc.MainEntityStereotype.Contains("Auditable"); // si es una entidad de negocio entoces esta securizada es decir necesita identificación y autorización
+
+#>
+        #region update
+        // ServiceUpdateMethodCT.tt
+        /// <summary>
+        /// Actualiza una determinada entidad <#= cbc.pascalSecureEntityName #>.
+        /// </summary>
+        /// <param name="<#= cbc.camelSecureEntityName #>Dto">
+        /// DTO que contiene la información de la entidad que se va a actualizar.
+        /// </param>
+<#+ if (Secured){ #>        /// <param name="userContextDto"> Información de contexto del usuario. </param><#+ }#>
+        /// <returns>
+        /// Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+        /// </returns>
+        public bool Update(<#= cbc.pascalSecureEntityName #>Dto <#= cbc.camelSecureEntityName #>Dto<#=(Secured)?", UserContextDto userContextDto":"" #>)
+        {
+            #region preconditions
+            // Comprobar el DTO de entrada. 
+            Guard.ArgumentIsNotNull(
+                                    <#= cbc.camelSecureEntityName #>Dto,
+                                    string.Format(
+                                                  Inflexion2.Resources.Framework.DataTransferObjectIsNull,
+                                                  "<#= cbc.entity.AliasFrontEnd #>"));
+            // en una actualización no comprobamos los campos mandatory.
+            #endregion            
+
+            try
+            {
+                // Creamos el repositorio de la entidad.
+                I<#= cbc.pascalSecureEntityName #>Repository repo = this.unityContainer.Resolve<I<#= cbc.pascalSecureEntityName #>Repository>();
+
+                // Obtener y comprobar validez de la inserción a modificar.
+               <#= I #><#= cbc.pascalSecureEntityName #> entity2Update = repo.GetFilteredElements(t => t.Id == <#= cbc.camelSecureEntityName #>Dto.Id).Single();
+                Guard.ArgumentIsNotNull(
+                                        entity2Update,
+                                        string.Format(
+                                                        Inflexion2.Resources.Framework.CanNotUpdateInexistenceEntity,
+                                                        "<#= cbc.entity.AliasFrontEnd #>"));
+                // Comprobar duplicidades;
+<#+
+   foreach(var property in cbc.mandatoryPropertyObjects) // las propiedades que no se pueden repetir no permiten valores nulos.
+            {
+                if (!property.AllowRepeatedValues) // si no permite valores repetidos 
+                    {                           // comprobamos que no existe previamente en la base de datos
+                                                // TODO: SI ES CASE SENSITIVE SE IMPLEMENTA COMO CONDICIÓN INVARIANTE.
+                    if (property.AtributteType.ToString().ToLower() == "string") // si es una cadena previamente la pasamos a minusculas para hacer la comprobación.
+                        {
+#>
+                    //string <#= cbc.camelSecureEntityName #>Dto<#= T4Help.ToPascalCase(property.AtributteName) #>ToLower = <#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.AtributteName) #>.Trim().ToLower();
+                    //DuplicateData = <#= cbc.pascalSecureEntityName #>Repository.GetFiltered(c => c.<#= T4Help.ToPascalCase(property.AtributteName) #>.ToLower() == <#= cbc.camelSecureEntityName #>Dto<#= T4Help.ToPascalCase(property.AtributteName) #>ToLower && c.IsActive);
+                    bool isEquals<#= cbc.pascalSecureEntityName #> = string.Equals(
+                                                      (entity2Update.<#= T4Help.ToPascalCase(property.AtributteName) #> ?? string.Empty).Trim(),
+                                                      (<#= cbc.camelSecureEntityName #>Dto.Nombre ?? string.Empty).Trim(),
+                                                      StringComparison.InvariantCultureIgnoreCase);
+<#+                     
+}
+                    else // si la propiedad no es string simplemente comparamos los valores.
+                        {
+#>
+                    // TODO: DuplicateData = <#= cbc.pascalSecureEntityName #>Repository.GetFiltered(c => c.<#= T4Help.ToPascalCase(property.AtributteName) #> == <#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.AtributteName) #> && c.IsActive);
+<#+
+                        }
+#>
+                    // Comprobamos los datos.
+                    if (!isEquals<#= cbc.pascalSecureEntityName #> && this.Exists<#= T4Help.ToPascalCase(property.AtributteName) #>(<#= cbc.camelSecureEntityName #>Dto.Nombre.Trim(), entity2UpdateId, serverContext))
+                    {
+                        string errorMessage = string.Format(
+                                                            CoreResources.Neutral.ErrorEnEntidadCampoDuplicado, 
+                                                            <#= ResxFileName #>.<#= cbc.pascalSecureEntityName #>_<#= T4Help.ToPascalCase(property.AtributteName) #>Alias,
+                                                            <#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.AtributteName) #>);
+                        throw new InvalidOperationException(errorMessage);
+                    }
+                    //if (DuplicateData.Any() )
+                    //{
+                        //// Error, ya existe una entidad <#= cbc.pascalSecureEntityName #> con el campo <#= T4Help.ToPascalCase(property.AtributteName) #> con el valor repetido .
+                        //string errorMessage = string.Format(
+                                                            //CoreResources.Neutral.ErrorEnEntidadNombreDuplicado,
+                                                            //<#= ResxFileName #>.<#= cbc.pascalSecureEntityName #>_<#= T4Help.ToPascalCase(property.AtributteName) #>Alias,
+                                                            //<#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.AtributteName) #>);
+                        //// Lanzamos la excepción.
+                        //throw new System.InvalidOperationException(errorMessage);
+                    //}
+<#+
+                    }
+            }
+#>
+
+                    // Actualización de la entidad.
+                    // Datos mandatory
+<#+ foreach(var property in cbc.propertyObjects.Where(c=>c.RequestUponCreation==RequestUponCreation.yes)){ #>
+<#+     if(property.LiveCycleAtributte.Equals(LiveCycleAtributte.Variable) /*|| property.LiveCycleAtributte.Equals(LiveCycleAtributte.Derivado)*/) {#>
+<#+         if (property.AutoProperty || !property.OnlyGetProperty)     { #>
+                    entity2Update.<#= T4Help.ToPascalCase(property.AtributteName) #> = <#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.AtributteName) #>;
+<#+         } #>
+<#+         if ( !property.AutoProperty  &&  property.OnlyGetProperty)     { #>
+                    entity2Update.Set<#= T4Help.ToPascalCase(property.AtributteName) #> ( <#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.AtributteName) #> ); // property.AutoProperty = <#= property.AutoProperty #>; property.OnlyGetProperty = <#= property.OnlyGetProperty #>
+<#+         } #>
+<#+     } #>
+<#+ } #>
+
+                    // asignación de Datos no mandatory con ciclo de vida variable, no se incluyen aquellas propiedaes constantes o derivadas
+<#+ foreach(var property in cbc.propertyObjects.Where(c=>c.RequestUponCreation==RequestUponCreation.no)){ #>
+<#+     if(property.LiveCycleAtributte.Equals(LiveCycleAtributte.Variable) /*|| property.LiveCycleAtributte.Equals(LiveCycleAtributte.Derivado)*/) {#>
+<#+         if (property.AutoProperty || !property.OnlyGetProperty)     { #>
+                    entity2Update.<#= T4Help.ToPascalCase(property.AtributteName) #> = <#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.AtributteName) #>; // property.AutoProperty = <#= property.AutoProperty #>; property.OnlyGetProperty = <#= property.OnlyGetProperty #>
+<#+         } #>
+<#+         if ( !property.AutoProperty  &&  property.OnlyGetProperty)     { #>
+                    Set<#= T4Help.ToPascalCase(property.AtributteName) #> ( <#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.AtributteName) #> ); // property.AutoProperty = <#= property.AutoProperty #>; property.OnlyGetProperty = <#= property.OnlyGetProperty #>
+<#+         } #>
+<#+     } #>
+<#+ } #>
+
+                // igualmente hemos de mapear las entidades emparentadas.
+                if (!entity2Update.CanBeSaved())
+                {
+                    return false;
+                }
+                repo.Modify(entity2Update);
+
+                // Confirmamos la transacción.
+                this.Commit();
+                
+            }
+            catch (Exception ex)
+            {
+<#+ if (Trazable){ #>                // Escribir en el Log.
+                logger.Error(ex.Message, ex);
+<#+ }#>                throw ex;
+            }
+
+            // Devolvemos el resultado.
+            return true;
+        }
+        #endregion
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>
