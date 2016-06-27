@@ -66,7 +66,9 @@ namespace Inflexion2.Domain
 
         private TContext CreateContext()
         {
-            return Activator.CreateInstance(typeof(TContext), new object[] { this.connectionString }) as TContext;
+            var result =  Activator.CreateInstance(typeof(TContext), new object[] { this.connectionString }) as TContext;
+
+            return result;
         }
     }
 }

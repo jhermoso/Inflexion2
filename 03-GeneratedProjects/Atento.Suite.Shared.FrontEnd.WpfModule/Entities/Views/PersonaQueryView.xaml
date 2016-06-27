@@ -8,13 +8,46 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="525" Padding="5">
     <Grid>
-
-        <Label Content="Persona Query View"/>
+        <Label Content="{Binding Title}"/>
+        <Label Content="Query View"/>
         <DataGrid Name="PersonaDgData"
                   ItemsSource="{Binding Items}"
                   SelectedItem="{Binding SelectedItem}" 
                   controls:DataGridRowDoubleClickHandler.MethodName="NavigateToSelectedItem"         
-                  AutoGenerateColumns="True"
-                  Margin="0"/>
+                  AutoGenerateColumns="False"
+                  SelectionMode="Extended"
+                  SelectionUnit="FullRow"
+                  CanUserAddRows="True"
+                  CanUserReorderColumns="True"
+                  CanUserResizeColumns="True"
+                  CanUserResizeRows="True"
+                  CanUserSortColumns="True"
+                  ClipboardCopyMode="ExcludeHeader"
+                  Margin="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn     Header="Nombre"                 Binding="{Binding Nombre}"/>
+                <DataGridCheckBoxColumn Header="BooleanField"           Binding="{Binding BooleanField}"/>
+                <DataGridTextColumn     Header="DatetimeField"          Binding="{Binding DatetimeField, StringFormat=\'{0:dd/MM/yyy HH:mm:ss}\'}"/>
+                <DataGridTextColumn     Header="ByteField"              Binding="{Binding ByteField}"/>
+                <DataGridTextColumn     Header="GuidField"              Binding="{Binding GuidField}"/>
+                <DataGridTextColumn     Header="DecimalField"           Binding="{Binding DecimalField}"/>
+                <DataGridTextColumn     Header="DobleField"             Binding="{Binding DobleField}"/>
+                <DataGridTextColumn     Header="FloatField"             Binding="{Binding FloatField}"/>
+                <DataGridTextColumn     Header="IntField"               Binding="{Binding IntField}"/>
+                <DataGridTextColumn     Header="LongField"              Binding="{Binding LongField}"/>
+                <DataGridTextColumn     Header="DateTimeOffsetField"    Binding="{Binding DateTimeOffsetField, StringFormat=\'{c}\'}"/>
+                <DataGridTextColumn     Header="ShortField"             Binding="{Binding ShortField}"/>
+                <DataGridTextColumn     Header="TimeSpanField"          Binding="{Binding TimeSpanField, StringFormat=\'{c}\'}"/>
+                <DataGridTextColumn     Header="Int16Field"             Binding="{Binding Int16Field}"/>
+                <DataGridTextColumn     Header="Int32Field"             Binding="{Binding Int32Field}"/>
+                <DataGridTextColumn     Header="Int64Field"             Binding="{Binding Int64Field}"/>
+                <DataGridTemplateColumn ></DataGridTemplateColumn><!--  to define my own template cell -->
+
+
+            <DataGridHyperlinkColumn></DataGridHyperlinkColumn>
+            <DataGridComboBoxColumn></DataGridComboBoxColumn>
+            
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

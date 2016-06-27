@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="CreateDatabaseTest001.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\01-Projects\Inflexion2.EF\Inflexion2.EF.csproj">
@@ -78,6 +79,10 @@
     <ProjectReference Include="..\..\01-Projects\Inflexion2\Inflexion2.csproj">
       <Project>{BF5456D4-B276-459B-98D4-853FCEF99ADE}</Project>
       <Name>Inflexion2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atento.Suite.Shared.Application\Atento.Suite.Shared.Application.csproj">
+      <Project>{fbbc2b24-4a6e-46a5-bb5a-48029e2f6c81}</Project>
+      <Name>Atento.Suite.Shared.Application</Name>
     </ProjectReference>
     <ProjectReference Include="..\Atento.Suite.Shared.Domain.Data\Atento.Suite.Shared.Domain.Data.csproj">
       <Project>{38B0B49A-2EAE-42D2-B2A6-634ACB17B9EA}</Project>

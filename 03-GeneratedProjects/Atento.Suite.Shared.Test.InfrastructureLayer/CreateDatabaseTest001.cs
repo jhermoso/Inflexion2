@@ -60,7 +60,8 @@ namespace Atento.Suite.Shared.Test.InfrastructureLayer
 
             // Context Factory
             connString = this.ConnectionString();
-            RootAggregateFrameworkUnitOfWorkFactory<Atento.Suite.Shared.Infrastructure.BootstrapUnitOfWork> ctxFactory = new RootAggregateFrameworkUnitOfWorkFactory<BootstrapUnitOfWork>(connString);
+            RootAggregateFrameworkUnitOfWorkFactory<BootstrapUnitOfWork> ctxFactory = 
+                new RootAggregateFrameworkUnitOfWorkFactory<BootstrapUnitOfWork>(connString);
 
             if (!ctxFactory.DatabaseExists())
             {

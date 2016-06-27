@@ -31,11 +31,20 @@ namespace Inflexion2.Domain
 
         public override int SaveChanges()
         {
+            int result;
             //this.AuditEntities();
 
             //this.ValidateEntities();
+            try
+            {
+                result = base.SaveChanges();
+            }
+            catch (Exception e)
+            {
 
-            return base.SaveChanges();
+                throw e;
+            }
+            return result;
         }
 
         //protected void AuditEntities()

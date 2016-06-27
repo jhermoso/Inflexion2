@@ -1,0 +1,12 @@
+
+WCF notes
+to host the wcf services on iis it is necesari to add a project
+http://stackoverflow.com/questions/25068616/number-displayed-after-a-new-web-site-projects-name
+
+Para el projecto de wcf service utilizamos El tipo de projecto WcfServiceLibrary. el fichero del projecto contiene definiciones ancladas al fichero de configuración que se genera App.config.
+
+Para el cliente (El Proxi) utilizamos un projecto de tipo libreria. este projecot luego se ha de referenciar por la aplicación que vva a utilizarlo en el fornt end y por tanto es necesario copiar 
+su appconfig en el start up main project.
+
+Remember if you has an startup project like wcfclasslibrary with services definition it is necesary to add an App.config or Web.config
+with the configuration of the services, the ioc tool, the orm and also THE REFERENCES TO THOUSE TOOLS.

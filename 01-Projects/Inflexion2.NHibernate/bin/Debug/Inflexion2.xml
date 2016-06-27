@@ -4,6 +4,29 @@
         <name>Inflexion2</name>
     </assembly>
     <members>
+        <member name="T:Inflexion2.Converters.GenericConverters">
+            <summary>
+            public static service class to hols generic converting methods.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Converters.GenericConverters.ChangeType``1(System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            http://www.siepman.nl/blog/post/2012/03/06/Convert-to-unknown-generic-type-ChangeType-T.aspx
+            this method convert from one value to unknown type indicating the culture.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <param name="cultureInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Converters.GenericConverters.ChangeType``1(System.Object)">
+            <summary>
+            this method convert from one value to unknown type using the current culture.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
         <member name="T:Inflexion2.Data.DatabaseManager">
             <summary>
             Handles Db creation, deletion, etc.

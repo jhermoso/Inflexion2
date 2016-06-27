@@ -52,7 +52,7 @@ namespace Atento.Suite.Shared.Infrastructure
 
             this.Property(e => e.BooleanField).IsRequired();
 
-            this.Property(e => e.DatetimeField).IsRequired();
+            this.Property(e => e.DatetimeField);
 
             this.Property(e => e.ByteField).IsRequired();
 

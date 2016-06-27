@@ -1,207 +1,213 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <doc>
-  <assembly>
-    <name>Atento.Suite.Shared.Application</name>
-  </assembly>
-  <members>
-    <member name="T:Atento.Suite.Shared.Application.IPersonaMapper">
-      <summary>
-            Clase pública encargada de mapear los datos de una entidad <see cref="T:Atento.Suite.Shared.Application.PersonaMapper" />.
+    <assembly>
+        <name>Atento.Suite.Shared.Application</name>
+    </assembly>
+    <members>
+        <member name="T:Atento.Suite.Shared.Application.IPersonaMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:Atento.Suite.Shared.Application.PersonaMapper"/>.
             </summary>
-      <remarks>
-            Mapea los datos del Dto <see cref="T:Atento.Suite.Shared.Application.Dtos.PersonaDto" /> con una entidad <see cref="T:Atento.Suite.Shared.Application.PersonaMapper" />.
+            <remarks>
+            Mapea los datos del Dto <see cref="T:Atento.Suite.Shared.Application.Dtos.PersonaDto"/> con una entidad <see cref="T:Atento.Suite.Shared.Application.PersonaMapper"/>.
             </remarks>
-    </member>
-    <member name="T:Atento.Suite.Shared.Application.IPersonaServices">
-      <summary>
+        </member>
+        <member name="T:Atento.Suite.Shared.Application.IPersonaServices">
+            <summary>
              Define el contrato para los servicios de administración de la entidad 
-            de tipo <see cref="!:Atento.Suite.Shared.Application.IPersona" />.
+            de tipo <see cref="!:Atento.Suite.Shared.Application.IPersona"/>.
             </summary>
-      <remarks>a
+            <remarks>a
             Sin comentarios adicionales.
             </remarks>
-    </member>
-    <!-- Badly formed XML comment ignored for member "M:Atento.Suite.Shared.Application.IPersonaServices.Create(Atento.Suite.Shared.Application.Dtos.PersonaDto)" -->
-    <!-- Badly formed XML comment ignored for member "M:Atento.Suite.Shared.Application.IPersonaServices.Delete(System.Int32)" -->
-    <member name="M:Atento.Suite.Shared.Application.IPersonaServices.GetAll">
-      <summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Atento.Suite.Shared.Application.IPersonaServices.Create(Atento.Suite.Shared.Application.Dtos.PersonaDto)" -->
+        <!-- Badly formed XML comment ignored for member "M:Atento.Suite.Shared.Application.IPersonaServices.Delete(System.Int32)" -->
+        <member name="M:Atento.Suite.Shared.Application.IPersonaServices.GetAll">
+            <summary>
             Función encargada de obtener todas las entidades de tipo Persona.
             </summary>
-      <remarks>
+            <remarks>
             Devuelve la totalidad de las entidades.
             </remarks>
-      <param name="userContextDto">
-            Parámetro de tipo <see cref="!:UserContextDto" /> que representa el contexto del usuario.
+            <param name="userContextDto">
+            Parámetro de tipo <see cref="!:UserContextDto"/> que representa el contexto del usuario.
             </param>
-      <returns>
-            Devuelve listado de Dto´s de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.PersonaDto" />.
+            <returns>
+            Devuelve listado de Dto´s de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.PersonaDto"/>.
             </returns>
-    </member>
-    <member name="M:Atento.Suite.Shared.Application.IPersonaServices.GetPaged(Inflexion2.Application.DataTransfer.Core.SpecificationDto)">
-      <summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.IPersonaServices.GetPaged(Inflexion2.Application.DataTransfer.Core.SpecificationDto)">
+            <summary>
             Recupera una lista paginada de entidades Persona, según la especificación indicada.
             </summary>
-      <param name="specificationDto">
+            <param name="specificationDto">
             Especificación que se va a aplicar.
             </param>
-      <param name="userContextDto">
+            <param name="userContextDto">
             Información de contexto del usuario.
             </param>
-      <returns>
+            <returns>
             La lista paginada de entidades Persona, según la especificación indicada.
             </returns>
-    </member>
-    <member name="M:Atento.Suite.Shared.Application.IPersonaServices.GetById(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.IPersonaServices.GetById(System.Int32)">
+            <summary>
             Función encargada de obtener una entidad Persona de acuerdo a
             su identificador.
             </summary>
-      <remarks>
+            <remarks>
             Sin comentarios adicionales.
             </remarks>
-      <param name="personaId">
+            <param name="personaId">
             Parámetro que indica el identificador único de la entidad.
             </param>
-      <returns>
-            Devuelve objeto Dto <see cref="T:Atento.Suite.Shared.Application.Dtos.PersonaDto" /> con la información requerida.
+            <returns>
+            Devuelve objeto Dto <see cref="T:Atento.Suite.Shared.Application.Dtos.PersonaDto"/> con la información requerida.
             </returns>
-    </member>
-    <member name="M:Atento.Suite.Shared.Application.IPersonaServices.Update(Atento.Suite.Shared.Application.Dtos.PersonaDto)">
-      <summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.IPersonaServices.Update(Atento.Suite.Shared.Application.Dtos.PersonaDto)">
+            <summary>
             Actualiza una determinada entidad Persona.
             </summary>
-      <param name="personaDto">
+            <param name="personaDto">
             DTO que contiene la información de la entidad que se va a actualizar.
             </param>
-      <param name="userContextDto">
+            <param name="userContextDto">
             Información de contexto del usuario.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="T:Atento.Suite.Shared.Application.PersonaMapper">
-      <summary>
-            Clase pública encargada de mapear los datos de una entidad <see cref="T:Atento.Suite.Shared.Application.PersonaMapper" />.
+        </member>
+        <member name="T:Atento.Suite.Shared.Application.PersonaMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:Atento.Suite.Shared.Application.PersonaMapper"/>.
             </summary>
-      <remarks>
-            Mapea los datos del Dto <see cref="T:Atento.Suite.Shared.Application.Dtos.PersonaDto" /> con una entidad <see cref="T:Atento.Suite.Shared.Application.PersonaMapper" />.
+            <remarks>
+            Mapea los datos del Dto <see cref="T:Atento.Suite.Shared.Application.Dtos.PersonaDto"/> con una entidad <see cref="T:Atento.Suite.Shared.Application.PersonaMapper"/>.
             </remarks>
-    </member>
-    <member name="M:Atento.Suite.Shared.Application.PersonaMapper.#ctor">
-      <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:Atento.Suite.Shared.Application.PersonaMapper" />.
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.PersonaMapper.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Atento.Suite.Shared.Application.PersonaMapper"/>.
             </summary>
-      <remarks>
+            <remarks>
             Sin comentarios especiales.
             </remarks>
-    </member>
-    <member name="M:Atento.Suite.Shared.Application.PersonaMapper.EntityMapping(Atento.Suite.Shared.Domain.IPersona)">
-      <summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.PersonaMapper.EntityMapping(Atento.Suite.Shared.Domain.IPersona)">
+            <summary>
             Función pública que mapea las entidades para devolver el
             correspondiente Dto.
             </summary>
-      <remarks>
-            Se encarga de mapear objetos <see cref="T:Atento.Suite.Shared.Domain.Persona" /> 
-            devolviendo un objeto <see cref="T:Atento.Suite.Shared.Application.Dtos.PersonaDto" />.
+            <remarks>
+            Se encarga de mapear objetos <see cref="T:Atento.Suite.Shared.Domain.Persona"/> 
+            devolviendo un objeto <see cref="T:Atento.Suite.Shared.Application.Dtos.PersonaDto"/>.
             </remarks>
-      <param name="entityPersona">
-            Objeto de la entidad <see cref="T:Atento.Suite.Shared.Domain.Persona" />.
+            <param name="entityPersona">
+            Objeto de la entidad <see cref="T:Atento.Suite.Shared.Domain.Persona"/>.
             </param>
-      <exception cref="T:System.ArgumentNullException">
+            <exception cref="T:System.ArgumentNullException">
             Lanzada cuando el valor de <c>entityPersona</c> es null.
             </exception>
-      <returns>
-            Devuelve un objeto de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.PersonaDto" /> 
+            <returns>
+            Devuelve un objeto de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.PersonaDto"/> 
             con los datos mapeados.
             </returns>
-    </member>
-    <!-- Badly formed XML comment ignored for member "T:Atento.Suite.Shared.Application.PersonaServices" -->
-    <member name="F:Atento.Suite.Shared.Application.PersonaServices.personaMapper">
-      <summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Atento.Suite.Shared.Application.PersonaServices" -->
+        <member name="F:Atento.Suite.Shared.Application.PersonaServices.personaMapper">
+            <summary>
             Referencia al mapeador de la entidad Persona.
             </summary>
-    </member>
-    <member name="M:Atento.Suite.Shared.Application.PersonaServices.#ctor">
-      <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:Persona&gt;Service" />.
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.PersonaServices.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Persona>Service"/>.
             </summary>
-      <remarks>
-            Constructor de la clase <see cref="T:PersonaServices" />.
+            <remarks>
+            Constructor de la clase <see cref="T:PersonaServices"/>.
             </remarks>
-    </member>
-    <member name="P:Atento.Suite.Shared.Application.PersonaServices.PersonaMapper">
-      <summary>
-            Obtiene la referencia al mapeador de la entidad <see cref="T:IPersona" />.
+        </member>
+        <member name="P:Atento.Suite.Shared.Application.PersonaServices.PersonaMapper">
+            <summary>
+            Obtiene la referencia al mapeador de la entidad <see cref="T:IPersona"/>.
             </summary>
-    </member>
-    <member name="M:Atento.Suite.Shared.Application.PersonaServices.Create(Atento.Suite.Shared.Application.Dtos.PersonaDto)">
-      <summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.PersonaServices.Create(Atento.Suite.Shared.Application.Dtos.PersonaDto)">
+            <summary>
             Crea una entidad Persona.
             </summary>
-      <param name="personaDto">
+            <param name="personaDto">
             DTO que contiene la información para crear la entidad.
             </param>
-      <returns>
+            <returns>
             El identificador de la entidad creada.
             </returns>
-    </member>
-    <member name="M:Atento.Suite.Shared.Application.PersonaServices.Delete(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.PersonaServices.Delete(System.Int32)">
+            <summary>
             Elimina una determinada entidad Persona.
             </summary>
-      <param name="id">
+            <param name="id">
             Identificador de la entidad que se va a eliminar.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="M:Atento.Suite.Shared.Application.PersonaServices.GetAll">
-      <summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.PersonaServices.GetAll">
+            <summary>
             Recupera todas las entidades Persona.
             </summary>
-      <returns>
+            <returns>
             Todas las entidades Persona.
             </returns>
-    </member>
-    <member name="M:Atento.Suite.Shared.Application.PersonaServices.GetById(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.PersonaServices.GetById(System.Int32)">
+            <summary>
             Recupera una entidad Persona mediante su identificador correspondiente.
             </summary>
-      <param name="id">
+            <param name="id">
             Identificador de la entidad que se va a recuperar.
             </param>
-      <returns>
+            <returns>
             La entidad Persona recuperada o valor nulo si no se encuentra.
             </returns>
-    </member>
-    <member name="M:Atento.Suite.Shared.Application.PersonaServices.GetPaged(Inflexion2.Application.DataTransfer.Core.SpecificationDto)">
-      <summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.PersonaServices.GetPaged(Inflexion2.Application.DataTransfer.Core.SpecificationDto)">
+            <summary>
             Recupera una lista paginada de entidades Persona, según la especificación indicada.
             </summary>
-      <param name="specificationDto">
+            <param name="specificationDto">
             Especificación que se va a aplicar.
             </param>
-      <returns>
+            <returns>
             La lista paginada de entidades 'Persona', según la especificación indicada.
             </returns>
-    </member>
-    <member name="M:Atento.Suite.Shared.Application.PersonaServices.Update(Atento.Suite.Shared.Application.Dtos.PersonaDto)">
-      <summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.PersonaServices.Update(Atento.Suite.Shared.Application.Dtos.PersonaDto)">
+            <summary>
             Actualiza una determinada entidad Persona.
             </summary>
-      <param name="personaDto">
+            <param name="personaDto">
             DTO que contiene la información de la entidad que se va a actualizar.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="T:Atento.Suite.Shared.Application.EfApplicationServiceBase">
-      <summary>
+        </member>
+        <member name="T:Atento.Suite.Shared.Application.EfApplicationServiceBase">
+            <summary>
             .es Clase base para los servicios de aplicación de un bounded context con Entity Framework 
             </summary>
-    </member>
-  </members>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.EfApplicationServiceBase.ConnectionString">
+            <summary>
+            Get the conection string from the app.config or web config file asociated to the project on execution.
+            </summary>
+            <returns>The database connection string </returns>
+        </member>
+    </members>
 </doc>

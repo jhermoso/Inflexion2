@@ -39,11 +39,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
@@ -52,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\PersonaReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\01-Projects\Inflexion2.Resources\Inflexion2.Resources.csproj">
@@ -62,6 +72,74 @@
       <Project>{BF5456D4-B276-459B-98D4-853FCEF99ADE}</Project>
       <Name>Inflexion2</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Atento.Suite.Shared.Application.Dtos\Atento.Suite.Shared.Application.Dtos.csproj">
+      <Project>{5935fc12-739b-4b22-aa69-d00894db0dbe}</Project>
+      <Name>Atento.Suite.Shared.Application.Dtos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atento.Suite.Shared.Application\Atento.Suite.Shared.Application.csproj">
+      <Project>{fbbc2b24-4a6e-46a5-bb5a-48029e2f6c81}</Project>
+      <Name>Atento.Suite.Shared.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atento.Suite.Shared.Domain.Data\Atento.Suite.Shared.Domain.Data.csproj">
+      <Project>{38b0b49a-2eae-42d2-b2a6-634acb17b9ea}</Project>
+      <Name>Atento.Suite.Shared.Domain.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atento.Suite.Shared.Domain\Atento.Suite.Shared.Domain.csproj">
+      <Project>{d15f5c89-c418-4694-ac25-83c59e49dc7b}</Project>
+      <Name>Atento.Suite.Shared.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atento.Suite.Shared.Infrastructure.Resources\Atento.Suite.Shared.Infrastructure.Resources.csproj">
+      <Project>{5c5bd30e-2c13-4f72-a7a1-a08403ed6d24}</Project>
+      <Name>Atento.Suite.Shared.Infrastructure.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atento.Suite.Shared.Infrastructure\Atento.Suite.Shared.Infrastructure.csproj">
+      <Project>{60942bd5-a22f-486f-b6ef-286415a29f01}</Project>
+      <Name>Atento.Suite.Shared.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\DataSources\Atento.Suite.Shared.Application.Dtos.PersonaDto.datasource" />
+    <None Include="Service References\PersonaReference\Atento.Suite.Shared.Application.Dtos.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PersonaReference\Inflexion2.Application.DataTransfer.Base.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PersonaReference\Inflexion2.Application.DataTransfer.Core.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PersonaReference\Inflexion2.Domain.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PersonaReference\service.wsdl" />
+    <None Include="Service References\PersonaReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PersonaReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PersonaReference\System.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\PersonaReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PersonaReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PersonaReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PersonaReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

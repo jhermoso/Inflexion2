@@ -31,7 +31,7 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
 
     using Atento.Suite.Shared.Application;
     using Atento.Suite.Shared.Application.Dtos;
-    using Atento.Suite.Shared.Application.WcfClient.PersonaServiceReference;
+    using Atento.Suite.Shared.Application.WcfClient.PersonaReference;
     using Atento.Suite.Shared.Infrastructure.Resources;
     using Microsoft.Practices.Prism.Commands;
 
@@ -149,7 +149,17 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
             {
                 this.IsBusy = true;
                 // Instanciamos el proxy.
-                PersonaServiceClient serviceClient = new PersonaServiceClient();
+                PersonaServiceClient serviceClient;
+                try
+                {
+                    serviceClient = new PersonaServiceClient();
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
+
+
 
                 //Ejecutamos el servicio de forma asíncrona.
                 serviceClient.BeginGetPaged(this.Specification,                     (asyncResult) =>

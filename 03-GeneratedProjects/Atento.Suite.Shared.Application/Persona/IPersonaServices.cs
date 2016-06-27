@@ -43,7 +43,7 @@ namespace Atento.Suite.Shared.Application
         /// Sin comentarios adicionales.
         /// </remarks>
         /// <param name="personaDto">
-        /// Parámetro de tipo <see cref="PersonaDto"> con los datos necesarios
+        /// Parámetro de tipo <see cref="personaDto"> con los datos necesarios
         /// para la creación de la entidad Persona.
         /// </param>
         /// <param name="userContextDto"> 

@@ -6,15 +6,66 @@
              xmlns:controls="clr-namespace:Inflexion2.UX.WPF.Controls;assembly=Inflexion2.UX.WPF.Controls"
              xmlns:converter="clr-namespace:Inflexion2.UX.WPF.ValueConverters;assembly=Inflexion2.UX.WPF"
              mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="525" 
              Padding="5">
     <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <StackPanel Orientation="Vertical" VerticalAlignment="Top" >
-            <TextBlock Text="Nombre"/>
-            <TextBox 
-                            x:Name="txtNombreEdit" 
-                            Text="{Binding Nombre, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}"
-                            ToolTip="Nombre"/>
-        </StackPanel>
-    </Grid>
+        <TextBlock Text="Nombre"                Grid.Row="0" Grid.Column="0"/>
+        <TextBlock Text="BooleanField"          Grid.Row="1" Grid.Column="0"/>
+        <TextBlock Text="DatetimeField"         Grid.Row="2" Grid.Column="0"/>
+        <TextBlock Text="ByteField"             Grid.Row="3" Grid.Column="0"/>
+        <TextBlock Text="GuidField"             Grid.Row="4" Grid.Column="0"/>
+        <TextBlock Text="DecimalField"          Grid.Row="5" Grid.Column="0"/>
+        <TextBlock Text="DobleField"            Grid.Row="6" Grid.Column="0"/>
+        <TextBlock Text="FloatField"            Grid.Row="7" Grid.Column="0"/>
+        <TextBlock Text="IntField"              Grid.Row="8" Grid.Column="0"/>
+        <TextBlock Text="LongField"             Grid.Row="9" Grid.Column="0"/>
+        <TextBlock Text="DateTimeOffsetField"   Grid.Row="10" Grid.Column="0"/>
+        <TextBlock Text="ShortField"            Grid.Row="11" Grid.Column="0"/>
+        <TextBlock Text="TimeSpanField"         Grid.Row="12" Grid.Column="0"/>
+        <TextBlock Text="Int16Field"            Grid.Row="13" Grid.Column="0"/>
+        <TextBlock Text="Int32Field"            Grid.Row="14" Grid.Column="0"/>
+        <TextBlock Text="Int64Field"            Grid.Row="15" Grid.Column="0"/>
+
+        <TextBox Grid.Row="0" Grid.Column="1"   x:Name="txtNombreEdit"              Text="{Binding Nombre             , Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="Nombre"/>
+        <TextBox Grid.Row="1" Grid.Column="1"   x:Name="txtBooleanFieldEdit"        Text="{Binding BooleanField       , Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}"  ToolTip="Nombre"/>
+        <TextBox Grid.Row="2" Grid.Column="1"   x:Name="txtDatetimeFieldEdit"       Text="{Binding DatetimeField      , Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="Nombre"/>
+        <TextBox Grid.Row="3" Grid.Column="1"   x:Name="txtByteFieldEdit"           Text="{Binding ByteField          , Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="Nombre"/>
+        <TextBox Grid.Row="4" Grid.Column="1"   x:Name="txtGuidFieldEdit"           Text="{Binding GuidField          , Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="Nombre"/>
+        <TextBox Grid.Row="5" Grid.Column="1"   x:Name="txtDecimalFieldEdit"        Text="{Binding DecimalField       , Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}"  ToolTip="Nombre"/>
+        <TextBox Grid.Row="6" Grid.Column="1"   x:Name="txtDobleFieldEdit"          Text="{Binding DobleField         , Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="Nombre"/>
+        <TextBox Grid.Row="7" Grid.Column="1"   x:Name="txtFloatFieldEdit"          Text="{Binding FloatField         , Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="Nombre"/>
+        <TextBox Grid.Row="8" Grid.Column="1"   x:Name="txtIntFieldEdit"            Text="{Binding IntField           , Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="Nombre"/>
+        <TextBox Grid.Row="9" Grid.Column="1"   x:Name="txtLongFieldEdit"           Text="{Binding LongField          , Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="Nombre"/>
+        <TextBox Grid.Row="10" Grid.Column="1"  x:Name="txtDateTimeOffsetFieldEdit" Text="{Binding DateTimeOffsetField, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}"  ToolTip="Nombre"/>
+        <TextBox Grid.Row="11" Grid.Column="1"  x:Name="txtShortFieldEdit"          Text="{Binding ShortField         , Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="Nombre"/>
+        <TextBox Grid.Row="12" Grid.Column="1"  x:Name="txtTimeSpanFieldEdit"       Text="{Binding TimeSpanField      , Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="Nombre"/>
+        <TextBox Grid.Row="13" Grid.Column="1"  x:Name="txtInt16FieldEdit"          Text="{Binding Int16Field         , Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="Nombre"/>
+        <TextBox Grid.Row="14" Grid.Column="1"  x:Name="txtInt32FieldEdit"          Text="{Binding Int32Field         , Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}"  ToolTip="Nombre"/>
+        <TextBox Grid.Row="15" Grid.Column="1"  x:Name="txtInt64FieldEdit"          Text="{Binding Int64Field         , Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="Nombre"/>
+
+    </Grid>                                                
 </UserControl>

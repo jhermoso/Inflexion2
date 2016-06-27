@@ -34,12 +34,13 @@ namespace Atento.Suite.Shared.Application
 
     using Atento.Suite.Shared.Domain.Data;
     using Atento.Suite.Shared.Domain;
+    using Atento.Suite.Shared.Infrastructure;
     #endregion
 
     /// <summary>
     /// .es Clase base para los servicios de aplicación de un bounded context con Entity Framework 
     /// </summary>
-     public class EfApplicationServiceBase
+    public class EfApplicationServiceBase
     {
         #region fields
         protected Atento.Suite.Shared.Domain.PerLifeTimeManager unitOfWorkPerTestLifeTimeManager = new Atento.Suite.Shared.Domain.PerLifeTimeManager();
@@ -62,7 +63,17 @@ namespace Atento.Suite.Shared.Application
 
             // Context Factory
             this.connString = this.ConnectionString();
-            ctxFactory = new RootAggregateFrameworkUnitOfWorkFactory<Atento.Suite.Shared.Infrastructure.BootstrapUnitOfWork>(this.connString);//1
+            ctxFactory = new RootAggregateFrameworkUnitOfWorkFactory<BootstrapUnitOfWork>(this.connString);//1
+
+            try
+            {
+                var uow = new Infrastructure.BootstrapUnitOfWork(this.connString);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
             //ctxFactory.ValidateDatabaseSchema();//1
             if (!ctxFactory.DatabaseExists())
@@ -72,7 +83,7 @@ namespace Atento.Suite.Shared.Application
 
             this.unityContainer.RegisterInstance<IDatabaseManager>(ctxFactory);//1
 
-            // esta linea se ha de incluir en el constructor de la clase de servicios.
+            //esta linea se ha de incluir en el constructor de la clase de servicios.
             //this.unityContainer.RegisterType<DbContext, DomainUnitOfWork>(this.contextPerTestLifeTimeManager, new InjectionConstructor(connString));
 
             this.unityContainer.RegisterType<IUnitOfWork, EntityFrameworkUnitOfWork>(this.unitOfWorkPerTestLifeTimeManager);
@@ -80,9 +91,31 @@ namespace Atento.Suite.Shared.Application
         #endregion
     
         #region Methods
+        /// <summary>
+        /// Get the conection string from the app.config or web config file asociated to the project on execution.
+        /// </summary>
+        /// <returns>The database connection string </returns>
         protected virtual string ConnectionString()
         {
-            return ConfigurationManager.ConnectionStrings["Suite.Connection"].ConnectionString;
+
+            System.Diagnostics.Contracts.Contract.Requires<ConfigurationErrorsException>(ConfigurationManager.AppSettings != null, "The configuration file don't exist or is not in the executed project");
+            //System.Diagnostics.Contracts.Contract.Requires<ConfigurationErrorsException>(AppConfigHasTheSection("Suite.Connection"), "The configuration file has not a 'Suite.Connection' name for a connection string ");
+
+            string result;
+            try
+            {
+                result = System.Configuration.ConfigurationManager.ConnectionStrings["Suite.Connection"].ConnectionString;
+            }
+            catch (ConfigurationErrorsException)
+            {
+                throw;
+            }
+            return result;
+        }
+        public bool AppConfigHasTheSection(string name)
+        {
+            var result = System.Configuration.ConfigurationManager.ConnectionStrings[name]; //System.Configuration.ConfigurationManager.GetSection("connectionStrings");
+            return result != null;
         }
 
         public void Commit()

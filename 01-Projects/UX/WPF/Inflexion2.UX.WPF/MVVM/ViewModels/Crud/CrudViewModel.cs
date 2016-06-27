@@ -16,7 +16,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
     using Inflexion2.UX.WPF.MVVM;
     using Inflexion2.UX.WPF.MVVM.ViewModels;
     using Inflexion2.Application.DataTransfer.Base;
-
+    using Converters;
     /// <summary>
     /// Clase pública que representa la Vista Modelo Base de la cuál tiran el
     /// resto de ViewModels.
@@ -245,7 +245,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
                 return;
             }
 
-            TIdentifier tid = (TIdentifier)(object)id;
+            TIdentifier tid = GenericConverters.ChangeType<TIdentifier>(id);
             this.ObjectElement = GetById(tid);
 
             this.Rebind();

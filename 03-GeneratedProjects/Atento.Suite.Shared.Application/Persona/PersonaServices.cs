@@ -84,12 +84,12 @@ namespace Atento.Suite.Shared.Application
         /// </remarks>
         public PersonaServices() : base()
         {
-    
+
             this.unityContainer.RegisterType<DbContext, BootstrapUnitOfWork>(this.contextPerTestLifeTimeManager, new InjectionConstructor(this.connString));
 
             // registramos el repositorio de la entidad
             this.unityContainer.RegisterType<IPersonaRepository, PersonaRepository>(new PerResolveLifetimeManager());
-  
+
             this.personaMapper = new PersonaMapper();
         }
 
@@ -157,7 +157,23 @@ namespace Atento.Suite.Shared.Application
                                                                     )
                                             );
 
-            Persona persona = PersonaFactory.Create(personaDto.Nombre); 
+            Persona persona = PersonaFactory.Create(personaDto.Nombre);
+            persona.BooleanField        = personaDto.BooleanField       ;
+            persona.DatetimeField = DateTime.Now      ;
+            persona.ByteField           = personaDto.ByteField          ;
+            persona.GuidField           = personaDto.GuidField          ;
+            persona.DecimalField        = personaDto.DecimalField       ;
+            persona.DobleField          = personaDto.DobleField         ;
+            persona.FloatField          = personaDto.FloatField         ;
+            persona.IntField            = personaDto.IntField           ;
+            persona.LongField           = personaDto.LongField          ;
+            persona.DateTimeOffsetField = personaDto.DateTimeOffsetField;
+            persona.ShortField          = personaDto.ShortField         ;
+            persona.TimeSpanField       = personaDto.TimeSpanField      ;
+            persona.Int16Field          = personaDto.Int16Field         ;
+            persona.Int32Field          = personaDto.Int32Field         ;
+            persona.Int64Field          = personaDto.Int64Field         ;
+
             IPersonaRepository repo = this.unityContainer.Resolve<IPersonaRepository>();
             repo.Add(persona);
             this.Commit();
@@ -256,21 +272,26 @@ namespace Atento.Suite.Shared.Application
 
                 // Obtener y comprobar la entidad.
                 //ISpecification<Persona> spec = new DirectSpecification<Persona>(t => t.Id == entityBId);
-                Persona entity = repo.GetFilteredElements(t => t.Id == entityBId).Single();
-                string s = string.Format(Inflexion2.Resources.Framework.NoDataById, "Persona", entityBId);
+                var temp = repo.GetFilteredElements(t => t.Id == entityBId);
+                
+                //string s = string.Format(Inflexion2.Resources.Framework.NoDataById, "Persona", entityBId)
+                //Guard.ArgumentIsNotNull( entity, s );
 
-                Guard.ArgumentIsNotNull( entity, s );
-
+                if (temp.Count() > 0)
+                {
+                    Persona entity = temp.Single();
                     // Mapeamos los datos.
                     entityDto = this.PersonaMapper.EntityMapping(entity);
-
-                    // Confirmamos la transacción.
-                    this.Commit();
-                
+                }
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                // Confirmamos la transacción.
+                this.Commit();
             }
 
             // Devolvemos el resultado.
@@ -346,8 +367,6 @@ namespace Atento.Suite.Shared.Application
 
         #region Private Duplicated data for precondition methods
         #endregion
-
-
 
         #region update
         // ServiceUpdateMethodCT.tt

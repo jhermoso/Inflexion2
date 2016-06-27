@@ -28,7 +28,7 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
     using Atento.Suite.Shared.Application;
     using Atento.Suite.Shared.Application.Dtos;
     using Atento.Suite.Shared.Infrastructure.Resources;
-    using Atento.Suite.Shared.Application.WcfClient.PersonaServiceReference;
+    using Atento.Suite.Shared.Application.WcfClient.PersonaReference;
     #endregion
 
     /// <summary>

@@ -98,9 +98,12 @@
     <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
     <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\PersonaServiceReference\Reference.cs">
+    <Compile Include="Service References\PersonaReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -136,25 +139,28 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="App.config" />
     <None Include="Properties\DataSources\Atento.Suite.Shared.Application.Dtos.PersonaDto.datasource" />
-    <None Include="Service References\PersonaServiceReference\PersonaService.wsdl" />
-    <None Include="Service References\PersonaServiceReference\PersonaService.xsd">
+    <None Include="Service References\PersonaReference\Atento.Suite.Shared.Application.Dtos.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\PersonaServiceReference\PersonaService1.xsd">
+    <None Include="Service References\PersonaReference\Inflexion2.Application.DataTransfer.Base.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\PersonaServiceReference\PersonaService2.xsd">
+    <None Include="Service References\PersonaReference\Inflexion2.Application.DataTransfer.Core.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\PersonaServiceReference\PersonaService3.xsd">
+    <None Include="Service References\PersonaReference\Inflexion2.Domain.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\PersonaServiceReference\PersonaService4.xsd">
+    <None Include="Service References\PersonaReference\service.wsdl" />
+    <None Include="Service References\PersonaReference\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\PersonaServiceReference\PersonaService5.xsd">
+    <None Include="Service References\PersonaReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PersonaReference\System.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -162,19 +168,16 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\PersonaServiceReference\" />
+    <WCFMetadataStorage Include="Service References\PersonaReference\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\PersonaServiceReference\PersonaService.disco" />
+    <None Include="Service References\PersonaReference\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\PersonaServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\PersonaReference\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\PersonaServiceReference\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PersonaServiceReference\Reference.svcmap">
+    <None Include="Service References\PersonaReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
