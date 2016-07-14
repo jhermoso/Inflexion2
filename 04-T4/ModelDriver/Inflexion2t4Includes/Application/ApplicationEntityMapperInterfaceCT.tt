@@ -34,6 +34,8 @@ public class ApplicationEntityMapperInterfaceCT : Template
 namespace <#= projectNamespace #>
 {
 
+    using System;
+    using System.Runtime.Serialization;
 <#+
 if (sharedKernelUsings != null)
 foreach (var item in sharedKernelUsings)
@@ -43,13 +45,10 @@ foreach (var item in sharedKernelUsings)
 <#+
     }// end foreach para los using del shared kernel
 #>
-                              
     using Inflexion2.Application.Core;
     using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Dtos;
     using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain;
 
-    using System;
-    using System.Runtime.Serialization;
 <#+ if (cbc.targetLinksCounter>0) 
     {
 #>

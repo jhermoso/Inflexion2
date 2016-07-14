@@ -39,10 +39,11 @@ namespace <#= projectNamespace #>
     using Inflexion2.Data;
     using Inflexion2.Application;
 
+    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain;
 <#+ if (cbc.OwnBoundedContextHasEnums) {#>
     using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain.Data;
 <#+ } #>
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain;
+	using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Infrastructure;
     #endregion
 
     /// <summary>
@@ -89,9 +90,32 @@ namespace <#= projectNamespace #>
         #endregion
     
         #region Methods
+		/// <summary>
+        /// Get the conection string from the app.config or web config file asociated to the project on execution.
+        /// </summary>
+        /// <returns>The database connection string </returns>
         protected virtual string ConnectionString()
         {
-            return ConfigurationManager.ConnectionStrings["<#= cbc.OwnBoundedContext.Data #>.Connection"].ConnectionString;
+
+            System.Diagnostics.Contracts.Contract.Requires<ConfigurationErrorsException>(ConfigurationManager.AppSettings != null, "The configuration file don't exist or is not in the executed project");
+            //System.Diagnostics.Contracts.Contract.Requires<ConfigurationErrorsException>(AppConfigHasTheSection("Suite.Connection"), "The configuration file has not a 'Suite.Connection' name for a connection string ");
+            string result;
+			try
+            {
+				result = ConfigurationManager.ConnectionStrings["<#= cbc.OwnBoundedContext.Data #>.Connection"].ConnectionString;
+			}
+            catch (ConfigurationErrorsException)
+            {
+                throw;
+            }
+ 
+			return result;
+        }
+
+        public bool AppConfigHasTheSection(string name)
+        {
+            var result = System.Configuration.ConfigurationManager.ConnectionStrings[name]; //System.Configuration.ConfigurationManager.GetSection("connectionStrings");
+            return result != null;
         }
 
         public void Commit()

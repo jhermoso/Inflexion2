@@ -176,7 +176,15 @@ public class I2ServiceRegionCreateMethod : Template
 
 <#+if (!ThereIsDtoProperties) { #>
             <#= cbc.pascalSecureEntityName #> <#= cbc.camelSecureEntityName #> = <#= cbc.pascalSecureEntityName #>Factory.Create(<#=(cbc.isDerivedFromOneEntity)? cbc.MandatoryEntityBaseConstructorParamansDefinitionDTO : cbc.MandatoryConstructorParamnsDTO #>); 
-<#+                           } #>
+<#+
+    foreach (var property in cbc.propertyObjects)
+    {
+#>
+<#+     if (property.RequestUponCreation==RequestUponCreation.no ) /* NO(property.IsMandatory) */        {#>
+               <#= cbc.camelSecureEntityName #>.<#= T4Help.ToPascalCase(property.AtributteName) #> = <#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.AtributteName) #>;
+<#+        }/*end if (property.IsMandatory) */
+    }
+	                           } #>
             I<#= cbc.pascalSecureEntityName #>Repository repo = this.unityContainer.Resolve<I<#= cbc.pascalSecureEntityName #>Repository>();
             repo.Add(<#= cbc.camelSecureEntityName #>);
             this.Commit();

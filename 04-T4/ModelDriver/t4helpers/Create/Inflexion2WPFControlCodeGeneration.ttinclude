@@ -160,6 +160,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                     // TODO borrar los ficheros antes de recrearlos pues al añadir nuevos entidades no regenera el resx.c
                                                     if (okDebug) Debug.WriteLine(string.Format("entidad ='{0}', estado = '{1}'",entity.Name, estadoDeDesarrollo));
                                                     var t20   = new InfraestructureResourcesCT(CBC, nombreprojecto, SharedKernelTree, estadoDeDesarrollo);
+													t20.Output.PreserveExistingFile = true;
                                                     t20.Output.File = T4Help.SecureName(secureBdName)+"Neutral.resx";
                                                     if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",t20.Output.File ));
                                                     t20.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
@@ -433,6 +434,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                     if (okDebug) Debug.WriteLine(string.Format("entidad ='{0}', estado = '{1}'",entity.Name, estadoDeDesarrollo));
                                                     var t20   = new InfraestructureResourcesCT(CBC, nombreprojecto, SharedKernelTree, estadoDeDesarrollo);
                                                     t20.Output.File = T4Help.SecureName(secureBdName)+"Neutral.resx";
+													t20.Output.PreserveExistingFile = true;
                                                     if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",t20.Output.File ));
                                                     t20.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                     t20.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
@@ -445,7 +447,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                         Debug.WriteLine(" **+* borramos los recursos existentes");
                                                         Debug.WriteLine(T4Help.SecureName(secureBdName));
                                                         Debug.WriteLine(f);
-                                                        if( File.Exists(f))
+                                                        if( File.Exists(f) && false)
                                                         {// si existe lo borramos para que al recrearlo recree tambien el resx.cs y de esta forma los recursos esten actualizados.
                                                             
                                                             //var projitems = SolutionInfo.ProjectsList.Cast<Project>().Where(p=> p.CodeModel!=null && p.Name.Equals(nombreprojecto) ).First().ProjectItems;
@@ -675,15 +677,15 @@ File.Delete(f);
                                                         
                                                         if( contadorDeEntidades == 1 )
                                                         {
-                                                            var tWebConfig  = new WebConfigCT(CBC, nombreprojecto, SharedKernelTree);
-                                                            tWebConfig.Output.File = "Web.config";
-                                                            tWebConfig.Output.ItemType = ItemType.Content;
-                                                            tWebConfig.Output.Encoding = Encoding.UTF8;
-                                                            tWebConfig.Output.PreserveExistingFile = false;
-                                                            tWebConfig.Output.CopyToOutputDirectory = CopyToOutputDirectory.CopyAlways; 
-                                                            tWebConfig.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
-                                                            tWebConfig.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
-                                                            tWebConfig.Render();
+                                                            var tWcfAppConfig  = new WcfServiceAppConfigCT(CBC, nombreprojecto, SharedKernelTree);
+                                                            tWcfAppConfig.Output.File = "App.config";
+                                                            tWcfAppConfig.Output.ItemType = ItemType.Content;
+                                                            tWcfAppConfig.Output.Encoding = Encoding.UTF8;
+                                                            tWcfAppConfig.Output.PreserveExistingFile = true;
+                                                            tWcfAppConfig.Output.CopyToOutputDirectory = CopyToOutputDirectory.CopyAlways; 
+                                                            tWcfAppConfig.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            tWcfAppConfig.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            tWcfAppConfig.Render();
             
                                                             //var tUnityFrameworkConfig  = new ApplicationRemoteFrameworkUnityConfigCT(CBC, nombreprojecto, SharedKernelTree);
                                                             //tUnityFrameworkConfig.Output.File = CBC.company+"Framework.Unity.config";

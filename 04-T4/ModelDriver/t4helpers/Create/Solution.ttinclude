@@ -75,7 +75,7 @@
 
             string ClassLibraryTemplatePath = solution.GetProjectTemplate("ClassLibrary.zip", "CSharp"); // obtenemos la localización de la plantilla de proyecto ClassLibrary
             string ClassLibraryCCTemplatePath = solution.GetProjectTemplate("ClassLibraryCC.zip", "CSharp"); // obtenemos la localización de la plantilla de proyecto ClassLibrary
-            string WCFServiceLibraryTemplatePath = solution.GetProjectTemplate("WcfServiceLibrary.zip", "CSharp"); // obtenemos la localización de la plantilla de proyecto WCF Service Library
+            string WCFServiceLibraryCCTemplatePath = solution.GetProjectTemplate("WcfServiceLibraryCC.zip", "CSharp"); // obtenemos la localización de la plantilla de proyecto WCF Service Library
             string WCFServiceApplicationTemplatePath = solution.GetProjectTemplate("WAPService.zip", "CSharp"); // obtenemos la localización de la plantilla de proyecto WCF Service Application
             string WCFServiceApplicationCCTemplatePath = solution.GetProjectTemplate("WAPServiceCC.zip", "CSharp"); // obtenemos la localización de la plantilla de proyecto WCF Service Application
             string WpfUserControlLibraryCCTemplatePath = solution.GetProjectTemplate("WpfUserControlLibraryCC.zip", "CSharp"); // obtenemos la localización de la plantilla de proyecto WCF Service Application
@@ -84,18 +84,20 @@
             string WPFApplicationTemplatePath = solution.GetProjectTemplate("WPFApplication.zip", "CSharp"); // obtenemos la localización de la plantilla de proyecto WCF Service Application
             string WpfApplicationCCTemplatePath = solution.GetProjectTemplate("WpfApplicationFramework4CC.zip", "CSharp"); // obtenemos la localización de la plantilla de proyecto WCF Service Application
             string TestProjectTemplatePath = solution.GetProjectTemplate("TestProject.zip", "CSharp"); // obtenemos la localización de la plantilla de proyecto WCF Service Application
-            string WPFControlProjectTemplatePath = solution.GetProjectTemplate("WPFControlLibrary.zip", "CSharp");
-//if (okDebug) Debug.WriteLine(WCFServiceLibraryTemplatePath);
+
+			string UnitTestProjectTemplatePath = solution.GetProjectTemplate("UnitTestProjectCC.zip", "CSharp"); 
+			string WPFControlProjectTemplatePath = solution.GetProjectTemplate("WPFControlLibrary.zip", "CSharp");
+//if (okDebug) Debug.WriteLine(WCFServiceLibraryCCTemplatePath);
 //if (okDebug) Debug.WriteLine(WCFServiceApplicationTemplatePath);
 
             //ClassLibraryTemplatePath = @"D:\Projects\t4\Gen\1033\ClassLibrary.zip\csClassLibrary.vstemplate";
-            //WCFServiceLibraryTemplatePath = @"D:\Projects\t4\Gen\1033\WcfServiceLibrary.zip\WcfServiceLibrary.vstemplate";
+            //WCFServiceLibraryCCTemplatePath = @"D:\Projects\t4\Gen\1033\WcfServiceLibraryCC.zip\WcfServiceLibrary.vstemplate";
             //WCFServiceApplicationTemplatePath = @"D:\Projects\t4\Gen\1033\WAPService.zip\WCFServiceProject.vstemplate";
 
             IDictionary<string , string> ProjectTemplatesList= new Dictionary<string , string>();
 
             ProjectTemplatesList.Add("ClassLibrary.zip", ClassLibraryTemplatePath);
-            ProjectTemplatesList.Add("WcfServiceLibrary.zip", WCFServiceLibraryTemplatePath);
+            ProjectTemplatesList.Add("WcfServiceLibraryCC.zip", WCFServiceLibraryCCTemplatePath);
             ProjectTemplatesList.Add("WAPService.zip", WCFServiceApplicationTemplatePath);
             ProjectTemplatesList.Add("ClassLibraryCC.zip", ClassLibraryCCTemplatePath);
             ProjectTemplatesList.Add("WAPServiceCC.zip", WCFServiceApplicationCCTemplatePath);
@@ -105,6 +107,7 @@
             ProjectTemplatesList.Add("WPFApplication.zip", WPFApplicationTemplatePath);
             ProjectTemplatesList.Add("WpfApplicationCC.zip", WpfApplicationCCTemplatePath);
              ProjectTemplatesList.Add("TestProject.zip", TestProjectTemplatePath);
+			ProjectTemplatesList.Add("UnitTestProjectCC.zip", UnitTestProjectTemplatePath);
             ProjectTemplatesList.Add("WPFControlLibrary.zip", WPFControlProjectTemplatePath);
             return ProjectTemplatesList;
         }

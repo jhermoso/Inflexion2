@@ -56,11 +56,8 @@ public class ApplicationEntityServicesBaseCT : Template
         var serviceGetPaged           = new ServiceGetPaged( cbc, projectNamespace, Skt);               string ServiceGetPagedTxt         = serviceGetPaged.TransformText();
         var serviceDelete           = new ServiceDelete( cbc, projectNamespace, Skt);               string ServiceDeleteTxt         = serviceDelete.TransformText();
         var serviceAddRemoveUpdateTargets           = new ServiceAddRemoveUpdateTargets( cbc, projectNamespace, Skt);               string ServiceAddRemoveUpdateTargetsTxt         = serviceAddRemoveUpdateTargets.TransformText();
-
         var serviceUpdateMethod           = new ServiceUpdateMethod( cbc, projectNamespace, Skt);               string ServiceUpdateMethodTxt         = serviceUpdateMethod.TransformText();
-
 #>
-
 <#= cpyrigthText #>
 namespace <#= projectNamespace #>
 {

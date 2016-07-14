@@ -34,6 +34,11 @@ public class ApplicationEntityServicesCoreCT : Template
 namespace <#= projectNamespace #>
 {
 
+    using System.Collections.Generic;
+    using System;
+	using Inflexion2.Domain;
+    using Inflexion2.Application.DataTransfer.Core;
+    using Inflexion2.Application;
 <#+
 if (sharedKernelUsings != null)
 foreach (var item in sharedKernelUsings)
@@ -43,24 +48,15 @@ foreach (var item in sharedKernelUsings)
 <#+
     }// end foreach para los using del shared kernel
 #>
-
-    using System.Collections.Generic;
-    using System;
-    using Inflexion2.Domain;
-    using Inflexion2.Application.DataTransfer.Core;
-    using Inflexion2.Application;
     using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Dtos;
 
     /// <summary>
-    ///  Define el contrato para los servicios de administración de la entidad 
-    /// de tipo <see cref="<#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.I<#= cbc.secureEntityName #>"/>.
+	///  .en Define the contract for the entity's administration services.
+    ///  .es Define el contrato para los servicios de administración de la entidad.
+    /// de tipo <see cref="<#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.I<#= cbc.secureEntityName #>Services"/>.
     /// </summary>
-    /// <remarks>a
-    /// Sin comentarios adicionales.
-    /// </remarks>
     public interface I<#= cbc.secureEntityName #>Services 
     {
-
         #region Methods
 <#+ if (cbc.LogicDelete) {   #>
         /// <summary>
@@ -76,11 +72,9 @@ foreach (var item in sharedKernelUsings)
         bool Activate(int id<#= (Secured)?", UserContextDto userContextDto":""#>);
 <#+ }#>
         /// <summary>
-        /// Función encargada de la creación de una entidad de tipo I<#= cbc.secureEntityName #>.
+		/// .en Create an entity of type I<#= cbc.secureEntityName #>.
+        /// .es Función encargada de la creación de una entidad de tipo I<#= cbc.secureEntityName #>.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         /// <param name="<#= T4Help.ToCamelCase(cbc.secureEntityName) #>Dto">
         /// Parámetro de tipo <see cref="<#= cbc.secureEntityName #>Dto"> con los datos necesarios
         /// para la creación de la entidad <#= cbc.secureEntityName #>.
@@ -109,7 +103,7 @@ foreach (var item in sharedKernelUsings)
         /// Parámetro de tipo <see cref="UserContextDto"/> que representa el contexto del usuario.
         /// </param>
         /// <exception cref="System.ArgumentNullException">
-        /// Lanzada cuando el valor del argumento de entrada <c>userContextDto<c> es <b>null</b>.
+        /// Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
         /// </exception>
         /// <returns>
         /// Devuelve <b>True</b> si la eliminación ha sido correcta y
@@ -130,6 +124,7 @@ foreach (var item in sharedKernelUsings)
         /// Devuelve listado de Dto´s de tipo <see cref="<#= cbc.pascalSecureEntityName #>Dto"/>.
         /// </returns>
         IEnumerable<<#= cbc.pascalSecureEntityName #>Dto> GetAll( <#= (Secured)?", UserContextDto userContextDto":""#>);
+
 <#+ if (cbc.LogicDelete) {   #>
         /// <summary>
         /// Función encargada de obtener todas las entidades de tipo <#= I #><#= cbc.pascalSecureEntityName #> activas.
@@ -144,6 +139,7 @@ foreach (var item in sharedKernelUsings)
         /// Devuelve listado de Dto´s de tipo <see cref="<#=  cbc.pascalSecureEntityName #>Dto"/>.
         /// </returns>
         IEnumerable<<#= cbc.pascalSecureEntityName #>Dto> GetEnabled( <#=(Secured)?", UserContextDto userContextDto":""#>);
+
 <#+ }#>
         /// <summary>
         /// Recupera una lista paginada de entidades <#= cbc.pascalSecureEntityName #>, según la especificación indicada.
@@ -163,9 +159,6 @@ foreach (var item in sharedKernelUsings)
         /// Función encargada de obtener una entidad <#= I #><#= cbc.pascalSecureEntityName #> de acuerdo a
         /// su identificador.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         /// <param name="<#= cbc.camelSecureEntityName #>Id">
         /// Parámetro que indica el identificador único de la entidad.
         /// </param>
@@ -189,9 +182,7 @@ foreach (var item in sharedKernelUsings)
         /// </returns>
         bool Update(<#= cbc.pascalSecureEntityName #>Dto <#= cbc.camelSecureEntityName #>Dto<#= (Secured)?", UserContextDto userContextDto":""#>);
 
-
         // Acontinuación escribimos los métodos de las propiedades que provienen de relaciones con otras entidades objetos valor o enumerados y son coleccion.
-
 <#+
     foreach (var property in cbc.propertyAssociationTargets)
     {

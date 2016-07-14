@@ -67,7 +67,7 @@ namespace <#= projectNamespace #>
 #>
 <#+     if(property.LiveCycleAtributte.Equals(LiveCycleAtributte.Variable) || property.LiveCycleAtributte.Equals(LiveCycleAtributte.Derivado)) {#>
 
-            this.Property(e => e.<#= T4Help.SecureName(property.AtributteName) #>)<#= (property.RequestUponCreation==RequestUponCreation.yes || !property.IsNullable )?".IsRequired()":(property.IsNullable)?".Nullable()":""#><#= (!property.AtributteType.ToLower().Equals("string")? "":(string.IsNullOrEmpty(property.Size))?"":".HasMaxLength("+ property.Size.ToString()+")" ) #>;
+            this.Property(e => e.<#= T4Help.SecureName(property.AtributteName) #>)<#= (property.AtributteType !="DateTime" && (property.RequestUponCreation==RequestUponCreation.yes || !property.IsNullable ))?".IsRequired()":(property.IsNullable)?".Nullable()":""#><#= (!property.AtributteType.ToLower().Equals("string")? "":(string.IsNullOrEmpty(property.Size))?"":".HasMaxLength("+ property.Size.ToString()+")" ) #>;
 <#+ } // end LiveCycleAtributte #>
 <#+ } // end foreach propertyObjects #>
 <#+

@@ -20,16 +20,45 @@ public class WpfEntityViewXamlCT : Template
              xmlns:controls="clr-namespace:Inflexion2.UX.WPF.Controls;assembly=Inflexion2.UX.WPF.Controls"
              xmlns:converter="clr-namespace:Inflexion2.UX.WPF.ValueConverters;assembly=Inflexion2.UX.WPF"
              mc:Ignorable="d" 
+			 d:DesignHeight="300" d:DesignWidth="525" 
              Padding="5">
     <Grid Background="White">
+        <Grid.RowDefinitions>
+<#+
+    foreach (var property in cbc.propertyObjects)
+    {
+#>
+            <RowDefinition Height="Auto"/>
+<#+
+    }
+#>  
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+<#+
+	int i=0;
+    foreach (var property in cbc.propertyObjects)
+    {
+#>
+        <TextBlock Text="<#= T4Help.ToPascalCase(property.AtributteName) #>"                Grid.Row="<#= i#>" Grid.Column="0"/>
 
-        <StackPanel Orientation="Vertical" VerticalAlignment="Top" >
-            <TextBlock Text="Nombre"/>
-            <TextBox 
-                            x:Name="txtNombreEdit" 
-                            Text="{Binding Nombre, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}"
-                            ToolTip="Nombre"/>
-        </StackPanel>
+<#+
+	i++;
+    }
+#> 
+
+<#+
+	i=0;
+    foreach (var property in cbc.propertyObjects)
+    {
+#>
+        <TextBox x:Name="field<#= T4Help.ToPascalCase(property.AtributteName) #>" Grid.Row="<#= i#>" Grid.Column="1" Text="{Binding <#= T4Help.ToPascalCase(property.AtributteName) #>, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="<#= (property.Tooltip != null)? property.Tooltip :"" #>"/>
+<#+
+	i++;
+    }
+#> 
     </Grid>
 </UserControl>
 <#+

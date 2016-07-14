@@ -3,22 +3,20 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>
-    </ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A46C19AD-840B-4996-8C33-DD112D3C3DA4}</ProjectGuid>
+    <ProjectGuid>{3BBFF07E-CED7-4542-A661-0A00AE5A037F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Atento.Suite.Shared.Test.InfrastructureLayer</RootNamespace>
     <AssemblyName>Atento.Suite.Shared.Test.InfrastructureLayer</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
-    <IsCodedUITest>True</IsCodedUITest>
-    <TestProjectType>CodedUITest</TestProjectType>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,16 +37,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\10-Solutions\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\10-Solutions\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation">
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\02-Library\Prism\binaries 4.1\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Unity">
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\02-Library\Unity\v2.1\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -57,15 +59,17 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
-  <ItemGroup>
-    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
-      <Visible>False</Visible>
-    </CodeAnalysisDependentAssemblyPaths>
-  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise />
+  </Choose>
   <ItemGroup>
     <Compile Include="CreateDatabaseTest001.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\01-Projects\Inflexion2.EF\Inflexion2.EF.csproj">
@@ -80,20 +84,16 @@
       <Project>{BF5456D4-B276-459B-98D4-853FCEF99ADE}</Project>
       <Name>Inflexion2</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Atento.Suite.Shared.Application\Atento.Suite.Shared.Application.csproj">
-      <Project>{fbbc2b24-4a6e-46a5-bb5a-48029e2f6c81}</Project>
-      <Name>Atento.Suite.Shared.Application</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Atento.Suite.Shared.Domain.Data\Atento.Suite.Shared.Domain.Data.csproj">
-      <Project>{38B0B49A-2EAE-42D2-B2A6-634ACB17B9EA}</Project>
+      <Project>{53A6A048-F1E0-492F-B9CA-D92553490650}</Project>
       <Name>Atento.Suite.Shared.Domain.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Atento.Suite.Shared.Domain\Atento.Suite.Shared.Domain.csproj">
-      <Project>{D15F5C89-C418-4694-AC25-83C59E49DC7B}</Project>
+      <Project>{7263F57A-EF97-4705-A86F-9080F97F494D}</Project>
       <Name>Atento.Suite.Shared.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Atento.Suite.Shared.Infrastructure\Atento.Suite.Shared.Infrastructure.csproj">
-      <Project>{60942BD5-A22F-486F-B6EF-286415A29F01}</Project>
+      <Project>{CD96782F-72F7-41D9-938A-56BF5E4F7D3E}</Project>
       <Name>Atento.Suite.Shared.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
@@ -118,15 +118,8 @@
       </ItemGroup>
     </When>
   </Choose>
-  <Choose>
-    <When Condition="('$(VisualStudioVersion)' == '10.0' Or '$(VisualStudioVersion)' == '11.0') And '$(IsCodedUITest)' == 'True'">
-      <ItemGroup>
-        <Reference Include="UIAutomationTypes" />
-      </ItemGroup>
-    </When>
-  </Choose>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

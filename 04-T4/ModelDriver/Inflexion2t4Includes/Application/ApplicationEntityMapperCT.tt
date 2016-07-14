@@ -32,7 +32,12 @@ public class ApplicationEntityMapperCT : Template
 namespace <#= projectNamespace #>
 {
 
-#region sharedKernels references
+	#region usings
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+	using Inflexion2;
 <#+
 if (sharedKernelUsings != null)
 foreach (var item in sharedKernelUsings)
@@ -42,17 +47,9 @@ foreach (var item in sharedKernelUsings)
 <#+
     }// end foreach para los using del shared kernel
 #>
-#endregion
-
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Dtos;
     using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain;
-
-    using Inflexion2;
+	#endregion
 
     /// <summary>
     /// Clase pública encargada de mapear los datos de una entidad <see cref="<#= I #><#= cbc.secureEntityName #>Mapper"/>.
@@ -63,17 +60,12 @@ foreach (var item in sharedKernelUsings)
     public class <#= cbc.secureEntityName #>Mapper : I<#= cbc.secureEntityName #>Mapper
     {
         #region CONSTRUCTORS
-
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="<#= cbc.secureEntityName #>Mapper"/>.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios especiales.
-        /// </remarks>
         public <#= cbc.secureEntityName #>Mapper()
         {
         } // <#= cbc.secureEntityName #>Mapper Constructor
-
         #endregion
 
         #region FUNCTIONS
@@ -134,8 +126,6 @@ foreach (var item in sharedKernelUsings)
           } // EntityMapping
         
         #endregion
-
-
     } // end class <#= cbc.secureEntityName #>Mapper
 } //  <#= projectNamespace #>
 

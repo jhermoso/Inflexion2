@@ -1376,7 +1376,7 @@ public class Architecture
                 new ArqLayer.ArqProject
                 {
                     Name = "WcfService",
-                    Template = TemplateProject.WAPServiceCC,
+                    Template = TemplateProject.WcfServiceLibraryCC,
                     References = new Collection<ArqLayer.ArqProject.ArqReference>
                     {
                         new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.CLR,         Name  = "System" },
@@ -1471,7 +1471,7 @@ public class Architecture
                 new ArqLayer.ArqProject
                 {
                     Name = "WpfModule",
-                    Template = TemplateProject.ClassLibraryCC,
+                    Template = TemplateProject.WpfUserControlLibraryCC,
                     References = new Collection<ArqLayer.ArqProject.ArqReference>
                     {
                         new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.CLR,  Name  = "System" },
@@ -1524,7 +1524,7 @@ public class Architecture
                 new ArqLayer.ArqProject
                 {
                     Name = "DomainLayer",
-                    Template = TemplateProject.TestProject,
+                    Template = TemplateProject.UnitTestProjectCC,
                     References = new Collection<ArqLayer.ArqProject.ArqReference>
                     {
                         new ArqLayer.ArqProject.ArqReference { ReferenceType = ReferenceKind.CLR, Name = "System" },
@@ -1542,7 +1542,7 @@ public class Architecture
                 new ArqLayer.ArqProject
                 {
                     Name = "InfrastructureLayer",
-                    Template = TemplateProject.TestProject,
+                    Template = TemplateProject.UnitTestProjectCC,
                     References = new Collection<ArqLayer.ArqProject.ArqReference>
                     {
                         new ArqLayer.ArqProject.ArqReference { ReferenceType = ReferenceKind.CLR, Name = "System" },
@@ -1568,7 +1568,7 @@ public class Architecture
                 new ArqLayer.ArqProject
                 {
                     Name = "ApplicationLayer",
-                    Template = TemplateProject.TestProject,
+                    Template = TemplateProject.UnitTestProjectCC,
                     References = new Collection<ArqLayer.ArqProject.ArqReference>
                     {
                         new ArqLayer.ArqProject.ArqReference { ReferenceType = ReferenceKind.CLR, Name = "System" },
@@ -1586,7 +1586,7 @@ public class Architecture
                 new ArqLayer.ArqProject
                 {
                     Name = "UXwpfLayer",
-                    Template = TemplateProject.TestProject,
+                    Template = TemplateProject.UnitTestProjectCC,
                     References = new Collection<ArqLayer.ArqProject.ArqReference>
                     {
                         new ArqLayer.ArqProject.ArqReference { ReferenceType = ReferenceKind.CLR, Name = "System" },
@@ -1915,8 +1915,8 @@ public static void AddBoundedContextLayers(string bdName, DslContextDefinitionDi
                                      //PrjItem = ListaProjectos.Item("UnitTest1.cs");
                                     break;
                                  
-                                case TemplateProject.TestProjectCC:
-                                     PrjItem = ListaProjectos.Item("UnitTest1.cs");
+                                case TemplateProject.UnitTestProjectCC:
+                                     //PrjItem = ListaProjectos.Item("UnitTest1.cs");// esta borrado en la plantilla
                                     break;
                                 default:
                                     PrjItem = null;
@@ -2316,7 +2316,7 @@ public static void AddBoundedContextReferences(string bdName, DslContextDefiniti
     {
         [Description("ClassLibrary.zip")]                           ClassLibrary                        ,
         [Description("ClassLibraryCC.zip")]                         ClassLibraryCC                      ,
-        [Description("WcfServiceLibrary.zip")]                      WcfServiceLibrary                   ,
+        [Description("WcfServiceLibraryCC.zip")]                    WcfServiceLibraryCC                   ,
         [Description("WAPService.zip")]                             WAPService                          ,
         [Description("WAPServiceCC.zip")]                           WAPServiceCC                        ,
         [Description("WpfUserControlLibraryCC.zip")]                WpfUserControlLibraryCC             ,
@@ -2326,7 +2326,7 @@ public static void AddBoundedContextReferences(string bdName, DslContextDefiniti
         [Description("WpfApplicationCC.zip")]                       WpfApplicationCC                    ,
         [Description("Hexa.Core.ProjectTemplate.zip")]              HexaCoreProjectTemplate             ,
         [Description("TestProject.zip")]                            TestProject                         ,
-        [Description("TestProjectCC.zip")]                          TestProjectCC  
+        [Description("UnitTestProjectCC.zip")]                      UnitTestProjectCC  
     };
 
 // esta clase permite decorar una enumeración con valores de string

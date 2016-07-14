@@ -22,14 +22,35 @@ public class WpfEntityQueryViewXamlCT : Template
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1050" Padding="5">
     <Grid>
-
+		<Label Content="{Binding Title}"/>
         <Label Content="<#= cbc.pascalSecureEntityName #> Query View"/>
         <DataGrid Name="<#= cbc.pascalSecureEntityName #>DgData"
                   ItemsSource="{Binding Items}"
                   SelectedItem="{Binding SelectedItem}" 
                   controls:DataGridRowDoubleClickHandler.MethodName="NavigateToSelectedItem"         
-                  AutoGenerateColumns="True" 
-                  Margin="0" >
+                  AutoGenerateColumns="False"
+                  SelectionMode="Extended"
+                  SelectionUnit="FullRow"
+                  CanUserAddRows="True"
+                  CanUserReorderColumns="True"
+                  CanUserResizeColumns="True"
+                  CanUserResizeRows="True"
+                  CanUserSortColumns="True"
+                  ClipboardCopyMode="ExcludeHeader"
+                  Margin="0">
+			<DataGrid.Columns>
+
+            <DataGridHyperlinkColumn></DataGridHyperlinkColumn>
+            <DataGridComboBoxColumn></DataGridComboBoxColumn>
+<#+
+    foreach (var property in cbc.propertyObjects)
+    {
+#>
+                <DataGridTextColumn     Header="<#= T4Help.ToPascalCase(property.AtributteName) #>" Binding="{Binding <#= T4Help.ToPascalCase(property.AtributteName) #>}"/>
+<#+
+    }
+#>            
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </UserControl>

@@ -39,23 +39,28 @@ public class ServiceGetById : Template
 
                 // Obtener y comprobar la entidad.
                 //ISpecification<<#= cbc.pascalSecureEntityName #>> spec = new DirectSpecification<<#= cbc.pascalSecureEntityName #>>(t => t.Id == entityBId);
-                <#= cbc.pascalSecureEntityName #> entity = repo.GetFilteredElements(t => t.Id == entityBId).Single();
-                string s = string.Format(Inflexion2.Resources.Framework.NoDataById, "<#= cbc.entity.AliasFrontEnd #>", entityBId);
+                var temp = repo.GetFilteredElements(t => t.Id == entityBId);
+                //string s = string.Format(Inflexion2.Resources.Framework.NoDataById, "<#= cbc.entity.AliasFrontEnd #>", entityBId);
 
-                Guard.ArgumentIsNotNull( entity, s );
+                //Guard.ArgumentIsNotNull( entity, s );
 
+                if (temp.Count() > 0)
+                {
+                    <#= cbc.pascalSecureEntityName #> entity = temp.Single();
                     // Mapeamos los datos.
                     entityDto = this.<#= cbc.pascalSecureEntityName #>Mapper.EntityMapping(entity);
-
-                    // Confirmamos la transacción.
-                    this.Commit();
-                
+                }
             }
             catch (Exception ex)
             {
 <#+ if (Trazable){ #>                // Escribir en el Log.
                 logger.Error(ex.Message, ex);
 <#+ }#>                throw ex;
+			}
+            finally
+            {
+                // Confirmamos la transacción.
+                this.Commit();
             }
 
             // Devolvemos el resultado.

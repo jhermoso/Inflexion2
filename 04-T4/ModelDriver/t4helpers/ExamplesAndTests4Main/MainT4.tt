@@ -323,7 +323,7 @@ var dte = (EnvDTE.DTE)hostServiceProvider.GetService(typeof(SDTE)); // SDTE es u
 
 Solution2 soln = (Solution2)dte.Solution; // obtenemos la referencia a la solución abierta en la que nos encontramos.
 string ClassLibraryTemplatePath = soln.GetProjectTemplate("ClassLibrary.zip", "CSharp"); // obtenemos la localización de la plantilla de proyecto ClassLibrary
-string WCFServiceLibraryTemplatePath = soln.GetProjectTemplate("WcfServiceLibrary.zip", "CSharp"); // obtenemos la localización de la plantilla de proyecto WCF Service Library
+string WCFServiceLibraryCCTemplatePath = soln.GetProjectTemplate("WcfServiceLibrary.zip", "CSharp"); // obtenemos la localización de la plantilla de proyecto WCF Service Library
 string WCFServiceApplicationTemplatePath = soln.GetProjectTemplate("WAPService.zip", "CSharp"); // obtenemos la localización de la plantilla de proyecto WCF Service Application
 
 int TotalProyectos = dte.Solution.Projects.Count;

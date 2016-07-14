@@ -14,15 +14,33 @@
         </member>
         <member name="T:Atento.Suite.Shared.Application.IPersonaServices">
             <summary>
-             Define el contrato para los servicios de administración de la entidad 
-            de tipo <see cref="!:Atento.Suite.Shared.Application.IPersona"/>.
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:Atento.Suite.Shared.Application.IPersonaServices"/>.
             </summary>
-            <remarks>a
-            Sin comentarios adicionales.
-            </remarks>
         </member>
         <!-- Badly formed XML comment ignored for member "M:Atento.Suite.Shared.Application.IPersonaServices.Create(Atento.Suite.Shared.Application.Dtos.PersonaDto)" -->
-        <!-- Badly formed XML comment ignored for member "M:Atento.Suite.Shared.Application.IPersonaServices.Delete(System.Int32)" -->
+        <member name="M:Atento.Suite.Shared.Application.IPersonaServices.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo Persona.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="PersonaId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>
+            <param name="userContextDto">
+            Parámetro de tipo <see cref="!:UserContextDto"/> que representa el contexto del usuario.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve <b>True</b> si la eliminación ha sido correcta y
+            <b>False</b> en caso contrario.
+            </returns>
+        </member>
         <member name="M:Atento.Suite.Shared.Application.IPersonaServices.GetAll">
             <summary>
             Función encargada de obtener todas las entidades de tipo Persona.
@@ -56,9 +74,6 @@
             Función encargada de obtener una entidad Persona de acuerdo a
             su identificador.
             </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
             <param name="personaId">
             Parámetro que indica el identificador único de la entidad.
             </param>
@@ -92,9 +107,6 @@
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:Atento.Suite.Shared.Application.PersonaMapper"/>.
             </summary>
-            <remarks>
-            Sin comentarios especiales.
-            </remarks>
         </member>
         <member name="M:Atento.Suite.Shared.Application.PersonaMapper.EntityMapping(Atento.Suite.Shared.Domain.IPersona)">
             <summary>
