@@ -1,0 +1,129 @@
+﻿<#+
+
+public class WcfServiceIocConfiguratorCT : Template
+{
+    // parametros de la plantilla
+    public ClassBaseContext  cbc ;
+    public string projectNamespace;
+    public ITree<BoundedContextMetadata> Skt;
+    public string KindTimeCall ; /* Los valores posibles son "inicio", "desarrollo", "fin" y "soloUna" */
+        
+    public WcfServiceIocConfiguratorCT(ClassBaseContext  classBaseContext, string nombreProjecto, ITree<BoundedContextMetadata> skt, string kindTimeCall)
+    {
+        cbc = classBaseContext;             // contexto de la clase base a interpretar
+        projectNamespace = nombreProjecto;  // nombre del proyecto para el que estamos interpretando
+        Skt = skt;                          // shared kernel tree
+        KindTimeCall = kindTimeCall;
+    }
+        
+    public override string TransformText()
+    {
+            // uso de interfaces en las propiedades y por tanto en metodos
+            //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+            string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+  // conceptos propios de la clase
+  string baseEntity= null;
+  // conceptos propios del projecto en curso
+  ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+
+  IList<string> sharedKernelUsings = null;
+  if (Skt != null)
+  {
+      sharedKernelUsings =  GetSharedKernelReferencesByProject(projectNamespace, Skt, cbc.diagram);
+  }
+  var cpyrigth = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity, T4Help.getLeftStringSlice(this.ToString(), '+', -1).Substring(1) );
+  var usingTemplate  = new usings( cbc, projectNamespace, Skt);   string usingTxt = usingTemplate.TransformText(); //solo los shared kernel
+
+        string cpyrigthText = cpyrigth.TransformText(); 
+#>
+<#+
+            if(KindTimeCall.Equals("inicio") | KindTimeCall.Equals("soloUna") )
+            {
+// bloque de inicio
+#>
+<#= cpyrigthText #>
+namespace <#= projectNamespace #>
+{
+    #region sharedKernel usings
+<#+
+if (sharedKernelUsings != null & false)
+foreach (var item in sharedKernelUsings)
+    {
+#>
+    using <#= item #>;
+<#+
+    }// end foreach para los using del shared kernel
+#>
+    #endregion 
+
+    #region general usings
+    using System;
+	using System.Configuration;
+    using System.Collections.Generic;
+    using System.ServiceModel;
+
+    using Inflexion2.Domain;
+    //using Inflexion2.Application.Security.Data.Base;
+    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Dtos;
+
+    using Inflexion2.Application;
+    using Inflexion2.Application.DataTransfer.Core;
+    //using Inflexion2.Application.Security.RemoteFacade;
+    using Inflexion2.Infrastructure;
+
+    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Application;
+    //using AppSrvCore = <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Application;
+    #endregion
+
+    /// <summary>
+    /// Clase pública del servicio Wcf encargada de realizar las tareas 
+    /// relacionadas con la entidad <#= I #><#= cbc.secureEntityName #>.
+    /// </summary>
+    //[ApplicationErrorHandlerAttribute]
+    public partial class <#= cbc.secureEntityName #>Service : I<#= cbc.secureEntityName #>Service
+    {
+        #region Configuration
+
+        /// <summary>
+        /// https://msdn.microsoft.com/en-us/library/hh205277(v=vs.110).aspx
+        /// </summary>
+        /// <param name="config"></param>
+        public static void Configure(ServiceConfiguration config)
+        {
+            {
+                config.LoadFromConfiguration(ConfigurationManager.OpenMappedExeConfiguration(new ExeConfigurationFileMap { ExeConfigFilename = @"<#=@"C:\" + prjCon.company+ @"\03-GeneratedProjects\"+ prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Application.WcfService\App.config" }, ConfigurationUserLevel.None));              
+                ApplicationLayer.ContainerInit();
+                <#= prjCon.boundedContextName #>RepositoryLayer.IocRegistry();
+            }
+        }
+
+        #endregion
+
+    } // end public partial class <#= I #><#= cbc.secureEntityName #>Service
+} // end <#= projectNamespace #>
+
+
+<#+
+            }
+            // en el siguiente bloque viene le codigo que se repite para cada entidad
+#>
+<#+
+            // este es el bloque de cierre o finalización
+    foreach (var property in cbc.propertyObjects)
+            {
+#>
+// bloque de repetición
+<#+         } #>
+<#+
+    // bloque de cierre
+    if(KindTimeCall.Equals("fin")  | KindTimeCall.Equals("soloUna") )
+            {
+#>
+// bloque de cierre
+<#+         } #>
+<#+
+        return this.GenerationEnvironment.ToString();
+    }
+}
+#>

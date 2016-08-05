@@ -22,7 +22,7 @@ namespace Inflexion2.Application
     {
         protected PerLifeTimeManager unitOfWorkPerTestLifeTimeManager = new PerLifeTimeManager();
         protected PerLifeTimeManager contextPerTestLifeTimeManager = new PerLifeTimeManager();
-        protected UnityContainer unityContainer;
+        public UnityContainer unityContainer;
         protected string connString = null;
         protected RootAggregateFrameworkUnitOfWorkFactory<DomainUnitOfWork> ctxFactory = null;
 
@@ -43,9 +43,6 @@ namespace Inflexion2.Application
             ctxFactory.ValidateDatabaseSchema();//1
 
             this.unityContainer.RegisterInstance<IDatabaseManager>(ctxFactory);//1
-
-            // esta linea se ha de incluir en el constructor de la clase de servicios.
-            //this.unityContainer.RegisterType<DbContext, DomainUnitOfWork>(this.contextPerTestLifeTimeManager, new InjectionConstructor(connString));
 
             this.unityContainer.RegisterType<IUnitOfWork, EntityFrameworkUnitOfWork>(this.unitOfWorkPerTestLifeTimeManager);
 

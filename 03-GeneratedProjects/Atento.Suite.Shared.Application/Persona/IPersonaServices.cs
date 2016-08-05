@@ -39,7 +39,7 @@ namespace Atento.Suite.Shared.Application
         /// .es Función encargada de la creación de una entidad de tipo IPersona.
         /// </summary>
         /// <param name="personaDto">
-        /// Parámetro de tipo <see cref="PersonaDto"> con los datos necesarios
+        /// Parámetro de tipo <see cref="PersonaDto"/> con los datos necesarios
         /// para la creación de la entidad Persona.
         /// </param>
         /// <param name="userContextDto"> 

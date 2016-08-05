@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{CD96782F-72F7-41D9-938A-56BF5E4F7D3E}</ProjectGuid>
+    <ProjectGuid>{1772A35E-921C-4C03-8E7D-4C81FBABE526}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Atento.Suite.Shared.Infrastructure</RootNamespace>
     <AssemblyName>Atento.Suite.Shared.Infrastructure</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
     <TargetFrameworkProfile />
@@ -114,6 +114,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Categoria\CategoriaConfiguration.cs" />
+    <Compile Include="Categoria\CategoriaRepository.cs" />
     <Compile Include="Persona\PersonaConfiguration.cs" />
     <Compile Include="Persona\PersonaRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -150,11 +152,11 @@
       <Name>Inflexion2</Name>
     </ProjectReference>
     <ProjectReference Include="..\Atento.Suite.Shared.Domain.Data\Atento.Suite.Shared.Domain.Data.csproj">
-      <Project>{53A6A048-F1E0-492F-B9CA-D92553490650}</Project>
+      <Project>{D5638DFB-A42F-4288-8332-F37C19423EE4}</Project>
       <Name>Atento.Suite.Shared.Domain.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Atento.Suite.Shared.Domain\Atento.Suite.Shared.Domain.csproj">
-      <Project>{7263F57A-EF97-4705-A86F-9080F97F494D}</Project>
+      <Project>{998C7702-2A91-42AC-965B-C8A365237CF2}</Project>
       <Name>Atento.Suite.Shared.Domain</Name>
     </ProjectReference>
   </ItemGroup>

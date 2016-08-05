@@ -4,6 +4,54 @@
         <name>Atento.Suite.Shared.FrontEnd.WpfModule</name>
     </assembly>
     <members>
+        <member name="T:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaQueryView">
+            <summary>
+            .en Interaction logic for CategoriaQueryView.xaml
+            .es Logica de interación para la vista CategoriaQueryView.xaml
+            </summary>
+            <summary>
+            CategoriaQueryView
+            </summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaQueryView.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:CategoriaQueryView"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:CategoriaQueryView"/>.
+            </summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaQueryView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaView">
+            <summary>
+            .en Interaction logic for CategoriaView.xaml
+            .es Logica de interación para la vista CategoriaView.xaml
+            </summary>
+            <remarks>
+            .en No coment
+            .es Sin comentarios adicionales.
+            </remarks>
+            <summary>
+            CategoriaView
+            </summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaView.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:CategoriaView"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:CategoriaView"/>.
+            </summary>
+            <remarks>
+            .en No coment
+            .es Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:Atento.Suite.Shared.FrontEnd.WpfModule.PersonaQueryView">
             <summary>
             .en Interaction logic for PersonaQueryView.xaml
@@ -51,6 +99,141 @@
             <summary>
             InitializeComponent
             </summary>
+        </member>
+        <member name="T:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaQueryViewModel">
+            <summary>
+            .en Interaction logic for CategoriaQueryView.xaml
+            .es Logica de interación para la vista CategoriaQueryView.xaml
+            </summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaQueryViewModel.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:CategoriaQueryViewModel"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:CategoriaQueryViewModel"/>.
+            </summary>
+        </member>
+        <member name="P:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaQueryViewModel.Title">
+            <summary>
+            .en Property to set the title of the window 
+            .es Propiedad para establecer el Titulo de la ventana
+            </summary>
+        </member>
+        <member name="P:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaQueryViewModel.ChangeActivateStatusCommand">
+            <summary>
+            .en Property to get the command of changing state.
+            .es Propiedad que obtiene el comando de cambio de estado.
+            </summary>
+            <value>
+            Valor utilizado para obtener el comando de cambio de estado.
+            </value>
+        </member>
+        <member name="M:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaQueryViewModel.OnDeleteRecord(System.Object)">
+            <summary>
+            Método público encargado del borrado de una entidad .
+            </summary>
+            <param name="parameter">
+            Parámetro con información adicional.
+            </param>
+        </member>
+        <member name="M:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaQueryViewModel.OnGetRecords(System.Object)">
+            <summary>
+            Método encargado de obtener todos los registros de Categoria.
+            </summary>
+            <param name="parameter">
+            Parámetro con información adicional.
+            </param>
+        </member>
+        <member name="M:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaQueryViewModel.OnGetFirstPageRecords(System.Object)">
+            <summary>
+            .en Get First Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la primera página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaQueryViewModel.OnGetNextPageRecords(System.Object)">
+            <summary>
+            .en Get Next Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la siguiente página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaQueryViewModel.OnGetPreviousPageRecords(System.Object)">
+            <summary>
+            .en Get Previus Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la página anterior de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaQueryViewModel.OnGetLastPageRecords(System.Object)">
+            <summary>
+            .en Get Last Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la ultima página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaQueryViewModel.ResetCategoria">
+            <summary>
+            .es Método privado para resetear el ViewModel.
+            </summary>
+        </member>
+        <member name="T:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaViewModel">
+            <summary>
+            .en Interaction logic for CategoriaViewModel.xaml
+            .es Logica de interación para la vista CategoriaViewModel.xaml
+            </summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaViewModel.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:CategoriaViewModel"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:CategoriaViewModel"/>.
+            </summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaViewModel.#ctor(Atento.Suite.Shared.Application.Dtos.CategoriaDto)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:CategoriaViewModel"/>.
+            </summary>
+            <param name="element">
+            Parámetro de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.CategoriaDto"/> que contiene la información necesaria.
+            </param>
+        </member>
+        <member name="P:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaViewModel.Title">
+            <summary>
+            Propiedad para establecer el Título de la ventana cuando este view model se utiliza 
+            en un control de usuario o ventana exclusivamente para el.
+            cuando este view model se utiliza solo en una lista esta propiedad no se utiliza.
+            </summary>
+        </member>
+        <member name="P:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaViewModel.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaViewModel.GetById(System.Int32)">
+            <summary>
+            Método encargado de recuperar los datos de una entidad mediante su identificador.
+            </summary>
+            <param name="identifier">
+            Parámetro que indica el identificador de la entidad que se va a recuperar.
+            </param>
+            <returns>
+            Devuelve el objeto Dto <see cref="T:Atento.Suite.Shared.Application.Dtos.CategoriaDto"/> correspondiente.
+            </returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaViewModel.OnSaveRecord(System.Object)">
+            <summary>
+            Método encargado de crear o actualizar una entidad de tipo Categoria.
+            </summary>
+            <param name="parameter">
+            Parámetro con información adicional.
+            </param>
         </member>
         <member name="T:Atento.Suite.Shared.FrontEnd.WpfModule.PersonaQueryViewModel">
             <summary>
@@ -349,6 +532,14 @@
             </summary>
             <value>
             Indica el comando de carga de la vista Enumeracion.
+            </value>
+        </member>
+        <member name="P:Atento.Suite.Shared.FrontEnd.WpfModule.SharedModuleNavigationViewModel.ShowCategoriaView">
+            <summary>
+            Obtiene o establece el comando de carga de la vista de Categoria.
+            </summary>
+            <value>
+            Indica el comando de carga de la vista Categoria.
             </value>
         </member>
         <member name="M:Atento.Suite.Shared.FrontEnd.WpfModule.SharedModuleNavigationViewModel.Initialize">

@@ -1,0 +1,141 @@
+﻿<#+
+
+public class ApplicationIocRepositoryLayer : Template
+{
+    // parametros de la plantilla
+    public ClassBaseContext  cbc ;
+    public string projectNamespace;
+    public ITree<BoundedContextMetadata> Skt;
+    public string KindTimeCall ; /* Los valores posibles son "inicio", "desarrollo", "fin" y "soloUna" */
+        
+    public ApplicationIocRepositoryLayer(ClassBaseContext  classBaseContext, string nombreProjecto, ITree<BoundedContextMetadata> skt, string kindTimeCall)
+    {
+        cbc = classBaseContext;             // contexto de la clase base a interpretar
+        projectNamespace = nombreProjecto;  // nombre del proyecto para el que estamos interpretando
+        Skt = skt;                          // shared kernel tree
+        KindTimeCall = kindTimeCall;
+    }
+        
+    public override string TransformText()
+    {
+            // uso de interfaces en las propiedades y por tanto en metodos
+            //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+            string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+  // conceptos propios de la clase
+  string baseEntity= null;
+  // conceptos propios del projecto en curso
+  ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+
+  IList<string> sharedKernelUsings = null;
+  if (Skt != null)
+  {
+      sharedKernelUsings =  GetSharedKernelReferencesByProject(projectNamespace, Skt, cbc.diagram);
+  }
+  var cpyrigth = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity, T4Help.getLeftStringSlice(this.ToString(), '+', -1).Substring(1) );
+  var usingTemplate  = new usings( cbc, projectNamespace, Skt);   string usingTxt = usingTemplate.TransformText(); //solo los shared kernel
+
+        string cpyrigthText = cpyrigth.TransformText(); 
+#>
+<#+
+            if(KindTimeCall.Equals("inicio") || KindTimeCall.Equals("soloUna") )
+            {
+#>
+<#= cpyrigthText #>
+namespace <#= projectNamespace #>
+{
+    #region usings
+    using System;
+    using System.Data.Entity;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Configuration;
+
+    using Microsoft.Practices.Unity;
+    using Inflexion2;
+    using Inflexion2.Domain;
+    using Inflexion2.Data;
+    using Inflexion2.Application;
+
+    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain;
+    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain.Data;
+    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Infrastructure;
+    #endregion
+    /// <summary>
+    /// Registra en el contenedor de Ioc de la capa de aplicacion las clases de acceso al repositorio
+    /// </summary>
+    public static class <#= prjCon.boundedContextName #>RepositoryLayer
+    {
+        private static string ConnString = null;
+        public static RootAggregateFrameworkUnitOfWorkFactory<<#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Infrastructure.BootstrapUnitOfWork> CtxFactory = null;
+        public static void IocRegistry()
+        {
+            // Context Factory
+            ConnString = ConnectionString();
+            CtxFactory = new RootAggregateFrameworkUnitOfWorkFactory<<#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Infrastructure.BootstrapUnitOfWork>(ConnString);//1
+
+            //ctxFactory.ValidateDatabaseSchema();//1
+            if (!CtxFactory.DatabaseExists())
+            {
+                CtxFactory.CreateDatabase();
+            }
+
+            ApplicationLayer.IocContainer.RegisterInstance<IDatabaseManager>(CtxFactory);
+            ApplicationLayer.IocContainer.RegisterType<IUnitOfWork, EntityFrameworkUnitOfWork>(ApplicationLayer.UnitOfWorkPerTestLifeTimeManager);
+            ApplicationLayer.IocContainer.RegisterType<DbContext, BootstrapUnitOfWork>(ApplicationLayer.ContextPerTestLifeTimeManager, new InjectionConstructor(ConnString));
+            RegisterRepositoryTypes();
+        }
+        private static void RegisterRepositoryTypes()
+        {
+            // registramos el repositorio de cada uno de las entidades que son rootaggregates
+<#+
+            }
+            // en el siguiente bloque viene el codigo que se repite para cada entidad
+#>
+<#+if (cbc.IsRoot || cbc.MainEntityStereotype.Contains("AggregateRoot")) {#>
+            ApplicationLayer.IocContainer.RegisterType<I<#= cbc.secureEntityName #>Repository, <#= cbc.secureEntityName #>Repository>(new PerResolveLifetimeManager());
+<#+ }#>
+<#+
+            // este es el bloque de cierre o finalización
+    foreach (var property in cbc.propertyObjects)
+            {
+#>
+<#+         } #>
+<#+
+    // bloque de cierre
+    if(KindTimeCall.Equals("fin") || KindTimeCall.Equals("soloUna") )
+            {
+#>
+// bloque de cierre
+}
+
+        /// <summary>
+        /// Get the conection string from the app.config or web config file asociated to the project on execution.
+        /// </summary>
+        /// <returns>The database connection string </returns>
+        static private string ConnectionString()
+        {
+
+            System.Diagnostics.Contracts.Contract.Requires<ConfigurationErrorsException>(ConfigurationManager.AppSettings != null, "The configuration file don't exist or is not in the executed project");
+            //System.Diagnostics.Contracts.Contract.Requires<ConfigurationErrorsException>(AppConfigHasTheSection("Suite.Connection"), "The configuration file has not a 'Suite.Connection' name for a connection string ");
+            string result;
+            try
+            {
+                result = ConfigurationManager.ConnectionStrings["Suite.Connection"].ConnectionString;
+            }
+            catch (ConfigurationErrorsException)
+            {
+                throw;
+            }
+
+            return result;
+        }
+	}
+}
+<#+         } #>
+<#+
+        return this.GenerationEnvironment.ToString();
+    }
+}
+#>

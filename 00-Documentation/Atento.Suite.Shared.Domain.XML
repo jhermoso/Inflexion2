@@ -1,246 +1,353 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <doc>
-  <assembly>
-    <name>Atento.Suite.Shared.Domain</name>
-  </assembly>
-  <members>
-    <member name="T:Atento.Suite.Shared.Domain.PerLifeTimeManager">
-      <summary>
+    <assembly>
+        <name>Atento.Suite.Shared.Domain</name>
+    </assembly>
+    <members>
+        <!-- Badly formed XML comment ignored for member "T:Atento.Suite.Shared.Domain.Categoria" -->
+        <!-- Badly formed XML comment ignored for member "M:Atento.Suite.Shared.Domain.Categoria.#ctor" -->
+        <member name="P:Atento.Suite.Shared.Domain.Categoria.Name">
+            <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+        </member>
+        <member name="T:Atento.Suite.Shared.Domain.CategoriaFactory">
+            <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:Atento.Suite.Shared.Domain.Categoria"/>.
+            </summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.Domain.CategoriaFactory.#cctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Atento.Suite.Shared.Domain.CategoriaFactory"/>.
+            </summary>
+            <remarks>
+            Constructor vacío de la clase <see cref="T:Atento.Suite.Shared.Domain.CategoriaFactory"/>.
+            </remarks>
+            <returns>
+            Devuelve una instancia de dela clase CategoriaFactory />
+            </returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.Domain.CategoriaFactory.Create">
+            <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+            <remarks>
+            Crea una entidad de tipo <see cref="T:Atento.Suite.Shared.Domain.Categoria"/>
+            </remarks>
+            <returns>
+            Devuelve  una entidad de tipo <see cref="T:Atento.Suite.Shared.Domain.CategoriaFactory"/>
+            </returns>
+        </member>
+        <member name="T:Atento.Suite.Shared.Domain.CategoriaSpecifications">
+            <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:Categoria"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="T:Atento.Suite.Shared.Domain.ICategoria">
+            <summary>
+            .en Interfaz to identify an entidad of type Categoria in the application.
+            .es Interfaz que identifica una entidad de tipo Categoria de la aplicación.
+            Clasificador
+            </summary>
+            <remarks>
+            .en Interfaz for an Entity implemented by Categoria/>.
+            .es Interfaz que representa  una entidad implementado enCategoria/>.
+            </remarks>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.ICategoria.Name" -->
+        <member name="T:Atento.Suite.Shared.Domain.ICategoriaRepository">
+            <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:Atento.Suite.Shared.Domain.ICategoria"/>.
+            </summary>
+        </member>
+        <member name="T:Atento.Suite.Shared.Domain.PerLifeTimeManager">
+            <summary>
             LifetimeManager implementation
             </summary>
-    </member>
-    <member name="F:Atento.Suite.Shared.Domain.PerLifeTimeManager.value">
-      <summary />
-    </member>
-    <member name="M:Atento.Suite.Shared.Domain.PerLifeTimeManager.GetValue">
-      <summary />
-      <returns />
-    </member>
-    <member name="M:Atento.Suite.Shared.Domain.PerLifeTimeManager.RemoveValue">
-      <summary />
-    </member>
-    <member name="M:Atento.Suite.Shared.Domain.PerLifeTimeManager.SetValue(System.Object)">
-      <summary />
-      <param name="newValue" />
-    </member>
-    <member name="T:Atento.Suite.Shared.Domain.IPersona">
-      <summary>
+        </member>
+        <member name="F:Atento.Suite.Shared.Domain.PerLifeTimeManager.value">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.Domain.PerLifeTimeManager.GetValue">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.Domain.PerLifeTimeManager.RemoveValue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.Domain.PerLifeTimeManager.SetValue(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="newValue"></param>
+        </member>
+        <member name="T:Atento.Suite.Shared.Domain.IPersona">
+            <summary>
             .en Interfaz to identify an entidad of type Persona in the application.
             .es Interfaz que identifica una entidad de tipo Persona de la aplicación.
             datos acerca de personas fisica y juridicas.
             </summary>
-      <remarks>
-            .en Interfaz for an Entity implemented by Persona/&gt;.
-            .es Interfaz que representa  una entidad implementado enPersona/&gt;.
+            <remarks>
+            .en Interfaz for an Entity implemented by Persona/>.
+            .es Interfaz que representa  una entidad implementado enPersona/>.
             </remarks>
-    </member>
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.Nombre" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.BooleanField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.DatetimeField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.ByteField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.GuidField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.DecimalField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.DobleField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.FloatField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.IntField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.LongField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.DateTimeOffsetField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.ShortField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.TimeSpanField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.Int16Field" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.Int32Field" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.Int64Field" -->
-    <member name="T:Atento.Suite.Shared.Domain.IPersonaRepository">
-      <summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.Nombre" -->
+        <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.BooleanField" -->
+        <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.DatetimeField" -->
+        <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.ByteField" -->
+        <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.GuidField" -->
+        <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.DecimalField" -->
+        <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.DobleField" -->
+        <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.FloatField" -->
+        <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.IntField" -->
+        <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.LongField" -->
+        <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.DateTimeOffsetField" -->
+        <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.ShortField" -->
+        <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.TimeSpanField" -->
+        <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.Int16Field" -->
+        <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.Int32Field" -->
+        <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.Int64Field" -->
+        <member name="T:Atento.Suite.Shared.Domain.IPersonaRepository">
+            <summary>
             Interfaz repositorio para persistir y obtener información a partir
-            de entidades <see cref="T:Atento.Suite.Shared.Domain.IPersona" />.
+            de entidades <see cref="T:Atento.Suite.Shared.Domain.IPersona"/>.
             </summary>
-    </member>
-    <!-- Badly formed XML comment ignored for member "T:Atento.Suite.Shared.Domain.Persona" -->
-    <!-- Badly formed XML comment ignored for member "M:Atento.Suite.Shared.Domain.Persona.#ctor" -->
-    <!-- Badly formed XML comment ignored for member "M:Atento.Suite.Shared.Domain.Persona.#ctor(System.String)" -->
-    <member name="P:Atento.Suite.Shared.Domain.Persona.Nombre">
-      <summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Atento.Suite.Shared.Domain.Persona" -->
+        <!-- Badly formed XML comment ignored for member "M:Atento.Suite.Shared.Domain.Persona.#ctor" -->
+        <!-- Badly formed XML comment ignored for member "M:Atento.Suite.Shared.Domain.Persona.#ctor(System.String)" -->
+        <member name="P:Atento.Suite.Shared.Domain.Persona.Nombre">
+            <summary>
             Propiedad pública que permite obtener Nombre.
             </summary>
-      <remarks>
+            <remarks>
             Test with auto property and public setter.
             </remarks>
-      <value>
+            <value>
             Valor que es utilizado para establecer y obtener Nombre.
             </value>
-    </member>
-    <member name="P:Atento.Suite.Shared.Domain.Persona.BooleanField">
-      <summary>
+        </member>
+        <member name="P:Atento.Suite.Shared.Domain.Persona.BooleanField">
+            <summary>
             Propiedad pública que permite obtener BooleanField.
             </summary>
-      <remarks />
-      <value>
+            <remarks>
+            
+            </remarks>
+            <value>
             Valor que es utilizado para establecer y obtener BooleanField.
             </value>
-    </member>
-    <member name="P:Atento.Suite.Shared.Domain.Persona.DatetimeField">
-      <summary>
+        </member>
+        <member name="P:Atento.Suite.Shared.Domain.Persona.DatetimeField">
+            <summary>
             Propiedad pública que permite obtener DatetimeField.
             </summary>
-      <remarks />
-      <value>
+            <remarks>
+            
+            </remarks>
+            <value>
             Valor que es utilizado para establecer y obtener DatetimeField.
             </value>
-    </member>
-    <member name="P:Atento.Suite.Shared.Domain.Persona.ByteField">
-      <summary>
+        </member>
+        <member name="P:Atento.Suite.Shared.Domain.Persona.ByteField">
+            <summary>
             Propiedad pública que permite obtener ByteField.
             </summary>
-      <remarks />
-      <value>
+            <remarks>
+            
+            </remarks>
+            <value>
             Valor que es utilizado para establecer y obtener ByteField.
             </value>
-    </member>
-    <member name="P:Atento.Suite.Shared.Domain.Persona.GuidField">
-      <summary>
+        </member>
+        <member name="P:Atento.Suite.Shared.Domain.Persona.GuidField">
+            <summary>
             Propiedad pública que permite obtener GuidField.
             </summary>
-      <remarks />
-      <value>
+            <remarks>
+            
+            </remarks>
+            <value>
             Valor que es utilizado para establecer y obtener GuidField.
             </value>
-    </member>
-    <member name="P:Atento.Suite.Shared.Domain.Persona.DecimalField">
-      <summary>
+        </member>
+        <member name="P:Atento.Suite.Shared.Domain.Persona.DecimalField">
+            <summary>
             Propiedad pública que permite obtener DecimalField.
             </summary>
-      <remarks />
-      <value>
+            <remarks>
+            
+            </remarks>
+            <value>
             Valor que es utilizado para establecer y obtener DecimalField.
             </value>
-    </member>
-    <member name="P:Atento.Suite.Shared.Domain.Persona.DobleField">
-      <summary>
+        </member>
+        <member name="P:Atento.Suite.Shared.Domain.Persona.DobleField">
+            <summary>
             Propiedad pública que permite obtener DobleField.
             </summary>
-      <remarks />
-      <value>
+            <remarks>
+            
+            </remarks>
+            <value>
             Valor que es utilizado para establecer y obtener DobleField.
             </value>
-    </member>
-    <member name="P:Atento.Suite.Shared.Domain.Persona.FloatField">
-      <summary>
+        </member>
+        <member name="P:Atento.Suite.Shared.Domain.Persona.FloatField">
+            <summary>
             Propiedad pública que permite obtener FloatField.
             </summary>
-      <remarks />
-      <value>
+            <remarks>
+            
+            </remarks>
+            <value>
             Valor que es utilizado para establecer y obtener FloatField.
             </value>
-    </member>
-    <member name="P:Atento.Suite.Shared.Domain.Persona.IntField">
-      <summary>
+        </member>
+        <member name="P:Atento.Suite.Shared.Domain.Persona.IntField">
+            <summary>
             Propiedad pública que permite obtener IntField.
             </summary>
-      <remarks />
-      <value>
+            <remarks>
+            
+            </remarks>
+            <value>
             Valor que es utilizado para establecer y obtener IntField.
             </value>
-    </member>
-    <member name="P:Atento.Suite.Shared.Domain.Persona.LongField">
-      <summary>
+        </member>
+        <member name="P:Atento.Suite.Shared.Domain.Persona.LongField">
+            <summary>
             Propiedad pública que permite obtener LongField.
             </summary>
-      <remarks />
-      <value>
+            <remarks>
+            
+            </remarks>
+            <value>
             Valor que es utilizado para establecer y obtener LongField.
             </value>
-    </member>
-    <member name="P:Atento.Suite.Shared.Domain.Persona.DateTimeOffsetField">
-      <summary>
+        </member>
+        <member name="P:Atento.Suite.Shared.Domain.Persona.DateTimeOffsetField">
+            <summary>
             Propiedad pública que permite obtener DateTimeOffsetField.
             </summary>
-      <remarks />
-      <value>
+            <remarks>
+            
+            </remarks>
+            <value>
             Valor que es utilizado para establecer y obtener DateTimeOffsetField.
             </value>
-    </member>
-    <member name="P:Atento.Suite.Shared.Domain.Persona.ShortField">
-      <summary>
+        </member>
+        <member name="P:Atento.Suite.Shared.Domain.Persona.ShortField">
+            <summary>
             Propiedad pública que permite obtener ShortField.
             </summary>
-      <remarks />
-      <value>
+            <remarks>
+            
+            </remarks>
+            <value>
             Valor que es utilizado para establecer y obtener ShortField.
             </value>
-    </member>
-    <member name="P:Atento.Suite.Shared.Domain.Persona.TimeSpanField">
-      <summary>
+        </member>
+        <member name="P:Atento.Suite.Shared.Domain.Persona.TimeSpanField">
+            <summary>
             Propiedad pública que permite obtener TimeSpanField.
             </summary>
-      <remarks />
-      <value>
+            <remarks>
+            
+            </remarks>
+            <value>
             Valor que es utilizado para establecer y obtener TimeSpanField.
             </value>
-    </member>
-    <member name="P:Atento.Suite.Shared.Domain.Persona.Int16Field">
-      <summary>
+        </member>
+        <member name="P:Atento.Suite.Shared.Domain.Persona.Int16Field">
+            <summary>
             Propiedad pública que permite obtener Int16Field.
             </summary>
-      <remarks />
-      <value>
+            <remarks>
+            
+            </remarks>
+            <value>
             Valor que es utilizado para establecer y obtener Int16Field.
             </value>
-    </member>
-    <member name="P:Atento.Suite.Shared.Domain.Persona.Int32Field">
-      <summary>
+        </member>
+        <member name="P:Atento.Suite.Shared.Domain.Persona.Int32Field">
+            <summary>
             Propiedad pública que permite obtener Int32Field.
             </summary>
-      <remarks />
-      <value>
+            <remarks>
+            
+            </remarks>
+            <value>
             Valor que es utilizado para establecer y obtener Int32Field.
             </value>
-    </member>
-    <member name="P:Atento.Suite.Shared.Domain.Persona.Int64Field">
-      <summary>
+        </member>
+        <member name="P:Atento.Suite.Shared.Domain.Persona.Int64Field">
+            <summary>
             Propiedad pública que permite obtener Int64Field.
             </summary>
-      <remarks />
-      <value>
+            <remarks>
+            
+            </remarks>
+            <value>
             Valor que es utilizado para establecer y obtener Int64Field.
             </value>
-    </member>
-    <member name="T:Atento.Suite.Shared.Domain.PersonaFactory">
-      <summary>
-            Clase factoría para la creación de  una entidad de tipo <see cref="T:Atento.Suite.Shared.Domain.Persona" />.
+        </member>
+        <member name="T:Atento.Suite.Shared.Domain.PersonaFactory">
+            <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:Atento.Suite.Shared.Domain.Persona"/>.
             </summary>
-    </member>
-    <member name="M:Atento.Suite.Shared.Domain.PersonaFactory.#cctor">
-      <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:Atento.Suite.Shared.Domain.PersonaFactory" />.
+        </member>
+        <member name="M:Atento.Suite.Shared.Domain.PersonaFactory.#cctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Atento.Suite.Shared.Domain.PersonaFactory"/>.
             </summary>
-      <remarks>
-            Constructor vacío de la clase <see cref="T:Atento.Suite.Shared.Domain.PersonaFactory" />.
+            <remarks>
+            Constructor vacío de la clase <see cref="T:Atento.Suite.Shared.Domain.PersonaFactory"/>.
             </remarks>
-      <returns>
-            Devuelve una instancia de dela clase PersonaFactory /&gt;
+            <returns>
+            Devuelve una instancia de dela clase PersonaFactory />
             </returns>
-    </member>
-    <member name="M:Atento.Suite.Shared.Domain.PersonaFactory.Create(System.String)">
-      <summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.Domain.PersonaFactory.Create(System.String)">
+            <summary>
             Función para crear una entidad dentro de la factoría a partir 
             de los argumentos especificados.
             </summary>
-      <remarks>
-            Crea una entidad de tipo <see cref="T:Atento.Suite.Shared.Domain.Persona" /></remarks>
-      <param name="nombre"> 
+            <remarks>
+            Crea una entidad de tipo <see cref="T:Atento.Suite.Shared.Domain.Persona"/>
+            </remarks>
+            <param name="nombre"> 
             Test with auto property and public setter.
             </param>
-      <returns>
-            Devuelve  una entidad de tipo <see cref="T:Atento.Suite.Shared.Domain.PersonaFactory" /></returns>
-    </member>
-    <member name="T:Atento.Suite.Shared.Domain.PersonaSpecifications">
-      <summary>
-            Clase que representa las especificaciones para la entidad <see cref="T:Persona" />.
+            <returns>
+            Devuelve  una entidad de tipo <see cref="T:Atento.Suite.Shared.Domain.PersonaFactory"/>
+            </returns>
+        </member>
+        <member name="T:Atento.Suite.Shared.Domain.PersonaSpecifications">
+            <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:Persona"/>.
             </summary>
-      <remarks>
+            <remarks>
             Sin comentarios adicionales.
             </remarks>
-    </member>
-  </members>
+        </member>
+    </members>
 </doc>

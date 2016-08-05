@@ -55,12 +55,16 @@ namespace Atento.Suite.Shared.Application
     #endregion
 
     /// <summary>
-    /// Representa los servicios de administración de la entidad Persona.
+	/// .en generated with ServiceHeaderClass.tt
+	/// Administration services of the entity Persona.
+    /// .es geenrado con la plantilla ServiceHeaderClass.tt
+	/// Representa los servicios de administración de la entidad Persona.
     /// </summary>
     /// <remarks>
-    /// Crea un objeto <see cref="Persona".
+	/// .en Create an object of type <see cref="Persona"/>.
+    /// .es Crea un objeto <see cref="Persona"/>.
     /// </remarks>
-    public partial class PersonaServices : Atento.Suite.Shared.Application.EfApplicationServiceBase, IPersonaServices
+    public partial class PersonaServices : /*Atento.Suite.Shared.Application.EfApplicationServiceBase,*/ IPersonaServices
     {
 
         #region Fields
@@ -74,6 +78,10 @@ namespace Atento.Suite.Shared.Application
         // </summary>
         //private readonly PersonaRepositoryFactory personaRepositoryFactory;
 
+        // <summary>
+        // referencia a la unidad de trabajo
+        // </summary>
+		private IUnitOfWork unitOfWork;
         #endregion
 
         #region Constructors
@@ -85,11 +93,6 @@ namespace Atento.Suite.Shared.Application
         /// </remarks>
         public PersonaServices() : base()
         {
-    
-            this.unityContainer.RegisterType<DbContext, BootstrapUnitOfWork>(this.contextPerTestLifeTimeManager, new InjectionConstructor(this.connString));
-
-            // registramos el repositorio de la entidad
-            this.unityContainer.RegisterType<IPersonaRepository, PersonaRepository>(new PerResolveLifetimeManager());
   
             this.personaMapper = new PersonaMapper();
         }
@@ -174,7 +177,7 @@ namespace Atento.Suite.Shared.Application
                persona.Int16Field = personaDto.Int16Field;
                persona.Int32Field = personaDto.Int32Field;
                persona.Int64Field = personaDto.Int64Field;
-            IPersonaRepository repo = this.unityContainer.Resolve<IPersonaRepository>();
+            IPersonaRepository repo =  ApplicationLayer.IocContainer.Resolve<IPersonaRepository>();
             repo.Add(persona);
             this.Commit();
 
@@ -194,7 +197,7 @@ namespace Atento.Suite.Shared.Application
         /// </returns>
         public bool Delete(int id)
         {
-            IPersonaRepository repo = this.unityContainer.Resolve<IPersonaRepository>();
+            IPersonaRepository repo = ApplicationLayer.IocContainer.Resolve<IPersonaRepository>();
             IEnumerable<Persona> results = repo.GetFilteredElements(u => u.Id == id);
             Persona persona2Delete = results.First();
 
@@ -226,7 +229,7 @@ namespace Atento.Suite.Shared.Application
 
             try
             {
-                IPersonaRepository repo = this.unityContainer.Resolve<IPersonaRepository>();
+                IPersonaRepository repo = ApplicationLayer.IocContainer.Resolve<IPersonaRepository>();
                 var entities = repo.GetAll();
                 // Mapeamos los datos.
                 entities.ToList()
@@ -268,7 +271,7 @@ namespace Atento.Suite.Shared.Application
 
             try
             {               
-                IPersonaRepository repo = this.unityContainer.Resolve<IPersonaRepository>();
+                IPersonaRepository repo = ApplicationLayer.IocContainer.Resolve<IPersonaRepository>();
 
                 // Obtener y comprobar la entidad.
                 //ISpecification<Persona> spec = new DirectSpecification<Persona>(t => t.Id == entityBId);
@@ -328,7 +331,7 @@ namespace Atento.Suite.Shared.Application
             try
             {
                 // Creamos el repositorio de la entidad.
-                IPersonaRepository repo = this.unityContainer.Resolve<IPersonaRepository>();
+                IPersonaRepository repo = ApplicationLayer.IocContainer.Resolve<IPersonaRepository>();
 
                 // Obtenemos las entidades aplicando la especificación.
                 ISpecification<Persona> filter =
@@ -396,7 +399,7 @@ namespace Atento.Suite.Shared.Application
             try
             {
                 // Creamos el repositorio de la entidad.
-                IPersonaRepository repo = this.unityContainer.Resolve<IPersonaRepository>();
+                IPersonaRepository repo = ApplicationLayer.IocContainer.Resolve<IPersonaRepository>();
 
                 // Obtener y comprobar validez de la inserción a modificar.
                Persona entity2Update = repo.GetFilteredElements(t => t.Id == personaDto.Id).Single();
@@ -455,6 +458,12 @@ namespace Atento.Suite.Shared.Application
 
         #endregion
 
+
+        public void Commit()
+        {
+            if (unitOfWork == null) unitOfWork = ApplicationLayer.IocContainer.Resolve<IUnitOfWork>();
+            unitOfWork.Commit();
+        }
 
     } // class Persona 
 

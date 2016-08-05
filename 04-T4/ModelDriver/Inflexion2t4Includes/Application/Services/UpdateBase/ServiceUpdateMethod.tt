@@ -45,7 +45,7 @@ public class ServiceUpdateMethod : Template
             try
             {
                 // Creamos el repositorio de la entidad.
-                I<#= cbc.pascalSecureEntityName #>Repository repo = this.unityContainer.Resolve<I<#= cbc.pascalSecureEntityName #>Repository>();
+                I<#= cbc.pascalSecureEntityName #>Repository repo = ApplicationLayer.IocContainer.Resolve<I<#= cbc.pascalSecureEntityName #>Repository>();
 
                 // Obtener y comprobar validez de la inserción a modificar.
                <#= I #><#= cbc.pascalSecureEntityName #> entity2Update = repo.GetFilteredElements(t => t.Id == <#= cbc.camelSecureEntityName #>Dto.Id).Single();

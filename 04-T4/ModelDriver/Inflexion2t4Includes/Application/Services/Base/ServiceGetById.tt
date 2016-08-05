@@ -35,7 +35,7 @@ public class ServiceGetById : Template
 
             try
             {               
-                I<#= cbc.pascalSecureEntityName #>Repository repo = this.unityContainer.Resolve<I<#= cbc.pascalSecureEntityName #>Repository>();
+                I<#= cbc.pascalSecureEntityName #>Repository repo = ApplicationLayer.IocContainer.Resolve<I<#= cbc.pascalSecureEntityName #>Repository>();
 
                 // Obtener y comprobar la entidad.
                 //ISpecification<<#= cbc.pascalSecureEntityName #>> spec = new DirectSpecification<<#= cbc.pascalSecureEntityName #>>(t => t.Id == entityBId);

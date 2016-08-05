@@ -53,6 +53,7 @@ foreach (var item in sharedKernelUsings)
 
     #region general usings
     using System;
+	using System.Configuration;
     using System.Collections.Generic;
     using System.ServiceModel;
 
@@ -73,12 +74,26 @@ foreach (var item in sharedKernelUsings)
     /// Clase pública del servicio Wcf encargada de realizar las tareas 
     /// relacionadas con la entidad <#= I #><#= cbc.secureEntityName #>.
     /// </summary>
-    /// <remarks>
-    /// Sin comentarios adicionales.
-    /// </remarks>
     //[ApplicationErrorHandlerAttribute]
     public partial class <#= cbc.secureEntityName #>Service : I<#= cbc.secureEntityName #>Service
     {
+     //   #region Configuration
+	 //
+     //   /// <summary>
+     //   /// https://msdn.microsoft.com/en-us/library/hh205277(v=vs.110).aspx
+     //   /// </summary>
+     //   /// <param name="config"></param>
+     //   public static void Configure(ServiceConfiguration config)
+     //   {
+     //       {
+     //           config.LoadFromConfiguration(ConfigurationManager.OpenMappedExeConfiguration(new ExeConfigurationFileMap { ExeConfigFilename = @"<#=@"C:\" + prjCon.company+ @"\03-GeneratedProjects\"+ prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Application.WcfService\App.config" }, ConfigurationUserLevel.None));              
+     //           ApplicationLayer.ContainerInit();
+     //           <#= prjCon.boundedContextName #>RepositoryLayer.IocRegistry();
+     //       }
+     //   }
+	 //
+     //   #endregion
+
         #region Fields
 
         /// <summary>
@@ -126,9 +141,6 @@ foreach (var item in sharedKernelUsings)
         /// <summary>
         /// Función encargada de la creación de una entidad de tipo <#= cbc.secureEntityName #>.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         /// <param name="<#= cbc.camelSecureEntityName #>Dto">
         /// Parámetro de tipo <see cref="<#= cbc.secureEntityName #>Dto"/> con los datos necesarios
         /// para la creación de la entidad <#= cbc.secureEntityName #>.
@@ -156,9 +168,6 @@ foreach (var item in sharedKernelUsings)
         /// <summary>
         /// Función encargada de la actualziación de una entidad de tipo <#= cbc.secureEntityName #>.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         /// <param name="<#= cbc.camelSecureEntityName #>Dto">
         /// Parámetro de tipo <see cref="<#= cbc.secureEntityName #>Dto"/> con los datos necesarios
         /// para el borrado de la entidad <#= cbc.secureEntityName #>r.
@@ -188,7 +197,7 @@ foreach (var item in sharedKernelUsings)
         /// <remarks>
         /// Se trata de un borrado lógico.
         /// </remarks>
-        /// <param name="<#= cbc.secureEntityName #>Id">
+        /// <param name="id">
         /// Parámetro que indica el identificador único de la entidad a borrar.
         /// </param>
 <#+ if (Secured){#>        /// <param name="userContextDto"> Parámetro de tipo <see cref="UserContextDto"/> que representa el contexto del usuario. </param><#+ }#>
@@ -216,9 +225,6 @@ foreach (var item in sharedKernelUsings)
         /// <summary>
         /// Método encargado de obtener todas las entidades <#= cbc.secureEntityName #>.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
 <#+ if (Secured){#>        /// <param name="userContextDto"> Parámetro de tipo <see cref="UserContextDto"/> que representa el contexto del usuario. </param><#+ }#>
         /// <returns>
         /// Devuelve listado de Dto´s de la entidad <#= cbc.secureEntityName #>.
@@ -241,9 +247,6 @@ foreach (var item in sharedKernelUsings)
         /// Método encargado de obtener una entidad <#= I #><#= cbc.secureEntityName #> de acuerdo a
         /// su identificador.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         /// <param name="<#= cbc.camelSecureEntityName #>Id">
         /// Parámetro que indica el identificador único de la entidad cuya
         /// información se desea obtener.
@@ -298,7 +301,7 @@ foreach (var item in sharedKernelUsings)
 
         #endregion
 
-    } // end public partial interface <#= I #><#= cbc.secureEntityName #>Service
+    } // end public partial class <#= I #><#= cbc.secureEntityName #>Service
 } // end <#= projectNamespace #>
 
 <#+

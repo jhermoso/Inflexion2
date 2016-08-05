@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EB86FCD8-3C13-49F3-9732-179DDFC212DA}</ProjectGuid>
+    <ProjectGuid>{2DD5F41B-FB85-4C6C-B301-3CDE936B3650}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Atento.Suite.Shared.Application</RootNamespace>
     <AssemblyName>Atento.Suite.Shared.Application</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
     <TargetFrameworkProfile />
@@ -114,12 +114,15 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Categoria\CategoriaMapper.cs" />
+    <Compile Include="Categoria\CategoriaServices.cs" />
+    <Compile Include="Categoria\ICategoriaMapper.cs" />
+    <Compile Include="Categoria\ICategoriaServices.cs" />
     <Compile Include="Persona\IPersonaMapper.cs" />
     <Compile Include="Persona\IPersonaServices.cs" />
     <Compile Include="Persona\PersonaMapper.cs" />
     <Compile Include="Persona\PersonaServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SharedEfApplicationServiceBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -161,23 +164,23 @@
       <Name>Inflexion2</Name>
     </ProjectReference>
     <ProjectReference Include="..\Atento.Suite.Shared.Application.Dtos\Atento.Suite.Shared.Application.Dtos.csproj">
-      <Project>{5B3451EA-E145-49D4-9B91-A348364C6216}</Project>
+      <Project>{37341380-A031-435C-BF10-6D4ED91C3965}</Project>
       <Name>Atento.Suite.Shared.Application.Dtos</Name>
     </ProjectReference>
     <ProjectReference Include="..\Atento.Suite.Shared.Domain.Data\Atento.Suite.Shared.Domain.Data.csproj">
-      <Project>{53A6A048-F1E0-492F-B9CA-D92553490650}</Project>
+      <Project>{D5638DFB-A42F-4288-8332-F37C19423EE4}</Project>
       <Name>Atento.Suite.Shared.Domain.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Atento.Suite.Shared.Domain\Atento.Suite.Shared.Domain.csproj">
-      <Project>{7263F57A-EF97-4705-A86F-9080F97F494D}</Project>
+      <Project>{998C7702-2A91-42AC-965B-C8A365237CF2}</Project>
       <Name>Atento.Suite.Shared.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Atento.Suite.Shared.Infrastructure.Resources\Atento.Suite.Shared.Infrastructure.Resources.csproj">
-      <Project>{29472FBE-48C1-45B6-BF56-0A9630FA3D51}</Project>
+      <Project>{1DF2C3C2-1A32-4169-B674-57649CE1C343}</Project>
       <Name>Atento.Suite.Shared.Infrastructure.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\Atento.Suite.Shared.Infrastructure\Atento.Suite.Shared.Infrastructure.csproj">
-      <Project>{CD96782F-72F7-41D9-938A-56BF5E4F7D3E}</Project>
+      <Project>{1772A35E-921C-4C03-8E7D-4C81FBABE526}</Project>
       <Name>Atento.Suite.Shared.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>

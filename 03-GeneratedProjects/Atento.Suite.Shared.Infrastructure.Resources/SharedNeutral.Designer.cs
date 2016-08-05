@@ -63,6 +63,60 @@ namespace Atento.Suite.Shared.Infrastructure.Resources {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string Categoria_NameAlias {
+            get {
+                return ResourceManager.GetString("Categoria_NameAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Categoria_NameRemarks {
+            get {
+                return ResourceManager.GetString("Categoria_NameRemarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Categoria_NameTooltip {
+            get {
+                return ResourceManager.GetString("Categoria_NameTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categoria.
+        /// </summary>
+        public static string CategoriaAlias {
+            get {
+                return ResourceManager.GetString("CategoriaAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clasificador.
+        /// </summary>
+        public static string CategoriaRemarks {
+            get {
+                return ResourceManager.GetString("CategoriaRemarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clasificación.
+        /// </summary>
+        public static string CategoriaTooltip {
+            get {
+                return ResourceManager.GetString("CategoriaTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string EnumeracionAlias {
             get {
                 return ResourceManager.GetString("EnumeracionAlias", resourceCulture);

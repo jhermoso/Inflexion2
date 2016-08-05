@@ -32,7 +32,7 @@ public class UXAppConfigCT : Template
 <configuration>
 
   <startup>
-    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5"/>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2"/>
   </startup>
   <connectionStrings>
     <add name="<#=cbc.diagram.Product #>.Connection"
@@ -49,12 +49,25 @@ public class UXAppConfigCT : Template
   <system.serviceModel>
     <bindings>
       <basicHttpBinding>
-        <binding name="BasicHttpBinding_IPersonaService" />
+<#+ 
+foreach(INode<ClassBase> entity in cbc.OwnClassBaseTreeBoundedContext.All.Nodes.Where(p=> p.Data is Entity ))
+{
+    if (entity.Data.ReferencedRootEntity != null || ( entity.Data.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Abstract ) == kayak.MoneyGen.InheritClassKeywords.Abstract ) continue;
+	if (cbc.IsRoot)
+	{
+	string entityName =  T4Help.ToPascalCase(T4Help.SecureName(entity.Data.Name));
+#>
+        <binding name="BasicHttpBinding_I<#= entityName #>Service" />
+<#+
+    }
+}
+ #>
       </basicHttpBinding>
     </bindings>
     <client>
 <#+
             }
+			//empieza el bloque repetición// en este caso no usamos el bloque de repetición sino que rrecoremos las entidades que son root
  #>
 <#+ 
 foreach(INode<ClassBase> entity in cbc.OwnClassBaseTreeBoundedContext.All.Nodes.Where(p=> p.Data is Entity ))
@@ -62,16 +75,17 @@ foreach(INode<ClassBase> entity in cbc.OwnClassBaseTreeBoundedContext.All.Nodes.
     if (entity.Data.ReferencedRootEntity != null || ( entity.Data.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Abstract ) == kayak.MoneyGen.InheritClassKeywords.Abstract ) continue;
 	if (cbc.IsRoot)
 	{
+	string entityName =  T4Help.ToPascalCase(T4Help.SecureName(entity.Data.Name));
 #>
-      <endpoint address="http://localhost:8733/Design_Time_Addresses/<#=cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Application.WcfService/<#= cbc.secureEntityName #>Service/"
-          binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_I<#= cbc.secureEntityName #>Service"
-          contract="<#= cbc.secureEntityName #>Reference.I<#= cbc.secureEntityName #>Service" name="BasicHttpBinding_I<#= cbc.secureEntityName #>Service" />
+      <endpoint address="http://localhost:8733/Design_Time_Addresses/<#=cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Application.WcfService/<#= entityName #>Service/"
+          binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_I<#= entityName #>Service"
+          contract="<#= entityName #>Reference.I<#= entityName #>Service" name="BasicHttpBinding_I<#= entityName #>Service" />
 <#+
     }
 }
  #>
 <#+
- if(KindTimeCall.Equals("fin")  | KindTimeCall.Equals("soloUna") )
+ if(KindTimeCall.Equals("fin")  || KindTimeCall.Equals("soloUna") )
             {
 #>
     </client>

@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{4AD27CE6-51F9-4FCE-8A5E-2E610E4651E4}</ProjectGuid>
+    <ProjectGuid>{0E95215F-9E9A-4601-82F9-694F0AC8CBEA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Atento.Suite.Shared.FrontEnd.WpfStartUp</RootNamespace>
     <AssemblyName>Atento.Suite.Shared.FrontEnd.WpfStartUp</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -159,7 +159,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="App.config" />
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -175,16 +175,20 @@
       <Project>{BF5456D4-B276-459B-98D4-853FCEF99ADE}</Project>
       <Name>Inflexion2</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\01-Projects\UX\WPF\Inflexion2.UX.WPF.Controls\Inflexion2.UX.WPF.Controls.csproj">
+      <Project>{08BF5909-E6ED-4CCC-8CC5-9D07CBFCB39E}</Project>
+      <Name>Inflexion2.UX.WPF.Controls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\01-Projects\UX\WPF\Inflexion2.UX.WPF\Inflexion2.UX.WPF.csproj">
       <Project>{C55CA135-8975-49C6-A554-11E45164EB70}</Project>
       <Name>Inflexion2.UX.WPF</Name>
     </ProjectReference>
     <ProjectReference Include="..\Atento.Suite.Shared.Domain.Data\Atento.Suite.Shared.Domain.Data.csproj">
-      <Project>{53A6A048-F1E0-492F-B9CA-D92553490650}</Project>
+      <Project>{D5638DFB-A42F-4288-8332-F37C19423EE4}</Project>
       <Name>Atento.Suite.Shared.Domain.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Atento.Suite.Shared.Infrastructure.Resources\Atento.Suite.Shared.Infrastructure.Resources.csproj">
-      <Project>{29472FBE-48C1-45B6-BF56-0A9630FA3D51}</Project>
+      <Project>{1DF2C3C2-1A32-4169-B674-57649CE1C343}</Project>
       <Name>Atento.Suite.Shared.Infrastructure.Resources</Name>
     </ProjectReference>
   </ItemGroup>

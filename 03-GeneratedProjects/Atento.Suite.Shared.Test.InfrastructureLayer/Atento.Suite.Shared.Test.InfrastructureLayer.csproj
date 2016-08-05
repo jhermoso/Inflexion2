@@ -3,12 +3,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3BBFF07E-CED7-4542-A661-0A00AE5A037F}</ProjectGuid>
+    <ProjectGuid>{B2FC4F38-CCA2-4CA3-B93A-087D84750721}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Atento.Suite.Shared.Test.InfrastructureLayer</RootNamespace>
     <AssemblyName>Atento.Suite.Shared.Test.InfrastructureLayer</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -26,6 +26,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
     <DocumentationFile>..\..\00-Documentation\Atento.Suite.Shared.Test.InfrastructureLayer.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -35,6 +36,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -85,15 +87,15 @@
       <Name>Inflexion2</Name>
     </ProjectReference>
     <ProjectReference Include="..\Atento.Suite.Shared.Domain.Data\Atento.Suite.Shared.Domain.Data.csproj">
-      <Project>{53A6A048-F1E0-492F-B9CA-D92553490650}</Project>
+      <Project>{D5638DFB-A42F-4288-8332-F37C19423EE4}</Project>
       <Name>Atento.Suite.Shared.Domain.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Atento.Suite.Shared.Domain\Atento.Suite.Shared.Domain.csproj">
-      <Project>{7263F57A-EF97-4705-A86F-9080F97F494D}</Project>
+      <Project>{998C7702-2A91-42AC-965B-C8A365237CF2}</Project>
       <Name>Atento.Suite.Shared.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Atento.Suite.Shared.Infrastructure\Atento.Suite.Shared.Infrastructure.csproj">
-      <Project>{CD96782F-72F7-41D9-938A-56BF5E4F7D3E}</Project>
+      <Project>{1772A35E-921C-4C03-8E7D-4C81FBABE526}</Project>
       <Name>Atento.Suite.Shared.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>

@@ -48,7 +48,7 @@ public class ServiceGetPaged : Template
             try
             {
                 // Creamos el repositorio de la entidad.
-                I<#= cbc.pascalSecureEntityName #>Repository repo = this.unityContainer.Resolve<I<#= cbc.pascalSecureEntityName #>Repository>();
+                I<#= cbc.pascalSecureEntityName #>Repository repo = ApplicationLayer.IocContainer.Resolve<I<#= cbc.pascalSecureEntityName #>Repository>();
 
                 // Obtenemos las entidades aplicando la especificación.
                 ISpecification<<#= I #><#= cbc.pascalSecureEntityName #>> filter =

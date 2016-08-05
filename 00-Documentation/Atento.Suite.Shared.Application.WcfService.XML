@@ -4,6 +4,180 @@
         <name>Atento.Suite.Shared.Application.WcfService</name>
     </assembly>
     <members>
+        <member name="T:Atento.Suite.Shared.Application.WcfService.CategoriaService">
+            <summary>
+            Clase pública del servicio Wcf encargada de realizar las tareas 
+            relacionadas con la entidad Categoria.
+            </summary>
+        </member>
+        <member name="F:Atento.Suite.Shared.Application.WcfService.CategoriaService.service">
+            <summary>
+            Referencia a los servicios de administración de la entidad Categoria.
+            </summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.WcfService.CategoriaService.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:CategoriaService"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:CategoriaService"/>.
+            </remarks>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.WcfService.CategoriaService.Create(Atento.Suite.Shared.Application.Dtos.CategoriaDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo Categoria.
+            </summary>
+            <param name="categoriaDto">
+            Parámetro de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.CategoriaDto"/> con los datos necesarios
+            para la creación de la entidad Categoria.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.WcfService.CategoriaService.Update(Atento.Suite.Shared.Application.Dtos.CategoriaDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo Categoria.
+            </summary>
+            <param name="categoriaDto">
+            Parámetro de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.CategoriaDto"/> con los datos necesarios
+            para el borrado de la entidad Categoriar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.WcfService.CategoriaService.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo Categoria.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="id">
+            Parámetro que indica el identificador único de la entidad a borrar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la eliminación ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.WcfService.CategoriaService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades Categoria.
+            </summary>
+            <returns>
+            Devuelve listado de Dto´s de la entidad Categoria.
+            </returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.WcfService.CategoriaService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad Categoria de acuerdo a
+            su identificador.
+            </summary>
+            <param name="categoriaId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:Atento.Suite.Shared.Application.Dtos.CategoriaDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.WcfService.CategoriaService.GetPaged(Inflexion2.Application.DataTransfer.Core.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Categoria, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades Categoria, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="T:Atento.Suite.Shared.Application.WcfService.ICategoriaService">
+            <summary>
+            Interfaz que permite definir el contrato de servicio para las acciones
+            relacionadas con la entidad Categoria.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.WcfService.ICategoriaService.Create(Atento.Suite.Shared.Application.Dtos.CategoriaDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo Categoria.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="categoriaDto">
+            Parámetro de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.CategoriaDto"/> con los datos necesarios
+            para la creación de la entidad Categoria.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.WcfService.ICategoriaService.Update(Atento.Suite.Shared.Application.Dtos.CategoriaDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo Categoria.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="categoriaDto">
+            Parámetro de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.CategoriaDto"/> con los datos necesarios
+            para el borrado de la entidad Categoriar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.WcfService.ICategoriaService.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad Categoria.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.WcfService.ICategoriaService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades Categoria.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <returns>
+            Devuelve listado de Dto´s de la entidad Categoria.
+            </returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.WcfService.ICategoriaService.GetById(System.Int32)">
+            <returns>
+            Devuelve objeto dto <see cref="T:Atento.Suite.Shared.Application.Dtos.CategoriaDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.WcfService.ICategoriaService.GetPaged(Inflexion2.Application.DataTransfer.Core.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Categoria, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades Categoria, según la especificación indicada.
+            </returns>
+        </member>
         <member name="T:Atento.Suite.Shared.Application.WcfService.IPersonaService">
             <summary>
             Interfaz que permite definir el contrato de servicio para las acciones
@@ -91,9 +265,16 @@
             Clase pública del servicio Wcf encargada de realizar las tareas 
             relacionadas con la entidad Persona.
             </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
+            <summary>
+            Clase pública del servicio Wcf encargada de realizar las tareas 
+            relacionadas con la entidad Persona.
+            </summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.WcfService.PersonaService.Configure(System.ServiceModel.ServiceConfiguration)">
+            <summary>
+            https://msdn.microsoft.com/en-us/library/hh205277(v=vs.110).aspx
+            </summary>
+            <param name="config"></param>
         </member>
         <member name="F:Atento.Suite.Shared.Application.WcfService.PersonaService.service">
             <summary>
@@ -112,9 +293,6 @@
             <summary>
             Función encargada de la creación de una entidad de tipo Persona.
             </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
             <param name="personaDto">
             Parámetro de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.PersonaDto"/> con los datos necesarios
             para la creación de la entidad Persona.
@@ -127,9 +305,6 @@
             <summary>
             Función encargada de la actualziación de una entidad de tipo Persona.
             </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
             <param name="personaDto">
             Parámetro de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.PersonaDto"/> con los datos necesarios
             para el borrado de la entidad Personar.
@@ -146,7 +321,7 @@
             <remarks>
             Se trata de un borrado lógico.
             </remarks>
-            <param name="PersonaId">
+            <param name="id">
             Parámetro que indica el identificador único de la entidad a borrar.
             </param>
             <returns>
@@ -158,9 +333,6 @@
             <summary>
             Método encargado de obtener todas las entidades Persona.
             </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
             <returns>
             Devuelve listado de Dto´s de la entidad Persona.
             </returns>
@@ -170,9 +342,6 @@
             Método encargado de obtener una entidad Persona de acuerdo a
             su identificador.
             </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
             <param name="personaId">
             Parámetro que indica el identificador único de la entidad cuya
             información se desea obtener.
@@ -192,6 +361,17 @@
             <returns>
             La lista paginada de entidades Persona, según la especificación indicada.
             </returns>
+        </member>
+        <member name="T:Atento.Suite.Shared.Application.WcfService.SharedRepositoryLayer">
+            <summary>
+            Registra en el contenedor de Ioc de la capa de aplicacion las clases de acceso al repositorio
+            </summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.WcfService.SharedRepositoryLayer.ConnectionString">
+            <summary>
+            Get the conection string from the app.config or web config file asociated to the project on execution.
+            </summary>
+            <returns>The database connection string </returns>
         </member>
     </members>
 </doc>

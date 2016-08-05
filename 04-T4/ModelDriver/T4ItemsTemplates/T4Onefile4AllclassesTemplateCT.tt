@@ -1,6 +1,6 @@
 ﻿<#+
 
-public class InfraestructureUnitOfWorkCT : Template
+public class %safeitemname% : Template
 {
     // parametros de la plantilla
     public ClassBaseContext  cbc ;
@@ -8,7 +8,7 @@ public class InfraestructureUnitOfWorkCT : Template
     public ITree<BoundedContextMetadata> Skt;
     public string KindTimeCall ; /* Los valores posibles son "inicio", "desarrollo", "fin" y "soloUna" */
         
-    public InfraestructureUnitOfWorkCT(ClassBaseContext  classBaseContext, string nombreProjecto, ITree<BoundedContextMetadata> skt, string kindTimeCall)
+    public %safeitemname%(ClassBaseContext  classBaseContext, string nombreProjecto, ITree<BoundedContextMetadata> skt, string kindTimeCall)
     {
         cbc = classBaseContext;             // contexto de la clase base a interpretar
         projectNamespace = nombreProjecto;  // nombre del proyecto para el que estamos interpretando

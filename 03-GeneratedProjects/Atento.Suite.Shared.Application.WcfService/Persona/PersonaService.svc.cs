@@ -23,6 +23,7 @@ namespace Atento.Suite.Shared.Application.WcfService
 
     #region general usings
     using System;
+	using System.Configuration;
     using System.Collections.Generic;
     using System.ServiceModel;
 
@@ -43,12 +44,26 @@ namespace Atento.Suite.Shared.Application.WcfService
     /// Clase pública del servicio Wcf encargada de realizar las tareas 
     /// relacionadas con la entidad Persona.
     /// </summary>
-    /// <remarks>
-    /// Sin comentarios adicionales.
-    /// </remarks>
     //[ApplicationErrorHandlerAttribute]
     public partial class PersonaService : IPersonaService
     {
+     //   #region Configuration
+	 //
+     //   /// <summary>
+     //   /// https://msdn.microsoft.com/en-us/library/hh205277(v=vs.110).aspx
+     //   /// </summary>
+     //   /// <param name="config"></param>
+     //   public static void Configure(ServiceConfiguration config)
+     //   {
+     //       {
+     //           config.LoadFromConfiguration(ConfigurationManager.OpenMappedExeConfiguration(new ExeConfigurationFileMap { ExeConfigFilename = @"C:\Atento\03-GeneratedProjects\Atento.Suite.Shared.Application.WcfService\App.config" }, ConfigurationUserLevel.None));              
+     //           ApplicationLayer.ContainerInit();
+     //           SharedRepositoryLayer.IocRegistry();
+     //       }
+     //   }
+	 //
+     //   #endregion
+
         #region Fields
 
         /// <summary>
@@ -80,9 +95,6 @@ namespace Atento.Suite.Shared.Application.WcfService
         /// <summary>
         /// Función encargada de la creación de una entidad de tipo Persona.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         /// <param name="personaDto">
         /// Parámetro de tipo <see cref="PersonaDto"/> con los datos necesarios
         /// para la creación de la entidad Persona.
@@ -109,9 +121,6 @@ namespace Atento.Suite.Shared.Application.WcfService
         /// <summary>
         /// Función encargada de la actualziación de una entidad de tipo Persona.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         /// <param name="personaDto">
         /// Parámetro de tipo <see cref="PersonaDto"/> con los datos necesarios
         /// para el borrado de la entidad Personar.
@@ -140,7 +149,7 @@ namespace Atento.Suite.Shared.Application.WcfService
         /// <remarks>
         /// Se trata de un borrado lógico.
         /// </remarks>
-        /// <param name="PersonaId">
+        /// <param name="id">
         /// Parámetro que indica el identificador único de la entidad a borrar.
         /// </param>
         /// <returns>
@@ -167,9 +176,6 @@ namespace Atento.Suite.Shared.Application.WcfService
         /// <summary>
         /// Método encargado de obtener todas las entidades Persona.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         /// <returns>
         /// Devuelve listado de Dto´s de la entidad Persona.
         /// </returns>
@@ -191,9 +197,6 @@ namespace Atento.Suite.Shared.Application.WcfService
         /// Método encargado de obtener una entidad Persona de acuerdo a
         /// su identificador.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         /// <param name="personaId">
         /// Parámetro que indica el identificador único de la entidad cuya
         /// información se desea obtener.
@@ -233,6 +236,6 @@ namespace Atento.Suite.Shared.Application.WcfService
 
         #endregion
 
-    } // end public partial interface PersonaService
+    } // end public partial class PersonaService
 } // end Atento.Suite.Shared.Application.WcfService
 

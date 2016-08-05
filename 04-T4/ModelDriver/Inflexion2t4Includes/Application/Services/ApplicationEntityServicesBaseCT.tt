@@ -135,6 +135,12 @@ namespace <#= projectNamespace #>
 <#= ServiceUpdateMethodTxt.TrimEnd(' ') #>
 <#= ServiceAddRemoveUpdateTargetsTxt.TrimEnd(' ') #>
 
+        public void Commit()
+        {
+            if (unitOfWork == null) unitOfWork = ApplicationLayer.IocContainer.Resolve<IUnitOfWork>();
+            unitOfWork.Commit();
+        }
+
     } // class <#= cbc.pascalSecureEntityName #> 
 
 } //  <#= projectNamespace #>

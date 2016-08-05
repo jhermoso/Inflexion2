@@ -16,12 +16,16 @@ public class ServiceHeaderClass : Template
         ProjectConcepts prjCon = new ProjectConcepts( cbc, projectNamespace, Skt );
 #>
     /// <summary>
-    /// Representa los servicios de administración de la entidad <#= cbc.pascalSecureEntityName #>.
+	/// .en generated with ServiceHeaderClass.tt
+	/// Administration services of the entity <#= cbc.pascalSecureEntityName #>.
+    /// .es geenrado con la plantilla ServiceHeaderClass.tt
+	/// Representa los servicios de administración de la entidad <#= cbc.pascalSecureEntityName #>.
     /// </summary>
     /// <remarks>
-    /// Crea un objeto <see cref="<#= I #><#= cbc.pascalSecureEntityName #>".
+	/// .en Create an object of type <see cref="<#= I #><#= cbc.pascalSecureEntityName #>"/>.
+    /// .es Crea un objeto <see cref="<#= I #><#= cbc.pascalSecureEntityName #>"/>.
     /// </remarks>
-    <#= cbc.accesModifier #>class <#= cbc.pascalSecureEntityName #>Services : <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Application.<#=(cbc.diagram.ORM.Contains("ibernate"))?"Nh":"Ef" #>ApplicationServiceBase, I<#= cbc.pascalSecureEntityName #>Services
+    <#= cbc.accesModifier #>class <#= cbc.pascalSecureEntityName #>Services : /*<#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Application.<#=(cbc.diagram.ORM.Contains("ibernate"))?"Nh":"Ef" #>ApplicationServiceBase,*/ I<#= cbc.pascalSecureEntityName #>Services
     {
 <#+
         return this.GenerationEnvironment.ToString();

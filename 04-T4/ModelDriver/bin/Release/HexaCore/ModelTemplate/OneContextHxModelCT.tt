@@ -1,0 +1,107 @@
+﻿<#+
+public class OneContextHxModelCT : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    public ClassBaseContext cbc; 
+    public string projectNamespace; 
+    public ITree<BoundedContextMetadata> Skt;
+    public string KindTimeCall ; /* Los valores posibles son "inicio", "desarrollo", "fin" y "soloUna" */
+    // constructor de la plantilla con parametros
+    public OneContextHxModelCT(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt, string kindTimeCall)
+        {
+            this.cbc= cbc; 
+            this.projectNamespace = projectNamespace;  
+            this.Skt = Skt; 
+            this.KindTimeCall=kindTimeCall;
+        }
+
+    public override string TransformText()
+    {
+        // conceptos propios del projecto en curso
+        //ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+#>
+<#+
+    if(KindTimeCall.Equals("inicio") )
+    {
+#>
+<?xml version="1.0"?>
+<Model Name="Hexa.Core.Dsl.Sample" TargetUIType="Mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<Entities>
+<#+
+    }
+#>
+<#+ if (cbc.IsEntity) 
+    {
+#>
+    <Entity Name="<#= cbc.secureEntityName #>" IsRoot="<#= cbc.IsRoot.ToString().ToLower() #>">
+<#+
+    if (
+        cbc.propertyAssociationSources.Where(p=> IsMaxMultiplicityMany(p.TargetMultiplicity)).Any() ||
+        cbc.propertyAssociationTargets.Where(p=> IsMaxMultiplicityMany(p.SourceMultiplicity)).Any()
+       )
+        {
+#>
+      <Associations>
+<#+
+            foreach (var property in cbc.propertyAssociationSources.Where(p=> IsMaxMultiplicityMany(p.TargetMultiplicity)))
+            {
+                if(property.SourceRolName != null)
+                {
+#>
+            <Association Type="<#= property.Source.Name #>" AssociationType="<#= (IsMaxMultiplicityMany(property.SourceMultiplicity))?"ManyToMany":"ManyToOne" #>"/>
+<#+ 
+                }
+            }
+#>
+<#+
+            foreach (var property in cbc.propertyAssociationTargets.Where(p=> IsMaxMultiplicityMany(p.SourceMultiplicity)))
+            {
+                if(property.SourceRolName != null)
+                {
+#>
+            <Association Type="<#= property.Target.Name #>" AssociationType="<#= (IsMaxMultiplicityMany(property.TargetMultiplicity))?"ManyToMany":"ManyToOne" #>"/>
+<#+ 
+                }
+            }
+#>
+      </Associations>
+<#+
+        }// has associations
+#>
+<#+
+    if (cbc.propertyObjects.Any())
+        {
+#>
+      <Properties>
+<#+
+            foreach (var property in cbc.propertyObjects)
+            {
+                int num; 
+                string lenghtfield = ""; 
+                if (property.AtributteType.Equals("string") && int.TryParse(property.Size, out num))
+                    lenghtfield = "Length=\""+num.ToString()+"\"";
+#>
+            <Property IsRequired = "<#= (property.RequestUponCreation==RequestUponCreation.yes)?"true":"false" #>" <#= lenghtfield #> Name="<#= T4Help.SecureName(property.AtributteName) #>" Type="<#= property.AtributteType #>" />
+<#+
+            }
+#>
+      </Properties>
+<#+
+        }// has propeties
+#>
+    </Entity>
+<#+
+    } // is entity
+#>
+<#+
+ if(KindTimeCall.Equals("fin") )
+            {
+#>
+</Entities>
+</Model>
+<#+          } #>
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

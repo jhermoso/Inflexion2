@@ -79,6 +79,9 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
             this.UnityContainer.RegisterType<object, PersonaView>(typeof(PersonaView).FullName);
             this.UnityContainer.RegisterType<object, PersonaQueryView>(typeof(PersonaQueryView).FullName);         
 
+            this.UnityContainer.RegisterType<object, CategoriaView>(typeof(CategoriaView).FullName);
+            this.UnityContainer.RegisterType<object, CategoriaQueryView>(typeof(CategoriaQueryView).FullName);         
+
         }
         #endregion
     } // end class 

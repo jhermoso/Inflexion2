@@ -1,0 +1,3024 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.VisualStudio.Modeling.Sdk.Integration.14.0</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.IModelingAdapterWithRootedModel">
+            <summary>
+            Interface implemented by ModelBus adapters that expose the root
+            element of the model.
+            </summary>
+            <remarks>An adapter can implement this interface to indicate that it 
+            is an adapter to a model with a single root ModelElement that is 
+            exposed via the adapter.</remarks>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.IModelingAdapterWithRootedModel.ModelRoot">
+            <summary>
+            Accessor for the single root model element
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.IModelingAdapterWithStore">
+            <summary>
+            Interface implemented by ModelBus adapters that expose the store.
+            </summary>
+            <remarks>An adapter can implement this interface to indicate that it
+            exposes the store of the model that it provides access to.</remarks>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.IModelingAdapterWithStore.Store">
+            <summary>
+            Accessor for the store
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.ModelBusReferencePropertySerializer">
+            <summary>
+            Custom DomainProperty serializer to serialize/deserializer ModelBusReferences
+            </summary>
+            <remarks>This class is dependant on the DSL runtime as it inherits from DomainPropertyXmlSerializer.</remarks>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ModelBusReferencePropertySerializer.ModelBusLoadContextKey">
+            <summary>
+            Key into the SerializationContext used by the serializer when (de)serializing.
+            </summary>
+            <remarks>On deserialization, this class expects the entry with this key in the supplied
+            SerializationContext to contain a ModelBus reference. If it does not, the deserialization
+            methods will return null.</remarks>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ModelBusReferencePropertySerializer.FilePathLoadContextKey">
+            <summary>
+            Key into the ReferenceContext set by the serializer when deserializing.
+            </summary>
+            <remarks>On deserialization, the serializer will add the absolute source path of the model file
+            that contains the reference being deserialized to the ReferenceContext for the new reference
+            using this key.
+            The serializer does not use this information itself. However, it might be used by other classes
+            e.g. when deserializing the adapter-specific data</remarks>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ModelBusReferencePropertySerializer.FilePathSaveContextKey">
+            <summary>
+            Key into the ReferenceContext set by the serialier when serializing.
+            </summary>
+            <remarks>On serialization, the serializer will add the absolute source path of the model file
+            that contains the reference being serialized to the ReferenceContext for the new reference
+            using this key.
+            The serializer does not use this information itself. However, it might be used by other classes
+            e.g. when serializing the adapter-specific data</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReferencePropertySerializer.GetString``1(Microsoft.VisualStudio.Modeling.SerializationContext,``0)">
+            <summary>
+            Return the supplied model bus reference as a string
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReferencePropertySerializer.GetValue``1(Microsoft.VisualStudio.Modeling.SerializationContext,System.String)">
+            <summary>
+            Attempts to deserialize the suppling string to a model bus reference
+            </summary>
+            <remarks>This method will return null if the supplied serialization context does not
+            contain a ModelBus.</remarks>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.ModelBusReferenceTypeConverter">
+            <summary>
+            Converter that can convert ModelBusReferences to strings.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReferenceTypeConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>
+            Returns whether this converter can convert the object to the specified type, using the specified context.
+            </summary>
+            <param name="context">An ITypeDescriptorContext that provides a format context.</param>
+            <param name="destinationType">A Type that represents the type you want to convert to.</param>
+            <returns>true if this converter can perform the conversion; otherwise, false.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReferenceTypeConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <summary>
+            Converts the given value object to the specified type, using the specified context and culture information.
+            </summary>
+            <param name="context">An ITypeDescriptorContext that provides a format context.</param>
+            <param name="culture">A CultureInfo object.</param>
+            <param name="value">The Object to convert.</param>
+            <param name="destinationType">The Type to convert the value parameter to.</param>
+            <returns>An Object that represents the converted value.</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.StandardModelingAdapter">
+            <summary>
+            Represents a basic DSL based model adapter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.StandardModelingAdapter.#ctor(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager,Microsoft.VisualStudio.Modeling.Store)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="reference">The ModelBusReference used to create this ModelBusAdapter.</param>
+            <param name="adapterManager">The ModelBusAdapterManager creating this ModelBusAdapter.</param>
+            <param name="store">The store being accessed by this adapter.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.StandardModelingAdapter.#ctor(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager,Microsoft.VisualStudio.Modeling.ModelElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="reference">The ModelBusReference used to create this ModelBusAdapter.</param>
+            <param name="adapterManager">The ModelBusAdapterManager creating this ModelBusAdapter.</param>
+            <param name="rootModelElement">The root element of the model being accessed by this adapter.</param>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.StandardModelingAdapter.AdapterStore">
+            <summary>
+            The store to which this adapter is providing access.
+            </summary>
+            <remarks>The property is not public since the derived adapter might not want to expose the store</remarks>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.StandardModelingAdapter.AdapterModelRoot">
+            <summary>
+            The root element of the model to which this adapter is providing access. Could be null.
+            </summary>
+            <remarks>The property is not public since the derived adapter might not want to expose the root element,
+            or there may not be a root element.</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.StandardModelingAdapter.GetDefaultView">
+            <summary>
+            Obtains the PrimaryView associated with this Model, if one is available.
+            </summary>
+            <returns>ModelBusView instance associated with the Model</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.StandardModelingAdapter.GetView(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Gets a specific view associated with this Model based on the ModelBusView reference
+            </summary>
+            <param name="reference">Reference for the view</param>
+            <returns>ModelBusView</returns>
+            <remarks>The ModelBusReference passed must resolve to the ModelBusAdapter on which this View is requested</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.StandardModelingAdapter.GetReferenceStatus">
+            <summary>
+            Validates the element and the view (if applicable) and returns the status
+            </summary>
+            <returns>ReferenceStatus</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.StandardModelingAdapter.ResolveElementReference(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Given an identifier for an Element, returns the actual object represented by this reference.
+            </summary>
+            <param name="elementReference">Unique identifier for a particular element</param>
+            <returns>Instance of the resolved element object or null if reference cannot be resolved</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.StandardModelingAdapter.GetElementReference(System.Object)">
+            <summary>
+            Get the reference of a given object instance supposed to be exposed by this adapter.
+            </summary>
+            <param name="element">Element for which the Model bus reference should returned. Should not be <c>null</c></param>
+            <returns>A reference on the exposed element passed as a parameter if it is managed by this adapter</returns>
+            <remarks>If <paramref name="element"/> is <c>null</c>, an <see cref="T:System.ArgumentNullException">ArgumentNullException </see> is thrown.
+            If <paramref name="element"/> element does not belong to the objects managed by this adapter, an <see cref="T:System.ArgumentException">ArgumentException </see> is thrown.
+            Also if a valid reference cannot be created for the element, the method will return <c>null</c>. This could, for instance, be the case if
+            <see cref="M:Microsoft.VisualStudio.Modeling.Integration.StandardModelingAdapter`1.GetElementId(Microsoft.VisualStudio.Modeling.Integration.ModelElement)">GetElementId()</see>
+            returns null of empty
+            </remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.StandardModelingAdapter.GetElementId(Microsoft.VisualStudio.Modeling.ModelElement)">
+            <summary>
+            Get the Element Id of a ModelElement. This element Id will be used to build the modelbus reference of the model element
+            </summary>
+            <param name="mel">ModelElement for which we request the Element Id</param>
+            <returns>A string representing uniquely the ModelElement among the objects managed by the Adapter</returns>
+            <remarks>The default implementation return <code>mel.Id.ToString()</code> which is fine if the <c>SerializeId</c> property of
+            the <c>XMLClassData</c> associated with the DomainClass of this <paramref name="mel"/> is <c>true</c> (which is not the default)
+            For other cases, the Adapter author should provide a unique Id (such as the moniker)</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.StandardModelingAdapter.GetElementDisplayName(Microsoft.VisualStudio.Modeling.ModelElement)">
+            <summary>
+            Extension point for letting the DSL author decide the Display name for a particular model element
+            </summary>
+            <param name="mel">Model element for which we want to compute the display name</param>
+            <returns>A string constaining the Display name for the <paramref name="mel"/></returns>
+            <remarks>This method is called by 
+            <see cref="M:Microsoft.VisualStudio.Modeling.Integration.StandardModelingAdapter`T.GetElementReference">GetElementReference</see>
+            to determine the display name for the element. If this method returns null or empty, <c>GetElementReference </c>will use the 
+            display name of the domain class instead</remarks>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.ExceptionHandler">
+            <summary>
+            A static class to provide static methods for handling exceptions in a 
+            central place for TeamArchitect needs.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ExceptionHandler.IsCriticalException(System.Exception)">
+            <summary>
+            	Singles out several Exception classes as being too critical to ignore.
+            </summary>
+            <param name="ex">Exception to test.</param>
+            <returns>True if exception should not be ignored.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ExceptionHandler.CallWithCatch(System.Action)">
+            <summary>
+            Invoke the given Action with catch for non-critical exceptions.
+            If the action throws critical exception, it will be re-thrown, 
+            otherwise the non-critical exception will be returned.
+            </summary>
+            <param name="action">Action to invoke.</param>
+            <returns>Null if no exception happens, or the non-critical exception thrown by the action.</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.StringComparer">
+            <summary>
+            StringComparer acts like a System.StringComparer with a few additional methods for usefulness (Contains,
+            StartsWith, EndsWith, etc.) so that it can be a "one-stop shop" for string comparisons.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.StringComparer.ValidatePublicArg">
+            <summary>
+            Helper to validate parameters on public, protected or internal methods.
+            TODO: This will be moved into its own source file once its gets approved.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.StringComparer.ValidatePublicArg.NotNull(System.Object,System.String)">
+            <summary>
+            Throws ArgumentNullException if the argument is null.
+            </summary>
+            <param name="arg">The argument to check.</param>
+            <param name="paramName">The parameter name of the argument.</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Utilities">
+            <summary>
+            Utility class for sharing helper functionality across TeamArchitect.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Utilities.ComposeUIMessage(System.String,System.Object[])">
+            <summary>
+            Compose message string from the given message and arguments using CultureInfo.CurrentCulture.
+            </summary>
+            <param name="messageResource">The resource message to be formatted.</param>
+            <param name="arguments">An optional list of string arguments.</param>
+            <returns>The composed string, taking culture into consideration.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Utilities.ValidateMessageParameters(System.String,System.Int32)">
+            <summary>
+            Check whether the number of parameters passed to a message is correct.
+            </summary>
+            <param name="message">The message to be checked.</param>
+            <param name="paramNumber">The number of parameters passed to the message.</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.AdapterNotSupportedException">
+            <summary>
+            Exception type thrown when an adapter manager is asked to handle a
+            type of adapter that it does not support.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.IConfiguration.GetAdapterManagers">
+            <summary>
+            Function to get all of the available AdapterManagers
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.IConfiguration.FindAdapterManager(System.String)">
+            <summary>
+            Method to find an adapter manager that handles the specified adapter type.
+            </summary>
+            <param name="logicalAdapterId">The Id to use for the search</param>
+            <returns>An instance of a ModelBusAdapterManager that supports the specified ModelBusAdapter</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.InvalidAdapterManagerException">
+            <summary>
+            Exception class for invalid adapter manager exceptions
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.AdapterReferenceTypeNotSupportedException">
+            <summary>
+            Exception type thrown when an adapter manager is asked to serialized type of 
+            ModelBusAdapterReference that it does not support.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.ViewOperationException">
+            <summary>
+            This defines the ViewOperationException class, which is thrown
+            when an creation of ModelBusView or an operation on a ModelBusView instance fails.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ViewOperationException.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ViewOperationException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ViewOperationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message.</param>
+            <param name="inner">Inner exception if any, null otherwise.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ViewOperationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="info">SerializationInfo of the exception.</param>
+            <param name="context">StreamingContext of the serialized exception.</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.DynamicAdapterManagerAttribute">
+            <summary>
+            Custom attribute used to indicate that an adapter manager supports any arbitrary LogicalAdapterId.
+            Using this attribute on an AdapterManager implies that the AdapterManager can be used generically to support 
+            multiple different Adapters or multiple different Models.
+            
+            The MEF based ModelBus ConfigurationManager will query such AdapterManagers to discover which AdapterIds they support
+            at runtime rather than just rely on MEF meta-data thus allowing the AdapterManager to dynamically support arbitrary models.
+            </summary>
+            <remarks>Provides an alternative to using the standard
+            MEF [ExportMetadata(...)] attribute</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.DynamicAdapterManagerAttribute.#ctor(System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.DynamicAdapterManagerAttribute.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.DynamicAdapterManagerAttribute.IsDynamic">
+            <summary>
+            The MEF meta-data exposed by this Attribute.
+            Indicates whether the AdapterManager supports any arbitrary LogicalAdapterId or not.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.HostSpecificAttribute">
+            <summary>
+            Custom attribute used to indicate that a ModelBus part 
+            works in a particular ModelBus host.
+            </summary>
+            <remarks>Provides an alternative to using the standard
+            MEF [ExportMetadata(...)] attribute</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.HostSpecificAttribute.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.HostSpecificAttribute.Host">
+            <summary>
+            The id of the host that this ModelBus part works with.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.HandlesAdapterAttribute">
+            <summary>
+            Custom attribute used to indicate that an adapter manager 
+            handles a particular type of adapter
+            </summary>
+            <remarks>Provides an alternative to using the standard
+            MEF [ExportMetadata(...)] attribute</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.HandlesAdapterAttribute.#ctor(System.Type)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.HandlesAdapterAttribute.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.HandlesAdapterAttribute.LogicalAdapterId">
+            <summary>
+            The id of the adapter that is handled
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.CompositionAttributes.AdapterIdKey">
+            <summary>
+            Key for Metadata value that represents the Type of the ModelBusAdapter.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.CompositionAttributes.CommandIdKey">
+            <summary>
+            Key for Metadata value that represents the Type of the Command
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.CompositionAttributes.HostKey">
+            <summary>
+            Key for Metadata value that represents the host an adapter manager works with
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.CompositionAttributes.IsDynamicKey">
+            <summary>
+            Key for Metadata value that indicates if an AdapterManager is dynamic
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.CompositionConfigurationManager">
+            <summary>
+            Class to provide a MEF-based way of configuring the ModelBus
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.CompositionConfigurationManager.Host">
+            <summary>
+            Host that this configuration uses to filter parts
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.CompositionConfigurationManager.#ctor(System.ComponentModel.Composition.Hosting.ExportProvider,System.String)">
+            <summary>
+            Creates and initializes a MEF config manager.
+            </summary>
+            <param name="exportProvider">MEF export provider to use for locating modelbus parts</param>
+            <param name="host">Identifier of host that is using modelbus to allow filtering of host-specific part families</param>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.CompositionConfigurationManager.exportProvider">
+            <summary>
+            The MEF Container that the ConfigurationManager interacts with
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.CompositionConfigurationManager.FilterByHost``1(System.Lazy{``0,System.Collections.Generic.IDictionary{System.String,System.Object}})">
+            <summary>
+            Method to filter a list of exports for the configuration's host.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="??"></param>
+            <param name="??"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.CompositionConfigurationManager.MetadataValueMatches``1(System.Lazy{``0,System.Collections.Generic.IDictionary{System.String,System.Object}},System.String,System.String)">
+            <summary>
+            Perform a match on a named piece of metadata and a given value for it.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="export"></param>
+            <param name="metadataKey"></param>
+            <param name="requiredMetadataValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.CompositionConfigurationManager.GetFirstExportedObject``1(System.String,System.String)">
+            <summary>
+            Returns the first matching instance of the specified export
+            with the given metadata.
+            </summary>
+            <typeparam name="T">The export type / type to return</typeparam>
+            <param name="key">MEF metadata key</param>
+            <param name="value">MEF metadata value</param>
+            <returns>An instance of T, or null</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.CompositionConfigurationManager.GetExports``1(System.String,System.String)">
+            <summary>
+            Returns the collection of Exports of the generic type that has the given key / value metadata.
+            </summary>
+            <typeparam name="T">The MEF contract type that the Export must satisfy</typeparam>
+            <param name="key">Meta-data key to look for</param>
+            <param name="value">Meta-data value to look for</param>
+            <returns>Collection of Exports that satisfy the MEF meta-data queried for</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.CompositionConfigurationManager.SafeGetExportedObject``1(System.Lazy{``0})">
+            <summary>
+            Returns the exported object for the supplied export
+            </summary>
+            <typeparam name="T">Type to return</typeparam>
+            <param name="export"></param>
+            <returns>An instance of type T, or null</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.CompositionConfigurationManager.FindFirstGenericAdapterManager(System.String)">
+            <summary>
+            Method to find the appropriate Dynamic ModelBusAdapterManager given an LogicalAdapterId in the MEF Catalog.
+            </summary>
+            <param name="logicalAdapterId">string value to look for</param>
+            <returns>An instance of a ModelBusAdapterManager if one is found</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.CompositionConfigurationManager.GetAdapterManagers">
+            <summary>
+            Get list of all discovered AdapterManager objects
+            </summary>
+            <returns>List of available AdapterManagers</returns>
+            <remarks>This will cause all adapters to be loaded, so FindAdapterManager should be used if possible</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.CompositionConfigurationManager.FindAdapterManager(System.String)">
+            <summary>
+            Method to find the appropriate ModelBusAdapterManager given an LogicalAdapterId in the MEF Catalog.
+            </summary>
+            <param name="logicalAdapterId">string value to look for</param>
+            <returns>An instance of a ModelBusAdapterManager if one is found</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.ErrorCategory">
+            <summary>
+            Enumeration to specify the severity of an error
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelingAdapter.#ctor(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="reference">The ModelBusReference used to create this ModelBusAdapter.</param>
+            <param name="adapterManager">ModelBusAdapterManager that created this ModelBusAdapter</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelingAdapter.#ctor(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager,Microsoft.VisualStudio.Modeling.Integration.ModelingDocumentHandler)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="reference">The ModelBusReference used to create this ModelBusAdapter.</param>
+            <param name="adapterManager">ModelBusAdapterManager that created this ModelBusAdapter</param>
+            <param name="modelingDocHandler">ModelingDocumentHandler for this ModelBusAdapter</param>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelingAdapter.DocumentHandler">
+            <summary>
+            ModelingDocumentHandler used by this ModelingAdapter.
+            The DocumentHandler is used by the ModelBusAdapter to configure the model wrapped by it.
+            Allows setting the DocumentHandler only if this ModelBusAdapter hasnt got one already.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelingAdapter.TrySetDocumentHandler(Microsoft.VisualStudio.Modeling.Integration.ModelingDocumentHandler)">
+            <summary>
+            If the ModelingDocumentHandler is not already set (by the constructor for e.g.), then sets it to the value passed as a parameter.
+            Otherwise, returns false.
+            </summary>
+            <param name="documentHandler">ModelingDocumentHandler to configure this ModelingAdapter</param>
+            <returns>Bool to indicate if operation was a success</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelingAdapter.Dispose(System.Boolean)">
+            <summary>
+            Clean-up this ModelBusAdapter instance. Triggers a dispose of the DocumentHandler, if it has one.
+            </summary>
+            <param name="disposing">true when called by Dispose; false when called by finalizer</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.ModelingDocumentHandler">
+            <summary>
+            This is a pluggable class that a ModelBusAdapter can use for configuring management 
+            of the underlying Document represented by this ModelBusAdapter.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ModelingDocumentHandler.modelFile">
+            <summary>
+            FileInfo object for the model file being handled
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelingDocumentHandler.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="modelFile">Accepts a FileInfo object representing the document handled by this DocumentHandler</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelingDocumentHandler.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelingDocumentHandler.Finalize">
+            <summary>
+            Destructor
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelingDocumentHandler.ModelFile">
+            <summary>
+            Full path and file name of the disk-based file being managed by this DocumentHandler.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelingDocumentHandler.Root">
+            <summary>
+            Access the root element of the document
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelingDocumentHandler.Dispose">
+            <summary>
+            IDisposable.Dispose().
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelingDocumentHandler.Dispose(System.Boolean)">
+            <summary>
+            Dispose this ModelingDocumentHandler instance.
+            The base class does nothing. Derived ModelingDocumentHandler implementations can choose to do additional work, including
+            persist unsaved data, free up resources, etc.
+            </summary>
+            <param name="disposing">True if called from IDisposable.Dispose(), false if from destructor.</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Picker.ApplyElementTypeLimitationsAttribute">
+            <summary>
+            Filtering attribute used by the Picker to filter out any ModelBusReferences that do not represent an element type of the specified element type
+            </summary>
+            <example>
+            The folowing code will enable selection of elementTypeX and elementTypeY in the element browser
+            
+            <code>
+            [ApplyElementTypeLimitations(typeof(elementTypeX), typeof(elementTypeY))]
+            public ModelBusReference MyReference
+            {
+            	get;
+            	set;
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.ApplyElementTypeLimitationsAttribute.#ctor(System.Type[])">
+            <summary>
+            Creates limitation based on element types
+            </summary>
+            <exception cref="T:System.ArgumentNullException">When elementTypes is null or empty</exception>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Picker.ApplyElementTypeLimitationsAttribute.ElementTypes">
+            <summary>
+            Gets the applied limitations
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Picker.ApplyAdapterLimitationsAttribute">
+            <summary>
+            Filtering attribute used by the Picker to filter out any ModelBusReferences that 
+            do not refer to an adapter of the specified logical adapter id.
+            </summary>
+            <example>
+            The following code will enable selection of logicalAdapterX and logicalAdapterY references 
+            
+            <code>
+            [ApplyAdapterLimitations("logicalAdapterX", "logicalAdapterY")]
+            public ModelBusReference MyReference
+            {
+            	get;
+            	set;
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.ApplyAdapterLimitationsAttribute.#ctor(System.String[])">
+            <summary>
+            Creates limitation based on logical adapter ids
+            </summary>
+            <exception cref="T:System.ArgumentNullException">When logicalAdapterIds is null or empty</exception>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Picker.ApplyAdapterLimitationsAttribute.LogicalAdapterIds">
+            <summary>
+            Gets the applied limitations
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Picker.PickerMetadataBaseAttribute">
+            <summary>
+            Base class for picker meta data classes
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Picker.SupplyFileBasedBrowserConfigurationAttribute">
+            <summary>
+            Supplies configuration for file based model browser 
+            <example>
+            The folowing code will supply a configuration that will display "DSL Models" in the caption and filter 
+            all the dsl and diagram extensions
+            
+            [SupplyFileBasedBrowserConfiguration("DSL Models", "Model file|*.dsl|Diagram file|*.diagram")]
+            public ModelBusReference MyReference
+            {
+            	get;
+            	set;
+            }
+            </example>
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.SupplyFileBasedBrowserConfigurationAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Create file based hint
+            </summary>
+            <param name="title">The text appearing in the OpenFileDialog title</param>
+            <param name="fileExtensionsFilter">The filter string for the OpenFileDialog</param>
+            <exception cref="T:System.ArgumentNullException">When title is null or empty</exception>
+            <exception cref="F:Microsoft.VisualStudio.Modeling.Integration.Picker.SupplyFileBasedBrowserConfigurationAttribute.fileExtensionsFilter">When fileExtensionsFilter is null or empty</exception>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Picker.SupplyFileBasedBrowserConfigurationAttribute.Title">
+            <summary>
+            Gets the title
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Picker.SupplyFileBasedBrowserConfigurationAttribute.FileExtensionsFilter">
+            <summary>
+            Gets the FileExtensionsFilter
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Picker.BrokenReferenceDetector">
+            <summary>
+            Detects broken references
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.BrokenReferenceDetector.ValidateProperty(System.IServiceProvider,System.Action{Microsoft.VisualStudio.Modeling.ModelElement,Microsoft.VisualStudio.Modeling.DomainPropertyInfo,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference},Microsoft.VisualStudio.Modeling.DomainPropertyInfo,Microsoft.VisualStudio.Modeling.ModelElement)">
+            <summary>
+            Validates the specified property if needed and invokes the invalid action when the reference is not valid
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.BrokenReferenceDetector.DetectBrokenReferences(System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Modeling.ModelElement},System.IServiceProvider,System.Action{Microsoft.VisualStudio.Modeling.ModelElement,Microsoft.VisualStudio.Modeling.DomainPropertyInfo,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference})">
+            <summary>
+            Looks through the collection for invalid references and on each that is found invokes invalidAction
+            </summary>
+            <exception cref="T:System.ArgumentNullException">When collection is null</exception>
+            <exception cref="T:System.ArgumentNullException">When serviceProvider is null</exception>
+            <exception cref="T:System.ArgumentNullException">When brokenReferenceAction is null</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.BrokenReferenceDetector.DetectBrokenReferences(Microsoft.VisualStudio.Modeling.Store,System.Action{Microsoft.VisualStudio.Modeling.ModelElement,Microsoft.VisualStudio.Modeling.DomainPropertyInfo,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference})">
+            <summary>
+            Looks through the store for invalid references and on each that is found invokes invalidAction
+            </summary>
+            <exception cref="T:System.ArgumentNullException">When store is null</exception>
+            <exception cref="T:System.ArgumentNullException">When brokenReferenceAction is null</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.BrokenReferenceDetector.EnumerateElementsWithModelBusReference(System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Modeling.ModelElement})">
+            <summary>
+            Lookup method that find all the instance with model elements with ModelBusReference
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.BrokenReferenceDetector.EnumerateElementsWithModelBusReference(Microsoft.VisualStudio.Modeling.Store)">
+            <summary>
+            Lookup method that find all the instance with model elements with ModelBusReference
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Picker.Hosting.GuidList">
+            <summary>
+            Static class to list each guid
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Picker.Hosting.GuidList.GuidPickerService">
+            <summary>
+            Guid to identify the ReferencePicker service
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Picker.Hosting.SReferencePicker">
+            <summary>
+            The service interface for the VS ReferencePicker service
+            </summary>
+            <remarks>
+            Empty, the real work is done by interfaces you cast this to.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Picker.Hosting.IReferencePicker">
+            <summary>
+            Reference picker contract
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Picker.Hosting.IReferencePicker.DefaultEditStyle">
+            <summary>
+            The edit style for the reference picker in UITypeEditor
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.Hosting.IReferencePicker.PickModelReference(System.ComponentModel.ITypeDescriptorContext,System.Windows.Forms.Design.IWindowsFormsEditorService,Microsoft.VisualStudio.Modeling.Store,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Picks a reference using model browser and displays it.
+            Supports automatic fixup in the store.
+            </summary>
+            <remarks>The method used to display the picker in UITypeEditor</remarks>
+            <param name="context">The context in which the method was invoked</param>
+            <param name="editorService">Enables editing the reference using a custom visual representation based on the DefaultEditStyle</param>
+            <param name="store">The working store for which the reference is picked</param>
+            <param name="reference">The current reference</param>
+            <returns>The selected reference by the picker</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.Hosting.IReferencePicker.PickElementReference(System.ComponentModel.ITypeDescriptorContext,System.Windows.Forms.Design.IWindowsFormsEditorService,Microsoft.VisualStudio.Modeling.Store,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Picks a reference using element browser and displays it.
+            Supports automatic fixup in the store.
+            </summary>
+            <remarks>The method used to display the picker in UITypeEditor</remarks>
+            <param name="context">The context in which the method was invoked</param>
+            <param name="editorService">Enables editing the reference using a custom visual representation based on the DefaultEditStyle</param>
+            <param name="store">The working store for which the reference is picked</param>
+            <param name="reference">The current reference</param>
+            <returns>The selected reference by the picker</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.Hosting.IReferencePicker.PickModelReference(Microsoft.VisualStudio.Modeling.Store,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.Picker.PickerMetadataBaseAttribute[])">
+            <summary>
+            Picks a reference using model browser and displays it.
+            Supports automatic fixup in the store.
+            </summary>
+            <param name="store">The store which is used as the service provider and on which automatic fixup is performed</param>
+            <param name="reference">The current reference</param>
+            <param name="metadata">Additional metadata for the picker and it's browsers</param>
+            <returns>The selected reference by the picker</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.Hosting.IReferencePicker.PickElementReference(Microsoft.VisualStudio.Modeling.Store,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.Picker.PickerMetadataBaseAttribute[])">
+            <summary>
+            Picks a reference using element browser and displays it.
+            Supports automatic fixup in the store.
+            </summary>
+            <param name="store">The store which is used as the service provider and on which automatic fixup is performed</param>
+            <param name="reference">The current reference</param>
+            <param name="metadata">Additional metadata for the picker and it's browsers</param>
+            <returns>The selected reference by the picker</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.Hosting.IReferencePicker.PickModelReferenceNoFixup(System.IServiceProvider,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.Picker.PickerMetadataBaseAttribute[])">
+            <summary>
+            Picks a reference using model browser and displays it.
+            Broken references will not be automatically fixed up.
+            </summary>
+            <param name="serviceProvider">The service provider for the various required services</param>
+            <param name="reference">The current reference</param>
+            <param name="metadata">Additional metadata for the picker and it's browsers</param>
+            <returns>The selected reference by the picker</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.Hosting.IReferencePicker.PickElementReferenceNoFixup(System.IServiceProvider,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.Picker.PickerMetadataBaseAttribute[])">
+            <summary>
+            Picks a reference using element browser and displays it.
+            Broken references will not be automatically fixed up.
+            </summary>
+            <param name="serviceProvider">The service provider for the various required services</param>
+            <param name="reference">The current reference</param>
+            <param name="metadata">Additional metadata for the picker and it's browsers</param>
+            <returns>The selected reference by the picker</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.Hosting.IReferencePicker.PickModelReferenceNoFixup(System.ComponentModel.ITypeDescriptorContext,System.Windows.Forms.Design.IWindowsFormsEditorService,System.IServiceProvider,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Picks a reference using model browser and displays it.
+            Supports automatic fixup in the store.
+            </summary>
+            <remarks>The method used to display the picker in UITypeEditor</remarks>
+            <param name="context">The context in which the method was invoked</param>
+            <param name="editorService">Enables editing the reference using a custom visual representation based on the DefaultEditStyle</param>
+            <param name="serviceProvider">The service provider for the various required services</param>
+            <param name="reference">The current reference</param>
+            <returns>The selected reference by the picker</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.Hosting.IReferencePicker.PickElementReferenceNoFixup(System.ComponentModel.ITypeDescriptorContext,System.Windows.Forms.Design.IWindowsFormsEditorService,System.IServiceProvider,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Picks a reference using element browser and displays it.
+            Supports automatic fixup in the store.
+            </summary>
+            <remarks>The method used to display the picker in UITypeEditor</remarks>
+            <param name="context">The context in which the method was invoked</param>
+            <param name="editorService">Enables editing the reference using a custom visual representation based on the DefaultEditStyle</param>
+            <param name="serviceProvider">The service provider for the various required services</param>
+            <param name="reference">The current reference</param>
+            <returns>The selected reference by the picker</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowser">
+            <summary>
+            IModelBrowser - is the browser contract for the WPF user controls that 
+            act as the model browsers in the picker dialog.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowser.Initialize(Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowserHost)">
+            <summary>
+            Sets the host
+            </summary>
+            <param name="host"></param>
+        </member>
+        <member name="E:Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowser.ReferenceChanged">
+            <summary>
+            Fired when selected a reference
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowser.Title">
+            <summary>
+            The browser's title
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowser.IsValid">
+            <summary>
+            Validation method
+            </summary>
+            <returns>if the browser has a valid reference</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowser.Clear">
+            <summary>
+            Clears the reference
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowserHost">
+            <summary>
+            This is the contract class for the host that want to host the IModelBrowser WPF user control.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowserHost.Reference">
+            <summary>
+            Gets the ModelBusReference
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowserHost.ModelBus">
+            <summary>
+            Gets the IModelBus
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowserHost.ModelBrowser">
+            <summary>
+            Gets the IModelBrowser
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowserHost.CloseIfValid">
+            <summary>
+            Closes the host if it validates correctly (ok action)
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowserHost.CancelAndClose">
+            <summary>
+            Closes the host without validating (cancel action)
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowserHost.Clear">
+            <summary>
+            Clears the references (set's it to null)
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowserHost.ResizeToMeasure">
+            <summary>
+            Requests the host to re-measure the control in order to potentially grow/shrink based on the new size requirements
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowserHost.Metadata">
+            <summary>
+            Collections of limitations, hints and etc to by used by the browsers
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Picker.ModelBusReferenceExtensionMethods">
+            <summary>
+            Extension methods for ModelBusReference
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.ModelBusReferenceExtensionMethods.GetDisplayName(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Extension method that returns the calculated display name
+            </summary>
+            <param name="reference">ModelBusReference</param>
+            <returns>The calculated display name</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.ModelBusReferenceExtensionMethods.IsValidModelReference(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Extension method that returns whether the model-part of the reference is valid
+            </summary>
+            <param name="reference">ModelBusReference</param>
+            <returns>If the model part of the reference is valid</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.ModelBusReferenceExtensionMethods.IsValidReference(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Extension method that returns whether the whole reference is valid
+            </summary>
+            <param name="reference">ModelBusReference</param>
+            <returns>If the model part of the reference is valid</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.ModelBusReferenceExtensionMethods.ApplyAdapterLimitations(System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager},Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowserHost)">
+            <summary>
+            Applies filtering based on the host's metadata, by using the first found ApplyAdapterLimitationsAttribute.
+            </summary>
+            <remarks>Used by the picker to filter out non-configured LogicalAdapterIds and</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.ModelBusReferenceExtensionMethods.ApplyElementTypeLimitations(System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Modeling.Integration.SupportedType},Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowserHost)">
+            <summary>
+            Applies filtering based on the host's metadata, by using the first found ApplyElementTypeLimitationsAttribute.
+            </summary>
+            <remarks>Used by the Picker to filter out non-configured element types.</remarks>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Picker.PickerResource">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Picker.PickerResource.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Picker.PickerResource.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Picker.PickerResource.Exception_NoIModelBusService">
+            <summary>
+              Looks up a localized string similar to Cannot find service: SModelBus.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Picker.PickerResource.ModelBusReferenceDisplayFormat">
+            <summary>
+              Looks up a localized string similar to {0}.{1}.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Picker.ReferenceChangedEventArgs">
+            <summary>
+            ReferenceChangedEventArgs Class - used in ReferenceChangedEvent
+            Contains a NewReference
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.ReferenceChangedEventArgs.#ctor(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Create ReferenceChangedEventArgs instance
+            </summary>
+            <param name="newRef"><see cref="T:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference"/> instance</param>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Picker.ReferenceChangedEventArgs.NewReference">
+            <summary>
+            The new ModelBusReference (can be null for invalid or null references).
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Picker.ReferenceEditorBase">
+            <summary>
+            Base reference editor class.
+            Used for edititng ModelBusReference in property browser.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Picker.ReferenceEditorBase.ReferencePicker">
+            <summary>
+            The resolved reference picker
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.ReferenceEditorBase.ResolveReferencePicker(System.IServiceProvider)">
+            <summary>
+            Resolves the reference picker and returns true if resolved 
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.ReferenceEditorBase.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            Returns the edit style base on the IReferencePicker, if not available then NONE
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.ReferenceEditorBase.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <summary>
+            Edits ModelBusReference in resolved Host using resolved BrowserType
+            </summary>
+            <returns>the value after edit</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Picker.ModelReferenceEditor">
+            <summary>
+            Model reference editor
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.ModelReferenceEditor.PickReference(System.ComponentModel.ITypeDescriptorContext,System.Windows.Forms.Design.IWindowsFormsEditorService,Microsoft.VisualStudio.Modeling.Store,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Picks reference using model picker
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Picker.ModelElementReferenceEditor">
+            <summary>
+            Model element reference editor
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Picker.ModelElementReferenceEditor.PickReference(System.ComponentModel.ITypeDescriptorContext,System.Windows.Forms.Design.IWindowsFormsEditorService,Microsoft.VisualStudio.Modeling.Store,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Picks reference using element picker
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterReference">
+            <summary>
+            Base class for all adapter references
+            </summary>
+            <remarks>Replaces the Backplane "Scope"</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterReference.GetHashCodeInternal">
+            <summary>
+            Gets the hash code of this Scope instance. If two AdapterReferences instances compare equal, 
+            they should give the same hash code.
+            </summary>
+            <returns>Hash code of this Scope instance.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterReference.op_Equality(Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterReference,Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterReference)">
+            <summary>
+            Compares two AdapterReferenceData instances for equality.
+            </summary>
+            <param name="object1">First object in comparison.</param>
+            <param name="object2">Second object in comparison.</param>
+            <returns>True if the two AdapterReferenceData instances are the same, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterReference.op_Inequality(Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterReference,Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterReference)">
+            <summary>
+            Compares two AdapterReferenceData instances for inequality.
+            </summary>
+            <param name="object1">First object in comparison.</param>
+            <param name="object2">Second object in comparison.</param>
+            <returns>True if the two AdapterReferenceData instances are not the same, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterReference.Equals(System.Object)">
+            <summary>
+            Compares this AdapterReferenceData to another object.
+            </summary>
+            <param name="obj">Object to compare to.</param>
+            <returns>True if this AdapterReferenceData and the given object are the same, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterReference.GetHashCode">
+            <summary>
+            Gets the hash code of this Scope instance. If two Scope instances compare equal, 
+            they should give the same hash code.
+            </summary>
+            <returns>Hash code of this Scope instance.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterReference.Equals(Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterReference)">
+            <summary>
+            Compares this Scope to another Scope instance.
+            </summary>
+            <param name="other">Scope instance to compare to.</param>
+            <returns>True if this Scope and the passed-in Scope instance are the same, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.IModelBus.GetAdapterManager(System.String)">
+            <summary>
+            Locate a ModelBusAdapterManager instance using its Id.
+            </summary>
+            <param name="id">Id of the ModelBusAdapterManager to look up.</param>
+            <returns>ModelBusAdapterManager instance with the given Id if found, exception will be thrown otherwise.</returns>
+            <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.AdapterManagerNotRegisteredException">Thrown when no ModelBusAdapterManager is registered with the given Id.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown when the argument is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when the argument is empty.</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.IModelBus.FindAdapterManagers(System.Object[])">
+            <summary>
+            Finds the list of ModelBusAdapter managers whose ModelBusAdapter scopes are described by the given context information.
+            There may be multiple ModelBusAdapter managers that can work with the model, 
+            for example a .xml file can be opened by XML editor or Text editor.
+            </summary>
+            <param name="modelLocatorInfo">ReferenceContext provided to describe an instance of an model.</param>
+            <returns>List of found ModelBusAdapter managers.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the argument is null.</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.IModelBus.DeserializeReference(System.String,Microsoft.VisualStudio.Modeling.Integration.ReferenceContext)">
+            <summary>
+            Deserializes the supplied string and returns a ModelBusReference.
+            </summary>
+            <param name="serializedReference">A string representing the serialized reference</param>
+            <param name="context">ReferenceContext used to interpret the serialized string</param>
+            <returns>A new instance of ModelBusReference</returns>
+            <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.ReferenceFormatException">Thrown if reference is in an invalid format.</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.IModelBus.SerializeReference(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Serializes the supplied reference to a string that can be persisted by the caller.
+            </summary>
+            <param name="reference">The reference to be serialized</param>
+            <returns>A string representing the serialized form of the reference</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.IModelBus.CreateAdapter(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Attempts to create and return a new adapter instance for the supplied reference
+            </summary>
+            <param name="reference">The reference to the adapter</param>
+            <returns>The adapter that was created, or null if one could not be created</returns>
+            <remarks>This method will throw an appropriate exception if an Adapter cannot be created 
+            (e.g. if an AdapterManager that can handle this reference is not found, 
+            or if the reference is invalid etc.).</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.IModelBus.CreateAdapter(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,System.IServiceProvider)">
+            <summary>
+            Overload: allows a service provider to be supplied.
+            </summary>
+            <param name="reference">The reference to the adapter</param>
+            <param name="serviceProvider">A service provider to pass on to the adapter manager / new adapter. Can be null.</param>
+            <returns>The adapter that was created, or null if one could not be created</returns>
+            <remarks>
+            The IServiceProvider should be used by callers to supply services that implement a private protocol between the caller and the Adapter being created by the AdapterManager.
+            If an AdapterManager does not require any special services from the caller or if the client does not wish to invoke the private protocol, then this API should not be used.
+            Instead, use the overloaded CreateAdapter() which just accepts a ModelBusReference.
+            
+            Note to implementors: In order to retrieve general purpose Services, use the ModelBus's ServiceProvider or any other standard ServiceProvider instead.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.IModelBus.ValidateReference(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.ValidateReferenceOption)">
+            <summary>
+            Validates a given reference using the corresponding adapter.
+            This method should update the LastStatus of a reference in addition to returning it.
+            </summary>
+            <param name="reference">The reference to the adapter</param>
+            <param name="validationOptions">Validation options</param>
+            <returns>The status for the reference</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.IModelBus.LogError(Microsoft.VisualStudio.Modeling.Integration.ErrorCategory,System.String)">
+            <summary>
+            Logs an error
+            </summary>
+            <param name="errorCategory">Indicates the severity of the error being logged</param>
+            <param name="message">The text of the message to be logged</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.ModelingAdapterReference">
+            <summary>
+            Standard DSL implementation of an adapter reference.
+            </summary>
+            <remarks>Must contain a model reference. Optionally, can also contain a view and /or an element reference.</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelingAdapterReference.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="elementId">Element identifier. Can be null</param>
+            <param name="viewId">ModelBusView identifier. Can be null.</param>
+            <param name="absoluteTargetPath">Absolute path to the model file being referred to. Cannot be null.</param>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelingAdapterReference.ElementId">
+            <summary>
+            ElementId
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelingAdapterReference.ViewId">
+            <summary>
+            ViewId
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelingAdapterReference.AbsoluteTargetPath">
+            <summary>
+            Absolute path of the target model file
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelingAdapterReference.Deserialize(System.String,Microsoft.VisualStudio.Modeling.Integration.ReferenceContext)">
+            <summary>
+            Deserializes and returns a new ModelingAdapterReference
+            </summary>
+            <param name="serializedReference">The serialized form of the adapter reference</param>
+            <param name="context">Contextual information. Should contain the absolute path of the source file in which the reference was serialized.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelingAdapterReference.Serialize(Microsoft.VisualStudio.Modeling.Integration.ModelingAdapterReference,Microsoft.VisualStudio.Modeling.Integration.ReferenceContext)">
+            <summary>
+            Serializes the supplied modeling adapter to a string format.
+            </summary>
+            <param name="reference">The reference to be serialized</param>
+            <param name="context">Contextual information. Should contain the absolute path of the source file in which the reference will be serialized.</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.ModelBus">
+            <summary>
+            ModelBus class that allows tools to interoperate in a loosely coupled fashion.
+            </summary>
+            <summary>
+            Implementation of IServiceProvider interface.
+            </summary>
+            <summary>
+            Implementation of IDisposable interface.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ModelBus.adapterManagers">
+            <summary>
+            All the registered ModelBusAdapterManager instances, keyed by their Ids.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ModelBus.errorCallback">
+            <summary>
+            Delegate supplied by the host. Used to log errors.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBus.#ctor(System.IServiceProvider,System.Action{Microsoft.VisualStudio.Modeling.Integration.ErrorCategory,System.String},Microsoft.VisualStudio.Modeling.Integration.IConfiguration)">
+            <summary>
+            Constructor -- the application hosting the ModelBus should pass in an IServiceProvider
+            instance so the ModelBus can request services.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBus.ConfigurationManager">
+            <summary>
+            Gets the ConfigurationManager for this ModelBus.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBus.ErrorCallback">
+            <summary>
+            Delegate supplied by the host. Used to log errors.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBus.GetAdapterManager(System.String)">
+            <summary>
+            Locate a ModelBusAdapterManager instance using its Id.
+            </summary>
+            <param name="id">Id of the ModelBusAdapterManager to look up.</param>
+            <returns>ModelBusAdapterManager instance with the given Id if found, exception will be thrown otherwise.</returns>
+            <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.AdapterManagerNotRegisteredException">Thrown when no ModelBusAdapterManager is registered with the given Id.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown when the argument is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when the argument is empty.</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBus.FindAdapterManagers(System.Object[])">
+            <summary>
+            Finds the list of ModelBusAdapter managers whose ModelBusAdapter scopes are described by the given context information.
+            There may be multiple ModelBusAdapter managers that can work with the model, 
+            for example a .xml file can be opened by XML editor or Text editor.
+            </summary>
+            <param name="modelLocatorInfo">ReferenceContext provided to describe an instance of an model.</param>
+            <returns>List of found ModelBusAdapter managers.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the argument is null.</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBus.DeserializeReference(System.String,Microsoft.VisualStudio.Modeling.Integration.ReferenceContext)">
+            <summary>
+            Deserializes the supplied string and returns a ModelBusReference.
+            </summary>
+            <param name="serializedReference">A string representing the serialized reference</param>
+            <param name="context">ReferenceContext used to interpret the serialized string</param>
+            <returns>A new instance of ModelBusReference</returns>
+            <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.ReferenceFormatException">Thrown if reference is in an invalid format.</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBus.SerializeReference(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Serializes the supplied reference to a string that can be persisted by the caller.
+            </summary>
+            <param name="reference">The reference to be serialized</param>
+            <returns>A string representing the serialized form of the reference</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBus.CreateAdapter(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Implements <see cref="M:IModelBus.CreateAdapter"/> method
+            </summary>
+            <param name="reference">The reference to the adapter</param>
+            <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.AdapterManagerNotRegisteredException">Thrown if an appropriate AdapterManager cannot be found to create an Adapter.</exception>
+            <remarks>If the returned ModelBusAdapter is <c>null</c> or an exception is thrown,
+            the <see cref="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.LastStatus">reference.LastStatus</see>
+            property of the <paramref name="reference"/> can provide hints about the reason of the failure</remarks>
+            <returns>The adapter that was created, or null if one could not be created</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBus.CreateAdapter(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,System.IServiceProvider)">
+            <summary>
+            Implements <see cref="M:IModelBus.CreateAdapter"/> method
+            </summary>
+            <param name="reference">The reference to the adapter</param>
+            <param name="serviceProvider">A service provider to pass on to the adapter manager / new adapter. Can be null.</param>
+            <param name="adapter">The adapter, if created successfully</param>
+            <returns>The adapter that was created, or throws an appropriate excetion if one could not be created</returns>
+            <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.AdapterManagerNotRegisteredException">Thrown if an appropriate AdapterManager cannot be found to create an Adapter.</exception>
+            <remarks>If the returned ModelBusAdapter is <c>null</c> or an exception is thrown,
+            the <see cref="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.LastStatus">reference.LastStatus</see>
+            property of the <paramref name="reference"/> can provide hints about the reason of the failure.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBus.ValidateReference(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.ValidateReferenceOption)">
+            <summary>
+            Validates a given reference using the corresponding adapter.
+            This method updates the LastStatus of a reference in addition to returning it.
+            </summary>
+            <param name="reference">The reference to the adapter</param>
+            <param name="validationOption">ValidateReferenceOptions</param>
+            <returns>The status for the reference</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBus.LogError(Microsoft.VisualStudio.Modeling.Integration.ErrorCategory,System.String)">
+            <summary>
+            Logs an error
+            </summary>
+            <param name="errorCategory">Indicates the severity of the error being logged</param>
+            <param name="message">The text of the message to be logged</param>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBus.IsValidating">
+            <summary>
+            Flag set during validation
+            </summary>
+            <remarks>The current implementation of the model bus won't log bugs during validation</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBus.FindAdapterManager(System.String)">
+            <summary>
+            Find a ModelBusAdapterManager instance using its Id.
+            </summary>
+            <param name="logicalAdapterId">Logical Apdapter Id of the ModelBusAdapters supported by a ModelBusAdapterManager to look for.</param>
+            <returns>ModelBusAdapterManager instance supporting the given <paramref name="logicalAdapterId"/>, or null if not found.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBus.Reset">
+            <summary>
+            Resets this ModelBus instance, which means dispose all registered ModelBusAdapterManager 
+            etc., so the ModelBus instance becomes effectively disposed.
+            The instance is not re-usable after it is reset as there is no ConfigurationManager available.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBus.RegisterAdapterManager(Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager)">
+            <summary>
+            Registers a ModelBusAdapterManager instance with this ModelBus.
+            </summary>
+            <param name="adapterManager">The ModelBusAdapterManager instance to register.</param>
+            <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.AdapterManagerAlreadyRegisteredException">Thrown if this ModelBusAdapterManager is already registered.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown when the argument is null.</exception>
+            <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.InvalidAdapterManagerException">Thrown when the supplied adapter manager is invalid e.g. return null from GetSupportedLogicalAdapterIds, or 
+            if any of the logical adapter ids are invalid.</exception>
+            <remarks>This operation is atomic i.e. the adapter manager will only be registered if all of the supported
+            adapter ids are valid and have not already been registered.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBus.RegisterAdapterManager(System.String,Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager)">
+            <summary>
+            Registers a ModelBusAdapterManager instance with this ModelBus for the corresponding logicalAdapterId.
+            </summary>
+            <param name="logicalAdapterId">The AdapterId that will be used as a key for registering this AdapterManager.</param>
+            <param name="adapterManager">The ModelBusAdapterManager instance to register.</param>
+            <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.AdapterManagerAlreadyRegisteredException">Thrown if this ModelBusAdapterManager is already registered with another ModelBus.</exception>
+            <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.AdapterAlreadyRegisteredException">Thrown when the logicalAdapterId is already registered with this ModelBus.</exception>
+            <remarks>This operation will only register the AdapterManager against the logicalAdapterId supplied. It will not register it for all supported Ids.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBus.GetRegisteredAdapterManagers``1">
+            <summary>
+            Get the set of loaded, registered adapter managers of type T
+            </summary>
+            <remarks>
+            This is intended for clients hosting a ModelBus instance to be able to modify the state of 
+            loaded adapters.
+            It should NOT be exposed on the IModelBus client interface.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBus.DisposedCheckAndThrow">
+            <summary>
+            Checks if this ModelBus instance is already disposed and if so, throws an ObjectDisposedException.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ModelBus.serviceProvider">
+            <summary>
+            Service provider passed by the host
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBus.GetService(System.Type)">
+            <summary>
+            Returns Adapters provided by the ModeBus or by its host.
+            </summary>
+            <param name="adapterType">The type of ModelBusAdapter being requested.</param>
+            <returns>An instance of the ModelBusAdapter or null if the ModelBus and host don't support it.</returns>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ModelBus.disposed">
+            <summary>
+            True if this ModelBus instance has been disposed, false otherwise.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBus.Finalize">
+            <summary>
+            Destructor.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBus.Disposed">
+            <summary>
+            True if this Moldebus instance has been disposed, false otherwise.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBus.Dispose">
+            <summary>
+            IDisposable.Dispose().
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBus.Dispose(System.Boolean)">
+            <summary>
+            Dispose this ModelBus instance.
+            </summary>
+            <param name="disposing">True if called from IDisposable.Dispose(), false if from destructor.</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages">
+            <summary>
+            A class for wrapping resource string access. This is used so that formatting of these strings is done in a 
+            controlled manner.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.expectingObjectReference">
+            <summary>
+            Private variable to store lazy-loaded ExpectingObjectReference property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.modelBusReferenceNotValid">
+            <summary>
+            Private variable to store lazy-loaded ModelBusReferenceNotValid property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.adapterManagerNotRegisteredWithModelBus">
+            <summary>
+            Private variable to store lazy-loaded AdapterManagerNotRegisteredWithModelBus property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.stringArgumentCannotBeEmpty">
+            <summary>
+            Private variable to store lazy-loaded StringArgumentCannotBeEmpty property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.argumentMemberCannotBeNull">
+            <summary>
+            Private variable to store lazy-loaded ArgumentMemberCannotBeNull property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.argumentMemberCannotBeEmpty">
+            <summary>
+            Private variable to store lazy-loaded ArgumentMemberCannotBeEmpty property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.ExpectingObjectReference">
+            <summary>
+             Formatted string for ExpectingObjectReference message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.ModelBusReferenceNotValid">
+            <summary>
+             Formatted string for ModelBusReferenceNotValid message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.ModelingAdapterReferenceNotValid">
+            <summary>
+             Formatted string for ModelingAdapterReferenceNotValid message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.MissingLoadContext">
+            <summary>
+             Formatted string for MissingLoadContext message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.LoadContextIsNotRooted">
+            <summary>
+             Formatted string for LoadContextIsNotRooted message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.SaveContextIsNotRooted">
+            <summary>
+             Formatted string for SaveContextIsNotRooted message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.ErrorDeserializingModelingReferenceAdapter">
+            <summary>
+             Formatted string for ErrorDeserializingModelingReferenceAdapter message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.InvalidReferenceTargetPath">
+            <summary>
+             Formatted string for InvalidReferenceTargetPath message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.ErrorSerializingModelingReferenceAdapter">
+            <summary>
+             Formatted string for ErrorSerializingModelingReferenceAdapter message.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.InvalidLogicalAdapterId">
+            <summary>
+            Resource string wrapper for InvalidLogicalAdapterId
+            </summary>
+            <returns>The composed exception message.</returns>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.AdapterManagerNotRegisteredWithModelBus">
+            <summary>
+             Formatted string for AdapterManagerNotRegisteredWithModelBus message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.StringArgumentCannotBeEmpty">
+            <summary>
+             Formatted string for StringArgumentCannotBeEmpty message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.InvalidModelFilePath">
+            <summary>
+             Formatted string for InvalidModelFilePath message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.ErrorArgumentParameterShouldBeModelElementDerived">
+            <summary>
+             Formatted string for ErrorArgumentParameterShouldBeModelElementDerived message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.ErrorArgumentParametersStoreShouldBeAdaptersStore">
+            <summary>
+             Formatted string for ErrorArgumentParameterShouldBeModelElementDerived message.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.ArgumentMemberCannotBeNull(System.String)">
+            <summary>
+            Resource string wrapper for ArgumentMemberCannotBeNull.
+            </summary>
+            <param name="argumentMember">The name of the argument member to display in the message.</param>
+            <returns>The composed exception message.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.ArgumentMemberCannotBeEmpty(System.String)">
+            <summary>
+            Resource string wrapper for ArgumentMemberCannotBeEmpty.
+            </summary>
+            <param name="argumentMember">The name of the argument member to display in the message.</param>
+            <returns>The composed exception message.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.AdapterAlreadyRegistered(System.String)">
+            <summary>
+            Resource string wrapper for AdapterAlreadyRegistered.
+            </summary>
+            <param name="logicalAdapterId">The identifier of the adapter that is already registered.</param>
+            <returns>The composed exception message.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.AdapterTypeNotSupported(System.String)">
+            <summary>
+            Resource string wrapper for AdapterTypeNotSupported.
+            </summary>
+            <param name="logicalAdapterId">The identifier of the adapter that is not supported.</param>
+            <returns>The composed exception message.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.ErrorCreatingAdapter(Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager,System.Exception)">
+            <summary>
+            Resource string wrapper for ErrorCreatingAdapter.
+            </summary>
+            <param name="logicalAdapterId">The identifier of the adapter that is not supported.</param>
+            <returns>The composed exception message.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusExceptionMessages.AdapterManagerNotFound(System.String)">
+            <summary>
+            Resource string wrapper for AdapterManagerNotFound exception message.
+            </summary>
+            <param name="logicalAdapterId">The identifier of the adapter that could not be found.</param>
+            <returns>The composed exception message</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference">
+            <summary>
+            Encapsulates reference information for the ModelBus
+            The following are supported:
+            * Model reference
+            * Model and Element reference
+            * Model and View reference
+            * Model, Element and View reference
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.context">
+            <summary>
+            Property bag for this reference.
+            </summary>
+            <remarks>Declared as a field so we can lazily create it.</remarks>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.adapterReference">
+            <summary>
+            The adapter reference instance.
+            </summary>
+            <remarks>
+            Could be null/empty. The caller must supply *either* an adapterReference object
+            or the serialized form of the adapter reference when constructing the model bus reference. 
+            If serializedAdapterReference was supplied, then an attempt to deserialize the adapter
+            reference will be made when the public property is accessed.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <remarks>Constructor for when a model bus is not available</remarks>
+            <exception cref="T:System.ArgumentNullException">logicalAdapterId is null or empty</exception>
+            <exception cref="T:System.ArgumentNullException">modelDisplayName is null or empty</exception>
+            <exception cref="T:System.ArgumentNullException">serializedAdapterReference is null or empty</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <remarks>Constructor for when a model bus is not available</remarks>
+            <exception cref="T:System.ArgumentNullException">logicalAdapterId is null or empty</exception>
+            <exception cref="T:System.ArgumentNullException">modelDisplayName is null or empty</exception>
+            <exception cref="T:System.ArgumentNullException">serializedAdapterReference is null or empty</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.#ctor(System.String,System.String,System.String,Microsoft.VisualStudio.Modeling.Integration.ReferenceContext)">
+            <summary>
+            Constructor
+            </summary>
+            <remarks>Constructor for when a model bus is not available</remarks>
+            <exception cref="T:System.ArgumentNullException">logicalAdapterId is null or empty</exception>
+            <exception cref="T:System.ArgumentNullException">modelDisplayName is null or empty</exception>
+            <exception cref="T:System.ArgumentNullException">serializedAdapterReference is null or empty</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.#ctor(System.String,System.String,System.String,System.String,Microsoft.VisualStudio.Modeling.Integration.ReferenceContext)">
+            <summary>
+            Constructor
+            </summary>
+            <remarks>Constructor for when a model bus is not available</remarks>
+            <exception cref="T:System.ArgumentNullException">logicalAdapterId is null or empty</exception>
+            <exception cref="T:System.ArgumentNullException">modelDisplayName is null or empty</exception>
+            <exception cref="T:System.ArgumentNullException">serializedAdapterReference is null or empty</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.#ctor(Microsoft.VisualStudio.Modeling.Integration.IModelBus,System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <exception cref="T:System.ArgumentNullException">modelBus is null</exception>
+            <exception cref="T:System.ArgumentNullException">logicalAdapterId is null or empty</exception>
+            <exception cref="T:System.ArgumentNullException">modelDisplayName is null or empty</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.#ctor(Microsoft.VisualStudio.Modeling.Integration.IModelBus,System.String,System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <exception cref="T:System.ArgumentNullException">modelBus is null</exception>
+            <exception cref="T:System.ArgumentNullException">logicalAdapterId is null or empty</exception>
+            <exception cref="T:System.ArgumentNullException">modelDisplayName is null or empty</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.#ctor(Microsoft.VisualStudio.Modeling.Integration.IModelBus,System.String,System.String,System.String,Microsoft.VisualStudio.Modeling.Integration.ReferenceContext)">
+            <summary>
+            Constructor
+            </summary>
+            <exception cref="T:System.ArgumentNullException">modelBus is null</exception>
+            <exception cref="T:System.ArgumentNullException">logicalAdapterId is null or empty</exception>
+            <exception cref="T:System.ArgumentNullException">modelDisplayName is null or empty</exception>
+            <exception cref="T:System.ArgumentNullException">serializedAdapterReference is null or empty</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.#ctor(Microsoft.VisualStudio.Modeling.Integration.IModelBus,System.String,System.String,System.String,System.String,Microsoft.VisualStudio.Modeling.Integration.ReferenceContext)">
+            <summary>
+            Constructor
+            </summary>
+            <exception cref="T:System.ArgumentNullException">modelBus is null</exception>
+            <exception cref="T:System.ArgumentNullException">logicalAdapterId is null or empty</exception>
+            <exception cref="T:System.ArgumentNullException">modelDisplayName is null or empty</exception>
+            <exception cref="T:System.ArgumentNullException">serializedAdapterReference is null or empty</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.#ctor(Microsoft.VisualStudio.Modeling.Integration.IModelBus,System.String,System.String,System.String,Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterReference)">
+            <summary>
+            Constructor
+            </summary>
+            <exception cref="T:System.ArgumentNullException">modelBus is null</exception>
+            <exception cref="T:System.ArgumentNullException">logicalAdapterId is null or empty</exception>
+            <exception cref="T:System.ArgumentNullException">modelDisplayName is null or empty</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.#ctor(Microsoft.VisualStudio.Modeling.Integration.IModelBus,System.String,System.String,Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterReference)">
+            <summary>
+            Constructor
+            </summary>
+            <exception cref="T:System.ArgumentNullException">modelBus is null</exception>
+            <exception cref="T:System.ArgumentNullException">logicalAdapterId is null or empty</exception>
+            <exception cref="T:System.ArgumentNullException">modelDisplayName is null or empty</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.#ctor(Microsoft.VisualStudio.Modeling.Integration.IModelBus,System.String,System.String,System.String,Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterReference,Microsoft.VisualStudio.Modeling.Integration.ReferenceContext)">
+            <summary>
+            Constructor
+            </summary>
+            <exception cref="T:System.ArgumentNullException">modelBus is null</exception>
+            <exception cref="T:System.ArgumentNullException">logicalAdapterId is null or empty</exception>
+            <exception cref="T:System.ArgumentNullException">modelDisplayName is null or empty</exception>
+            <exception cref="T:System.ArgumentNullException">adapterReference is null</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.#ctor(Microsoft.VisualStudio.Modeling.Integration.IModelBus,System.String,System.String,Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterReference,Microsoft.VisualStudio.Modeling.Integration.ReferenceContext)">
+            <summary>
+            Constructor
+            </summary>
+            <exception cref="T:System.ArgumentNullException">modelBus is null</exception>
+            <exception cref="T:System.ArgumentNullException">logicalAdapterId is null or empty</exception>
+            <exception cref="T:System.ArgumentNullException">modelDisplayName is null or empty</exception>
+            <exception cref="T:System.ArgumentNullException">adapterReference is null</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.#ctor(Microsoft.VisualStudio.Modeling.Integration.IModelBus,System.String,System.String,Microsoft.VisualStudio.Modeling.Integration.ReferenceContext)">
+            <summary>
+            Private constructor containing the code common to all constructors
+            </summary>
+            <exception cref="T:System.ArgumentNullException">logicalAdapterId is null or empty</exception>
+            <exception cref="T:System.ArgumentNullException">modelDisplayName is null or empty</exception>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.LogicalAdapterId">
+            <summary>
+            Logical Adapter Id of the ModelBusAdapter that enables access to the model, element or view referenced
+            by <c>this</c> ModelBus Reference.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.ModelDisplayName">
+            <summary>
+            User-friendly model display name
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.ElementDisplayName">
+            <summary>
+            User-friendly model display name
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.SerializedAdapterReference">
+            <summary>
+            Serialized form of the adapter reference
+            </summary>
+            <remarks>If the caller did not supply this value when the model bus reference
+            was constructed, the value will be null.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.IsAdapterReferenceResolved">
+            <summary>
+            Returns whether the adapter reference has been deserialized or not
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.AdapterReference">
+            <summary>
+            Returns the adapter reference contained in the model bus reference, or null if the 
+            adapter manager required to deserialize the adapter reference is not registered with the modelbus,
+            or if this model bus reference does not have a ModelBus.
+            </summary>
+            <remarks>If the caller did not supply this value when the model bus reference
+            was constructed, the value will be calculated by attempting to deserialize the 
+            SerializedAdapterReference value.
+            If the adapter manager required to deserialize the reference is not registered with the modelbus,
+            the property wil return null. An exception could be thrown during deserialization if the SerializedAdapterReference does not 
+            represent a valid serialized adapter reference.
+            If we don't have a model bus, then we won't be able to deserialize the adapter reference, so null will be returned.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.ReferenceContext">
+            <summary>
+            ReferenceContext object for this reference
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.LastStatus">
+            <summary>
+            The last know reference status.
+            The reference status is unknown until we tried to create an adpapter for the reference - in case of success the state will be valid, other wise invalid
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.Deserialize(System.String,Microsoft.VisualStudio.Modeling.Integration.ReferenceContext)">
+            <summary>
+            Deserializes the serializedReference and returns a new instance of ModelBusReference
+            </summary>
+            <param name="serializedReference">The serialized form of the reference</param>
+            <param name="context">Additional contextual information about the reference being deserialized</param>
+            <returns>A new instance of ModelBusReference</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.Deserialize(System.String,Microsoft.VisualStudio.Modeling.Integration.IModelBus,Microsoft.VisualStudio.Modeling.Integration.ReferenceContext)">
+            <summary>
+            Deserializes the serializedReference and returns a new instance of ModelBusReference
+            </summary>
+            <param name="serializedReference">The serialized form of the reference</param>
+            <param name="modelbus">The modelbus the new reference should use when deserializing the adapter-specific part of the reference</param>
+            <param name="context">Additional contextual information about the reference being deserialized</param>
+            <returns>A new instance of ModelBusReference</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.Serialize(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Returns the supplied reference serialized as a string
+            </summary>
+            <param name="reference">The reference being serialized</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.op_Equality(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Compares two ModelBusReference instances for equality.
+            </summary>
+            <param name="object1">First object in comparison.</param>
+            <param name="object2">Second object in comparison.</param>
+            <returns>True if the two ModelBusReference instances refer to the same adapter, false otherwise.</returns>
+            <remarks>References are considered equal if the LogicalAdapterId and SerializedAdapterReference are the same. 
+            The modelDisplayName is not considered significant for comparison purposes.</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.op_Inequality(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Compares two ModelBusReferences instances for inequality.
+            </summary>
+            <param name="object1">First object in comparison.</param>
+            <param name="object2">Second object in comparison.</param>
+            <returns>True if the two ModelBusReference instances are not the same, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.Equals(System.Object)">
+            <summary>
+            Compares this reference to another object.
+            </summary>
+            <param name="obj">Object to compare to.</param>
+            <returns>True if this reference and the given object are the same, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.GetHashCode">
+            <summary>
+            Gets the hash code of this reference instance. If two instances compare equal, 
+            they should give the same hash code.
+            </summary>
+            <returns>Hash code of this reference instance.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReference.Equals(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Overrides equality for ModelBusReferences
+            </summary>
+            <remarks>ModelBusReferences are considered equal if they refer to the same adapter.</remarks>
+            <returns>The value of modelDisplayName is not significant.</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.ModelBusReferenceSerializer">
+            <summary>
+            Class that helps with reference string composition and parsing.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ModelBusReferenceSerializer.ReferenceProlog">
+            <summary>
+            The opening characters of a reference.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReferenceSerializer.Serialize(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Serializes the supplied reference
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReferenceSerializer.Deserialize(Microsoft.VisualStudio.Modeling.Integration.IModelBus,System.String,Microsoft.VisualStudio.Modeling.Integration.ReferenceContext)">
+            <summary>
+            Deserialize the format and extract the individual ids into a ModelBusReference.
+            The reference format will be: modelbus://logicalAdapterId/displayname/adapterReference
+            The contents of the [adapterReference] is not meaningful to this parser, but it must not be empty
+            </summary>
+            <param name="IModelBus">Model bus to pass to the created reference. Can be null.</param>
+            <param name="reference">Reference string.</param>
+            <param name="context">Contextual information.</param>
+            <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.ReferenceFormatException">If format is invalid.</exception>
+            <returns>ModelBusReference containing extracted individual ids.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReferenceSerializer.DeserializeAdapterReference(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Attempt to deserialize the adapter reference from the adapter reference data in the supplied ModelBusReference
+            </summary>
+            <remarks>Returns null if the required adapter manager is not registered, rather than throwing an exception.
+            However, exceptions could be thrown if the supplied reference is in an invalid format.</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusReferenceSerializer.SerializeAdapterReference(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Attempt to serialize the adapter reference contained in the supplied ModelBusReference.
+            </summary>
+            <param name="reference"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ErrorAdapterAlreadyRegistered">
+            <summary>
+              Looks up a localized string similar to DSL5001: An adapter manager is already registered for adapter type &quot;{0}&quot;..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ErrorAdapterManagerNotFound">
+            <summary>
+              Looks up a localized string similar to DSL5030: An AdapterManager supporting LogicalAdapterId {0} could not be found..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ErrorAdapterManagerNotRegisteredWithModelBus">
+            <summary>
+              Looks up a localized string similar to DSL5002: The AdapterManager is not correctly registered with a ModelBus. Confirm the AdapterManager is registered with a ModelBus..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ErrorAdapterTypeNotSupported">
+            <summary>
+              Looks up a localized string similar to DSL5003: The specified adapter type (&quot;{0}&quot;) is not supported by this adapter manager..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ErrorArgumentMemberCannotBeEmpty">
+            <summary>
+              Looks up a localized string similar to DSL5004: The value of the following member is an empty string: {0}. Provide a string that is not empty..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ErrorArgumentMemberCannotBeNull">
+            <summary>
+              Looks up a localized string similar to DSL5005: The value of the following member  is null: {0}. Provide a value that is not null..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ErrorArgumentParameterShouldBeModelElementDerived">
+            <summary>
+              Looks up a localized string similar to DSL5028: element should be a ModelElement derived instance and be managed by this ModelBusAdapter.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ErrorArgumentParametersStoreShouldBeAdaptersStore">
+            <summary>
+              Looks up a localized string similar to DSL5029: element&apos;s Store is not the same as the model root&apos;s Store. This element is not managed by this adapter.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ErrorCreatingAdapter">
+            <summary>
+              Looks up a localized string similar to DSL5012: Exception occurred attempting to create an adapter.\nAdapterManager: {0}\nAssembly: {1}\nException: {2}\nException message: {3}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ErrorDeserializingModelingAdapterReference">
+            <summary>
+              Looks up a localized string similar to DSL5013: The ModelingAdapterReference could not be deserialized. See the inner exception for details..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ErrorExpectingObjectReference">
+            <summary>
+              Looks up a localized string similar to DSL5014: The reference argument supplied is a service reference. Provide an object reference..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ErrorInitializingConfigurationManager">
+            <summary>
+              Looks up a localized string similar to DSL5015: ConfigurationManager initialization error during ModelBus creation. Fix the problem and restart VS. Error: {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ErrorInvalidLogicalAdapterId">
+            <summary>
+              Looks up a localized string similar to DSL5016: A logical adapter id cannot be null or empty..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ErrorInvalidModelFilePath">
+            <summary>
+              Looks up a localized string similar to DSL5017: The full path representing a Model file is null or empty or invalid. Please specify a valid accessible file location for this Model..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ErrorInvalidReferenceTargetPath">
+            <summary>
+              Looks up a localized string similar to DSL5018: Cannot serialize the ModelingAdapterReference - the supplied target path is not absolute..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ErrorLoadContextIsNotRooted">
+            <summary>
+              Looks up a localized string similar to DSL5019: The supplied load context information is invalid..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ErrorMissingLoadContext">
+            <summary>
+              Looks up a localized string similar to DSL5020: The reference context does not contain the required load context information..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ErrorModelBusReferenceNotValid">
+            <summary>
+              Looks up a localized string similar to DSL5023: The reference string provided does not have the correct format. The correct format is modelbus://logicalAdapterId/model display name/element display name/adapter reference data. Provide a reference string that has the correct format..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ErrorModelingAdapterReferenceNotValid">
+            <summary>
+              Looks up a localized string similar to DSL5024: The reference string provided does not have the correct format. The correct format is modelId/elementId/viewId..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ErrorSaveContextIsNotRooted">
+            <summary>
+              Looks up a localized string similar to DSL5025: The supplied save context information is invalid..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ErrorSerializingModelingAdapterReference">
+            <summary>
+              Looks up a localized string similar to DSL5026: Cannot serialize the ModelingAdapterReference..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusStrings.ErrorStringArgumentCannotBeEmpty">
+            <summary>
+              Looks up a localized string similar to DSL5027: The argument supplied is an empty string. Provide a string that is not empty..
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.ModelBusResetException">
+            <summary>
+            This defines the ModelBusResetException class, which is thrown
+            when Backplane.Reset() fails.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusResetException.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusResetException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusResetException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message.</param>
+            <param name="inner">Inner exception if any, null otherwise.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusResetException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="info">SerializationInfo of the exception.</param>
+            <param name="context">StreamingContext of the serialized exception.</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.PresentationCreationException">
+            <summary>
+            This defines the PresentationCreationException class, which is thrown
+            when a call to CreatePresentation() fails.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.PresentationCreationException.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.PresentationCreationException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.PresentationCreationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message.</param>
+            <param name="inner">Inner exception if any, null otherwise.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.PresentationCreationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="info">SerializationInfo of the exception.</param>
+            <param name="context">StreamingContext of the serialized exception.</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.AdapterCreationException">
+            <summary>
+            This defines the AdapterCreationException class, which is thrown
+            when a call to CreateAdapter() fails.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.AdapterCreationException.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.AdapterCreationException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.AdapterCreationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message.</param>
+            <param name="inner">Inner exception if any, null otherwise.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.AdapterCreationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="info">SerializationInfo of the exception.</param>
+            <param name="context">StreamingContext of the serialized exception.</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.ModelingAdapterReferenceSerializer">
+            <summary>
+            Serializes / deserializes ModelingAdapterReferences
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelingAdapterReferenceSerializer.Serialize(Microsoft.VisualStudio.Modeling.Integration.ModelingAdapterReference,Microsoft.VisualStudio.Modeling.Integration.ReferenceContext)">
+            <summary>
+            Serializes an adapter reference.
+            </summary>
+            <param name="reference">The reference to be serialized</param>
+            <param name="context">Contextual information.</param>
+            <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.ReferenceFormatException">If format is invalid.</exception>
+            <returns>A composed reference.</returns>
+            <remarks>The reference format will be: modelId/[elementId]/[viewId]
+            </remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelingAdapterReferenceSerializer.Deserialize(System.String,Microsoft.VisualStudio.Modeling.Integration.ReferenceContext)">
+            <summary>
+            Deserialize the format and extract the individual ids into a ModelBusReference.
+            The reference format will be: modelId/[elementId]/[viewId]
+            The modelId is required. The other sections can be empty.
+            </summary>
+            <param name="reference">The serialized reference</param>
+            <param name="context">Contextual information.</param>
+            <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.ReferenceFormatException">If format is invalid.</exception>
+            <returns>ModelBusReference containing extracted individual ids.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelingAdapterReferenceSerializer.GetAbsolutePathOfTarget(System.String,Microsoft.VisualStudio.Modeling.Integration.ReferenceContext)">
+            <summary>
+            Attempts to calculate the absolute path of the target model file.
+            </summary>
+            <param name="relativeTargetPath">The relative path of the target model</param>
+            <param name="context">Contextual info about the reference</param>
+            <returns>The absolute path of the target model file</returns>
+            <remarks>Assumes that the supplied context contains the absolute path of model file that 
+            contained the adapter reference beind deserialized.</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelingAdapterReferenceSerializer.GetRelativePathOfTarget(System.String,Microsoft.VisualStudio.Modeling.Integration.ReferenceContext)">
+            <summary>
+            Attempts to calculate the relative path of the target model file.
+            </summary>
+            <param name="absoluteTargetPath">The relative path of the target model</param>
+            <param name="context">Contextual info about the reference</param>
+            <returns>The relative path of the target model file</returns>
+            <remarks>Assumes that the supplied context contains the absolute path of model file that 
+            contained the adapter reference being deserialized.
+            <para>If a relative path cannot be created (e.g. the paths have different roots)
+            then the absolute path of the target model file will be returned.</para></remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelingAdapterReferenceSerializer.GetSourcePathFromLoadContext(Microsoft.VisualStudio.Modeling.Integration.ReferenceContext)">
+            <summary>
+            Attempts to retrieve the source model file value from the supplied context.
+            Throws if the load context is missing or invalid.
+            </summary>
+            <remarks>Expects that the load context contains the full path and file name of the source model file.</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelingAdapterReferenceSerializer.GetSourcePathFromSaveContext(Microsoft.VisualStudio.Modeling.Integration.ReferenceContext)">
+            <summary>
+            Attempts to retrieve the source model file value from the supplied context.
+            Throws if the save context is missing or invalid.
+            </summary>
+            <remarks>Expects that the save context contains the full path and file name of the source model file.
+            This method returns the normalized path.</remarks>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.ReferenceContext">
+            <summary>
+            ReferenceContext object that allows clients to associated user data with the transaction
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ReferenceContext.contextInfo">
+            <summary>
+            Internal storage for context data
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ReferenceContext.ContextInfo">
+            <summary>
+            Accessor to lazily-create the dictionary
+            </summary>
+            <remarks>All access to the dictionary should be through this property</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ReferenceContext.TryGetValue``1(System.Object,``0@)">
+            <summary>
+            Lookup the value associated with a specified key in the context.
+            </summary>
+            <typeparam name="T">The expected type of the value associated with the specified key</typeparam>
+            <param name="key">The key to lookup in the context</param>
+            <param name="value">Receives the value associated with the specified key, or the default value for T if the key is not found</param>
+            <returns>Whether or not the context contained a value with the specified key.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ReferenceContext.Add(System.Object,System.Object)">
+            <summary>
+            Associate a value with a particular key in the transaction context.
+            </summary>
+            <param name="key">The key to associate the value with. Cannot be null.</param>
+            <param name="value">The value to be associated with the key. Can be null.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ReferenceContext.Remove(System.Object)">
+            <summary>
+            Remove the association between the specified key and its value from the
+            context, if any.
+            </summary>
+            <param name="key">The key of the {key,value} pair to be removed</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ReferenceContext.Contains(System.Object)">
+            <summary>
+            Query whether the specified key has been associated with a value in this
+            context
+            </summary>
+            <param name="key">The key to lookup. Cannot be null.</param>
+            <returns>True if the key is found, else false.</returns>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ReferenceStatus.Unknown">
+            <summary>
+            The reference status is currently unknown - prior to validation
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ReferenceStatus.ModelResolved">
+            <summary>
+            /The model was resolved
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ReferenceStatus.AdapterManagerNotFound">
+            <summary>
+            The reference status is invalid - adapter manager not found
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ReferenceStatus.ModelUnresolved">
+            <summary>
+            The reference status is invalid - the model was not resolved
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ReferenceStatus.NotFullyResolved">
+            <summary>
+            The reference status is valid for a model but the full reference with all the data wasn't resolved
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ReferenceStatus.FullyResolved">
+            <summary>
+            The reference is fully resolved
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ReferenceUtilities.ReferenceSeparatorCharacter">
+            <summary>
+            The character that separates parts of a reference.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ReferenceUtilities.ReferenceEscapeCharacter">
+            <summary>
+            The character that precedes an escape code in an escaped reference string.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ReferenceUtilities.ReferenceEscapedSeparator">
+            <summary>
+            The character sequence that replaces a separator character in the escaped form.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ReferenceUtilities.ReferenceEscapedEscape">
+            <summary>
+            The character sequence that replaces the escape character in the escaped form.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ReferenceUtilities.Escape(System.String)">
+            <summary>
+            Replace all occurences of the separator with "%s", and all occurences of ReferenceEscapeCharacter with "%p".
+            Null or empty string for input produces empty string as output.
+            </summary>
+            <param name="raw">Any string.</param>
+            <returns>The same string with separator characters escaped.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ReferenceUtilities.Unescape(System.String)">
+            <summary>
+            Reverse the transformation performed by Escape().  The string cannot contain any unescaped sequences
+            or the transformation will not be reversible.  A string produced by Escape() will not have any 
+            ocurrences of ReferenceSeparatorConstant or of ReferenceEscapeCharacter followed by anything except "s" or "p".
+            </summary>
+            <param name="safe">A string produced by Escape().</param>
+            <returns>The original string.</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.PresentationAlreadyCreatedException">
+            <summary>
+            This defines the PresentationAlreadyCreatedException class, which is thrown
+            when a call to CreatePresentation() is made on a service that already has 
+            a presentation of the given type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.PresentationAlreadyCreatedException.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.PresentationAlreadyCreatedException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.PresentationAlreadyCreatedException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message.</param>
+            <param name="inner">Inner exception if any, null otherwise.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.PresentationAlreadyCreatedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="info">SerializationInfo of the exception.</param>
+            <param name="context">StreamingContext of the serialized exception.</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.ReferenceFormatException">
+            <summary>
+            This defines the ReferenceFormatException class, which is thrown
+            when a reference does not conform to the correct format.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ReferenceFormatException.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ReferenceFormatException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ReferenceFormatException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message.</param>
+            <param name="inner">Inner exception if any, null otherwise.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ReferenceFormatException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="info">SerializationInfo of the exception.</param>
+            <param name="context">StreamingContext of the serialized exception.</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.AdapterAlreadyRegisteredException">
+            <summary>
+            This defines the AdapterAlreadyRegisteredException class, which is thrown
+            to signal duplicate registration of the same IAdapter instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.AdapterAlreadyRegisteredException.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.AdapterAlreadyRegisteredException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.AdapterAlreadyRegisteredException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message.</param>
+            <param name="inner">Inner exception if any, null otherwise.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.AdapterAlreadyRegisteredException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="info">SerializationInfo of the exception.</param>
+            <param name="context">StreamingContext of the serialized exception.</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.AdapterManagerAlreadyRegisteredException">
+            <summary>
+            This defines the AdapterManagerAlreadyRegisteredException class, which is 
+            thrown to signal duplicate registration of the same IAdapterManager type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.AdapterManagerAlreadyRegisteredException.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.AdapterManagerAlreadyRegisteredException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.AdapterManagerAlreadyRegisteredException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message.</param>
+            <param name="inner">Inner exception if any, null otherwise.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.AdapterManagerAlreadyRegisteredException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="info">SerializationInfo of the exception.</param>
+            <param name="context">StreamingContext of the serialized exception.</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.AdapterManagerNotRegisteredException">
+            <summary>
+            This file defines the AdapterManagerNotRegisteredException class, which is 
+            thrown when a ModelBusAdapter manager is requested but is not registered.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.AdapterManagerNotRegisteredException.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.AdapterManagerNotRegisteredException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.AdapterManagerNotRegisteredException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message.</param>
+            <param name="inner">Inner exception if any, null otherwise.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.AdapterManagerNotRegisteredException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="info">SerializationInfo of the exception.</param>
+            <param name="context">StreamingContext of the serialized exception.</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.AdapterNotRegisteredException">
+            <summary>
+            This defines the AdapterNotRegisteredException class, which is thrown when a
+            ModelBusAdapter is requested but is not registered.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.AdapterNotRegisteredException.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.AdapterNotRegisteredException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.AdapterNotRegisteredException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message.</param>
+            <param name="inner">Inner exception if any, null otherwise.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.AdapterNotRegisteredException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="info">SerializationInfo of the exception.</param>
+            <param name="context">StreamingContext of the serialized exception.</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter">
+            <summary>
+            A ModelBusAdapter is an object that serves as a bridge between the ModelBus and the underlying model.
+            ModelBusAdapter instances are created by ModelBusAdapterManager, and the operations a ModelBusAdapter exposes are 
+            defined by the ModelBusAdapter contract of the ModelBusAdapterManager.
+            </summary>
+            <summary>
+            Implementation of IDisposable interface.
+            </summary>
+            <summary>
+            Implementation of IEquatable&lt;ModelBusAdapter&gt; interface.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter.adapterManager">
+            <summary>
+            ModelBusAdapterManager instance that created this ModelBusAdapter.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter.modelBusReference">
+            <summary>
+            ModelBusReference that was used to create this ModelBusAdapter instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter.#ctor(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="reference">The ModelBusReference used to create this ModelBusAdapter.</param>
+            <param name="ModelBusAdapterManager">The ModelBusAdapterManager creating this ModelBusAdapter.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when an argument is null.</exception>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter.AdapterManager">
+            <summary>
+            ModelBusAdapterManager instance that creates this ModelBusAdapter instance.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter.DisplayName">
+            <summary>
+            The display name of the ModelBusAdapter
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter.GetReferences(System.Type)">
+            <summary>
+            Returns references to instances of the specified type.
+            </summary>
+            <remarks>
+            If a referenced object is of a type that derives from the type, it is
+            up to actual implementation to decide whether the object should be returned by this method or not.
+            </remarks>
+            <param name="elementType">The type of the elements to retrieve.</param>
+            <returns>Read-only collection of references</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter.GetElementReferences(System.Type)">
+            <summary>
+            Returns references to instances of the specified type.
+            </summary>
+            <remarks>
+            If a referenced object is of a type that derives from the type, it is
+            up to actual implementation to decide whether the object should be returned by this method or not.
+            </remarks>
+            <param name="elementType">The type of the elements to retrieve.</param>
+            <returns>Read-only collection of references</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter.GetElementReference(System.Object)">
+            <summary>
+            Get the reference of a given object instance supposed to be exposed by this adapter.
+            </summary>
+            <param name="element">Element for which the Model bus reference should returned. Should not be <c>null</c></param>
+            <returns>A reference on the exposed element passed as a parameter if it is managed by this adapter</returns>
+            <remarks>If <paramref name="element"/> is <c>null</c>, an <see cref="T:System.ArgumentNullException">ArgumentNullException </see> is thrown.
+            If <paramref name="element"/> element does not belong to the objects managed by this adapter, an <see cref="T:System.ArgumentException">ArgumentException </see> is thrown</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter.ResolveElementReference(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Given an identifier for an Element, returns the actual object represented by this reference.
+            </summary>
+            <param name="elementReference">Unique identifier for a particular element</param>
+            <returns>Instance of the resolved element object</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter.ResolveElementReference``1(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Given an identifier for an Element, returns the actual object represented by this reference
+            (strong typed helper method)
+            </summary>
+            <typeparam name="T">Expected type</typeparam>
+            <param name="modelBusReference">Unique identifier for a particular element</param>
+            <returns>Instance of the resolved element object of type T. Or <c>null</c>if the requested type is not supported by the adapter</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter.GetReferenceStatus">
+            <summary>
+            Returns the <see cref="T:Microsoft.VisualStudio.Modeling.Integration.ReferenceStatus"/> for the current reference.
+            If this is an element reference then tries ResolveElementReference.
+            </summary>
+            <returns><see cref="T:Microsoft.VisualStudio.Modeling.Integration.ReferenceStatus"/></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter.GetDefaultView">
+            <summary>
+            Obtains the DefaultView associated with this Model, if one is available.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter.GetView(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Gets a specific view associated with this Model based on the ModelBusView reference
+            </summary>
+            <param name="reference">Reference for the view</param>
+            <returns>ModelBusView</returns>
+            <remarks>The ModelBusReference passed must resolve to the ModelBusAdapter on which this View is requested</remarks>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter.disposed">
+            <summary>
+            True if this ModelBusAdapter instance has been disposed, false otherwise.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter.Finalize">
+            <summary>
+            Destructor.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter.Disposed">
+            <summary>
+            True if this ModelBusAdapter instance has been disposed, false otherwise.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter.Dispose">
+            <summary>
+            IDisposable.Dispose().
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter.Dispose(System.Boolean)">
+            <summary>
+            Dispose this ModelBusAdapter instance.
+            The base class does nothing. Derived ModelBusAdapter implementations can choose to do additional work, including
+            persist unsaved data, free up resources, etc.
+            </summary>
+            <param name="disposing">True if called from IDisposable.Dispose(), false if from destructor.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter.Equals(Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter)">
+            <summary>
+            True if this ModelBusAdapter is the same as the given ModelBusAdapter instance, false otherwise.
+            </summary>
+            <param name="other">ModelBusAdapter instance to compare to.</param>
+            <returns>True if this ModelBusAdapter is the same as the given ModelBusAdapter instance, false otherwise.</returns>
+            <remarks>Base implementation simply uses object equality through "==".</remarks>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.ModelBusException">
+            <summary>
+            This defines the ModelBusException class, which is the base of all exceptions 
+            used by ModelBus architecture.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusException.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Exception message.</param>
+            <param name="inner">Inner exception if any, null otherwise.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="info">SerializationInfo of the exception.</param>
+            <param name="context">StreamingContext of the serialized exception.</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager">
+            <summary>
+            The ModelBusAdapterManager is used to create instances of the supported ModelBusAdapter, and manage their lifetime.
+            </summary>
+            <summary>
+            Implementation of IDisposable interface.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager.modelbus">
+            <summary>
+            The Backplane instance that the ModelBusAdapterManager is registered with.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager.ModelBus">
+            <summary>
+            Gets the Backplane instance that this ModelBusAdapterManager is registered with.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager.GetSupportedLogicalAdapterIds">
+            <summary>
+            Returns the Ids of the adapter types that are supported 
+            by this adapter manager
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager.CanCreateReference(System.Object[])">
+            <summary>
+            Can this ModelBusAdapter manager create a scope described by the given contextual information about a model?
+            </summary>
+            <param name="modelLocatorInfo">ReferenceContext provided to describe the desired model.</param>
+            <returns>
+            Returns true if the adapter manager can create a modelbus reference from the supplied information.
+            Else returns false.
+            </returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager.TryCreateReference(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference@,System.Object[])">
+            <summary>
+            The ModelBusAdapterManager will attempt to create a model bus reference to a model from the supplied
+            information.
+            </summary>
+            <param name="modelLocatorInfo">ReferenceContext provided to describe the desired model.</param>
+            <param name="reference">Reference to an model if successful, null otherwise.</param>
+            <returns>A flag indicating success or failure</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the argument is null.</exception>
+            <remarks>This method will not throw an exception if a model bus reference could not be created.</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager.CreateReference(System.Object[])">
+            <summary>
+            Attempts to create and return a model bus reference from the supplied data.
+            </summary>
+            <param name="modelLocatorInfo">ReferenceContext provided to describe the desired model.</param>
+            <returns>A new model bus reference, or null.</returns>
+            <remarks>This method may throw exceptions if a model bus reference could not be created.</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager.CreateAdapter(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Create a ModelBusAdapter instance supported by this ModelBusAdapterManager.
+            </summary>
+            <param name="reference">Reference to the model that the adapter should wrap.</param>
+            <returns>The created non-null ModelBusAdapter instance if successful, exception will be thrown otherwise.</returns>
+            <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.AdapterCreationException">Thrown when ModelBusAdapter creation failed for some reason.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown when the argument is null.</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager.CreateAdapter(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,System.IServiceProvider)">
+             <summary>
+             Create a ModelBusAdapter instance supported by this ModelBusAdapterManager.
+             </summary>
+             <param name="reference">Reference to the model that the adapter should wrap.</param>
+             <param name="serviceProvider">ServiceProvider that supplies special services to configure the Adapter</param>
+             <returns>The created non-null ModelBusAdapter instance if successful, exception will be thrown otherwise.</returns>
+             <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.AdapterCreationException">Thrown when ModelBusAdapter creation failed for some reason.</exception>
+             <exception cref="T:System.ArgumentNullException">Thrown when the argument is null.</exception>
+             <remarks>
+             The IServiceProvider should be used by callers to supply services that implement a private protocol between the caller and the Adapter being created by the AdapterManager.
+             If an AdapterManager does not does not require any special services from the caller, then this ServiceProvider should not be used by the AdapterManager.
+            
+             Note to implementors: In order to retrieve general purpose Services, use the ModelBus's ServiceProvider or any other standard ServiceProvider instead.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager.GetExposedElementTypes(System.String)">
+            <summary>
+            Get a collection of all the ModelElement types which are exposed by any ModelBusAdapter
+            managed by this adapter manager, and thus can be referenced from the outside, along
+            with their display name;
+            </summary>
+            <param name="logicalAdapterId">the adapter id from which to get the supported types</param>
+            <returns>Readonly collection of <see cref="T:Microsoft.VisualStudio.Modeling.Integration.SupportedType"/>s</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager.ValidateReference(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.ValidateReferenceOption)">
+            <summary>
+            Validates the reference and set the LastStatus accordingly.
+            The default implementation is to create an adapter in order to check if model can be resolved or not.
+            </summary>
+            <returns>The reference status that was set to the reference</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager.DeserializeAdapterReference(System.String,Microsoft.VisualStudio.Modeling.Integration.ReferenceContext)">
+            <summary>
+            Attempt to deserialize the supplied adapter reference
+            </summary>
+            <param name="serializedReference">The serialized form of the reference</param>
+            <param name="context">Additional contextual information</param>
+            <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.AdapterReferenceTypeNotSupportedException">Thrown if the specified adapter type is not supported by this adapter manager.</exception>
+            <returns>A new ModelBusAdapterReference instance</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager.SerializeAdapterReference(Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterReference,Microsoft.VisualStudio.Modeling.Integration.ReferenceContext)">
+            <summary>
+            Serializes the supplied adapter reference and returns it as a string
+            </summary>
+            <param name="reference">The reference to be serialized</param>
+            <param name="context">Additional contextual information</param>
+            <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.AdapterReferenceTypeNotSupportedException">Thrown if the supplied adapter reference type is not supported by this adapter manager.</exception>
+            <returns>Serialized version of the reference</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager.DoCreateAdapter(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,System.IServiceProvider)">
+             <summary>
+             Actual creation of the ModelBusAdapter instance supported by this ModelBusAdapterManager.
+             </summary>
+             <param name="reference">Reference to the model that the adapter should wrap.</param>
+             <param name="serviceProvider">ServiceProvider that supplies special services to configure the Adapter</param>
+             <returns>The created non-null ModelBusAdapter instance if successful, exception will be thrown otherwise.</returns>
+             <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.AdapterCreationException">Thrown when ModelBusAdapter creation failed for some reason.</exception>
+             <remarks>
+             The IServiceProvider should be used by callers to supply services that implement a private protocol between the caller and the Adapter being created by the AdapterManager.
+             If an AdapterManager does not does not require any special services from the caller, then this ServiceProvider should not be used by the AdapterManager.
+            
+             Note to implementors: In order to retrieve general purpose Services, use the ModelBus's ServiceProvider or any other standard ServiceProvider instead.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager.GetView(Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Obtains the View associated with the ModelBusAdapter passed as a parameter.
+            </summary>
+            <param name="viewOwner">ModelBusAdapter to which the View belongs</param>
+            <param name="viewReference">Fully qualified reference to the view being requested</param>
+            <returns>An instance of the View associated with the ModelBusAdapter</returns>
+            <remarks>The viewReference must point to the same Model as the "Reference" property of the viewOwner</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager.EnsureModelBusRegistration">
+            <summary>
+            Ensure this ModelBusAdapterManager is registered with ModelBus, throw AdapterManagerNotRegisteredException otherwise.
+            </summary>
+            <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.AdapterManagerNotRegisteredException">Thrown if this ModelBusAdapterManager is not registered with a ModelBus.</exception>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager.disposed">
+            <summary>
+            True if this ModelBusAdapterManager instance has been disposed, false otherwise.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager.Finalize">
+            <summary>
+            Destructor.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager.Disposed">
+            <summary>
+            True if this ModelBusAdapterManager instance has been disposed, false otherwise.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager.Dispose">
+            <summary>
+            IDisposable.Dispose().
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapterManager.Dispose(System.Boolean)">
+            <summary>
+            Dispose this ModelBusAdapterManager instance.
+            </summary>
+            <param name="disposing">True if called from IDisposable.Dispose(), false if from destructor.</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.GuidList">
+            <summary>
+            Static class to list each guid
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.GuidList.GuidModelBusService">
+            <summary>
+            Guid to identify the model bus service
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.SModelBus">
+            <summary>
+            The service interface for the VS ModelBus service
+            </summary>
+            <remarks>
+            Empty, the real work is done by interfaces you cast this to.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.SupportedType">
+            <summary>
+            Class the holds the adapter manager's supported type and it's display name
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.SupportedType.#ctor(System.Type)">
+            <summary>
+            Create supported type with just the type
+            </summary>
+            <remarks>
+            The display name will be the type's name
+            </remarks>
+            <param name="supportedType">The supported type</param>
+            <exception cref="T:System.ArgumentNullException">thrown when supportedType is null</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.SupportedType.#ctor(System.Type,System.String)">
+            <summary>
+            Create supported type with type and display name
+            </summary>
+            <param name="supportedType">The supported type</param>
+            <param name="displayName">The supported type's display name</param>
+            <exception cref="T:System.ArgumentNullException">thrown when supportedType is null or displayName is null</exception>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.SupportedType.Type">
+            <summary>
+            Supported Type
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.SupportedType.DisplayName">
+            <summary>
+            Display name
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.ValidateReferenceOption">
+            <summary>
+            Validation options
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.ModelBusView">
+            <summary>
+            ModelBusView is an object obtained from a ModelBusAdapter for a Model. The ModelBusView allows the client
+            to create, access and manipulate the design surface or editor for the model.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusView.#ctor(Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="ownerAdapter">ModelBusAdapter instance that creates this ModelBusView</param>
+            <param name="viewReference">ModelBusReference that identifies this ModelBusView</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when a parameter is null</exception>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusView.Adapter">
+            <summary>
+            ModelBusAdapter instance that created and owns this ModelBusView
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusView.ViewReference">
+            <summary>
+            Reference identifier used to create this ModelBusView object
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.ModelBusView.IsOperational">
+            <summary>
+            Flag for derived classes to indicate if a ModelBusView is usable or not
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusView.Show">
+            <summary>
+            Activates the WindowFrame represented by this ModelBusView and sets focus on it
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusView.Hide">
+            <summary>
+            Hides the WindowFrame represented by this ModelBusView. The underlying view container is still held in memory.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusView.Close">
+            <summary>
+            Closes the WindowFrame represented by this ModelBusView.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusView.Open">
+            <summary>
+            Opens/attaches the underlying editor object represented by this ModelBusView.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusView.SetSelection(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Selects the element identified by the reference in this ModelBusView
+            </summary>
+            <param name="reference">identifier for Element to be selected</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.ModelBusView.SetSelection(System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Modeling.Integration.ModelBusReference})">
+            <summary>
+            Selects the elements identified by the referenes in this ModelBusView
+            </summary>
+            <param name="references">Collection of references identifying the Elements to be selected</param>
+        </member>
+        <member name="F:Microsoft.Internal.Performance.CodeMarkers.State.Enabled">
+            <summary>
+            The atom is present. CodeMarkers are enabled.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Internal.Performance.CodeMarkers.State.Disabled">
+            <summary>
+            The atom is not present, but InitPerformanceDll has not yet been called.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Internal.Performance.CodeMarkers.State.DisabledDueToDllImportException">
+            <summary>
+            Disabled because the CodeMarkers transport DLL could not be found or
+            an import failed to resolve.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Internal.Performance.CodeMarkers.IsEnabled">
+            <summary>
+            Are CodeMarkers enabled? Note that even if IsEnabled returns false, CodeMarkers
+            may still be enabled later in another component.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Internal.Performance.CodeMarkers.CodeMarker(System.Int32)">
+            <summary>
+            Sends a code marker event
+            </summary>
+            <param name="nTimerID">The code marker event ID</param>
+            <returns>true if the code marker was successfully sent, false if code markers are
+            not enabled or an error occurred.</returns>
+        </member>
+        <member name="M:Microsoft.Internal.Performance.CodeMarkers.CodeMarkerEx(System.Int32,System.Byte[])">
+            <summary>
+            Sends a code marker event with additional user data
+            </summary>
+            <param name="nTimerID">The code marker event ID</param>
+            <param name="aBuff">User data buffer. May not be null.</param>
+            <returns>true if the code marker was successfully sent, false if code markers are
+            not enabled or an error occurred.</returns>
+            <exception cref="T:System.ArgumentNullException">aBuff was null</exception>
+        </member>
+        <member name="M:Microsoft.Internal.Performance.CodeMarkers.SetStateDLLException">
+            <summary>
+            Used by ManagedPerfTrack.cs to report errors accessing the DLL.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Internal.Performance.CodeMarkers.CodeMarkerEx(System.Int32,System.Guid)">
+            <summary>
+            Sends a code marker event with additional Guid user data
+            </summary>
+            <param name="nTimerID">The code marker event ID</param>
+            <param name="guidData">The additional Guid to include with the event</param>
+            <returns>true if the code marker was successfully sent, false if code markers are
+            not enabled or an error occurred.</returns>
+        </member>
+        <member name="M:Microsoft.Internal.Performance.CodeMarkers.CodeMarkerEx(System.Int32,System.String)">
+            <summary>
+            Sends a code marker event with additional String user data
+            </summary>
+            <param name="nTimerID">The code marker event ID</param>
+            <param name="stringData">The additional String to include with the event</param>
+            <returns>true if the code marker was successfully sent, false if code markers are
+            not enabled or an error occurred.</returns>
+        </member>
+        <member name="M:Microsoft.Internal.Performance.CodeMarkers.StringToBytesZeroTerminated(System.String)">
+            <summary>
+            Converts a string into a byte buffer including a zero terminator (needed for proper ETW message formatting)
+            </summary>
+            <param name="stringData">String to be converted to bytes</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Internal.Performance.CodeMarkers.CodeMarkerEx(System.Int32,System.UInt32)">
+            <summary>
+            Sends a code marker event with additional DWORD user data
+            </summary>
+            <param name="nTimerID">The code marker event ID</param>
+            <param name="uintData">The additional DWORD to include with the event</param>
+            <returns>true if the code marker was successfully sent, false if code markers are
+            not enabled or an error occurred.</returns>
+        </member>
+        <member name="M:Microsoft.Internal.Performance.CodeMarkers.CodeMarkerEx(System.Int32,System.UInt64)">
+            <summary>
+            Sends a code marker event with additional QWORD user data
+            </summary>
+            <param name="nTimerID">The code marker event ID</param>
+            <param name="ulongData">The additional QWORD to include with the event</param>
+            <returns>true if the code marker was successfully sent, false if code markers are
+            not enabled or an error occurred.</returns>
+        </member>
+        <member name="M:Microsoft.Internal.Performance.CodeMarkers.UsePrivateCodeMarkers(System.String,Microsoft.Win32.RegistryView)">
+            <summary>
+            Checks the registry to see if code markers are enabled
+            </summary>
+            <param name="regRoot">The registry root</param>
+            <returns>Whether CodeMarkers are enabled in the registry</returns>
+        </member>
+        <member name="T:Microsoft.Internal.Performance.CodeMarkerStartEnd">
+            <summary>
+            Use CodeMarkerStartEnd in a using clause when you need to bracket an
+            operation with a start/end CodeMarker event pair.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Internal.Performance.CodeMarkerExStartEnd">
+            <summary>
+            Use CodeMarkerExStartEnd in a using clause when you need to bracket an
+            operation with a start/end CodeMarker event pair.
+            </summary>
+        </member>
+    </members>
+</doc>

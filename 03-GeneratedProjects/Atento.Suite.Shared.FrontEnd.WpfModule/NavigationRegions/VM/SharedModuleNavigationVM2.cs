@@ -42,6 +42,9 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
             this.ShowPersonaView = new NavigationCommand<SharedModuleNavigationViewModel>(
                 this, RegionNames.WorkspaceRegion, typeof(PersonaQueryView).FullName);
 
+            this.ShowCategoriaView = new NavigationCommand<SharedModuleNavigationViewModel>(
+                this, RegionNames.WorkspaceRegion, typeof(CategoriaQueryView).FullName);
+
         }// end initialize
         #endregion
     }// end class

@@ -4,6 +4,36 @@
         <name>Atento.Suite.Shared.Infrastructure</name>
     </assembly>
     <members>
+        <!-- Badly formed XML comment ignored for member "T:Atento.Suite.Shared.Infrastructure.CategoriaConfiguration" -->
+        <member name="M:Atento.Suite.Shared.Infrastructure.CategoriaConfiguration.#ctor">
+            <summary>
+            inicializa una nueva instancia de <see cref="T:Atento.Suite.Shared.Infrastructure.CategoriaConfiguration"/>.
+            </summary>
+        </member>
+        <member name="T:Atento.Suite.Shared.Infrastructure.CategoriaRepository">
+            <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:Atento.Suite.Shared.Domain.Categoria"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:Atento.Suite.Shared.Infrastructure.CategoriaRepository.#ctor(System.Data.Entity.DbContext)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Atento.Suite.Shared.Infrastructure.CategoriaRepository"/>.
+            </summary>
+            <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+            <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext"/> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:Atento.Suite.Shared.Infrastructure.PersonaConfiguration" -->
         <member name="M:Atento.Suite.Shared.Infrastructure.PersonaConfiguration.#ctor">
             <summary>

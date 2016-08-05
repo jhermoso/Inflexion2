@@ -1,0 +1,2126 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.VisualStudio.Modeling.Sdk.Integration.Shell.14.0</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VSReferencePicker">
+            <summary>
+            VS-Hosted ReferencePicker
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VSReferencePicker.DefaultModelBrowser">
+            <summary>
+            File based model picker
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VSReferencePicker.DefaultElementBrowser">
+            <summary>
+            File based model-element picker
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VSReferencePicker.DefaultEditStyle">
+            <summary>
+            Modal Dialog edit style
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VSReferencePicker.PickModelReferenceNoFixup(System.IServiceProvider,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.Picker.PickerMetadataBaseAttribute[])">
+            <summary>
+            Picks model reference using file-based mode browser
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VSReferencePicker.PickElementReferenceNoFixup(System.IServiceProvider,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.Picker.PickerMetadataBaseAttribute[])">
+            <summary>
+            Picks element reference using file-based mode-element browser
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VSReferencePicker.PickModelReference(Microsoft.VisualStudio.Modeling.Store,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.Picker.PickerMetadataBaseAttribute[])">
+            <summary>
+            Picks model reference using file-based mode browser
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VSReferencePicker.PickElementReference(Microsoft.VisualStudio.Modeling.Store,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.Picker.PickerMetadataBaseAttribute[])">
+            <summary>
+            Picks element reference using file-based mode-element browser
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VSReferencePicker.PickReference(System.Type,System.IServiceProvider,Microsoft.VisualStudio.Modeling.Store,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.Picker.PickerMetadataBaseAttribute[])">
+            <summary>
+            Picks a reference not in UITypeEditor context
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VSReferencePicker.PickModelReferenceNoFixup(System.ComponentModel.ITypeDescriptorContext,System.Windows.Forms.Design.IWindowsFormsEditorService,System.IServiceProvider,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Picks model reference in UITypeEditor context
+            </summary>
+            <remarks>This method is for UITypeEditor usage</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VSReferencePicker.PickElementReferenceNoFixup(System.ComponentModel.ITypeDescriptorContext,System.Windows.Forms.Design.IWindowsFormsEditorService,System.IServiceProvider,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Picks element reference in UITypeEditor context
+            </summary>
+            <remarks>This method is for UITypeEditor usage</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VSReferencePicker.PickModelReference(System.ComponentModel.ITypeDescriptorContext,System.Windows.Forms.Design.IWindowsFormsEditorService,Microsoft.VisualStudio.Modeling.Store,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Picks model reference in UITypeEditor context
+            </summary>
+            <remarks>This method is for UITypeEditor usage</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VSReferencePicker.PickElementReference(System.ComponentModel.ITypeDescriptorContext,System.Windows.Forms.Design.IWindowsFormsEditorService,Microsoft.VisualStudio.Modeling.Store,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Picks element reference in UITypeEditor context
+            </summary>
+            <remarks>This method is for UITypeEditor usage</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VSReferencePicker.PickReference(System.ComponentModel.ITypeDescriptorContext,System.Windows.Forms.Design.IWindowsFormsEditorService,System.Type,System.IServiceProvider,Microsoft.VisualStudio.Modeling.Store,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Picks a reference in UITypeEditor context
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.InternalPickerExtensionMethods.IsValidFileExtension(System.Windows.Forms.OpenFileDialog)">
+            <summary>
+            Method that is used to validate the selected file name against the applied filter
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.OKCancelUC">
+            <summary>
+            Interaction logic for OKCancelUC.xaml
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.OKCancelUC.IsClearButtonEnabledProperty">
+            <summary>
+            Dependecy property for IsClearButtonEnabled
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.OKCancelUC.#ctor(Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowserHost)">
+            <summary>
+            Create the control for the host
+            </summary>
+            <param name="host"></param>
+            <exception cref="T:System.ArgumentNullException">when host is null</exception>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.OKCancelUC.IsClearButtonEnabled">
+            <summary>
+            Get/Set clear button enabled state
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.OKCancelUC.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Element_Model_ErrorOpening">
+            <summary>
+              Looks up a localized string similar to Error: Not able to open the model.
+            Browse to choose another model to reference..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Element_Element_ErrorOpening">
+            <summary>
+              Looks up a localized string similar to .
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Element_Model_ErrorOpening_Icon">
+            <summary>
+              Looks up a localized string similar to WPFResource_ErrorIcon.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Element_Element_InvalidElementRef">
+             <summary>
+               Looks up a localized string similar to Warning: Not able to open the referenced element &apos;{0}&apos;.
+            Select another element..
+             </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Element_Element_InvalidElementRef_Icon">
+            <summary>
+              Looks up a localized string similar to WPFResource_WarningIcon.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Element_Element_InvalidModelRef">
+            <summary>
+              Looks up a localized string similar to .
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Element_Element_NoElementRef">
+            <summary>
+              Looks up a localized string similar to Select the element to reference in the chosen model..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Element_Element_NoModelRef">
+            <summary>
+              Looks up a localized string similar to .
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Element_Element_ValidRef">
+            <summary>
+              Looks up a localized string similar to To change the element to be referenced, make a different selection..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Element_Model_InvalidElementRef">
+            <summary>
+              Looks up a localized string similar to Browse to Change the model containing the element you want to reference.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Element_Model_InvalidModelRef">
+             <summary>
+               Looks up a localized string similar to Warning: Not able to open the reference model &apos;{0}&apos; when looking for element &apos;{1}&apos;.
+            Browse to find the referenced file..
+             </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Element_Model_InvalidModelRef_Icon">
+            <summary>
+              Looks up a localized string similar to WPFResource_WarningIcon.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Element_Model_NoElementRef">
+            <summary>
+              Looks up a localized string similar to Browse to Change the model containing the element you want to reference.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Element_Model_NoModelRef">
+            <summary>
+              Looks up a localized string similar to .
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Element_Model_ValidRef">
+            <summary>
+              Looks up a localized string similar to Browse to Change the model containing the element you want to reference..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Element_Title">
+            <summary>
+              Looks up a localized string similar to Create Reference to Element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Exception_NotInitialized">
+            <summary>
+              Looks up a localized string similar to &apos;{0}&apos; is not initialized..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Exception_InvalidModelBrowserForModelElementBrowser">
+            <summary>
+              Looks up a localized string similar to ModelBrowser is required for ModelElementBrowser.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Exception_NotSupportedModelBrowserType">
+            <summary>
+              Looks up a localized string similar to Model browser type &apos;{0}&apos; is not supported, expected &apos;{1}&apos; based type that implements &apos;{2}&apos;..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Model_Model_ErrorOpening">
+             <summary>
+               Looks up a localized string similar to Error: Not able to open the model.
+            Browse to choose another model to reference..
+             </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Model_Model_ErrorOpening_Icon">
+            <summary>
+              Looks up a localized string similar to WPFResource_ErrorIcon.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Model_Model_InvalidModelRef">
+             <summary>
+               Looks up a localized string similar to Warning: Not able to open the referenced model &apos;{0}&apos;.
+            Browse to find the referenced file or choose another model..
+             </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Model_Model_InvalidModelRef_Icon">
+            <summary>
+              Looks up a localized string similar to WPFResource_WarningIcon.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Model_Model_NoModelRef">
+            <summary>
+              Looks up a localized string similar to .
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Model_Model_ValidRef">
+            <summary>
+              Looks up a localized string similar to Browse to change the model reference:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.Model_Title">
+            <summary>
+              Looks up a localized string similar to Create Reference to Model.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.ValidationMessage">
+             <summary>
+               Looks up a localized string similar to There are other invalid references to elements in the model &apos;{0}&apos;.
+            Do you want to update those to reference model '{1}' as well?.
+             </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.ValidationTitle">
+            <summary>
+              Looks up a localized string similar to Reference Model.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.OpenFileErrorMessage">
+            <summary>
+              Looks up a localized string similar to The selected file is doesn't have the correct extension. Use one of the filters to select the correct file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.OpenFileErrorTitle">
+            <summary>
+              Looks up a localized string similar to The selected file is not supported by the filter
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.WPFResource_ErrorIcon">
+            <summary>
+              Looks up a localized string similar to pack://application:,,/Resources/ErrorIcon.png.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerResource.WPFResource_WarningIcon">
+            <summary>
+              Looks up a localized string similar to pack://application:,,/Resources/WarningIcon.png.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.BaseSelection">
+            <summary>
+            Base class for the selection classes such as ElementInstanceSelection and ElementTypeSelection
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.BaseSelection.DisplayName">
+            <summary>
+            DisplayName
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.BaseSelection.IsSelected">
+            <summary>
+            Selection Status
+            </summary>
+        </member>
+        <member name="E:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.BaseSelection.PropertyChanged">
+            <summary>
+            PropertyChanged event
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.BaseSelection.NotifyPropertyChanged(System.String)">
+            <summary>
+            Fire PropertyChanged event
+            </summary>
+            <param name="info"></param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.IVisualGuidanceManager">
+            <summary>
+            Contract for the visual guidance managers wanting to manage the UI based on the Status.
+            </summary>
+            <remarks>This interface is meant to be used as a way to set visual guidance (icons, messages and etc.) based on the <see cref="T:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.Status"/> enum.</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.IVisualGuidanceManager.OnStatusChanged(Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.Status)">
+            <summary>
+            Status changed handler
+            </summary>
+        </member>
+        <member name="E:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.IVisualGuidanceManager.Changed">
+            <summary>
+            Indicator that something changed in the current visual guidance
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBrowserBase">
+            <summary>
+            Base class for all the model broswers
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBrowserBase.InternalHost">
+            <summary>
+            Model Browser Host - internal use
+            </summary>
+            <exception cref="T:System.InvalidOperationException">when host is not initialized</exception>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBrowserBase.VisualGuidanceManager">
+            <summary>
+            The visual guidance manager for the browser
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBrowserBase.CurrentStatus">
+            <summary>
+            Set current browser status
+            </summary>
+        </member>
+        <member name="E:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBrowserBase.ReferenceChanged">
+            <summary>
+            Fired on each reference change
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBrowserBase.Initialize(Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowserHost)">
+            <summary>
+            Model Browser initialization
+            </summary>
+            <exception cref="T:System.ArgumentNullException">when host is null</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBrowserBase.IsValid">
+            <summary>
+            Validate the current browser based on the current status
+            </summary>
+            <returns>true if valid, false otherwise</returns>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBrowserBase.Title">
+            <summary>
+            Browser's title
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBrowserBase.Clear">
+            <summary>
+            Clear reference
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBrowserBase.Host">
+            <summary>
+            Model Browser Host
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBrowserBase.OnReferenceChanged(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Invoke ReferenceChanged event
+            </summary>
+            <param name="reference"></param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBrowserBase.OnDispose">
+            <summary>
+            Cleanup resources, events and etc.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBusHelper">
+            <summary>
+            A helper class used to handle all the conversion from and to model bus (and it's references)
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBusHelper.#ctor(Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowserHost)">
+            <summary>
+            Creates ModelBusHelper
+            </summary>
+            <param name="host">instantiated IModelBrowserHost</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBusHelper.ConvertToReference(Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ElementInstanceSelection)">
+            <summary>
+            Converts element instance selection into a ModelBusReference
+            </summary>
+            <param name="selection">element selection</param>
+            <returns>the converted reference</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBusHelper.ConvertFilePathToReference(System.String)">
+            <summary>
+            Converts the file path to ModelBusReference
+            </summary>
+            <param name="filePath">path to a file</param>
+            <returns>the converted reference</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBusHelper.GetModelTypes(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Extract the types and elements from the reference
+            </summary>
+            <param name="reference">the reference</param>
+            <returns>list of type selection</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBusHelper.IsValidModelReference(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,System.Boolean)">
+            <summary>
+            Model-part reference validation method
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser`1" -->
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser">
+            <summary>
+            Interaction logic for ModelElementBrowser.xaml
+            </summary>
+            <summary>
+            ModelElementBrowser
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.selection">
+            <summary>
+            This is the type selection in the left side of the control (check box list data context)
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.filteredSelection">
+            <summary>
+            This is the elements selection in the right side of the control (tree view data context)
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.ConfigureModelBrowser">
+            <summary>
+            Configures the model browser to be hosted in this element browser
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.CreateModelBrowser">
+            <summary>
+            Creates an instance of the model browser
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.ModelBrowser_ReferenceChanged(System.Object,Microsoft.VisualStudio.Modeling.Integration.Picker.ReferenceChangedEventArgs)">
+            <summary>
+            Model browser's ref changed (i.e. picked different file)
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.IsValid" -->
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.Initialize(Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowserHost)">
+            <summary>
+            Initalize this browser with host instance
+            </summary>
+            <param name="host"><see cref="T:Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowserHost"/></param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.Clear">
+            <summary>
+            Clear the model browser's reference
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.Title">
+            <summary>
+            Current browser's title
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.mainGrid_SizeChanged(System.Object,System.Windows.SizeChangedEventArgs)">
+            <summary>
+            The main grid size has changed, need to update the list rows so that they will use the maximum allowed size and will support scrolling
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.ModelBrowserBase_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            When the control is loaded we need to select the reference in the view
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.LoadReference(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            performs the needed steps in order to load the reference in this browser
+            1. Clears all the previous elements
+            2. Sets the current status  based on the context
+            3. Load the elements (if needed)
+            
+            This method controls the following states: NoModelRef, NoElementRef, InvalidModelRef
+            if ref==null =>NoModelRef (no model loaded)
+            else if ref is valid model ref =>NoElementRef (need to peek an element)
+            else => InvalidModelRef (couldn't peek an element because the model ref is broken)
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.OnTypeSelectionChanged(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Type selection change handler
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.OnElementSelectionChanged(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Element selection change handler
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.elementsList_SelectedItemChanged(System.Object,System.Windows.RoutedPropertyChangedEventArgs{System.Object})">
+            <summary>
+            Selected element changed - bubble up the event
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.elementsList_MouseDoubleClick(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Double clicked an element - bubble up the event and act as if clicked OK in the host
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.OnElementSelected(Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ElementInstanceSelection)">
+            <summary>
+            Converts the selection to a model bus reference and sets it as the current working selection
+            
+            This method controls the following states:
+            if the element ref is not null => ValidRef (picked a valid element ref)
+            else => InvalidElementRef (picked something else i.e. visual element that used for grouping)
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.ReloadBinding">
+            <summary>
+            Reloads binding and refilters the datasources as needed
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.FilterElements">
+            <summary>
+            Filters elements based on types
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.ClearElements">
+            <summary>
+            Clears the elements trees (selection and filtering)
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.LoadElements(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Loads the elements for a given refrence - extracts the types and fills the bounded colleciton
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.SelectReference(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Looks for the reference inside the current bounded list
+            
+            This method controls only two states: ValidRef, InvalidElementRef (when there's no element to select)
+            if found the selection => ValidRef
+            else if CurrentStatus!=Status.InvalidModelRef =>CurrentStatus = Status.InvalidElementRef
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelElementBrowser.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.TreeStyleSelector">
+            <summary>
+            Style selector for the ElementTypeSelection and ElementInstanceSelection tree view items data
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.TreeStyleSelector.SelectStyle(System.Object,System.Windows.DependencyObject)">
+            <summary>
+            Selects the type based on the item
+            </summary>
+            <param name="item"></param>
+            <param name="container"></param>
+            <returns>the selected type</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBrowser">
+            <summary>
+            Interaction logic for ModelBrowser.xaml
+            </summary>
+            <summary>
+            ModelBrowser
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBrowser.#ctor">
+            <summary>
+            Constructor for ModelBrowserUC
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBrowser.IsValid" -->
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBrowser.Initialize(Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowserHost)">
+            <summary>
+            Initalize this browser with host instance
+            </summary>
+            <param name="host"><see cref="T:Microsoft.VisualStudio.Modeling.Integration.Picker.IModelBrowserHost"/></param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBrowser.Clear">
+            <summary>
+            Clears the reference
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBrowser.Title">
+            <summary>
+            Current browser's title
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBrowser.TryToLoadAModelFromPath(System.String)">
+            <summary>
+            Coverts the path to reference and updates the current status
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBrowser.chooseModel_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Browse button click - open file dialog
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBrowser.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ElementInstanceSelection">
+            <summary>
+            This class is used as the data type for binding the WPF UI
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ElementInstanceSelection.Reference">
+            <summary>
+            The reference to selection
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ElementInstanceSelection.#ctor(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            ElementInstanceSelection .ctor
+            </summary>
+            <param name="elementRef">the element reference</param>
+            <exception cref="T:System.ArgumentNullException">when elementRef is null</exception>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ElementTypeSelection">
+            <summary>
+            ElementTypeSelection class - used to filter specific <see cref="T:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ElementInstanceSelection"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ElementTypeSelection.IsAllIndicator">
+            <summary>
+            Indicator for the "All" selection
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ElementTypeSelection.IsExpanded">
+            <summary>
+            Indicates if the tree item is expended or not
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ElementTypeSelection.Elements">
+            <summary>
+            Child elements
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ElementTypeSelection.ModelType">
+            <summary>
+            The model type
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ElementTypeSelection.#ctor(Microsoft.VisualStudio.Modeling.Integration.SupportedType)">
+            <summary>
+            ElementTypeSelection .ctor
+            </summary>
+            <param name="supportedType">the supported type that this instance is based on</param>
+            <exception cref="T:System.ArgumentNullException">when supportedType is null</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ElementTypeSelection.#ctor(System.String)">
+            <summary>
+            A special constructor for non type based selection (All check box)
+            </summary>
+            <param name="displayName">Display name</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ElementTypeSelection.AddElement(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Add element for the current type
+            </summary>
+            <param name="elementRef">Reference to an element</param>
+            <exception cref="T:System.ArgumentNullException">when elementRef is null</exception>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog">
+            <summary>
+            The picker dialog class - used as the model browser for all the IModelBrowser classes
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.CreateDialog(System.Type,System.IServiceProvider,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Store,System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Modeling.Integration.Picker.PickerMetadataBaseAttribute})">
+            <summary>
+            Creates PickerDialog and initializes it based on the parameters
+            </summary>
+            <remarks>The store is used for references fixing and as a service provider</remarks>
+            <exception cref="T:System.ArgumentNullException">when modelBus or modelBrowserType are null</exception>
+            <exception cref="T:System.NotSupportedException">when modelBrowserType is not WPF Control based class that implements IModelBrowser as well</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.CreateDialog(System.Type,Microsoft.VisualStudio.Modeling.Store,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Modeling.Integration.Picker.PickerMetadataBaseAttribute})">
+            <summary>
+            Creates PickerDialog and initializes it based on the parameters
+            </summary>
+            <remarks>The store is used for references fixing and as a service provider</remarks>
+            <exception cref="T:System.ArgumentNullException">when modelBus or modelBrowserType are null</exception>
+            <exception cref="T:System.NotSupportedException">when modelBrowserType is not WPF Control based class that implements IModelBrowser as well</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.CreateDialogNoFixup(System.Type,System.IServiceProvider,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Modeling.Integration.Picker.PickerMetadataBaseAttribute})">
+            <summary>
+            Creates PickerDialog and initializes it based on the parameters
+            </summary>
+            <exception cref="T:System.ArgumentNullException">when modelBus or modelBrowserType are null</exception>
+            <exception cref="T:System.NotSupportedException">when modelBrowserType is not WPF Control based class that implements IModelBrowser as well</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.CreateDialog``1(Microsoft.VisualStudio.Modeling.Store,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Modeling.Integration.Picker.PickerMetadataBaseAttribute})">
+            <summary>
+            Creates PickerDialog and initializes it based on the parameters
+            </summary>
+            <exception cref="T:System.ArgumentNullException">when modelBus or modelBrowserType are null</exception>
+            <exception cref="T:System.NotSupportedException">when modelBrowserType is not WPF Control based class that implements IModelBrowser as well</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.CreateDialogNoFixup``1(System.IServiceProvider,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Modeling.Integration.Picker.PickerMetadataBaseAttribute})">
+            <summary>
+            Creates PickerDialog and initializes it based on the parameters
+            </summary>
+            <exception cref="T:System.ArgumentNullException">when modelBus or modelBrowserType are null</exception>
+            <exception cref="T:System.NotSupportedException">when modelBrowserType is not WPF Control based class that implements IModelBrowser as well</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.#ctor(System.IServiceProvider,Microsoft.VisualStudio.Modeling.Store)">
+            <summary>
+            Creates PickerDialog
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.F1Keyword">
+            <summary>
+            The keyword used to display the help topic
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.SetModelReferenceBrowser(System.Type)">
+            <summary>
+            Sets the modelBrowserType as the control that enable model browsing and picking
+            </summary>
+            <param name="modelBrowserType">the type of the browser</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.ShouldSuggestReferenceFixing(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Returns if should suggest reference fixing or not
+            </summary>
+            <remarks>Might validate the newReference if in Unknown status</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.SuggestReferenceFixing(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            This is where the dialog suggests to fix the other refreneces as well
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.Clear">
+            <summary>
+            Clears reference by calling ModelBrowsers's Clear method
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.CloseIfValid">
+            <summary>
+            Closes the host if it validates correctly
+            </summary>
+            <returns>if closed or not(valid or not)</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.CancelAndClose">
+            <summary>
+            Cancel's the current modifications and closes the dialog
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.Reference">
+            <summary>
+            Gets the model bus reference
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.ModelBus">
+            <summary>
+            Gets the model bus
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.ModelBrowser">
+            <summary>
+            Gets the IModelBrowser
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.Metadata">
+            <summary>
+            Metadata for the browser
+            </summary>
+            <remarks>This property is never null</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.ResizeToMeasure">
+            <summary>
+            Request from the hosted control to re-measure and potentially resize the host
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.minimumFormSize">
+            <summary>
+            The minimal size of the form without the center panel hosting the control.
+            This size is used ONLY to limit the size of the control to the working area so 
+            that when shown, all the buttons will be clickable
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.ResizeWinFormWhenMeauredSizeChanges(System.Boolean)">
+            <summary>
+            Resizes the hosting WinForm to comply with the minimal/requested WPF size
+            </summary>
+            <param name="allowShrinking">Indicates if allows the control to request a size that will cause the form to shrink</param>
+            <remarks>This is only required to set the initial size of the element host based on the required size for 
+            the dynamically loaded control which is hosted on that panel and when something happends with the hosted control 
+            that causes it to need more space (i.e. error icon/message added/removed)</remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.GetMeasuredSize(System.Windows.Controls.Control,System.Windows.Size)">
+            <summary>
+            Returns the measured size of the the control
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.WinformToWpfSize(System.Drawing.Size)">
+            <summary>
+            Converts from Winforms to WPF size
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.WpfToWinformSize(System.Windows.Size)">
+            <summary>
+            Converts from WPF to Winforms size
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.ExecuteForCompositionTarget(System.Action{System.Windows.Media.CompositionTarget})">
+            <summary>
+            Allows to execute an action on a composition target used in wpf-winforms interopability
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.PickerDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.BrowserType">
+            <summary>
+            BrowserType
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.LabelType">
+            <summary>
+            LableType
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.Status">
+            <summary>
+            Status
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ResourceHelper">
+            <summary>
+            A helper class for handling the mapping for various state dependant resources
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ResourceHelper.GetText(Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.BrowserType,Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.LabelType,Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.Status)">
+            <summary>
+            Returns the localized string for the specified combination
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ResourceHelper.GetImageSource(Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.BrowserType,Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.LabelType,Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.Status)">
+            <summary>
+            Returns the localized image source for the specified combination
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ResourceHelper.ConvertToUri(System.String)">
+            <summary>
+            Used to convert a local resource name to a Uri (assumes that the resource name is a valid Uri)
+            </summary>
+            <param name="resourceName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.BrokenReferenceResolver">
+            <summary>
+            Resolves broken references based on resolved ones
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.BrokenReferenceResolver.CanAutoResolve(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Helper method to discover references that can be resolved based on the original broken reference
+            </summary>
+            <param name="originalReferenceBeforeFix">ModelBusReference before the fix (with the broken file path)</param>
+            <param name="brokenReference">ModelBusReference needed a fix</param>
+            <returns>if can be resolved or not</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.BrokenReferenceResolver.TryAutoResolveBrokenReferences(System.IServiceProvider,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,System.Collections.Generic.IList{Microsoft.VisualStudio.Modeling.Integration.ModelBusReference},System.Boolean)">
+            <summary>
+            Tries to auto resolve the broken references using old references that has been fixed.
+            If not able to resolve no change will be made.
+            </summary>
+            <param name="serviceProvider"></param>
+            <param name="oldReference">Old broken reference</param>
+            <param name="newReference">New fixed reference</param>
+            <param name="brokenReferencesList">All the references that can be fixed using the new reference</param>
+            <param name="askBeforeFixing">pops a UI if true otherwise acts as if the user clicked yes in the UI</param>
+            <returns>The fixed references, if failed to fix the original will be in this list</returns>
+            <exception cref="T:System.ArgumentNullException">When serviceProvider is null</exception>
+            <exception cref="T:System.ArgumentNullException">When oldReference is null</exception>
+            <exception cref="T:System.ArgumentNullException">When newReference is null</exception>
+            <exception cref="T:System.ArgumentNullException">When brokenReferencesList is null</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.BrokenReferenceResolver.TryAutoResolveBrokenReferences(System.IServiceProvider,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,System.Collections.Generic.IList{Microsoft.VisualStudio.Modeling.Integration.ModelBusReference})">
+            <summary>
+            Tries to auto resolve the broken references using old references that has been fixed.
+            If not able to resolve no change will be made.
+            </summary>
+            <param name="serviceProvider"></param>
+            <param name="oldReference">Old broken reference</param>
+            <param name="newReference">New fixed reference</param>
+            <param name="brokenReferencesList">All the references that can be fixed using the new reference</param>
+            <returns>The fixed references, if failed to fix the original will be in this list</returns>
+            <exception cref="T:System.ArgumentNullException">When serviceProvider is null</exception>
+            <exception cref="T:System.ArgumentNullException">When oldReference is null</exception>
+            <exception cref="T:System.ArgumentNullException">When newReference is null</exception>
+            <exception cref="T:System.ArgumentNullException">When brokenReferencesList is null</exception>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VisualGuidanceManager">
+            <summary>
+            The manager for all the visual guidance displayed to the user - text and icons
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VisualGuidanceManager.#ctor(Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.ModelBrowserBase,Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.BrowserType)">
+            <summary>
+            Constructs the VisualGuidanceManager based on a browser and it's type
+            </summary>
+            <param name="browser"></param>
+            <param name="browserType"></param>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VisualGuidanceManager.ModelMessageProperty">
+            <summary>
+            The dependency property that gets or sets the message to display
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VisualGuidanceManager.ModelMessageIconProperty">
+            <summary>
+            The dependency property that gets or sets the message icon to display
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VisualGuidanceManager.ElementMessageProperty">
+            <summary>
+            The dependency property that gets or sets the message to display
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VisualGuidanceManager.ElementMessageIconProperty">
+            <summary>
+            The dependency property that gets or sets the message icon to display
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VisualGuidanceManager.ModelMessageIcon">
+            <summary>
+            get or set ModelMessageIcon
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VisualGuidanceManager.ModelMessage">
+            <summary>
+            get or set ModelMessage
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VisualGuidanceManager.ElementMessageIcon">
+            <summary>
+            get or set ElementMessageIcon
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Picker.VisualGuidanceManager.ElementMessage">
+            <summary>
+            get or set ElementMessage
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.Logger.SubCategoryModelBusPackage">
+            <summary>
+            subCategoryModelBusPackage is used when creating ErrorTasks for the error list
+            It sets the SubCategory to this value so that we can easily find all our (ModelBusPackage) errors
+            in the list when we want to delete them
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.Logger.errorListProvider">
+            <summary>
+            ErrorListProvider object.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.Logger.eventListener">
+            <summary>
+            Listens to events that the logger is interested in.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Logger.#ctor(System.IServiceProvider)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.Logger.ErrorListProvider">
+            <summary>
+            Lazily-created error list provider
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Logger.LogError(Microsoft.VisualStudio.Modeling.Integration.ErrorCategory,System.String)">
+            <summary>
+            Logs an error
+            </summary>
+            <param name="errorCategory">Indicates the severity of the error being logged</param>
+            <param name="message">The text of the message to be logged</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Logger.AddErrorToErrorList(Microsoft.VisualStudio.Modeling.Integration.ErrorCategory,System.String)">
+            <summary>
+            Add the given error to the ErrorList.
+            </summary>
+            <param name="message">The message to display in the error list.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Logger.ClearErrorList">
+            <summary>
+            Removes all ModelBusPackage error messages from the error list.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Logger.GetTaskCategory(Microsoft.VisualStudio.Modeling.Integration.ErrorCategory)">
+            <summary>
+            Converts the error category to a VS TaskErrorCategory
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Logger.AddToVSLog(Microsoft.VisualStudio.Modeling.Integration.ErrorCategory,System.String)">
+            <summary>
+            Adds the message to the VS log
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Logger.GetVsLogEntryType(Microsoft.VisualStudio.Modeling.Integration.ErrorCategory)">
+            <summary>
+            Converts the error category to a VS activity log error category
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Logger.Dispose">
+            <summary>
+            Dispose of the logger
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.Logger.Dispose(System.Boolean)">
+            <summary>
+            Internal dispose method
+            </summary>
+            <remarks>Private because the class is sealed</remarks>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.Logger.LoggerEventListener">
+            <summary>
+            Private nested class that handles solution events the logger is interested in
+            </summary>
+            <remarks>Clears the error list of ModelBus messages when a solution closes</remarks>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.StandardVsModelingDiagramView">
+            <summary>
+            Supports a typical single-diagram DSL based ModelBusView hosted inside Visual Studio.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.StandardVsModelingDiagramView.#ctor(Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="ownerAdapter">ModelBusAdapter instance that creates this ModelBusView</param>
+            <param name="viewReference">ModelBusReference that identifies this ModelBusView</param>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.StandardVsModelingDiagramView.Diagram">
+            <summary>
+            Exposes the Diagram object represented by this DSL based ModelBusView.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.StandardVsModelingDiagramView.VSDiagramView">
+            <summary>
+            Exposes the VSDiagramView that hosts the Diagram object wrapped by this ModelBusView as a Form control inside Visual Studio.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.StandardVsModelingDiagramView.SetSelection(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Finds the ShapeElement corresponding to this reference and Selects it on the design surface.
+            If the reference resolves to a ModelElement which is not a Shape, an attempt is made to find the corresponding Shape for it.
+            </summary>
+            <param name="reference">ModelBusReference that identifies a particular ModelElement that needs to be selected</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.StandardVsModelingDiagramView.SetSelection(System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Modeling.Integration.ModelBusReference})">
+            <summary>
+            Finds the ShapeElement corresponding to each of the references and Selects all of them on the design surface.
+            If any reference resolves to a ModelElement which is not a Shape, an attempt is made to find the corresponding Shape for it.
+            </summary>
+            <param name="references">ModelBusReference collection that identifies ModelElements or Shapes that needs to be selected</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.StandardVsModelingDiagramView.ObtainShapeFromReference(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Finds the ShapeElement corresponding to the reference passed.
+            </summary>
+            <param name="reference"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.VSEventListener">
+            <summary>
+            VSEventListener class
+            </summary>
+            <summary>
+            IDisposable interface implementation
+            </summary>
+            <summary>
+            IVsSolutionEvents implementation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VSEventListener.serviceProvider">
+            <summary>
+            ServiceProvider object
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VSEventListener.solutionEventsCookie">
+            <summary>
+            Cookie for IVsSolutionEvents.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSEventListener.#ctor(System.IServiceProvider)">
+            <summary>
+            Constructor. 
+            </summary>
+            <param name="serviceProvider">ServiceProvider</param>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSEventListener.ServiceProvider">
+            <summary>
+            ServiceProvider
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSEventListener.Dispose">
+            <summary>
+            IDisposable.Dispose().
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSEventListener.Dispose(System.Boolean)">
+            <summary>
+            Disposes the VSEventListener
+            </summary>
+            <param name="disposing">A Boolean flag that is true if user initated the Dispose.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSEventListener.OnAfterCloseSolution(System.Object)">
+            <summary>
+            Called by the shell after it closes a solution.
+            </summary>
+            <param name="reserved">Reserved parameter.</param>
+            <returns>HResult.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSEventListener.OnAfterOpenSolution(System.Object,System.Int32)">
+            <summary>
+            Called by the shell after a solution was opened
+            </summary>
+            <param name="reserved">Reserved parameter</param>
+            <param name="newSolution">1 if the solution is being created</param>
+            <returns>HResult.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSEventListener.OnAfterOpenProject(Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.Int32)">
+            <summary>
+            Called by the shell after a project has been opened.
+            </summary>
+            <param name="hierarchy">Hierarchy of the newly opened project.</param>
+            <param name="added">1 if the project is added after the solution has been opened.</param>
+            <returns>HResult.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSEventListener.OnBeforeCloseProject(Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.Int32)">
+            <summary>
+            Called by the shell before a project is closed. 
+            </summary>
+            <param name="hierarchy">Hierarchy of the project that is about to be closed.</param>
+            <param name="removed">1 if the project is removed from the solution before the solution is closed.</param>
+            <returns>HResult.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSEventListener.OnAfterLoadProject(Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy)">
+            <summary>
+            Called by the shell after a project was loaded.
+            </summary>
+            <param name="stubHierarchy">Placeholder hierarchy used by the shell.</param>
+            <param name="realHierarchy">Real hierarchy used now that the project is open.</param>
+            <returns>HResult.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSEventListener.OnBeforeUnloadProject(Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy)">
+            <summary>
+            Called by the shell prior to unloading a project.
+            </summary>
+            <param name="realHierarchy">Hierarchy of the project to be unloaded.</param>
+            <param name="stubHierarchy">Stub hierarchy that the shell will use once the project has been unloaded.</param>
+            <returns>HResult.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSEventListener.OnQueryUnloadProject(Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.Int32@)">
+            <summary>
+            Called by the shell to see if we object to unloading a project.
+            </summary>
+            <param name="realHierarchy">Hierarchy of the project to be unloaded.</param>
+            <param name="cancel">1 if we wish to cancel the unload.</param>
+            <returns>HResult.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSEventListener.OnQueryCloseProject(Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.Int32,System.Int32@)">
+            <summary>
+            Called by the shell to see if we object to a project being closed.
+            </summary>
+            <param name="hierarchy">Hierarchy of the project to be closed.</param>
+            <param name="removing">1 if the project is being removed from the solution while the solution is still open.</param>
+            <param name="cancel">1 if we decide that the project should not be closed.</param>
+            <returns>HResult.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSEventListener.OnQueryCloseSolution(System.Object,System.Int32@)">
+            <summary>
+            Called by the shell to see if we object to a solution being closed.
+            </summary>
+            <param name="reserved">Reserved parameter.</param>
+            <param name="cancel">1 if we object to the solution being closed.</param>
+            <returns>HResult.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSEventListener.OnBeforeCloseSolution(System.Object)">
+            <summary>
+            Called by the shell before a solution is closed.
+            </summary>
+            <param name="reserved">Reserved parameter</param>
+            <returns>HResult.</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.ModelBusPackage">
+             <summary>
+             This is the class that implements the package exposed by this assembly.
+            
+             The minimum requirement for a class to be considered a valid package for Visual Studio
+             is to implement the IVsPackage interface and register itself with the shell.
+             This package uses the helper classes defined inside the Managed Package Framework (MPF)
+             to do it: it derives from the Package class that provides the implementation of the 
+             IVsPackage interface and uses the registration attributes defined in the framework to 
+             register itself and its components with the shell.
+             </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.ModelBusPackage.modelbus">
+            <summary>
+            Field to hold ModelBus service instance
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.ModelBusPackage.referencePicker">
+            <summary>
+            Field to hold ReferencePicker service instance
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.ModelBusPackage.logger">
+            <summary>
+            Error logging component
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.ModelBusPackage.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.ModelBusPackage.Dispose">
+            <summary>
+            Implements IDisposable
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.ModelBusPackage.Dispose(System.Boolean)">
+            <summary>
+            Disposes the package
+            </summary>
+            <param name="disposing">Indicates if the object is been disposed by the user of the GC</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.ModelBusPackage.OnCreateService(System.ComponentModel.Design.IServiceContainer,System.Type)">
+            <summary>
+            Callback routine to create services exposed by the ModelBus package
+            </summary>
+            <param name="container">The service container, tipically the same as this</param>
+            <param name="serviceType">The requested service type</param>
+            <returns>A newly created instance of the service</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.ModelBusPackage.DisposeModelBus">
+            <summary>
+            Disposes the ModelBus
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.GuidList">
+            <summary>
+            Static class to list each guid
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.GuidList.GuidModelBusPackageString">
+            <summary>
+            Guid string for this package
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase">
+            <summary>
+            Base class for dialogs hosted in the VS shell.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.F1KeywordNotFound">
+            <summary>
+            Error that indicates an F1 help topic wasn't found.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.serviceProvider">
+            <summary>
+            The Visual Studio service provider.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.flagEnabledModeless">
+            <summary>
+            Determines if the dialog will be modal or modeless.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.sizable">
+            <summary>
+            Deterines if the dialog has a thick (sizable) or thin border.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.#ctor(System.IServiceProvider)">
+            <summary>
+            Constructor take a service provider. The dialog owner will be the main VS window.
+            </summary>
+            <param name="serviceProvider">Visual Studio ServiceProvider</param>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.FormBorderStyle">
+            <summary>
+            Hide base implementation here so we can provide appropriate handling of FormBorderStyle.Sizable.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.ServiceProvider">
+            <summary>
+            Service provider used to get shell services.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.DialogFont">
+            <summary>
+            The font that Dialogs should use according to IUIService, based on system and application settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.CreateParams">
+            <summary>
+            Provides the form's creation parameters.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.EnableModeless">
+            <summary>
+            Gets modless property on the form. Form modal by default.
+            Provided override functionality instead of allowing to set the property as this is used in CreateParams, which is 
+            called before constructor as well. 
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.F1Keyword">
+            <summary>
+            Override to specify the F1 keyword for this dialog.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.OnLoad(System.EventArgs)">
+            <summary>
+            OnLoad handler
+            </summary>
+            <param name="e">event arguments</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.OnHelpRequested(System.Windows.Forms.HelpEventArgs)">
+            <summary>
+            Override to show help via the Visual Studio help system
+            </summary>
+            <param name="hevent">Help event arguments</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.WndProc(System.Windows.Forms.Message@)">
+            <summary>
+            Process window messages for the dialog.  Translates clicks on the "?" button to F1 help requests.
+            </summary>
+            <param name="m">message</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.ProcessDialogKey(System.Windows.Forms.Keys)">
+            <summary>
+            Overridden to make sure that only critical exceptions ripple up to the base class.
+            Any exceptions which reach there will result invoke the WinForms unhandled exeption dlg. 
+            In Whidbey that menas an IDE crash.
+            </summary>
+            <param name="keyData">keys</param>
+            <returns>true if processed</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.ProcessDialogChar(System.Char)">
+            <summary>
+            Overridden to make sure that only critical exceptions ripple up to the base class.
+            Any exceptions which reach there will result invoke the WinForms unhandled exeption dlg. 
+            In Whidbey that menas an IDE crash.
+            </summary>
+            <param name="charCode">character codes</param>
+            <returns>true if processed</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.Dispose(System.Boolean)">
+            <summary>
+            Cleans up resources being used.
+            </summary>
+            <param name="disposing">disposing flag</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.OnUserPreferenceChanged">
+            <summary>
+            Default handler
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.OnUserPreferenceChangedHandler(System.Object,Microsoft.Win32.UserPreferenceChangedEventArgs)">
+            <summary>
+            User preference changed handler
+            </summary>
+            <param name="sender">sender</param>
+            <param name="e">event arguments</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.SetFonts">
+            <summary>
+            Sets this form's font to the DialogFont.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.ShowHelp">
+            <summary>
+            helper method to show help based on our keyword
+            </summary>
+            <returns>true if help was shown</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.SafeWindowTarget">
+            <summary>
+            Exception hardening work.  This class can be used to filter messages sent to a control,
+            and catch/display all non-critical exceptions.  Otherwise, Watson will
+            be invoked and will take down the process, potentially resulting in data loss.  See
+            document referenced in bug 427820 for more details.	 Use this class to wrap an existing 
+            IWindowTarget as follows (c is a Control):
+            
+            c.WindowTarget = new SafeWindowTarget(c.WindowTarget);
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.SafeWindowTarget.inner">
+            <summary>
+            Inner window target.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.SafeWindowTarget.#ctor(System.Windows.Forms.IWindowTarget)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="inner">Inner window target</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.SafeWindowTarget.System#Windows#Forms#IWindowTarget#OnHandleChange(System.IntPtr)">
+            <summary>
+            Window-Handle change handler.
+            </summary>
+            <param name="newHandle">the new window handle</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.SafeWindowTarget.System#Windows#Forms#IWindowTarget#OnMessage(System.Windows.Forms.Message@)">
+            <summary>
+            The main wndproc for the control.  Wrapped to display non-critical exceptions to the user.
+            </summary>
+            <param name="m">message</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.SafeWindowTarget.ReplaceWindowTargetRecursive(System.Collections.ICollection)">
+            <summary>
+            Replaces the WindowTarget for all child controls of the specified collection.
+            In Debug builds, this will assert that any child controls added after this call must have their WindowTarget replaced as well.
+            </summary>
+            <param name="controls">The collection of controls to recurse through and replace their target.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.SafeWindowTarget.ReplaceWindowTargetRecursive(System.Collections.ICollection,System.Boolean)">
+            <summary>
+            Replaces the WindowTarget for all child controls of the specified collection.
+            </summary>
+            <param name="controls">The collection of controls to recurse through and replace their target.</param>
+            <param name="checkControlAdded">If true, in Debug builds, this will assert that any controls 
+            added after this call must have their WindowTarget replaced as well.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.DialogBase.SafeWindowTarget.OnChildControlAdded(System.Object,System.Windows.Forms.ControlEventArgs)">
+            <summary>
+            Child control added event handler
+            </summary>
+            <param name="sender">sender</param>
+            <param name="e">event arguments</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.NativeConstants">
+            <summary>
+            Contains useful constants for interacting with the unmanaged world.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.ErrorArgumentMemberCannotBeEmpty">
+            <summary>
+              Looks up a localized string similar to VS1038: The value of the following member is an empty string: {0}. Provide a string that is not empty..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.ErrorArgumentMemberCannotBeNull">
+            <summary>
+              Looks up a localized string similar to VS1039: The value of the following member is null: {0}. Provide a value that is not null..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.ErrorCannotAddRelatedSaveItem">
+            <summary>
+              Looks up a localized string similar to The requested ModelBusAdapter could not be created because the association between the referenced Model and the client could not be established. Please make sure that an  appropriate ServiceProvider is passed when requesting a ModelBusAdapter. Examples of valid ServiceProvider supported by this ModelBusAdapterManager are  ModelingDocData or Store.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.ErrorCannotCloseIncompatibleDocData">
+            <summary>
+              Looks up a localized string similar to The ModelBusAdapter could not be created because the referenced file is open in Visual Studio in an incompatible editor. Please close all running instances of the IDE and try again..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.ErrorCannotFindContainingProjectItems">
+            <summary>
+              Looks up a localized string similar to VS1040: Visual Studio cannot find the ProjectItems collection in the solution. If the problem persists, contact the author of the tool adapter that owns the following service type: {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.ErrorCannotInitializeScopeAllMembersNull">
+            <summary>
+              Looks up a localized string similar to VS1041: The integration tool could not initialize the solution scope because of the scope context is not valid. The CreateProject member, the CreateProjectItem member and the ProjectItem member of VSScopeContext are all null. Provide a non-null value for one, and only one, of these members..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.ErrorCannotInitializeScopeMoreThanOneMemberSet">
+            <summary>
+              Looks up a localized string similar to VS1042: The integration tool could not initialize the solution scope because more than one of the three members (CreateProject, CreateProjectItem and ProjectItem) of VSScopeContext is set. Set only one of these members..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.ErrorEditorNotFound">
+            <summary>
+              Looks up a localized string similar to The standard editor registered for file {0} is not of an expected type. Please make sure that the editor is registered correctly for this designer for a ModelBusAdapter to be created..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.ErrorExtractTemplateFailed">
+            <summary>
+              Looks up a localized string similar to VS1043: Visual Studio cannot add an instance of the following .vstemplate file: {0}. Confirm that the file is a valid .vstemplate. If the problem persists, contact the author of the tool adapter that owns the following service type: {1}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.ErrorMissingOrInvalidConfigurationFile">
+            <summary>
+              Looks up a localized string similar to VS1290: The modelbus configuration file is either missing, corrupted, or not valid and must be repaired. Otherwise, integrations between designers will no longer function. Repair the Visual Studio installation and try again..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.ErrorScopeTypeNotValid">
+            <summary>
+              Looks up a localized string similar to VS1044: The integration tool cannot convert the scope object to the specified type: {0}. Provide a scope object of the specified type..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.ErrorServiceTypeNotFound">
+            <summary>
+              Looks up a localized string similar to VS1066: The service of type {0} cannot be accessed through the following service provider: {1}. .
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.ErrorStringArgumentCannotBeEmpty">
+            <summary>
+              Looks up a localized string similar to VS1045: The argument supplied is an empty string. Provide a string that is not empty..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.ErrorTemplateFileMissing">
+            <summary>
+              Looks up a localized string similar to VS1046: The following .vstemplate file is missing: {0}. Confirm that the file exists and is in the correct location..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.ErrorTemplateFilePathNotValid">
+            <summary>
+              Looks up a localized string similar to VS1047: The full path of the .vstemplate file is null or empty. An instance of the following service type should provide a valid or non-null full path for the template: {0}. .
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.ErrorUnknownErrorOccured">
+            <summary>
+              Looks up a localized string similar to An unknown error has occured while attempting to create a ModelBusAdapter. Please close all instances of Visual Studio and try again. If problem persists, contact your administratpor or re-install this application..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.ErrorMessagePrefix">
+            <summary>
+              Looks up a localized string similar to [ModelBus]: .
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.ErrorCannotCreateView">
+            <summary>
+              Looks up a localized string similar to Creation of ModelBusView on ModelBusAdapter {0} failed either because this ModelBusAdapter does not support it or because an internal error occured..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.ErrorAdapterAlreadyDisposed">
+            <summary>
+              Looks up a localized string similar to The requested operation could not be completed because the ModelBusAdapter instance used has already been disposed..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.ErrorViewReferenceMismatch">
+            <summary>
+              Looks up a localized string similar to A View was requested for ModelBusAdapter {0} but it cannot be created either because the Reference supplied for the View and the ModelBusAdapter both point to different models or the Reference supplied for the View and the ModelBusAdapter support different AdapterIds..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusStrings.ErrorDocDataNotFound">
+            <summary>
+              Looks up a localized string similar to ModelingAdapter cannot be created successfully because DocData object for document {0} could not be created by the EditorFactory of type {1}.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingAdapterManager">
+            <summary>
+            ModelBusAdapterManager that can handle creation and management of Adapters
+            representing DSL based Model files inside Visual Studio.
+            
+            It provides with ModelBusAdapter life-cycle management and appropriate behavior
+            to support saving changes to underlying referenced models using the VS Shell.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingAdapterManager.HostName">
+            <summary>
+            Name used by VisualStudio to identify itself as a ModelBus host.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingAdapterManager.CheckCanCreateAdapter(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Checks if an ModelingAdapterReference can be successfully created from this ModelBusReference 
+            and also if the LogicalAdapterId is recognized by this ModelBusAdapterManager.
+            
+            This method should throw an appropriate exception if a ModelBusAdapter cannot potentially
+            be created using this ModelBusReference.
+            </summary>
+            <param name="reference">Reference to be checked.</param>
+            <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.ModelBusReferenceFormatException">Thrown when ModelBusReference is not valid or has insufficient data.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown when the argument is null.</exception>
+            <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.AdapterNotSupportedException">Thrown if the specified adapter type is not supported by this adapter manager.</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingAdapterManager.DoCreateAdapter(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,System.IServiceProvider)">
+             <summary>
+             Using the ModelBusReference passed as a parameter, creation of a ModelBusAdapter instance is attempted.
+             If successful, the adapter is returned. If not, appropriate exception is thrown.
+             </summary>
+             <param name="reference">Reference that will be used to created the ModelBusAdapter</param>
+             <param name="serviceProvider">Used to create association between the caller and the referenced model. 
+             The serviceProvider can be null, but if it is not null then it must provide the SRelatedDocList service otherwise an exception will be thrown</param>
+             <returns>The created non-null ModelBusAdapter instance if successful, exception will be thrown otherwise.</returns>
+             <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.AdapterCreationException">Thrown when ModelBusAdapter creation failed for some reason.</exception>
+             <exception cref="T:System.ArgumentNullException">Thrown when the argument is null.</exception>
+             <remarks>
+             If an <c>IServiceProvider</c> is supplied it must be able to lookup the <c>Microsoft.VisualStudio.Modeling.Shell.SRelatedDocList</c> service otherwise an exception will be thrown.
+             This serviceProvider, if supplied, will be used to facilitate association between the created ModelBusAdapter
+             and the caller. This is a private protocol implemented by this AdapterManager with it's callers.
+            
+             The SRelatedDocList service will be used to link the saving of the caller's document with the saving of Model wrapped by the Adapter created through this API.
+             For instance, this will trigger a save on the referenced model, when the caller's Document is itself saved in Visual Studio.
+             </remarks>
+             <example>An example of IServiceProvider that supplies the required <c>Microsoft.VisualStudio.Modeling.Shell.SRelatedDocList</c> service
+             is <c>Microsoft.VisualStudio.Modeling.Shell.DocData</c> or <c>Microsoft.VisualStudio.Modeling.Store</c> of the client's Model.
+             </example>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingAdapterManager.GetView(Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Obtains the View associated with the ModelBusAdapter passed as a parameter.
+            </summary>
+            <param name="viewOwner">ModelBusAdapter to which the View belongs</param>
+            <param name="viewReference">Fully qualified reference to the view being requested</param>
+            <returns>An instance of the View associated with the ModelBusAdapter</returns>
+            <remarks>In order to create a View of desired type, the recommended API to call is adapter.GetView(ModelBusReference).
+            If you are looking to override the implementation of GetView, please override the API defined in the ModelBusAdapter class.
+            Default implementation will throw an exception if the viewOwner's AdapterReference and viewReference do not point to the same underlying Model.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingAdapterManager.CreateModelingAdapterInstance(Microsoft.VisualStudio.Modeling.Integration.ModelBusReference,Microsoft.VisualStudio.Modeling.ModelElement)">
+            <summary>
+            Imlementations should provide a ModelingAdapter instance that serves the Model's external world view using the DomainModelRoot element passed.
+            </summary>
+            <param name="rootModelElement"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingAdapterManager.CreateVsModelingDocumentHandler(Microsoft.VisualStudio.Modeling.Integration.ModelingAdapterReference)">
+            <summary>
+            Creates and returns a VsModelingDocumentHandler given a ModelingAdapterReference
+            </summary>
+            <param name="adapterReference"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingDocumentHandler">
+            <summary>
+            This is a wrapper around a ModelingDocData representing a Model file on disk.
+            The handler discovers an existing DocData instance and acquires an edit lock on it or 
+            if none exists, it creates a DocData and then acquires an edit lock.
+            
+            When this is disposed, it removes the edit lock on the DocData and if necessary, 
+            causes the changes made to the DocData to be saved.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingDocumentHandler.#ctor(Microsoft.VisualStudio.Modeling.Shell.ModelingDocData,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.UInt32,System.UInt32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="docData">Sets up the ModelingDocData wrapped by this DocumentHandler</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingDocumentHandler.CreateInstance(System.String,System.IServiceProvider)">
+            <summary>
+            Creates and returns a VsModelingDocumentHandler given a filepath and a ServiceProvider.		
+            Handles EditLocks and Vs RunningDocumentTable registration for the DocData.
+            </summary>
+            <param name="filePath">Path to the model file</param>
+            <param name="vsServiceProvider">ServiceProvider to get Shell services.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingDocumentHandler.Root">
+            <summary>
+            The root element of the loaded model.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingDocumentHandler.GetModelingDocView(System.Guid)">
+            <summary>
+            Obtains the ModelingDocView object associated with the ModelingDocData wrapper by this DocumentHandler.
+            If a ModelingDocView already exists, it is returned.
+            Else, creates a new instance using the EditorFactory for this designer.
+            </summary>
+            <param name="viewId">LogicalView id understood by the EditorFactory for this view</param>
+            <returns>ModelingDocView object</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingDocumentHandler.CreateModelingDocHandlerIfDocDataOpen(System.String,System.IServiceProvider,System.Boolean)">
+            <summary>
+            Creates and returns a new VsModelingDocumentHandler only if the filepath passed is already loaded and available in RDT.
+            Increments the EditLock count on the already open DocData. 
+            If a DocData is found that is incompatible (not a ModelingDocData), then based on bool passed, the incompatible DocData is closed.
+            </summary>
+            <param name="filePath">Filepath to ModelFile</param>
+            <param name="vsServiceProvider">IServiceProvider that will be used to get VS Services</param>
+            <param name="closeIncompatibleDocData">boolean to indicate if incompatible DocData found should be closed.</param>
+            <returns>VsModelingDocumentHandler wrapping the DocData discovered that represents the file on disk</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingDocumentHandler.CreateDocDataAndModelingDocHandler(System.String,System.IServiceProvider)">
+            <summary>
+            This function is called when target document is not already registered in the RDT.
+            We need to find the best IVsHierarchy to open our document. If there is no
+            other project that claims the target document, then the document will be opened in
+            the Miscellaneous Files project.
+            </summary>
+            <param name="targetDocumentPath">Filepath to ModelFile</param>
+            <param name="vsServiceProvider">IServiceProvider that will be used to get VS Services</param>
+            <returns>VsModelingDocumentHandler wrapping the DocData discovered that represents the file on disk</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingDocumentHandler.GetRunningDocumentTableService(System.IServiceProvider)">
+            <summary>
+            Gets the RDT service from the serviceProvider supplied
+            </summary>
+            <param name="vsServiceProvider">ServiceProvider that can get the global RDT service</param>
+            <returns>IVsRunningDocumentTable service if found, throws an exception otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingDocumentHandler.AddRelatedSaveItem(System.IServiceProvider)">
+            <summary>
+            Called by VsModelingAdapterManager to associate the DocData represented by this DocumentHandler
+            with the IVsHasRelatedSaveItems implementation of the caller who requested the adapter.
+            </summary>
+            <param name="serviceProvider"></param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingDocumentHandler.ReleaseEditLock(System.UInt32)">
+            <summary>
+            Releases an RDT EditLock on the DocData wrapped by this DocumentHandler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingDocumentHandler.Dispose(System.Boolean)">
+            <summary>
+            Cleans-up this DocumentHandler by releasing the DocData lock held by it.
+            Also, unregisters itself as a valid DocumentLockHolder.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingDocumentHandler.CloseDocumentHolder(System.UInt32)">
+            <summary>
+            IVsDocumentLockHolder member. This API is not implemented by the VsModelingDocumentHandler.
+            Method simply returns a HResult of E_NOTIMPL to the calling COM layer.
+            </summary>
+            <param name="dwSaveOptions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingDocumentHandler.ShowDocumentHolder">
+            <summary>
+            IVsDocumentLockHolder member. This API is not implemented by the VsModelingDocumentHandler.
+            Method simply returns a HResult of E_NOTIMPL to the calling COM layer.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingView">
+            <summary>
+            Supports ModelBusView creation and manipulation for a standard VS based DSL designer editor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingView.#ctor(Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter,Microsoft.VisualStudio.Modeling.Integration.ModelBusReference)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="ownerAdapter">ModelBusAdapter instance that creates this ModelBusView</param>
+            <param name="viewReference">ModelBusReference that identifies this ModelBusView</param>
+            <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.ViewOperationException">Thrown when ModelBusView creation is not supported by this ModelBusAdapter or an error occurs</exception>
+            <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.ModelBusReferenceFormatException">Thrown when Reference passed is invalid or not supported</exception>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingView.InitializeView">
+            <summary>
+            Initializes this view instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingView.Validate">
+            <summary>
+            Checks if a view can be created using the available information. Throws exceptions if validation fails.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingView.InitializeViewId">
+            <summary>
+            Get the Guid associated with the ViewId if it is available in the ModelBusAdapterReference.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingView.DocHandler">
+            <summary>
+            Helper to get the VsModelingDocumentHandler from the ModelBusAdapter that requested this ModelBusView.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingView.GetDocView">
+            <summary>
+            Calling GetDocView will attach this VsModelingView instance to 
+            the ModelingDocView instance represented by it.
+            The caller needs to explicitly call Show() to make the WindowFrame visible in VS, if was not already visible.
+            </summary>
+            <returns>ModelingDocView represented by this ModelBusView object</returns>
+            <exception cref="T:Microsoft.VisualStudio.Modeling.Integration.ViewOperationException">Thrown if ModelingDocView could not be obtained or the owner ModelBusAdapter is already disposed</exception>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingView.IsOperational">
+            <summary>
+            Indicates if any ModelBusView manipulation APIs can be called on this instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingView.Show">
+            <summary>
+            Activates the WindowFrame represented by this ModelBusView and sets focus on it
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingView.Hide">
+            <summary>
+            Hides the WindowFrame represented by this ModelBusView. The underlying view container is still in memory.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingView.Close">
+            <summary>
+            Closes the WindowFrame represented by this ModelBusView. Does not accomodate persistance of DocData associated with this ModelBusView.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VsModelingView.Open">
+            <summary>
+            Opens/attaches to the underlying editor object represented by this ModelBusView.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages">
+            <summary>
+            A class for wrapping resource string access. This is used so that formatting of these strings is done in a 
+            controlled manner.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.argumentMemberCannotBeNull">
+            <summary>
+            Private variable to store lazy-loaded ArgumentMemberCannotBeNull property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.argumentMemberCannotBeEmpty">
+            <summary>
+            Private variable to store lazy-loaded ArgumentMemberCannotBeEmpty property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.cannotFindContainingProjectItems">
+            <summary>
+            Private variable to store lazy-loaded CannotFindContainingProjectItems property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.cannotInitializeScopeAllMembersNull">
+            <summary>
+            Private variable to store lazy-loaded CannotInitializeScopeAllMembersNull property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.cannotInitializeScopeMoreThanOneMemberSet">
+            <summary>
+            Private variable to store lazy-loaded CannotInitializeScopeMoreThanOneMemberSet property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.scopeTypeNotValid">
+            <summary>
+            Private variable to store lazy-loaded ScopeTypeNotValid property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.stringArgumentCannotBeEmpty">
+            <summary>
+            Private variable to store lazy-loaded StringArgumentCannotBeEmpty property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.extractTemplateFailed">
+            <summary>
+            Private variable to store lazy-loaded ExtractTemplateFailed property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.templateFileMissing">
+            <summary>
+            Private variable to store lazy-loaded TemplateFileMissing property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.templateFilePathNotValid">
+            <summary>
+            Private variable to store lazy-loaded templateFilePathNotValid property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.serviceTypeNotFound">
+            <summary>
+            Private variable to store lazy-loaded serviceTypeNotFound property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.missingOrInvalidConfigurationFile">
+            <summary>
+            Private variable to store lazy-loaded missingOrInvalidConfigurationFile property;
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.cannotCloseIncompatibleDocData">
+            <summary>
+            Private variable to store lazy-loaded cannotCloseIncompatibleDocData property;
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.editorNotFound">
+            <summary>
+            Private variable to store lazy-loaded editorNotFound property;
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.unknownErrorOccured">
+            <summary>
+            Private variable to store lazy-loaded unknownErrorOccured property;
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.cannotAddRelatedSaveItem">
+            <summary>
+            Private variable to store lazy-loaded cannotAddRelatedSaveItem property;
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.cannotCreateView">
+            <summary>
+            Private variable to store lazy-loaded cannotCreateView property;
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.adapterAlreadyDisposed">
+            <summary>
+            Private variable to store lazy-loaded adapterAlreadyDisposed property;
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.viewReferenceMismatch">
+            <summary>
+            Private variable to store lazy-loaded viewReferenceMismatch property;
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.docDataNotFound">
+            <summary>
+            Private variable to store lazy-loaded docDataNotFound property;
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.CannotInitializeScopeAllMembersNull">
+            <summary>
+             Formatted string for CannotInitializeScopeAllMembersNull message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.CannotInitializeScopeMoreThanOneMemberSet">
+            <summary>
+             Formatted string for CannotInitializeScopeMoreThanOneMemberSet message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.StringArgumentCannotBeEmpty">
+            <summary>
+             Formatted string for StringArgumentCannotBeEmpty message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.MissingOrInvalidConfigurationFile">
+            <summary>
+             Formatted string for missingOrInvalidConfigurationFile message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.CannotCloseIncompatibleDocData">
+            <summary>
+            Formatted string for cannotCloseIncompatibleDocData message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.UnknownErrorOccured">
+            <summary>
+            Formatted string for unknownErrorOccured message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.CannotAddRelatedSaveItem">
+            <summary>
+            Formatted string for cannotAddRelatedSaveItem message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.AdapterAlreadyDisposed">
+            <summary>
+            Formatted string for adapterAlreadyDisposed message.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.ArgumentMemberCannotBeNull(System.String)">
+            <summary>
+            Resource string wrapper for ArgumentMemberCannotBeNull.
+            </summary>
+            <param name="argumentMember">The name of the argument member to display in the message.</param>
+            <returns>The composed exception message.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.ArgumentMemberCannotBeEmpty(System.String)">
+            <summary>
+            Resource string wrapper for ArgumentMemberCannotBeEmpty.
+            </summary>
+            <param name="argumentMember">The name of the argument member to display in the message.</param>
+            <returns>The composed exception message.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.CannotFindContainingProjectItems(System.String)">
+            <summary>
+            Resource string wrapper for CannotFindContainingProjectItems.
+            </summary>
+            <param name="serviceType">The name of the service type to display in the message.</param>
+            <returns>The composed exception message.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.ExtractTemplateFailed(System.String,System.String)">
+            <summary>
+            Resource string wrapper for ExtractTemplateFailed.
+            </summary>
+            <param name="templateFileName">The name of the template file</param>
+            <param name="serviceType">The name of the service type to display in the message.</param>
+            <returns>The composed exception message.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.ScopeTypeNotValid(System.String)">
+            <summary>
+            Resource string wrapper for ScopeTypeNotValid.
+            </summary>
+            <param name="objectType">The name of the object type to display in the message.</param>
+            <returns>The composed exception message.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.TemplateFileMissing(System.String)">
+            <summary>
+            Resource string wrapper for TemplateFileMissing.
+            </summary>
+            <param name="templateFileName">The name of the template file to display in the message.</param>
+            <returns>The composed exception message.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.TemplateFilePathNotValid(System.String)">
+            <summary>
+            Resource string wrapper for templateFilePathNotValid.
+            </summary>
+            <param name="serviceType">The name of the service type to display in the message.</param>
+            <returns>The composed exception message.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.ServiceTypeNotFound(System.String,System.String)">
+            <summary>
+            Resource string wrapper for serviceTypeNotFound.
+            </summary>
+            <param name="serviceTypeName">The name of the service type to display in the message.</param>
+            <param name="serviceProviderName"> The name of the service provider to display in the message.</param>
+            <returns>The composed exception message.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.EditorNotFound(System.String)">
+            <summary>
+            Resource string wrapper for editorNotFound.
+            </summary>
+            <param name="fileName">The filename for which a compatible Editor could not be located by VS</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.CannotCreateView(System.String)">
+            <summary>
+            Resource string wrapper for cannotCreateView.
+            </summary>
+            <param name="adapterDisplayName">The ModelBusAdapter for which a compatible ModelBusView could not be created/attached by ModelBus</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Modeling.Integration.Shell.VSModelBusExceptionMessages.DocDataNotFound(System.String,System.String)">
+            <summary>
+            Resource string wrapper for docDataNotFound.
+            </summary>
+            <param name="targetDocPath">The document path for which DocData could not be created.</param>
+            <param name="modelingEditorFactoryType">The ModelingEditorFactory type which was used for DocData creation.</param>
+            <returns>Formatted exception message based on user's locale</returns>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>

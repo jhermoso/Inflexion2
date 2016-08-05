@@ -110,6 +110,10 @@ namespace Inflexion2.UX.WPF.MVVM
             RegisterQueryServices(comboBoxServiceFactory);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="comboBoxServiceFactory"></param>
         protected virtual void RegisterQueryServices(IQueryServiceFactory comboBoxServiceFactory)
         {
 

@@ -4,6 +4,241 @@
         <name>Atento.Suite.Shared.Application</name>
     </assembly>
     <members>
+        <member name="T:Atento.Suite.Shared.Application.CategoriaMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:Atento.Suite.Shared.Application.CategoriaMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:Atento.Suite.Shared.Application.Dtos.CategoriaDto"/> con una entidad <see cref="T:Atento.Suite.Shared.Application.CategoriaMapper"/>.
+            </remarks>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.CategoriaMapper.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Atento.Suite.Shared.Application.CategoriaMapper"/>.
+            </summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.CategoriaMapper.EntityMapping(Atento.Suite.Shared.Domain.ICategoria)">
+            <summary>
+            Función pública que mapea las entidades para devolver el
+            correspondiente Dto.
+            </summary>
+            <remarks>
+            Se encarga de mapear objetos <see cref="T:Atento.Suite.Shared.Domain.Categoria"/> 
+            devolviendo un objeto <see cref="T:Atento.Suite.Shared.Application.Dtos.CategoriaDto"/>.
+            </remarks>
+            <param name="entityCategoria">
+            Objeto de la entidad <see cref="T:Atento.Suite.Shared.Domain.Categoria"/>.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de <c>entityCategoria</c> es null.
+            </exception>
+            <returns>
+            Devuelve un objeto de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.CategoriaDto"/> 
+            con los datos mapeados.
+            </returns>
+        </member>
+        <member name="T:Atento.Suite.Shared.Application.CategoriaServices">
+            <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity Categoria.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad Categoria.
+            </summary>
+            <remarks>
+            .en Create an object of type <see cref="T:Atento.Suite.Shared.Domain.Categoria"/>.
+            .es Crea un objeto <see cref="T:Atento.Suite.Shared.Domain.Categoria"/>.
+            </remarks>
+        </member>
+        <member name="F:Atento.Suite.Shared.Application.CategoriaServices.categoriaMapper">
+            <summary>
+            Referencia al mapeador de la entidad Categoria.
+            </summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.CategoriaServices.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Categoria>Service"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:CategoriaServices"/>.
+            </remarks>
+        </member>
+        <member name="P:Atento.Suite.Shared.Application.CategoriaServices.CategoriaMapper">
+            <summary>
+            Obtiene la referencia al mapeador de la entidad <see cref="T:ICategoria"/>.
+            </summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.CategoriaServices.Create(Atento.Suite.Shared.Application.Dtos.CategoriaDto)">
+            <summary>
+            Crea una entidad Categoria.
+            </summary>
+            <param name="categoriaDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+            <returns>
+            El identificador de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.CategoriaServices.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad Categoria.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.CategoriaServices.GetAll">
+            <summary>
+            Recupera todas las entidades Categoria.
+            </summary>
+            <returns>
+            Todas las entidades Categoria.
+            </returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.CategoriaServices.GetById(System.Int32)">
+            <summary>
+            Recupera una entidad Categoria mediante su identificador correspondiente.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a recuperar.
+            </param>
+            <returns>
+            La entidad Categoria recuperada o valor nulo si no se encuentra.
+            </returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.CategoriaServices.GetPaged(Inflexion2.Application.DataTransfer.Core.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Categoria, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades 'Categoria', según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.CategoriaServices.Update(Atento.Suite.Shared.Application.Dtos.CategoriaDto)">
+            <summary>
+            Actualiza una determinada entidad Categoria.
+            </summary>
+            <param name="categoriaDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+            <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="T:Atento.Suite.Shared.Application.ICategoriaMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:Atento.Suite.Shared.Application.CategoriaMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:Atento.Suite.Shared.Application.Dtos.CategoriaDto"/> con una entidad <see cref="T:Atento.Suite.Shared.Application.CategoriaMapper"/>.
+            </remarks>
+        </member>
+        <member name="T:Atento.Suite.Shared.Application.ICategoriaServices">
+            <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:Atento.Suite.Shared.Application.ICategoriaServices"/>.
+            </summary>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.ICategoriaServices.Create(Atento.Suite.Shared.Application.Dtos.CategoriaDto)">
+            <summary>
+            .en Create an entity of type ICategoria.
+            .es Función encargada de la creación de una entidad de tipo ICategoria.
+            </summary>
+            <param name="categoriaDto">
+            Parámetro de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.CategoriaDto"/> con los datos necesarios
+            para la creación de la entidad Categoria.
+            </param>
+            <param name="userContextDto"> 
+            Parámetro de tipo <see cref="!:UserContextDto"/> que representa el contexto del usuario.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve el identificador único de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.ICategoriaServices.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo Categoria.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="CategoriaId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>
+            <param name="userContextDto">
+            Parámetro de tipo <see cref="!:UserContextDto"/> que representa el contexto del usuario.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve <b>True</b> si la eliminación ha sido correcta y
+            <b>False</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.ICategoriaServices.GetAll">
+            <summary>
+            Función encargada de obtener todas las entidades de tipo Categoria.
+            </summary>
+            <remarks>
+            Devuelve la totalidad de las entidades.
+            </remarks>
+            <param name="userContextDto">
+            Parámetro de tipo <see cref="!:UserContextDto"/> que representa el contexto del usuario.
+            </param>
+            <returns>
+            Devuelve listado de Dto´s de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.CategoriaDto"/>.
+            </returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.ICategoriaServices.GetPaged(Inflexion2.Application.DataTransfer.Core.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Categoria, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <param name="userContextDto">
+            Información de contexto del usuario.
+            </param>
+            <returns>
+            La lista paginada de entidades Categoria, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.ICategoriaServices.GetById(System.Int32)">
+            <summary>
+            Función encargada de obtener una entidad Categoria de acuerdo a
+            su identificador.
+            </summary>
+            <param name="categoriaId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>
+            <returns>
+            Devuelve objeto Dto <see cref="T:Atento.Suite.Shared.Application.Dtos.CategoriaDto"/> con la información requerida.
+            </returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.ICategoriaServices.Update(Atento.Suite.Shared.Application.Dtos.CategoriaDto)">
+            <summary>
+            Actualiza una determinada entidad Categoria.
+            </summary>
+            <param name="categoriaDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+            <param name="userContextDto">
+            Información de contexto del usuario.
+            </param>
+            <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
         <member name="T:Atento.Suite.Shared.Application.IPersonaMapper">
             <summary>
             Clase pública encargada de mapear los datos de una entidad <see cref="T:Atento.Suite.Shared.Application.PersonaMapper"/>.
@@ -19,7 +254,25 @@
             de tipo <see cref="T:Atento.Suite.Shared.Application.IPersonaServices"/>.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Atento.Suite.Shared.Application.IPersonaServices.Create(Atento.Suite.Shared.Application.Dtos.PersonaDto)" -->
+        <member name="M:Atento.Suite.Shared.Application.IPersonaServices.Create(Atento.Suite.Shared.Application.Dtos.PersonaDto)">
+            <summary>
+            .en Create an entity of type IPersona.
+            .es Función encargada de la creación de una entidad de tipo IPersona.
+            </summary>
+            <param name="personaDto">
+            Parámetro de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.PersonaDto"/> con los datos necesarios
+            para la creación de la entidad Persona.
+            </param>
+            <param name="userContextDto"> 
+            Parámetro de tipo <see cref="!:UserContextDto"/> que representa el contexto del usuario.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve el identificador único de la entidad creada.
+            </returns>
+        </member>
         <member name="M:Atento.Suite.Shared.Application.IPersonaServices.Delete(System.Int32)">
             <summary>
             Función encargada del borrado de una entidad de tipo Persona.
@@ -128,7 +381,18 @@
             con los datos mapeados.
             </returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:Atento.Suite.Shared.Application.PersonaServices" -->
+        <member name="T:Atento.Suite.Shared.Application.PersonaServices">
+            <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity Persona.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad Persona.
+            </summary>
+            <remarks>
+            .en Create an object of type <see cref="T:Atento.Suite.Shared.Domain.Persona"/>.
+            .es Crea un objeto <see cref="T:Atento.Suite.Shared.Domain.Persona"/>.
+            </remarks>
+        </member>
         <member name="F:Atento.Suite.Shared.Application.PersonaServices.personaMapper">
             <summary>
             Referencia al mapeador de la entidad Persona.
@@ -209,17 +473,6 @@
             <returns>
             Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-        </member>
-        <member name="T:Atento.Suite.Shared.Application.EfApplicationServiceBase">
-            <summary>
-            .es Clase base para los servicios de aplicación de un bounded context con Entity Framework 
-            </summary>
-        </member>
-        <member name="M:Atento.Suite.Shared.Application.EfApplicationServiceBase.ConnectionString">
-            <summary>
-            Get the conection string from the app.config or web config file asociated to the project on execution.
-            </summary>
-            <returns>The database connection string </returns>
         </member>
     </members>
 </doc>

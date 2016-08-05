@@ -35,6 +35,10 @@ public class ServiceRegionFields : Template
         // </summary>
         //private readonly <#= I #><#= cbc.pascalSecureEntityName #>RepositoryFactory <#= cbc.camelSecureEntityName #>RepositoryFactory;
 
+        // <summary>
+        // referencia a la unidad de trabajo
+        // </summary>
+		private IUnitOfWork unitOfWork;
 <#+ 
 
     if (cbc.propertyAssociationSources.Any() || cbc.propertyAssociationTargets.Any())

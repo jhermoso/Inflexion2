@@ -57,6 +57,14 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
         /// </value>
         public ICommand ShowEnumeracionView { get; set; }
 
+        /// <summary>
+        /// Obtiene o establece el comando de carga de la vista de Categoria.
+        /// </summary>
+        /// <value>
+        /// Indica el comando de carga de la vista Categoria.
+        /// </value>
+        public ICommand ShowCategoriaView { get; set; }
+
         #endregion
 
     }// end class

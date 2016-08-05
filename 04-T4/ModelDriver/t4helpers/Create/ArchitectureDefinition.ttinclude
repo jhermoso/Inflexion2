@@ -1401,6 +1401,9 @@ public class Architecture
                         new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.CLR,         Name  = "System.Configuration"},
 
                         new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnContext,  Name  = "Domain" },
+						new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnContext,  Name  = "Domain.Data" },
+						new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnContext,  Name  = "Infrastructure" },
+						new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnContext,  Name  = "Infrastructure.Resources" },
                         new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnContext,  Name  = "Application" },
                         new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnContext,  Name  = "Application.Dtos" },
 
@@ -1461,6 +1464,7 @@ public class Architecture
                         new ArqLayer.ArqProject.ArqReference{ ReferenceType = ReferenceKind.CLR,          Name = "System.Xaml"},
                         new ArqLayer.ArqProject.ArqReference{ ReferenceType = ReferenceKind.CLR,          Name = "WindowsBase"},
                         new ArqLayer.ArqProject.ArqReference{ ReferenceType = ReferenceKind.OwnSolution,    Name = "Inflexion2.UX.WPF"},
+						new ArqLayer.ArqProject.ArqReference{ ReferenceType = ReferenceKind.OwnSolution,    Name = "Inflexion2.UX.WPF.Controls"},
                         new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.ThirdParty, Name = "MahApps.Metro", dllPath = "MahApps.Metro.0.13.1.0\\lib\\net40", version="0.13.1.0"},
                         new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnSolution, Name = "Inflexion2", dllPath = "Inflexion2"},
                         new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnSolution,  Name  = "Inflexion2.Resources", dllPath = "Inflexion2.Resources"},

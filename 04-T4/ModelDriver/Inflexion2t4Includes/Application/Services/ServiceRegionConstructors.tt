@@ -73,11 +73,6 @@ public class ServiceRegionConstructors : Template
         /// </remarks>
         public <#= cbc.pascalSecureEntityName #>Services() : base()
         {
-    
-            this.unityContainer.RegisterType<DbContext, BootstrapUnitOfWork>(this.contextPerTestLifeTimeManager, new InjectionConstructor(this.connString));
-
-            // registramos el repositorio de la entidad
-            this.unityContainer.RegisterType<I<#= cbc.pascalSecureEntityName #>Repository, <#= cbc.pascalSecureEntityName #>Repository>(new PerResolveLifetimeManager());
 <#+if (Trazable){ #>
             //logger = LoggerManager.GetLogger(GetType());
             //this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Created repository for type: {0}", typeof(<#= cbc.camelSecureEntityName #>).Name));

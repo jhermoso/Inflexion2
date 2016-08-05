@@ -4,6 +4,31 @@
         <name>Inflexion2.Application</name>
     </assembly>
     <members>
+        <member name="T:Inflexion2.Application.ApplicationLayer">
+            <summary>
+            Host e inicializacion del contenedor de IOC
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Application.ApplicationLayer.UnitOfWorkPerTestLifeTimeManager">
+            <summary>
+            ciclo de vida para la unidad de trabajo
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Application.ApplicationLayer.ContextPerTestLifeTimeManager">
+            <summary>
+            ciclo de vida para el contexto
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Application.ApplicationLayer.IocContainer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Application.ApplicationLayer.ContainerInit">
+            <summary>
+            Initialize the IoC container to allow the registering of types and objects.
+            </summary>
+        </member>
         <member name="T:Inflexion2.Application.Core.IConfiguration">
             <summary>
             Interface encargada de la configuración para los servicios Wcf.
@@ -743,11 +768,6 @@
                 Transient objects are not associated with an item already in storage.  For instance,
                 a Customer is transient if its Id is 0.  It's virtual to allow NHibernate-backed 
                 objects to be lazily loaded.
-            </summary>
-        </member>
-        <member name="T:Inflexion2.Application.EfApplicationServiceBase">
-            <summary>
-            .es Clase base para los servicios de aplicación de un bounded context con entityFramework 
             </summary>
         </member>
     </members>

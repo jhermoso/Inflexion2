@@ -50,7 +50,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                 if (okDebug) Debug.WriteLine(String.Format("Este proyecto tiene '{0}' hijos",context.DirectChildCount ));
                 int contadorDeEntidades = 0;
                 //bool ResxWriteInit = false; // el contador de entidades no se puede usar para saber el comienzo pues las entidades de los shared kernel cuentan pero no se procesan.
-                int totalDeEntidades = boundedContextElements.All.Nodes.Where(p=> (p.Data is Entity || p.Data is ObjectValue || p.Data is Enumeration) & p.Data.ReferencedRootEntity == null).Count();
+                int totalDeEntidades = boundedContextElements.All.Nodes.Where(p=> (p.Data is Entity || p.Data is ObjectValue || p.Data is Enumeration) && p.Data.ReferencedRootEntity == null).Count();
                 //int kindOfClass = 0; /* tipo de clase entidad, objeto valor , enumerado, servicio,  operación invariante etc.*/
                 ClassBaseContext CBC;
                 foreach (INode<ClassBase> item in boundedContextElements.All.Nodes.Where(p=> p.Data is Entity || p.Data is ObjectValue || p.Data is Enumeration) )
@@ -152,6 +152,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                     // La generación del fichero de recursos es acumulativa por tanto es necesario controlar la tres fases del mismo.
                                                     // es decir en la primera fase inicializamos la cabecera  y la primera entidad que recorremos, en la segunda introducimos el contenido 
                                                     // y en la tercera cerramos el fichero despues de meter la info de la ultima entidad recorrida.
+													// IMPORTANTE : PERO ES NECESARIO QUE EL NOMBRE DEL FICHERO EN EL OUTPUT DE RENDER NO CAMBIE Y SEA SIEMPPRE EL MISMO.
                                                     string estadoDeDesarrollo = "desarrollo";
                                                     if(contadorDeEntidades == 1) estadoDeDesarrollo = "inicio"; 
                                                     if(contadorDeEntidades == totalDeEntidades ) estadoDeDesarrollo = "fin";
@@ -431,11 +432,11 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                     if(contadorDeEntidades == totalDeEntidades ) estadoDeDesarrollo = "fin";
                                                     if(contadorDeEntidades == 1 & totalDeEntidades == 1) estadoDeDesarrollo = "soloUna";
 
-                                                    if (okDebug) Debug.WriteLine(string.Format("entidad ='{0}', estado = '{1}'",entity.Name, estadoDeDesarrollo));
+                                                    //if (okDebug) Debug.WriteLine(string.Format("entidad ='{0}', estado = '{1}'",entity.Name, estadoDeDesarrollo));
                                                     var t20   = new InfraestructureResourcesCT(CBC, nombreprojecto, SharedKernelTree, estadoDeDesarrollo);
                                                     t20.Output.File = T4Help.SecureName(secureBdName)+"Neutral.resx";
 													t20.Output.PreserveExistingFile = true;
-                                                    if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",t20.Output.File ));
+                                                    //if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",t20.Output.File ));
                                                     t20.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                     t20.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                     t20.Output.ItemType = ItemType.EmbeddedResource;
@@ -444,9 +445,9 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                     string f = temppath + System.IO.Path.DirectorySeparatorChar+T4Help.SecureName(secureBdName)+"Neutral.resx";
                                                     if (contadorDeEntidades == 1 )
                                                     {
-                                                        Debug.WriteLine(" **+* borramos los recursos existentes");
-                                                        Debug.WriteLine(T4Help.SecureName(secureBdName));
-                                                        Debug.WriteLine(f);
+                                                        //Debug.WriteLine(" **+* borramos los recursos existentes");
+                                                        //Debug.WriteLine(T4Help.SecureName(secureBdName));
+                                                        //Debug.WriteLine(f);
                                                         if( File.Exists(f) && false)
                                                         {// si existe lo borramos para que al recrearlo recree tambien el resx.cs y de esta forma los recursos esten actualizados.
                                                             
@@ -461,9 +462,9 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                             if ( File.Exists(f))
                                                             {// si existe lo borramos para que al recrearlo recree tambien el resx.cs y de esta forma los recursos esten actualizados.
                                                                 try
-{
-File.Delete(f);
-}
+																{
+																File.Delete(f);
+																}
                                                                 catch
                                                                 {
                                                                     Debug.WriteLine("Error: no se ha podido borrar el fichero :" + f+": borrar los recursos y regenerar");
@@ -534,21 +535,7 @@ File.Delete(f);
 
                                                     case "Application":
                                                         if(contadorDeEntidades == 1) // TODO:añadir la condición de que no sea abstracta 
-                                                        {
-                                                            var tasb   = new ApplicationServiceBaseCT(CBC, nombreprojecto, SharedKernelTree);
-                                                          
-                                                            if (CBC.diagram.ORM.Contains("ibernate"))
-                                                            tasb.Output.File = T4Help.SecureName(secureBdName)+"NhApplicationServiceBase.cs";
-                                                            else
-                                                            tasb.Output.File = T4Help.SecureName(secureBdName)+"EfApplicationServiceBase.cs";
-                                                            
-                                                            if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tasb.Output.File ));
-                                                            tasb.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
-                                                            tasb.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
-                                                            tasb.Output.Encoding = Encoding.UTF8;
-                                                            tasb.Render();
-
-                                                                                                                               
+                                                        {                                                                                                                            
                                                             var tac   = new InfrastructureAppConfigCT(CBC, nombreprojecto, SharedKernelTree);
                                                             tac.Output.File = "App.config";
                                                             if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tac.Output.File ));
@@ -556,8 +543,8 @@ File.Delete(f);
                                                             tac.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                             tac.Output.Encoding = Encoding.UTF8;
                                                             tac.Render();
-
                                                         } 
+
                                                    
                                                         if ( entity is Entity && EntidadNoAbstracta ) // && MainDiagram.Mapper.Equals(MapperTechnology.Manual)
                                                         {
@@ -670,11 +657,17 @@ File.Delete(f);
                                                             t16.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                             t16.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                             t16.Render();
+
+
                                                         }
                                                         break;
 
                                                     case "WcfService":
-                                                        
+                                                        string estadoDeDesarrollo = "desarrollo";
+                                                        if(contadorDeEntidades == 1) estadoDeDesarrollo = "inicio"; 
+                                                        if(contadorDeEntidades == totalDeEntidades ) estadoDeDesarrollo = "fin";
+                                                        if(contadorDeEntidades == 1 & totalDeEntidades == 1) estadoDeDesarrollo = "soloUna";
+
                                                         if( contadorDeEntidades == 1 )
                                                         {
                                                             var tWcfAppConfig  = new WcfServiceAppConfigCT(CBC, nombreprojecto, SharedKernelTree);
@@ -687,17 +680,18 @@ File.Delete(f);
                                                             tWcfAppConfig.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                             tWcfAppConfig.Render();
             
-                                                            //var tUnityFrameworkConfig  = new ApplicationRemoteFrameworkUnityConfigCT(CBC, nombreprojecto, SharedKernelTree);
-                                                            //tUnityFrameworkConfig.Output.File = CBC.company+"Framework.Unity.config";
-                                                            //tUnityFrameworkConfig.Output.ItemType = ItemType.Content;
-                                                            //tUnityFrameworkConfig.Output.Encoding = Encoding.UTF8;
-                                                            //tUnityFrameworkConfig.Output.CopyToOutputDirectory = CopyToOutputDirectory.CopyAlways; 
-                                                            //tUnityFrameworkConfig.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
-                                                            //tUnityFrameworkConfig.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
-                                                            //tUnityFrameworkConfig.Render();
+															var tWcfServiceIocConfigurator  = new WcfServiceIocConfiguratorCT(CBC, nombreprojecto, SharedKernelTree, "soloUna");
+                                                            tWcfServiceIocConfigurator.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Service.Configurator.cs";
+                                                            tWcfServiceIocConfigurator.Output.ItemType = ItemType.Compile;
+                                                            tWcfServiceIocConfigurator.Output.Encoding = Encoding.UTF8;
+                                                            tWcfServiceIocConfigurator.Output.PreserveExistingFile = true;
+                                                            //tWcfServiceIocConfigurator.Output.CopyToOutputDirectory = CopyToOutputDirectory.CopyAlways; 
+                                                            tWcfServiceIocConfigurator.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            tWcfServiceIocConfigurator.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            tWcfServiceIocConfigurator.Render();
                                                         }
 
-                                                        if ( entity is Entity & EntidadNoAbstracta  )
+                                                        if ( entity is Entity && EntidadNoAbstracta  )
                                                         {
                                                             var tCoreService  = new ApplicationRemoteFacadeCoreServiceCT(CBC, nombreprojecto, SharedKernelTree);
                                                             tCoreService.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+"I"+entity.Name+"Service.cs";
@@ -721,8 +715,21 @@ File.Delete(f);
                                                             tBaseSvcCs.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                             tBaseSvcCs.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                             tBaseSvcCs.Render();
+														}
 
-                                                        }
+														//if (( entity is Entity && EntidadNoAbstracta  )
+														//{
+															var tRepositoryLayer  = new ApplicationIocRepositoryLayer(CBC, nombreprojecto, SharedKernelTree, estadoDeDesarrollo);
+                                                            //t20.Output.File = T4Help.SecureName(secureBdName)+"Neutral.resx";
+															tRepositoryLayer.Output.File = T4Help.SecureName(secureBdName)+"RepositoryLayer.cs";
+                                                            //tRepositoryLayer.Output.Metadata["DependentUpon"] = entity.Name+"Service.svc";
+                                                            tRepositoryLayer.Output.Metadata["SubType"] = "Code";
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el tBaseSvcCs.Output.File  ='{0}'",tBaseSvcCs.Output.File ));
+                                                            tRepositoryLayer.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            tRepositoryLayer.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            tRepositoryLayer.Render();
+														//}
+                                                        
                                                         // La generación del fichero de configuración de unity es acumulativa (Al igual que los recursos) por tanto es necesario controlar las tres fases del mismo.
                                                         // es decir en la primera fase inicializamos la cabecera en la segunda introducimos el contenido 
                                                         // y en la tercera cerramos el fichero
@@ -791,8 +798,7 @@ File.Delete(f);
                                                                     tAppxamlcs.Output.Metadata["SubType"] = "Code";
                                                                     tAppxamlcs.Render();
 
-                                                                }
-                                                                    var tac   = new UXAppConfigCT(CBC, nombreprojecto, SharedKernelTree, estadoDeDesarrollo);
+                                                                    var tac   = new UXAppConfigCT(CBC, nombreprojecto, SharedKernelTree, "soloUna");
                                                                     tac.Output.File = "App.config";
                                                                     tac.Output.PreserveExistingFile = true;
                                                                     if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tac.Output.File ));
@@ -800,12 +806,14 @@ File.Delete(f);
                                                                     tac.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                                     tac.Output.Encoding = Encoding.UTF8;
                                                                     tac.Render();
+                                                                }
+
                                                 break;
                                                 case "WpfModule":
                                                     estadoDeDesarrollo = "desarrollo";
                                                     if(contadorDeEntidades == 1) estadoDeDesarrollo = "inicio"; 
                                                     if(contadorDeEntidades == totalDeEntidades ) estadoDeDesarrollo = "fin";
-                                                    if(contadorDeEntidades == 1 & totalDeEntidades == 1) estadoDeDesarrollo = "soloUna";
+                                                    if(contadorDeEntidades == 1 && totalDeEntidades == 1) estadoDeDesarrollo = "soloUna";
 
                                                     var tmodule   = new PrismModuleCT(CBC, nombreprojecto, SharedKernelTree, estadoDeDesarrollo);
                                                     tmodule.Output.File = secureBdName+"Module.cs";
