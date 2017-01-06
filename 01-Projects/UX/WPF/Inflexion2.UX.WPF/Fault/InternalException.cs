@@ -3,7 +3,7 @@
 //     Copyright (c) 2012. Inflexion Software. All Rights Reserved.
 // </copyright>
 // -----------------------------------------------------------------------
-namespace Inflexion.UX.WPF.Fault
+namespace Inflexion2.UX.WPF.Fault
 {
     using System;
     using System.Collections.Generic;
@@ -64,11 +64,18 @@ namespace Inflexion.UX.WPF.Fault
         #endregion Constructors
     }
 
+    /// <summary>
+    /// Validation exception
+    /// </summary>
     [DataContract(Namespace = "")]
     public class ValidationException : InternalException
     {
         #region Constructors
 
+        /// <summary>
+        /// constructs and gets the message for a validation exception
+        /// </summary>
+        /// <param name="validationException"></param>
         public ValidationException(Inflexion2.Domain.Validation.ValidationException validationException)
         : base(validationException.Message)
         {
@@ -79,6 +86,9 @@ namespace Inflexion.UX.WPF.Fault
 
         #region Properties
 
+        /// <summary>
+        /// .en collection of errors messages
+        /// </summary>
         [DataMember]
         public IEnumerable<string> ValidationErrors
         {

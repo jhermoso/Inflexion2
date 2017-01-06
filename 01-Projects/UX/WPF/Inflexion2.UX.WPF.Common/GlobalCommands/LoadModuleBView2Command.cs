@@ -4,6 +4,9 @@
     using Microsoft.Practices.Prism.Regions;
     using Microsoft.Practices.ServiceLocation;
 
+    /// <summary>
+    /// example command to load a module
+    /// </summary>
     public class LoadModuleBView2Command
     {
         private readonly LoadModuleBView2globalCommandProxy comandProxi;

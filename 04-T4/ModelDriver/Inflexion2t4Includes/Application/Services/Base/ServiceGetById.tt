@@ -11,7 +11,7 @@ public class ServiceGetById : Template
     {
         // conceptos propios del projecto en curso
         ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
-        string ResxFileName = prjCon.boundedContextName.Replace(".","")+"Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+        string ResxFileName = prjCon.boundedContextName.Replace(".","") + "Resources"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
         bool Secured = cbc.MainEntityStereotype.Contains("Bussiness"); // si es una entidad de negocio entoces esta securizada es decir necesita identificación y autorización
         bool Trazable = cbc.MainEntityStereotype.Contains("Bussiness") || cbc.MainEntityStereotype.Contains("Auditable"); // si es una entidad de negocio entoces esta securizada es decir necesita identificación y autorización
 
@@ -40,7 +40,7 @@ public class ServiceGetById : Template
                 // Obtener y comprobar la entidad.
                 //ISpecification<<#= cbc.pascalSecureEntityName #>> spec = new DirectSpecification<<#= cbc.pascalSecureEntityName #>>(t => t.Id == entityBId);
                 var temp = repo.GetFilteredElements(t => t.Id == entityBId);
-                //string s = string.Format(Inflexion2.Resources.Framework.NoDataById, "<#= cbc.entity.AliasFrontEnd #>", entityBId);
+                //string s = string.Format(Inflexion2.Resources.NoDataById, "<#= cbc.entity.AliasFrontEnd #>", entityBId);
 
                 //Guard.ArgumentIsNotNull( entity, s );
 

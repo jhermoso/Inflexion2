@@ -2,7 +2,7 @@
 
 public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainDiagram, ActiveSolution SolutionInfo,  ITree<LocalizedBounded> TreeApp, ITree<BoundedContextMetadata> SharedKernelTree)
 {
-    bool okDebug = true;
+    //bool okDebug = true;
 
     string bdName = null; // este es el parametro que junto con diagrama, solución y arq pasamos como parametros a las clases de plantillas de generación.
     string secureBdName = null; 
@@ -44,55 +44,54 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                    // si añadimos esta condición no generara código pero ademas borra el existente && !context.Data.Context.Value.GenerateCode.Equals(GenerationPolicy.Never)
          if (boundedContext != null && bdName != null  ) // si el contexto limitado tiene asociado un diagrama y un nombre lo procesamos.
             {
-            boundedContextElements = ReadClassesHierarchie(boundedContext);
-            secureBdName = bdName.Replace('\\','.');
-                if (okDebug) Debug.WriteLine(String.Format("El nombre del proyecto es'{0}'",secureBdName));
-                if (okDebug) Debug.WriteLine(String.Format("Este proyecto tiene '{0}' hijos",context.DirectChildCount ));
+				boundedContextElements = ReadClassesHierarchie(boundedContext);
+				secureBdName = bdName.Replace('\\','.');
                 int contadorDeEntidades = 0;
-                //bool ResxWriteInit = false; // el contador de entidades no se puede usar para saber el comienzo pues las entidades de los shared kernel cuentan pero no se procesan.
                 int totalDeEntidades = boundedContextElements.All.Nodes.Where(p=> (p.Data is Entity || p.Data is ObjectValue || p.Data is Enumeration) && p.Data.ReferencedRootEntity == null).Count();
-                //int kindOfClass = 0; /* tipo de clase entidad, objeto valor , enumerado, servicio,  operación invariante etc.*/
                 ClassBaseContext CBC;
+				 
+                //if (okDebug) Debug.WriteLine(String.Format("El nombre del proyecto es'{0}'",secureBdName));
+                //if (okDebug) Debug.WriteLine(String.Format("Este proyecto tiene '{0}' hijos",context.DirectChildCount ));
+                //bool ResxWriteInit = false; // el contador de entidades no se puede usar para saber el comienzo pues las entidades de los shared kernel cuentan pero no se procesan.
+                //int kindOfClass = 0; /* tipo de clase entidad, objeto valor , enumerado, servicio,  operación invariante etc.*/
+
                 foreach (INode<ClassBase> item in boundedContextElements.All.Nodes.Where(p=> p.Data is Entity || p.Data is ObjectValue || p.Data is Enumeration) )
                 {
-                    //bool okDebug = item.Data.Name.Equals("Empleado");
                     if (item.Data.ReferencedRootEntity != null ) continue; // Si la entidad u objeto valor es una entidad de referencia o cuyo estereotipo es "ExternalContext" entonces la ignoramos.
-                    contadorDeEntidades++; // este contador se utiliza para generar de forma incremental los ficheros de recursos de un contexto dado por lo que tenemos que incluir todas las entidaes que aprezcan, incluso las referenciadas.
+                    contadorDeEntidades++; // este contador se utiliza para generar de forma incremental los ficheros de recursos de un contexto dado por lo que tenemos que incluir todas las entidaes que aparezcan, incluso las referenciadas.
  
                     ClassBase entity = item.Data;
                     bool EntidadNoAbstracta = (( entity.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Abstract) != kayak.MoneyGen.InheritClassKeywords.Abstract &
                                              ( entity.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Public) == kayak.MoneyGen.InheritClassKeywords.Public     ); // si la clase es abstracta no tiene factorias
 
                     CBC = new ClassBaseContext(MainDiagram, SolutionInfo, entity, secureBdName);
-                    if (okDebug) Debug.WriteLine("Para la entidad :{0}", item.Data.Name);
-                    if (okDebug) CBC.DebugContext();
+                    //if (okDebug) Debug.WriteLine("Para la entidad :{0}", item.Data.Name);
+                    //if (okDebug) CBC.DebugContext();
 
-                    if (item.Data is Entity)
-                    {  if (okDebug) Debug.WriteLine(" la entidad :{0} es ENTITY", item.Data.Name); }
-                    else { if (okDebug) Debug.WriteLine(" la entidad :{0} es OBJETOVALOR", item.Data.Name); }
-                    if (okDebug) Debug.WriteLine("Para la entidad :{0}", item.Data.Name);
-                    if (okDebug) Debug.WriteLine("La consulta de si todos los atributos son mandatory tiene como resultado :{0}", AreAllMandatory( item.Data));
-                    if (okDebug) Debug.WriteLine("La consulta de si todos las relaciones tienen la misma multiplicidad tiene como resultado :{0}", AreAllTargetMinMultiplicityEqual( item.Data));
-                    if (okDebug) Debug.WriteLine("La consulta de si todos las relaciones tienen la misma multiplicidad tiene como resultado :{0}", AreAllSourceMinMultiplicityEqual( item.Data));
+                    //if (item.Data is Entity)
+                    //{  if (okDebug) Debug.WriteLine(" la entidad :{0} es ENTITY", item.Data.Name); }
+                    //else { if (okDebug) Debug.WriteLine(" la entidad :{0} es OBJETOVALOR", item.Data.Name); }
+                    //if (okDebug) Debug.WriteLine("Para la entidad :{0}", item.Data.Name);
+                    //if (okDebug) Debug.WriteLine("La consulta de si todos los atributos son mandatory tiene como resultado :{0}", AreAllMandatory( item.Data));
+                    //if (okDebug) Debug.WriteLine("La consulta de si todos las relaciones tienen la misma multiplicidad tiene como resultado :{0}", AreAllTargetMinMultiplicityEqual( item.Data));
+                    //if (okDebug) Debug.WriteLine("La consulta de si todos las relaciones tienen la misma multiplicidad tiene como resultado :{0}", AreAllSourceMinMultiplicityEqual( item.Data));
 
                     // cada entidad tiene un reflejo en cada capa por lo tanto para cada entidad recorremos cada una de las capas y sus proyectos asociados.
                     foreach (Architecture.ArqLayer layer in layersList) //Recorremos La arquitectura seleccionada
                     {
-                        if (okDebug) Debug.WriteLine("\n\n{0}",layer.LayerType );
                         string FolderLayerName = GetFolderLayerName(MainDiagram, layer.LayerType);
-
                         if (FolderLayerName != null)
                         {
                             //string contextPath = GetBoundedContextLayerPath(diagram.SolutionFolderBoundedContext, bdName, FolderLayerName);
-                            if (okDebug) Debug.WriteLine(String.Format("El nombre del FolderLayerName es'{0}'",FolderLayerName));
+                            //if (okDebug) Debug.WriteLine(String.Format("El nombre del FolderLayerName es'{0}'",FolderLayerName));
 
                             if (layer.LayerProyects != null)
                                 foreach (Architecture.ArqLayer.ArqProject project in layer.LayerProyects)
                                 {
-                                    if (okDebug) Debug.WriteLine(string.Format("Nombre de projecto  {0}, plantilla de projecto{1}",project.Name, project.Template ));
+                                    //if (okDebug) Debug.WriteLine(string.Format("Nombre de projecto  {0}, plantilla de projecto{1}",project.Name, project.Template ));
                                     string nombreprojecto = GetProjectName( MainDiagram, layer.LayerType, project, secureBdName);
                     
-                                    if (okDebug) Debug.WriteLine(string.Format("MainDiagram.RootNameSpace = '{0}', secureBdName = '{1}' project.Name = '{2}'",MainDiagram.RootNameSpace , secureBdName ,project.Name ));
+                                    //if (okDebug) Debug.WriteLine(string.Format("MainDiagram.RootNameSpace = '{0}', secureBdName = '{1}' project.Name = '{2}'",MainDiagram.RootNameSpace , secureBdName ,project.Name ));
 
                                     string temppath = MainDiagram.AbsProyectsPath +System.IO.Path.DirectorySeparatorChar+nombreprojecto ;
                                     string nombreprojectoConExtension = nombreprojecto + ".csproj";
@@ -100,10 +99,10 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                     string superfolder = null;
                                     ClassBase entitySuperClass = null;
                                     var kindComposition = WhatTypeComponented(item.Data);
-                          if (okDebug) Debug.WriteLine(string.Format("0superfolder = '{0}' of entity '{1}' ",superfolder, entity.Name ));
+                          
                                     if(!string.IsNullOrEmpty( item.Data.FolderNameSpaceAggregatedName))
                                         {superfolder = item.Data.FolderNameSpaceAggregatedName + System.IO.Path.DirectorySeparatorChar;}
-                          if (okDebug) Debug.WriteLine(string.Format("1superfolder = '{0}' of entity '{1}' ",superfolder, entity.Name ));
+                          
                                     if (entity is Entity & (IsDerived( item.Data) || item.Data.SourceClassBase != null))// consultamos si esta entidad hereda de alguna otra por herencia simple del lenguaje.
                                     {
                                         if (item.Data.SourceClassBase != null)
@@ -114,10 +113,9 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                         {
                                             entitySuperClass = entity.SourceClassBase; // Tambien puede obtenerse por (Entity)item.Parent.Data 
                                         }
-                          if (okDebug) Debug.WriteLine(string.Format("2superfolder = '{0}' of entity '{1}' ",superfolder, entity.Name ));
+                         
                                         superfolder = superfolder + GetSuperFolders(entity); // en cuyo caso obtenemos su estructura de carpetas anidadas
-
-                          if (okDebug) Debug.WriteLine(string.Format("3superfolder = '{0}' of entity '{1}' ",superfolder, entity.Name ));
+                         
                                         superfolder = superfolder + System.IO.Path.DirectorySeparatorChar;
                                     } 
                                     else if (entity is  Entity & ( kindComposition.Equals(KindComponented.isOneChild) | kindComposition.Equals(KindComponented.allAreOneFather )))
@@ -139,7 +137,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                         }
                                     }
 
-                          if (okDebug) Debug.WriteLine(string.Format("4superfolder = '{0}' of entity '{1}' ",superfolder, entity.Name ));
+                          //if (okDebug) Debug.WriteLine(string.Format("4superfolder = '{0}' of entity '{1}' ",superfolder, entity.Name ));
 
                                     switch (layer.LayerType)
                                     {
@@ -147,42 +145,6 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                         case LayerKind.Domain:
                                             switch (project.Name) // en este punto tenemos el projecto el nombre del projecto y la entidad
                                             {
-                                               case "Resources":
-                                                    
-                                                    // La generación del fichero de recursos es acumulativa por tanto es necesario controlar la tres fases del mismo.
-                                                    // es decir en la primera fase inicializamos la cabecera  y la primera entidad que recorremos, en la segunda introducimos el contenido 
-                                                    // y en la tercera cerramos el fichero despues de meter la info de la ultima entidad recorrida.
-													// IMPORTANTE : PERO ES NECESARIO QUE EL NOMBRE DEL FICHERO EN EL OUTPUT DE RENDER NO CAMBIE Y SEA SIEMPPRE EL MISMO.
-                                                    string estadoDeDesarrollo = "desarrollo";
-                                                    if(contadorDeEntidades == 1) estadoDeDesarrollo = "inicio"; 
-                                                    if(contadorDeEntidades == totalDeEntidades ) estadoDeDesarrollo = "fin";
-                                                    if(contadorDeEntidades == 1 & totalDeEntidades == 1) estadoDeDesarrollo = "soloUna";
-
-                                                    // TODO borrar los ficheros antes de recrearlos pues al añadir nuevos entidades no regenera el resx.c
-                                                    if (okDebug) Debug.WriteLine(string.Format("entidad ='{0}', estado = '{1}'",entity.Name, estadoDeDesarrollo));
-                                                    var t20   = new InfraestructureResourcesCT(CBC, nombreprojecto, SharedKernelTree, estadoDeDesarrollo);
-													t20.Output.PreserveExistingFile = true;
-                                                    t20.Output.File = T4Help.SecureName(secureBdName)+"Neutral.resx";
-                                                    if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",t20.Output.File ));
-                                                    t20.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
-                                                    t20.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
-                                                    t20.Output.ItemType = ItemType.EmbeddedResource;
-                                                    t20.Output.CustomTool = "PublicResXFileCodeGenerator";  
-                                                    string f = t20.Output.Project+ System.IO.Path.DirectorySeparatorChar+ t20.Output.File;
-                                                    //if (File.Exists(f))
-                                                    //{// si existe lo borramos para que al recrearlo recree tambien el resx.cs y de esta forma los recursos esten actualizados.
-                                                        //File.Delete(f);
-                                                    //}
-                                                    f = t20.Output.Project+ System.IO.Path.DirectorySeparatorChar+ T4Help.SecureName(secureBdName)+"Neutral.Designer.cs";
-                                                    //if (File.Exists(f))
-                                                    //{// si existe lo borramos para que al recrearlo recree tambien el resx.cs y de esta forma los recursos esten actualizados.
-                                                        //File.Delete(f);
-                                                    //}
-                                                    //t20.Output.CustomToolNamespace = secureBdName;
-                                                    t20.Output.Encoding = Encoding.UTF8;
-                                                    t20.Render();
-                                                    break;
-
                                                 case "Data":
                                                     
                                                         if (CBC.IsEnumeration)
@@ -203,9 +165,9 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                         {
                                                             var t  = new DomainCoreIEntityCT(CBC, nombreprojecto, SharedKernelTree);
                                                             t.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+ "I"+entity.Name+".cs";
-                                                            if (okDebug) Debug.WriteLine(string.Format("el t.Output.File  ='{0}'",t.Output.File ));
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t.Output.File  ='{0}'",t.Output.File ));
                                                             //t.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
-                                                            if (okDebug) Debug.WriteLine(string.Format("el temppath ='{0}', el nombreprojectoConExtension = '{1}'",temppath, nombreprojectoConExtension));
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el temppath ='{0}', el nombreprojectoConExtension = '{1}'",temppath, nombreprojectoConExtension));
                                                             t.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                             t.Render();
 
@@ -214,7 +176,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                                 var tbis  = new DomainCoreIEntityValidatorCT(CBC, nombreprojecto, SharedKernelTree);
                                                                 tbis.Output.PreserveExistingFile = true;
                                                                 tbis.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+ "Validator"+System.IO.Path.DirectorySeparatorChar+"I"+entity.Name+"Validator.cs";
-                                                                if (okDebug) Debug.WriteLine(string.Format("el tbis.Output.File  ='{0}'",tbis.Output.File ));
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el tbis.Output.File  ='{0}'",tbis.Output.File ));
                                                                 //t.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                                 tbis.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                                 tbis.Render();
@@ -237,7 +199,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                                 {
                                                                     var t3  = new DomainCoreRepositoryCT(CBC, nombreprojecto, SharedKernelTree);
                                                                     t3.Output.File = superfolder +entity.Name+System.IO.Path.DirectorySeparatorChar+ "I"+entity.Name+"Repository"+".cs";
-                                                                    if (okDebug) Debug.WriteLine(string.Format("el t3.Output.File  ='{0}'",t3.Output.File ));
+                                                                    //if (okDebug) Debug.WriteLine(string.Format("el t3.Output.File  ='{0}'",t3.Output.File ));
                                                                     //t3.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                                     t3.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                                     t3.Render();
@@ -261,8 +223,8 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
 
                                                                 var t5  = new DomainBaseEntityCT(CBC, nombreprojecto, SharedKernelTree);
                                                                 t5.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+ entity.Name+".cs";
-                                                                if (okDebug) Debug.WriteLine(string.Format("el t5.Output.File  ='{0}'",t5.Output.File ));
-                                                                if (okDebug) Debug.WriteLine(string.Format("el temppath ='{0}', el nombreprojectoConExtension = '{1}'",temppath, nombreprojectoConExtension));
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el t5.Output.File  ='{0}'",t5.Output.File ));
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el temppath ='{0}', el nombreprojectoConExtension = '{1}'",temppath, nombreprojectoConExtension));
                                                                 //t5.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                                 t5.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                                 t5.Render();
@@ -271,8 +233,8 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                                 var specification  = new DomainBaseEntitySpecificationsCT(CBC, nombreprojecto, SharedKernelTree);
                                                                 specification.Output.PreserveExistingFile = false;
                                                                 specification.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+ entity.Name+"Specifications.cs";
-                                                                if (okDebug) Debug.WriteLine(string.Format("el specification.Output.File  ='{0}'",specification.Output.File ));
-                                                                if (okDebug) Debug.WriteLine(string.Format("el temppath ='{0}', el nombreprojectoConExtension = '{1}'",temppath, nombreprojectoConExtension));
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el specification.Output.File  ='{0}'",specification.Output.File ));
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el temppath ='{0}', el nombreprojectoConExtension = '{1}'",temppath, nombreprojectoConExtension));
                                                                 //specification.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                                 specification.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                                 specification.Render();
@@ -281,7 +243,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                             {
                                                                 var t6  = new DomainBaseEntityFactoryCT(CBC, nombreprojecto, SharedKernelTree);
                                                                 t6.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+ entity.Name+"Factory.cs";
-                                                                if (okDebug) Debug.WriteLine(string.Format("el t6.Output.File  ='{0}'",t6.Output.File ));
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el t6.Output.File  ='{0}'",t6.Output.File ));
                                                                 t6.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                                 t6.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                                 t6.Render();
@@ -292,7 +254,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                                 var PartialMethod  = new DomainBaseEntityPartialMethodsCT(CBC, nombreprojecto, SharedKernelTree, method);
                                                                 PartialMethod.Output.PreserveExistingFile = true;
                                                                 PartialMethod.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+method.Name+"Partial.cs";
-                                                                if (okDebug) Debug.WriteLine(string.Format("el PartialMethod.Output.File  ='{0}'",PartialMethod.Output.File ));
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el PartialMethod.Output.File  ='{0}'",PartialMethod.Output.File ));
                                                                 // PartialMethod.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                                 PartialMethod.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                                 PartialMethod.Render();
@@ -302,7 +264,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                                 var PartialConstructor  = new DomainBaseEntityPartialConstructorCT(CBC, nombreprojecto, SharedKernelTree, method);
                                                                 PartialConstructor.Output.PreserveExistingFile = true;
                                                                 PartialConstructor.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"."+method.PartialFileName+"."+"Partial.cs";
-                                                                if (okDebug) Debug.WriteLine(string.Format("el PartialConstructor.Output.File  ='{0}'",PartialConstructor.Output.File ));
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el PartialConstructor.Output.File  ='{0}'",PartialConstructor.Output.File ));
                                                                 // PartialConstructor.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                                 PartialConstructor.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                                 PartialConstructor.Render();
@@ -312,7 +274,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                                 var PartialDestructor  = new DomainBaseEntityPartialDestructorCT(CBC, nombreprojecto, SharedKernelTree, method);
                                                                 PartialDestructor.Output.PreserveExistingFile = true;
                                                                 PartialDestructor.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"."+method.PartialFileName+"."+"Partial.cs";
-                                                                if (okDebug) Debug.WriteLine(string.Format("el PartialConstructor.Output.File  ='{0}'",PartialDestructor.Output.File ));
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el PartialConstructor.Output.File  ='{0}'",PartialDestructor.Output.File ));
                                                                 // PartialConstructor.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                                 PartialDestructor.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                                 PartialDestructor.Render();
@@ -322,7 +284,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                                 var PartialUpdater  = new DomainBaseEntityPartialUpdateCT(CBC, nombreprojecto, SharedKernelTree, method);
                                                                 PartialUpdater.Output.PreserveExistingFile = true;
                                                                 PartialUpdater.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"."+method.PartialFileName+"."+"Partial.cs";
-                                                                if (okDebug) Debug.WriteLine(string.Format("el PartialConstructor.Output.File  ='{0}'",PartialUpdater.Output.File ));
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el PartialConstructor.Output.File  ='{0}'",PartialUpdater.Output.File ));
                                                                 // PartialConstructor.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                                 PartialUpdater.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                                 PartialUpdater.Render();
@@ -360,7 +322,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                             {
                                                                 var t19  = new InfraestructureEntityFrameworkMappingCT(CBC, nombreprojecto, SharedKernelTree);
                                                                 t19.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Configuration.cs";
-                                                                if (okDebug) Debug.WriteLine(string.Format("el t19.Output.File  ='{0}'",t19.Output.File ));
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el t19.Output.File  ='{0}'",t19.Output.File ));
                                                                 t19.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                                 t19.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                                 
@@ -370,7 +332,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                                 {
                                                                     var tUoW   = new BootstrapUnitOfWorkCT(CBC, nombreprojecto, SharedKernelTree);
                                                                     tUoW.Output.File = T4Help.SecureName(secureBdName)+"UoW.cs";
-                                                                    if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tUoW.Output.File ));
+                                                                    //if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tUoW.Output.File ));
                                                                     tUoW.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                                     tUoW.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                                     tUoW.Output.Encoding = Encoding.UTF8;
@@ -379,7 +341,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                                     
                                                                     var tac   = new InfrastructureAppConfigCT(CBC, nombreprojecto, SharedKernelTree);
                                                                     tac.Output.File = "App.config";
-                                                                    if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tac.Output.File ));
+                                                                    //if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tac.Output.File ));
                                                                     tac.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                                     tac.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                                     tac.Output.Encoding = Encoding.UTF8;
@@ -401,7 +363,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                                 //var t19  = new InfraestructureEntityOracleHbmCT(MainDiagram, SolutionInfo, entity, secureBdName);
                                                                 var t19  = new InfraestructureEntityOracleHbmCT(CBC, nombreprojecto, SharedKernelTree);
                                                                 t19.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+".hbm.xml";
-                                                                if (okDebug) Debug.WriteLine(string.Format("el t19.Output.File  ='{0}'",t19.Output.File ));
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el t19.Output.File  ='{0}'",t19.Output.File ));
                                                                 t19.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                                 t19.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                                 t19.Output.ItemType = ItemType.EmbeddedResource;
@@ -411,7 +373,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                             {
                                                                 var t19  = new InfraestructureEntityFluentCT(CBC, nombreprojecto, SharedKernelTree);
                                                                 t19.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Map.cs";
-                                                                if (okDebug) Debug.WriteLine(string.Format("el t19.Output.File  ='{0}'",t19.Output.File ));
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el t19.Output.File  ='{0}'",t19.Output.File ));
                                                                 t19.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                                 t19.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                                 
@@ -491,7 +453,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                                     {
                                                                         var t19  = new InfraestructureEntityFluentCT(CBC, nombreprojecto, SharedKernelTree);
                                                                         t19.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Map.cs";
-                                                                        if (okDebug) Debug.WriteLine(string.Format("el t19.Output.File  ='{0}'",t19.Output.File ));
+                                                                        //if (okDebug) Debug.WriteLine(string.Format("el t19.Output.File  ='{0}'",t19.Output.File ));
                                                                         t19.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                                         t19.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                                         t19.Render();
@@ -515,8 +477,8 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                             var t9  = new ApplicationEntityDtoCT(CBC, nombreprojecto, SharedKernelTree);
                                                             t9.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Dto.cs";
                                                             //t9.Output.PreserveExistingFile = false;
-                                                            if (okDebug) Debug.WriteLine(string.Format("el t9.Output.File  ='{0}'",t9.Output.File ));
-                                                            if (okDebug) Debug.WriteLine(string.Format("el t9.Output.File  ='{0}'",t9.Output.File ));
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t9.Output.File  ='{0}'",t9.Output.File ));
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t9.Output.File  ='{0}'",t9.Output.File ));
                                                             t9.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                             t9.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                             t9.Render();
@@ -525,8 +487,8 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                         {
                                                             var tenumdto  = new ApplicationEnumerationDtoCT(CBC, nombreprojecto, SharedKernelTree);
                                                             tenumdto.Output.File = "Enums" + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Dto.cs";
-                                                            if (okDebug) Debug.WriteLine(string.Format("el tenumdto.Output.File  ='{0}'",tenumdto.Output.File ));
-                                                            if (okDebug) Debug.WriteLine(string.Format("el tenumdto.Output.File  ='{0}'",tenumdto.Output.File ));
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el tenumdto.Output.File  ='{0}'",tenumdto.Output.File ));
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el tenumdto.Output.File  ='{0}'",tenumdto.Output.File ));
                                                             tenumdto.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                             tenumdto.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                             tenumdto.Render();
@@ -538,7 +500,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                         {                                                                                                                            
                                                             var tac   = new InfrastructureAppConfigCT(CBC, nombreprojecto, SharedKernelTree);
                                                             tac.Output.File = "App.config";
-                                                            if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tac.Output.File ));
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tac.Output.File ));
                                                             tac.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                             tac.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                             tac.Output.Encoding = Encoding.UTF8;
@@ -551,7 +513,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                             //var t10  = new ApplicationEntityMapperInterfaceCT(MainDiagram, SolutionInfo, entity);
                                                             var t10  = new ApplicationEntityMapperInterfaceCT(CBC, nombreprojecto, SharedKernelTree);
                                                             t10.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+"I"+entity.Name+"Mapper.cs";
-                                                            if (okDebug) Debug.WriteLine(string.Format("el t10.Output.File  ='{0}'",t10.Output.File ));
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t10.Output.File  ='{0}'",t10.Output.File ));
                                                             t10.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                             t10.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                             t10.Render();
@@ -566,7 +528,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                         {
                                                             var t11  = new ApplicationEntityMapperCT(CBC, nombreprojecto, SharedKernelTree);
                                                             t11.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Mapper.cs";
-                                                            if (okDebug) Debug.WriteLine(string.Format("el t11.Output.File  ='{0}'",t11.Output.File ));
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t11.Output.File  ='{0}'",t11.Output.File ));
                                                             t11.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                             t11.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                             t11.Render();
@@ -576,7 +538,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                         {
                                                             var t11  = new ApplicationEntityAutoMapperCT(CBC, nombreprojecto, SharedKernelTree);
                                                             t11.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Mapper.cs";
-                                                            if (okDebug) Debug.WriteLine(string.Format("el t11.Output.File  ='{0}'",t11.Output.File ));
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t11.Output.File  ='{0}'",t11.Output.File ));
                                                             t11.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                             t11.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                             t11.Render();
@@ -653,7 +615,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                         {
                                                             var t16  = new ApplicationEntityServicesBaseCT(CBC, nombreprojecto, SharedKernelTree);
                                                             t16.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Services.cs";
-                                                            if (okDebug) Debug.WriteLine(string.Format("el t16.Output.File  ='{0}'",t16.Output.File ));
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t16.Output.File  ='{0}'",t16.Output.File ));
                                                             t16.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                             t16.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                             t16.Render();
@@ -662,6 +624,21 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                         }
                                                         break;
 
+                                                    case "WcfService.Contracts":
+                                                     //   string estadoDeDesarrollo = "desarrollo";
+                                                     //   if(contadorDeEntidades == 1) estadoDeDesarrollo = "inicio"; 
+                                                     //   if(contadorDeEntidades == totalDeEntidades ) estadoDeDesarrollo = "fin";
+                                                     //   if(contadorDeEntidades == 1 & totalDeEntidades == 1) estadoDeDesarrollo = "soloUna";
+                                                        if ( entity is Entity && EntidadNoAbstracta  )
+                                                        {
+                                                            var tCoreService  = new ApplicationRemoteFacadeCoreServiceCT(CBC, nombreprojecto, SharedKernelTree);
+                                                            tCoreService.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+"I"+entity.Name+"Service.cs";
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el tCoreService.Output.File  ='{0}'",tCoreService.Output.File ));
+                                                            tCoreService.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            tCoreService.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            tCoreService.Render();
+														}
+                                                        break;
                                                     case "WcfService":
                                                         string estadoDeDesarrollo = "desarrollo";
                                                         if(contadorDeEntidades == 1) estadoDeDesarrollo = "inicio"; 
@@ -693,16 +670,16 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
 
                                                         if ( entity is Entity && EntidadNoAbstracta  )
                                                         {
-                                                            var tCoreService  = new ApplicationRemoteFacadeCoreServiceCT(CBC, nombreprojecto, SharedKernelTree);
-                                                            tCoreService.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+"I"+entity.Name+"Service.cs";
-                                                            if (okDebug) Debug.WriteLine(string.Format("el tCoreService.Output.File  ='{0}'",tCoreService.Output.File ));
-                                                            tCoreService.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
-                                                            tCoreService.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
-                                                            tCoreService.Render();
+                                                          //  var tCoreService  = new ApplicationRemoteFacadeCoreServiceCT(CBC, nombreprojecto, SharedKernelTree);
+                                                          //  tCoreService.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+"I"+entity.Name+"Service.cs";
+                                                          //  if (okDebug) Debug.WriteLine(string.Format("el tCoreService.Output.File  ='{0}'",tCoreService.Output.File ));
+                                                          //  tCoreService.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                          //  tCoreService.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                          //  tCoreService.Render();
 
                                                             var tBaseSvc  = new ApplicationRemoteFacadeBaseSvcCT(CBC, nombreprojecto, SharedKernelTree);
                                                             tBaseSvc.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Service.svc";
-                                                            if (okDebug) Debug.WriteLine(string.Format("el tBaseSvc.Output.File  ='{0}'",tBaseSvc.Output.File ));
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el tBaseSvc.Output.File  ='{0}'",tBaseSvc.Output.File ));
                                                             tBaseSvc.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                             tBaseSvc.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                             tBaseSvc.Render();
@@ -711,7 +688,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                             tBaseSvcCs.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Service.svc.cs";
                                                             tBaseSvcCs.Output.Metadata["DependentUpon"] = entity.Name+"Service.svc";
                                                             tBaseSvcCs.Output.Metadata["SubType"] = "Code";
-                                                            if (okDebug) Debug.WriteLine(string.Format("el tBaseSvcCs.Output.File  ='{0}'",tBaseSvcCs.Output.File ));
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el tBaseSvcCs.Output.File  ='{0}'",tBaseSvcCs.Output.File ));
                                                             tBaseSvcCs.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                             tBaseSvcCs.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                             tBaseSvcCs.Render();
@@ -770,7 +747,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                                 {
                                                                     var tUoW   = new BootstraperCT(CBC, nombreprojecto, SharedKernelTree);
                                                                     tUoW.Output.File = "Bootstrapper.cs";
-                                                                    if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tUoW.Output.File ));
+                                                                    //if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tUoW.Output.File ));
                                                                     tUoW.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                                     tUoW.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                                     tUoW.Output.Encoding = Encoding.UTF8;
@@ -801,7 +778,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                                     var tac   = new UXAppConfigCT(CBC, nombreprojecto, SharedKernelTree, "soloUna");
                                                                     tac.Output.File = "App.config";
                                                                     tac.Output.PreserveExistingFile = true;
-                                                                    if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tac.Output.File ));
+                                                                    //if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tac.Output.File ));
                                                                     tac.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                                     tac.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                                     tac.Output.Encoding = Encoding.UTF8;
@@ -817,7 +794,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
 
                                                     var tmodule   = new PrismModuleCT(CBC, nombreprojecto, SharedKernelTree, estadoDeDesarrollo);
                                                     tmodule.Output.File = secureBdName+"Module.cs";
-                                                    if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tmodule.Output.File ));
+                                                    //if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tmodule.Output.File ));
                                                     tmodule.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                     tmodule.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                     tmodule.Output.Encoding = Encoding.UTF8;
@@ -825,7 +802,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
 
                                                     var tnVM   = new ModuleNavigationVMCT(CBC, nombreprojecto, SharedKernelTree, estadoDeDesarrollo);
                                                     tnVM.Output.File = "NavigationRegions\\VM"+System.IO.Path.DirectorySeparatorChar+secureBdName+"ModuleNavigationVM.cs";
-                                                    if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tnVM.Output.File ));
+                                                    //if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tnVM.Output.File ));
                                                     tnVM.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                     tnVM.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                     tnVM.Output.Encoding = Encoding.UTF8;
@@ -833,7 +810,7 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
 
                                                     var tnVM2   = new ModuleNavigationVMCT2(CBC, nombreprojecto, SharedKernelTree, estadoDeDesarrollo);
                                                     tnVM2.Output.File = "NavigationRegions\\VM"+System.IO.Path.DirectorySeparatorChar+secureBdName+"ModuleNavigationVM2.cs";
-                                                    if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tnVM2.Output.File ));
+                                                    //if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tnVM2.Output.File ));
                                                     tnVM2.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                     tnVM2.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                     tnVM2.Output.Encoding = Encoding.UTF8;
@@ -854,14 +831,14 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                     {
                                                     var tMtbVM  = new ModuleTaskBarVMCT(CBC, nombreprojecto, SharedKernelTree);
                                                     tMtbVM.Output.File = "NavigationRegions\\VM"+System.IO.Path.DirectorySeparatorChar+secureBdName+"ModuleTaskBarVM.cs";
-                                                    if (okDebug) Debug.WriteLine(string.Format("el tMtbVM.Output.File  ='{0}'",tMtbVM.Output.File ));
+                                                    //if (okDebug) Debug.WriteLine(string.Format("el tMtbVM.Output.File  ='{0}'",tMtbVM.Output.File ));
                                                     tMtbVM.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                     tMtbVM.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                     tMtbVM.Render();
 
                                                     var tMrVM  = new ModuleRibbonVMCT(CBC, nombreprojecto, SharedKernelTree);
                                                     tMrVM.Output.File = "NavigationRegions\\VM"+System.IO.Path.DirectorySeparatorChar+secureBdName+"ModuleRibbonVM.cs";
-                                                    if (okDebug) Debug.WriteLine(string.Format("el tMtbVM.Output.File  ='{0}'",tMrVM.Output.File ));
+                                                    //if (okDebug) Debug.WriteLine(string.Format("el tMtbVM.Output.File  ='{0}'",tMrVM.Output.File ));
                                                     tMrVM.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                     tMrVM.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                     tMrVM.Render();
@@ -967,14 +944,14 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
 
                                                         var tEQVM  = new WpfEntityQueryViewModelCT(CBC, nombreprojecto, SharedKernelTree);
                                                         tEQVM.Output.File = "Entities\\VM"+System.IO.Path.DirectorySeparatorChar+entity.Name+"QueryViewModel.cs";
-                                                        if (okDebug) Debug.WriteLine(string.Format("el tEQVM.Output.File  ='{0}'",tEQVM.Output.File ));
+                                                        //if (okDebug) Debug.WriteLine(string.Format("el tEQVM.Output.File  ='{0}'",tEQVM.Output.File ));
                                                         tEQVM.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                         tEQVM.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                         tEQVM.Render();
 
                                                         var tEVM  = new WpfEntityViewModelCT(CBC, nombreprojecto, SharedKernelTree);
                                                         tEVM.Output.File = "Entities\\VM"+System.IO.Path.DirectorySeparatorChar+entity.Name+"ViewModel.cs";
-                                                        if (okDebug) Debug.WriteLine(string.Format("el tEVM.Output.File  ='{0}'",tEVM.Output.File ));
+                                                        //if (okDebug) Debug.WriteLine(string.Format("el tEVM.Output.File  ='{0}'",tEVM.Output.File ));
                                                         tEVM.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                         tEVM.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                         tEVM.Render();
@@ -996,14 +973,14 @@ public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainD
                                                     {
                                                         var tIL  = new CreateSQLServerDataBaseTest(CBC, nombreprojecto, SharedKernelTree);
                                                         tIL.Output.File = "CreateDatabaseTest001.cs";
-                                                        if (okDebug) Debug.WriteLine(string.Format("el t11.Output.File  ='{0}'",tIL.Output.File ));
+                                                        //if (okDebug) Debug.WriteLine(string.Format("el t11.Output.File  ='{0}'",tIL.Output.File ));
                                                         tIL.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                         tIL.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                         tIL.Render();
 
                                                         var tac   = new InfrastructureAppConfigCT(CBC, nombreprojecto, SharedKernelTree);
                                                         tac.Output.File = "App.config";
-                                                        if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tac.Output.File ));
+                                                        //if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tac.Output.File ));
                                                         tac.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                                                         tac.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
                                                         tac.Output.Encoding = Encoding.UTF8;

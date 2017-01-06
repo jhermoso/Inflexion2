@@ -222,31 +222,62 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         #endregion
 
         #region Can Methods  for commands
+
+        /// <summary>
+        /// method to decide if the record can be activated
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public override bool CanActivateRecord(object parameter)
         {
             return (this.SelectedItem != null /* && !this.SelectedItem.Activo */); // todo: incluir en nuevos view models para business entity
         }
 
+        /// <summary>
+        /// method to decide if is possible to read the records
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public override bool CanGetRecords(object parameter)
         {           
             return true;
         }
 
+        /// <summary>
+        /// method to decide if is possible to add a new record
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public override bool CanNewRecord(object parameter)
         {
             return true;
         }
 
+        /// <summary>
+        /// method to decide if is possible to delete one record
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public override bool CanDeleteRecord(object parameter)
         {
             return (this.SelectedItem != null /*&& this.SelectedItem.Activo*/ ); // todo: incluir en nuevos view models para business entity
         }
 
+        /// <summary>
+        /// method to decide if is possible to edit the record
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public override bool CanEditRecord(object parameter)
         {
             return this.SelectedItem != null;
         }
 
+        /// <summary>
+        /// method to decide if is possible to go to the first page
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public override bool CanGetFirstPageRecords(object parameter)
         {
             if (this.totalRecordCount == 0)
@@ -256,6 +287,11 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             return this.PageIndex != 0;
         }
 
+        /// <summary>
+        /// .en method to decide if is possible to go to the next page
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public override bool CanGetNextPageRecords(object parameter)
         {
             if (this.totalRecordCount == 0)
@@ -265,6 +301,11 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             return this.pageIndex >= 0 && this.pageIndex < TotalPagesCount;
         }
 
+        /// <summary>
+        /// method to decide if is possible to go to the Previous page
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public override bool CanGetPreviousPageRecords(object parameter)
         {
             if (this.totalRecordCount == 0)
@@ -274,6 +315,11 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             return this.pageIndex > 0 && this.pageIndex <= TotalPagesCount;
         }
 
+        /// <summary>
+        /// method to decide if is possible to go to the last page
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public override bool CanGetLastPageRecords(object parameter)
         {
             if (this.totalRecordCount == 0)
@@ -285,6 +331,10 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
 
         #endregion
 
+        /// <summary>
+        /// go to the record with id
+        /// </summary>
+        /// <param name="id"></param>
         protected virtual void NavigateToRecord(TIdentifier id)
         {
             //if (this.IsActive)
@@ -293,16 +343,27 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             //}
         }
 
+        /// <summary>
+        /// go to the new record
+        /// </summary>
+        /// <param name="parameter"></param>
         public override void OnNewRecord(object parameter)
         {
             this.NavigateToRecord(default(TIdentifier));
         }
 
+        /// <summary>
+        /// edit the record
+        /// </summary>
+        /// <param name="parameter"></param>
         public override void OnEditRecord(object parameter)
         {
             this.NavigateToRecord(this.item.Id);
         }
 
+        /// <summary>
+        /// open the selected record
+        /// </summary>
         public virtual void NavigateToSelectedItem()
         {
             NavigateToRecord(this.item.Id);

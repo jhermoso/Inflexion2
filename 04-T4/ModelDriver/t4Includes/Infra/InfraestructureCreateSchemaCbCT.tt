@@ -18,21 +18,21 @@ public class InfraestructureCreateSchemaCbCT : Template
             Skt = skt;                          // shared kernel tree
             KindTimeCall = kindTimeCall;
             boundedContextElements = entitiesTree;
-            if (okDebug) Debug.WriteLine(string.Format("*NamespaceProyecto ='{0}'", NamespaceProyecto));
+            //if (okDebug) Debug.WriteLine(string.Format("*NamespaceProyecto ='{0}'", NamespaceProyecto));
         }
         
     public override string TransformText()
         {
             // ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
-            if (okDebug) Debug.WriteLine(string.Format("**NamespaceProyecto  pasado como argumento='{0}'", NamespaceProyecto));
-             if (okDebug) Debug.WriteLine(string.Format("**projectNamespace establecido comopropiedad de la clase ='{0}'", projectNamespace));
+            //if (okDebug) Debug.WriteLine(string.Format("**NamespaceProyecto  pasado como argumento='{0}'", NamespaceProyecto));
+            // if (okDebug) Debug.WriteLine(string.Format("**projectNamespace establecido comopropiedad de la clase ='{0}'", projectNamespace));
 
             IList<string> NameSpaceSection = SplitNamesProjects(NamespaceProyecto, cbc.diagram);
-            string company              = NameSpaceSection[0]; if (okDebug) Debug.WriteLine(string.Format("company ='{0}'", company));
-            string product              = NameSpaceSection[1]; if (okDebug) Debug.WriteLine(string.Format("product ='{0}'", product));
-            string boundedContextName   = NameSpaceSection[2]; if (okDebug) Debug.WriteLine(string.Format("boundedContextName ='{0}'", boundedContextName));
-            string layer                = NameSpaceSection[3]; if (okDebug) Debug.WriteLine(string.Format("layer ='{0}'", layer));
-            string kindProject          = NameSpaceSection[4]; if (okDebug) Debug.WriteLine(string.Format("kindProject ='{0}'", kindProject));
+            string company              = NameSpaceSection[0];// if (okDebug) Debug.WriteLine(string.Format("company ='{0}'", company));
+            string product              = NameSpaceSection[1];// if (okDebug) Debug.WriteLine(string.Format("product ='{0}'", product));
+            string boundedContextName   = NameSpaceSection[2];// if (okDebug) Debug.WriteLine(string.Format("boundedContextName ='{0}'", boundedContextName));
+            string layer                = NameSpaceSection[3];// if (okDebug) Debug.WriteLine(string.Format("layer ='{0}'", layer));
+            string kindProject          = NameSpaceSection[4];// if (okDebug) Debug.WriteLine(string.Format("kindProject ='{0}'", kindProject));
 
             //var cpyrigth = new CopyrightHeader(diagram,solutionInfo,entity);
             // string cpyrigthText = cpyrigth.TransformText(); // en principio esta linea se comenta pues no tenemos un texto de copywrigth para los fichero
@@ -42,7 +42,7 @@ public class InfraestructureCreateSchemaCbCT : Template
             // 2ª las clases base son Class
             // Las clases que heredan de otra son 
 
-            string SgbdTechnology= null;
+            string SgbdTechnology= "SqlServer";
             if (cbc.diagram.SGDB.Contains("Oracle"))
             {
                 SgbdTechnology = "Oracle"; //  estas cadenas son las que hemos utilizado para los nombres de los proyectos en la arquitectura.
@@ -97,12 +97,12 @@ namespace CreateProductDataBase
 <#+
             }// tenemos que escribir los using de cada bounded context por tanto 
  #>
-    using <#= company #>.<#= product #>.<#= boundedContextName #>.<#= layer #>.Maps.nHibernate31.<#= SgbdTechnology #>;
+    using <#= company #>.<#= (product != null)? product:"Suite" #>.<#= (boundedContextName != null)? boundedContextName:"Shared" #>.<#= (layer != null)?layer:"Infrastructure" #>.Maps.nHibernate31.<#= ( SgbdTechnology != null)? SgbdTechnology:"SqlServer" #>;
     // nuevos using and references
-    using <#= company #>.<#= product #>.<#= boundedContextName #>.Domain.Core;
-    using <#= company #>.<#= product #>.<#= boundedContextName #>.Domain.Base;
-    using <#= company #>.<#= product #>.<#= boundedContextName #>.Domain.Data;
-    using <#= company #>.<#= product #>.<#= boundedContextName #>.Domain.Resources;
+    using <#= company #>.<#= (product != null)? product:"Suite" #>.<#= (boundedContextName != null)? boundedContextName:"Shared" #>.Domain.Core;
+    using <#= company #>.<#= (product != null)? product:"Suite" #>.<#= (boundedContextName != null)? boundedContextName:"Shared" #>.Domain.Base;
+    using <#= company #>.<#= (product != null)? product:"Suite" #>.<#= (boundedContextName != null)? boundedContextName:"Shared" #>.Domain.Data;
+    using <#= company #>.<#= (product != null)? product:"Suite" #>.<#= (boundedContextName != null)? boundedContextName:"Shared" #>.Domain.Resources;
     using FluentNHibernate;
 <#+
             if(KindTimeCall.Equals("inicio") | KindTimeCall.Equals("soloUna") )

@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0E95215F-9E9A-4601-82F9-694F0AC8CBEA}</ProjectGuid>
+    <ProjectGuid>{65B6BDC1-6E5D-484C-A700-C5B5644AE92C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Atento.Suite.Shared.FrontEnd.WpfStartUp</RootNamespace>
@@ -84,9 +84,17 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MahApps.Metro, Version=0.13.1.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+    <Reference Include="Itenso.Configuration, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\02-Library\MahApps.Metro.0.13.1.0\lib\net40\MahApps.Metro.dll</HintPath>
+      <HintPath>..\..\02-Library\UserSettingsApplied_v1.2.0\bin\Debug\Itenso.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Itenso.Configuration.Windows, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\02-Library\UserSettingsApplied_v1.2.0\bin\Debug\Itenso.Configuration.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\10-Solutions\packages\MahApps.Metro.0.13.1.0\lib\net40\MahApps.Metro.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.Prism, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -131,10 +139,20 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\10-Solutions\packages\Prism.4.1.0.0\lib\NET40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="WindowsBase" />
+    <Reference Include="WPFLocalizeExtension">
+      <HintPath>..\..\02-Library\WPFLocalizationExtension-BinWPF\WPFLocalizeExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="XAMLMarkupExtensions">
+      <HintPath>..\..\02-Library\WPFLocalizationExtension-BinWPF\XAMLMarkupExtensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -155,10 +173,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Properties\Resources.ar.resx" />
+    <EmbeddedResource Include="Properties\Resources.ja.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.zh.resx" />
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -184,11 +205,15 @@
       <Name>Inflexion2.UX.WPF</Name>
     </ProjectReference>
     <ProjectReference Include="..\Atento.Suite.Shared.Domain.Data\Atento.Suite.Shared.Domain.Data.csproj">
-      <Project>{D5638DFB-A42F-4288-8332-F37C19423EE4}</Project>
+      <Project>{C91889D8-2DA8-4999-AD91-9392F4912E90}</Project>
       <Name>Atento.Suite.Shared.Domain.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Atento.Suite.Shared.FrontEnd.WpfResources\Atento.Suite.Shared.FrontEnd.WpfResources.csproj">
+      <Project>{25d19627-0015-4453-a501-c75ba55746e7}</Project>
+      <Name>Atento.Suite.Shared.FrontEnd.WpfResources</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Atento.Suite.Shared.Infrastructure.Resources\Atento.Suite.Shared.Infrastructure.Resources.csproj">
-      <Project>{1DF2C3C2-1A32-4169-B674-57649CE1C343}</Project>
+      <Project>{4EA35821-562B-41A1-ADA4-15B775FED797}</Project>
       <Name>Atento.Suite.Shared.Infrastructure.Resources</Name>
     </ProjectReference>
   </ItemGroup>

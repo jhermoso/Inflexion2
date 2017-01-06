@@ -58,17 +58,17 @@ namespace Inflexion2.Security
         {
             if (name == null)
             {
-                throw new ArgumentNullException(Framework.NameCannotBeNull);
+                throw new ArgumentNullException(FrameworkResource.NameCannotBeNull);
             }
 
             if (type == null)
             {
-                throw new ArgumentNullException(Framework.TypeCannotBeNull);
+                throw new ArgumentNullException(FrameworkResource.TypeCannotBeNull);
             }
 
             if (id == null)
             {
-                throw new ArgumentNullException(Framework.TypeCannotBeNull);
+                throw new ArgumentNullException(FrameworkResource.TypeCannotBeNull);
             }
 
             this.name = name;

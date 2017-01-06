@@ -1257,7 +1257,10 @@ public class Architecture
                     Template = TemplateProject.ClassLibraryCC,
                     References = new Collection<ArqLayer.ArqProject.ArqReference>
                     {   
-						new ArqLayer.ArqProject.ArqReference{   ReferenceType   = ReferenceKind.CLR,      Name = "System"  }
+						new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.CLR,  Name  = "System"  },
+						new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.CLR,  Name  = "PresentationCore" },
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.CLR,  Name  = "PresentationFramework" },
+						new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.CLR,  Name  = "WindowsBase" }
                     }
                 },
                     new ArqLayer.ArqProject
@@ -1349,6 +1352,43 @@ public class Architecture
 
                         }
                     },
+				new ArqLayer.ArqProject
+                {
+                    Name = "WcfService.Contracts",
+                    Template = TemplateProject.ClassLibraryCC,
+                    References = new Collection<ArqLayer.ArqProject.ArqReference>
+                    {
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.CLR,         Name  = "System" },
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.CLR,         Name  = "Microsoft.CSharp" },
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.CLR,         Name  = "System.ComponentModel.DataAnnotations" },
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.CLR,         Name  = "System.Core" },
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.CLR,         Name  = "System.Data" },
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.CLR,         Name  = "System.Data.DataSetExtensions" },
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.CLR,         Name  = "System.Xml" },
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.CLR,         Name  = "System.Xml.Linq" },
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.CLR,         Name  = "System.Runtime.Serialization" },
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.CLR,         Name  = "System.ServiceModel" },
+
+
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnContext,  Name  = "Domain" },
+						new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnContext,  Name  = "Domain.Data" },
+						new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnContext,  Name  = "Infrastructure" },
+						new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnContext,  Name  = "Infrastructure.Resources" },
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnContext,  Name  = "Application" },
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnContext,  Name  = "Application.Dtos" },
+
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnSolution,   Name  = "Inflexion2",            dllPath = "Inflexion2" },
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnSolution,   Name  = "Inflexion2.EF",         dllPath = "Inflexion2.EF"/*, condition="ORM", conditionValue = "EntityFramewokCodeFirst"*/ },
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnSolution,   Name  = "Inflexion2.Application",dllPath = "Inflexion2.Application" },
+
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.Nuget, Name = "NHibernate", dllPath = "NHibernate.3.3.1.4000\\lib\\Net35", version = "3.3.1.4000", condition="ORM", conditionValue="Nhibernate,FluentNhibernate" },
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.Nuget, Name = "FluentNHibernate", dllPath = "FluentNHibernate.1.3.0.733\\lib",  version = "1.3.0.733", condition="ORM", conditionValue="Nhibernate,FluentNhibernate"},
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.Nuget, Name = "Iesi.Collections", dllPath = "Iesi.Collections.3.2.0.4000\\lib\\Net35",  version = "3.2.0.4000", condition="ORM", conditionValue="Nhibernate,FluentNhibernate"},
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.Nuget, Name = "EntityFramework", dllPath = "EntityFramework.6.1.1\\lib\\net40", version="6.0.0.0", condition="ORM", conditionValue = "EntityFramewokCodeFirst"},
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.Nuget, Name = "EntityFramework.SqlServer", dllPath = "EntityFramework.6.1.1\\lib\\net40", version="6.0.0.0", condition="DataBase", conditionValue = "EntityFramewokCodeFirst"}
+                        
+                    } 
+                }, // ArqLayer.ArqProject
                     new ArqLayer.ArqProject
                 {
                     Name = "WcfClient",
@@ -1368,11 +1408,13 @@ public class Architecture
 
                         new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnContext,  Name  = "Application" },
                         new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnContext,  Name  = "Application.Dtos" },
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnContext,  Name  = "WcfService.Contracts" },
 
                         new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnSolution,   Name  = "Inflexion2",            dllPath = "Inflexion2" },
                         new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnSolution,   Name  = "Inflexion2.Application",dllPath = "Inflexion2.Application" }
                     }
                 },
+
                 new ArqLayer.ArqProject
                 {
                     Name = "WcfService",
@@ -1406,6 +1448,7 @@ public class Architecture
 						new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnContext,  Name  = "Infrastructure.Resources" },
                         new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnContext,  Name  = "Application" },
                         new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnContext,  Name  = "Application.Dtos" },
+                        new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.OwnContext,  Name  = "WcfService.Contracts" },
 
                         new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.ThirdParty,  Name = "Microsoft.Practices.Unity", dllPath = "Unity\\v2.1", version="2.1.505.0" },
 
@@ -1420,8 +1463,10 @@ public class Architecture
                         new ArqLayer.ArqProject.ArqReference { ReferenceType   = ReferenceKind.Nuget, Name = "EntityFramework.SqlServer", dllPath = "EntityFramework.6.1.1\\lib\\net40", version="6.0.0.0", condition="DataBase", conditionValue = "EntityFramewokCodeFirst"}
                         
 
-                    }
-                }
+                    } // End layer ArqLayer.ArqProject.references
+                } // ArqLayer.ArqProject
+
+
             }// end layer Proyects
         },// end layer
         new ArqLayer
@@ -1460,6 +1505,8 @@ public class Architecture
                         new ArqLayer.ArqProject.ArqReference{ ReferenceType = ReferenceKind.ThirdParty,   Name = "Microsoft.Practices.Prism",    dllPath ="Prism\\binaries 4.1"},
                         new ArqLayer.ArqProject.ArqReference{ ReferenceType = ReferenceKind.ThirdParty,   Name = "Microsoft.Practices.Prism.Interactivity", dllPath ="Prism\\binaries 4.1"},
                         new ArqLayer.ArqProject.ArqReference{ ReferenceType = ReferenceKind.ThirdParty,   Name = "Microsoft.Practices.Prism.UnityExtensions", dllPath ="Prism\\binaries 4.1"},
+						new ArqLayer.ArqProject.ArqReference{ ReferenceType = ReferenceKind.ThirdParty,   Name = "WPFLocalizeExtension.dll", dllPath ="WPFLocalizationExtension-BinWPF"},
+						new ArqLayer.ArqProject.ArqReference{ ReferenceType = ReferenceKind.ThirdParty,   Name = "XAMLMarkupExtensions.dll", dllPath ="WPFLocalizationExtension-BinWPF"},
 
                         new ArqLayer.ArqProject.ArqReference{ ReferenceType = ReferenceKind.CLR,          Name = "System.Xaml"},
                         new ArqLayer.ArqProject.ArqReference{ ReferenceType = ReferenceKind.CLR,          Name = "WindowsBase"},
@@ -1503,6 +1550,8 @@ public class Architecture
                         new ArqLayer.ArqProject.ArqReference{ ReferenceType = ReferenceKind.ThirdParty,   Name = "Microsoft.Practices.Prism",    dllPath ="Prism\\binaries 4.1"},
                         new ArqLayer.ArqProject.ArqReference{ ReferenceType = ReferenceKind.ThirdParty,   Name = "Microsoft.Practices.Prism.Interactivity", dllPath ="Prism\\binaries 4.1"},
                         new ArqLayer.ArqProject.ArqReference{ ReferenceType = ReferenceKind.ThirdParty,   Name = "Microsoft.Practices.Prism.UnityExtensions", dllPath ="Prism\\binaries 4.1"},
+						new ArqLayer.ArqProject.ArqReference{ ReferenceType = ReferenceKind.ThirdParty,   Name = "WPFLocalizeExtension.dll", dllPath ="WPFLocalizationExtension-BinWPF"},
+						new ArqLayer.ArqProject.ArqReference{ ReferenceType = ReferenceKind.ThirdParty,   Name = "XAMLMarkupExtensions.dll", dllPath ="WPFLocalizationExtension-BinWPF"},
 
                         new ArqLayer.ArqProject.ArqReference{ ReferenceType = ReferenceKind.OwnSolution,   Name = "Inflexion2.UX.WPF"},
                         new ArqLayer.ArqProject.ArqReference{ ReferenceType = ReferenceKind.OwnSolution,   Name = "Inflexion2.UX.WPF.Controls"},

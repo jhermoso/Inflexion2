@@ -7,15 +7,6 @@
 <#@ include file="Documentation\GetGeneralDocumentation.tt" #>
 <#
 
-#if DEBUG
-bool okDebug = true;
-if (okDebug)
-    {    
-        Debug.WriteLine(""); 
-        Debug.WriteLine("Empezamos con la transformación de DocGenerator");
-    }
-#endif
-
   var source = this.Application; // Usual access to source model.
   // In the source DSL Definition, the root element has a model reference:
 
@@ -27,10 +18,10 @@ if (okDebug)
     // almacenandolas en estructuras de datos facilmente accesibles.
     // 1º acerca del diagrama
     DslContextDefinitionDiagram MainDiagram = new DslContextDefinitionDiagram(this.Application, TreeApp);
-    //Debug.WriteLine(MainDiagram.ToString());
+
     // 2º acerca de la propia solución
     ActiveSolution SolutionInfo = new ActiveSolution(this.Host);
-    //Debug.WriteLine(SolutionInfo.ToString());
+
     // 3º obtenemos en la clase de maindiagram los path absolutos de las principales carpetas de la solución.
     MainDiagram.SetAbsolutePath(SolutionInfo.DirectoryName);
 

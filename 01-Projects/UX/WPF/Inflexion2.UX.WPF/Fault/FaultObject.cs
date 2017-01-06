@@ -3,7 +3,7 @@
 //     Copyright (c) 2012. Inflexion Software. All Rights Reserved.
 // </copyright>
 // ----------------------------------------------------------------------
-namespace Inflexion.UX.WPF.Fault
+namespace Inflexion2.UX.WPF.Fault
 {
     using System;
     using System.Runtime.Serialization;
@@ -132,7 +132,7 @@ namespace Inflexion.UX.WPF.Fault
                 var fault = new FaultException<T>(exception, new FaultReason(exception.Reason));
                 return fault;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

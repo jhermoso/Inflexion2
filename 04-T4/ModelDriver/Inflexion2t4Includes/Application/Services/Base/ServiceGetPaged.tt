@@ -39,7 +39,7 @@ public class ServiceGetPaged : Template
             Guard.ArgumentIsNotNull(
                                     specificationDto,
                                     string.Format(
-                                                  Inflexion2.Resources.Framework.EspecificationDataTransferObjectIsNull,
+                                                  FrameworkResource.EspecificationDataTransferObjectIsNull,
                                                   "<#= cbc.entity.AliasFrontEnd #>")); 
             #endregion
             List<<#= cbc.pascalSecureEntityName #>Dto> result = new List<<#= cbc.pascalSecureEntityName #>Dto>(0);

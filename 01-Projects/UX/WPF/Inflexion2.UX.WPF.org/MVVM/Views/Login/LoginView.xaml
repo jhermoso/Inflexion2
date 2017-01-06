@@ -1,0 +1,127 @@
+﻿<Window x:Class="Inflexion2.UX.WPF.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:l="http://wpflocalizeextension.codeplex.com"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        l:LocalizeDictionary.DesignCulture="en"
+        l:ResxLocalizationProvider.DefaultAssembly="Inflexion2.Resources"
+        l:ResxLocalizationProvider.DefaultDictionary="FrameworkResource"
+        
+        xmlns:helpers="clr-namespace:Inflexion2.UX.WPF.Helpers"
+        Title="{l:Loc Access}" Padding="0"
+        Height="260" Width="380"
+        WindowStartupLocation="CenterScreen"
+        
+        FlowDirection="{l:LocFlowDirection Inflexion2.Resources:FrameworkResource:flow}" 
+        
+        helpers:DialogCloser.DialogResult="{Binding DialogResult}">    <!--WindowStyle="None"-->
+
+    <Window.Icon>
+        <BitmapImage UriSource="../Images/Inflexion2.png" DecodePixelHeight="24" DecodePixelWidth="24" CreateOptions="PreservePixelFormat"/>
+    </Window.Icon>
+
+    <!--<Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Inflexion2.UX.WPF.Controls;component/Styles/Colours.xaml" />
+                <ResourceDictionary Source="/Inflexion2.UX.WPF.Controls;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="/Inflexion2.UX.WPF.Controls;component/Styles/Controls.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>-->
+
+    <Grid FocusManager.FocusedElement="{Binding ElementName=txtUserName}" Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>    
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+            <!-- Título de la ventana -->
+            <!--                FontFamily="{DynamicResource DefaultFontFamily}"
+                   FontSize="{DynamicResource SubTitleFontSize}"
+                   Foreground="{DynamicResource GrayForegroundColor}"
+                   Background="{DynamicResource BlackForegroundColor}"-->
+            <Label Grid.Row="0"
+                    Grid.ColumnSpan="3"
+                   FontWeight="SemiBold"
+                   Canvas.Left="0" 
+                   Canvas.Top="0" 
+                   Width="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}" 
+                   Content="{l:Loc Login}" HorizontalAlignment="Left" />
+
+        <Label Grid.Row="1"
+                Grid.ColumnSpan="3"
+                   Canvas.Left="80"
+                   Canvas.Top="50"
+                   Content="{l:Loc UserName}" Margin="20,0" HorizontalAlignment="Left" />
+
+        <TextBox Grid.Row="2"
+                Name="txtUserName"
+                Grid.ColumnSpan="3"
+                     HorizontalAlignment="Left"
+                     Width="210"
+                     VerticalContentAlignment="Center" 
+                     Text="{Binding Login, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" Margin="20,0"/>
+
+        <Label Grid.Row="3"
+                Grid.ColumnSpan="3"
+                   Content="{l:Loc Password}" Margin="20,0" HorizontalAlignment="Left"  />
+
+        <PasswordBox  Grid.Row="4"
+                      Grid.ColumnSpan="3"
+                         HorizontalAlignment="Left"
+                         Width="210"
+                         VerticalContentAlignment="Center"
+                         helpers:PasswordHelper.Attach="True" 
+                         helpers:PasswordHelper.Password="{Binding Password, Mode=TwoWay}" Margin="20,0" />
+
+            <!-- Botones -->
+            <!--FontFamily="{DynamicResource DefaultFontFamily}"
+                    FontSize="{DynamicResource ContentFontSize}"
+                    Foreground="{DynamicResource WhiteForegroundColor}"
+                    Background="{DynamicResource GreenForegroundColor}"-->
+        <Button Grid.Row="8"
+                Grid.Column="1"
+                    Content="{l:Loc Acept}"
+                    Height="30"
+                    ToolTip="Aceptar"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right"
+                    Width="81" IsDefault="True"
+                    Command="{Binding Ok}" />
+            <!--FontFamily="{DynamicResource DefaultFontFamily}"
+                    FontSize="{DynamicResource ContentFontSize}"
+                    Foreground="{DynamicResource BlackForegroundColor}"-->
+            <Button 
+                    Grid.Row="8"
+                Grid.Column="2"
+                    Content="{l:Loc Cancel}"
+                    Height="30"
+                    Width="81"
+                    ToolTip="Cancelar"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right"
+                    Command="{Binding Cancel}" />
+
+        <ComboBox Grid.Row="8"
+                  Grid.Column="0"
+                ItemsSource="{Binding Source={x:Static l:LocalizeDictionary.Instance}, Path=MergedAvailableCultures}"
+                      SelectedItem="{Binding Source={x:Static l:LocalizeDictionary.Instance}, Path=Culture}"
+                      DisplayMemberPath="NativeName" Canvas.Left="8" Canvas.Top="225" HorizontalAlignment="Left"
+                      />
+        <Label Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="9" Content = "{Binding CurrentDateAndTime}"/>
+    </Grid>
+</Window>

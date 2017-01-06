@@ -12,6 +12,191 @@
             Sin comentarios adicionales.
             </remarks>
         </member>
+        <member name="T:Inflexion2.UX.WPF.Fault.FaultObject">
+            <summary>
+            Clase pública para la captura de excepciones desde los servicios.
+            </summary>
+            <remarks>
+            Sin comentarios especiales.
+            </remarks>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Fault.FaultObject.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:FaultObject"/>.
+            </summary>
+            <remarks>
+            Sin comentarios especiales.
+            </remarks>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Fault.FaultObject.#ctor(System.Exception)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:FaultObject"/>.
+            </summary>
+            <remarks>
+            Sin comentarios especiales.
+            </remarks>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Fault.FaultObject.#ctor(System.String,System.Exception)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:FaultObject"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.Fault.FaultObject.FaultCode">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.Fault.FaultObject.FaultCode.Sever">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.Fault.FaultObject.Code">
+            <summary>
+            Propiedad que obtiene o establece el código de la excepción.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener o establecer el código de la excepción.
+            </value>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.Fault.FaultObject.Reason">
+            <summary>
+            Propiedad pública que obtiene o establece el texto del mensaje de excepción.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Valor que es utilizado para obtener o establecer el texto del mensaje de excepción.
+            </value>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Fault.FaultObject.Create``1(``0)">
+            <summary>
+            Creates a WCF SOAP FaultException based on a CAS Exception.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="exception">The exception.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Fault.FaultObject.Throw``1(``0)">
+            <summary>
+            Throws the specified exception.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.Fault.InternalException">
+            <summary>
+            Clase de excepción interna para el Fault.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Fault.InternalException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:InternalException"/> con el
+            mensaje de error especificado.
+            </summary>
+            <param name="message">
+            Parámetro que indica el mensaje de la excepción.
+            </param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Fault.InternalException.#ctor(System.Exception)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:InternalException"/> con el
+            la excepción especificada.
+            </summary>
+            <param name="exception">
+            Parámetro de tipo <see cref="T:System.Exception"/> que indica la excepción producida.
+            </param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Fault.InternalException.#ctor(System.String,System.Exception)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:InternalException"/> con el
+            mensaje de error especificado y la excepción interna.
+            </summary>
+            <param name="message">
+            Parámetro que indica el mensaje de la excepción.
+            </param>
+            <param name="innerException">
+            Parámetro de tipo <see cref="T:System.Exception"/> que identifica la excepción interna.
+            </param>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.Fault.ValidationException">
+            <summary>
+            Validation exception
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Fault.ValidationException.#ctor(Inflexion2.Domain.Validation.ValidationException)">
+            <summary>
+            constructs and gets the message for a validation exception
+            </summary>
+            <param name="validationException"></param>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.Fault.ValidationException.ValidationErrors">
+            <summary>
+            .en collection of errors messages
+            </summary>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.Fault.ServiceFaultContracts">
+            <summary>
+            Services for contract exceptions
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Fault.ServiceFaultContracts.#ctor">
+            <summary>
+            gets the info from the exception
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Fault.ServiceFaultContracts.#ctor(System.Type[])">
+            <summary>
+            add the info from the exception contracts
+            </summary>
+            <param name="knownFaultTypes"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Fault.ServiceFaultContracts.AddBindingParameters(System.ServiceModel.Description.ContractDescription,System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)">
+            <summary>
+            add info from the parameters in the contracts
+            </summary>
+            <param name="contractDescription"></param>
+            <param name="endpoint"></param>
+            <param name="bindingParameters"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Fault.ServiceFaultContracts.ApplyClientBehavior(System.ServiceModel.Description.ContractDescription,System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)">
+            <summary>
+            not implemented
+            </summary>
+            <param name="contractDescription"></param>
+            <param name="endpoint"></param>
+            <param name="clientRuntime"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Fault.ServiceFaultContracts.ApplyDispatchBehavior(System.ServiceModel.Description.ContractDescription,System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.DispatchRuntime)">
+            <summary>
+            not implemented
+            </summary>
+            <param name="contractDescription"></param>
+            <param name="endpoint"></param>
+            <param name="dispatchRuntime"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Fault.ServiceFaultContracts.Validate(System.ServiceModel.Description.ContractDescription,System.ServiceModel.Description.ServiceEndpoint)">
+            <summary>
+            not implemented
+            </summary>
+            <param name="contractDescription"></param>
+            <param name="endpoint"></param>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.MVVM.AvalonDockRegion">
+            <summary>
+            Avalon dock Adapter 
+            </summary>
+        </member>
         <member name="F:Inflexion2.UX.WPF.MVVM.AvalonDockRegion.NameProperty">
             <summary>
             Name Attached Dependency Property
@@ -39,9 +224,37 @@
             TODO: Update summary.
             </summary>
         </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.AvalonPanesStyleSelector.DocumentStyle">
+            <summary>
+            work space style
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.AvalonPanesStyleSelector.ToolStyle">
+            <summary>
+            toolbar style
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.AvalonPanesStyleSelector.SelectStyle(System.Object,System.Windows.DependencyObject)">
+            <summary>
+            select the style depending on type of container use.
+            </summary>
+            <param name="item"></param>
+            <param name="container"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.MVVM.DockingManagerDocumentsSourceSyncBehavior">
+            <summary>
+            Sync docked documents
+            </summary>
+        </member>
         <member name="M:Inflexion2.UX.WPF.MVVM.DockingManagerDocumentsSourceSyncBehavior.OnAttach">
             <summary>
             Starts to monitor the <see cref="T:Microsoft.Practices.Prism.Regions.IRegion"/> to keep it in synch with the items of the <see cref="P:Inflexion2.UX.WPF.MVVM.DockingManagerDocumentsSourceSyncBehavior.HostControl"/>.
+            </summary>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.MVVM.DockingManagerRegionAdapter">
+            <summary>
+            part of avalon dock adapter for prism
             </summary>
         </member>
         <member name="T:Inflexion2.UX.WPF.MVVM.BaseModule">
@@ -110,7 +323,8 @@
         </member>
         <member name="T:Inflexion2.UX.WPF.MVVM.Commands.MultipleViewsNavigationCommand`1">
             <summary>
-            Representa el comando de navegación.
+            .en navigation command
+            .es Representa el comando de navegación.
             </summary>
             <typeparam name="T">
             Tipo de ViewModel que contiene la referencia a este comando.
@@ -146,15 +360,16 @@
         </member>
         <member name="M:Inflexion2.UX.WPF.MVVM.Commands.MultipleViewsNavigationCommand`1.#ctor(`0,System.String[],System.String[])">
             <summary>
+            not implemented
             Inicializa una nueva instancia de la clase <see cref="T:NavigationCommand"/>.
             </summary>
             <param name="navigationViewModel">
             Referencia al modelo de vista que contiene la referencia a este comando.
             </param>
-            <param name="regionName">
+            <param name="regionNames">
             Indica el nombre de la región donde se va a mostrar la vista.
             </param>
-            <param name="viewName">
+            <param name="viewNames">
             Indica el nombre de la vista que se va a mostrar.
             </param>
             <remarks>
@@ -168,10 +383,10 @@
             <param name="navigationViewModel">
             Referencia al modelo de vista que contiene la referencia a este comando.
             </param>
-            <param name="regionName">
+            <param name="regionNames">
             Indica el nombre de la región donde se va a mostrar la vista.
             </param>
-            <param name="viewName">
+            <param name="viewNames">
             Indica el nombre de la vista que se va a mostrar.
             </param>
             <param name="navigationCallback">
@@ -577,6 +792,71 @@
             .en Global Command to get the last page of records
             </value>
         </member>
+        <member name="T:Inflexion2.UX.WPF.MVVM.Views.ShellWindow">
+            <summary>
+            Representa la ventana principal de aplicación.
+            </summary>
+            <remarks>
+            Ventana de alto nivel Prism.
+            </remarks>
+            <summary>
+            ShellWindow
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.Views.ShellWindow.#ctor">
+            <summary>
+            Permite crear una nueva ventana principal de aplicación.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:ShellWindow"/>.
+            </remarks>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.Views.ShellWindow.ApplicationRibbon_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Atributo para salvar la configuración del usuario el idioma seleccionado.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.Views.ShellWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.MVVM.Views.Dialogs.IBaseDialogView`1">
+            <summary>
+            Contrato para las vistas de interacción.
+            </summary>
+            <typeparam name="T">Tipo de la entidad de interacción.</typeparam>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.Views.Dialogs.IBaseDialogView`1.SetEntity(`0)">
+            <summary>
+            Establece la entidad.
+            </summary>
+            <param name="entity">La entidad.</param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.Views.Dialogs.IBaseDialogView`1.GetEntity">
+            <summary>
+            Obtiene la entidad.
+            </summary>
+            <returns>La entidad</returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.Views.Dialogs.IBaseDialogView`1.Initialize">
+            <summary>
+            Se usa para inicializar el diálogo.
+            </summary>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.MVVM.Views.Presentation.PresentationView">
+            <summary>
+            Interaction logic for PresentationView.xaml
+            </summary>
+            <summary>
+            PresentationView
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.Views.Presentation.PresentationView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:Inflexion2.UX.WPF.MVVM.NavigationCompletedEvent">
             <summary>
             Evento CompositePresentationevent 
@@ -936,6 +1216,30 @@
             .es Este método solamente se aplica a la configuración de depuración.
             </remarks>
         </member>
+        <member name="T:Inflexion2.UX.WPF.MVVM.PropertySupport">
+            <summary>
+            class with method to get property info from expresion through reflection
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.PropertySupport.ExtractPropertyName``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            gets the type of property of one expresion
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="propertyExpresssion"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.MVVM.CRUD.IEntityViewModel`1">
+            <summary>
+            Interface base para los viewmodels de entidades
+            </summary>
+            <typeparam name="TIdentifier"></typeparam>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.IEntityViewModel`1.Id">
+            <summary>
+            Identificador de la entidad
+            </summary>
+        </member>
         <member name="T:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3">
             <summary>
             .en Generic abstract Base class for the Query View Models.
@@ -1005,6 +1309,92 @@
             propiedad de specification Dto este es un dto con el que se informa a la capa de aplicación que se 
             ha solicitado la ejecución de una operación, generalmente aplicandose a uno o varias entidades y que puede afectar a
             a la información almacenada sobre cada uno de ellos en el correspondiente repositorio.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanActivateRecord(System.Object)">
+            <summary>
+            method to decide if the record can be activated
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanGetRecords(System.Object)">
+            <summary>
+            method to decide if is possible to read the records
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanNewRecord(System.Object)">
+            <summary>
+            method to decide if is possible to add a new record
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanDeleteRecord(System.Object)">
+            <summary>
+            method to decide if is possible to delete one record
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanEditRecord(System.Object)">
+            <summary>
+            method to decide if is possible to edit the record
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanGetFirstPageRecords(System.Object)">
+            <summary>
+            method to decide if is possible to go to the first page
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanGetNextPageRecords(System.Object)">
+            <summary>
+            .en method to decide if is possible to go to the next page
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanGetPreviousPageRecords(System.Object)">
+            <summary>
+            method to decide if is possible to go to the Previous page
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanGetLastPageRecords(System.Object)">
+            <summary>
+            method to decide if is possible to go to the last page
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.NavigateToRecord(`2)">
+            <summary>
+            go to the record with id
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.OnNewRecord(System.Object)">
+            <summary>
+            go to the new record
+            </summary>
+            <param name="parameter"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.OnEditRecord(System.Object)">
+            <summary>
+            edit the record
+            </summary>
+            <param name="parameter"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.NavigateToSelectedItem">
+            <summary>
+            open the selected record
             </summary>
         </member>
         <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.RefreshCommands">
@@ -1100,15 +1490,10 @@
         </member>
         <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.RaisePropertyChanged``1(System.Linq.Expressions.Expression{System.Func{``0}})">
             <summary>
-            Propiedad pública encargada de obtener y establecer si
-            la entidad esta Activa o no
+            
             </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <value>
-            Indica el campo Activo de la entidad.
-            </value>
+            <typeparam name="T"></typeparam>
+            <param name="propertyExpresssion"></param>
         </member>
         <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.ObjectElement">
             <summary>
@@ -1859,6 +2244,92 @@
             <param name="sender">The source of the event.</param>
             <param name="e">The <see cref="T:Microsoft.Practices.Prism.Regions.RegionNavigationFailedEventArgs"/> instance containing the event data.</param>
         </member>
+        <member name="T:Inflexion2.UX.WPF.MVVM.ViewModels.LoginViewModel">
+            <summary>
+            .en view model to managed user login
+            .es View model para el login de usuario en el sistema.
+            </summary>
+            <remarks>
+            .en No comment
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.ViewModels.LoginViewModel.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.LoginViewModel.CurrentDateAndTime">
+            <summary>
+            Reloj
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.LoginViewModel.Login">
+            <summary>
+            
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            </value>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.LoginViewModel.Password">
+            <summary>
+            
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            </value>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.LoginViewModel.DialogResult">
+            <summary>
+            
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            </value>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.LoginViewModel.Ok">
+            <summary>
+            go on command
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.LoginViewModel.Cancel">
+            <summary>
+            cancel dialog command and close the aplication
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.ViewModels.LoginViewModel.CanExecuteOk">
+            <summary>
+            
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.ViewModels.LoginViewModel.ExecuteOk">
+            <summary>
+            
+            </summary>
+            <remarks>
+            Sin comentarios adicionales
+            </remarks>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.ViewModels.LoginViewModel.SetupValidation(MvvmValidation.ValidationHelper)">
+            <summary>
+            
+            </summary>
+            <remarks>
+            Sin comentarios adicionales
+            </remarks>
+            <param name="validation"></param>
+        </member>
         <member name="T:Inflexion2.UX.WPF.MVVM.ViewModels.RegionViewModel">
             <summary>
             Clase base para las clases modelo de vista (MVVM) que utilizan regiones Prism.
@@ -1995,66 +2466,6 @@
             Provoca el evento <see cref="M:IsActiveChanged"/> si es necesario.
             </summary>
         </member>
-        <member name="T:Inflexion2.UX.WPF.MVVM.Views.Dialogs.IBaseDialogView`1">
-            <summary>
-            Contrato para las vistas de interacción.
-            </summary>
-            <typeparam name="T">Tipo de la entidad de interacción.</typeparam>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.Views.Dialogs.IBaseDialogView`1.SetEntity(`0)">
-            <summary>
-            Establece la entidad.
-            </summary>
-            <param name="entity">La entidad.</param>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.Views.Dialogs.IBaseDialogView`1.GetEntity">
-            <summary>
-            Obtiene la entidad.
-            </summary>
-            <returns>La entidad</returns>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.Views.Dialogs.IBaseDialogView`1.Initialize">
-            <summary>
-            Se usa para inicializar el diálogo.
-            </summary>
-        </member>
-        <member name="T:Inflexion2.UX.WPF.MVVM.Views.Presentation.PresentationView">
-            <summary>
-            Interaction logic for PresentationView.xaml
-            </summary>
-            <summary>
-            PresentationView
-            </summary>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.Views.Presentation.PresentationView.InitializeComponent">
-            <summary>
-            InitializeComponent
-            </summary>
-        </member>
-        <member name="T:Inflexion2.UX.WPF.MVVM.Views.ShellWindow">
-            <summary>
-            Representa la ventana principal de aplicación.
-            </summary>
-            <remarks>
-            Ventana de alto nivel Prism.
-            </remarks>
-            <summary>
-            ShellWindow
-            </summary>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.Views.ShellWindow.#ctor">
-            <summary>
-            Permite crear una nueva ventana principal de aplicación.
-            </summary>
-            <remarks>
-            Constructor de la clase <see cref="T:ShellWindow"/>.
-            </remarks>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.Views.ShellWindow.InitializeComponent">
-            <summary>
-            InitializeComponent
-            </summary>
-        </member>
         <member name="T:Inflexion2.UX.WPF.MVVM.Adapters.RibbonRegionAdapter">
             <summary>
             Adaptador que habilita el uso del control Ribbon como una región Prism.
@@ -2178,6 +2589,12 @@
             <summary>
             Inicializa la ventana principal de aplicación.
             </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.BaseBootstrapper.Run(System.Boolean)">
+            <summary>
+            execution of bootstrapper
+            </summary>
+            <param name="runWithDefaultConfiguration"></param>
         </member>
         <member name="T:Inflexion2.UX.WPF.MVVM.RelayCommand`1">
             <summary>
@@ -2531,6 +2948,18 @@
             TODO: Update summary.
             </summary>
         </member>
+        <member name="F:Inflexion2.UX.WPF.Helpers.DialogCloser.DialogResultProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Helpers.DialogCloser.SetDialogResult(System.Windows.Window,System.Nullable{System.Boolean})">
+            <summary>
+            
+            </summary>
+            <param name="target"></param>
+            <param name="value"></param>
+        </member>
         <member name="T:Inflexion2.UX.WPF.Helpers.GeneralHelper">
             <summary>
             Clase pública utilzada como ayuda adicional a acciones habituales o generales.
@@ -2552,10 +2981,55 @@
             TODO: Update summary.
             </summary>
         </member>
-        <member name="T:Inflexion2.UX.WPF.ValueConverters.StringToPathGeometryConverter">
+        <member name="T:Inflexion2.UX.WPF.ValueConverters.StringToGeometryConverter">
             <summary>
             TODO: Update summary.
             </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.StringToGeometryConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.StringToGeometryConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            reverse conversion not implemented 
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.ValueConverters.StringToImageSourceConverter">
+            <summary>
+            https://social.msdn.microsoft.com/Forums/vstudio/en-US/ea1fd63b-738c-40ca-850e-994eb21dccea/binding-to-image-source-via-valueconverter-and-datacontext-in-usercontrol?forum=wpf
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.StringToImageSourceConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            IValueConverter implementation
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.StringToImageSourceConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            IValueConverter inverted not implemented
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
         </member>
         <member name="T:Inflexion2.UX.WPF.ValueConverters.SystemIconConverter">
             <summary>
@@ -2854,6 +3328,50 @@
             TODO: Update summary.
             </summary>
         </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.StringToColorConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            color converter
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.StringToColorConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            inverted conversion
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.StringToPathGeometryConverter.Convert(System.String)">
+            <summary>
+            converter from string to file path
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.StringToPathGeometryConverter.ConvertBack(System.Windows.Media.PathGeometry)">
+            <summary>
+            not implemented
+            </summary>
+            <param name="geometry"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.StringToPathGeometryConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            reverse converter implementation
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
         <member name="T:Inflexion2.UX.WPF.ValueConverters.TextToColorConverter">
             <summary>
             Devuelve un color ARGB en hexadecimal dependiendo de los valores recibidos.
@@ -2968,76 +3486,25 @@
             LoginView
             </summary>
         </member>
+        <member name="F:Inflexion2.UX.WPF.LoginView.WindowLanguajeProperty">
+            <summary>
+            Esta propiedad es para salvar en la configuración del usuario el idioma seleccionado.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.LoginView.#ctor">
+            <summary>
+            default parameterless constructor for the view of Login.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.LoginView.WindowLanguaje">
+            <summary>
+            Atributo para dar soporte a la propiedad de dependencia en la que almacenamos el lenguaje elegido
+            </summary>
+        </member>
         <member name="M:Inflexion2.UX.WPF.LoginView.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>
-        </member>
-        <member name="T:Inflexion2.UX.WPF.LoginViewModel">
-            <summary>
-            .en view model to managed user login
-            .es View model para el login de usuario en el sistema.
-            </summary>
-            <remarks>
-            .en No comment
-            Sin comentarios adicionales.
-            </remarks>
-        </member>
-        <member name="P:Inflexion2.UX.WPF.LoginViewModel.Login">
-            <summary>
-            
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <value>
-            </value>
-        </member>
-        <member name="P:Inflexion2.UX.WPF.LoginViewModel.Password">
-            <summary>
-            
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <value>
-            </value>
-        </member>
-        <member name="P:Inflexion2.UX.WPF.LoginViewModel.DialogResult">
-            <summary>
-            
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <value>
-            </value>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.LoginViewModel.CanExecuteOk">
-            <summary>
-            
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <returns></returns>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.LoginViewModel.ExecuteOk">
-            <summary>
-            
-            </summary>
-            <remarks>
-            Sin comentarios adicionales
-            </remarks>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.LoginViewModel.SetupValidation(MvvmValidation.ValidationHelper)">
-            <summary>
-            
-            </summary>
-            <remarks>
-            Sin comentarios adicionales
-            </remarks>
-            <param name="validation"></param>
         </member>
         <member name="T:Inflexion2.UX.WPF.Security.AccessBehavior">
             <summary>
@@ -3548,123 +4015,6 @@
             Valor que es utilizado para obtener o 
             establecer si un registro está seleccionado o no.
             </value>
-        </member>
-        <member name="T:Inflexion.UX.WPF.Fault.FaultObject">
-            <summary>
-            Clase pública para la captura de excepciones desde los servicios.
-            </summary>
-            <remarks>
-            Sin comentarios especiales.
-            </remarks>
-        </member>
-        <member name="M:Inflexion.UX.WPF.Fault.FaultObject.#ctor(System.String)">
-            <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:FaultObject"/>.
-            </summary>
-            <remarks>
-            Sin comentarios especiales.
-            </remarks>
-        </member>
-        <member name="M:Inflexion.UX.WPF.Fault.FaultObject.#ctor(System.Exception)">
-            <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:FaultObject"/>.
-            </summary>
-            <remarks>
-            Sin comentarios especiales.
-            </remarks>
-        </member>
-        <member name="M:Inflexion.UX.WPF.Fault.FaultObject.#ctor(System.String,System.Exception)">
-            <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:FaultObject"/>.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-        </member>
-        <member name="T:Inflexion.UX.WPF.Fault.FaultObject.FaultCode">
-             <summary>
-            
-             </summary>
-        </member>
-        <member name="F:Inflexion.UX.WPF.Fault.FaultObject.FaultCode.Sever">
-             <summary>
-            
-             </summary>
-        </member>
-        <member name="P:Inflexion.UX.WPF.Fault.FaultObject.Code">
-            <summary>
-            Propiedad que obtiene o establece el código de la excepción.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <value>
-            Valor que es utilizado para obtener o establecer el código de la excepción.
-            </value>
-        </member>
-        <member name="P:Inflexion.UX.WPF.Fault.FaultObject.Reason">
-            <summary>
-            Propiedad pública que obtiene o establece el texto del mensaje de excepción.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <value>
-            Valor que es utilizado para obtener o establecer el texto del mensaje de excepción.
-            </value>
-        </member>
-        <member name="M:Inflexion.UX.WPF.Fault.FaultObject.Create``1(``0)">
-            <summary>
-            Creates a WCF SOAP FaultException based on a CAS Exception.
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="exception">The exception.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Inflexion.UX.WPF.Fault.FaultObject.Throw``1(``0)">
-            <summary>
-            Throws the specified exception.
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="exception">The exception.</param>
-        </member>
-        <member name="T:Inflexion.UX.WPF.Fault.InternalException">
-            <summary>
-            Clase de excepción interna para el Fault.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-        </member>
-        <member name="M:Inflexion.UX.WPF.Fault.InternalException.#ctor(System.String)">
-            <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:InternalException"/> con el
-            mensaje de error especificado.
-            </summary>
-            <param name="message">
-            Parámetro que indica el mensaje de la excepción.
-            </param>
-        </member>
-        <member name="M:Inflexion.UX.WPF.Fault.InternalException.#ctor(System.Exception)">
-            <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:InternalException"/> con el
-            la excepción especificada.
-            </summary>
-            <param name="exception">
-            Parámetro de tipo <see cref="T:System.Exception"/> que indica la excepción producida.
-            </param>
-        </member>
-        <member name="M:Inflexion.UX.WPF.Fault.InternalException.#ctor(System.String,System.Exception)">
-            <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:InternalException"/> con el
-            mensaje de error especificado y la excepción interna.
-            </summary>
-            <param name="message">
-            Parámetro que indica el mensaje de la excepción.
-            </param>
-            <param name="innerException">
-            Parámetro de tipo <see cref="T:System.Exception"/> que identifica la excepción interna.
-            </param>
         </member>
     </members>
 </doc>

@@ -140,16 +140,16 @@ namespace Atento.Suite.Shared.Application
             Guard.ArgumentIsNotNull(
                                     categoriaDto,
                                     string.Format(
-                                                    Inflexion2.Resources.Framework.DataTransferObjectIsNull,
-                                                    SharedNeutral.CategoriaAlias));
+                                                    FrameworkResource.DataTransferObjectIsNull,
+                                                    SharedResources.CategoriaAlias));
             // Comprobar los campos mandatory dentro del DTO.
             #endregion
 
             // el dto debe corresponder a un transient el id debe tener el valor por defecto
             Guard.Against<ArgumentException>(categoriaDto.Id != default(Int32),                                    
                                                     string.Format(
-                                                                Inflexion2.Resources.Framework.IsNotTransient,
-                                                                SharedNeutral.CategoriaAlias
+                                                                FrameworkResource.IsNotTransient,
+                                                                SharedResources.CategoriaAlias
                                                                     )
                                             );
 
@@ -236,13 +236,13 @@ namespace Atento.Suite.Shared.Application
         /// <summary>
         /// Recupera una entidad Categoria mediante su identificador correspondiente.
         /// </summary>
-        /// <param name="id">
+        /// <param name="entityId">
         /// Identificador de la entidad que se va a recuperar.
         /// </param>
         /// <returns>
         /// La entidad Categoria recuperada o valor nulo si no se encuentra.
         /// </returns>
-        public CategoriaDto GetById(Int32 entityBId)
+        public CategoriaDto GetById(Int32 entityId)
         {
             // Variable de respuesta.
             CategoriaDto entityDto = null;
@@ -253,8 +253,8 @@ namespace Atento.Suite.Shared.Application
 
                 // Obtener y comprobar la entidad.
                 //ISpecification<Categoria> spec = new DirectSpecification<Categoria>(t => t.Id == entityBId);
-                var temp = repo.GetFilteredElements(t => t.Id == entityBId);
-                //string s = string.Format(Inflexion2.Resources.Framework.NoDataById, "Categoria", entityBId);
+                var temp = repo.GetFilteredElements(t => t.Id == entityId);
+                //string s = string.Format(Inflexion2.Resources.NoDataById, "Categoria", entityBId);
 
                 //Guard.ArgumentIsNotNull( entity, s );
 
@@ -300,7 +300,7 @@ namespace Atento.Suite.Shared.Application
             Guard.ArgumentIsNotNull(
                                     specificationDto,
                                     string.Format(
-                                                  Inflexion2.Resources.Framework.EspecificationDataTransferObjectIsNull,
+                                                  FrameworkResource.EspecificationDataTransferObjectIsNull,
                                                   "Categoria")); 
             #endregion
             List<CategoriaDto> result = new List<CategoriaDto>(0);
@@ -369,7 +369,7 @@ namespace Atento.Suite.Shared.Application
             Guard.ArgumentIsNotNull(
                                     categoriaDto,
                                     string.Format(
-                                                  Inflexion2.Resources.Framework.DataTransferObjectIsNull,
+                                                  FrameworkResource.DataTransferObjectIsNull,
                                                   "Categoria"));
             // en una actualización no comprobamos los campos mandatory.
             #endregion            
@@ -384,7 +384,7 @@ namespace Atento.Suite.Shared.Application
                 Guard.ArgumentIsNotNull(
                                         entity2Update,
                                         string.Format(
-                                                        Inflexion2.Resources.Framework.CanNotUpdateInexistenceEntity,
+                                                        FrameworkResource.CanNotUpdateInexistenceEntity,
                                                         "Categoria"));
                 // Comprobar duplicidades;
 

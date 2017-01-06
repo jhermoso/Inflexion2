@@ -1,22 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Practices.Prism.Regions;
-using Microsoft.Practices.Prism.Regions.Behaviors;
-using AvalonDock;
-using System.Windows;
-using System.Collections.Specialized;
-using System.Collections.ObjectModel;
-using System.Windows.Data;
+﻿
 
 namespace Inflexion2.UX.WPF.MVVM
 {
+    using AvalonDock;
+    using Microsoft.Practices.Prism.Regions;
+    using Microsoft.Practices.Prism.Regions.Behaviors;
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Collections.Specialized;
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Data;
+
+    /// <summary>
+    /// Sync docked documents
+    /// </summary>
     class DockingManagerDocumentsSourceSyncBehavior : RegionBehavior, IHostAwareRegionBehavior
     {
         public static readonly string BehaviorKey = "DockingManagerDocumentsSourceSyncBehavior";
         private bool _updatingActiveViewsInManagerActiveContentChanged;
         private DockingManager _dockingManager;
+        ObservableCollection<object> _documents = new ObservableCollection<object>();
+        ReadOnlyObservableCollection<object> _readonlyDocumentsList = null;
 
         public DependencyObject HostControl
         {
@@ -31,8 +36,6 @@ namespace Inflexion2.UX.WPF.MVVM
             }
         }
 
-        ObservableCollection<object> _documents = new ObservableCollection<object>();
-        ReadOnlyObservableCollection<object> _readonlyDocumentsList = null;
         public ReadOnlyObservableCollection<object> Documents
         {
             get
@@ -111,7 +114,6 @@ namespace Inflexion2.UX.WPF.MVVM
                 _documents.Add(view);
             }
         }
-
 
         private void ActiveViews_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {

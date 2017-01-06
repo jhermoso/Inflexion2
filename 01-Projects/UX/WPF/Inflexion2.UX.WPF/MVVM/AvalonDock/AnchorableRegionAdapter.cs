@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Practices.Prism.Regions;
-using AvalonDock.Layout;
-using System.Windows.Controls;
-using System.Collections.Specialized;
-
+﻿
 namespace Inflexion2.UX.WPF.MVVM
 {
+    using AvalonDock.Layout;
+    using Microsoft.Practices.Prism.Regions;
+    using System;
+    using System.Collections.Specialized;
+    using System.Linq;
+
     class AnchorableRegionAdapter : RegionAdapterBase<LayoutAnchorable>
     {
         public AnchorableRegionAdapter(IRegionBehaviorFactory regionBehaviorFactory)

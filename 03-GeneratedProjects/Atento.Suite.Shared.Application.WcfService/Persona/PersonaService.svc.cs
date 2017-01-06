@@ -37,6 +37,7 @@ namespace Atento.Suite.Shared.Application.WcfService
     using Inflexion2.Infrastructure;
 
     using Atento.Suite.Shared.Application;
+	using Atento.Suite.Shared.Application.WcfService.Contracts;
     //using AppSrvCore = Atento.Suite.Shared.Application;
     #endregion
 

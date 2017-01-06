@@ -109,7 +109,7 @@ foreach (var item in sharedKernelUsings)
     }
 #>
 <#+    foreach (var property in cbc.propertyObjects)    {#>
-<#+     if(property.LiveCycleAtributte.Equals(LiveCycleAtributte.Variable) || property.LiveCycleAtributte.Equals(LiveCycleAtributte.Derivado)) {#>
+<#+			if(property.LiveCycleAtributte.Equals(LiveCycleAtributte.Variable) || property.LiveCycleAtributte.Equals(LiveCycleAtributte.Derivado)) {#>
 
         /// <summary>
         /// Variable privada que identifica <#= property.AtributteName #>.
@@ -119,8 +119,8 @@ foreach (var item in sharedKernelUsings)
         /// </remarks>
         [DataMember]
         public <#= property.AtributteType #><#= (property.IsNullable & cbc.propertyIsValueType )?"?":"" #> <#= T4Help.ToPascalCase(property.AtributteName) #> {get; set;}
-<#+     }#>
-<#+ }#>
+<#+			}#>
+<#+		}#>
 <#+
     foreach (var property in cbc.propertyAssociationSources)
     {

@@ -24,11 +24,21 @@ namespace Inflexion2.Domain
     /// </summary>
     public class RootAggregateContext : DbContext
     {
+        /// <summary>
+        /// Create the context for the rootagregate from the conection string
+        /// remeber that only a root agragate can have persitence. or at least concentrate all 
+        /// the persitence operations
+        /// </summary>
+        /// <param name="nameOrConnectionString"></param>
         public RootAggregateContext(string nameOrConnectionString)
         : base(nameOrConnectionString)
         {
         }
 
+        /// <summary>
+        /// update the root agregate entity
+        /// </summary>
+        /// <returns></returns>
         public override int SaveChanges()
         {
             int result;

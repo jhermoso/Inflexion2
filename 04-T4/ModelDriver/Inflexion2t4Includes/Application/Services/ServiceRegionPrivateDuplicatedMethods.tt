@@ -15,7 +15,7 @@ public class ServiceRegionPrivateDuplicatedMethods : Template
 
         // conceptos propios del proyecto en curso
         ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
-        string ResxFileName = prjCon.boundedContextName.Replace(".","")+"Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+        string ResxFileName = prjCon.boundedContextName.Replace(".","") + "Resources"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
 
 #>
         #region Private Duplicated data for precondition methods

@@ -4,6 +4,37 @@
         <name>Inflexion2.UX.WPF.Common</name>
     </assembly>
     <members>
+        <member name="T:Inflexion2.UX.WPF.Common.Shell.RegionNames">
+            <summary>
+            .en list of constants with the region names in shell
+            .es lista de constantes con los nombres comúnes de las regiones principales del Shell
+            </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.Common.Shell.RegionNames.RibbonRegion">
+            <summary>
+            region for Ribbon and main actions
+            </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.Common.Shell.RegionNames.NavigatorRegion">
+            <summary>
+            Navigation region with navigation actions to move in every module
+            </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.Common.Shell.RegionNames.TaskButtonRegion">
+            <summary>
+            Navigation region to load the selected modules
+            </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.Common.Shell.RegionNames.WorkspaceRegion">
+            <summary>
+            Work space region. Main Spot area
+            </summary>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.Common.Events.MyCopyDataAddedEvent">
+            <summary>
+            event to send data
+            </summary>
+        </member>
         <member name="T:Inflexion2.UX.WPF.Common.Events.NavigationCompletedEvent">
             <summary>
             Evento CompositePresentationevent 
@@ -15,6 +46,11 @@
             de INotifyPropertyChanging, INotifyPropertyChanged. La implementación proporcionada nos 
             permite contar en los viewModels que la incorporen de las propiedades y metodos para elevar los eventos de pre-modificación 
             y modificación de una propiedad cuyo nombre se pasa como string.
+            </summary>
+        </member>
+        <member name="E:Inflexion2.UX.WPF.Common.BaseClasses.ViewModelBase.PropertyChanged">
+            <summary>
+            INotifyPropertyChanged interface implementation
             </summary>
         </member>
         <member name="P:Inflexion2.UX.WPF.Common.BaseClasses.ViewModelBase.IgnorePropertyChangeEvents">

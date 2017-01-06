@@ -17,9 +17,6 @@ namespace Inflexion2.UX.WPF.Controls
     /// <summary>
     /// Password watermarking code from: http://prabu-guru.blogspot.com/2010/06/how-to-add-watermark-text-to-textbox.html
     /// </summary>
-    /// <remarks>
-    /// Sin comentarios adicionales.
-    /// </remarks>
     public class MyTextBox : DependencyObject
     {
         public static readonly DependencyProperty IsMonitoringProperty = DependencyProperty.RegisterAttached("IsMonitoring", typeof(bool), typeof(MyTextBox), new UIPropertyMetadata(false, OnIsMonitoringChanged));

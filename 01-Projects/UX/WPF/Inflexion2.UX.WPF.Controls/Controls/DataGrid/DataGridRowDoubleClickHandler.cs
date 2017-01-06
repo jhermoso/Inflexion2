@@ -11,8 +11,15 @@ namespace Inflexion2.UX.WPF.Controls
     using System.Windows.Controls;
     using System.Windows.Input;
 
+    /// <summary>
+    /// asociate an action to the gesture of double click in the datagrid
+    /// </summary>
     public sealed class DataGridRowDoubleClickHandler
     {
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="dataGrid"></param>
         public DataGridRowDoubleClickHandler(DataGrid dataGrid)
         {
             MouseButtonEventHandler handler = (sender, args) =>
@@ -44,16 +51,29 @@ namespace Inflexion2.UX.WPF.Controls
             };
         }
 
+        /// <summary>
+        /// get the method name to execute from the property
+        /// </summary>
+        /// <param name="dataGrid"></param>
+        /// <returns></returns>
         public static string GetMethodName(DataGrid dataGrid)
         {
             return (string)dataGrid.GetValue(MethodNameProperty);
         }
 
+        /// <summary>
+        /// set the method name to execute from the property 
+        /// </summary>
+        /// <param name="dataGrid"></param>
+        /// <param name="value"></param>
         public static void SetMethodName(DataGrid dataGrid, string value)
         {
             dataGrid.SetValue(MethodNameProperty, value);
         }
 
+        /// <summary>
+        /// dependency property register
+        /// </summary>
         public static readonly DependencyProperty MethodNameProperty = DependencyProperty.RegisterAttached(
             "MethodName",
             typeof(string),

@@ -79,7 +79,7 @@ namespace Atento.Suite.Shared.Domain
         /// <value>
         /// Valor que es utilizado para establecer y obtener Name.
         /// </value>
-        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
+        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
         public virtual string Name 
             {

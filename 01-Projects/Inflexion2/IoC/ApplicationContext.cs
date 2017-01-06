@@ -14,6 +14,9 @@ namespace Inflexion2
     /// </summary>
     public static class ApplicationContext
     {
+        /// <summary>
+        /// gets the identity of the user through http or current thread
+        /// </summary>
         public static IPrincipal User
         {
             get

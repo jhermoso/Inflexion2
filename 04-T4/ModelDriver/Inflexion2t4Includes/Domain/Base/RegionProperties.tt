@@ -15,7 +15,7 @@ public class RegionProperties : Template
 
         // conceptos propios del projecto en curso
         ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
-        string ResxFileName = prjCon.boundedContextName.Replace(".","")+"Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+        string ResxFileName = prjCon.boundedContextName.Replace(".","") + "Resources"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
 
 #>
         #region Propiedades
@@ -62,11 +62,11 @@ public class RegionProperties : Template
         /// </value>
 <#+ if (cbc.diagram.ValidationContracts.Equals("DataAnotations")  )    {#>
 <#+     if (property.RequestUponCreation==RequestUponCreation.yes || !property.IsNullable) /*(property.IsMandatory) */        {#>
-        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
+        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
 <#+        }/*end if (property.IsMandatory) */#>
 <#+        if (!string.IsNullOrEmpty(property.MinValue) || !string.IsNullOrEmpty(property.MaxValue)) /*(property.IsMandatory) */        {#>
-        [Range(<#= (!string.IsNullOrEmpty(property.MinValue))? property.MinValue: property.AtributteType+".MinValue" #>, <#= (!string.IsNullOrEmpty(property.MaxValue))?property.MaxValue: property.AtributteType+".MaxValue" #>, ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
+        [Range(<#= (!string.IsNullOrEmpty(property.MinValue))? property.MinValue: property.AtributteType+".MinValue" #>, <#= (!string.IsNullOrEmpty(property.MaxValue))?property.MaxValue: property.AtributteType+".MaxValue" #>, ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource), 
                <#=T4Help.Indent(property.MinValue.Length + property.MaxValue.Length + 4) #>ErrorMessageResourceName = "ValueOutOfRange" )]
 <#+        }/*end if (range min max) */#>
 <#+        if ( property.AtributteType.ToLower().Equals("string") && (property.MinLength>0 && property.MaxLength>0)) /*(property.is string and have a range length) */        {#>

@@ -54,27 +54,27 @@
     <Compile Include="..\..\10-Solutions\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Framework.Designer.cs">
+    <Compile Include="FrameworkResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Framework.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Framework.es.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Framework.es.resx</DependentUpon>
+      <DependentUpon>FrameworkResource.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Framework.resx">
+    <EmbeddedResource Include="FrameworkResource.ar.resx" />
+    <EmbeddedResource Include="FrameworkResource.de.resx" />
+    <EmbeddedResource Include="FrameworkResource.es.resx" />
+    <EmbeddedResource Include="FrameworkResource.fr.resx" />
+    <EmbeddedResource Include="FrameworkResource.he.resx" />
+    <EmbeddedResource Include="FrameworkResource.it.resx" />
+    <EmbeddedResource Include="FrameworkResource.ja.resx" />
+    <EmbeddedResource Include="FrameworkResource.pt.resx" />
+    <EmbeddedResource Include="FrameworkResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Framework.Designer.cs</LastGenOutput>
+      <LastGenOutput>FrameworkResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Framework.es.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Framework.es.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <EmbeddedResource Include="FrameworkResource.zh.resx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\00-Certificates\Inflexion2.snk">

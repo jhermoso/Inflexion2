@@ -7,12 +7,8 @@
 namespace Inflexion2.UX.WPF.MVVM
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Reflection;
     using System.Diagnostics;
-    using System.Windows;
+    using System.Text;
 
     /// <summary>
     /// TODO: Update summary.

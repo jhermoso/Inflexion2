@@ -109,7 +109,7 @@
             string[] parts = file.Split('|');
             if (parts.Length > 2)
             {
-                throw new ArgumentException(Framework.CertificateFileNameFormatNotValidFilePassword);
+                throw new ArgumentException(FrameworkResource.CertificateFileNameFormatNotValidFilePassword);
             }
 
             string fullPath = LocateServerPath(parts[0].Trim());

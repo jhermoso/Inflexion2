@@ -38,7 +38,7 @@ if (cbc.diagram.ValidationContracts.Equals("DataAnotations"))
         if (IsMinMultiplicityOne(property.SourceMultiplicity)) //(property.IsMandatory) 
         {
 #>
-        [Required(ErrorMessageResourceName = "FieldIsMandatory", ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework))]
+        [Required(ErrorMessageResourceName = "FieldIsMandatory", ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource))]
 <#+
         }
     }

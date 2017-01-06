@@ -32,7 +32,7 @@ public class ApplicationEntityCreateServicesBaseCT : Template
                 // conceptos propios del projecto en curso
         ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
 
-        string ResxFileName = prjCon.boundedContextName.Replace(".","_")+"Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+        string ResxFileName = prjCon.boundedContextName.Replace(".","_") + "Resources"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
 
          if (okDebug) Debug.WriteLine(string.Format("servico create de '{0}'",cbc.entity.Name));
 

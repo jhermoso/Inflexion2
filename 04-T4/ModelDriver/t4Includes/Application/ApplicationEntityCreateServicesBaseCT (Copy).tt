@@ -28,7 +28,7 @@ public class ApplicationEntityCreateServicesBaseCT : Template
         // conceptos propios del projecto en curso
         ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
 
-        string ResxFileName = prjCon.boundedContextName.Replace(".","")+"Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+        string ResxFileName = prjCon.boundedContextName.Replace(".","") + "Resources"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
 
 
         IList<string> sharedKernelUsings =  GetSharedKernelReferencesByProject(projectNamespace, Skt, cbc.diagram);
@@ -39,7 +39,7 @@ public class ApplicationEntityCreateServicesBaseCT : Template
         string layer                = NameSpaceSection[3];
         string kindProject          = NameSpaceSection[4];
 
-        string ResxFileName = boundedContextName.Replace(".","_")+"Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+        string ResxFileName = boundedContextName.Replace(".","_") + "Resources"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
 
          if (okDebug) Debug.WriteLine(string.Format("servico create de '{0}'",cbc.entity.Name));
 

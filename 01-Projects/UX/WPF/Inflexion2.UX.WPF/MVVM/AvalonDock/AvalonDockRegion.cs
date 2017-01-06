@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using AvalonDock.Layout;
-using Microsoft.Practices.Prism.Regions;
-using Microsoft.Practices.ServiceLocation;
-using Microsoft.Practices.Prism.Regions.Behaviors;
-using System.ComponentModel;
+﻿
 
 namespace Inflexion2.UX.WPF.MVVM
 {
+    using AvalonDock.Layout;
+    using Microsoft.Practices.Prism.Regions;
+    using Microsoft.Practices.Prism.Regions.Behaviors;
+    using System;
+    using System.ComponentModel;
+    using System.Windows;
+
+    /// <summary>
+    /// Avalon dock Adapter 
+    /// </summary>
     class AvalonDockRegion : DependencyObject
     {
         #region Name
@@ -50,9 +51,6 @@ namespace Inflexion2.UX.WPF.MVVM
         }
 
         #endregion
-
-
-
 
         static void CreateRegion(LayoutAnchorable element, string regionName)
         {

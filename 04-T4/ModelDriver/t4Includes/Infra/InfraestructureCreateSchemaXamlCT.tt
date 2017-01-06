@@ -39,7 +39,7 @@ public class InfraestructureCreateSchemaXamlCT : Template
             // conceptos propios del projecto en curso
             //ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
             //
-            //string ResxFileName = prjCon.boundedContextName.Replace(".","")+"Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+            //string ResxFileName = prjCon.boundedContextName.Replace(".","") + "Resources"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
             //
 #>
 <#+
@@ -94,7 +94,7 @@ public class InfraestructureCreateSchemaXamlCT : Template
                     <ComboBoxItem Content="{lex:LocText Create<#= cbc.diagram.Product #>DataBase:Create<#= cbc.diagram.Product #>DataBase:Any}" />
 
 <#+                      
-    string TempOrigin = T4Help.AddRelPath2AbsPath(cbc.solutionInfo.DirectoryName , "..\\00-ModelDriver\\ModelDriver" + System.IO.Path.DirectorySeparatorChar                                     + CDBcons.AssetsFolder + CDBcons.WpfThemesFolder + System.IO.Path.DirectorySeparatorChar);
+    string TempOrigin = T4Help.AddRelPath2AbsPath(cbc.solutionInfo.DirectoryName , "..\\04-T4\\ModelDriver" + System.IO.Path.DirectorySeparatorChar                                     + CDBcons.AssetsFolder + CDBcons.WpfThemesFolder + System.IO.Path.DirectorySeparatorChar);
             string extension= ".xaml";
             string searchPattern = "*"+extension;
             string[] XamlListFiles = Directory.GetFiles(TempOrigin, searchPattern); // <-- Case-insensitive

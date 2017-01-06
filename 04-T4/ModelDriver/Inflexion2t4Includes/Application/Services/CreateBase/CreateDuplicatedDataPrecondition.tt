@@ -12,7 +12,7 @@ public class CreateDuplicatedDataPrecondition : Template
         // conceptos propios del projecto en curso
         ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
 
-        string ResxFileName = prjCon.boundedContextName.Replace(".","")+"Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+        string ResxFileName = prjCon.boundedContextName.Replace(".","") + "Resources"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
         if( cbc.mandatoryPropertyObjects.Any( property =>property.AllowRepeatedValues.Equals(false)))  
         {
 #>
@@ -23,7 +23,7 @@ public class CreateDuplicatedDataPrecondition : Template
         if (this.Exists<#=property.AtributteName #>(<#= cbc.camelSecureEntityName #>Dto.<#=property.AtributteName #>.Trim(), serverContext))
         {
             string errorMessage = string.Format(
-                                                Inflexion2.Resources.Framework.PropertyRequired, 
+                                                FrameworkResource.PropertyRequired, 
                                                 <#= ResxFileName #>.<#= cbc.pascalSecureEntityName #>_<#=property.AtributteName #>Alias,
                                                 <#= cbc.camelSecureEntityName #>Dto.<#=property.AtributteName #>);
             throw new InvalidOperationException(errorMessage);

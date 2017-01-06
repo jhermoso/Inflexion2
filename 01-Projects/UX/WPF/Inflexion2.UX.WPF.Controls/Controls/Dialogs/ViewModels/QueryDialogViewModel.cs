@@ -271,6 +271,9 @@ namespace Inflexion2.UX.WPF.Controls.Dialogs.ViewModels
             }
          } // Initialize
 
+        /// <summary>
+        /// Navigate to the selected item by ok command execution
+        /// </summary>
         public void NavigateToSelectedItem()
         {
             ((DelegateCommand)this.OkCommand).Execute();

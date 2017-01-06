@@ -5,67 +5,24 @@
 <#@ include file="t4helpers\T4Application\Assemblys.tt" #>
 <#@ include file="t4helpers\T4Application\Imports.ttinclude" #>
 <#
-
-
-//bool okDebug = true;
-//if (okDebug)
-//    {    
-//      //  Debug.WriteLine(""); 
-//      //  Debug.WriteLine("Empezamos con la transformación de AccesMBR");
-//        //Debug.WriteLine("1ª Leemos la estructura de contextos limitados y la metemos en un árbol");
-//        //Debug.WriteLine("");
-//    }
-
-
   kayak.MoneyGen.Application source = this.Application; // Usual access to source model.
-  // In the source DSL Definition, the root element has a model reference:
 
     // inicialización del arbol de contextos
     //A partir de la raiz de un modelo obtenemos la jerarquia de contextos que cuelgan del mismo
     ITree<LocalizedBounded> TreeApp = GetSolutionContextTree( source);
 
-  //  if (okDebug)
-  //  {
-  //      string mensajeDepuracion;
-  //      foreach( INode<LocalizedBounded> context in TreeApp.All.Nodes )
-  //      {
-  //          if (context.Data.Context.Value != null)
-  //              mensajeDepuracion = context.Data.Context.Value.Elements.Count().ToString();
-  //          else
-  //              mensajeDepuracion = null;
-  //          if (okDebug) Debug.WriteLine(String.Format( "{0} (key) es '{1}' Con {2} hijos directos. Y tiene '{3}' elementos",T4Help.Indent(context.Depth*4), context.Data.Context.Key, context.DirectChildCount, mensajeDepuracion, context.Depth ));
-  //      }
-  //  }
-
-
     // primera parte: recolectamos información acerca de la solucion los diagramas y las definiciones
-    // almacenandolas en estructuras de datos facilmente accesibles.
     // 1º acerca del diagrama
     DslContextDefinitionDiagram MainDiagram = new DslContextDefinitionDiagram(this.Application, TreeApp);
 
-    //Debug.WriteLine(MainDiagram.ToString());
     // 2º acerca de la propia solución
     ActiveSolution SolutionInfo = new ActiveSolution(this.Host);
-    //Debug.WriteLine(SolutionInfo.ToString());
+
     // 3º obtenemos en la clase de maindiagram los path absolutos de las principales carpetas de la solución. 
     MainDiagram.SetAbsolutePath(SolutionInfo.DirectoryName);
 
     // 4º instanciamos la clases con la definición de la arquitectura
     //Architecture Arq = new Architecture();
-
-//if (okDebug)
-//    {
-//        Debug.WriteLine(String.Format("El path de Proyects es '{0}'", MainDiagram.ProyectsPath));
-//        Debug.WriteLine(String.Format("El path de la solución es '{0}'", SolutionInfo.DirectoryName));
-//        Debug.WriteLine(String.Format("El path abs de projectos es '{0}'", MainDiagram.AbsProyectsPath));
-//        Debug.WriteLine("");
-//        Debug.WriteLine("          árbol de proyectos");
-//        foreach(var pr in  SolutionInfo.SolutionTree.All.Nodes )
-//        {
-//            Debug.WriteLine(String.Format("{0}{1}", T4Help.Indent( pr.Depth*5 ), pr.Data.Name));
-//        }
-//        Debug.WriteLine("");
-//    }
 
     IList<Project> Projectos = SolutionProjects.ProjectsList(); // este es un método estático que nos permite acceder de forma rapida a la lista de proyectos para buscar uno concreto.
         

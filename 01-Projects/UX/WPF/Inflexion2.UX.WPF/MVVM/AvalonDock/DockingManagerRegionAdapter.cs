@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using AvalonDock;
-using Microsoft.Practices.Prism.Regions;
-
+﻿
 namespace Inflexion2.UX.WPF.MVVM
 {
+    using AvalonDock;
+    using Microsoft.Practices.Prism.Regions;
+
+    /// <summary>
+    /// part of avalon dock adapter for prism
+    /// </summary>
     class DockingManagerRegionAdapter : RegionAdapterBase<DockingManager>
     {
         public DockingManagerRegionAdapter(IRegionBehaviorFactory regionBehaviorFactory)

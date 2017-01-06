@@ -4,19 +4,14 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-
 namespace Inflexion2.UX.WPF.MVVM.CRUD
 {
-
-    using System;
-    using System.Collections.ObjectModel;
-    using System.Windows.Input;
-    using System.Linq;
-    using System.Linq.Expressions;
-    using Inflexion2.UX.WPF.MVVM;
-    using Inflexion2.UX.WPF.MVVM.ViewModels;
-    using Inflexion2.Application.DataTransfer.Base;
     using Converters;
+    using Inflexion2.Application.DataTransfer.Base;
+    using Inflexion2.UX.WPF.MVVM.ViewModels;
+    using System;
+    using System.Linq.Expressions;
+
     /// <summary>
     /// Clase pública que representa la Vista Modelo Base de la cuál tiran el
     /// resto de ViewModels.
@@ -28,7 +23,6 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         where T : BaseEntityDataTransferObject<TIdentifier>
         where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
     {
-
         private T entity;
 
         #region Constructors
@@ -91,16 +85,16 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             }
         } // Id
 
-        /// <summary>
-        /// Propiedad pública encargada de obtener y establecer si
-        /// la entidad esta Activa o no
-        /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
-        /// <value>
-        /// Indica el campo Activo de la entidad.
-        /// </value>
+        ///// <summary>
+        ///// Propiedad pública encargada de obtener y establecer si
+        ///// la entidad esta Activa o no
+        ///// </summary>
+        ///// <remarks>
+        ///// Sin comentarios adicionales.
+        ///// </remarks>
+        ///// <value>
+        ///// Indica el campo Activo de la entidad.
+        ///// </value>
         //public virtual bool Activo
         //{
         //    get
@@ -117,6 +111,11 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         //    }
         //} // Activo
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="propertyExpresssion"></param>
         protected override void RaisePropertyChanged<T>(Expression<Func<T>> propertyExpresssion)
         {
             base.RaisePropertyChanged(propertyExpresssion);

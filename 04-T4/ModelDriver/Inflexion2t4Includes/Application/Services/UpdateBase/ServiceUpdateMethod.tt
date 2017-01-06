@@ -14,7 +14,7 @@ public class ServiceUpdateMethod : Template
         string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
         // conceptos propios del projecto en curso
         ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
-        string ResxFileName = prjCon.boundedContextName.Replace(".","")+"Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+        string ResxFileName = prjCon.boundedContextName.Replace(".","") + "Resources"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
         bool Secured = cbc.MainEntityStereotype.Contains("Bussiness"); // si es una entidad de negocio entoces esta securizada es decir necesita identificación y autorización
         bool Trazable = cbc.MainEntityStereotype.Contains("Bussiness") || cbc.MainEntityStereotype.Contains("Auditable"); // si es una entidad de negocio entoces esta securizada es decir necesita identificación y autorización
 #>
@@ -37,7 +37,7 @@ public class ServiceUpdateMethod : Template
             Guard.ArgumentIsNotNull(
                                     <#= cbc.camelSecureEntityName #>Dto,
                                     string.Format(
-                                                  Inflexion2.Resources.Framework.DataTransferObjectIsNull,
+                                                  FrameworkResource.DataTransferObjectIsNull,
                                                   "<#= cbc.entity.AliasFrontEnd #>"));
             // en una actualización no comprobamos los campos mandatory.
             #endregion            
@@ -52,7 +52,7 @@ public class ServiceUpdateMethod : Template
                 Guard.ArgumentIsNotNull(
                                         entity2Update,
                                         string.Format(
-                                                        Inflexion2.Resources.Framework.CanNotUpdateInexistenceEntity,
+                                                        FrameworkResource.CanNotUpdateInexistenceEntity,
                                                         "<#= cbc.entity.AliasFrontEnd #>"));
                 // Comprobar duplicidades;
 <#+

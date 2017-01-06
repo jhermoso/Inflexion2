@@ -20,7 +20,7 @@ public class I2ServiceRegionCreateMethod : Template
 
         // conceptos propios del projecto en curso
         ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
-        string ResxFileName = prjCon.boundedContextName.Replace(".","")+"Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+        string ResxFileName = prjCon.boundedContextName.Replace(".","")+"Resources"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
 
         var CreateExecutePreconditionsTemplate                   = new CreateExecutePreconditions( cbc, projectNamespace, Skt);                      string CreateExecutePreconditionsTxt                         = CreateExecutePreconditionsTemplate.TransformText();
         var CreateDuplicatedDataPreconditionTemplate             = new CreateDuplicatedDataPrecondition( cbc, projectNamespace, Skt);                string CreateDuplicatedDataPreconditionTxt                   = CreateDuplicatedDataPreconditionTemplate.TransformText();

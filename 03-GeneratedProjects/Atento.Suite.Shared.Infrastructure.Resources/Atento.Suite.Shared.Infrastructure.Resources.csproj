@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{1DF2C3C2-1A32-4169-B674-57649CE1C343}</ProjectGuid>
+    <ProjectGuid>{4EA35821-562B-41A1-ADA4-15B775FED797}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Atento.Suite.Shared.Infrastructure.Resources</RootNamespace>
@@ -115,21 +115,80 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SharedNeutral.Designer.cs">
+    <Compile Include="SharedResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SharedNeutral.resx</DependentUpon>
+      <DependentUpon>SharedResources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="SharedNeutral.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SharedNeutral.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <Content Include="Assets\Images\Flags\ad24.png" />
+    <Content Include="Assets\Images\Flags\de24.png" />
+    <Content Include="Assets\Images\Flags\en24.png" />
+    <Content Include="Assets\Images\Flags\es24.png" />
+    <Content Include="Assets\Images\Flags\fr24.png" />
+    <Content Include="Assets\Images\Flags\he24.png" />
+    <Content Include="Assets\Images\Flags\il24.png" />
+    <Content Include="Assets\Images\Flags\it24.png" />
+    <Content Include="Assets\Images\Flags\pt24.png" />
+    <Content Include="Assets\Images\Flags\uk24.png" />
+    <Content Include="Assets\Images\Icons\Engine.ico" />
+    <Content Include="Assets\Images\Logos\hal.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Page Include="Assets\WpfThemes\BureauBlack.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\WpfThemes\BureauBlue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\WpfThemes\ExpressionDark.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\WpfThemes\ExpressionLight.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\WpfThemes\ShinyBlue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\WpfThemes\ShinyRed.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\WpfThemes\WhistlerBlue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SharedNeutral.ar.resx" />
+    <EmbeddedResource Include="SharedNeutral.ja.resx" />
+    <EmbeddedResource Include="SharedResources.ar.resx" />
+    <EmbeddedResource Include="SharedResources.de.resx" />
+    <EmbeddedResource Include="SharedResources.en.resx" />
+    <EmbeddedResource Include="SharedResources.fr.resx" />
+    <EmbeddedResource Include="SharedResources.he.resx" />
+    <EmbeddedResource Include="SharedResources.it.resx" />
+    <EmbeddedResource Include="SharedResources.ja.resx" />
+    <EmbeddedResource Include="SharedResources.pt.resx" />
+    <EmbeddedResource Include="SharedResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SharedResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharedResources.zh.resx" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

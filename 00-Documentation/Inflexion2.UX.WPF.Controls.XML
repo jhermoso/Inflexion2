@@ -4,6 +4,36 @@
         <name>Inflexion2.UX.WPF.Controls</name>
     </assembly>
     <members>
+        <member name="T:Inflexion2.UX.WPF.Controls.DataGridRowDoubleClickHandler">
+            <summary>
+            asociate an action to the gesture of double click in the datagrid
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Controls.DataGridRowDoubleClickHandler.#ctor(System.Windows.Controls.DataGrid)">
+            <summary>
+            constructor
+            </summary>
+            <param name="dataGrid"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Controls.DataGridRowDoubleClickHandler.GetMethodName(System.Windows.Controls.DataGrid)">
+            <summary>
+            get the method name to execute from the property
+            </summary>
+            <param name="dataGrid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Controls.DataGridRowDoubleClickHandler.SetMethodName(System.Windows.Controls.DataGrid,System.String)">
+            <summary>
+            set the method name to execute from the property 
+            </summary>
+            <param name="dataGrid"></param>
+            <param name="value"></param>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.Controls.DataGridRowDoubleClickHandler.MethodNameProperty">
+            <summary>
+            dependency property register
+            </summary>
+        </member>
         <member name="T:Inflexion2.UX.WPF.Controls.Dialogs.QueryColumn">
             <summary>
             Entidad que define una columna a mostrar en el diálogo QueryMultipleView.
@@ -947,7 +977,7 @@
         </member>
         <member name="T:Inflexion2.UX.WPF.Controls.Dialogs.Views.MessageBoxInteractionView">
             <summary>
-            Lógica de interacción con MessageBoxInteractionView.xaml
+            Clase base con la Lógica de interacción con MessageBoxInteractionView.xaml 
             </summary>
             <summary>
             MessageBoxInteractionView
@@ -960,7 +990,7 @@
         </member>
         <member name="M:Inflexion2.UX.WPF.Controls.Dialogs.Views.MessageBoxInteractionView.#ctor">
             <summary>
-            Inicia una nueva instancia de la clase <see cref="!:ConfirmDeleteInteractionView" />.
+            Inicia un dialogo de confirmación />.
             </summary>
         </member>
         <member name="M:Inflexion2.UX.WPF.Controls.Dialogs.Views.MessageBoxInteractionView.Initialize">
@@ -992,13 +1022,13 @@
             <summary>
             Establece la entidad.
             </summary>
-            <param name="entity">La entidad de tipo <see cref="!:CortePoliticaAppointment"/>.</param>
+            <param name="entity"></param>
         </member>
         <member name="M:Inflexion2.UX.WPF.Controls.Dialogs.Views.MessageBoxInteractionView.GetEntity">
             <summary>
             Obtiene la entidad.
             </summary>
-            <returns>La entidad de tipo <see cref="!:CortePoliticaAppointment"/>.</returns>
+            <returns>resultado del dialogo</returns>
         </member>
         <member name="P:Inflexion2.UX.WPF.Controls.Dialogs.Views.MessageBoxInteractionView.Inflexion2#UX#WPF#MVVM#ViewModels#Dialogs#IBaseDialogAdapter{System#Windows#MessageBoxResult}#ViewModel">
             <summary>

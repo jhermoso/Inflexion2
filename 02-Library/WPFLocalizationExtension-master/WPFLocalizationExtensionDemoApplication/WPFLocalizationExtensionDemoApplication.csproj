@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{53618740-D7CF-43C3-A8A7-D81522A16623}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WPFLocalizationExtensionDemoApplication</RootNamespace>
+    <AssemblyName>WPFLocalizationExtensionDemoApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Caliburn.Micro, Version=2.0.2.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.Core.2.0.2\lib\net45\Caliburn.Micro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Caliburn.Micro.Platform, Version=2.0.2.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.2.0.2\lib\net45\Caliburn.Micro.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="XAMLMarkupExtensions">
+      <HintPath>..\packages\XAMLMarkupExtensions.1.2.1.3\lib\net35\XAMLMarkupExtensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Converters\StringToImageSourceConverter.cs" />
+    <Compile Include="Infrastructure\Bootstrapper.cs" />
+    <Compile Include="Models\FlagLanguage.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Resources\Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Examples\GapTextWpfExampleViewModel.cs" />
+    <Compile Include="ViewModels\Examples\TextLocalizationExampleViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Page Include="Views\Examples\GapTextWpfExampleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Examples\GapTextWpfExampleView.xaml.cs">
+      <DependentUpon>GapTextWpfExampleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.de.resx" />
+    <EmbeddedResource Include="Resources\Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Images\iv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WPFLocalizeExtension\WPFLocalizeExtension.csproj">
+      <Project>{e8c5b094-2cb4-4c26-87f0-351b03612179}</Project>
+      <Name>WPFLocalizeExtension</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Images\ad.png" />
+    <Resource Include="Views\Images\ae.png" />
+    <Resource Include="Views\Images\af.png" />
+    <Resource Include="Views\Images\ag.png" />
+    <Resource Include="Views\Images\ai.png" />
+    <Resource Include="Views\Images\al.png" />
+    <Resource Include="Views\Images\am.png" />
+    <Resource Include="Views\Images\an.png" />
+    <Resource Include="Views\Images\ao.png" />
+    <Resource Include="Views\Images\ar.png" />
+    <Resource Include="Views\Images\as.png" />
+    <Resource Include="Views\Images\at.png" />
+    <Resource Include="Views\Images\au.png" />
+    <Resource Include="Views\Images\aw.png" />
+    <Resource Include="Views\Images\ax.png" />
+    <Resource Include="Views\Images\az.png" />
+    <Resource Include="Views\Images\ba.png" />
+    <Resource Include="Views\Images\bb.png" />
+    <Resource Include="Views\Images\bd.png" />
+    <Resource Include="Views\Images\be.png" />
+    <Resource Include="Views\Images\bf.png" />
+    <Resource Include="Views\Images\bg.png" />
+    <Resource Include="Views\Images\bh.png" />
+    <Resource Include="Views\Images\bi.png" />
+    <Resource Include="Views\Images\bj.png" />
+    <Resource Include="Views\Images\bm.png" />
+    <Resource Include="Views\Images\bn.png" />
+    <Resource Include="Views\Images\bo.png" />
+    <Resource Include="Views\Images\br.png" />
+    <Resource Include="Views\Images\bs.png" />
+    <Resource Include="Views\Images\bt.png" />
+    <Resource Include="Views\Images\bv.png" />
+    <Resource Include="Views\Images\bw.png" />
+    <Resource Include="Views\Images\by.png" />
+    <Resource Include="Views\Images\bz.png" />
+    <Resource Include="Views\Images\ca.png" />
+    <Resource Include="Views\Images\catalonia.png" />
+    <Resource Include="Views\Images\cc.png" />
+    <Resource Include="Views\Images\cd.png" />
+    <Resource Include="Views\Images\cf.png" />
+    <Resource Include="Views\Images\cg.png" />
+    <Resource Include="Views\Images\ch.png" />
+    <Resource Include="Views\Images\ci.png" />
+    <Resource Include="Views\Images\ck.png" />
+    <Resource Include="Views\Images\cl.png" />
+    <Resource Include="Views\Images\cm.png" />
+    <Resource Include="Views\Images\cn.png" />
+    <Resource Include="Views\Images\co.png" />
+    <Resource Include="Views\Images\cr.png" />
+    <Resource Include="Views\Images\cs.png" />
+    <Resource Include="Views\Images\cu.png" />
+    <Resource Include="Views\Images\cv.png" />
+    <Resource Include="Views\Images\cx.png" />
+    <Resource Include="Views\Images\cy.png" />
+    <Resource Include="Views\Images\cz.png" />
+    <Resource Include="Views\Images\de.png" />
+    <Resource Include="Views\Images\dj.png" />
+    <Resource Include="Views\Images\dk.png" />
+    <Resource Include="Views\Images\dm.png" />
+    <Resource Include="Views\Images\do.png" />
+    <Resource Include="Views\Images\dz.png" />
+    <Resource Include="Views\Images\ec.png" />
+    <Resource Include="Views\Images\ee.png" />
+    <Resource Include="Views\Images\eg.png" />
+    <Resource Include="Views\Images\eh.png" />
+    <Resource Include="Views\Images\england.png" />
+    <Resource Include="Views\Images\er.png" />
+    <Resource Include="Views\Images\es.png" />
+    <Resource Include="Views\Images\et.png" />
+    <Resource Include="Views\Images\europeanunion.png" />
+    <Resource Include="Views\Images\fam.png" />
+    <Resource Include="Views\Images\fi.png" />
+    <Resource Include="Views\Images\fj.png" />
+    <Resource Include="Views\Images\fk.png" />
+    <Resource Include="Views\Images\fm.png" />
+    <Resource Include="Views\Images\fo.png" />
+    <Resource Include="Views\Images\fr.png" />
+    <Resource Include="Views\Images\ga.png" />
+    <Resource Include="Views\Images\gb.png" />
+    <Resource Include="Views\Images\gd.png" />
+    <Resource Include="Views\Images\ge.png" />
+    <Resource Include="Views\Images\gf.png" />
+    <Resource Include="Views\Images\gh.png" />
+    <Resource Include="Views\Images\gi.png" />
+    <Resource Include="Views\Images\gl.png" />
+    <Resource Include="Views\Images\gm.png" />
+    <Resource Include="Views\Images\gn.png" />
+    <Resource Include="Views\Images\gp.png" />
+    <Resource Include="Views\Images\gq.png" />
+    <Resource Include="Views\Images\gr.png" />
+    <Resource Include="Views\Images\gs.png" />
+    <Resource Include="Views\Images\gt.png" />
+    <Resource Include="Views\Images\gu.png" />
+    <Resource Include="Views\Images\gw.png" />
+    <Resource Include="Views\Images\gy.png" />
+    <Resource Include="Views\Images\hk.png" />
+    <Resource Include="Views\Images\hm.png" />
+    <Resource Include="Views\Images\hn.png" />
+    <Resource Include="Views\Images\hr.png" />
+    <Resource Include="Views\Images\ht.png" />
+    <Resource Include="Views\Images\hu.png" />
+    <Resource Include="Views\Images\id.png" />
+    <Resource Include="Views\Images\ie.png" />
+    <Resource Include="Views\Images\il.png" />
+    <Resource Include="Views\Images\in.png" />
+    <Resource Include="Views\Images\io.png" />
+    <Resource Include="Views\Images\iq.png" />
+    <Resource Include="Views\Images\ir.png" />
+    <Resource Include="Views\Images\is.png" />
+    <Resource Include="Views\Images\it.png" />
+    <Resource Include="Views\Images\jm.png" />
+    <Resource Include="Views\Images\jo.png" />
+    <Resource Include="Views\Images\jp.png" />
+    <Resource Include="Views\Images\ke.png" />
+    <Resource Include="Views\Images\kg.png" />
+    <Resource Include="Views\Images\kh.png" />
+    <Resource Include="Views\Images\ki.png" />
+    <Resource Include="Views\Images\km.png" />
+    <Resource Include="Views\Images\kn.png" />
+    <Resource Include="Views\Images\kp.png" />
+    <Resource Include="Views\Images\kr.png" />
+    <Resource Include="Views\Images\kw.png" />
+    <Resource Include="Views\Images\ky.png" />
+    <Resource Include="Views\Images\kz.png" />
+    <Resource Include="Views\Images\la.png" />
+    <Resource Include="Views\Images\lb.png" />
+    <Resource Include="Views\Images\lc.png" />
+    <Resource Include="Views\Images\li.png" />
+    <Resource Include="Views\Images\lk.png" />
+    <Resource Include="Views\Images\lr.png" />
+    <Resource Include="Views\Images\ls.png" />
+    <Resource Include="Views\Images\lt.png" />
+    <Resource Include="Views\Images\lu.png" />
+    <Resource Include="Views\Images\lv.png" />
+    <Resource Include="Views\Images\ly.png" />
+    <Resource Include="Views\Images\ma.png" />
+    <Resource Include="Views\Images\mc.png" />
+    <Resource Include="Views\Images\md.png" />
+    <Resource Include="Views\Images\me.png" />
+    <Resource Include="Views\Images\mg.png" />
+    <Resource Include="Views\Images\mh.png" />
+    <Resource Include="Views\Images\mk.png" />
+    <Resource Include="Views\Images\ml.png" />
+    <Resource Include="Views\Images\mm.png" />
+    <Resource Include="Views\Images\mn.png" />
+    <Resource Include="Views\Images\mo.png" />
+    <Resource Include="Views\Images\mp.png" />
+    <Resource Include="Views\Images\mq.png" />
+    <Resource Include="Views\Images\mr.png" />
+    <Resource Include="Views\Images\ms.png" />
+    <Resource Include="Views\Images\mt.png" />
+    <Resource Include="Views\Images\mu.png" />
+    <Resource Include="Views\Images\mv.png" />
+    <Resource Include="Views\Images\mw.png" />
+    <Resource Include="Views\Images\mx.png" />
+    <Resource Include="Views\Images\my.png" />
+    <Resource Include="Views\Images\mz.png" />
+    <Resource Include="Views\Images\na.png" />
+    <Resource Include="Views\Images\nc.png" />
+    <Resource Include="Views\Images\ne.png" />
+    <Resource Include="Views\Images\nf.png" />
+    <Resource Include="Views\Images\ng.png" />
+    <Resource Include="Views\Images\ni.png" />
+    <Resource Include="Views\Images\nl.png" />
+    <Resource Include="Views\Images\no.png" />
+    <Resource Include="Views\Images\np.png" />
+    <Resource Include="Views\Images\nr.png" />
+    <Resource Include="Views\Images\nu.png" />
+    <Resource Include="Views\Images\nz.png" />
+    <Resource Include="Views\Images\om.png" />
+    <Resource Include="Views\Images\pa.png" />
+    <Resource Include="Views\Images\pe.png" />
+    <Resource Include="Views\Images\pf.png" />
+    <Resource Include="Views\Images\pg.png" />
+    <Resource Include="Views\Images\ph.png" />
+    <Resource Include="Views\Images\pk.png" />
+    <Resource Include="Views\Images\pl.png" />
+    <Resource Include="Views\Images\pm.png" />
+    <Resource Include="Views\Images\pn.png" />
+    <Resource Include="Views\Images\pr.png" />
+    <Resource Include="Views\Images\ps.png" />
+    <Resource Include="Views\Images\pt.png" />
+    <Resource Include="Views\Images\pw.png" />
+    <Resource Include="Views\Images\py.png" />
+    <Resource Include="Views\Images\qa.png" />
+    <Resource Include="Views\Images\re.png" />
+    <Resource Include="Views\Images\ro.png" />
+    <Resource Include="Views\Images\rs.png" />
+    <Resource Include="Views\Images\ru.png" />
+    <Resource Include="Views\Images\rw.png" />
+    <Resource Include="Views\Images\sa.png" />
+    <Resource Include="Views\Images\sb.png" />
+    <Resource Include="Views\Images\sc.png" />
+    <Resource Include="Views\Images\scotland.png" />
+    <Resource Include="Views\Images\sd.png" />
+    <Resource Include="Views\Images\se.png" />
+    <Resource Include="Views\Images\sg.png" />
+    <Resource Include="Views\Images\sh.png" />
+    <Resource Include="Views\Images\si.png" />
+    <Resource Include="Views\Images\sj.png" />
+    <Resource Include="Views\Images\sk.png" />
+    <Resource Include="Views\Images\sl.png" />
+    <Resource Include="Views\Images\sm.png" />
+    <Resource Include="Views\Images\sn.png" />
+    <Resource Include="Views\Images\so.png" />
+    <Resource Include="Views\Images\sr.png" />
+    <Resource Include="Views\Images\st.png" />
+    <Resource Include="Views\Images\sv.png" />
+    <Resource Include="Views\Images\sy.png" />
+    <Resource Include="Views\Images\sz.png" />
+    <Resource Include="Views\Images\tc.png" />
+    <Resource Include="Views\Images\td.png" />
+    <Resource Include="Views\Images\tf.png" />
+    <Resource Include="Views\Images\tg.png" />
+    <Resource Include="Views\Images\th.png" />
+    <Resource Include="Views\Images\tj.png" />
+    <Resource Include="Views\Images\tk.png" />
+    <Resource Include="Views\Images\tl.png" />
+    <Resource Include="Views\Images\tm.png" />
+    <Resource Include="Views\Images\tn.png" />
+    <Resource Include="Views\Images\to.png" />
+    <Resource Include="Views\Images\tr.png" />
+    <Resource Include="Views\Images\tt.png" />
+    <Resource Include="Views\Images\tv.png" />
+    <Resource Include="Views\Images\tw.png" />
+    <Resource Include="Views\Images\tz.png" />
+    <Resource Include="Views\Images\ua.png" />
+    <Resource Include="Views\Images\ug.png" />
+    <Resource Include="Views\Images\um.png" />
+    <Resource Include="Views\Images\us.png" />
+    <Resource Include="Views\Images\uy.png" />
+    <Resource Include="Views\Images\uz.png" />
+    <Resource Include="Views\Images\va.png" />
+    <Resource Include="Views\Images\vc.png" />
+    <Resource Include="Views\Images\ve.png" />
+    <Resource Include="Views\Images\vg.png" />
+    <Resource Include="Views\Images\vi.png" />
+    <Resource Include="Views\Images\vn.png" />
+    <Resource Include="Views\Images\vu.png" />
+    <Resource Include="Views\Images\wales.png" />
+    <Resource Include="Views\Images\wf.png" />
+    <Resource Include="Views\Images\ws.png" />
+    <Resource Include="Views\Images\ye.png" />
+    <Resource Include="Views\Images\yt.png" />
+    <Resource Include="Views\Images\za.png" />
+    <Resource Include="Views\Images\zm.png" />
+    <Resource Include="Views\Images\zw.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

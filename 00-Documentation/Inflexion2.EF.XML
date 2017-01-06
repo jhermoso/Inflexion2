@@ -35,6 +35,20 @@
             that all the operations over our entitys are responsibility from the rootaggregate and not from any other entity.
             </summary>
         </member>
+        <member name="M:Inflexion2.Domain.RootAggregateContext.#ctor(System.String)">
+            <summary>
+            Create the context for the rootagregate from the conection string
+            remeber that only a root agragate can have persitence. or at least concentrate all 
+            the persitence operations
+            </summary>
+            <param name="nameOrConnectionString"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.RootAggregateContext.SaveChanges">
+            <summary>
+            update the root agregate entity
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Inflexion2.Domain.RootAggregateFrameworkUnitOfWorkFactory`1.ValidateDatabaseSchema">
             <summary>
             Este metodo valida el esquema de la base de datos.

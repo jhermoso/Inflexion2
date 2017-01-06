@@ -16,7 +16,6 @@ namespace Inflexion2.Domain.Validation
         /// Initializes a new instance of the <see cref="ValidationException"/> class.
         /// </summary>
         /// <param name="message">The message.</param>
-        /// <param name="errors">The errors.</param>
         /// <param name="entityType">Type of the entity.</param>
         public ValidationException(Type entityType, string message)
         : base(message)

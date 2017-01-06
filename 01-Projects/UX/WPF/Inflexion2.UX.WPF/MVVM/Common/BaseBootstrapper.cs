@@ -10,28 +10,24 @@ namespace Inflexion2.UX.WPF.MVVM
 
     using AvalonDock;
     using AvalonDock.Layout;
-    using System.Windows;
-
-    using Inflexion2.UX.WPF.Security;
     using Inflexion2.UX.WPF.MVVM.Adapters;
     using Inflexion2.UX.WPF.MVVM.Views;
-    using Inflexion2.UX.WPF.MVVM;
-    using Microsoft.Practices.Prism;
+    using Inflexion2.UX.WPF.Security;
+    using Inflexion2.UX.WPF.Services;
     using Microsoft.Practices.Prism.Modularity;
     using Microsoft.Practices.Prism.Regions;
     using Microsoft.Practices.Prism.UnityExtensions;
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Windows.Controls.Ribbon;
-    using System.Windows.Threading;
     using System;
     using System.Diagnostics;
-    using System.Threading;
     using System.Globalization;
     //using Telerik.Windows.Controls;
-    using System.Windows.Media;
     //using Inflexion.Framework.Application.Security.Data.Base; //TODO: Descomentar al meter seguridad con nuevo naming
     using System.ServiceModel;
-    using Inflexion2.UX.WPF.Services;
+    using System.Threading;
+    using System.Windows;
+    using System.Windows.Threading;
 
     #endregion
 
@@ -213,6 +209,10 @@ namespace Inflexion2.UX.WPF.MVVM
             }
         }
 
+        /// <summary>
+        /// execution of bootstrapper
+        /// </summary>
+        /// <param name="runWithDefaultConfiguration"></param>
         public override void Run(bool runWithDefaultConfiguration)
         {
             AccessBehavior.Provider = new AccessLevelProvider();
@@ -251,7 +251,7 @@ namespace Inflexion2.UX.WPF.MVVM
         {
             IMessageBoxService messageBoxService = ServiceLocator.Current.GetInstance<IMessageBoxService>();
 
-            FaultException<Inflexion.UX.WPF.Fault.ValidationException> validationException = e.Exception as FaultException<Inflexion.UX.WPF.Fault.ValidationException>;
+            FaultException<Inflexion2.UX.WPF.Fault.ValidationException> validationException = e.Exception as FaultException<Inflexion2.UX.WPF.Fault.ValidationException>;
             if (validationException != null)
             {
                 // Mostramos el error
@@ -272,7 +272,7 @@ namespace Inflexion2.UX.WPF.MVVM
                 return;
             }
 
-            FaultException<Inflexion.UX.WPF.Fault.InternalException> faultObject = e.Exception as FaultException<Inflexion.UX.WPF.Fault.InternalException>;
+            FaultException<Inflexion2.UX.WPF.Fault.InternalException> faultObject = e.Exception as FaultException<Inflexion2.UX.WPF.Fault.InternalException>;
             if (faultObject != null)
             {
                 // Mostramos el mensaje.

@@ -98,7 +98,7 @@ foreach(INode<ClassBase> entity in cbc.OwnClassBaseTreeBoundedContext.All.Nodes.
         -->
       <endpoint address="" 
 				binding="basicHttpBinding" 
-				contract="<#= projectNamespace #>.I<#= entity.Data.Name #>Service">
+				contract="<#= projectNamespace #>.Contracts.I<#= entity.Data.Name #>Service">
           <identity> <dns value="localhost"/> </identity>
       </endpoint>
         <!-- 

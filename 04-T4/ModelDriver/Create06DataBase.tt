@@ -4,8 +4,8 @@
 
 
 <#@ include file="T4Toolbox.tt" #>
-<#@ Assembly name    ="E:\G2\02-Library\FluentNHibernate\FluentNHibernate.dll" #>
-<#@ Assembly name    ="E:\G2\02-Library\nHibernate\v3.3.1\NHibernate.dll" #>
+<#@ Assembly name    ="C:\Atento\02-Library\FluentNHibernate\FluentNHibernate.dll" #>
+<#@ Assembly name    ="C:\Atento\02-Library\nHibernate\v3.3.1\lib\Net35\NHibernate.dll" #>
 <#@ Assembly name    ="System.ServiceModel" #>
 
 <#@ import namespace = "FluentNHibernate.Cfg" #>
@@ -16,7 +16,7 @@
 <#@ import namespace = "System.ServiceModel" #>
 <#@ import namespace ="System.Globalization" #>
 
-<#@ include file="t4helpers\T4Application\Assemblys.ttinclude" #>
+<#@ include file="t4helpers\T4Application\Assemblys.tt" #>
 <#@ include file="t4helpers\T4Application\Imports.ttinclude" #>
 <#@ include file="t4Includes\Infra\InfraestructureCreateSchemaCbCT.tt" #>
 <#@ include file="t4Includes\Infra\InfraestructureCreateSchemaXamlCT.tt" #>
@@ -130,7 +130,7 @@ if (okDebug)
   
 
     string nombreprojecto = "Create"+MainDiagram.Product+"DataBase";
-    string nombreprojecto2 = null;
+    string nombreprojecto2 = MainDiagram.RootNameSpace+"." + "Shared" +"."+ MainDiagram.SolutionFolderInfraestructure + "." + "Maps.nHibernate31."+ "MsSql";;
     string SgbdTechnology= null;
     if (MainDiagram.SGDB.ToString().Contains("Oracle"))
     {
@@ -163,23 +163,23 @@ Debug.WriteLine(String.Format("la plantilla se encuentra en '{0}'",ClassLibraryT
 
     SolutionFolder folder = (SolutionFolder) SolutionFolderCreateDB.Object;
 
-    string templatePrj = SolutionInfo.TemplateProjects["WpfApplicationFramework4CC.zip"];
+    string templatePrj = SolutionInfo.TemplateProjects["WpfApplicationCC.zip"];//WpfApplicationFramework4CC
     //if (!SolutionInfo.ExistSolutionFolderName(PathProjectsolution, SolutionInfo.SolutionTree))
 
 
-if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
-    {
-        Debug.WriteLine(String.Format("El path de Proyects es '{0}'", MainDiagram.ProyectsPath));
-        Debug.WriteLine(String.Format("El path de la solución es '{0}'", SolutionInfo.DirectoryName));
-        Debug.WriteLine(String.Format("El path abs de projectos es '{0}'", MainDiagram.AbsProyectsPath));
-        Debug.WriteLine("");
-        Debug.WriteLine("          árbol de proyectos");
-        foreach(var pr in  SolutionInfo.SolutionTree.All.Nodes )
-        {
-            Debug.WriteLine(String.Format("{0}{1}", T4Help.Indent( pr.Depth*5 ), pr.Data.Name));
-        }
-        Debug.WriteLine("");
-    }
+//if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
+//    {
+//        Debug.WriteLine(String.Format("El path de Proyects es '{0}'", MainDiagram.ProyectsPath));
+//        Debug.WriteLine(String.Format("El path de la solución es '{0}'", SolutionInfo.DirectoryName));
+//        Debug.WriteLine(String.Format("El path abs de projectos es '{0}'", MainDiagram.AbsProyectsPath));
+//        Debug.WriteLine("");
+//        Debug.WriteLine("          árbol de proyectos");
+//        foreach(var pr in  SolutionInfo.SolutionTree.All.Nodes )
+//        {
+//            Debug.WriteLine(String.Format("{0}{1}", T4Help.Indent( pr.Depth*5 ), pr.Data.Name));
+//        }
+//        Debug.WriteLine("");
+//    }
 
 
     if (!SolutionInfo.ExistSolutionFolderName(PathProjectsolution, SolutionInfo.SolutionTree))
@@ -213,19 +213,19 @@ if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
         }
 
     // añadimos el proyecto
-    if (okDebug) 
-    {
-    Debug.WriteLine("*-*-*-*-*-*-*-*-*-* añadimos el projecto sus caracterisiticas son:");
-    Debug.WriteLine("");
-    Debug.Write("       Nombre                          :");Debug.WriteLine(nombreprojectoConExtension);
-    Debug.Write("       longitud con extensión          :");Debug.WriteLine(nombreprojectoConExtension.Length);
-    Debug.Write("       path                            :");Debug.WriteLine(temppath);
-    Debug.Write("       longitud del path               :");Debug.WriteLine(temppath.Length);
-    Debug.Write("       project template                :");Debug.WriteLine(templatePrj);
-    Debug.Write("       longitud del project template   :");Debug.WriteLine(templatePrj.Length);
-    Debug.WriteLine("");
-    Debug.WriteLine("*-*-*-*-*-*-*-*-*-*");
-    }
+    //if (okDebug) 
+    //{
+    //Debug.WriteLine("*-*-*-*-*-*-*-*-*-* añadimos el projecto sus caracterisiticas son:");
+    //Debug.WriteLine("");
+    //Debug.Write("       Nombre                          :");Debug.WriteLine(nombreprojectoConExtension);
+    //Debug.Write("       longitud con extensión          :");Debug.WriteLine(nombreprojectoConExtension.Length);
+    //Debug.Write("       path                            :");Debug.WriteLine(temppath);
+    //Debug.Write("       longitud del path               :");Debug.WriteLine(temppath.Length);
+    //Debug.Write("       project template                :");Debug.WriteLine(templatePrj);
+    //Debug.Write("       longitud del project template   :");Debug.WriteLine(templatePrj.Length);
+    //Debug.WriteLine("");
+    //Debug.WriteLine("*-*-*-*-*-*-*-*-*-*");
+    //}
 
     folder.AddFromTemplate(templatePrj, temppath, nombreprojecto);        // este metodo tiene un bug por el cual no devuelve el projecto que acaba de añadir.
                                                                                                     // asi que actualizamos nuestras referencias y lo buscamos. de nuevo para 
@@ -275,25 +275,25 @@ if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
         ////}
 
         // añadimos las carpetas del proyecto
-        if (okDebug) Debug.WriteLine("añadimos carpeta Assets");
+        //if (okDebug) Debug.WriteLine("añadimos carpeta Assets");
         var rootfolder = ProjectListItems.AddFolder( CDBcons.AssetsFolder, EnvDTE.Constants.vsProjectItemKindPhysicalFolder); // ProjectListItems.AddFolder
 
-        if (okDebug) Debug.WriteLine("añadimos carpeta Resources");
+        //if (okDebug) Debug.WriteLine("añadimos carpeta Resources");
         rootfolder.ProjectItems.AddFolder(CDBcons.ResourcesFolder.Trim(System.IO.Path.DirectorySeparatorChar), EnvDTE.Constants.vsProjectItemKindPhysicalFolder);
 
-        if (okDebug) Debug.WriteLine("añadimos carpeta WpfThemes");
+        //if (okDebug) Debug.WriteLine("añadimos carpeta WpfThemes");
         rootfolder.ProjectItems.AddFolder(CDBcons.WpfThemesFolder.Trim(System.IO.Path.DirectorySeparatorChar), EnvDTE.Constants.vsProjectItemKindPhysicalFolder);
 
-        if (okDebug) Debug.WriteLine("añadimos carpeta 3");
+        //if (okDebug) Debug.WriteLine("añadimos carpeta 3");
         rootfolder = rootfolder.ProjectItems.AddFolder( CDBcons.ImagesFolder.Trim(System.IO.Path.DirectorySeparatorChar), EnvDTE.Constants.vsProjectItemKindPhysicalFolder);
 
-        if (okDebug) Debug.WriteLine("añadimos carpeta 4");
+        //if (okDebug) Debug.WriteLine("añadimos carpeta 4");
         rootfolder.ProjectItems.AddFolder( CDBcons.NestedIconsFolder.Trim(System.IO.Path.DirectorySeparatorChar), EnvDTE.Constants.vsProjectItemKindPhysicalFolder);
 
-        if (okDebug) Debug.WriteLine("añadimos carpeta 5");
+        //if (okDebug) Debug.WriteLine("añadimos carpeta 5");
         rootfolder.ProjectItems.AddFolder(  CDBcons.NestedFlagsFolder.Trim(System.IO.Path.DirectorySeparatorChar), EnvDTE.Constants.vsProjectItemKindPhysicalFolder);
 
-        if (okDebug) Debug.WriteLine("añadimos carpeta 6");
+        //if (okDebug) Debug.WriteLine("añadimos carpeta 6");
         rootfolder.ProjectItems.AddFolder(  CDBcons.NestedLogosFolder.Trim(System.IO.Path.DirectorySeparatorChar), EnvDTE.Constants.vsProjectItemKindPhysicalFolder);
 
 
@@ -321,14 +321,14 @@ if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
             {
                 boundedContextElements = ReadClassesHierarchie(boundedContext);
                 string secureBdName = bdName.Replace('\\','.');
-                if (okDebug) Debug.WriteLine(String.Format("El nombre del proyecto es'{0}'",secureBdName));
-                if (okDebug) Debug.WriteLine(String.Format("conection string del BC es '{0}'",boundedContext.ConectionString ));
-                if (okDebug) Debug.WriteLine(String.Format("La base de datos es '{0}'",boundedContext.SchemaName ));
-                if (okDebug) Debug.WriteLine(String.Format("el servidor de base de datos es '{0}'",boundedContext.DataBaseServer ));
+                //if (okDebug) Debug.WriteLine(String.Format("El nombre del proyecto es'{0}'",secureBdName));
+                //if (okDebug) Debug.WriteLine(String.Format("conection string del BC es '{0}'",boundedContext.ConectionString ));
+                //if (okDebug) Debug.WriteLine(String.Format("La base de datos es '{0}'",boundedContext.SchemaName ));
+                //if (okDebug) Debug.WriteLine(String.Format("el servidor de base de datos es '{0}'",boundedContext.DataBaseServer ));
                 // el contador de entidades no se puede usar para saber el comienzo pues las entidades de los shared kernel cuentan pero no se procesan.
                 var FirstOrDefaultEntity = boundedContextElements.All.Nodes.Where(p=> (p.Data is Entity) & p.Data.ReferencedRootEntity == null).FirstOrDefault().Data;
                 //int kindOfClass = 0; /* tipo de clase entidad, objeto valor , enumerado, servicio,  operación invariante etc.*/
-                if (okDebug) Debug.WriteLine(String.Format("La primera entidad del Bc es  '{0}'",FirstOrDefaultEntity.Name ));
+                //if (okDebug) Debug.WriteLine(String.Format("La primera entidad del Bc es  '{0}'",FirstOrDefaultEntity.Name ));
 
 // cada vez que añadimos una nueva arquitectura tenemos que añadir aqui su instanciación
 // también es necesario tener encuenta que hay que añadir 
@@ -344,6 +344,10 @@ if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
         if (MainDiagram.Architecture == ArchitectureOptions.SpringNet)
         {
             Layercollection = Architecture.SpringNetLayers;
+        }
+        if (MainDiagram.Architecture == ArchitectureOptions.Inflexion2)
+        {
+            Layercollection = Architecture.Inflexion2WPFLayers;
         }
 
                 foreach (Architecture.ArqLayer layer in Layercollection) // .Where(l => l.LayerType == LayerKind.Infrastructure) // eliminamos esta restricción pues podemos desear añadir projectos de diversas capas
@@ -369,10 +373,10 @@ if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
                         foreach (Architecture.ArqLayer.ArqProject project in layer.LayerProyects.Where(p => p.Name.Equals("Maps.nHibernate31."+ SgbdTechnology) || p.Name.Equals("Resources") )) // 
                         {
                             // Console.WriteLine("\n  {0},\t{1}",project.Name, project.Template );
-                            if (okDebug) Debug.WriteLine(String.Format("                 projecto    '{0}',\t template {1}",project.Name, project.Template));
+                            //if (okDebug) Debug.WriteLine(String.Format("                 projecto    '{0}',\t template {1}",project.Name, project.Template));
 
                             nombreprojecto2 = GetProjectName( MainDiagram, layer.LayerType, project, secureBdName2);
-                            if (okDebug) Debug.WriteLine(String.Format(" *nombreprojecto2    '{0}'",nombreprojecto2));
+                            //if (okDebug) Debug.WriteLine(String.Format(" *nombreprojecto2    '{0}'",nombreprojecto2));
 
 
                             foreach(Project p in SolutionInfo.ProjectsList.Cast<Project>().Where(p=> p.CodeModel!=null && p.Name.Equals(nombreprojecto2) )) //nombreprojecto2
@@ -381,7 +385,7 @@ if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
                             }
                             if (ReferencedProject != null)
                             {   
-                                if (okDebug) Debug.WriteLine("\t Añadimos, \t {0}",ReferencedProject.Name );
+                                //if (okDebug) Debug.WriteLine("\t Añadimos, \t {0}",ReferencedProject.Name );
                                 vsproject.References.AddProject(ReferencedProject);
                             }
                         }
@@ -393,13 +397,13 @@ if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
                             //reference.Name            = "NHibernate",
                             //reference.dllPath         = "nHibernate\\v3.3.1"
                             string path2Library= MainDiagram.AbsLibraryPath + System.IO.Path.DirectorySeparatorChar + "nHibernate\\v3.3.1" + System.IO.Path.DirectorySeparatorChar +"NHibernate"+".dll" ;
-                            if (okDebug) Debug.WriteLine(String.Format("lo buscamos en '{0}'",path2Library ));
+                            //if (okDebug) Debug.WriteLine(String.Format("lo buscamos en '{0}'",path2Library ));
                             vsproject.References.Add(path2Library);
 
                             //reference.Name            = "FluentNHibernate",
                             //reference.dllPath         = "FluentNHibernate"
                             path2Library= MainDiagram.AbsLibraryPath + System.IO.Path.DirectorySeparatorChar + "FluentNHibernate" + System.IO.Path.DirectorySeparatorChar +"FluentNHibernate"+".dll" ;
-                            if (okDebug) Debug.WriteLine(String.Format("lo buscamos en '{0}'",path2Library ));
+                            //if (okDebug) Debug.WriteLine(String.Format("lo buscamos en '{0}'",path2Library ));
                             vsproject.References.Add(path2Library);
 
                             // Inflexion.Framework.Infrastructure.DataAccess.UoW.NHibernate31
@@ -414,11 +418,11 @@ if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
 
                             //reference.dllPath         = "WPFLocalizeExtension" 
                             path2Library= MainDiagram.AbsLibraryPath + System.IO.Path.DirectorySeparatorChar + "WPFLocalizationExtension-BinWPF" + System.IO.Path.DirectorySeparatorChar +"WPFLocalizeExtension"+".dll" ;
-                            if (okDebug) Debug.WriteLine(String.Format("lo buscamos en '{0}'",path2Library ));
+                            //if (okDebug) Debug.WriteLine(String.Format("lo buscamos en '{0}'",path2Library ));
                             vsproject.References.Add(path2Library);
 
                             path2Library= MainDiagram.AbsLibraryPath + System.IO.Path.DirectorySeparatorChar + "XAMLMarkupExtensions.1.1.6.1" + System.IO.Path.DirectorySeparatorChar + "lib"+System.IO.Path.DirectorySeparatorChar + "net40" + System.IO.Path.DirectorySeparatorChar + "XAMLMarkupExtensions"+".dll" ;
-                            if (okDebug) Debug.WriteLine(String.Format("lo buscamos en '{0}'",path2Library ));
+                            //if (okDebug) Debug.WriteLine(String.Format("lo buscamos en '{0}'",path2Library ));
                             vsproject.References.Add(path2Library);
 
                             // añadimos las referencias existentes en la propia solución.
@@ -430,7 +434,7 @@ if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
                     }
                     if (ReferencedProject != null)
                     {   
-                        if (okDebug) Debug.WriteLine("\t Añadimos, \t Inflexion.Framework.UserInterface.Wpf.Utilities" );
+                        //if (okDebug) Debug.WriteLine("\t Añadimos, \t Inflexion.Framework.UserInterface.Wpf.Utilities" );
                         vsproject.References.AddProject(ReferencedProject);
                     }
                     ReferencedProject = null;
@@ -443,7 +447,7 @@ if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
                     }
                     if (ReferencedProject != null)
                     {   
-                        if (okDebug) Debug.WriteLine("\t Añadimos, \t ConfigurationWindows2010" );
+                        //if (okDebug) Debug.WriteLine("\t Añadimos, \t ConfigurationWindows2010" );
                         vsproject.References.AddProject(ReferencedProject);
                     }
                     ReferencedProject = null;
@@ -456,7 +460,7 @@ if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
                     }
                     if (ReferencedProject != null)
                     {   
-                        if (okDebug) Debug.WriteLine("\t Añadimos, \t Configuration2010" );
+                        //if (okDebug) Debug.WriteLine("\t Añadimos, \t Configuration2010" );
                         vsproject.References.AddProject(ReferencedProject);
                     }
                     ReferencedProject = null;
@@ -485,7 +489,7 @@ if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
 
         // añadimos flags
         EnvDTE.ProjectItems ProjectListItems = AddedPrj.ProjectItems;
-        TempOrigin = T4Help.AddRelPath2AbsPath(SolutionInfo.DirectoryName , "..\\00-ModelDriver\\ModelDriver" + System.IO.Path.DirectorySeparatorChar  + CDBcons.AssetsFolder + CDBcons.ImagesFolder + CDBcons.NestedFlagsFolder + System.IO.Path.DirectorySeparatorChar);
+        TempOrigin = T4Help.AddRelPath2AbsPath(SolutionInfo.DirectoryName , "..\\04-T4\\ModelDriver" + System.IO.Path.DirectorySeparatorChar  + CDBcons.AssetsFolder + CDBcons.ImagesFolder + CDBcons.NestedFlagsFolder + System.IO.Path.DirectorySeparatorChar);
         
         TempTarget = MainDiagram.AbsProyectsPath + System.IO.Path.DirectorySeparatorChar +"Create"      + MainDiagram.Product + "DataBase" + System.IO.Path.DirectorySeparatorChar  + CDBcons.AssetsFolder + CDBcons.ImagesFolder + CDBcons.NestedFlagsFolder + System.IO.Path.DirectorySeparatorChar;
         Debug.WriteLine("Copiamos las banderas desde");
@@ -495,19 +499,19 @@ if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
         IOWindows.FilteredCopyFilesFromDirToDirAndAddProjectItems( ProjectListItems, TempOrigin, TempTarget, "??24.png" ); // Esta copia exige que el string del directorio de origen y de destino terminen con el caracter "System.IO.Path.DirectorySeparatorChar"
 
         // añadimos iconos
-        TempOrigin = T4Help.AddRelPath2AbsPath(SolutionInfo.DirectoryName , "..\\00-ModelDriver\\ModelDriver" + System.IO.Path.DirectorySeparatorChar                                     + CDBcons.AssetsFolder + CDBcons.ImagesFolder + CDBcons.NestedIconsFolder + System.IO.Path.DirectorySeparatorChar);
+        TempOrigin = T4Help.AddRelPath2AbsPath(SolutionInfo.DirectoryName , "..\\04-T4\\ModelDriver" + System.IO.Path.DirectorySeparatorChar                                     + CDBcons.AssetsFolder + CDBcons.ImagesFolder + CDBcons.NestedIconsFolder + System.IO.Path.DirectorySeparatorChar);
         TempTarget = MainDiagram.AbsProyectsPath + System.IO.Path.DirectorySeparatorChar  +"Create"     + MainDiagram.Product + "DataBase" + System.IO.Path.DirectorySeparatorChar  + CDBcons.AssetsFolder + CDBcons.ImagesFolder + CDBcons.NestedIconsFolder + System.IO.Path.DirectorySeparatorChar;
 
         IOWindows.FilteredCopyFilesFromDirToDirAndAddProjectItems( ProjectListItems, TempOrigin, TempTarget, "*.ico" );
 
         // añadimos logos
-        TempOrigin = T4Help.AddRelPath2AbsPath(SolutionInfo.DirectoryName , "..\\00-ModelDriver\\ModelDriver" + System.IO.Path.DirectorySeparatorChar                                     + CDBcons.AssetsFolder + CDBcons.ImagesFolder + CDBcons.NestedLogosFolder + System.IO.Path.DirectorySeparatorChar);
+        TempOrigin = T4Help.AddRelPath2AbsPath(SolutionInfo.DirectoryName , "..\\04-T4\\ModelDriver" + System.IO.Path.DirectorySeparatorChar                                     + CDBcons.AssetsFolder + CDBcons.ImagesFolder + CDBcons.NestedLogosFolder + System.IO.Path.DirectorySeparatorChar);
         TempTarget = MainDiagram.AbsProyectsPath + System.IO.Path.DirectorySeparatorChar  +"Create"     + MainDiagram.Product + "DataBase" + System.IO.Path.DirectorySeparatorChar  + CDBcons.AssetsFolder + CDBcons.ImagesFolder + CDBcons.NestedLogosFolder + System.IO.Path.DirectorySeparatorChar;
 
         IOWindows.FilteredCopyFilesFromDirToDirAndAddProjectItems( ProjectListItems, TempOrigin, TempTarget, "*.png" );
 
         // añadimos wpf themes
-        TempOrigin = T4Help.AddRelPath2AbsPath(SolutionInfo.DirectoryName , "..\\00-ModelDriver\\ModelDriver" + System.IO.Path.DirectorySeparatorChar                                     + CDBcons.AssetsFolder + CDBcons.WpfThemesFolder + System.IO.Path.DirectorySeparatorChar);
+        TempOrigin = T4Help.AddRelPath2AbsPath(SolutionInfo.DirectoryName , "..\\04-T4\\ModelDriver" + System.IO.Path.DirectorySeparatorChar                                     + CDBcons.AssetsFolder + CDBcons.WpfThemesFolder + System.IO.Path.DirectorySeparatorChar);
         TempTarget = MainDiagram.AbsProyectsPath + System.IO.Path.DirectorySeparatorChar  +"Create"     + MainDiagram.Product + "DataBase" + System.IO.Path.DirectorySeparatorChar  + CDBcons.AssetsFolder + CDBcons.WpfThemesFolder + System.IO.Path.DirectorySeparatorChar;
 
         IOWindows.FilteredCopyFilesFromDirToDirAndAddProjectItems( ProjectListItems, TempOrigin, TempTarget, "*.xaml" );
@@ -535,8 +539,8 @@ if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
             selectedBoundedContextElements = ReadClassesHierarchie(boundedContext);
 
             string secureBdName = bdName.Replace('\\','.');
-            if (okDebug) Debug.WriteLine(String.Format("El nombre del proyecto es'{0}'",secureBdName));
-            if (okDebug) Debug.WriteLine(String.Format("Este proyecto tiene '{0}' hijos",context.DirectChildCount ));
+           //if (okDebug) Debug.WriteLine(String.Format("El nombre del proyecto es'{0}'",secureBdName));
+           //if (okDebug) Debug.WriteLine(String.Format("Este proyecto tiene '{0}' hijos",context.DirectChildCount ));
             int contadorDeEntidades = 0;
             //bool ResxWriteInit = false; // el contador de entidades no se puede usar para saber el comienzo pues las entidades de los shared kernel cuentan pero no se procesan.
             int totalDeEntidades = selectedBoundedContextElements.All.Nodes.Where(p=> (p.Data is Entity || p.Data is ObjectValue || p.Data is Enumeration) & p.Data.ReferencedRootEntity == null).Count();
@@ -551,7 +555,7 @@ if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
             // es necesario tener encuenta que cada diagrama puede tener una base de datos o no en cuyo caso se usa la de por defecto.
 
             nombreprojecto2 = MainDiagram.RootNameSpace+"." + secureBdName +"."+ MainDiagram.SolutionFolderInfraestructure + "." + "Maps.nHibernate31."+ SgbdTechnology;
-            if (okDebug) Debug.WriteLine(String.Format(" *nombreprojecto2    '{0}'",nombreprojecto2));
+            //if (okDebug) Debug.WriteLine(String.Format(" *nombreprojecto2    '{0}'",nombreprojecto2));
 
             string estadoDeDesarrollo = "desarrollo"; // contamos entidades
             if(contadorDeEntidades == 1) estadoDeDesarrollo = "inicio"; 
@@ -564,7 +568,7 @@ if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
             if(contadorDeboundedContexts == 1 & BoundedContextCounter == 1) estadoDeDesarrolloBC = "soloUna";
 
             string CreateSchemaResourcesTxt  = CreateSchemaResx.def();
-            if (okDebug) Debug.WriteLine(string.Format("CreateSchemaResourcesTxt ='{0}'",CreateSchemaResourcesTxt));
+            //if (okDebug) Debug.WriteLine(string.Format("CreateSchemaResourcesTxt ='{0}'",CreateSchemaResourcesTxt));
 
             List<string> TranslationList = Translator.GetSelectedLanguages( MainDiagram );
             if (true)
@@ -576,7 +580,7 @@ if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
             }
 
             string LanguagesResourcesTxt = ResxHelp.GetResxTxtFromLanguagesSelected( TranslationList );
-            string TempOrigin = T4Help.AddRelPath2AbsPath(SolutionInfo.DirectoryName , "..\\00-ModelDriver\\ModelDriver"  + System.IO.Path.DirectorySeparatorChar + CDBcons.AssetsFolder + CDBcons.WpfThemesFolder + System.IO.Path.DirectorySeparatorChar);
+            string TempOrigin = T4Help.AddRelPath2AbsPath(SolutionInfo.DirectoryName , "..\\04-T4\\ModelDriver"  + System.IO.Path.DirectorySeparatorChar + CDBcons.AssetsFolder + CDBcons.WpfThemesFolder + System.IO.Path.DirectorySeparatorChar);
 
             string WpfThemesREsourcesTxt = ResxHelp.GetResxTxtFromWpfThemesFiles(TempOrigin);
 
@@ -593,9 +597,9 @@ if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
                     {
                         languageIsoCode= T4Help.GetCultureISOCode2FromEnglishLanguageName( ResxKeyTranslation.Trim() );
 
-                if (okDebug) Debug.WriteLine(string.Format("entidad ='{0}', estadoBC = '{1}' idioma='{2}'",entity.Name, estadoDeDesarrolloBC, languageIsoCode));
+               // if (okDebug) Debug.WriteLine(string.Format("entidad ='{0}', estadoBC = '{1}' idioma='{2}'",entity.Name, estadoDeDesarrolloBC, languageIsoCode));
 
-                        string XmlCacheFile = T4Help.AddRelPath2AbsPath(SolutionInfo.DirectoryName , "..\\00-ModelDriver\\ModelDriver"  + System.IO.Path.DirectorySeparatorChar + "Assets" + System.IO.Path.DirectorySeparatorChar + "TranslationsCache" + System.IO.Path.DirectorySeparatorChar + MainDiagram.Company+ MainDiagram.Product+"XmlCache.xml");
+                        string XmlCacheFile = T4Help.AddRelPath2AbsPath(SolutionInfo.DirectoryName , "..\\04-T4\\ModelDriver"  + System.IO.Path.DirectorySeparatorChar + "Assets" + System.IO.Path.DirectorySeparatorChar + "TranslationsCache" + System.IO.Path.DirectorySeparatorChar + MainDiagram.Company+ MainDiagram.Product+"XmlCache.xml");
 
                         languageIsoCodeDot = ((string.IsNullOrEmpty(languageIsoCode)|| DefaultLanguage.Equals(languageIsoCode))?"":languageIsoCode+".");
                         TargetArray = ResxHelp.GetRexArray(AcumulateTxt);
@@ -603,17 +607,17 @@ if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
                         var tCreateDBresx   = new CreateSchemaResourcesCT(CBC, nombreprojecto, SharedKernelTree, estadoDeDesarrolloBC, languageIsoCode, TargetArray, XmlCacheFile);
                         tCreateDBresx.Output.PreserveExistingFile = false;
                         tCreateDBresx.Output.File = CDBcons.AssetsFolder + CDBcons.ResourcesFolder + System.IO.Path.DirectorySeparatorChar +"Create"+MainDiagram.Product+"DataBase."+languageIsoCodeDot+"resx";
-                        if (okDebug) Debug.WriteLine(string.Format("el tCreateDBresx.Output.File  ='{0}'",tCreateDBresx.Output.File ));
+                       // if (okDebug) Debug.WriteLine(string.Format("el tCreateDBresx.Output.File  ='{0}'",tCreateDBresx.Output.File ));
                         tCreateDBresx.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
                         tCreateDBresx.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
-                        tCreateDBresx.Output.BuildAction = BuildAction.EmbeddedResource;
-                        tCreateDBresx.Output.CustomTool = ((string.IsNullOrEmpty(languageIsoCode) || DefaultLanguage.Equals(languageIsoCode))?"PublicResXFileCodeGenerator":null);
+                        tCreateDBresx.Output.ItemType = ItemType.EmbeddedResource;
+                        tCreateDBresx.Output.CustomTool = ((string.IsNullOrEmpty(languageIsoCode) || DefaultLanguage.Equals(languageIsoCode))?"PublicResXFileCodeGenerator":"");
                         //t20.Output.CustomToolNamespace = secureBdName;
                         tCreateDBresx.Output.Encoding = Encoding.UTF8;
                         tCreateDBresx.Render();
                     }
 
-            if (okDebug) Debug.WriteLine(string.Format("bdName ='{0}', estado = '{1}'",bdName, estadoDeDesarrollo));
+            //if (okDebug) Debug.WriteLine(string.Format("bdName ='{0}', estado = '{1}'",bdName, estadoDeDesarrollo));
             var tCreateDBxaml   = new InfraestructureCreateSchemaXamlCT(CBC, nombreprojecto2, SharedKernelTree, estadoDeDesarrolloBC, selectedBoundedContextElements);
             tCreateDBxaml.Output.File = "MainWindow.xaml";
             tCreateDBxaml.Output.PreserveExistingFile = false;
@@ -622,15 +626,15 @@ if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
             tCreateDBxaml.Output.Encoding = Encoding.UTF8;
             tCreateDBxaml.Render();
 
-             if (okDebug) Debug.WriteLine(string.Format("nombreprojecto2 ='{0}'",nombreprojecto2));
+             //if (okDebug) Debug.WriteLine(string.Format("nombreprojecto2 ='{0}'",nombreprojecto2));
             var tCreateDBcb   = new InfraestructureCreateSchemaCbCT(CBC, nombreprojecto2, SharedKernelTree, estadoDeDesarrolloBC, selectedBoundedContextElements);
             tCreateDBcb.Output.File = "MainWindow.xaml.cs";
             tCreateDBcb.Output.PreserveExistingFile = false;
             tCreateDBcb.projectNamespace = "CreateDataBaseApp"; // el namespace del proyecto coincide con el nombre del mismo.
             tCreateDBcb.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
             tCreateDBcb.Output.Encoding = Encoding.UTF8;
-            tCreateDBcb.Output.BuildProperties["DependentUpon"] = @"MainWindow.xaml";
-            tCreateDBcb.Output.BuildProperties["SubType"] = "Code";
+            tCreateDBcb.Output.Metadata["DependentUpon"] = @"MainWindow.xaml";
+            tCreateDBcb.Output.Metadata["SubType"] = "Code";
             tCreateDBcb.Render();
 
             // app.xaml
@@ -640,7 +644,7 @@ if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
             tAppxaml.projectNamespace = "CreateDataBaseApp"; // el namespace del proyecto coincide con el nombre del mismo.
             tAppxaml.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
             tAppxaml.Output.Encoding = Encoding.UTF8;
-            tAppxaml.Output.BuildAction = "ApplicationDefinition";// Las t4toolbox no tienen previsto este valor, si no se asigan de esta manera se producira un error de compilación por el que no se encuentra el metodo main. 
+            tAppxaml.Output.ItemType = ItemType.ApplicationDefinition;// Las t4toolbox no tienen previsto este valor, si no se asigan de esta manera se producira un error de compilación por el que no se encuentra el metodo main. 
             tAppxaml.Output.CustomTool = "MSBuild:Compile";
             tAppxaml.Render();
 
@@ -650,9 +654,9 @@ if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
             tAppxamlcs.projectNamespace = "CreateDataBaseApp"; // el namespace del proyecto coincide con el nombre del mismo.
             tAppxamlcs.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
             tAppxamlcs.Output.Encoding = Encoding.UTF8;
-            tAppxamlcs.Output.BuildAction = BuildAction.Compile;
-            tAppxamlcs.Output.BuildProperties["DependentUpon"] = @"App.xaml";
-            tAppxamlcs.Output.BuildProperties["SubType"] = "Code";
+            tAppxamlcs.Output.ItemType = ItemType.Compile;
+            tAppxamlcs.Output.Metadata["DependentUpon"] = @"App.xaml";
+            tAppxamlcs.Output.Metadata["SubType"] = "Code";
             tAppxamlcs.Render();
 
             var tMyApplicationSettings   = new MyApplicationSettings(CBC, nombreprojecto2, SharedKernelTree, estadoDeDesarrolloBC, selectedBoundedContextElements);

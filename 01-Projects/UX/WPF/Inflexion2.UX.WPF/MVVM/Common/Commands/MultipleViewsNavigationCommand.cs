@@ -6,16 +6,15 @@
 
 namespace Inflexion2.UX.WPF.MVVM.Commands
 {
+    using Inflexion2.UX.WPF.MVVM;
+    using Microsoft.Practices.Prism.Regions;
+    using Microsoft.Practices.ServiceLocation;
     using System;
     using System.Windows.Input;
 
-    using Inflexion2.UX.WPF.MVVM;
-
-    using Microsoft.Practices.Prism.Regions;
-    using Microsoft.Practices.ServiceLocation;
-
     /// <summary>
-    /// Representa el comando de navegación.
+    /// .en navigation command
+    /// .es Representa el comando de navegación.
     /// </summary>
     /// <typeparam name="T">
     /// Tipo de ViewModel que contiene la referencia a este comando.
@@ -58,15 +57,16 @@ namespace Inflexion2.UX.WPF.MVVM.Commands
         #region Constructors
 
         /// <summary>
+        /// not implemented
         /// Inicializa una nueva instancia de la clase <see cref="T:NavigationCommand"/>.
         /// </summary>
         /// <param name="navigationViewModel">
         /// Referencia al modelo de vista que contiene la referencia a este comando.
         /// </param>
-        /// <param name="regionName">
+        /// <param name="regionNames">
         /// Indica el nombre de la región donde se va a mostrar la vista.
         /// </param>
-        /// <param name="viewName">
+        /// <param name="viewNames">
         /// Indica el nombre de la vista que se va a mostrar.
         /// </param>
         /// <remarks>
@@ -84,10 +84,10 @@ namespace Inflexion2.UX.WPF.MVVM.Commands
         /// <param name="navigationViewModel">
         /// Referencia al modelo de vista que contiene la referencia a este comando.
         /// </param>
-        /// <param name="regionName">
+        /// <param name="regionNames">
         /// Indica el nombre de la región donde se va a mostrar la vista.
         /// </param>
-        /// <param name="viewName">
+        /// <param name="viewNames">
         /// Indica el nombre de la vista que se va a mostrar.
         /// </param>
         /// <param name="navigationCallback">

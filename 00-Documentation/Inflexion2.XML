@@ -660,7 +660,6 @@
             Initializes a new instance of the <see cref="T:Inflexion2.Domain.Validation.ValidationException"/> class.
             </summary>
             <param name="message">The message.</param>
-            <param name="errors">The errors.</param>
             <param name="entityType">Type of the entity.</param>
         </member>
         <member name="M:Inflexion2.Domain.Validation.ValidationException.#ctor(System.Type,System.String,System.Collections.Generic.IEnumerable{Inflexion2.Domain.Validation.ValidationError})">
@@ -4558,6 +4557,37 @@
             Core Context singleton class. Contains a reference to a root CoreContainer object.
             </summary>
         </member>
+        <member name="P:Inflexion2.ApplicationContext.User">
+            <summary>
+            gets the identity of the user through http or current thread
+            </summary>
+        </member>
+        <member name="T:Inflexion2.ServiceLocator">
+            <summary>
+            Service Locator implementation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.ServiceLocator.GetAllInstances``1">
+            <summary>
+            Get all the registeres instances
+            </summary>
+            <typeparam name="TDependency"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.ServiceLocator.GetInstance``1">
+            <summary>
+            Get one instance on function of the dependency
+            </summary>
+            <typeparam name="TDependency"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.ServiceLocator.GetInstance(System.Type)">
+            <summary>
+            Get one instance on function of the dependency type in a parameter
+            </summary>
+            <param name="dependencyType"></param>
+            <returns></returns>
+        </member>
         <member name="M:Inflexion2.ServiceLocator.Initialize(System.Action{System.Type,System.Type},System.Action{System.Type,System.Object},System.Func{System.Type,System.Object},System.Func{System.Type,System.Collections.Generic.IEnumerable{System.Object}})">
             <summary>
             .es Inicializa una nueva instancia de la clase <see cref="T:Inflexion2.ServiceLocator"/>
@@ -4574,7 +4604,6 @@
                 (x) => { return this.unityContainer.Resolve(x); },
                 (x) => { return this.unityContainer.ResolveAll(x); });
             </example>
-            <param name="registerCallback">The register callback.</param>
         </member>
         <member name="M:Inflexion2.ServiceLocator.RegisterInstance``1(System.Object)">
             <summary>
@@ -4603,6 +4632,13 @@
             </summary>
             <param name="interface">The @interface.</param>
             <param name="type">The type.</param>
+        </member>
+        <member name="M:Inflexion2.ServiceLocator.TryGetInstance``1">
+            <summary>
+            Try to resolve a dependency
+            </summary>
+            <typeparam name="TDependency"></typeparam>
+            <returns></returns>
         </member>
         <member name="T:Hexa.Core.ObjectExtensions">
             <summary>

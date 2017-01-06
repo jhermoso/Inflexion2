@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Inflexion2.UX.WPF.Common.Events
+﻿namespace Inflexion2.UX.WPF.Common.Events
 {
+    /// <summary>
+    /// event to send data
+    /// </summary>
     public class MyCopyDataAddedEvent : Microsoft.Practices.Prism.Events.CompositePresentationEvent<MyCopyData>
     {
     }

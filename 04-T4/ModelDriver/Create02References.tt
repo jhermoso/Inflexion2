@@ -10,37 +10,12 @@
 <!--#@ include file="t4helpers\Create\ControlCodeGeneration.ttinclude" #-->
 <#@ include file="t4helpers\Create\Inflexion2WPFControlCodeGeneration.ttinclude" #>
 <#
-
-//*#if DEBUG
-//*bool okDebug = true;
-//*if (okDebug)
-//*    {    
-//*        Debug.WriteLine(""); 
-//*        Debug.WriteLine("Empezamos con la transformación de AccesMBR");
-//*    }
-//*#endif
-
   kayak.MoneyGen.Application source = this.Application; // Usual access to source model.
   // In the source DSL Definition, the root element has a model reference:
 
     // inicialización del arbol de contextos
     //A partir de la raiz de un modelo obtenemos la jerarquia de constextos que cuelgan del mismo
     ITree<LocalizedBounded> TreeApp = GetSolutionContextTree( source);
-
-//*if DEBUG
-//*   if (okDebug)
-//*   {
-//*       string mensajeDepuracion;
-//*       foreach( INode<LocalizedBounded> context in TreeApp.All.Nodes )
-//*       {
-//*           if (context.Data.Context.Value != null)
-//*               mensajeDepuracion = context.Data.Context.Value.Elements.Count().ToString();
-//*           else
-//*               mensajeDepuracion = null;
-//*           if (okDebug) Debug.WriteLine(String.Format( "{0} (key) es '{1}' Con {2} hijos directos. Y tiene '{3}' elementos", T4Help.Indent(context.Depth*4), context.Data.Context.Key, context.DirectChildCount, mensajeDepuracion, context.Depth ));
-//*       }
-//*   }
-//*endif
 
     // primera parte: recolectamos información acerca de la solucion los diagramas y las definiciones
     // almacenandolas en estructuras de datos facilmente accesibles.
@@ -53,18 +28,7 @@
     // 3º obtenemos en la clase de maindiagram los path absolutos de las principales carpetas de la solución. 
     MainDiagram.SetAbsolutePath(SolutionInfo.DirectoryName);
 
-
     ITree<BoundedContextMetadata> SharedKernelTree = GetSharedKernelProjects(  MainDiagram,  SolutionInfo,  TreeApp);
-
-//*#if DEBUG
-//*    if (okDebug)
-//*    {
-//*        foreach (var sharedContext in SharedKernelTree.All.Nodes)
-//*        {
-//*           Debug.WriteLine(String.Format("{0}{1}", T4Help.Indent(sharedContext.Depth*4), sharedContext.Data.Name));
-//*        }
-//*    }
-//*#endif
 
     if (MainDiagram.Architecture == ArchitectureOptions.PureDDD)
     {
@@ -74,10 +38,6 @@
 
         //Debug.WriteLine(String.Format( "Añadimos Las referencias del proyecto"));
             // añadimos las referencias de los shared kernel a los proyectos. Esto significa que esta función solo aplica cuando tenemos shared kernels.
-            AddSharedKernelReferences(  MainDiagram,  SolutionInfo,  SharedKernelTree);
-
+        AddSharedKernelReferences(  MainDiagram,  SolutionInfo,  SharedKernelTree);
     }
-
-
-
 #>

@@ -232,6 +232,9 @@
     <None Include="Create05SourceCode.tt.log">
       <DependentUpon>Create05SourceCode.tt</DependentUpon>
     </None>
+    <None Include="Create06DataBase - Copy.tt.log">
+      <DependentUpon>Create06Resources.tt</DependentUpon>
+    </None>
     <None Include="Inflexion2t4Includes\AllCommonLayers\usings.tt" />
     <None Include="Inflexion2t4Includes\Application\ApplicationEntityAutoMapperCT.tt" />
     <None Include="Inflexion2t4Includes\Application\ApplicationEntityCreateServicesBaseCT %28Copy%29.tt" />
@@ -372,10 +375,10 @@
 ..\..\03-GeneratedProjects\Atento.Suite.Shared.Application.Dtos\Categoria\CategoriaDto.cs
 ..\..\03-GeneratedProjects\Atento.Suite.Shared.Application.Dtos\EnumsEnumeracion\EnumeracionDto.cs
 ..\..\03-GeneratedProjects\Atento.Suite.Shared.Application.Dtos\Persona\PersonaDto.cs
+..\..\03-GeneratedProjects\Atento.Suite.Shared.Application.WcfService.Contracts\Categoria\ICategoriaService.cs
+..\..\03-GeneratedProjects\Atento.Suite.Shared.Application.WcfService.Contracts\Persona\IPersonaService.cs
 ..\..\03-GeneratedProjects\Atento.Suite.Shared.Application.WcfService\Categoria\CategoriaService.svc
 ..\..\03-GeneratedProjects\Atento.Suite.Shared.Application.WcfService\Categoria\CategoriaService.svc.cs
-..\..\03-GeneratedProjects\Atento.Suite.Shared.Application.WcfService\Categoria\ICategoriaService.cs
-..\..\03-GeneratedProjects\Atento.Suite.Shared.Application.WcfService\Persona\IPersonaService.cs
 ..\..\03-GeneratedProjects\Atento.Suite.Shared.Application.WcfService\Persona\PersonaService.svc
 ..\..\03-GeneratedProjects\Atento.Suite.Shared.Application.WcfService\Persona\PersonaService.svc.cs
 ..\..\03-GeneratedProjects\Atento.Suite.Shared.Application.WcfService\SharedRepositoryLayer.cs
@@ -447,6 +450,19 @@
     <None Include="Create06DataBase.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Create06DataBase.txt</LastGenOutput>
+      <LastOutputs>
+..\..\03-GeneratedProjects\CreateSuiteDataBase\App.xaml
+..\..\03-GeneratedProjects\CreateSuiteDataBase\App.xaml.cs
+..\..\03-GeneratedProjects\CreateSuiteDataBase\Assets\Resources\CreateSuiteDataBase.de.resx
+..\..\03-GeneratedProjects\CreateSuiteDataBase\Assets\Resources\CreateSuiteDataBase.en.resx
+..\..\03-GeneratedProjects\CreateSuiteDataBase\Assets\Resources\CreateSuiteDataBase.fr.resx
+..\..\03-GeneratedProjects\CreateSuiteDataBase\Assets\Resources\CreateSuiteDataBase.he.resx
+..\..\03-GeneratedProjects\CreateSuiteDataBase\Assets\Resources\CreateSuiteDataBase.it.resx
+..\..\03-GeneratedProjects\CreateSuiteDataBase\Assets\Resources\CreateSuiteDataBase.pt.resx
+..\..\03-GeneratedProjects\CreateSuiteDataBase\Assets\Resources\CreateSuiteDataBase.resx
+..\..\03-GeneratedProjects\CreateSuiteDataBase\MainWindow.xaml
+..\..\03-GeneratedProjects\CreateSuiteDataBase\MainWindow.xaml.cs
+</LastOutputs>
     </None>
     <None Include="Create03ImageDocumentation.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -555,6 +571,9 @@
     <None Include="t4helpers\NameProjects\NamesProjects.tt" />
     <None Include="t4helpers\NameProjects\LayersAndProjects.tt" />
     <None Include="t4helpers\StringsFuntions\T4Helpers.ttinclude" />
+    <Content Include="Assets\TranslationsCache\AtentoSuiteXmlCache.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Create01Projects.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -562,8 +581,27 @@
     </Content>
     <None Include="Inflexion2t4Includes\Application\Services\ApplicationRemoteFacadeBaseSvcPartialConfigurationCsCT.tt" />
     <None Include="Inflexion2t4Includes\Application\ApplicationIocRepositoryLayer.tt" />
+    <None Include="Create06Resources.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Create06Resources.txt</LastGenOutput>
+      <LastOutputs>
+..\..\03-GeneratedProjects\Atento.Suite.Shared.Infrastructure.Resources\SharedResources.de.resx
+..\..\03-GeneratedProjects\Atento.Suite.Shared.Infrastructure.Resources\SharedResources.en.resx
+..\..\03-GeneratedProjects\Atento.Suite.Shared.Infrastructure.Resources\SharedResources.fr.resx
+..\..\03-GeneratedProjects\Atento.Suite.Shared.Infrastructure.Resources\SharedResources.he.resx
+..\..\03-GeneratedProjects\Atento.Suite.Shared.Infrastructure.Resources\SharedResources.it.resx
+..\..\03-GeneratedProjects\Atento.Suite.Shared.Infrastructure.Resources\SharedResources.pt.resx
+..\..\03-GeneratedProjects\Atento.Suite.Shared.Infrastructure.Resources\SharedResources.resx
+</LastOutputs>
+    </None>
+    <Content Include="Create06Resources.txt">
+      <DependentUpon>Create06Resources.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Content>
     <Content Include="Documentacion\Suite.Categoria.html" />
     <None Include="Inflexion2t4Includes\Application\WcfServiceIocConfiguratorCT.tt" />
+    <None Include="Inflexion2t4Includes\Infra\InfraestructureResourcesToTranslateCT.tt" />
     <Content Include="t4helpers\T4Application\Assemblys.tt" />
     <None Include="t4Includes\Application\ApplicationEntityDeleteServicesCoreCT.tt" />
     <None Include="t4Includes\Application\ApplicationEntityDtoCT.tt" />
@@ -701,7 +739,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Images\Logos\" />
-    <Folder Include="Assets\TranslationsCache\" />
     <Folder Include="Assets\WpfThemes\" />
     <Folder Include="Documentacion\Images\" />
     <Folder Include="Inflexion2t4Includes\Domain\backup and old versions\" />
@@ -766,6 +803,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Assets\CreateDataBase\Resources\CreateProductDataBase.ar.resx" />
     <EmbeddedResource Include="Assets\CreateDataBase\Resources\CreateProductDataBase.de-DE.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CreateProductDataBase.de-DE.Designer.cs</LastGenOutput>
@@ -786,6 +824,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CreateProductDataBase.it-IT.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Assets\CreateDataBase\Resources\CreateProductDataBase.ja.resx" />
     <EmbeddedResource Include="Assets\CreateDataBase\Resources\CreateProductDataBase.pt-PT.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CreateProductDataBase.pt-PT.Designer.cs</LastGenOutput>
@@ -795,6 +834,7 @@
       <LastGenOutput>CreateProductDataBase.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Assets\CreateDataBase\Resources\CreateProductDataBase.zh.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

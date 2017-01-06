@@ -18,6 +18,9 @@ namespace Inflexion2.UX.WPF.Common.BaseClasses
 
         #region Miembros de INotifyPropertyChanged
 
+        /// <summary>
+        /// INotifyPropertyChanged interface implementation
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion

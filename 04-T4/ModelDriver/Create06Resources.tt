@@ -1,0 +1,216 @@
+﻿<#@ template inherits="Microsoft.VisualStudio.TextTemplating.Modeling.ModelBusEnabledTextTransformation" language="C#" debug="true" hostspecific="True" #>
+<#@ output extension=".txt" #>
+<#@ MoneyGen processor="MoneyGenDirectiveProcessor"  requires="fileName='Main2.kyk'"  #>
+
+<#@ include file="T4Toolbox.tt" #>
+
+<#@ Assembly name    ="System.ServiceModel" #>
+
+<#@ import namespace = "System.ServiceModel" #>
+<#@ import namespace ="System.Globalization" #>
+
+<#@ include file="t4helpers\T4Application\Assemblys.tt" #>
+<#@ include file="t4helpers\T4Application\Imports.ttinclude" #>
+
+<#@ include file="t4Includes\Infra\CreateSchema\MyApplicationSettingsCT.tt" #>
+<#@ include file="Inflexion2t4Includes\Infra\InfraestructureResourcesToTranslateCT.tt" #>
+<#@ include file="t4Includes\Infra\CreateSchema\CreateSchemaResourcesCT.tt" #>
+<#@ include file="t4Includes\Infra\CreateSchema\CreateSchemaResxDef.tt" #>
+<#@ include file="t4helpers\BingTranslatorAccess\Translators.tt" #>
+<#
+
+// para traducir los recursos utilizamos la antigua configuración de los servicios de traducción de bing que necesita incluir el ensamblado de "System.ServiceModel"
+
+  kayak.MoneyGen.Application Source = this.Application; // Usual access to source model.
+  // In the source DSL Definition, the root element has a model reference:
+
+    // inicialización del arbol de contextos
+    //A partir de la raiz de un modelo obtenemos la jerarquia de constextos que cuelgan del mismo
+    ITree<LocalizedBounded> TreeApp = GetSolutionContextTree( Source );
+
+    // primera parte: recolectamos información acerca de la solucion los diagramas y las definiciones
+    // almacenandolas en estructuras de datos facilmente accesibles.
+    // 1º acerca del diagrama
+    DslContextDefinitionDiagram MainDiagram = new DslContextDefinitionDiagram(this.Application, TreeApp);
+
+    // 2º acerca de la propia solución
+    ActiveSolution SolutionInfo = new ActiveSolution(this.Host);
+
+    // 3º obtenemos en la clase de maindiagram los path absolutos de las principales carpetas de la solución. 
+    MainDiagram.SetAbsolutePath(SolutionInfo.DirectoryName);
+
+    // 4º instanciamos la clases con la definición de la arquitectura
+    //Architecture Arq = new Architecture();
+
+    IList<Project> Projectos = SolutionProjects.ProjectsList(); // este es un método estático que nos permite acceder de forma rapida a la lista de proyectos para buscar uno concreto.
+
+    // 1º con la carpeta de contextos limitados
+    MainDiagram.SFBoundedContextRef = SolutionInfo.AddSolutionFolderPath(MainDiagram.SolutionFolderBoundedContext);
+
+    if (MainDiagram.SFBoundedContextRef!=null )
+        Debug.WriteLine(String.Format("1 añadimos u obtenemos la carpeta '{0}' cuyo nombre es {1}",MainDiagram.SolutionFolderBoundedContext, MainDiagram.SFBoundedContextRef.Name));
+
+    // 3º con la carpeta de Framework 
+    MainDiagram.SFFrameworkRef = SolutionInfo.AddSolutionFolderPath(MainDiagram.SolutionFolderFramework);
+
+    ITree<BoundedContextMetadata> SharedKernelTree = GetSharedKernelProjects(  MainDiagram,  SolutionInfo,  TreeApp);
+
+    // creamos la carpeta de solución donde dejamos el proyecto wpf con la aplicación para crear o modificar la base de datos.
+    //string SolutionFolderCreateDBName = MainDiagram.SolutionFolderBoundedContext + System.IO.Path.DirectorySeparatorChar + "CreateDataBaseApp";
+
+    //Project SolutionFolderCreateDB = SolutionInfo.AddSolutionFolderPath( SolutionFolderCreateDBName);
+
+
+
+	ICollection<Architecture.ArqLayer> layersList= null;
+    if (MainDiagram.Architecture == ArchitectureOptions.Inflexion2)
+        layersList = Architecture.Inflexion2WPFLayers;
+    else if (MainDiagram.Architecture == ArchitectureOptions.HexaCore)
+        layersList = Architecture.HexaCoreMVCLayers;
+    else
+        layersList = Architecture.ArqLayers;
+
+
+
+    EnvDTE.Project AddedPrj = null;
+    EnvDTE.Project ReferencedProject = null;
+
+    IServiceProvider hostServiceProvider = (IServiceProvider)Host;
+    var dte = (EnvDTE.DTE)hostServiceProvider.GetService(typeof(SDTE)); // SDTE es una interfaz.
+
+    Solution2 soln = (Solution2)dte.Solution; // obtenemos la referencia a la solución abierta en la que nos encontramos.
+
+
+    ITree<ClassBase> selectedBoundedContextElements = null;
+    // recorremos los contextos limitados
+    int BoundedContextCounter = TreeApp.All.Nodes.Where( bc => bc.Data.Context.Value != null && bc.Data.Context.Key != null ).Count();
+    int TotalEntitiesCurrentBoundedContext = 0;
+    int contadorDeboundedContexts = 0;
+
+	ClassBaseContext CBC;
+	int contador = 0;
+	string AcumulateTestFromEntities = null;
+
+    foreach( INode<LocalizedBounded> context in TreeApp.All.Nodes )
+    {
+        contadorDeboundedContexts++;
+
+        kayak.MoneyGen.Application boundedContext = context.Data.Context.Value; //comentamos esta linea para cambiar el recorrido por los elementos del modelo por el recorrido del arbol de jerarquias.
+        string bdName = GetBoundedContextNameFromTreeAppAndDeep( context.Depth,  context,  MainDiagram);
+
+        if (boundedContext != null && bdName != null  ) // si el contexto limitado tiene asociado un diagrama y un nombre lo procesamos.
+        {
+            selectedBoundedContextElements = ReadClassesHierarchie(boundedContext);
+            string secureBdName = bdName.Replace('\\','.');
+            int contadorDeEntidades = 0;
+            //bool ResxWriteInit = false; // el contador de entidades no se puede usar para saber el comienzo pues las entidades de los shared kernel cuentan pero no se procesan.
+            int totalDeEntidades = selectedBoundedContextElements.All.Nodes.Where(p=> (p.Data is Entity || p.Data is ObjectValue || p.Data is Enumeration) && p.Data.ReferencedRootEntity == null).Count();
+            
+
+			contador = 0;
+            foreach (INode<ClassBase> item in selectedBoundedContextElements.All.Nodes.Where(p=> p.Data is Entity || p.Data is ObjectValue || p.Data is Enumeration) )
+            {
+				ClassBase entity = item.Data;
+				contadorDeEntidades++;
+				CBC = new ClassBaseContext(MainDiagram, SolutionInfo, entity, secureBdName);
+				contador++;
+
+				string estadoDeDesarrolloBC = "desarrollo";// contamos bounded context, es util para proyectos unicos en la solución
+				if(contadorDeboundedContexts == 1) estadoDeDesarrolloBC = "inicio"; 
+				if(contadorDeboundedContexts == BoundedContextCounter ) estadoDeDesarrolloBC = "fin";
+				if(contadorDeboundedContexts == 1 & BoundedContextCounter == 1) estadoDeDesarrolloBC = "soloUna";
+
+                // cada entidad tiene un reflejo en cada capa por lo tanto para cada entidad recorremos cada una de las capas y sus proyectos asociados.
+                foreach (Architecture.ArqLayer layer in layersList) //Recorremos La arquitectura seleccionada
+                {
+					string FolderLayerName = GetFolderLayerName(MainDiagram, layer.LayerType);
+					foreach (Architecture.ArqLayer.ArqProject project in layer.LayerProyects)
+					{
+						string nombreprojecto = GetProjectName( MainDiagram, layer.LayerType, project, secureBdName);
+						string PathProjectsolution = System.IO.Path.DirectorySeparatorChar + nombreprojecto;
+						string temppath = MainDiagram.AbsProyectsPath +System.IO.Path.DirectorySeparatorChar+nombreprojecto ;
+						string nombreprojectoConExtension = nombreprojecto + ".csproj";
+
+						if  (layer.LayerType == LayerKind.Infrastructure)
+						{
+							switch (project.Name) // en este punto tenemos el projecto el nombre del projecto y la entidad
+							{
+								case "Resources":
+								{
+									// La generación del fichero xaml es acumulativa por tanto es necesario controlar las tres fases del mismo.
+									// es decir en la primera fase inicializamos la cabecera y un bounded context con la primera entidad , en la segunda introducimos el resot de los bounded context  
+									// y en la tercera cerramos el fichero despues de meter la info de la ultima entidad recorrida.
+									// es necesario tener encuenta que cada diagrama puede tener una base de datos o no en cuyo caso se usa la de por defecto.
+
+									string estadoDeDesarrollo = "desarrollo"; // contamos entidades
+									if(contadorDeEntidades == 1) estadoDeDesarrollo = "inicio"; 
+									if(contadorDeEntidades == totalDeEntidades ) estadoDeDesarrollo = "fin";
+									if(contadorDeEntidades == 1 & totalDeEntidades == 1) estadoDeDesarrollo = "soloUna";
+
+									 var templateResult = new InfraestructureResourcesToTranslateCT(CBC, nombreprojecto, SharedKernelTree, estadoDeDesarrollo);
+
+									 AcumulateTestFromEntities = AcumulateTestFromEntities + templateResult.TransformText();
+
+									 System.IO.File.WriteAllText (@"C:\temp\AcumulateTestFromEntities"+contador.ToString()+".txt", AcumulateTestFromEntities);
+
+
+									if (estadoDeDesarrollo == "fin")
+									{
+										AcumulateTestFromEntities =	T4Help.StrCleanLfCR(AcumulateTestFromEntities);
+										string CreateSchemaResourcesTxt  = CreateSchemaResx.def();
+
+										List<string> TranslationList = Translator.GetSelectedLanguages( MainDiagram );
+
+										string LanguagesResourcesTxt = ResxHelp.GetResxTxtFromLanguagesSelected( TranslationList );
+
+										string TempOrigin = T4Help.AddRelPath2AbsPath(SolutionInfo.DirectoryName , "..\\04-T4\\ModelDriver"  + System.IO.Path.DirectorySeparatorChar + CDBcons.AssetsFolder + CDBcons.WpfThemesFolder + System.IO.Path.DirectorySeparatorChar);
+
+										string WpfThemesREsourcesTxt = ResxHelp.GetResxTxtFromWpfThemesFiles(TempOrigin);
+
+										string AcumulateTxt = CreateSchemaResourcesTxt + LanguagesResourcesTxt + WpfThemesREsourcesTxt + AcumulateTestFromEntities;
+
+										System.IO.File.WriteAllText (@"C:\temp\AcumulateTxt.txt", AcumulateTxt);
+
+										string TranslatedTxt = null; 
+
+
+
+										string DefaultLanguage = MainDiagram.App.Culture;
+										string languageIsoCode =null;
+										string languageIsoCodeDot = null;
+										string[] TargetArray;
+										//string NewLanguagesResourcesTxt = null;
+
+										foreach(string ResxKeyTranslation in TranslationList)
+										{
+											languageIsoCode= T4Help.GetCultureISOCode2FromEnglishLanguageName( ResxKeyTranslation.Trim() );
+
+											string XmlCacheFile = T4Help.AddRelPath2AbsPath(SolutionInfo.DirectoryName , "..\\04-T4\\ModelDriver"  + System.IO.Path.DirectorySeparatorChar + "Assets" + System.IO.Path.DirectorySeparatorChar + "TranslationsCache" + System.IO.Path.DirectorySeparatorChar + MainDiagram.Company+ MainDiagram.Product+"XmlCache.xml");
+
+											languageIsoCodeDot = ((string.IsNullOrEmpty(languageIsoCode) || DefaultLanguage.Equals(languageIsoCode))?"":languageIsoCode+".");
+											TargetArray = ResxHelp.GetRexArray(AcumulateTxt);
+
+											var tCreateDBresx   = new CreateSchemaResourcesCT(CBC, nombreprojecto, SharedKernelTree, "soloUna"/*estadoDeDesarrolloBC*/, languageIsoCode, TargetArray, XmlCacheFile);
+											tCreateDBresx.Output.PreserveExistingFile	= false;
+											tCreateDBresx.Output.File					= /*CDBcons.AssetsFolder + CDBcons.ResourcesFolder + System.IO.Path.DirectorySeparatorChar +*/ secureBdName + "Resources." + languageIsoCodeDot+"resx";
+
+											tCreateDBresx.projectNamespace				= nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+											tCreateDBresx.Output.Project				= temppath + System.IO.Path.DirectorySeparatorChar + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+											tCreateDBresx.Output.ItemType				= ItemType.EmbeddedResource;
+											tCreateDBresx.Output.CustomTool				= ((string.IsNullOrEmpty(languageIsoCode) || DefaultLanguage.Equals(languageIsoCode))?"PublicResXFileCodeGenerator":"");
+											//t20.Output.CustomToolNamespace = secureBdName;
+											tCreateDBresx.Output.Encoding = Encoding.UTF8;
+											tCreateDBresx.Render();
+										}
+									}
+									break;
+								}
+							}
+						}
+					}
+				}
+			}
+        }
+    }
+
+#>

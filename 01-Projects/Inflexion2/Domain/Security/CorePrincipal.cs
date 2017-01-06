@@ -37,7 +37,7 @@ namespace Inflexion2.Security
         {
             if (identity == null)
             {
-                throw new ArgumentNullException(Framework.IdentityCanNotBeNull);
+                throw new ArgumentNullException(FrameworkResource.IdentityCanNotBeNull);
             }
 
             this.identity = identity;

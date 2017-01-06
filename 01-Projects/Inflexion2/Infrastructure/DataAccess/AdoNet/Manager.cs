@@ -10,6 +10,7 @@ namespace Inflexion2.Infrastructure
     using global::System.Data.Common;
     using global::System.Threading;
 
+    //Alias
     using ProviderFactoryDictionary = global::System.Collections.Generic.Dictionary<string, global::System.Data.Common.DbProviderFactory>;
 
     /// <summary>

@@ -7,11 +7,12 @@ namespace Inflexion2
 
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
 
+    /// <summary>
+    /// Service Locator implementation
+    /// </summary>
     public static class ServiceLocator
     {
         private static Action<Type, object> registerInstanceCallback;
@@ -19,6 +20,11 @@ namespace Inflexion2
         private static Func<Type, IEnumerable<object>> resolveAllCallback;
         private static Func<Type, object> resolveCallback;
 
+        /// <summary>
+        /// Get all the registeres instances
+        /// </summary>
+        /// <typeparam name="TDependency"></typeparam>
+        /// <returns></returns>
         public static TDependency[] GetAllInstances<TDependency>()
         {
             IEnumerable<object> services = resolveAllCallback(typeof(TDependency));
@@ -31,11 +37,21 @@ namespace Inflexion2
             return default(TDependency[]);
         }
 
+        /// <summary>
+        /// Get one instance on function of the dependency
+        /// </summary>
+        /// <typeparam name="TDependency"></typeparam>
+        /// <returns></returns>
         public static TDependency GetInstance<TDependency>()
         {
             return (TDependency)GetInstance(typeof(TDependency));
         }
 
+        /// <summary>
+        /// Get one instance on function of the dependency type in a parameter
+        /// </summary>
+        /// <param name="dependencyType"></param>
+        /// <returns></returns>
         public static object GetInstance(Type dependencyType)
         {
             return resolveCallback(dependencyType);
@@ -56,7 +72,6 @@ namespace Inflexion2
         ///     (x) => { return this.unityContainer.Resolve(x); },
         ///     (x) => { return this.unityContainer.ResolveAll(x); });
         /// </example>
-        /// <param name="registerCallback">The register callback.</param>
         public static void Initialize(
             Action<Type, Type> registerType,
             Action<Type, object> registerInstance,
@@ -122,6 +137,12 @@ namespace Inflexion2
             }
         }
 
+
+        /// <summary>
+        /// Try to resolve a dependency
+        /// </summary>
+        /// <typeparam name="TDependency"></typeparam>
+        /// <returns></returns>
         public static TDependency TryGetInstance<TDependency>()
         {
             try

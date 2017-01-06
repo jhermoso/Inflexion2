@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>8f012800-101e-48da-82e4-61939cbf3f40</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Itenso.Common.I2settings</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ApplicationSettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FieldSetting.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FieldSettingAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ISetting.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ISettingCollector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PropertySetting.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PropertySettingAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Setting.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SettingCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SettingCollector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SettingCollectorCancelEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SettingCollectorCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SettingScope.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SettingValueCancelEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SettingValueEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserConfig.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ValueSetting.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ValueSettingBase.cs" />
+  </ItemGroup>
+</Project>

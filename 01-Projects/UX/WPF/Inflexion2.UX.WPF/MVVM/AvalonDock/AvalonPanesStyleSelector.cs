@@ -20,18 +20,31 @@ namespace Inflexion2.UX.WPF.MVVM
     /// </summary>
     public class AvalonPanesStyleSelector : StyleSelector
     {
+
+        /// <summary>
+        /// work space style
+        /// </summary>
         public Style DocumentStyle
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// toolbar style
+        /// </summary>
         public Style ToolStyle
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// select the style depending on type of container use.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="container"></param>
+        /// <returns></returns>
         public override System.Windows.Style SelectStyle(object item, System.Windows.DependencyObject container)
         {
             FrameworkElement element = item as FrameworkElement;

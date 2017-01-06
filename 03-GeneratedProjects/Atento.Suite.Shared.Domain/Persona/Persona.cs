@@ -98,9 +98,9 @@ namespace Atento.Suite.Shared.Domain
         /// <value>
         /// Valor que es utilizado para establecer y obtener Nombre.
         /// </value>
-        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
+        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
-        [StringLength( 80, MinimumLength=3, ErrorMessageResourceType = typeof(SharedNeutral), ErrorMessageResourceName = "Persona_NombreRangeStringLengthError" )]
+        [StringLength( 80, MinimumLength=3, ErrorMessageResourceType = typeof(SharedResources), ErrorMessageResourceName = "Persona_NombreRangeStringLengthError" )]
         public virtual string Nombre 
             {
                 get;
@@ -117,7 +117,7 @@ namespace Atento.Suite.Shared.Domain
         /// <value>
         /// Valor que es utilizado para establecer y obtener BooleanField.
         /// </value>
-        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
+        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
         public virtual bool BooleanField 
             {
@@ -135,7 +135,7 @@ namespace Atento.Suite.Shared.Domain
         /// <value>
         /// Valor que es utilizado para establecer y obtener DatetimeField.
         /// </value>
-        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
+        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
         public virtual DateTime DatetimeField 
             {
@@ -153,7 +153,7 @@ namespace Atento.Suite.Shared.Domain
         /// <value>
         /// Valor que es utilizado para establecer y obtener ByteField.
         /// </value>
-        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
+        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
         public virtual byte ByteField 
             {
@@ -171,7 +171,7 @@ namespace Atento.Suite.Shared.Domain
         /// <value>
         /// Valor que es utilizado para establecer y obtener GuidField.
         /// </value>
-        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
+        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
         public virtual Guid GuidField 
             {
@@ -189,7 +189,7 @@ namespace Atento.Suite.Shared.Domain
         /// <value>
         /// Valor que es utilizado para establecer y obtener DecimalField.
         /// </value>
-        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
+        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
         public virtual decimal DecimalField 
             {
@@ -207,7 +207,7 @@ namespace Atento.Suite.Shared.Domain
         /// <value>
         /// Valor que es utilizado para establecer y obtener DobleField.
         /// </value>
-        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
+        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
         public virtual double DobleField 
             {
@@ -225,7 +225,7 @@ namespace Atento.Suite.Shared.Domain
         /// <value>
         /// Valor que es utilizado para establecer y obtener FloatField.
         /// </value>
-        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
+        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
         public virtual float FloatField 
             {
@@ -243,7 +243,7 @@ namespace Atento.Suite.Shared.Domain
         /// <value>
         /// Valor que es utilizado para establecer y obtener IntField.
         /// </value>
-        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
+        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
         public virtual int IntField 
             {
@@ -261,7 +261,7 @@ namespace Atento.Suite.Shared.Domain
         /// <value>
         /// Valor que es utilizado para establecer y obtener LongField.
         /// </value>
-        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
+        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
         public virtual long LongField 
             {
@@ -279,7 +279,7 @@ namespace Atento.Suite.Shared.Domain
         /// <value>
         /// Valor que es utilizado para establecer y obtener DateTimeOffsetField.
         /// </value>
-        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
+        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
         public virtual DateTimeOffset DateTimeOffsetField 
             {
@@ -297,7 +297,7 @@ namespace Atento.Suite.Shared.Domain
         /// <value>
         /// Valor que es utilizado para establecer y obtener ShortField.
         /// </value>
-        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
+        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
         public virtual short ShortField 
             {
@@ -315,7 +315,7 @@ namespace Atento.Suite.Shared.Domain
         /// <value>
         /// Valor que es utilizado para establecer y obtener TimeSpanField.
         /// </value>
-        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
+        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
         public virtual TimeSpan TimeSpanField 
             {
@@ -333,7 +333,7 @@ namespace Atento.Suite.Shared.Domain
         /// <value>
         /// Valor que es utilizado para establecer y obtener Int16Field.
         /// </value>
-        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
+        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
         public virtual Int16 Int16Field 
             {
@@ -351,7 +351,7 @@ namespace Atento.Suite.Shared.Domain
         /// <value>
         /// Valor que es utilizado para establecer y obtener Int32Field.
         /// </value>
-        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
+        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
         public virtual Int32 Int32Field 
             {
@@ -369,7 +369,7 @@ namespace Atento.Suite.Shared.Domain
         /// <value>
         /// Valor que es utilizado para establecer y obtener Int64Field.
         /// </value>
-        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.Framework), 
+        [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
         public virtual Int64 Int64Field 
             {

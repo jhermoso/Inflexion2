@@ -15,7 +15,7 @@ namespace Inflexion2.UX.WPF.Controls.Dialogs.Views
     using Microsoft.Practices.Prism.Commands;
 
     /// <summary>
-    /// Lógica de interacción con MessageBoxInteractionView.xaml
+    /// Clase base con la Lógica de interacción con MessageBoxInteractionView.xaml 
     /// </summary>
     public partial class MessageBoxInteractionView : MessageBoxDialog,
         IBaseDialogView<MessageBoxResult>,
@@ -27,7 +27,7 @@ namespace Inflexion2.UX.WPF.Controls.Dialogs.Views
         private IBaseDialogAdapter<MessageBoxResult> adapter;
 
         /// <summary>
-        /// Inicia una nueva instancia de la clase <see cref="ConfirmDeleteInteractionView" />.
+        /// Inicia un dialogo de confirmación />.
         /// </summary>
         public MessageBoxInteractionView()
         {
@@ -89,7 +89,7 @@ namespace Inflexion2.UX.WPF.Controls.Dialogs.Views
         /// <summary>
         /// Establece la entidad.
         /// </summary>
-        /// <param name="entity">La entidad de tipo <see cref="CortePoliticaAppointment"/>.</param>
+        /// <param name="entity"></param>
         public void SetEntity(MessageBoxResult entity)
         {
             this.ViewModel.SetEntity(entity);
@@ -98,7 +98,7 @@ namespace Inflexion2.UX.WPF.Controls.Dialogs.Views
         /// <summary>
         /// Obtiene la entidad.
         /// </summary>
-        /// <returns>La entidad de tipo <see cref="CortePoliticaAppointment"/>.</returns>
+        /// <returns>resultado del dialogo</returns>
         public MessageBoxResult GetEntity()
         {
             return this.ViewModel.Entity;

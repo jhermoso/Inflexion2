@@ -4,18 +4,23 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-
 namespace Inflexion2.UX.WPF.MVVM
 {
-
     using System;
     using System.Linq.Expressions;
     using System.Reflection;
 
-
+    /// <summary>
+    /// class with method to get property info from expresion through reflection
+    /// </summary>
     public static class PropertySupport
     {
-
+        /// <summary>
+        /// gets the type of property of one expresion
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="propertyExpresssion"></param>
+        /// <returns></returns>
         public static String ExtractPropertyName<T>(Expression<Func<T>> propertyExpresssion)
         {
             if (propertyExpresssion == null)
@@ -43,7 +48,5 @@ namespace Inflexion2.UX.WPF.MVVM
 
             return memberExpression.Member.Name;
         }
-
     } // PropertySupport
-
-} // Company.Product.Shared.SharedCore.UI.MVVM
+} 

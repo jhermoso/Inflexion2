@@ -21,13 +21,13 @@ namespace Atento.Suite.Shared.Application
 
     using System.Collections.Generic;
     using System;
-	using Inflexion2.Domain;
+    using Inflexion2.Domain;
     using Inflexion2.Application.DataTransfer.Core;
     using Inflexion2.Application;
     using Atento.Suite.Shared.Application.Dtos;
 
     /// <summary>
-	///  .en Define the contract for the entity's administration services.
+    ///  .en Define the contract for the entity's administration services.
     ///  .es Define el contrato para los servicios de administración de la entidad.
     /// de tipo <see cref="Atento.Suite.Shared.Application.ICategoriaServices"/>.
     /// </summary>
@@ -35,7 +35,7 @@ namespace Atento.Suite.Shared.Application
     {
         #region Methods
         /// <summary>
-		/// .en Create an entity of type ICategoria.
+        /// .en Create an entity of type ICategoria.
         /// .es Función encargada de la creación de una entidad de tipo ICategoria.
         /// </summary>
         /// <param name="categoriaDto">

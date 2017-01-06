@@ -12,7 +12,7 @@ public class CreateExecutePreconditions : Template
         // conceptos propios del projecto en curso
         ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
 
-        string ResxFileName = prjCon.boundedContextName.Replace(".","")+"Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+        string ResxFileName = prjCon.boundedContextName.Replace(".","") + "Resources"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
 #>
             #region Preconditions
 
@@ -39,7 +39,7 @@ public class CreateExecutePreconditions : Template
             Guard.ArgumentIsNotNull(
                                     <#= cbc.camelSecureEntityName #>Dto,
                                     string.Format(
-                                                    Inflexion2.Resources.Framework.DataTransferObjectIsNull,
+                                                    FrameworkResource.DataTransferObjectIsNull,
                                                     <#= ResxFileName #>.<#= cbc.pascalSecureEntityName #>Alias));
             // Comprobar los campos mandatory dentro del DTO.
 <#+
@@ -52,7 +52,7 @@ public class CreateExecutePreconditions : Template
             Guard.<#=(property.AtributteType.ToLower().Equals("string"))?"ArgumentNotNullOrEmpty":"ArgumentIsNotNull" #>(
                                         <#= cbc.camelSecureEntityName #>Dto.<#=property.AtributteName #>,
                                         string.Format(
-                                                        Inflexion2.Resources.Framework.PropertyRequired,
+                                                        FrameworkResource.PropertyRequired,
                                                         <#= ResxFileName #>.<#= cbc.pascalSecureEntityName #>_<#=property.AtributteName #>Alias, 
                                                         <#= ResxFileName #>.<#= cbc.pascalSecureEntityName #>Alias)
                                         );
@@ -92,7 +92,7 @@ if (cbc.mandatorySourceLinksCounter>0) // comprobamos si tenemos relaciones de c
                 Guard.<#=(atribute.AtributteType.ToLower().Equals("string"))?"ArgumentNotNullOrEmpty":"ArgumentIsNotNull" #>(
                                             <#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.TargetRolName) #><#= T4Help.SecureName(atribute.AtributteName) #>,
                                             string.Format(
-                                                        Inflexion2.Resources.Framework.DataTransferObjectIsNull,
+                                                        FrameworkResource.DataTransferObjectIsNull,
                                                         <#= ResxFileName #>.<#= cbc.pascalSecureEntityName #>_<#= T4Help.ToPascalCase(property.TargetRolName) #>Alias_));
 
 <#+         }#>
@@ -102,7 +102,7 @@ if (cbc.mandatorySourceLinksCounter>0) // comprobamos si tenemos relaciones de c
                 Guard.ArgumentIsNotNull(
                                     <#= cbc.camelSecureEntityName #>Dto.<#=property.TargetRolName #>,
                                     string.Format(
-                                                Inflexion2.Resources.Framework.DataTransferObjectIsNull,
+                                                FrameworkResource.DataTransferObjectIsNull,
                                                 <#= ResxFileName #>.<#= cbc.pascalSecureEntityName #>_<#=property.TargetRolName #>Alias_));
 
 <#+                 } // end if is not object value#>
@@ -113,7 +113,7 @@ if (cbc.mandatorySourceLinksCounter>0) // comprobamos si tenemos relaciones de c
             // el dto debe corresponder a un transient el id debe tener el valor por defecto
             Guard.Against<ArgumentException>(<#= cbc.camelSecureEntityName #>Dto.Id != default(<#=cbc.idtype #>),                                    
                                                     string.Format(
-                                                                Inflexion2.Resources.Framework.IsNotTransient,
+                                                                FrameworkResource.IsNotTransient,
                                                                 <#= ResxFileName #>.<#= cbc.pascalSecureEntityName #>Alias
                                                                     )
                                             );

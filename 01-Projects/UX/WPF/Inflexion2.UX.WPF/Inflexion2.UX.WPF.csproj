@@ -69,7 +69,11 @@
     <Reference Include="AvalonDock">
       <HintPath>..\..\..\..\02-Library\AvalonDock\AvalonDock.dll</HintPath>
     </Reference>
-    <Reference Include="MahApps.Metro, Version=0.13.1.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+    <Reference Include="Itenso.Configuration, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\02-Library\UserSettingsApplied_v1.2.0 modified\ReleaseLib\Itenso.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\10-Solutions\packages\MahApps.Metro.0.13.1.0\lib\net40\MahApps.Metro.dll</HintPath>
     </Reference>
@@ -117,6 +121,14 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
+    <Reference Include="WPFLocalizeExtension, Version=2.3.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\02-Library\WPFLocalizationExtension-BinWPF\WPFLocalizeExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="XAMLMarkupExtensions, Version=1.2.1.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\02-Library\WPFLocalizationExtension-BinWPF\XAMLMarkupExtensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\..\..\10-Solutions\CommonAssemblyInfo.cs">
@@ -134,13 +146,17 @@
     <Compile Include="MVVM\Common\BaseModule.cs" />
     <Compile Include="MVVM\Common\Binding\BindingListener.cs" />
     <Compile Include="MVVM\Common\Commands\MultipleViewsNavigationCommand.cs" />
-    <Compile Include="UI\Helpers\RangeObservableCollection.cs" />
-    <Compile Include="UI\ValueConverters\BoolToVisibility.cs" />
-    <Compile Include="UI\ValueConverters\MultiplyConverter.cs" />
-    <Compile Include="UI\ValueConverters\SelectedToColorConverter.cs" />
-    <Compile Include="UI\ValueConverters\StringStateToPathConverter.cs" />
-    <Compile Include="UI\ValueConverters\CommonStringToPathGeometryConverter.cs" />
-    <Compile Include="UI\ValueConverters\SystemIconConverter.cs" />
+    <Compile Include="MVVM\Views\ShellWindow.xaml.cs">
+      <DependentUpon>ShellWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UX\Helpers\RangeObservableCollection.cs" />
+    <Compile Include="UX\ValueConverters\BoolToVisibility.cs" />
+    <Compile Include="UX\ValueConverters\MultiplyConverter.cs" />
+    <Compile Include="UX\ValueConverters\SelectedToColorConverter.cs" />
+    <Compile Include="UX\ValueConverters\StringStateToPathConverter.cs" />
+    <Compile Include="UX\ValueConverters\CommonStringToPathGeometryConverter.cs" />
+    <Compile Include="UX\ValueConverters\StringToImageSourceConverter.cs" />
+    <Compile Include="UX\ValueConverters\SystemIconConverter.cs" />
     <Compile Include="MVVM\Common\Events\NavigationCompletedEvent.cs" />
     <Compile Include="MVVM\Dialogs\BaseDialogAction.cs" />
     <Compile Include="MVVM\Dialogs\BaseDialog.cs" />
@@ -171,7 +187,7 @@
     <Compile Include="MVVM\Views\Login\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Views\Login\LoginViewModel.cs" />
+    <Compile Include="MVVM\ViewModels\LoginViewModel.cs" />
     <Compile Include="MVVM\Views\Presentation\PresentationView.xaml.cs">
       <DependentUpon>PresentationView.xaml</DependentUpon>
     </Compile>
@@ -200,46 +216,27 @@
     <Compile Include="MVVM\Common\RegionNames.cs" />
     <Compile Include="MVVM\Common\Interfaces\IRegionViewModel.cs" />
     <Compile Include="MVVM\ViewModels\Regions\RegionViewModel.cs" />
-    <Compile Include="MVVM\Views\ShellWindow.xaml.cs">
-      <DependentUpon>ShellWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\Helpers\AsyncCallHelper\AsyncCallHelper.cs" />
-    <Compile Include="UI\Helpers\AsyncCallHelper\AsyncCallResult.cs" />
-    <Compile Include="UI\Helpers\DataGridHelper.cs" />
-    <Compile Include="UI\Helpers\DialogCloser.cs" />
-    <Compile Include="UI\Helpers\GeneralHelper.cs" />
-    <Compile Include="UI\Helpers\PasswordHelper.cs" />
-    <Compile Include="UI\ValueConverters\BooleanActivoValueConverter.cs" />
-    <Compile Include="UI\ValueConverters\BooleanToVisibilityConverter.cs" />
-    <Compile Include="UI\ValueConverters\BooleanValueConverter.cs" />
-    <Compile Include="UI\ValueConverters\BooleanToVisibilityCollapsedConverter.cs" />
-    <Compile Include="UI\ValueConverters\MarkupConverter.cs" />
-    <Compile Include="UI\ValueConverters\OffOnConverter.cs" />
-    <Compile Include="UI\ValueConverters\StringToColorConverter.cs" />
-    <Compile Include="UI\ValueConverters\stringToPathGeometryConverter.cs" />
-    <Compile Include="UI\ValueConverters\TextToColorConverter.cs" />
-    <Compile Include="UI\ValueConverters\ThicknessToDoubleConverter.cs" />
-    <Compile Include="UI\ValueConverters\DateValueConverter.cs" />
-    <Compile Include="UI\ValueConverters\TimeSpanMinuteSecondValueConverter.cs" />
-    <Compile Include="UI\ValueConverters\ToLowerConverter.cs" />
-    <Compile Include="UI\ValueConverters\ToUpperConverter.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="MVVM\Views\Images\DeleteRecord_32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="MVVM\Views\Images\EditRecord_32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="MVVM\Views\Images\GetRecords_32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="MVVM\Views\Images\NewRecord_32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="MVVM\Views\Images\ProductLogo.old.png" />
-    <Resource Include="MVVM\Views\Images\SaveRecord_32x32.png" />
+    <Compile Include="UX\Helpers\AsyncCallHelper\AsyncCallHelper.cs" />
+    <Compile Include="UX\Helpers\AsyncCallHelper\AsyncCallResult.cs" />
+    <Compile Include="UX\Helpers\DataGridHelper.cs" />
+    <Compile Include="UX\Helpers\DialogCloser.cs" />
+    <Compile Include="UX\Helpers\GeneralHelper.cs" />
+    <Compile Include="UX\Helpers\PasswordHelper.cs" />
+    <Compile Include="UX\ValueConverters\BooleanActivoValueConverter.cs" />
+    <Compile Include="UX\ValueConverters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="UX\ValueConverters\BooleanValueConverter.cs" />
+    <Compile Include="UX\ValueConverters\BooleanToVisibilityCollapsedConverter.cs" />
+    <Compile Include="UX\ValueConverters\MarkupConverter.cs" />
+    <Compile Include="UX\ValueConverters\OffOnConverter.cs" />
+    <Compile Include="UX\ValueConverters\StringToColorConverter.cs" />
+    <Compile Include="UX\ValueConverters\stringToPathGeometryConverter.cs" />
+    <Compile Include="UX\ValueConverters\TextToColorConverter.cs" />
+    <Compile Include="UX\ValueConverters\ThicknessToDoubleConverter.cs" />
+    <Compile Include="UX\ValueConverters\DateValueConverter.cs" />
+    <Compile Include="UX\ValueConverters\TimeSpanMinuteSecondValueConverter.cs" />
+    <Compile Include="UX\ValueConverters\ToLowerConverter.cs" />
+    <Compile Include="UX\ValueConverters\ToUpperConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="MVVM\Views\Login\LoginView.xaml">
@@ -256,31 +253,276 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="MVVM\Views\Images\Active.png" />
     <Content Include="MVVM\ViewModels\Crud\DeudaTécnica.txt" />
-    <Resource Include="MVVM\Views\Images\appbar.navigate.first.32.png" />
-    <Resource Include="MVVM\Views\Images\appbar.navigate.lastt.32.png" />
-    <Resource Include="MVVM\Views\Images\appbar.navigate.next.32.png" />
-    <Resource Include="MVVM\Views\Images\appbar.navigate.previous.32.png" />
+    <Content Include="MVVM\Views\Images\Document-01.64.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\iv.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ad.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ae.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\af.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ag.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ai.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\al.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\am.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\an.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ao.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\as.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\at.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\au.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\aw.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ax.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\az.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ba.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\bb.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\bd.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\be.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\bf.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\bg.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\bh.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\bi.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\bj.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\bm.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\bn.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\bo.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\br.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\bs.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\bt.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\bv.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\bw.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\by.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\bz.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ca.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\catalonia.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\cc.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\cd.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\cf.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\cg.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ch.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ci.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ck.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\cl.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\cm.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\zh.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\co.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\cr.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\cs.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\cu.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\cv.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\cx.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\cy.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\cz.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\de.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\dj.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\dk.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\dm.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\do.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\dz.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ec.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ee.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\eg.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\eh.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\england.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\er.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\es.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\et.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\europeanunion.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\fam.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\fi.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\fj.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\fk.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\fm.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\fo.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\fr.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ga.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\gb.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\gd.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ge.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\gf.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\gh.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\gi.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\gl.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\gm.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\gn.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\gp.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\gq.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\gr.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\gs.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\gt.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\gu.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\gw.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\gy.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\hk.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\hm.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\hn.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\hr.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ht.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\hu.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\id.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ie.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\he.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\in.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\io.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\iq.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ir.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\is.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\it.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\jm.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\jo.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ja.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ke.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\kg.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\kh.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ki.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\km.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\kn.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\kp.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\kr.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\kw.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ky.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\kz.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\la.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\lb.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\lc.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\li.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\lk.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\lr.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ls.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\lt.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\lu.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\lv.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ly.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ma.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\mc.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\md.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\me.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\mg.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\mh.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\mk.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ml.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\mm.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\mn.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\mo.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\mp.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\mq.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\mr.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ms.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\mt.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\mu.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\mv.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\mw.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\mx.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\my.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\mz.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\na.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\nc.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ne.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\nf.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ng.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ni.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\nl.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\no.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\np.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\nr.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\nu.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\nz.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\om.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\pa.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\pe.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\pf.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\pg.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ph.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\pk.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\pl.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\pm.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\pn.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\pr.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ps.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\pt.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\pw.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\py.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\qa.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\re.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ro.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\rs.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ru.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\rw.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ar.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\sb.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\sc.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\scotland.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\sd.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\se.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\sg.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\sh.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\si.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\sj.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\sk.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\sl.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\sm.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\sn.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\so.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\sr.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\st.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\sv.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\sy.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\sz.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\tc.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\td.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\tf.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\tg.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\th.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\tj.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\tk.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\tl.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\tm.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\tn.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\to.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\tr.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\tt.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\tv.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\tw.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\tz.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ua.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ug.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\um.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\en.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\uy.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\uz.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\va.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\vc.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ve.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\vg.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\vi.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\vn.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\vu.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\wales.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\wf.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ws.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\ye.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\yt.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\za.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\zm.png" />
+    <Resource Include="MVVM\Views\Images\LanguageFlags\zw.png" />
+    <Resource Include="MVVM\Views\Images\Document-02.64.png" />
+    <Resource Include="MVVM\Views\Images\Document-Add.64.png" />
+    <Resource Include="MVVM\Views\Images\Document-Check.64.png" />
+    <Resource Include="MVVM\Views\Images\Document-Delete.64.png" />
+    <Resource Include="MVVM\Views\Images\Document-Edit.64.png" />
+    <Resource Include="MVVM\Views\Images\Document-Download.64.png" />
+    <Resource Include="MVVM\Views\Images\Stop.64.png" />
+    <Resource Include="MVVM\Views\Images\Add.64.png" />
+    <Resource Include="MVVM\Views\Images\Check.64.png" />
+    <Resource Include="MVVM\Views\Images\Delete.32.96.png" />
+    <Resource Include="MVVM\Views\Images\Delete.64.png" />
+    <Resource Include="MVVM\Views\Images\Edit_03.32.96.png" />
+    <Resource Include="MVVM\Views\Images\Edit_03.64.png" />
+    <Resource Include="MVVM\Views\Images\Navigation left - 01.64.png" />
+    <Resource Include="MVVM\Views\Images\Navigation left - 02.64.png" />
+    <Resource Include="MVVM\Views\Images\Navigation right - 01.64.png" />
+    <Resource Include="MVVM\Views\Images\Navigation right - 02.64.png" />
+    <Resource Include="MVVM\Views\Images\Save.64.png" />
     <Resource Include="MVVM\Views\Images\Inflexion2.png" />
-    <Content Include="MVVM\Views\Images\bold.png" />
-    <Content Include="MVVM\Views\Images\copy.png" />
-    <Content Include="MVVM\Views\Images\crop.png" />
-    <Resource Include="MVVM\Views\Images\delete.png" />
-    <Content Include="MVVM\Views\Images\delete2.png" />
-    <Resource Include="MVVM\Views\Images\edit.png" />
-    <Content Include="MVVM\Views\Images\edit2.png" />
-    <Resource Include="MVVM\Views\Images\floppy.png" />
-    <Resource Include="MVVM\Views\Images\get.png" />
-    <Content Include="MVVM\Views\Images\italic.png" />
-    <Resource Include="MVVM\Views\Images\new.png" />
-    <Content Include="MVVM\Views\Images\paste.png" />
-    <Resource Include="MVVM\Views\Images\LoginIcon.png" />
-    <Resource Include="MVVM\Views\Images\Presentation.png" />
-    <Resource Include="MVVM\Views\Images\PresentationNew.png" />
     <Resource Include="MVVM\Views\Images\presentacionV2.png" />
     <Resource Include="MVVM\Views\Images\ProductLogo.png" />
-    <Content Include="MVVM\Views\Images\subrayado.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\00-Certificates\Inflexion2.snk">
@@ -291,6 +533,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ItensoSettings\" />
     <Folder Include="MVVM\Views\Regions\" />
   </ItemGroup>
   <ItemGroup>
@@ -298,9 +541,17 @@
       <Project>{35331B03-1EF9-488C-964C-42DE594C98F1}</Project>
       <Name>Inflexion2.Application</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Inflexion2.Resources\Inflexion2.Resources.csproj">
+      <Project>{e5f79d13-0e92-4e5c-9251-6922741afcaa}</Project>
+      <Name>Inflexion2.Resources</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Inflexion2\Inflexion2.csproj">
       <Project>{BF5456D4-B276-459B-98D4-853FCEF99ADE}</Project>
       <Name>Inflexion2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Inflexion2.UX.WPF.Common\Inflexion2.UX.WPF.Common.csproj">
+      <Project>{5f3c7d38-e2bc-4ee9-8bc6-dbed3be0b62e}</Project>
+      <Name>Inflexion2.UX.WPF.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

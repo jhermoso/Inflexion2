@@ -140,15 +140,15 @@ namespace Atento.Suite.Shared.Application
             Guard.ArgumentIsNotNull(
                                     personaDto,
                                     string.Format(
-                                                    Inflexion2.Resources.Framework.DataTransferObjectIsNull,
-                                                    SharedNeutral.PersonaAlias));
+                                                    FrameworkResource.DataTransferObjectIsNull,
+                                                    SharedResources.PersonaAlias));
             // Comprobar los campos mandatory dentro del DTO.
             Guard.ArgumentNotNullOrEmpty(
                                         personaDto.Nombre,
                                         string.Format(
-                                                        Inflexion2.Resources.Framework.PropertyRequired,
-                                                        SharedNeutral.Persona_NombreAlias, 
-                                                        SharedNeutral.PersonaAlias)
+                                                        FrameworkResource.PropertyRequired,
+                                                        SharedResources.Persona_NombreAlias, 
+                                                        SharedResources.PersonaAlias)
                                         );
 
             #endregion
@@ -156,8 +156,8 @@ namespace Atento.Suite.Shared.Application
             // el dto debe corresponder a un transient el id debe tener el valor por defecto
             Guard.Against<ArgumentException>(personaDto.Id != default(Int32),                                    
                                                     string.Format(
-                                                                Inflexion2.Resources.Framework.IsNotTransient,
-                                                                SharedNeutral.PersonaAlias
+                                                                FrameworkResource.IsNotTransient,
+                                                                SharedResources.PersonaAlias
                                                                     )
                                             );
 
@@ -258,7 +258,7 @@ namespace Atento.Suite.Shared.Application
         /// <summary>
         /// Recupera una entidad Persona mediante su identificador correspondiente.
         /// </summary>
-        /// <param name="id">
+        /// <param name="entityBId">
         /// Identificador de la entidad que se va a recuperar.
         /// </param>
         /// <returns>
@@ -276,7 +276,7 @@ namespace Atento.Suite.Shared.Application
                 // Obtener y comprobar la entidad.
                 //ISpecification<Persona> spec = new DirectSpecification<Persona>(t => t.Id == entityBId);
                 var temp = repo.GetFilteredElements(t => t.Id == entityBId);
-                //string s = string.Format(Inflexion2.Resources.Framework.NoDataById, "Persona", entityBId);
+                //string s = string.Format(Inflexion2.Resources.NoDataById, "Persona", entityBId);
 
                 //Guard.ArgumentIsNotNull( entity, s );
 
@@ -322,7 +322,7 @@ namespace Atento.Suite.Shared.Application
             Guard.ArgumentIsNotNull(
                                     specificationDto,
                                     string.Format(
-                                                  Inflexion2.Resources.Framework.EspecificationDataTransferObjectIsNull,
+                                                  FrameworkResource.EspecificationDataTransferObjectIsNull,
                                                   "Persona")); 
             #endregion
             List<PersonaDto> result = new List<PersonaDto>(0);
@@ -391,7 +391,7 @@ namespace Atento.Suite.Shared.Application
             Guard.ArgumentIsNotNull(
                                     personaDto,
                                     string.Format(
-                                                  Inflexion2.Resources.Framework.DataTransferObjectIsNull,
+                                                  FrameworkResource.DataTransferObjectIsNull,
                                                   "Persona"));
             // en una actualización no comprobamos los campos mandatory.
             #endregion            
@@ -406,7 +406,7 @@ namespace Atento.Suite.Shared.Application
                 Guard.ArgumentIsNotNull(
                                         entity2Update,
                                         string.Format(
-                                                        Inflexion2.Resources.Framework.CanNotUpdateInexistenceEntity,
+                                                        FrameworkResource.CanNotUpdateInexistenceEntity,
                                                         "Persona"));
                 // Comprobar duplicidades;
 

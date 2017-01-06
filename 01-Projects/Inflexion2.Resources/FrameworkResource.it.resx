@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Acept" xml:space="preserve">
+    <value>Acept</value>
+  </data>
+  <data name="AnObjectOfType0WasNotAvailableFromThePool" xml:space="preserve">
+    <value>Un oggetto di tipo {0} non era disponibile dal pool</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="Canceled" xml:space="preserve">
+    <value>{0} annullato</value>
+  </data>
+  <data name="CanNotDeactivate" xml:space="preserve">
+    <value>Il {0} non può essere disattivato.</value>
+  </data>
+  <data name="CanNotDelete" xml:space="preserve">
+    <value>Il {0} non può essere eliminato.</value>
+  </data>
+  <data name="CanNotDirectlySaveAChildObject" xml:space="preserve">
+    <value>Non è possibile salvare direttamente un oggetto figlio</value>
+  </data>
+  <data name="CanNotUpdateInexistenceEntity" xml:space="preserve">
+    <value>Non è possibile aggiornare inesistenza entità {0}.</value>
+  </data>
+  <data name="CertificateFileNameFormatNotValidFilePassword" xml:space="preserve">
+    <value>Formato del nome file certificato non valido. ' file | password'</value>
+  </data>
+  <data name="Code0WasNotPresentInDataSetCollection" xml:space="preserve">
+    <value>Codice: {0} non era presente nell'insieme di set di dati</value>
+  </data>
+  <data name="CodeFieldNameNotSpecifiedUnableToFetchByCode" xml:space="preserve">
+    <value>Nome del campo codice non specificato. Grado di recupero dal codice.</value>
+  </data>
+  <data name="CollectionCantBeNull" xml:space="preserve">
+    <value>La collezione di {0} non può essere null</value>
+  </data>
+  <data name="CouldNotCreateType" xml:space="preserve">
+    <value>Potrebbe non CreateType </value>
+  </data>
+  <data name="CouldNotDefineType" xml:space="preserve">
+    <value>Potrebbe non DefineType </value>
+  </data>
+  <data name="CouldNotGenerateAssembly" xml:space="preserve">
+    <value>Impossibile generare l'assembly</value>
+  </data>
+  <data name="CouldNotGenerateModuleBuilder" xml:space="preserve">
+    <value>Impossibile generare generatore di modulo</value>
+  </data>
+  <data name="CreationTimeoutCannotBeNegative" xml:space="preserve">
+    <value>creationTimeout non può essere negativo</value>
+  </data>
+  <data name="DataLayerServiceCanTBeNull" xml:space="preserve">
+    <value>DataLayerService non può essere null</value>
+  </data>
+  <data name="DataTransferObjectIsNull" xml:space="preserve">
+    <value>L'entità {0} Dto non può essere null</value>
+  </data>
+  <data name="EmailNotCorrect" xml:space="preserve">
+    <value>La posta elettronica {0} non è corretto</value>
+  </data>
+  <data name="Entity" xml:space="preserve">
+    <value>Entità {0}</value>
+  </data>
+  <data name="EntityNotActive" xml:space="preserve">
+    <value>L'entità {0} non è attivo</value>
+  </data>
+  <data name="EntityRequired" xml:space="preserve">
+    <value>L'entità {0} è necessario</value>
+  </data>
+  <data name="ErrorMasterObjectsCanNotSupportChildDeleteMethod" xml:space="preserve">
+    <value>Errore: Master oggetti può non supporta ChildDelete metodo</value>
+  </data>
+  <data name="ErrorReadingField0FormTheDataSource" xml:space="preserve">
+    <value>Campo di lettura errore: {0} formano l'origine dati</value>
+  </data>
+  <data name="EspecificationDataTransferObjectIsNull" xml:space="preserve">
+    <value>Il parametro Especification Dto per entità {0} non può essere null</value>
+  </data>
+  <data name="FieldIsRequired" xml:space="preserve">
+    <value>Il campo {0} di {1} entità è necessaria</value>
+  </data>
+  <data name="FieldNameRequired" xml:space="preserve">
+    <value>È necessario il nome dell'entità {0}</value>
+  </data>
+  <data name="Founded" xml:space="preserve">
+    <value>{0} fondata</value>
+  </data>
+  <data name="IdentityCanNotBeNull" xml:space="preserve">
+    <value>Identità non può essere null.</value>
+  </data>
+  <data name="IEndpointBehaviorTypeSpecifiedMustHaveAPublicEmptyConstructor" xml:space="preserve">
+    <value>IEndpointBehaviorType specificato nel costruttore FlatWsdlServiceBehaviorAttribute deve avere un costruttore pubblico vuoto.</value>
+  </data>
+  <data name="InvalidConnectionStringId" xml:space="preserve">
+    <value>ConnectionStringId non valido ({0})</value>
+  </data>
+  <data name="IsNotTransient" xml:space="preserve">
+    <value>L'entità {0} deve essere transitoria, loro Id deve avere il valore predefinito.</value>
+  </data>
+  <data name="IsRequired" xml:space="preserve">
+    <value>{0} è necessario</value>
+  </data>
+  <data name="LinqEntityAttributeNotDefined" xml:space="preserve">
+    <value>LinqEntityAttribute non definito.</value>
+  </data>
+  <data name="MapperErrorEntityNull" xml:space="preserve">
+    <value>Errore di mapping per l'entità '{0}'. Parametro di input null non consentito.</value>
+  </data>
+  <data name="MaxPoolSizeCannotBeNegative" xml:space="preserve">
+    <value>maxPoolSize non può essere negativo</value>
+  </data>
+  <data name="MinPoolSizeCannotBeGreaterThanMaxPoolSize" xml:space="preserve">
+    <value>minPoolSize non può essere maggiore di maxPoolSize</value>
+  </data>
+  <data name="MinPoolSizeCannotBeNegative" xml:space="preserve">
+    <value>minPoolSize non può essere negativo</value>
+  </data>
+  <data name="Modify" xml:space="preserve">
+    <value>Modificare {0}</value>
+  </data>
+  <data name="MustBeGreaterOrEqualThan1" xml:space="preserve">
+    <value>{0} deve essere maggiore o uguale {1}</value>
+  </data>
+  <data name="NameCannotBeNull" xml:space="preserve">
+    <value>Nome non può essere null.</value>
+  </data>
+  <data name="NameOfUser" xml:space="preserve">
+    <value>Nome dell'utente</value>
+  </data>
+  <data name="NoDataById" xml:space="preserve">
+    <value>non c'è {0} con questo id {1}</value>
+  </data>
+  <data name="Object" xml:space="preserve">
+    <value>Oggetto {0}</value>
+  </data>
+  <data name="ObjectIsNotChildAndCanNotBeSaved" xml:space="preserve">
+    <value>Oggetto non è bambino e non possa essere salvata</value>
+  </data>
+  <data name="ObjectIsNotValidAndCanNotBeSaved" xml:space="preserve">
+    <value>Oggetto non è valido e non può essere salvato</value>
+  </data>
+  <data name="ObjectIsStillBeingEditedAndCanNotBeSaved" xml:space="preserve">
+    <value>Oggetto è ancora in fase di modifica e non possa essere salvata</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="PageMustBeGreaterOrEqualTo1" xml:space="preserve">
+    <value>pagina deve essere maggiore o uguale a 1</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PropertyRequired" xml:space="preserve">
+    <value>La proprietà {0} nell'entità {1} è richiesto</value>
+  </data>
+  <data name="Read" xml:space="preserve">
+    <value>Lettura</value>
+  </data>
+  <data name="Readed" xml:space="preserve">
+    <value>{0} ' letti</value>
+  </data>
+  <data name="Repeated" xml:space="preserve">
+    <value>{0} è ripetuto.</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Salvare</value>
+  </data>
+  <data name="Saved" xml:space="preserve">
+    <value>{0} Saved</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Ricerca</value>
+  </data>
+  <data name="Type0CannotBeUnregisteredBecauseThereAreActiveThreadsWaitingForAnObject" xml:space="preserve">
+    <value>Il tipo {0} non può essere annullata la registrazione perché ci sono thread attivi in attesa di un oggetto.</value>
+  </data>
+  <data name="Type0IsNotRegisteredInTheObjectPool" xml:space="preserve">
+    <value>Il tipo {0} non è registrato nel pool di oggetti</value>
+  </data>
+  <data name="TypeCannotBeNull" xml:space="preserve">
+    <value>Tipo non può essere null.</value>
+  </data>
+  <data name="TypeIsAlreadyRegisteredInTheObjectPool" xml:space="preserve">
+    <value>Il tipo {0} è già registrato nel pool di oggetti</value>
+  </data>
+  <data name="UnableToReadKeyOrIv" xml:space="preserve">
+    <value>Impossibile leggere la chiave o Id</value>
+  </data>
+  <data name="UnableToStartProvider" xml:space="preserve">
+    <value>Impossibile avviare il provider</value>
+  </data>
+  <data name="UnitOfWorkIsNull" xml:space="preserve">
+    <value>l'unità di lavoro è null</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Aggiornamento {0}</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Utente {0}</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Nome utente</value>
+  </data>
+  <data name="ValueIsNotAnEmail" xml:space="preserve">
+    <value>valore di {0} non è una mail</value>
+  </data>
+  <data name="ValueIsNotCorrectlyFormatted" xml:space="preserve">
+    <value>valore di {0} non è formattato correttamente</value>
+  </data>
+  <data name="ValueIsNotOfTheCorrectType" xml:space="preserve">
+    <value>valore di {0} non è del tipo corretto</value>
+  </data>
+  <data name="ValueMustBeBetween1And2" xml:space="preserve">
+    <value>valore di {0} deve essere compresa fra {1} e {2}</value>
+  </data>
+  <data name="flow" xml:space="preserve">
+    <value>LeftToRight</value>
+  </data>
+  <data name="Access" xml:space="preserve">
+    <value>Accesso</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="SaveMessage" xml:space="preserve">
+    <value>Salva {0}</value>
+  </data>
+  <data name="SaveRecord" xml:space="preserve">
+    <value>Salva record</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>Nuovo</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Aggiungere</value>
+  </data>
+  <data name="AddNewRecord" xml:space="preserve">
+    <value>Aggiungi nuovo record</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Modifica</value>
+  </data>
+  <data name="EditRecord" xml:space="preserve">
+    <value>Modifica record</value>
+  </data>
+  <data name="DeleteRecord" xml:space="preserve">
+    <value>Elimina record</value>
+  </data>
+  <data name="Get" xml:space="preserve">
+    <value>ottenere</value>
+  </data>
+  <data name="SearchMessage" xml:space="preserve">
+    <value>Cerca {0}</value>
+  </data>
+  <data name="First" xml:space="preserve">
+    <value>Primo</value>
+  </data>
+  <data name="FirstPage" xml:space="preserve">
+    <value>Primo pagina</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Il prossimo</value>
+  </data>
+  <data name="NextPage" xml:space="preserve">
+    <value>Pagina successiva</value>
+  </data>
+  <data name="Paging" xml:space="preserve">
+    <value>Paging</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Precendente</value>
+  </data>
+  <data name="PreviousPage" xml:space="preserve">
+    <value>Pagina precedente</value>
+  </data>
+  <data name="Last" xml:space="preserve">
+    <value>Ultimo</value>
+  </data>
+  <data name="LastPage" xml:space="preserve">
+    <value>Ultima pagina</value>
+  </data>
+</root>

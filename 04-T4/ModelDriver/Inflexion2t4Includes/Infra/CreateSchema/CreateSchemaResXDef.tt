@@ -11,26 +11,23 @@
             // para construirlos recursos 
             // estos son clave valor y comentario que se organizan en una unica linea para ayudar a visualizar
             // si un valor no se debe traducir se marca al principio con el tag de copyTag
-            // la razón por la que se construyen en una unica cadena es que de esta forma se envia al traductor en una unica operación de traducción.
             string result= 
-                "flow"                          + ResxHelp.spliTag + ResxHelp.processTag +"LeftToRight"         + ResxHelp.spliTag + "dirección de lectura del idioma al que pertenece el fichero de recursos" +   ResxHelp.spliTag +
-                "Any"                           + ResxHelp.spliTag + "(es)"+"ninguno"                                  + ResxHelp.spliTag + ResxHelp.copyTag + "ComboBoxItem.Content"+                                    ResxHelp.spliTag +
-                "Open"                          + ResxHelp.spliTag + "(es)"+"Open"                                     + ResxHelp.spliTag + ResxHelp.copyTag + "Button.Content"+                                          ResxHelp.spliTag +
-                "SelectLanguage"                + ResxHelp.spliTag + "(es)"+"Seleccione su idioma"                     + ResxHelp.spliTag + ResxHelp.copyTag + "Label.Content"+                                           ResxHelp.spliTag +
-                "SelectTheme"                   + ResxHelp.spliTag + "(es)"+"Seleccione el estilo de interface"        + ResxHelp.spliTag + ResxHelp.copyTag + "Label.Content"+                                           ResxHelp.spliTag +
-                "SistemaOperativo"              + ResxHelp.spliTag + "(es)"+"Sistema Operativo"                        + ResxHelp.spliTag + ResxHelp.copyTag + "ComboBoxItem.Content"+                                    ResxHelp.spliTag +
-                "GestordeEsquemasdeBD"          + ResxHelp.spliTag + "(es)"+"Gestor de Esquemas de BD"                 + ResxHelp.spliTag + ResxHelp.copyTag + "Window.Title"+                                            ResxHelp.spliTag +
-                "ContextoLimitado"              + ResxHelp.spliTag + "(es)"+"Contexto Limitado"                        + ResxHelp.spliTag + ResxHelp.copyTag + "TabItem.Header"+                                          ResxHelp.spliTag +
-                "Tecnologíadelabasededatos"     + ResxHelp.spliTag + "(es)"+"Tecnología de la base de datos:"          + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
-                "Nombredelabasededatos"         + ResxHelp.spliTag + "(es)"+"Nombre de la base de datos:"              + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
-                "Nombredelservidor"             + ResxHelp.spliTag + "(es)"+"Nombre del servidor:"                     + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
-                "usuario"                       + ResxHelp.spliTag + "(es)"+"usuario:"                                 + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
-                "contraseña"                    + ResxHelp.spliTag + "(es)"+"contraseña:"                              + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
-                "ScriptCreación"                + ResxHelp.spliTag + "(es)"+"Script Creación:"                         + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
-                "ScriptActualización"           + ResxHelp.spliTag + "(es)"+"Script Actualización:"                    + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
-                "MsSql2008"                     + ResxHelp.spliTag + "(es)"+"MsSql2008"                                + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
-                "NH3BeginnersGuide"             + ResxHelp.spliTag + "(es)"+"NH3BeginnersGuide"                        + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
-                "QUAD"                    + ResxHelp.spliTag + "(es)"+"QUAD"                             + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
+                "flow"                           + ResxHelp.spliTag + ResxHelp.processTag +"LeftToRight"         + ResxHelp.spliTag + "dirección de lectura del idioma al que pertenece el fichero de recursos" +   ResxHelp.spliTag +
+                "Any"                            + ResxHelp.spliTag + "(es)"+"ninguno"                                  + ResxHelp.spliTag + ResxHelp.copyTag + "ComboBoxItem.Content"+                                    ResxHelp.spliTag +
+                "Open"                           + ResxHelp.spliTag + "(es)"+"Open"                                     + ResxHelp.spliTag + ResxHelp.copyTag + "Button.Content"+                                          ResxHelp.spliTag +
+                "SelectLanguage"                 + ResxHelp.spliTag + "(es)"+"Seleccione su idioma"                     + ResxHelp.spliTag + ResxHelp.copyTag + "Label.Content"+                                           ResxHelp.spliTag +
+                "SelectTheme"                    + ResxHelp.spliTag + "(es)"+"Seleccione el estilo de interface"        + ResxHelp.spliTag + ResxHelp.copyTag + "Label.Content"+                                           ResxHelp.spliTag +
+                "SistemaOperativo"               + ResxHelp.spliTag + "(es)"+"Sistema Operativo"                        + ResxHelp.spliTag + ResxHelp.copyTag + "ComboBoxItem.Content"+                                    ResxHelp.spliTag +
+                "GestordeEsquemasdeBD"           + ResxHelp.spliTag + "(es)"+"Gestor de Esquemas de BD"                 + ResxHelp.spliTag + ResxHelp.copyTag + "Window.Title"+                                            ResxHelp.spliTag +
+                "ContextoLimitado"               + ResxHelp.spliTag + "(es)"+"Contexto Limitado"                        + ResxHelp.spliTag + ResxHelp.copyTag + "TabItem.Header"+                                          ResxHelp.spliTag +
+                "Tecnologíadelabasededatos"      + ResxHelp.spliTag + "(es)"+"Tecnología de la base de datos:"          + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
+                "Nombredelabasededatos"          + ResxHelp.spliTag + "(es)"+"Nombre de la base de datos:"              + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
+                "Nombredelservidor"              + ResxHelp.spliTag + "(es)"+"Nombre del servidor:"                     + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
+                "ScriptCreación"                 + ResxHelp.spliTag + "(es)"+"Script Creación:"                         + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
+                "ScriptActualización"            + ResxHelp.spliTag + "(es)"+"Script Actualización:"                    + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
+                "MsSql2008"                      + ResxHelp.spliTag + "(es)"+"MsSql2008"                                + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
+                "NH3BeginnersGuide"              + ResxHelp.spliTag + "(es)"+"NH3BeginnersGuide"                        + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
+                "QUAD"                           + ResxHelp.spliTag + "(es)"+"QUAD"										+ ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
                 "usuario"                        + ResxHelp.spliTag + "(es)"+"usuario"                                  + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
                 "contraseña"                     + ResxHelp.spliTag + "(es)"+"contraseña"                               + ResxHelp.spliTag + ResxHelp.copyTag + "TextBlock.Text"+                                          ResxHelp.spliTag +
                 "BorraryCrearEsquemaProduct"     + ResxHelp.spliTag + "(es)"+"Borrar y Crear Esquema Product"           + ResxHelp.spliTag + ResxHelp.copyTag + "Button.Content"+                                          ResxHelp.spliTag +
@@ -75,13 +72,13 @@
 <#+
     public static class ResxHelp
     {
-        public const string spliTag = "[%]"; // los tags han de ser simetricos para que si se traducen a un lenguage que cambia la dirección de lectura siguan siendo reconocibles
+        public const string spliTag = "[%]"; // los tags han de ser simetricos por si se traducen a un lenguage que cambia la dirección de lectura siguan siendo reconocibles
         public const string copyTag = "[*]";
         public const string processTag = "[&]";
 
 
 
-        /// este metodo separa la parte a traducir del estring que tiene el trio key, value remark.
+        /// este metodo separa la parte a traducir del string que tiene el triplete "key, value, remark".
         /// les incluye el separador con objeto de volver a construir la cadena
         /// su metodo opuesto es SetTranslatedTxt que vuelve a construir el trio pero sustituyendo
         public static string GetTxtToTranslate(string txt)
@@ -103,7 +100,7 @@
         {
             if (string.IsNullOrEmpty(TranslatedTxt)  || string.IsNullOrEmpty(TargetTxt) )
             {
-                Debug.WriteLine(string.Format("Error Llamada SetTranslatedTxt con un valor nulo "));
+                //Debug.WriteLine(string.Format("Error Llamada SetTranslatedTxt con un valor nulo "));
                 throw new Exception("Error Llamada SetTranslatedTxt con un valor nulo ");
             }
 
@@ -113,9 +110,9 @@
 
             if (true)
             {
-                Debug.WriteLine(string.Format("TranslatedArray.lenght= {0} ",TranslatedArray.Length));
-                Debug.WriteLine(string.Format("TargetArray.lenght    = {0} ",TargetArray.Length));
-                Debug.WriteLine(string.Format("(TargetArray.Length-1)*3) = {0} ",(TargetArray.Length-1)*3));
+                //Debug.WriteLine(string.Format("TranslatedArray.lenght= {0} ",TranslatedArray.Length));
+                //Debug.WriteLine(string.Format("TargetArray.lenght    = {0} ",TargetArray.Length));
+                //Debug.WriteLine(string.Format("(TargetArray.Length-1)*3) = {0} ",(TargetArray.Length-1)*3));
                 for(int i =0; i<TranslatedArray.Length; i++)
                 {
                     Debug.WriteLine(string.Format("TranslatedArray[{0}] = {1} ",i, TranslatedArray[i]));
@@ -129,7 +126,7 @@
             // precondición
             if ( (TranslatedArray.Length-1)*3 != TargetArray.Length ) 
             {
-                Debug.WriteLine(string.Format("SetTranslatedTxt(): posible error de coincidencia entre la longitud de TranslatedTxt y TargetTxt ")); 
+                //Debug.WriteLine(string.Format("SetTranslatedTxt(): posible error de coincidencia entre la longitud de TranslatedTxt y TargetTxt ")); 
                 throw new Exception("SetTranslatedTxt(): posible error de coincidencia entre la longitud de TranslatedTxt y TargetTxt");
             }
 
@@ -168,7 +165,7 @@
             return result.ToString();
         }
 
-        /// Metodo complementario al En una cadena de resx con fromato de triplete key, value , rem separado por el splittag
+        /// Metodo complementario al En una cadena de resx con formato de triplete key, value , rem separado por el splittag
         /// Substituimoslos valores de la old txt por los valores de la new txt y lo devolvemos
         public static string SubstituteValueTxt(string OldValue, string NewValue, string targetLangaugeIsoCode2)
         {
@@ -195,7 +192,7 @@
             // precondición
             if ( (OldArray.Length) != NewArray.Length ) 
             {
-                Debug.WriteLine(string.Format("SubstituteValueTxt(): posible error de coincidencia entre la longitud de OldArray y NewArray ")); 
+                //Debug.WriteLine(string.Format("SubstituteValueTxt(): posible error de coincidencia entre la longitud de OldArray y NewArray ")); 
                 throw new Exception("SubstituteValueTxt(): posible error de coincidencia entre la longitud de OldArray y NewArray");
             }
 
@@ -211,10 +208,10 @@
                key = i-1;
                rem = i+1;
 
-           if (true)
-                {
-                    Debug.WriteLine(string.Format("i = {0}, key={1} , rem= {2} ",key,i,rem));
-                }
+           //if (true)
+                //{
+                    //Debug.WriteLine(string.Format("i = {0}, key={1} , rem= {2} ",key,i,rem));
+                //}
 
                 RexNewKey   = RemoveSplitCopyProcessTags(OldArray[key]).Trim();
                 RexNewRem   = RemoveSplitCopyProcessTags(OldArray[rem]).Trim();
@@ -308,7 +305,7 @@
             return result.ToString();
         }
 
-        /// obtenemos el array de recursos con el triple de key, value, remark.
+        /// obtenemos el array de recursos con el triplete de "key, value, remark".
         public static string[]  GetRexArray(string txt)
         {
             return txt.Split( new string[] {spliTag} , StringSplitOptions.RemoveEmptyEntries);
@@ -323,8 +320,8 @@
             return result;
         }
 
-        /// en este metodo iremos añadiendo las diferntes situaciones en las quele valor de un 
-        /// un recurso se obtien a apartir del key y del lenguaje al que pertenece.
+        /// en este metodo iremos añadiendo las diferentes situaciones en las que el valor de un 
+        /// un recurso se obtiene a apartir del key y del lenguaje al que pertenece.
         public static string GetValueProcessTag (string resxKey, string resxValue, string targetLangaugeIsoCode2 )
         {
             string result= null;
@@ -379,7 +376,7 @@
 
                 // TODO: Comprobar que el leguaje no esta añadido previamente
                     LanguageName = T4Help.GetCultureEnglishLanguageNameFromISOCode2( CultureIsoCode );
-                    if (false)Debug.WriteLine(String.Format( "LanguageName = '{0}'", LanguageName));
+                    //if (false)Debug.WriteLine(String.Format( "LanguageName = '{0}'", LanguageName));
                     if (!String.IsNullOrEmpty(LanguageName))
                     {
                         LanguageNameSecure = CleanIsoCode( LanguageName );
@@ -427,7 +424,7 @@
                     LanguageNameSecure = CleanIsoCode( ResxKeyTranslation );
                     Result.Add(new string[]{CultureIsoCode,CultureIsoCodeSecure,LanguageNameSecure});
                 }
-                addnewlanguage= true;
+                addnewlanguage = true;
             }
                 if (true)
                 {

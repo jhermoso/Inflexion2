@@ -71,7 +71,7 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
         {
             get
             {
-                return SharedNeutral.CategoriaAlias; 
+                return SharedResources.CategoriaAlias; 
             }
         }
 

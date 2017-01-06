@@ -14,61 +14,61 @@ public class CreateSchemaResourcesCT : Template
     public string XmlCacheFile;
         
     public CreateSchemaResourcesCT(ClassBaseContext  classBaseContext, string nombreProjecto, ITree<BoundedContextMetadata> skt, string kindTimeCall, string language, string[] resxTriplesArray, string xmlCacheFile)
-        {
-            cbc = classBaseContext;             // contexto de la clase base a interpretar
-            projectNamespace = nombreProjecto;  // nombre del proyecto para el que estamos interpretando
-            Skt = skt;                          // shared kernel tree
-            KindTimeCall = kindTimeCall;
-            isoCode2LanguageTarget = language; // Iso code de 2 letras para la la lengua a traducir indica si se coloca le texto original o si se ha de traducir a la lengua indicada
-            ResxTriplesArray = resxTriplesArray;
-            XmlCacheFile = xmlCacheFile; // nombre del fichero xml que almacena las traducciones y el codigo de personalización.
-        }
+    {
+        cbc = classBaseContext;             // contexto de la clase base a interpretar
+        projectNamespace = nombreProjecto;  // nombre del proyecto para el que estamos interpretando
+        Skt = skt;                          // shared kernel tree
+        KindTimeCall = kindTimeCall;
+        isoCode2LanguageTarget = language; // Iso code de 2 letras para la la lengua a traducir indica si se coloca le texto original o si se ha de traducir a la lengua indicada
+        ResxTriplesArray = resxTriplesArray;
+        XmlCacheFile = xmlCacheFile; // nombre del fichero xml que almacena las traducciones y el codigo de personalización.
+    }
 
     public override string TransformText()
-        {
-            //IList<string> sharedKernelUsings = null;
-            //if (Skt != null)
-            //{
-                //sharedKernelUsings =  GetSharedKernelReferencesByProject(projectNamespace, Skt, cbc.diagram);
-            //}
-            //IList<string> NameSpaceSection = SplitNamesProjects(projectNamespace, cbc.diagram);
-            //string company              = NameSpaceSection[0];
-            //string product              = NameSpaceSection[1];
-            //string boundedContextName   = NameSpaceSection[2];
-            //string layer                = NameSpaceSection[3];
-            //string kindProject          = NameSpaceSection[4];
+    {
+        //IList<string> sharedKernelUsings = null;
+        //if (Skt != null)
+        //{
+            //sharedKernelUsings =  GetSharedKernelReferencesByProject(projectNamespace, Skt, cbc.diagram);
+        //}
+        //IList<string> NameSpaceSection = SplitNamesProjects(projectNamespace, cbc.diagram);
+        //string company              = NameSpaceSection[0];
+        //string product              = NameSpaceSection[1];
+        //string boundedContextName   = NameSpaceSection[2];
+        //string layer                = NameSpaceSection[3];
+        //string kindProject          = NameSpaceSection[4];
 
-            //var cpyrigth = new CopyrightHeader(diagram,solutionInfo,entity);
-            // string cpyrigthText = cpyrigth.TransformText(); // en principio esta linea se comenta pues no tenemos un texto de copywrigth para los fichero
-            // =proyecto = namespace = Company.Boundecontext1.BoundeDContex2....BoundeDContexN.Infraestructure.Maps.nHibernate31.Oracle
-            // la estrategia de generación es de un fichero por clase debido a que podemos tener varias formas de mapear la herencia en una misma taxonomia 
-            // y nhibernate nos exige que si en una misma taxonomia hay varias formas de herencia entonces se han de utilizar ficheros separados
-            // 2ª las clases base son Class
-            // Las clases que heredan de otra son 
+        //var cpyrigth = new CopyrightHeader(diagram,solutionInfo,entity);
+        // string cpyrigthText = cpyrigth.TransformText(); // en principio esta linea se comenta pues no tenemos un texto de copywrigth para los fichero
+        // =proyecto = namespace = Company.Boundecontext1.BoundeDContex2....BoundeDContexN.Infraestructure.Maps.nHibernate31.Oracle
+        // la estrategia de generación es de un fichero por clase debido a que podemos tener varias formas de mapear la herencia en una misma taxonomia 
+        // y nhibernate nos exige que si en una misma taxonomia hay varias formas de herencia entonces se han de utilizar ficheros separados
+        // 2ª las clases base son Class
+        // Las clases que heredan de otra son 
             
             
-            if (!(isoCode2LanguageTarget.Length == 2 || isoCode2LanguageTarget.Length == 5)) throw new Exception(string.Format("El lenguaje pasado '{0}' no es un iso code ", isoCode2LanguageTarget));
+        if (!(isoCode2LanguageTarget.Length == 2 || isoCode2LanguageTarget.Length == 5)) throw new Exception(string.Format("El lenguaje pasado '{0}' no es un iso code ", isoCode2LanguageTarget));
 
-            string RexValueTranslated  = "";
-            string RexRemarkTranslated = "Opción de idioma de la aplicación";
+        string RexValueTranslated  = "";
+        string RexRemarkTranslated = "Opción de idioma de la aplicación";
             
-            string isoCode2LanguageOrigin = cbc.diagram.Culture ;
-            XElement Translations = Translator.GetTranslationsNode( XmlCacheFile );
+        string isoCode2LanguageOrigin = cbc.diagram.Culture ;
+        XElement Translations = Translator.GetTranslationsNode( XmlCacheFile );
             
-            if ( !isoCode2LanguageTarget.Equals(isoCode2LanguageOrigin))
-               // GetTranslate(string OriginalTxt, string OriginalLanguage, string TargetLanguage, XElement Translations)
-            RexRemarkTranslated = Translator.GetTranslate( 
-                                                            RexRemarkTranslated, 
-                                                            isoCode2LanguageOrigin, 
-                                                            isoCode2LanguageTarget,
-                                                            Translations,
-                                                            XmlCacheFile
-                                                        ); //cbc.diagram.Culture, Language
+        if ( !isoCode2LanguageTarget.Equals(isoCode2LanguageOrigin))
+            // GetTranslate(string OriginalTxt, string OriginalLanguage, string TargetLanguage, XElement Translations)
+        RexRemarkTranslated = Translator.GetTranslate( 
+                                                        RexRemarkTranslated, 
+                                                        isoCode2LanguageOrigin, 
+                                                        isoCode2LanguageTarget,
+                                                        Translations,
+                                                        XmlCacheFile
+                                                    ); //cbc.diagram.Culture, Language
             
 #>
 <#+
-            if(KindTimeCall.Equals("inicio") | KindTimeCall.Equals("soloUna") )
-            {
+        if(KindTimeCall.Equals("inicio") || KindTimeCall.Equals("soloUna") )
+        {
 #>
 <?xml version="1.0" ?>
 <root>
@@ -190,37 +190,37 @@ public class CreateSchemaResourcesCT : Template
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 
-<#+                // recorremos el array con la la lista de key valor y comentario
-            int key= 0; //indice posición del key de resx
-            int rem= 0; //indice posición del remark de resx
-            string RexNewValue =null;
-            string RexNewKey =null;
-            string RexNewRem =null;
+<#+     // recorremos el array con la la lista de key valor y comentario
+        int key= 0; //indice posición del key de resx
+        int rem= 0; //indice posición del remark de resx
+        string RexNewValue =null;
+        string RexNewKey =null;
+        string RexNewRem =null;
 
-            string AlternateOriginalLanguage = null;
-                string isoCode2LanguageFrom = isoCode2LanguageOrigin;
+        string AlternateOriginalLanguage = null;
+            string isoCode2LanguageFrom = isoCode2LanguageOrigin;
                 
-            for( int i=1 ; i<ResxTriplesArray.Length; i=i+3)
-            {
-                key = i-1;
-                rem = i+1;
-                RexNewKey   = ResxHelp.RemoveSplitCopyProcessTags(ResxTriplesArray[key]);
+        for( int i=1 ; i<ResxTriplesArray.Length; i=i+3)
+        {
+            key = i-1;
+            rem = i+1;
+            RexNewKey   = ResxHelp.RemoveSplitCopyProcessTags(ResxTriplesArray[key]);
 
-                AlternateOriginalLanguage = Translator.GetCultureLanguajeTxt(ResxTriplesArray[i]);
-                if ( AlternateOriginalLanguage != null) // si el texto empieza especificando un lenguage de origen lo utilizamos 
-                    {
-                        // si encontramos un lenguaje lo almacenamos y lo borramos.
-                        isoCode2LanguageFrom = AlternateOriginalLanguage.Trim(new char[]{'(',')'});
-                        ResxTriplesArray[i] = ResxTriplesArray[i].Replace(AlternateOriginalLanguage, string.Empty);
-                    }
+            AlternateOriginalLanguage = Translator.GetCultureLanguajeTxt(ResxTriplesArray[i]);
+            if ( AlternateOriginalLanguage != null) // si el texto empieza especificando un lenguage de origen lo utilizamos 
+                {
+                    // si encontramos un lenguaje lo almacenamos y lo borramos.
+                    isoCode2LanguageFrom = AlternateOriginalLanguage.Trim(new char[]{'(',')'});
+                    ResxTriplesArray[i] = ResxTriplesArray[i].Replace(AlternateOriginalLanguage, string.Empty);
+                }
                    
-                //  comprobamos si tenemos un tag de copy o de proceso
-                RexNewValue = ResxHelp.GetValueFromProcecsOrCopyTag(ResxTriplesArray[key], ResxTriplesArray[i], isoCode2LanguageFrom, isoCode2LanguageTarget, XmlCacheFile);
-                RexNewValue = ResxHelp.RemoveSplitCopyProcessTags(RexNewValue);
+            //  comprobamos si tenemos un tag de copy o de proceso
+            RexNewValue = ResxHelp.GetValueFromProcecsOrCopyTag(ResxTriplesArray[key], ResxTriplesArray[i], isoCode2LanguageFrom, isoCode2LanguageTarget, XmlCacheFile);
+            RexNewValue = ResxHelp.RemoveSplitCopyProcessTags(RexNewValue);
 
-                RexNewRem   = ResxHelp.RemoveSplitCopyProcessTags(ResxTriplesArray[rem]);
+            RexNewRem   = ResxHelp.RemoveSplitCopyProcessTags(ResxTriplesArray[rem]);
 
-                //RexNewValue = Translator.GetTranslate(string txt2Translate, string isoCode2LanguageOrigin, string isoCode2LanguageTarget);
+            //RexNewValue = Translator.GetTranslate(string txt2Translate, string isoCode2LanguageOrigin, string isoCode2LanguageTarget);
 
 
 #>
@@ -228,7 +228,7 @@ public class CreateSchemaResourcesCT : Template
     <value><#= RexNewValue.Trim() #></value>
     <comment><#= RexNewRem.Trim() #></comment>
   </data>
-<#+            } #>
+<#		} #>
 <#+
             }// fin del inicio
 #>

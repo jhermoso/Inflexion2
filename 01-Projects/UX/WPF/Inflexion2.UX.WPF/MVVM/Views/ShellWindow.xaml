@@ -3,19 +3,31 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Inflexion2.UX.WPF.MVVM"
         xmlns:commands="clr-namespace:Inflexion2.UX.WPF.MVVM.Commands"
-        xmlns:converter="clr-namespace:Inflexion2.UX.WPF.ValueConverters"
+        xmlns:converters="clr-namespace:Inflexion2.UX.WPF.ValueConverters;assembly="
         xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:prism="http://www.codeplex.com/prism"
         xmlns:region="clr-namespace:Inflexion2.UX.WPF.MVVM"
         xmlns:ribbon="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary"
-        
+        xmlns:lex="http://wpflocalizeextension.codeplex.com"
         xmlns:avalonDock="http://avalondock.codeplex.com"
         xmlns:prismir="clr-namespace:Microsoft.Practices.Prism.Interactivity.InteractionRequest;assembly=Microsoft.Practices.Prism.Interactivity"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
         xmlns:fi="clr-namespace:Inflexion2.UX.WPF.MVVM.Dialogs"
         xmlns:fview="clr-namespace:Inflexion2.UX.WPF.MVVM.Views.Dialogs"
         xmlns:vm="clr-namespace:Inflexion2.UX.WPF.MVVM.ViewModels"
-        WindowStartupLocation="CenterScreen" WindowState="Maximized" TitleCaps="True" ShowCloseButton="True" ShowIconOnTitleBar="true" Foreground="Red">
+        xmlns:Ias="http://Itenso.AppliedSettings.com"
+    
+        lex:LocalizeDictionary.DesignCulture="en"
+        lex:ResxLocalizationProvider.DefaultAssembly="Inflexion2.Resources"
+        lex:ResxLocalizationProvider.DefaultDictionary="FrameworkResource"
+     
+        WindowStartupLocation="CenterScreen" 
+        FlowDirection="{Binding lex:LocFlowDirection Inflexion2.Resources:FrameworkResource:flow}" 
+                   
+        RenderOptions.BitmapScalingMode ="HighQuality"
+        WindowState="Maximized" TitleCaps="True" 
+        ShowCloseButton="True" ShowIconOnTitleBar="true" Foreground="Red">
+    <!--       Ias:WindowSettings.Settings="XamlWindowSettings"       -->
 <!--xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic"-->  
     <metro:MetroWindow.Title>
         Product | Company
@@ -44,8 +56,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <converter:BooleanValueConverter x:Key="BooleanConverter" />
-            
+            <converters:StringToImageSourceConverter x:Key="ImgConverter" />
             <LinearGradientBrush x:Key="WindowBackgroundBrush" MappingMode="Absolute" StartPoint="0,0" EndPoint="0,150">
                 <GradientStop Color="#FFDEDEDE" Offset="0"/>
                 <GradientStop Color="White" Offset="1"/>
@@ -68,50 +79,46 @@
                 prism:RegionManager.RegionName="{x:Static region:RegionNames.ToolbarRegion}" 
                 Loaded="ApplicationRibbon_Loaded" >
 
-            <!--<ribbon:Ribbon.Background>
-                <SolidColorBrush Color="WhiteSmoke"></SolidColorBrush>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black" Offset="0"/>
-                    <GradientStop Color="#777777" Offset="0.4"/>
-                    <GradientStop Color="#8F8F8F" Offset="0.5"/>
-                    <GradientStop Color="#B4B4B4" Offset="1"/>
-                </LinearGradientBrush>
-            </ribbon:Ribbon.Background>-->
-
             <ribbon:Ribbon.ApplicationMenu>
                 <ribbon:RibbonApplicationMenu Visibility="Collapsed">
                 </ribbon:RibbonApplicationMenu>
             </ribbon:Ribbon.ApplicationMenu>
             
             <!-- Ficha Edición -->
-            <ribbon:RibbonTab x:Name="EditionTab" Header="Edición">
-                <ribbon:RibbonGroup x:Name="SaveGroup" Header="Guardar">
+            <ribbon:RibbonTab x:Name="EditionTab" Header="{lex:Loc Edit}">
+                <ribbon:RibbonGroup x:Name="SaveGroup" Header="{lex:Loc Save}">
                     <ribbon:RibbonButton  x:Name="SaveRecordButton" 
-                                          Command="{x:Static commands:EditionCommands.SaveRecordCommand}" 
-                                          Label="Guardar registro" 
-                                          LargeImageSource="Images\floppy.png"
-                                          ToolTip="Guardar registro"/>
+                                          Command="{x:Static commands:EditionCommands.SaveRecordCommand}"
+                                          LargeImageSource="Images\Document-Check.64.png"
+                                          
+                                          Label="{lex:Loc Save}" 
+                                          ToolTip="{lex:Loc SaveRecord}" 
+                                          />
                 </ribbon:RibbonGroup>
 
-                <ribbon:RibbonGroup x:Name="NewGroup" Header="Nuevo">
+                <ribbon:RibbonGroup x:Name="NewGroup" Header="{lex:Loc Add}">
                     <ribbon:RibbonButton x:Name="NewRecordButton" 
                                          Command="{x:Static commands:EditionCommands.NewRecordCommand}" 
-                                         Label="Nuevo registro" LargeImageSource="Images\new.png" 
-                                         ToolTip="Crear registro" />
+                                         Label="{lex:Loc New}" 
+                                         LargeImageSource="Images\Document-Add.64.png" 
+                                         
+                                         ToolTip="{lex:Loc AddNewRecord}" />
                 </ribbon:RibbonGroup>
 
-                <ribbon:RibbonGroup x:Name="EditGroup" Header="Editar">
+                <ribbon:RibbonGroup x:Name="EditGroup" Header="{lex:Loc Edit}">
                     <ribbon:RibbonButton x:Name="EditRecordButton" 
                                          Command="{x:Static commands:EditionCommands.EditRecordCommand}" 
-                                         Label="Editar registro" 
-                                         LargeImageSource="Images\Edit.png"
-                                         ToolTip="Modificar registro"
+                                         Label="{lex:Loc Edit}"
+                                         LargeImageSource="Images\Document-Edit.64.png" 
+                                         
+                                         ToolTip="{lex:Loc EditRecord}"
                                          />
                     <ribbon:RibbonButton x:Name="DeleteRecordButton"
                                          Command="{x:Static commands:EditionCommands.DeleteRecordCommand}" 
-                                         Label="Eliminar registro" 
-                                         LargeImageSource="Images\Delete.png" 
-                                         ToolTip="Eliminar registro"
+                                         Label="{lex:Loc Delete}" 
+                                         LargeImageSource="Images\Document-Delete.64.png" 
+                                         
+                                         ToolTip="{lex:Loc DeleteRecord}"
                                          />
                     <!--<ribbon:RibbonButton x:Name="ActivateRecordButton"
                                          Command="{x:Static commands:EditionCommands.ActivateRecordCommand}" 
@@ -121,42 +128,64 @@
                                          />-->
                 </ribbon:RibbonGroup>
 
-                <ribbon:RibbonGroup x:Name="SearchGroup" Header="Buscar">
+                <ribbon:RibbonGroup x:Name="SearchGroup" Header="{lex:Loc Search}">
                     <ribbon:RibbonButton x:Name="GetRecordsButton" 
                                          Command="{x:Static commands:EditionCommands.GetRecordsCommand}"
-                                         Label="Obtener registros"
-                                         LargeImageSource="Images\Get.png"
-                                         ToolTip="Consultar"
+                                         Label="{lex:Loc Get}"
+                                         LargeImageSource="Images\Document-02.64.png"
+                                         ToolTip="{lex:Loc Read}"
                                          />
                 </ribbon:RibbonGroup>
 
-                <ribbon:RibbonGroup x:Name="PagingGroup" Header="Paginado">
+                <ribbon:RibbonGroup x:Name="PagingGroup" Header="{lex:Loc Paging}">
                     <ribbon:RibbonButton x:Name="GoBeginingButton" 
                                          Command="{x:Static commands:EditionCommands.GetFirstPageRecordsCommand}"
-                                         Label="Primera pagina"
-                                         LargeImageSource="Images\appbar.navigate.first.32.png"
-                                         ToolTip="Primera página"
+                                         Label="{lex:Loc First}"
+                                         LargeImageSource="Images\Navigation left - 01.64.png"
+                                         ToolTip="{lex:Loc FirstPage}"
                                          />
                     <ribbon:RibbonButton x:Name="ForwardPageButton" 
                                          Command="{x:Static commands:EditionCommands.GetPreviousPageRecordsCommand}"
-                                         Label="Anterior Pagina"
-                                         LargeImageSource="Images\appbar.navigate.previous.32.png"
-                                         ToolTip="Anterior página"
+                                         Label="{lex:Loc Previous}"
+                                         LargeImageSource="Images\Navigation left - 02.64.png"
+                                         ToolTip="{lex:Loc PreviousPage}"
                                          />
                     <ribbon:RibbonButton x:Name="NextPageButton" 
                                          Command="{x:Static commands:EditionCommands.GetNextPageRecordsCommand}"
-                                         Label="Siguiente página"
-                                         LargeImageSource="Images\appbar.navigate.next.32.png"
-                                         ToolTip="Siguiente Página"
+                                         Label="{lex:Loc Next}"
+                                         LargeImageSource="Images\Navigation right - 02.64.png"
+                                         ToolTip="{lex:Loc NextPage}"
                                          />
                     <ribbon:RibbonButton x:Name="LastPageButton" 
                                          Command="{x:Static commands:EditionCommands.GetLastPageRecordsCommand}"
-                                         Label="Ultima Pagina"
-                                         LargeImageSource="Images\appbar.navigate.lastt.32.png"
+                                         Label="Ultima"
+                                         LargeImageSource="Images\Navigation right - 01.64.png"
                                          ToolTip="ultima página"
                                          />
-                </ribbon:RibbonGroup>
+                </ribbon:RibbonGroup >
 
+                <ribbon:RibbonGroup HorizontalAlignment="Right" FlowDirection="LeftToRight" >
+                    <ribbon:RibbonComboBox x:Name="SelectedLanguage" Margin="0" 
+                                           
+                                           VerticalAlignment="Top" >
+                    <ribbon:RibbonGallery SelectedItem="{Binding Source={x:Static lex:LocalizeDictionary.Instance}, Path=Culture}" 
+                                          
+                                          DisplayMemberPath="NativeName" >
+
+                            <ribbon:RibbonGalleryCategory ItemsSource="{Binding Source={x:Static lex:LocalizeDictionary.Instance}, Path=MergedAvailableCultures}" >
+                                <ribbon:RibbonGalleryCategory.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel  Orientation="Horizontal" >
+                                            <Image Source="{Binding Converter={StaticResource ImgConverter} }" Margin="0,0,5,0"/>
+                                            <TextBlock Text="{Binding NativeName}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ribbon:RibbonGalleryCategory.ItemTemplate>
+                            </ribbon:RibbonGalleryCategory>
+                    </ribbon:RibbonGallery>
+                </ribbon:RibbonComboBox>
+                    
+                </ribbon:RibbonGroup >
 
             </ribbon:RibbonTab>
             
