@@ -40,18 +40,22 @@ the naming of every project follows this rule:
       [Company].[Product].[BoundedContext].FrontEnd.WpfModule
       [Company].[Product].[BoundedContext].FrontEnd.WpfResources
       [Company].[Product].[BoundedContext].FrontEnd.WpfStartUp
+      
   02. Application
     [Company].[Product].[BoundedContext].Application
     [Company].[Product].[BoundedContext].Application.Dtos
     [Company].[Product].[BoundedContext].Application.WcfClient
     [Company].[Product].[BoundedContext].Application.WcfService
     [Company].[Product].[BoundedContext].Application.WcfService.Contracts
+    
   03. Domain
     [Company].[Product].[BoundedContext].Domain
     [Company].[Product].[BoundedContext].Domain.Data
+    
   04. Infrastructure
     [Company].[Product].[BoundedContext].Infrastructure
     [Company].[Product].[BoundedContext].Infrastructure.Resources
+    
   05. Testing
     test projects per layer
     [Company].[Product].[BoundedContext].Test.ApplicationLayer
