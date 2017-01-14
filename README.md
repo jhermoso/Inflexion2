@@ -1,6 +1,6 @@
 # Inflexion2 
 
-Inflexion is an spanish word that means inflection, but both words has the same pronunciation and the same meanig in both languages. 2 is not a version is only prefix to help to indicate where to change the direction, or your goals.
+Inflexion is an spanish word that means inflection, but both words has the same pronunciation and the same meanig in both languages.The number "2" is not a version is only prefix to help to indicate where to change the direction, of your goals.
 
 This framework is under construction, forever ... and is trying to folow the best practices of Domain Driven Design. The objective of this framework is to help to write application, complex applications or simple applications. Dividing the complex applications in different modules or groupping many simple applications under only one umbrella in any big coorporation converting the simple applications in modules of one unique system.
 
