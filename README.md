@@ -1,11 +1,11 @@
 # Inflexion2 
-# Quick start guide
+## Quick start guide
 
-NHibernate, Entity framework, WCF, WPF. Prism, AvalonDock, MahApps, Unity.
+### NHibernate, Entity framework, WCF, WPF. Prism, AvalonDock, MahApps, Unity.
 
 This project includes a DDD framework and a simple example of implementation of one bounded context.
 The framework is a set of technical base classes to help the implementation of the business bounded context. 
-The best strategy to use this framework is constructed at least one shared bounded context with the business framework for the client.
+The best strategy to use this framework is construct at least one shared bounded context with the business framework for the client.
 the rest of modules or bounded contexts should inheritance from this shared or "kernel" bounded context.
 
 the framework is constructed following the DDD principals and the code of every layer is organized in the visual studio solution in one folder per layer
@@ -33,5 +33,5 @@ For every layer there is a common structure of projects and every project has al
 for every business class there are 20 classes distributed through the different projects of every layer.
 the naming of every project follows this rule:
 
-[Company].[Product].[BoundedContext].[Layer].[Assembly]
+    [Company].[Product].[BoundedContext].[Layer].[Assembly]
 
