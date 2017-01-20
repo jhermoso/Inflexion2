@@ -8,6 +8,8 @@ This framework is designed to chose wich technologies to use for one application
 
 Also this framework, is constructed in a very systematic point of view, becouse in the future, would be useful to use code generation to get the applications.
 
+Please consult the wiki to get more information.
+
 ## Quick start guide
 
 This project includes a DDD framework and a simple example of implementation of one bounded context.
