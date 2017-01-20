@@ -21,3 +21,7 @@ Inflexion es una palabra española que significa "cambio en la tendencia de una 
 Este framework esta "en construcción"... por siempre, y trata de seguir las mejores practicas del Diseño dirigido por el Dominio. El objetivo de este framework es ayudar a escribir aplicaciones, aplicaciones complejaso o aplicaciones simples. La forma de llevar a cabo esto es dividir dichas aplicaciones en modulos o agrupar muchas aplicaciones simples bajo un unico paraguas. De esta manera seria sencillo en cualquier gran coorporación convertir un gran número de pequeñas y aisladas aplicaciones en modulos de un único sistema.
 
 Este framework esta construido de forma muy sistematica, con el ojeto de que en el futuro se pueda usar con generación de código, tal vez no la aplicación entera pero si las partes mas tediosas.
+
+Por favor para obtener mas información consulte el wiki.[go to wiki](https://github.com/jhermoso/Inflexion2/wiki)
+
+y gracias por leerme!!
