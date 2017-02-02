@@ -1,87 +1,144 @@
-﻿
-
-namespace Inflexion2.Testing
+﻿namespace Inflexion2.Testing
 {
-    using System;
-    using System.Text;
-    using System.Collections.Generic;
-    using System.Linq;
+    using Inflexion2.Domain;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.ComponentModel.DataAnnotations;
-    using Inflexion2.Domain;
 
-
+    /// <summary>
+    /// testing entities equality
+    /// </summary>
     [TestClass]
     public class EntityTransientTest
     {
-
+        /// <summary>
+        /// first class
+        /// </summary>
         public class IntEntity1 : Entity<IntEntity1, int>
         {
             [Required]
             string Name { get; set; }
 
+            /// <summary>
+            /// parameterless constructor
+            /// </summary>
             protected IntEntity1(): base()
             { }
 
+            /// <summary>
+            /// initialized id constructor
+            /// </summary>
+            /// <param name="id"></param>
             protected IntEntity1(int id)
                 : base(id)
             { }
 
+            /// <summary>
+            /// initialized propertie constructor
+            /// </summary>
+            /// <param name="name"></param>
             protected IntEntity1(string name)               
             {
                 this.Name = name;
             }
 
+            /// <summary>
+            /// factory
+            /// </summary>
+            /// <returns></returns>
              public static IntEntity1 Create()
             {
                 return new IntEntity1();
             }
 
+            /// <summary>
+            /// factory
+            /// </summary>
+            /// <param name="name"></param>
+            /// <returns></returns>
              public static IntEntity1 Create(string name)
              {
                  return new IntEntity1(name);
              }
 
-             public static IntEntity1 Create(int id) // esta factoria solo se ha construido para efectos de testing
+            /// <summary>
+            /// factory entity
+            /// </summary>
+            /// <param name="id"></param>
+            /// <returns></returns>
+             public static IntEntity1 Create(int id) 
              {
                  return new IntEntity1(id);
              }
 
         }
 
+        /// <summary>
+        /// inherited entity
+        /// </summary>
         public class IntEntity2 : Entity<IntEntity2, int>
         {
+            /// <summary>
+            /// test property
+            /// </summary>
             public string Name { get; set; }
 
+            /// <summary>
+            /// constructor
+            /// </summary>
             protected IntEntity2()
                 : base()
             { }
 
+            /// <summary>
+            /// constructor
+            /// </summary>
+            /// <param name="id"></param>
             protected IntEntity2(int id)
                 : base(id)
             { }
 
+            /// <summary>
+            /// parametrized constructor 
+            /// </summary>
+            /// <param name="name"></param>
             protected IntEntity2(string name)               
             {
                 this.Name = name;
             }
 
+            /// <summary>
+            /// factory
+            /// </summary>
+            /// <returns></returns>
             public static IntEntity2 Create()
             {
                 return new IntEntity2();
             }
 
+            /// <summary>
+            /// factory
+            /// </summary>
+            /// <param name="name"></param>
+            /// <returns></returns>
             public static IntEntity2 Create(string name)
             {
                 return new IntEntity2(name);
             }
 
-            public static IntEntity2 Create(int id) // esta factoria solo se ha cosntruido para efectso de testing
+            /// <summary>
+            /// factory
+            /// </summary>
+            /// <param name="id"></param>
+            /// <returns></returns>
+            public static IntEntity2 Create(int id) 
             {
                 return new IntEntity2(id);
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [TestMethod]
         public void IntEntityEqualsWithTwoNullsEntitiesSameTypeReturnTrue()
         {
@@ -92,6 +149,9 @@ namespace Inflexion2.Testing
             
         }
 
+        /// <summary>
+        /// test equality two null entities
+        /// </summary>
         [TestMethod]
         public void IntEntityEqualsWithTwoNullsEntitiesDifferentTypeReturnFalse()
         {
@@ -101,6 +161,9 @@ namespace Inflexion2.Testing
             Assert.AreEqual(false, equality);
         }
 
+        /// <summary>
+        /// test equality one null entity
+        /// </summary>
         [TestMethod]
         public void IntEntityEqualsWithOneNullEntityReturnFalse()
         {
@@ -110,6 +173,9 @@ namespace Inflexion2.Testing
             Assert.AreEqual(false, equality);
         }
 
+        /// <summary>
+        /// test equality
+        /// </summary>
         [TestMethod]
         public void IntEntityEqualsWithTwoTransientEntitiesReturnFalse()
         {
@@ -119,6 +185,9 @@ namespace Inflexion2.Testing
             Assert.AreEqual(false, equality);
         }
 
+        /// <summary>
+        /// test equality same entity
+        /// </summary>
         [TestMethod]
         public void IntEntityEqualsWithSameTransientEntitieReturnTrue()
         {
@@ -128,6 +197,9 @@ namespace Inflexion2.Testing
             Assert.AreEqual(true, equality);
         }
 
+        /// <summary>
+        /// test equality same transient entity 
+        /// </summary>
         [TestMethod]
         public void IntEntityTransientNewEntitieReturnTrue()
         {
@@ -135,6 +207,9 @@ namespace Inflexion2.Testing
             Assert.AreEqual(true, e1.IsTransient());
         }
 
+        /// <summary>
+        /// test equality with one initialized entity
+        /// </summary>
         [TestMethod]
         public void IntEntityEqualsWithTwoSetedIdDifferentEntitiesTypeReturnFalse()
         {
@@ -145,6 +220,9 @@ namespace Inflexion2.Testing
             Assert.AreEqual(false, equality);
         }
 
+        /// <summary>
+        /// test equality with same class diferent objects
+        /// </summary>
         [TestMethod]
         public void IntEntityEqualsWithTwoSetedDifferentIdSameEntitiesTypeReturnFalse()
         {
@@ -155,6 +233,9 @@ namespace Inflexion2.Testing
             Assert.AreEqual(false, equality);
         }
 
+        /// <summary>
+        /// same class same id test 
+        /// </summary>
         [TestMethod]
         public void IntEntityEqualsWithTwoSetedSameIdSameEntitiesTypeReturnTrue()
         {

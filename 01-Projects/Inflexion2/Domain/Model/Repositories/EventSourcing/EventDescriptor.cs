@@ -2,15 +2,28 @@
 {
     using System;
 
+    /// <summary>
+    /// value object event descriptor
+    /// TODO: add inheritence from value object
+    /// </summary>
     public class EventDescriptor
     {
         private const int HASH_MULTIPLIER = 31;
         private int? cachedHashcode;
 
+        /// <summary>
+        /// parameterless constructor for event descriptor
+        /// </summary>
         protected EventDescriptor()
         {
         }
 
+        /// <summary>
+        /// pararmetrized event descriptor constructor
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="eventData"></param>
+        /// <param name="version"></param>
         public EventDescriptor(Guid id, Event eventData, int version)
         {
             this.EventData = eventData;
@@ -18,24 +31,37 @@
             this.Id = id;
         }
 
+        /// <summary>
+        /// realted data of the event
+        /// </summary>
         public virtual Event EventData
         {
             get;
             protected set;
         }
 
+        /// <summary>
+        /// related Id
+        /// </summary>
         public virtual Guid Id
         {
             get;
             protected set;
         }
 
+        /// <summary>
+        /// entity version
+        /// </summary>
         public virtual int Version
         {
             get;
             protected set;
         }
 
+        /// <summary>
+        /// has code to get the value object identity
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             // Once we have a hash code we'll never change it
@@ -56,6 +82,11 @@
             return cachedHashcode.Value;
         }
 
+        /// <summary>
+        /// equals comparation for value objet identity
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             var compareTo = obj as EventDescriptor;

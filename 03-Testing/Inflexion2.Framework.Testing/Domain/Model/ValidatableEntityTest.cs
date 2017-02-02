@@ -9,17 +9,27 @@ namespace Inflexion2.Testing
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Inflexion2.Domain;
 
-
+    /// <summary>
+    /// validetable entities testing
+    /// </summary>
     [TestClass]
     public class ValidatableEntityTransientTest
     {
-
+        /// <summary>
+        /// first validatable entity
+        /// </summary>
         public class Entity1 : ValidatableEntity<Entity1, Guid>
         { }
 
+        /// <summary>
+        /// second validatable entity
+        /// </summary>
         public class Entity2 : ValidatableEntity<Entity2, Guid>
         { }
 
+        /// <summary>
+        /// test equality with two nulls entities
+        /// </summary>
         [TestMethod]
         public void  ValidatableEntityGuidEqualsWithTwoNullsEntitiesSameTypeReturnTrue()
         {
@@ -29,15 +39,9 @@ namespace Inflexion2.Testing
             Assert.AreEqual(true, equality);
         }
 
-        [TestMethod]
-        public void ValidatableEntityGuidEqualsWithTwoNullsEntitiesDifferentTypeReturnFalse()
-        {
-            Entity1 e1 = new Entity1();
-            Entity2 e2 = new Entity2();
-            var equality = Equals(e1, e2);
-            Assert.AreEqual(false, equality);
-        }
-
+        /// <summary>
+        /// test equality with one null entity
+        /// </summary>
         [TestMethod]
         public void ValidatableEntityGuidEqualsWithOneNullEntityReturnFalse()
         {
@@ -47,6 +51,9 @@ namespace Inflexion2.Testing
             Assert.AreEqual(false, equality);
         }
 
+        /// <summary>
+        /// test equality with two trasient entities
+        /// </summary>
         [TestMethod]
         public void ValidatableEntityGuidEqualsWithTwoTransientEntitiesReturnFalse()
         {
@@ -56,6 +63,9 @@ namespace Inflexion2.Testing
             Assert.AreEqual(false, equality);
         }
 
+        /// <summary>
+        /// test equality with same entity
+        /// </summary>
         [TestMethod]
         public void ValidatableEntityGuidEqualsWithSameTransientEntitieReturnTrue()
         {
@@ -64,6 +74,5 @@ namespace Inflexion2.Testing
             var equality = Equals(e1, e2);
             Assert.AreEqual(true, equality);
         }
-
     }
 }

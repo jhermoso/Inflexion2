@@ -10,9 +10,20 @@ namespace Inflexion2.Domain
     using Security;
     using System;
 
+    /// <summary>
+    /// https://ayende.com/blog/3987/nhibernate-ipreupdateeventlistener-ipreinserteventlistener
+    /// This class allow us to execute our custom logic before the update / insert is sent to the database
+    /// the logic implemented is used to audit the entity related
+    /// </summary>
+    /// <typeparam name="TIdentifier"></typeparam>
     public class AuditEventListener<TIdentifier> : IPreUpdateEventListener, IPreInsertEventListener
         where TIdentifier : IEquatable<TIdentifier>, IComparable<TIdentifier>
     {
+        /// <summary>
+        /// IPreInsertEventListener interface implementation
+        /// </summary>
+        /// <param name="event"></param>
+        /// <returns></returns>
         public bool OnPreInsert(PreInsertEvent @event)
         {
             var auditable = @event.Entity as IAuditableEntity<TIdentifier>;
@@ -49,6 +60,11 @@ namespace Inflexion2.Domain
             return false;
         }
 
+        /// <summary>
+        /// IPreUpdateEventListener inteface implementation
+        /// </summary>
+        /// <param name="event"></param>
+        /// <returns></returns>
         public bool OnPreUpdate(PreUpdateEvent @event)
         {
             var auditable = @event.Entity as IAuditableEntity<TIdentifier>;

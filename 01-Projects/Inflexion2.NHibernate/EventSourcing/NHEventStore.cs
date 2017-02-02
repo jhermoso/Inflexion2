@@ -9,10 +9,18 @@ namespace Inflexion2.Domain
     using System.Collections.Generic;
     using NHibernate;
 
+    /// <summary>
+    /// nh event repository implementation
+    /// </summary>
     public class NHibernateEventStore : BaseEventStore
     {
         private readonly IStatelessSession _session;
 
+        /// <summary>
+        /// initialization of repository using the session like UoW
+        /// </summary>
+        /// <param name="publisher"></param>
+        /// <param name="session"></param>
         public NHibernateEventStore(
             IEventPublisher publisher,
             IStatelessSession session)
@@ -21,6 +29,11 @@ namespace Inflexion2.Domain
             _session = session;
         }
 
+        /// <summary>
+        /// gets the list of events for one aggregate
+        /// </summary>
+        /// <param name="aggregateId"></param>
+        /// <returns></returns>
         protected override IEnumerable<EventDescriptor> LoadEventDescriptorsForAggregate(Guid aggregateId)
         {
             var query = _session.GetNamedQuery("LoadEventDescriptors")
@@ -28,6 +41,12 @@ namespace Inflexion2.Domain
             return Transact(() => query.List<EventDescriptor>());
         }
 
+        /// <summary>
+        /// save the list of events for one descriptor
+        /// </summary>
+        /// <param name="newEventDescriptors"></param>
+        /// <param name="aggregateId"></param>
+        /// <param name="expectedVersion"></param>
         protected override void PersistEventDescriptors(
             IEnumerable<EventDescriptor> newEventDescriptors,
             Guid aggregateId, int expectedVersion)
@@ -43,6 +62,12 @@ namespace Inflexion2.Domain
             });
         }
 
+        /// <summary>
+        /// apply a dynamic function in a transaction
+        /// </summary>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="func"></param>
+        /// <returns></returns>
         protected virtual TResult Transact<TResult>(Func<TResult> func)
         {
             if (!_session.Transaction.IsActive)
@@ -61,6 +86,10 @@ namespace Inflexion2.Domain
             return func.Invoke();
         }
 
+        /// <summary>
+        /// aplies an action in a transaction 
+        /// </summary>
+        /// <param name="action"></param>
         protected virtual void Transact(Action action)
         {
             Transact<bool>(() =>

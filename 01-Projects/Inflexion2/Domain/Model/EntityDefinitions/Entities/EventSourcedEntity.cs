@@ -10,7 +10,7 @@ namespace Inflexion2.Domain
     using Inflexion2.DynamicExtensions;
 
     /// <summary>
-    /// CQRS implementation test
+    ///  poc for CQRS implementation 
     /// </summary>
     [Serializable]
     public class Event
