@@ -8,7 +8,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
 {
     using System;
     using System.Collections.ObjectModel;
-    using Inflexion2.Application.DataTransfer.Core;
+    using Inflexion2.Application;
     using Inflexion2.UX.WPF.MVVM.ViewModels;
     using Microsoft.Practices.Unity;
     using Microsoft.Practices.Prism;
@@ -203,7 +203,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         /// ha solicitado la ejecución de una operación, generalmente aplicandose a uno o varias entidades y que puede afectar a
         /// a la información almacenada sobre cada uno de ellos en el correspondiente repositorio.
         /// </summary>
-        public Inflexion2.Application.DataTransfer.Core.SpecificationDto Specification
+        public Inflexion2.Application.SpecificationDto Specification
         {
             get
             {

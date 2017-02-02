@@ -40,13 +40,7 @@ namespace Inflexion2.Domain.Specification
         /// <summary>
         /// Inicializa una nueva instancia de la clase NotSpecification.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
-        /// <param name="originalSpecification">
-        /// Parámetro de tipo <see cref="Inflexion2.Domain.ISpecification{TEntity}"/>
-        /// que representa la especificación original.
-        /// </param>
+        /// <param name="originalSpecification"></param>
         public NotSpecification(ISpecification<TEntity> originalSpecification)
         {
             // Comprobamos el parámetro de entrada.
@@ -62,9 +56,6 @@ namespace Inflexion2.Domain.Specification
         /// <summary>
         /// Inicializa una nueva instancia de la clase NotSpecification.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios especiales.
-        /// </remarks>
         /// <param name="originalSpecification">
         /// Parámetro de tipo <see cref="System.Linq.Expressions"/>
         /// que representa la especificación original.

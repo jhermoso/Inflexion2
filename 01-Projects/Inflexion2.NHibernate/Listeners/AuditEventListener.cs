@@ -5,17 +5,10 @@
 //-----------------------------------------------------------------------------------------------
 namespace Inflexion2.Domain
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-
-    using Hexa.Core;
-
     using NHibernate.Event;
-    using NHibernate.Event.Default;
     using NHibernate.Persister.Entity;
-
     using Security;
+    using System;
 
     public class AuditEventListener<TIdentifier> : IPreUpdateEventListener, IPreInsertEventListener
         where TIdentifier : IEquatable<TIdentifier>, IComparable<TIdentifier>

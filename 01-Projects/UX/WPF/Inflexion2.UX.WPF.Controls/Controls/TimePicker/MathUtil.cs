@@ -11,6 +11,9 @@ using System.Text;
 
 namespace Inflexion2.UX.WPF.Controls
 {
+    /// <summary>
+    /// static math tools
+    /// </summary>
     public static class MathUtil
     {
 

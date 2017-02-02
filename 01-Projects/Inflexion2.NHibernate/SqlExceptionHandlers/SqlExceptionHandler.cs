@@ -5,14 +5,21 @@
 //-----------------------------------------------------------------------------------------------
 namespace Inflexion2.Domain
 {
+    using NHibernate.Exceptions;
     using System;
     using System.Data.SqlClient;
     using System.Text.RegularExpressions;
 
-    using NHibernate.Exceptions;
-
+    /// <summary>
+    /// manage the sql exceptions
+    /// </summary>
     public class SqlExceptionHandler : ISQLExceptionConverter
     {
+        /// <summary>
+        /// convert an ado exception context to exception
+        /// </summary>
+        /// <param name="exInfo"></param>
+        /// <returns></returns>
         public Exception Convert(AdoExceptionContextInfo exInfo)
         {
             var sqle = ADOExceptionHelper.ExtractDbException(exInfo.SqlException) as SqlException;

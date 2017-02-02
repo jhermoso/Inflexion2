@@ -4,6 +4,12 @@
         <name>Inflexion2</name>
     </assembly>
     <members>
+        <member name="T:Inflexion2.IDataTransferObject">
+            <summary>
+            .en this interface is only to mark some clases like DTO and to be able to restrict the rules to help in the building of some generics. like pagedobject
+            .es Interfaz para marcar los objetos de transferencia de datos yde esta forma poder aplicar ciertas restricciones en las construccion de algunos genericos como la de los objetos paginados.
+            </summary>
+        </member>
         <member name="T:Inflexion2.Converters.GenericConverters">
             <summary>
             public static service class to hols generic converting methods.
@@ -32,12 +38,45 @@
             Handles Db creation, deletion, etc.
             </summary>
         </member>
+        <member name="F:Inflexion2.Data.DatabaseManager.Firebird">
+            <summary>
+            net data provider for firebird Database
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Data.DatabaseManager.MsSqlProvider">
+            <summary>
+             net data provider for Sql Server Database
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Data.DatabaseManager.MySqlProvider">
+            <summary>
+            net data provider for MySql Database
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Data.DatabaseManager.OracleDataProvider">
+            <summary>
+            net data provider for Oracle Database
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Data.DatabaseManager.PostgreSQLProvider">
+            <summary>
+            net data provider for Postgress Database
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Data.DatabaseManager.SqlCe">
+            <summary>
+            net data provider for SqlCe Database
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Data.DatabaseManager.SQLiteProvider">
+            <summary>
+            net data provider for SQLite Database
+            </summary>
+        </member>
         <member name="M:Inflexion2.Data.DatabaseManager.#ctor(Inflexion2.Data.DbProvider,System.String)">
             <summary>
             Initializes a new instance of the <see cref="T:Inflexion2.Data.DatabaseManager"/> class.
             </summary>
-            <param name="connectionProvider">The connection provider.</param>
-            <param name="providerName">Name of the provider.</param>
         </member>
         <member name="P:Inflexion2.Data.DatabaseManager.DbProviderFactory">
             <summary>
@@ -66,8 +105,72 @@
             Strips out the database instance name from a connectionString.
             </summary>
             <param name="connectionString">The connection string.</param>
+            <param name="providerName">name of the provider.</param>
             <param name="dbName">Name of the db.</param>
+            <param name="dbFile">Name of the file db.</param>
             <returns>The newly created connection string.</returns>
+        </member>
+        <member name="T:Inflexion2.Data.DbProviderExtensions">
+            <summary>
+            extension for net provider data bases
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Data.DbProviderExtensions.ExecuteNonQuery(System.Data.Common.DbProviderFactory,System.String,System.String)">
+            <summary>
+            Execute sql procedures whose are not querys
+            </summary>
+            <param name="provider"></param>
+            <param name="connectionString"></param>
+            <param name="command"></param>
+        </member>
+        <member name="M:Inflexion2.Data.DbProviderExtensions.ExecuteScalar(System.Data.Common.DbProviderFactory,System.String,System.String)">
+            <summary>
+            execute an escalar function in a db which returns a value
+            </summary>
+            <param name="provider"></param>
+            <param name="connectionString"></param>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Data.DbProvider">
+            <summary>
+            enum  of Database providers
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Data.DbProvider.MySqlProvider">
+            <summary>
+            MySqlProvider
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Data.DbProvider.SQLiteProvider">
+            <summary>
+            SQLiteProvider
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Data.DbProvider.MsSqlProvider">
+            <summary>
+            MsSqlProvider
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Data.DbProvider.OracleDataProvider">
+            <summary>
+            OracleDataProvider
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Data.DbProvider.PostgreSQLProvider">
+            <summary>
+            PostgreSQLProvider
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Data.DbProvider.SqlCe">
+            <summary>
+            SqlCe
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Data.DbProvider.Firebird">
+            <summary>
+            Firebird
+            </summary>
         </member>
         <member name="T:Inflexion2.Data.IDatabaseManager">
             <summary>
@@ -216,7 +319,7 @@
                 Facilitates indicating which Classes are logical deleteable
             </summary>
             <remarks>
-                This is intended for use with <see cref="!:Entity&lt;TIdentifier&gt;" />.  It may NOT be used on a <see cref="T:Inflexion2.Domain.ValueObject" />.
+                This is intended for use with <see cref="T:Inflexion2.Domain.IEntity`1" />.  It may NOT be used on a <see cref="T:Inflexion2.Domain.ValueObject" />.
             </remarks>
         </member>
         <member name="T:Inflexion2.Domain.EntityForbiddenDeleteAttribute">
@@ -224,7 +327,7 @@
                 Facilitates indicating which Classes are logical deleteable
             </summary>
             <remarks>
-                This is intended for use with <see cref="!:Entity&lt;TIdentifier&gt;" />.  It may NOT be used on a <see cref="T:Inflexion2.Domain.ValueObject" />.
+                This is intended for use with <see cref="T:Inflexion2.Domain.IEntity`1" />.  It may NOT be used on a <see cref="T:Inflexion2.Domain.ValueObject" />.
             </remarks>
         </member>
         <member name="T:Inflexion2.Domain.ChildrenRelationshipDeleteBehaviorAttribute">
@@ -232,7 +335,7 @@
                 Facilitates indicating which Classes are forbidden deleteable
             </summary>
             <remarks>
-                This is intended for use with <see cref="!:Entity&lt;TIdentifier&gt;" />.  It may NOT be used on a <see cref="T:Inflexion2.Domain.ValueObject" />.
+                This is intended for use with <see cref="T:Inflexion2.Domain.IEntity`1" />.  It may NOT be used on a <see cref="T:Inflexion2.Domain.ValueObject" />.
             </remarks>
         </member>
         <member name="F:Inflexion2.Domain.ChildrenRelationshipDeleteBehaviorAttribute.Behavior">
@@ -328,7 +431,7 @@
                 entity.  See Entity.GetTypeSpecificSignatureProperties() for when this is leveraged.
             </summary>
             <remarks>
-                This is intended for use with <see cref="!:Entity&lt;TIdentifier&gt;" />.  It may NOT be used on a <see cref="T:Inflexion2.Domain.ValueObject" />.
+                This is intended for use with <see cref="T:Inflexion2.Domain.IEntity`1" />.  It may NOT be used on a <see cref="T:Inflexion2.Domain.ValueObject" />.
             </remarks>
         </member>
         <member name="T:Inflexion2.Domain.GreaterOrEqualThanCurrentDateAttribute">
@@ -342,11 +445,8 @@
         </member>
         <member name="F:Inflexion2.Domain.GreaterOrEqualThanCurrentDateAttribute.errorMessage">
             <summary>
-            Variable privada encargad de almacenar el mensaje de error.
+            Variable encargada de almacenar el mensaje de error.
             </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
         </member>
         <member name="M:Inflexion2.Domain.GreaterOrEqualThanCurrentDateAttribute.#ctor">
             <summary>
@@ -584,6 +684,7 @@
             <summary>
             Initializes a new instance of the <see cref="T:Inflexion2.Domain.Validation.ValidationError"/> struct.
             </summary>
+            <param name="property"></param>
             <param name="ex">The exception which caused the validation error.</param>
         </member>
         <member name="P:Inflexion2.Domain.Validation.ValidationError.EntityType">
@@ -897,7 +998,7 @@
             Clase pública abstracta para representar las entidades del negocio.
             </summary>
             <remarks>
-            La clase abstracta <see cref="!:Entity&lt;TIdentifier&gt;"/> representa una clase base de tipo
+            La clase abstracta <see cref="T:Inflexion2.Domain.IEntity`1"/> representa una clase base de tipo
             entidad de negocio.
             </remarks>
             <typeparam name="TEntity">
@@ -1080,7 +1181,13 @@
             <param name="other">The compare to.</param>
             <returns></returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Inflexion2.Domain.Entity`2.Equals(Inflexion2.Domain.Entity{`0,`1})" -->
+        <member name="M:Inflexion2.Domain.Entity`2.Equals(Inflexion2.Domain.Entity{`0,`1})">
+            <summary>
+            Equalses the specified compare to.
+            </summary>
+            <param name="other">The compare to.</param>
+            <returns></returns>
+        </member>
         <member name="M:Inflexion2.Domain.Entity`2.Equals(System.Object)">
             <summary>
             Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
@@ -1143,9 +1250,57 @@
                 [DomainSignature] attribute.
             </remarks>
         </member>
+        <member name="T:Inflexion2.Domain.Event">
+            <summary>
+            CQRS implementation test
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.Event.Version">
+            <summary>
+            event version
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Domain.EventSourcedEntity">
+            <summary>
+            event source entity to save historic changes
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.EventSourcedEntity.Id">
+            <summary>
+            entity identifier
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.EventSourcedEntity.Version">
+            <summary>
+            TODO: update comments
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.EventSourcedEntity.GetUncommittedChanges">
+            <summary>
+            TODO: update comments
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.EventSourcedEntity.LoadsFromHistory(System.Collections.Generic.IEnumerable{Inflexion2.Domain.Event})">
+            <summary>
+            TODO: update comments
+            </summary>
+            <param name="history"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.EventSourcedEntity.MarkChangesAsCommitted">
+            <summary>
+            TODO: update comments
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.EventSourcedEntity.ApplyChange(Inflexion2.Domain.Event)">
+            <summary>
+            TODO: update comments
+            </summary>
+            <param name="event"></param>
+        </member>
         <member name="T:Inflexion2.Domain.BusinessEntity`2">
             <summary>
-            
+            TODO: update comments
             </summary>
             <typeparam name="TEntity"></typeparam>
             <typeparam name="TIdentifier"></typeparam>
@@ -1482,6 +1637,7 @@
             http://msdn.microsoft.com/en-us/magazine/hh547108.aspx
             any aggregate root is an entity wich is the root for any write operation in the repository
             </summary>
+            <typeparam name="TEntity"></typeparam>
             <typeparam name="TIdentifier"></typeparam>
         </member>
         <member name="M:Inflexion2.Domain.IAggregateRoot`2.CanBeSaved">
@@ -1515,10 +1671,51 @@
             </summary>
             <returns>devolvemos true si el root aggragte esta marcado como de borrado logico </returns>
         </member>
+        <member name="T:Inflexion2.Domain.IEntityAuditTrail">
+            <summary>
+            TODO: update comments, auditing interface to add to root aggregates
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.IEntityAuditTrail.ChangeSetUniqueId">
+            <summary>
+            TODO: update comments
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.IEntityAuditTrail.EntityUniqueId">
+            <summary>
+            TODO: update comments
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.IEntityAuditTrail.NewValue">
+            <summary>
+            TODO: update comments
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.IEntityAuditTrail.OldValue">
+            <summary>
+            TODO: update comments
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.IEntityAuditTrail.PropertyName">
+            <summary>
+            TODO: update comments
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.IEntityAuditTrail.UpdateBy">
+            <summary>
+            TODO: update comments
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.IEntityAuditTrail.UpdatedAt">
+            <summary>
+            TODO: update comments
+            </summary>
+        </member>
         <member name="T:Inflexion2.Domain.ValidatableEntity`2">
             <summary>
             Entitiy validatable with data annotations
             </summary>
+            <typeparam name="TEntity"></typeparam>
             <typeparam name="TIdentifier"></typeparam>
         </member>
         <member name="F:Inflexion2.Domain.ValidatableEntity`2.validator">
@@ -1909,6 +2106,27 @@
             </summary>
             <typeparam name="TEntity">Type of entity</typeparam>
         </member>
+        <member name="M:Inflexion2.Domain.Specification.IOrderBySpecification`1.ApplyOrderBy(System.Linq.IQueryable{`0})">
+            <summary>
+            gets a sorted query
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Domain.Specification.OrderBySpecificationExtensions">
+            <summary>
+            extension
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.Specification.OrderBySpecificationExtensions.OrderBySpecification``1(System.Linq.IQueryable{``0},Inflexion2.Domain.Specification.IOrderBySpecification{``0})">
+            <summary>
+            sort by specification
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="query"></param>
+            <param name="orderBy"></param>
+            <returns></returns>
+        </member>
         <member name="T:Inflexion2.Domain.Specification.ISpecification`1">
             <summary>
             Interfaz para el patrón Especificación.
@@ -1955,21 +2173,12 @@
             <summary>
             Inicializa una nueva instancia de la clase NotSpecification.
             </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <param name="originalSpecification">
-            Parámetro de tipo <see cref="!:Inflexion2.Domain.ISpecification&lt;TEntity&gt;"/>
-            que representa la especificación original.
-            </param>
+            <param name="originalSpecification"></param>
         </member>
         <member name="M:Inflexion2.Domain.Specification.NotSpecification`1.#ctor(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
             <summary>
             Inicializa una nueva instancia de la clase NotSpecification.
             </summary>
-            <remarks>
-            Sin comentarios especiales.
-            </remarks>
             <param name="originalSpecification">
             Parámetro de tipo <see cref="N:System.Linq.Expressions"/>
             que representa la especificación original.
@@ -1986,6 +2195,27 @@
             <returns>
             Devuelve expresión lambda que satisface la especificación.
             </returns>
+        </member>
+        <member name="T:Inflexion2.Domain.Specification.OrderDirection">
+            <summary>
+            directions of sorting, ascending or descending
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Domain.Specification.OrderDirection.Ascending">
+            <summary>
+            Ascendign sorting
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Domain.Specification.OrderDirection.Descending">
+            <summary>
+            descending sorting
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Domain.Specification.OrderBySpecification`1">
+            <summary>
+            sort implementation with an expresion tree
+            </summary>
+            <typeparam name="TEntity"></typeparam>
         </member>
         <member name="M:Inflexion2.Domain.Specification.OrderBySpecification`1.#ctor(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Boolean,System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Boolean)">
             <summary>
@@ -2037,6 +2267,23 @@
             </summary>
             <param name="predicate">A predicate that can be used to check entities that
             satisfy the specification.</param>
+        </member>
+        <member name="P:Inflexion2.Domain.Specification.OrderBySpecification`1.Direction">
+            <summary>
+            get or sets the direction of sorting
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.Specification.OrderBySpecification`1.ThenByDirection">
+            <summary>
+            second sorting option
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.Specification.OrderBySpecification`1.ApplyOrderBy(System.Linq.IQueryable{`0})">
+            <summary>
+            apply sorting
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
         </member>
         <member name="T:Inflexion2.Domain.Specification.OrSpecification`1">
             <summary>
@@ -2308,6 +2555,145 @@
             <param name="rightSideSpecification">left operand in this OR operation</param>
             <returns>New specification</returns>
         </member>
+        <member name="T:Inflexion2.Domain.Specification.Filter">
+            <summary>
+            Filtering class with specifications
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.Specification.Filter.groupOp">
+            <summary>
+            groupping operator
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.Specification.Filter.rules">
+            <summary>
+            internal collection of rules
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.Specification.Filter.Create(System.String)">
+            <summary>
+            Create filter from json data
+            </summary>
+            <param name="jsonData"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Domain.Specification.LinqExtensions">
+            <summary>
+            linq extensions
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.Specification.LinqExtensions.AndAlso``1(Inflexion2.Domain.Specification.ISpecification{``0},System.String,System.Object,System.String)">
+            <summary>
+            concatenate specifications
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="query"></param>
+            <param name="column"></param>
+            <param name="value"></param>
+            <param name="operation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.Specification.LinqExtensions.CreateSpecification``1(System.String,System.Object,System.String)">
+            <summary>
+            create specifications
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="column"></param>
+            <param name="value"></param>
+            <param name="operation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.Specification.LinqExtensions.OrElse``1(Inflexion2.Domain.Specification.ISpecification{``0},System.String,System.Object,System.String)">
+            <summary>
+            concatenate specifications with logic or
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="query"></param>
+            <param name="column"></param>
+            <param name="value"></param>
+            <param name="operation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.Specification.LinqExtensions.ToSpecification``1(Inflexion2.Domain.Specification.SpecificationModel)">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.Specification.LinqExtensions.ToSpecification``1(Inflexion2.Domain.Specification.SpecificationModel,Inflexion2.Domain.Specification.ISpecification{``0})">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Domain.Specification.Rule">
+            <summary>
+            rule and his members
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.Specification.Rule.data">
+            <summary>
+            data rule
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.Specification.Rule.field">
+            <summary>
+            field rule
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.Specification.Rule.op">
+            <summary>
+            operation rule
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Domain.Specification.SpecificationModel">
+            <summary>
+            specification model for paged results
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.Specification.SpecificationModel.Field">
+            <summary>
+            field specification for paged results
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.Specification.SpecificationModel.IsSearch">
+            <summary>
+            is a search? indicator
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.Specification.SpecificationModel.Operator">
+            <summary>
+            operator specification
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.Specification.SpecificationModel.PageIndex">
+            <summary>
+            page index of the specification
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.Specification.SpecificationModel.PageSize">
+            <summary>
+            page size of specification
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.Specification.SpecificationModel.SearchString">
+            <summary>
+            search expresion
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.Specification.SpecificationModel.SortColumn">
+            <summary>
+            sort columm
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.Specification.SpecificationModel.SortOrder">
+            <summary>
+            sort order
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.Specification.SpecificationModel.Where">
+            <summary>
+            where expresion for search
+            </summary>
+        </member>
         <member name="T:Inflexion2.Domain.Specification.TrueSpecification`1">
             <summary>
             Clase para la especificación TRUE.
@@ -2367,7 +2753,7 @@
             Raises the specified event.
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="@event">The args.</param>
+            <param name="event">The args.</param>
         </member>
         <member name="M:Inflexion2.Domain.DomainEvents.Raise(System.Object[])">
             <summary>
@@ -2742,6 +3128,26 @@
             <summary>
             .es Conjunto de métodos estaticos de paginación con devolución de colecciones inenumerable o iqueryable
             </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.PagingExtensions.Page``1(System.Linq.IQueryable{``0},System.Int32,System.Int32)">
+            <summary>
+            TODO: update comments
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="query"></param>
+            <param name="pageNumber"></param>
+            <param name="pageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.PagingExtensions.Page``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32)">
+            <summary>
+            TODO: update comments
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="query"></param>
+            <param name="pageNumber"></param>
+            <param name="pageSize"></param>
+            <returns></returns>
         </member>
         <member name="T:Inflexion2.Domain.PropertyExtension">
             <summary>
@@ -3409,16 +3815,26 @@
             El objeto de esta clase es evitar la necesidad de pasar como parametro la unidad de trabajo en el repositorio.
             </summary>
         </member>
+        <member name="M:Inflexion2.Domain.UnitOfWorkScope.Start">
+            <summary>
+            TODO: update comments
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.UnitOfWorkScope.Start``1">
+            <summary>
+            TODO: update comments
+            </summary>
+            <typeparam name="TUnitOfWork"></typeparam>
+            <returns></returns>
+        </member>
         <member name="T:Inflexion2.Domain.BaseRepository`2">
             <summary>
             .en Default base class for repositories. This generic repository
             is a default implementation of <see cref="T:Inflexion2.Domain.IRepository`2"/>
-            and your specific repositories can inherit from this base class so automatically will get default implementation.
-            IMPORTANT: Using this Base Repository class IS NOT mandatory. It is just a useful base class:
-            You could also decide that you do not want to use this base Repository class, because sometimes you don't want a
-            specific Repository getting all these features and it might be wrong for a specific Repository.
-            For instance, you could want just read-only data methods for your Repository, etc.
-            in that case, just simply do not use this base class on your Repository.
+            and the specific repositories for every ORM (nhibernate, entity framework, other ) inherit from this base class 
+            calling to their own functions. For example from this class inherit EfRepository which overrite the  generic abstract members of this base class to use the EF memebers.
+            Why to do that, and don't use EF directly becouse in this case is possible to write the logic decopled from the technology EF, NH etc.
             </summary>
             <typeparam name="TEntity">Type of elements in repostory</typeparam>
             <typeparam name="TIdentifier">identifier</typeparam>
@@ -3427,8 +3843,11 @@
             <summary>
             Default constructor for GenericRepository
             </summary>
-            <param name="traceManager">Trace Manager dependency</param>
-            <param name="context">A context for this repository</param>
+        </member>
+        <member name="P:Inflexion2.Domain.BaseRepository`2.Logger">
+            <summary>
+            loger instance for tracing porpouses
+            </summary>
         </member>
         <member name="M:Inflexion2.Domain.BaseRepository`2.Add(`0)">
             <summary>
@@ -3471,11 +3890,69 @@
             <param name="ascending"><see cref="T:Inflexion2.Domain.IRepository`2"/></param>
             <returns><see cref="T:Inflexion2.Domain.IRepository`2"/></returns>
         </member>
+        <member name="M:Inflexion2.Domain.BaseRepository`2.GetPagedElements``1(System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
+            <summary>
+            Get a filtered sorted paged collection of enties ascending or descending
+            </summary>
+            <typeparam name="S"></typeparam>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="filter"></param>
+            <param name="orderByExpression"></param>
+            <param name="ascending"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseRepository`2.GetPagedElements(System.Int32,System.Int32,Inflexion2.Domain.Specification.ISpecification{`0},Inflexion2.Domain.Specification.IOrderBySpecification{`0})">
+            <summary>
+             Get a filtered sorted paged collection of enties
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="specification"></param>
+            <param name="orderBySpecification"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseRepository`2.Modify(`0)">
+            <summary>
+            modify entity
+            </summary>
+            <param name="entity"></param>
+        </member>
         <member name="M:Inflexion2.Domain.BaseRepository`2.Remove(`0)">
             <summary>
             <see cref="T:Inflexion2.Domain.IRepository`2"/>
             </summary>
             <param name="entity"><see cref="T:Inflexion2.Domain.IRepository`2"/></param>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseRepository`2.InternalAdd(`0)">
+            <summary>
+            method to be over writed to add operations
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseRepository`2.InternalAttach(`0)">
+            <summary>
+            method to be over writed to attach operations
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseRepository`2.InternalModify(`0)">
+            <summary>
+            method to be over writed to modify operations
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseRepository`2.InternalRemove(`0)">
+            <summary>
+            method to be over writed to remove operations
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseRepository`2.Query">
+            <summary>
+            method to write to query operations
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Inflexion2.Domain.IRepository`2">
             <summary>
@@ -3522,10 +3999,42 @@
         </member>
         <member name="M:Inflexion2.Domain.IRepository`2.GetFilteredElements(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
             <summary>
-            Get  elements of type {T} in repository
+            Get elements of type {T} in repository
             </summary>
             <param name="filter">Filter that each element do match</param>
             <returns>List of selected elements</returns>
+        </member>
+        <member name="M:Inflexion2.Domain.IRepository`2.GetFilteredElements``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
+            <summary>
+            Get a collection of filtered and sorted elements of type {T} in repository by pages ascending or descending
+            </summary>
+            <typeparam name="S"></typeparam>
+            <param name="filter"></param>
+            <param name="orderByExpression"></param>
+            <param name="ascending"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.IRepository`2.GetPagedElements``1(System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
+            <summary>
+            Get a page  of filtered and sorted elements of type {T} in repository 
+            </summary>
+            <typeparam name="S"></typeparam>
+            <param name="pageIndex"></param>
+            <param name="pageCount"></param>
+            <param name="filter"></param>
+            <param name="orderByExpression"></param>
+            <param name="ascending"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.IRepository`2.GetPagedElements(System.Int32,System.Int32,Inflexion2.Domain.Specification.ISpecification{`0},Inflexion2.Domain.Specification.IOrderBySpecification{`0})">
+            <summary>
+            Get a page  of filtered and sorted elements of type {T} in repository 
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageCount"></param>
+            <param name="specification"></param>
+            <param name="orderBySpecification"></param>
+            <returns></returns>
         </member>
         <member name="M:Inflexion2.Domain.IRepository`2.Modify(`0)">
             <summary>
@@ -3568,6 +4077,21 @@
             Parámetro que indica el número total de elemntos de la lista.
             </param>
         </member>
+        <member name="P:Inflexion2.Domain.PagedElements`1.Count">
+            <summary>
+            Total num of elements in the repository
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.PagedElements`1.Elements">
+            <summary>
+            a page of elements
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.PagedElements`1.IsReadOnly">
+            <summary>
+            mark read only
+            </summary>
+        </member>
         <member name="P:Inflexion2.Domain.PagedElements`1.TotalElements">
             <summary>
             Propiedad que obtiene el total de elementos.
@@ -3578,6 +4102,57 @@
             <value>
             Valor que es utilizado para obtener el total de elementos.
             </value>
+        </member>
+        <member name="P:Inflexion2.Domain.PagedElements`1.Item(System.Int32)">
+            <summary>
+            indexer implementation
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.PagedElements`1.Add(`0)">
+            <summary>
+            add entity to the page
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.PagedElements`1.Clear">
+            <summary>
+            clear the page
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.PagedElements`1.Contains(`0)">
+            <summary>
+            asking if the page contains the entity
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.PagedElements`1.CopyTo(`0[],System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="array"></param>
+            <param name="arrayIndex"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.PagedElements`1.GetEnumerator">
+            <summary>
+            enumerator implementation
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.PagedElements`1.Remove(`0)">
+            <summary>
+            remove item from page
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.PagedElements`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            enumerator to iterate the page
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:Inflexion2.Domain.PagedElements`1.TotalPages(System.Int32)">
             <summary>
@@ -3590,6 +4165,32 @@
             <returns>
             Devuelve el total de páginas.
             </returns>
+        </member>
+        <member name="T:Inflexion2.Domain.IAuditTrailFactory">
+            <summary>
+            Factory for auditable entities
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.IAuditTrailFactory.CreateAuditTrail(System.Guid,System.String,System.String,System.String,System.Object,System.Object,System.String,System.DateTime)">
+            <summary>
+            auditing a change
+            </summary>
+            <param name="changeSetUniqueId"></param>
+            <param name="entityName"></param>
+            <param name="entityUniqueId"></param>
+            <param name="propertyName"></param>
+            <param name="oldValue"></param>
+            <param name="newValue"></param>
+            <param name="updatedBy"></param>
+            <param name="updatedAt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.IAuditTrailFactory.IsEntityRegistered(System.String)">
+            <summary>
+            asking for auditing success
+            </summary>
+            <param name="entityName"></param>
+            <returns></returns>
         </member>
         <member name="T:Inflexion2.Domain.IComparableValueObject`1">
             <summary>
@@ -3770,6 +4371,43 @@
             
              <exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or <see cref="P:System.Exception.HResult"/> is zero (0). </exception>
         </member>
+        <member name="T:Inflexion2.Extensions.SpecificationsLinqExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Extensions.SpecificationsLinqExtensions.AndAlso``1(Inflexion2.Domain.Specification.ISpecification{``0},System.String,System.Object,System.String)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="query"></param>
+            <param name="column"></param>
+            <param name="value"></param>
+            <param name="operation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Extensions.SpecificationsLinqExtensions.CreateSpecification``1(System.String,System.Object,System.String)">
+            <summary>
+            TODO: update comments
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="column"></param>
+            <param name="value"></param>
+            <param name="operation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Extensions.SpecificationsLinqExtensions.OrElse``1(Inflexion2.Domain.Specification.ISpecification{``0},System.String,System.Object,System.String)">
+            <summary>
+            TODO: update comments
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="query"></param>
+            <param name="column"></param>
+            <param name="value"></param>
+            <param name="operation"></param>
+            <returns></returns>
+        </member>
         <member name="T:Inflexion2.AggregateNotFoundException">
             <summary>
             Aggregate Not found Exception
@@ -3915,7 +4553,7 @@
             <summary>
             Initializes a new instance of the <see cref="T:Inflexion2.CoreException"/> class.
             </summary>
-            <param name="p_Message">The p_ message.</param>
+            <param name="message">The  message.</param>
         </member>
         <member name="M:Inflexion2.CoreException.#ctor(System.String,System.Exception)">
             <summary>
@@ -4041,7 +4679,7 @@
             <summary>
             Determines whether [is empty or null] [the specified GUID].
             </summary>
-            <param name="guid">The GUID.</param>
+            <param name="value">The GUID.</param>
             <returns>
             <c>true</c> if [is empty or null] [the specified GUID]; otherwise, <c>false</c>.
             </returns>
@@ -4050,7 +4688,7 @@
             <summary>
             Determines whether [is empty or null] [the specified GUID].
             </summary>
-            <param name="guid">The GUID.</param>
+            <param name="value">The GUID.</param>
             <returns>
             <c>true</c> if [is empty or null] [the specified GUID]; otherwise, <c>false</c>.
             </returns>
@@ -4059,7 +4697,7 @@
             <summary>
             Determines whether the specified GUID is valid.
             </summary>
-            <param name="guid">The GUID.</param>
+            <param name="value">The GUID.</param>
             <returns>
             <c>true</c> if the specified GUID is valid; otherwise, <c>false</c>.
             </returns>
@@ -4074,21 +4712,21 @@
             <summary>
             Creates a new Guid object that conforms to the COMBGUID rules.
             </summary>
-            <param name="guid">The GUID.</param>
+            <param name="value">The GUID.</param>
             <returns></returns>
         </member>
         <member name="M:Inflexion2.GuidExtensions.ShowDate(System.Guid)">
             <summary>
             Shows the date.
             </summary>
-            <param name="guid">The GUID.</param>
+            <param name="value">The GUID.</param>
             <returns></returns>
         </member>
         <member name="M:Inflexion2.GuidExtensions.__IsEmptyOrNull(System.Nullable{System.Guid})">
             <summary>
             Is the Guid empty or null.
             </summary>
-            <param name="guid">The GUID.</param>
+            <param name="value">The GUID.</param>
             <returns></returns>
         </member>
         <member name="T:Inflexion2.JSONExtensions">
@@ -4125,9 +4763,16 @@
         </member>
         <member name="T:Inflexion2.DynamicExtensions.PrivateReflectionDynamicObjectExtensions">
             <summary>
-            .es extension de refelxion para objetos dinamicos 
+            .es extension de refelxion para objetos dinámicos 
             .en reflexion extension to dinamic objects
             </summary>
+        </member>
+        <member name="M:Inflexion2.DynamicExtensions.PrivateReflectionDynamicObjectExtensions.AsDynamic(System.Object)">
+            <summary>
+            TODO: update comments
+            </summary>
+            <param name="o"></param>
+            <returns></returns>
         </member>
         <member name="T:Inflexion2.ReflectionExtensions">
             <summary>
@@ -4143,15 +4788,65 @@
             <param name="generic">the generic type</param>
             <returns></returns>
         </member>
+        <member name="M:Inflexion2.ReflectionExtensions.IsNonStringEnumerable(System.Reflection.PropertyInfo)">
+            <summary>
+            TODO: update comments
+            </summary>
+            <param name="pi"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.ReflectionExtensions.IsNonStringEnumerable(System.Object)">
+            <summary>
+            TODO: update comments
+            </summary>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.ReflectionExtensions.IsNonStringEnumerable(System.Type)">
+            <summary>
+            TODO: update comments
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
         <member name="T:Inflexion2.HashHelper">
             <summary>
-            .es extensiones extaticas para ayudar en el calculo de codigos hash
+            .es extensiones extaticas para ayudar en el calculo de códigos hash
             </summary>
+        </member>
+        <member name="M:Inflexion2.HashHelper.CalculateMD5Hash(System.String)">
+            <summary>
+            Calculate hash with algorthim MD5
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.HashHelper.CalculateSHA1Hash(System.String)">
+            <summary>
+            Calculate hash with algorthim SHA1
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.HashHelper.CalculateHash(System.String,System.Security.Cryptography.HashAlgorithm)">
+            <summary>
+            Calculate hash
+            </summary>
+            <param name="input"></param>
+            <param name="hashAlgorithm"></param>
+            <returns></returns>
         </member>
         <member name="T:Inflexion2.HtmlHelper">
             <summary>
             .es Extensiones estaticas para simplifica el uso de cadenas de html
             </summary>
+        </member>
+        <member name="M:Inflexion2.HtmlHelper.StripHtml(System.String)">
+            <summary>
+            remove html marks
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
         </member>
         <member name="T:Inflexion2.StringSlugExtension">
             <summary>
@@ -4179,7 +4874,457 @@
         </member>
         <member name="T:Inflexion2.Logging.ILogger">
             <summary>
-            logger manager contract for trace instrumentation
+            common logger manager contract for trace instrumentation.
+            this interface is independent from the end tool selected.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Debug(System.Object)">
+            <summary>
+            log debug message
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Debug(System.Object,System.Exception)">
+            <summary>
+            log debug message and exception
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.DebugFormat(System.String,System.Object[])">
+            <summary>
+            log debug format message 
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.DebugFormat(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            log debug format provider message (CultureInfo)
+            </summary>
+            <param name="provider"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Error(System.Object)">
+            <summary>
+            log error message
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Error(System.Object,System.Exception)">
+            <summary>
+            log error with message and exception
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.ErrorFormat(System.String,System.Object[])">
+            <summary>
+            log error message with format
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.ErrorFormat(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            log error with format provider (CultureInfo)
+            </summary>
+            <param name="provider"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Fatal(System.Object)">
+            <summary>
+            log fatal error message
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Fatal(System.Object,System.Exception)">
+            <summary>
+            log fatal error message with exception
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.FatalFormat(System.String,System.Object[])">
+            <summary>
+            log fatal error message with format
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.FatalFormat(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            log fatal error message with format provider 
+            </summary>
+            <param name="provider"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Info(System.Object)">
+            <summary>
+            log info message 
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Info(System.Object,System.Exception)">
+            <summary>
+            log info message with exception
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.InfoFormat(System.String,System.Object[])">
+            <summary>
+            log info message with format
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.InfoFormat(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            log info message with format provider
+            </summary>
+            <param name="provider"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Warn(System.Object)">
+            <summary>
+            log warn message
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Warn(System.Object,System.Exception)">
+            <summary>
+            log warn message with exception
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.WarnFormat(System.String,System.Object[])">
+            <summary>
+            log warn message with format
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.WarnFormat(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            log warn message with format provider
+            </summary>
+            <param name="provider"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="T:Inflexion2.Logging.ConsoleLogger">
+            <summary>
+            logger implementation for console
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Logging.ConsoleLogger.#ctor(System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ConsoleLogger.Debug(System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Debug(System.Object)"/>
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ConsoleLogger.Debug(System.Object,System.Exception)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Debug(System.Object,System.Exception)"/>
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ConsoleLogger.DebugFormat(System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.DebugFormat(System.IFormatProvider,System.String,System.Object[])"/>
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ConsoleLogger.DebugFormat(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.DebugFormat(System.IFormatProvider,System.String,System.Object[])"/>
+            </summary>
+            <param name="provider"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ConsoleLogger.Error(System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Error(System.Object)"/>
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ConsoleLogger.Error(System.Object,System.Exception)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Error(System.Object,System.Exception)"/>
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ConsoleLogger.ErrorFormat(System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.ErrorFormat(System.String,System.Object[])"/>
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ConsoleLogger.ErrorFormat(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.ErrorFormat(System.IFormatProvider,System.String,System.Object[])"/>
+            </summary>
+            <param name="provider"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ConsoleLogger.Fatal(System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Fatal(System.Object)"/>
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ConsoleLogger.Fatal(System.Object,System.Exception)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Fatal(System.Object,System.Exception)"/>
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ConsoleLogger.FatalFormat(System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.FatalFormat(System.String,System.Object[])"/>
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ConsoleLogger.FatalFormat(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.InfoFormat(System.IFormatProvider,System.String,System.Object[])"/>
+            </summary>
+            <param name="provider"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ConsoleLogger.Info(System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Info(System.Object)"/>
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ConsoleLogger.Info(System.Object,System.Exception)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Info(System.Object,System.Exception)"/>
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ConsoleLogger.InfoFormat(System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.InfoFormat(System.String,System.Object[])"/>
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ConsoleLogger.InfoFormat(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.InfoFormat(System.IFormatProvider,System.String,System.Object[])"/>
+            </summary>
+            <param name="provider"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ConsoleLogger.Warn(System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Warn(System.Object)"/>
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ConsoleLogger.Warn(System.Object,System.Exception)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Warn(System.Object,System.Exception)"/>
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ConsoleLogger.WarnFormat(System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.WarnFormat(System.String,System.Object[])"/>
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ConsoleLogger.WarnFormat(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.WarnFormat(System.IFormatProvider,System.String,System.Object[])"/>
+            </summary>
+            <param name="provider"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="T:Inflexion2.Logging.EmptyLogger">
+            <summary>
+            mplementation of ILoggerFacade that does nothing. 
+            This implementation is useful when the application does 
+            not need logging but there are infrastructure pieces that assume there is a logger.
+            https://msdn.microsoft.com/en-us/library/microsoft.practices.prism.logging.emptylogger(v=pandp.50).aspx
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Logging.EmptyLogger.Debug(System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Debug(System.Object)"/>
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.EmptyLogger.Debug(System.Object,System.Exception)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Debug(System.Object,System.Exception)"/>
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.EmptyLogger.DebugFormat(System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.DebugFormat(System.IFormatProvider,System.String,System.Object[])"/>
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.EmptyLogger.DebugFormat(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.DebugFormat(System.IFormatProvider,System.String,System.Object[])"/>
+            </summary>
+            <param name="provider"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.EmptyLogger.Error(System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Error(System.Object)"/>
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.EmptyLogger.Error(System.Object,System.Exception)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Error(System.Object,System.Exception)"/>
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.EmptyLogger.ErrorFormat(System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.ErrorFormat(System.String,System.Object[])"/>
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.EmptyLogger.ErrorFormat(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.ErrorFormat(System.IFormatProvider,System.String,System.Object[])"/>
+            </summary>
+            <param name="provider"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.EmptyLogger.Fatal(System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Fatal(System.Object)"/>
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.EmptyLogger.Fatal(System.Object,System.Exception)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Fatal(System.Object,System.Exception)"/>
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.EmptyLogger.FatalFormat(System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.FatalFormat(System.String,System.Object[])"/>
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.EmptyLogger.FatalFormat(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.InfoFormat(System.IFormatProvider,System.String,System.Object[])"/>
+            </summary>
+            <param name="provider"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.EmptyLogger.Info(System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Info(System.Object)"/>
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.EmptyLogger.Info(System.Object,System.Exception)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Info(System.Object,System.Exception)"/>
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.EmptyLogger.InfoFormat(System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.InfoFormat(System.String,System.Object[])"/>
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.EmptyLogger.InfoFormat(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.InfoFormat(System.IFormatProvider,System.String,System.Object[])"/>
+            </summary>
+            <param name="provider"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.EmptyLogger.Warn(System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Warn(System.Object)"/>
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.EmptyLogger.Warn(System.Object,System.Exception)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Warn(System.Object,System.Exception)"/>
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.EmptyLogger.WarnFormat(System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.WarnFormat(System.String,System.Object[])"/>
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.EmptyLogger.WarnFormat(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.WarnFormat(System.IFormatProvider,System.String,System.Object[])"/>
+            </summary>
+            <param name="provider"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="T:Inflexion2.Logging.LoggerManager">
+            <summary>
+            inyect an empty logger
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Logging.LoggerManager.GetLogger">
+            <summary>
+            TODO: update summary
             </summary>
         </member>
         <member name="T:Inflexion2.Guard">
@@ -4249,6 +5394,7 @@
             <typeparam name="TException">The type of exception to throw.</typeparam>
             <param name="assertion">The assertion to evaluate. If true then the <typeparamref name="TException"/> exception is thrown.</param>
             <param name="message">string. The exception message to throw.</param>
+            <param name="args"></param>
         </member>
         <member name="M:Inflexion2.Guard.Against``1(System.Func{System.Boolean},System.String)">
             <summary>
@@ -4326,6 +5472,11 @@
             <typeparam name="TType">The Type that the <paramref name="instance"/> is expected to be.</typeparam>
             <param name="instance">The object instance whose type is checked.</param>
             <param name="message">The message of the <see cref="T:System.InvalidOperationException"/> exception.</param>
+        </member>
+        <member name="T:Inflexion2.Security.CertificateHelper">
+            <summary>
+            helper class to manage certificates
+            </summary>
         </member>
         <member name="M:Inflexion2.Security.CertificateHelper.GetCertificate">
             <summary>
@@ -4437,6 +5588,16 @@
             <returns>
             true if the current principal is a member of the specified role; otherwise, false.
             </returns>
+        </member>
+        <member name="T:Inflexion2.Security.ICoreIdentity">
+            <summary>
+            todo: update sumamry
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Security.ICoreIdentity.Id">
+            <summary>
+            todo: update sumamry
+            </summary>
         </member>
         <member name="T:Inflexion2.Infrastructure.Manager">
             <summary>
@@ -4674,6 +5835,7 @@
             </summary>
             <param name="baseName">the resource name, also the assembly base
             name</param>
+            <param name="assembly"></param>
         </member>
         <member name="M:GNU.Gettext.GettextResourceManager.GetPluralString(System.String,System.String,System.Int64,System.Globalization.CultureInfo)">
             <summary>
@@ -4688,6 +5850,7 @@
             <param name="n">the number, should be &gt;= 0</param>
             <returns>the translation, or <paramref name="msgid"/> or
             <paramref name="msgidPlural"/> if none is found</returns>
+            <param name="culture"/>
         </member>
         <member name="M:GNU.Gettext.GettextResourceManager.GetPluralString(System.String,System.String,System.Int64)">
             <summary>
@@ -4711,6 +5874,7 @@
             string</param>
             <returns>the translation of <paramref name="msgid"/>, or
             <paramref name="msgid"/> if none is found</returns>
+            <param name="culture"></param>
         </member>
         <member name="M:GNU.Gettext.GettextResourceManager.GetString(System.String)">
             <summary>
@@ -4843,6 +6007,7 @@
             </summary>
             <param name="msgid">the key string to be translated, an ASCII
             string</param>
+            <param name="ignoreCase"></param>
             <returns>the translation of <paramref name="msgid"/>, or <c>null</c> if
             none is found</returns>
         </member>

@@ -25,7 +25,7 @@ namespace Atento.Suite.Shared.Application.Dtos
     #region usings
     using System;
     using System.Runtime.Serialization;
-    using Inflexion2.Application.DataTransfer.Base;
+    using Inflexion2.Application;
 
     using Atento.Suite.Shared.Domain.Data;
     #endregion

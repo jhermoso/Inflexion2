@@ -10,7 +10,7 @@ namespace Inflexion2.Domain
 
 
     /// <summary>
-    /// 
+    /// TODO: update comments
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
     /// <typeparam name="TIdentifier"></typeparam>
@@ -78,11 +78,11 @@ namespace Inflexion2.Domain
         /// El tipo real (tipo <see cref="T:System.Type"/> hoja) de la
         /// entidad.
         /// </value>
-        public virtual System.Type ActualType
+        public override Type ActualType
         {
             get
             {
-                return typeof(AuditableEntity<TEntity, TIdentifier>);
+                return typeof(BusinessEntity<TEntity, TIdentifier>);
             }
         }
 

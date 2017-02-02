@@ -108,6 +108,7 @@ namespace Inflexion2
         /// <typeparam name="TException">The type of exception to throw.</typeparam>
         /// <param name="assertion">The assertion to evaluate. If true then the <typeparamref name="TException"/> exception is thrown.</param>
         /// <param name="message">string. The exception message to throw.</param>
+        /// <param name="args"></param>
         [SuppressMessage("Microsoft.Design",
                          "CA1004:GenericMethodsShouldProvideTypeParameter")]
         public static void Against<TException>(bool assertion, string message, params object[] args)

@@ -16,8 +16,14 @@ namespace Inflexion2.Security
 {
     using System.Security.Principal;
 
+    /// <summary>
+    /// todo: update sumamry
+    /// </summary>
     public interface ICoreIdentity : IIdentity
     {
+        /// <summary>
+        /// todo: update sumamry
+        /// </summary>
         string Id
         {
             get;

@@ -6,6 +6,9 @@ using Inflexion2.Domain;
 
 namespace Inflexion2.Domain
 {
+    /// <summary>
+    /// unit of work for domain aggregate roots
+    /// </summary>
     public class DomainUnitOfWork : RootAggregateContext
     {
         /// <summary>

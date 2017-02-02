@@ -2,13 +2,14 @@
 
 namespace Inflexion2.Domain
 {
+    using Domain;
     using System;
 
     /// <summary>
     ///     Facilitates indicating which Classes are forbidden deleteable
     /// </summary>
     /// <remarks>
-    ///     This is intended for use with <see cref="Entity{TIdentifier}" />.  It may NOT be used on a <see cref="ValueObject" />.
+    ///     This is intended for use with <see cref="IEntity{TIdentifier}" />.  It may NOT be used on a <see cref="ValueObject" />.
     /// </remarks>
     [Serializable]
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
@@ -61,17 +62,17 @@ namespace Inflexion2.Domain
         /// </summary>
         Restrict = 2,
 
-        /// <summary>
-        /// .es indicamos que para esta propiedad/relación podemos borrar la clase dejando huerfanos 
-        /// los hijos es decir que tenemos que asignar un valor nullo a la propiedad de cada hijo que
-        /// referencia al padre.
-        /// Este comportamiento solo tiene sentido en relaciones de agregación y se adopta por defecto por lo que se ha eliminado.
-        /// </summary>
-        //OrphanNull = 3,  // you can delete and all the children will be orphans with their parent property seted to null.
+        ///// <summary>
+        ///// .es indicamos que para esta propiedad/relación podemos borrar la clase dejando huerfanos 
+        ///// los hijos es decir que tenemos que asignar un valor nullo a la propiedad de cada hijo que
+        ///// referencia al padre.
+        ///// Este comportamiento solo tiene sentido en relaciones de agregación y se adopta por defecto por lo que se ha eliminado.
+        ///// </summary>
+        ////OrphanNull = 3,  // you can delete and all the children will be orphans with their parent property seted to null.
 
-        /// <summary>
-        /// .es indicamos que para esta propiedad/relacion podemos borrar la clase sin cambiar la refere
-        /// </summary>
-        //Orphan = 4
+        ///// <summary>
+        ///// .es indicamos que para esta propiedad/relacion podemos borrar la clase sin cambiar la refere
+        ///// </summary>
+        ////Orphan = 4
     };
 }

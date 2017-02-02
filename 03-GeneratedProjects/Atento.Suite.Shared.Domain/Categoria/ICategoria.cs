@@ -42,7 +42,7 @@ namespace Atento.Suite.Shared.Domain
 
         #region Properties
         /// <summary>
-        /// .en Property to get & set Name.
+        /// .en Property to get and set Name.
         /// .es Propiedad que permite obtener y establecer Name.
         /// </summary>
         /// <remarks>

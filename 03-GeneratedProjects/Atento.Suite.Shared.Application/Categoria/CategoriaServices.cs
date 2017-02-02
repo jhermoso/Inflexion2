@@ -36,7 +36,6 @@ namespace Atento.Suite.Shared.Application
 
     using Inflexion2.Domain;
     using Inflexion2.Application;
-    using Inflexion2.Application.DataTransfer.Core;
     using Inflexion2;
     using Inflexion2.Domain.Specification;
     using Inflexion2.Logging;

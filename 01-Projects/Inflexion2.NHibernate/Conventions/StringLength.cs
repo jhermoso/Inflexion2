@@ -11,8 +11,15 @@ namespace Inflexion2.Domain
     using FluentNHibernate.Conventions;
     using FluentNHibernate.Conventions.Instances;
 
+    /// <summary>
+    /// convention for string lenght attributte
+    /// </summary>
     public class StringLengthConvention : IPropertyConvention
     {
+        /// <summary>
+        /// applies convention for string lenght attributte
+        /// </summary>
+        /// <param name="target"></param>
         public void Apply(IPropertyInstance target)
         {
             var attribute =

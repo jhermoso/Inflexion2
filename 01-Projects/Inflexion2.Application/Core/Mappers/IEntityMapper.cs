@@ -3,13 +3,11 @@
 //     Copyright (c) 2012. Inflexion Software. All Rights Reserved.
 // </copyright>
 // -----------------------------------------------------------------------
-namespace Inflexion2.Application.Core
+namespace Inflexion2.Application
 {
-    using Inflexion2.Application.DataTransfer.Core;
-
     /// <summary>
     /// Interfaz para los mapeadores entre entidades del dominio.
-    /// (<see cref="Inflexion.Framework.Domain.Core.IEntity{TIdentifier}"/>) y
+    /// (<see cref="Inflexion2.Domain.IEntity{TIdentifier}"/>) y
     /// objetos de transferencia de datos (<see cref="IDataTransferObject"/>).
     /// </summary>
     /// <remarks>
@@ -39,9 +37,6 @@ namespace Inflexion2.Application.Core
     /// /// Interfaz que identifica los mapeos de
     /// /// datos con la entidad <see cref="IAmbito"/>.
     /// /// </summary>
-    /// /// <remarks>
-    /// /// Sin comentarios especiales.
-    /// /// </remarks>
     /// public interface IAmbitoMapper : IEntityMapper<AmbitoDto, IAmbito, int>
     /// {
     ///
@@ -52,7 +47,7 @@ namespace Inflexion2.Application.Core
     /// </example>
     public interface IEntityMapper<TDataTransferObject, TEntity, TIdentifier> : IGenericMapper<TDataTransferObject, TEntity, TIdentifier>
         where TDataTransferObject : IDataTransferObject
-        where TEntity : Inflexion2.Domain.IEntity<TIdentifier>
+        where TEntity : Inflexion2.Domain.IAggregateRoot<TEntity, TIdentifier>
         where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
     {
         #region Methods

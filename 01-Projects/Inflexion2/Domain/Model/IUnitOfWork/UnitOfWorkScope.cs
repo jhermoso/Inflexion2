@@ -10,11 +10,20 @@ namespace Inflexion2.Domain
     /// </summary>
     public class UnitOfWorkScope
     {
+        /// <summary>
+        /// TODO: update comments
+        /// </summary>
+        /// <returns></returns>
         public static IUnitOfWork Start()
         {
             return Start<IUnitOfWork>();
         }
 
+        /// <summary>
+        /// TODO: update comments
+        /// </summary>
+        /// <typeparam name="TUnitOfWork"></typeparam>
+        /// <returns></returns>
         public static IUnitOfWork Start<TUnitOfWork>()
         where TUnitOfWork : IUnitOfWork
         {

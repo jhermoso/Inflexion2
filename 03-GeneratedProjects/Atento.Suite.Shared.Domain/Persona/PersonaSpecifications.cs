@@ -46,7 +46,11 @@ namespace Atento.Suite.Shared.Domain
         #region Persona Basic Specifications
 
         // ha continuación se incorporan las especificaciones correspondientes a los campos marcados como filter o como identification
-        
+        public static Inflexion2.Domain.Specification.ISpecification<IPersona> PersonByName(string name)
+        {
+            ISpecification<IPersona> specification = new DirectSpecification<IPersona>(e => e.Nombre == name);
+            return specification;
+        }
         #endregion
 
         #region Persona Complex Specifications

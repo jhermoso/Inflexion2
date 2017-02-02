@@ -11,6 +11,7 @@ namespace Inflexion2.Domain
     /// <summary>
     /// Entitiy validatable with data annotations
     /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
     /// <typeparam name="TIdentifier"></typeparam>
     [Serializable]
     public abstract class ValidatableEntity<TEntity, TIdentifier> : Entity<TEntity, TIdentifier>, 

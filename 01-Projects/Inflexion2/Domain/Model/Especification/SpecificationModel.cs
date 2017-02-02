@@ -13,10 +13,15 @@ namespace Inflexion2.Domain.Specification
     using System.Text;
 
     
-
+    /// <summary>
+    /// Filtering class with specifications
+    /// </summary>
     [DataContract]
     public class Filter
     {
+        /// <summary>
+        /// groupping operator
+        /// </summary>
         [DataMember]
         public string groupOp
         {
@@ -24,6 +29,9 @@ namespace Inflexion2.Domain.Specification
             set;
         }
 
+        /// <summary>
+        /// internal collection of rules
+        /// </summary>
         [DataMember]
         public Rule[] rules
         {
@@ -31,6 +39,11 @@ namespace Inflexion2.Domain.Specification
             set;
         }
 
+        /// <summary>
+        /// Create filter from json data
+        /// </summary>
+        /// <param name="jsonData"></param>
+        /// <returns></returns>
         public static Filter Create(string jsonData)
         {
             try
@@ -49,14 +62,34 @@ namespace Inflexion2.Domain.Specification
         }
     }
 
+    /// <summary>
+    /// linq extensions
+    /// </summary>
     public static class LinqExtensions
     {
+        /// <summary>
+        /// concatenate specifications
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="query"></param>
+        /// <param name="column"></param>
+        /// <param name="value"></param>
+        /// <param name="operation"></param>
+        /// <returns></returns>
         public static ISpecification<T> AndAlso<T>(this ISpecification<T> query, string column, object value, string operation)
         where T : class
         {
             return query.AndAlso(CreateSpecification<T>(column, value, operation));
         }
 
+        /// <summary>
+        /// create specifications
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="column"></param>
+        /// <param name="value"></param>
+        /// <param name="operation"></param>
+        /// <returns></returns>
         public static ISpecification<T> CreateSpecification<T>(string column, object value, string operation)
         where T : class
         {
@@ -181,18 +214,33 @@ namespace Inflexion2.Domain.Specification
             return new DirectSpecification<T>(hLambda);
         }
 
+        /// <summary>
+        /// concatenate specifications with logic or
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="query"></param>
+        /// <param name="column"></param>
+        /// <param name="value"></param>
+        /// <param name="operation"></param>
+        /// <returns></returns>
         public static ISpecification<T> OrElse<T>(this ISpecification<T> query, string column, object value, string operation)
         where T : class
         {
             return query.OrElse(CreateSpecification<T>(column, value, operation));
         }
 
+        /// <summary>
+        /// TODO: Update summary.
+        /// </summary>
         public static ISpecification<T> ToSpecification<T>(this SpecificationModel specificationModel)
         where T : class
         {
             return specificationModel.ToSpecification<T>(null);
         }
 
+        /// <summary>
+        /// TODO: Update summary.
+        /// </summary>
         public static ISpecification<T> ToSpecification<T>(this SpecificationModel specificationModel, ISpecification<T> specification)
         where T : class
         {
@@ -255,9 +303,15 @@ namespace Inflexion2.Domain.Specification
         }
     }
 
+    /// <summary>
+    /// rule and his members
+    /// </summary>
     [DataContract]
     public class Rule
     {
+        /// <summary>
+        /// data rule
+        /// </summary>
         [DataMember]
         public string data
         {
@@ -265,6 +319,9 @@ namespace Inflexion2.Domain.Specification
             set;
         }
 
+        /// <summary>
+        /// field rule
+        /// </summary>
         [DataMember]
         public string field
         {
@@ -272,6 +329,9 @@ namespace Inflexion2.Domain.Specification
             set;
         }
 
+        /// <summary>
+        /// operation rule
+        /// </summary>
         [DataMember]
         public string op
         {
@@ -280,56 +340,86 @@ namespace Inflexion2.Domain.Specification
         }
     }
 
+    /// <summary>
+    /// specification model for paged results
+    /// </summary>
     public class SpecificationModel
     {
+        /// <summary>
+        /// field specification for paged results
+        /// </summary>
         public string Field
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// is a search? indicator
+        /// </summary>
         public bool IsSearch
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// operator specification
+        /// </summary>
         public string Operator
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// page index of the specification
+        /// </summary>
         public int PageIndex
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// page size of specification
+        /// </summary>
         public int PageSize
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// search expresion
+        /// </summary>
         public string SearchString
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// sort columm
+        /// </summary>
         public string SortColumn
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// sort order
+        /// </summary>
         public string SortOrder
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// where expresion for search
+        /// </summary>
         public Filter Where
         {
             get;

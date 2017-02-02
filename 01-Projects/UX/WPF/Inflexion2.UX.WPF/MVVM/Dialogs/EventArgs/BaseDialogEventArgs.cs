@@ -13,8 +13,6 @@ namespace Inflexion2.UX.WPF.MVVM.Dialogs
     /// </summary>
     public class BaseDialogEventArgs : EventArgs
     {
-        private DialogResultType interactionType;
-
         /// <summary>
         /// Inicia una nueva instancia de la clase <see cref="BaseDialogEventArgs"/>.
         /// </summary>

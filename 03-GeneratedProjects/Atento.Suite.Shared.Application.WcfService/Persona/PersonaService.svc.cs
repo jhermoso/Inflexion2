@@ -23,7 +23,7 @@ namespace Atento.Suite.Shared.Application.WcfService
 
     #region general usings
     using System;
-	using System.Configuration;
+    using System.Configuration;
     using System.Collections.Generic;
     using System.ServiceModel;
 
@@ -32,12 +32,11 @@ namespace Atento.Suite.Shared.Application.WcfService
     using Atento.Suite.Shared.Application.Dtos;
 
     using Inflexion2.Application;
-    using Inflexion2.Application.DataTransfer.Core;
     //using Inflexion2.Application.Security.RemoteFacade;
     using Inflexion2.Infrastructure;
 
     using Atento.Suite.Shared.Application;
-	using Atento.Suite.Shared.Application.WcfService.Contracts;
+    using Atento.Suite.Shared.Application.WcfService.Contracts;
     //using AppSrvCore = Atento.Suite.Shared.Application;
     #endregion
 
@@ -49,7 +48,7 @@ namespace Atento.Suite.Shared.Application.WcfService
     public partial class PersonaService : IPersonaService
     {
      //   #region Configuration
-	 //
+     //
      //   /// <summary>
      //   /// https://msdn.microsoft.com/en-us/library/hh205277(v=vs.110).aspx
      //   /// </summary>
@@ -62,7 +61,7 @@ namespace Atento.Suite.Shared.Application.WcfService
      //           SharedRepositoryLayer.IocRegistry();
      //       }
      //   }
-	 //
+     //
      //   #endregion
 
         #region Fields
@@ -93,31 +92,6 @@ namespace Atento.Suite.Shared.Application.WcfService
         #endregion
 
         #region Methods
-        /// <summary>
-        /// Función encargada de la creación de una entidad de tipo Persona.
-        /// </summary>
-        /// <param name="personaDto">
-        /// Parámetro de tipo <see cref="PersonaDto"/> con los datos necesarios
-        /// para la creación de la entidad Persona.
-        /// </param>
-        /// <return>
-        /// Devuelve el identificador único de la entidad creada.
-        /// </return>
-        public int Create( PersonaDto personaDto)
-        {
-            // opción 1
-            // Instanciamos el servicio de aplicación de creación mediante el contenedor de IoC.
-            // var data = ManagerIoC.Container.Resolve<ICreatePersona>();
-            // Ejecutamos el servicio y obtenemos la respuesta.
-            // int identifier = data.Execute( personaDto);
-            // Devolvemos la respuesta.
-            // return identifier;
-
-            //opción 2
-            return this.service.Create(personaDto);
-
-        } // end Create
-
 
         /// <summary>
         /// Función encargada de la actualziación de una entidad de tipo Persona.

@@ -17,13 +17,28 @@ namespace Inflexion2.Domain.Specification
     /// </summary>
     /// <typeparam name="TEntity">Type of entity</typeparam>
     public interface IOrderBySpecification<TEntity>
-        where TEntity : class
-        {
-            IOrderedQueryable<TEntity> ApplyOrderBy(IQueryable<TEntity> query);
-        }
+    where TEntity : class
+    {
+        /// <summary>
+        /// gets a sorted query
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        IOrderedQueryable<TEntity> ApplyOrderBy(IQueryable<TEntity> query);
+    }
 
+    /// <summary>
+    /// extension
+    /// </summary>
     public static class OrderBySpecificationExtensions
     {
+        /// <summary>
+        /// sort by specification
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <param name="query"></param>
+        /// <param name="orderBy"></param>
+        /// <returns></returns>
         public static IOrderedQueryable<TEntity> OrderBySpecification<TEntity>(
             this IQueryable<TEntity> query,
             IOrderBySpecification<TEntity> orderBy)

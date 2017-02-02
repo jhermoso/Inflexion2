@@ -33,7 +33,7 @@ namespace Atento.Suite.Shared.Domain
     #endregion
 
     /// <summary>
-    /// <see cref="Categoria".
+    /// <see cref="Categoria"/>.
     /// </summary>
     [Serializable]
     public partial class Categoria : Inflexion2.Domain.AggregateRoot<Categoria, Int32>, ICategoria
@@ -45,8 +45,8 @@ namespace Atento.Suite.Shared.Domain
         #region Constructors
 
         /// <summary>
-        /// .en Empty Constructor for the class <see cref="Categoria" it is required by nHibernate and EntityFramework.
-        /// .es Constructor vacio de la clase <see cref="Categoria" exigido por nHibernate o EntityFramework.
+        /// .en Empty Constructor for the class <see cref="Categoria"/> it is required by nHibernate and EntityFramework.
+        /// .es Constructor vacio de la clase <see cref="Categoria"/> exigido por nHibernate o EntityFramework.
         /// </summary>
         /// <remarks>
         /// .en by convention the empty constructor initialize the default values and make the news for the collections.

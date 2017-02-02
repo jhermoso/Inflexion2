@@ -45,8 +45,8 @@ namespace Atento.Suite.Shared.Domain
         #region Constructors
 
         /// <summary>
-        /// .en Empty Constructor for the class <see cref="Persona" it is required by nHibernate and EntityFramework.
-        /// .es Constructor vacio de la clase <see cref="Persona" exigido por nHibernate o EntityFramework.
+        /// .en Empty Constructor for the class <see cref="Persona"/> it is required by nHibernate and EntityFramework.
+        /// .es Constructor vacio de la clase <see cref="Persona"/> exigido por nHibernate o EntityFramework.
         /// </summary>
         /// <remarks>
         /// .en by convention the empty constructor initialize the default values and make the news for the collections.
@@ -73,7 +73,7 @@ namespace Atento.Suite.Shared.Domain
         protected internal Persona( string nombre ) :  this()  //cbc.isDerivedFromOneEntity ='False', IsDerived(cbc.entitySuperClass ) = ''
         {
             // .en the mandatory fields are inserted like parameters in the constructor.
-            // If there are any property which are collections from realtionship here  
+            // If there are any property which are collections from relationship here  
             // is where insert the news o their injection.
             // Also is included the default values for the properties which has one.
 

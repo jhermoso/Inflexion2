@@ -4,5 +4,35 @@
         <name>Inflexion2.Log4Net</name>
     </assembly>
     <members>
+        <member name="T:Inflexion2.Logging.Log4NetManager">
+            <summary>
+            basic Log 4 net operations
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Logging.Log4NetManager.Initialize">
+            <summary>
+            initialize the log4net instance
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Logging.Log4NetManager.Initialize(System.IO.FileInfo)">
+            <summary>
+            initialize the log4net instance with a config file
+            </summary>
+            <param name="configFile"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.Log4NetManager.Create(System.Type)">
+            <summary>
+            request of log instances by type
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Logging.Log4NetManager.Create(System.String)">
+            <summary>
+            request of log instances
+            </summary>
+            <param name="typeName"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

@@ -13,7 +13,6 @@ namespace Inflexion2.Domain
     /// Fix for issue: https://hibernate.onjira.com/browse/HHH-2763
     /// http://stackoverflow.com/questions/3090733/an-nhibernate-audit-trail-that-doesnt-cause-collection-was-not-processed-by-fl
     /// </summary>
-    /// <param name="session">The session.</param>
     public class FixedDefaultFlushEventListener : DefaultFlushEventListener
     {
         /// <summary>

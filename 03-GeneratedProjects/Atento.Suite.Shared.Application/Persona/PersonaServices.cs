@@ -36,7 +36,6 @@ namespace Atento.Suite.Shared.Application
 
     using Inflexion2.Domain;
     using Inflexion2.Application;
-    using Inflexion2.Application.DataTransfer.Core;
     using Inflexion2;
     using Inflexion2.Domain.Specification;
     using Inflexion2.Logging;
@@ -64,7 +63,7 @@ namespace Atento.Suite.Shared.Application
 	/// .en Create an object of type <see cref="Persona"/>.
     /// .es Crea un objeto <see cref="Persona"/>.
     /// </remarks>
-    public partial class PersonaServices : /*Atento.Suite.Shared.Application.EfApplicationServiceBase,*/ IPersonaServices
+    public partial class PersonaServices : IPersonaServices
     {
 
         #region Fields
@@ -93,7 +92,6 @@ namespace Atento.Suite.Shared.Application
         /// </remarks>
         public PersonaServices() : base()
         {
-  
             this.personaMapper = new PersonaMapper();
         }
 
@@ -117,72 +115,6 @@ namespace Atento.Suite.Shared.Application
             //get { return this.personaRepositoryFactory; }
         //}
 
-        #endregion
-
-        #region Create Method
-        // from template Application\UpdateBase\I2ServiceRegionCreateMethod.tt
-
-        /// <summary>
-        /// Crea una entidad Persona.
-        /// </summary>
-        /// <param name="personaDto">
-        /// DTO que contiene la información para crear la entidad.
-        /// </param>
-        /// <returns>
-        /// El identificador de la entidad creada.
-        /// </returns>
-        public int Create(PersonaDto personaDto)
-        {
-
-            #region Preconditions
-
-            // Comprobar el DTO de entrada.
-            Guard.ArgumentIsNotNull(
-                                    personaDto,
-                                    string.Format(
-                                                    FrameworkResource.DataTransferObjectIsNull,
-                                                    SharedResources.PersonaAlias));
-            // Comprobar los campos mandatory dentro del DTO.
-            Guard.ArgumentNotNullOrEmpty(
-                                        personaDto.Nombre,
-                                        string.Format(
-                                                        FrameworkResource.PropertyRequired,
-                                                        SharedResources.Persona_NombreAlias, 
-                                                        SharedResources.PersonaAlias)
-                                        );
-
-            #endregion
-
-            // el dto debe corresponder a un transient el id debe tener el valor por defecto
-            Guard.Against<ArgumentException>(personaDto.Id != default(Int32),                                    
-                                                    string.Format(
-                                                                FrameworkResource.IsNotTransient,
-                                                                SharedResources.PersonaAlias
-                                                                    )
-                                            );
-
-            Persona persona = PersonaFactory.Create(personaDto.Nombre); 
-               persona.BooleanField = personaDto.BooleanField;
-               persona.DatetimeField = personaDto.DatetimeField;
-               persona.ByteField = personaDto.ByteField;
-               persona.GuidField = personaDto.GuidField;
-               persona.DecimalField = personaDto.DecimalField;
-               persona.DobleField = personaDto.DobleField;
-               persona.FloatField = personaDto.FloatField;
-               persona.IntField = personaDto.IntField;
-               persona.LongField = personaDto.LongField;
-               persona.DateTimeOffsetField = personaDto.DateTimeOffsetField;
-               persona.ShortField = personaDto.ShortField;
-               persona.TimeSpanField = personaDto.TimeSpanField;
-               persona.Int16Field = personaDto.Int16Field;
-               persona.Int32Field = personaDto.Int32Field;
-               persona.Int64Field = personaDto.Int64Field;
-            IPersonaRepository repo =  ApplicationLayer.IocContainer.Resolve<IPersonaRepository>();
-            repo.Add(persona);
-            this.Commit();
-
-            return persona.Id; 
-        }
         #endregion
 
         #region Service Delete
@@ -458,7 +390,9 @@ namespace Atento.Suite.Shared.Application
 
         #endregion
 
-
+        /// <summary>
+        /// wraper for comitt adapter to be independent from the ORM used.
+        /// </summary>
         public void Commit()
         {
             if (unitOfWork == null) unitOfWork = ApplicationLayer.IocContainer.Resolve<IUnitOfWork>();

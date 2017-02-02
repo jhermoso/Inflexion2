@@ -8,7 +8,7 @@ namespace Inflexion2.Domain
     ///     Facilitates indicating which Classes are logical deleteable
     /// </summary>
     /// <remarks>
-    ///     This is intended for use with <see cref="Entity{TIdentifier}" />.  It may NOT be used on a <see cref="ValueObject" />.
+    ///     This is intended for use with <see cref="IEntity{TIdentifier}" />.  It may NOT be used on a <see cref="ValueObject" />.
     /// </remarks>
     [Serializable]
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]

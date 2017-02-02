@@ -2,16 +2,11 @@
 
 namespace Inflexion2.Domain
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using Inflexion2.Domain.Validation;
-
     /// <summary>
     /// http://msdn.microsoft.com/en-us/magazine/hh547108.aspx
     /// any aggregate root is an entity wich is the root for any write operation in the repository
     /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
     /// <typeparam name="TIdentifier"></typeparam>
     public interface IAggregateRoot<TEntity, TIdentifier> : IEntity<TIdentifier>
         where TEntity : IAggregateRoot<TEntity, TIdentifier>, IEntity<TIdentifier>

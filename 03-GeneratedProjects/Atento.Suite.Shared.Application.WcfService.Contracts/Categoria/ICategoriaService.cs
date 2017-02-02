@@ -28,7 +28,7 @@ namespace Atento.Suite.Shared.Application.WcfService.Contracts
     using System.ServiceModel;
 
     using Inflexion2.Domain;
-    using Inflexion2.Application.DataTransfer.Core;
+    using Inflexion2.Application;
     //using Inflexion.Framework.Application.Security.Data.Base;
     using Atento.Suite.Shared.Application.Dtos;
     #endregion
@@ -97,12 +97,10 @@ namespace Atento.Suite.Shared.Application.WcfService.Contracts
         [OperationContract]
         //[FaultContract(typeof(FaultObject))]
         bool Delete(int id);
+
         /// <summary>
         /// Método encargado de obtener todas las entidades Categoria.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         /// <returns>
         /// Devuelve listado de Dto´s de la entidad Categoria.
         /// </returns>
@@ -110,26 +108,18 @@ namespace Atento.Suite.Shared.Application.WcfService.Contracts
         //[FaultContract(typeof(FaultObject))]
         IEnumerable<CategoriaDto> GetAll();
 
-
         /// <summary>
-        /// Método encargado de obtener una entidad Categoria de acuerdo a
-        /// su identificador.
+        /// Método encargado de obtener una entidad Categoria de acuerdo a su identificador.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         /// <param name="categoriaId">
         /// Parámetro que indica el identificador único de la entidad cuya
         /// información se desea obtener.
-        // </param>
+        /// </param>
         /// <returns>
-        /// Devuelve objeto dto <see cref="CategoriaDto"/> con la información
-        /// requerida.
+        /// Devuelve objeto dto <see cref="CategoriaDto"/> con la información requerida.
         /// </returns>
         [OperationContract]
-        //[FaultContract(typeof(FaultObject))]
-        CategoriaDto GetById(
-                            Int32 categoriaId );
+        CategoriaDto GetById(Int32 categoriaId );
 
         /// <summary>
         /// Recupera una lista paginada de entidades Categoria, según la especificación indicada.

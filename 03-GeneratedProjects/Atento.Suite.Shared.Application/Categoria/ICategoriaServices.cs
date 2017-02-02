@@ -22,7 +22,6 @@ namespace Atento.Suite.Shared.Application
     using System.Collections.Generic;
     using System;
     using Inflexion2.Domain;
-    using Inflexion2.Application.DataTransfer.Core;
     using Inflexion2.Application;
     using Atento.Suite.Shared.Application.Dtos;
 
@@ -42,9 +41,6 @@ namespace Atento.Suite.Shared.Application
         /// Parámetro de tipo <see cref="CategoriaDto"/> con los datos necesarios
         /// para la creación de la entidad Categoria.
         /// </param>
-        /// <param name="userContextDto"> 
-        /// Parámetro de tipo <see cref="UserContextDto"/> que representa el contexto del usuario.
-        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
         /// </exception>
@@ -62,9 +58,6 @@ namespace Atento.Suite.Shared.Application
         /// <param name="CategoriaId">
         /// Parámetro que indica el identificador único de la entidad.
         /// </param>
-        /// <param name="userContextDto">
-        /// Parámetro de tipo <see cref="UserContextDto"/> que representa el contexto del usuario.
-        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
         /// </exception>
@@ -80,9 +73,6 @@ namespace Atento.Suite.Shared.Application
         /// <remarks>
         /// Devuelve la totalidad de las entidades.
         /// </remarks>
-        /// <param name="userContextDto">
-        /// Parámetro de tipo <see cref="UserContextDto"/> que representa el contexto del usuario.
-        /// </param>
         /// <returns>
         /// Devuelve listado de Dto´s de tipo <see cref="CategoriaDto"/>.
         /// </returns>
@@ -93,9 +83,6 @@ namespace Atento.Suite.Shared.Application
         /// </summary>
         /// <param name="specificationDto">
         /// Especificación que se va a aplicar.
-        /// </param>
-        /// <param name="userContextDto">
-        /// Información de contexto del usuario.
         /// </param>
         /// <returns>
         /// La lista paginada de entidades Categoria, según la especificación indicada.
@@ -119,9 +106,6 @@ namespace Atento.Suite.Shared.Application
         /// </summary>
         /// <param name="categoriaDto">
         /// DTO que contiene la información de la entidad que se va a actualizar.
-        /// </param>
-        /// <param name="userContextDto">
-        /// Información de contexto del usuario.
         /// </param>
         /// <returns>
         /// Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.

@@ -32,7 +32,7 @@ namespace Atento.Suite.Shared.Application.WcfService
     using Atento.Suite.Shared.Application.Dtos;
 
     using Inflexion2.Application;
-    using Inflexion2.Application.DataTransfer.Core;
+    using Inflexion2.Application;
     //using Inflexion2.Application.Security.RemoteFacade;
     using Inflexion2.Infrastructure;
 

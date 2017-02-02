@@ -13,10 +13,15 @@ namespace Inflexion2
     using System.Text.RegularExpressions;
 
     /// <summary>
-    /// .es extensiones extaticas para ayudar en el calculo de codigos hash
+    /// .es extensiones extaticas para ayudar en el calculo de códigos hash
     /// </summary>
     public static class HashHelper
     {
+        /// <summary>
+        /// Calculate hash with algorthim MD5
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public static string CalculateMD5Hash(this string input)
         {
             using (MD5 md5 = MD5.Create())
@@ -25,6 +30,11 @@ namespace Inflexion2
             }
         }
 
+        /// <summary>
+        /// Calculate hash with algorthim SHA1
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public static string CalculateSHA1Hash(this string input)
         {
             using (SHA1 sha1 = SHA1.Create())
@@ -33,6 +43,12 @@ namespace Inflexion2
             }
         }
 
+        /// <summary>
+        /// Calculate hash
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="hashAlgorithm"></param>
+        /// <returns></returns>
         private static string CalculateHash(string input, HashAlgorithm hashAlgorithm)
         {
             byte[] inputBytes;
@@ -60,6 +76,11 @@ namespace Inflexion2
     /// </summary>
     public static class HtmlHelper
     {
+        /// <summary>
+        /// remove html marks
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public static string StripHtml(this string text)
         {
             Regex reg = new Regex("<[^>]+>", RegexOptions.IgnoreCase);

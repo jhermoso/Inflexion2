@@ -17,6 +17,14 @@ namespace Inflexion2.Domain
     /// </summary>
     public static class PagingExtensions
     {
+        /// <summary>
+        /// TODO: update comments
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="query"></param>
+        /// <param name="pageNumber"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
         public static IQueryable<T> Page<T>(this IQueryable<T> query, int pageNumber, int pageSize)
         {
             Guard.Against<ArgumentException>(pageNumber <= 0, "pageNumber");
@@ -24,6 +32,14 @@ namespace Inflexion2.Domain
             return query.Skip((pageNumber - 1) * pageSize).Take(pageSize);
         }
 
+        /// <summary>
+        /// TODO: update comments
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="query"></param>
+        /// <param name="pageNumber"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
         public static IEnumerable<T> Page<T>(this IEnumerable<T> query, int pageNumber, int pageSize)
         {
             Guard.Against<ArgumentException>(pageNumber <= 0, "pageNumber");

@@ -37,7 +37,7 @@ namespace Atento.Suite.Shared.Infrastructure
     /// inicializa una nueva instancia de  una entidad Persona/>.
     /// </summary>
     /// <remarks>
-    /// Mapea un objeto <see cref="Persona".
+    /// Mapea un objeto <see cref="Persona"/>.
     /// </remarks>
      public class PersonaConfiguration : EntityConfiguration<Persona, Int32>
     {

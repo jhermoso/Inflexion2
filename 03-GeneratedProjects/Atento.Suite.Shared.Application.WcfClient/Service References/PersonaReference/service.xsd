@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import namespace="http://schemas.datacontract.org/2004/07/Atento.Suite.Shared.Application.Dtos" />
-  <xs:import namespace="http://schemas.datacontract.org/2004/07/Inflexion2.Application.DataTransfer.Core" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/Inflexion2.Application" />
   <xs:import namespace="http://schemas.datacontract.org/2004/07/Inflexion2.Domain" />
   <xs:element name="Create">
     <xs:complexType>
@@ -74,7 +74,7 @@
   <xs:element name="GetPaged">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Inflexion2.Application.DataTransfer.Core" minOccurs="0" name="specificationDto" nillable="true" type="q5:SpecificationDto" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Inflexion2.Application" minOccurs="0" name="specificationDto" nillable="true" type="q5:SpecificationDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

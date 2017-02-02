@@ -5,6 +5,9 @@
 //-----------------------------------------------------------------------------------------------
 namespace Inflexion2.Domain
 {
+    /// <summary>
+    /// adapter interface for EF unit of work
+    /// </summary>
     public interface IEntityFrameworkUnitOfWork : IUnitOfWork
     {
 

@@ -4,12 +4,82 @@
         <name>Inflexion2.EF</name>
     </assembly>
     <members>
+        <member name="T:Inflexion2.Domain.AuditableEntityConfiguration`3">
+            <summary>
+            Generic Base class for configuration classes of auditable entities in EntityFramework.
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TIdentifier"></typeparam>
+            <typeparam name="TUserKey"></typeparam>
+        </member>
+        <member name="M:Inflexion2.Domain.AuditableEntityConfiguration`3.#ctor">
+            <summary>
+            constructor
+            </summary>
+        </member>
         <member name="T:Inflexion2.Domain.EntityConfiguration`2">
             <summary>
             Generic Base class for configuration classes of entities in EntityFramework.
             </summary>
             <typeparam name="TEntity"></typeparam>
             <typeparam name="TIdentifier"></typeparam>
+        </member>
+        <member name="M:Inflexion2.Domain.EntityConfiguration`2.#ctor">
+            <summary>
+            base configuration entities
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Domain.EFRepository`2">
+            <summary>
+            see the remarks class
+            </summary>
+            <remarks>
+            it just attaches the the entity to the dataContext otherwise you will have to search for the entity using the primary key and then edit the value and save it..
+            If you have an entity that you know already exists in the database but to which changes may have been made then you can tell the context to attach the entity and set its state to Modified.
+            </remarks>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TIdentifier"></typeparam>
+        </member>
+        <member name="M:Inflexion2.Domain.EFRepository`2.#ctor(System.Data.Entity.DbContext)">
+            <summary>
+            see the remarks
+            </summary>
+            <param name="dbContext"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.EFRepository`2.InternalAdd(`0)">
+            <summary>
+            generic add operation adapter 
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.EFRepository`2.InternalAttach(`0)">
+            <summary>
+            generic attach operation adapter for EF
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.EFRepository`2.InternalModify(`0)">
+            <summary>
+            gerneric 
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.EFRepository`2.InternalRemove(`0)">
+            <summary>
+            see the remarks
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.EFRepository`2.Query">
+            <summary>
+            see the remarks
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Domain.DomainUnitOfWork">
+            <summary>
+            unit of work for domain aggregate roots
+            </summary>
         </member>
         <member name="M:Inflexion2.Domain.DomainUnitOfWork.#ctor(System.String)">
             <summary>
@@ -49,12 +119,97 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:Inflexion2.Domain.EntityFrameworkUnitOfWork">
+            <summary>
+            Entity Framework Unit Of Work adapter class
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.EntityFrameworkUnitOfWork.#ctor(System.Data.Entity.DbContext)">
+            <summary>
+            parametrized constructor of a Entity Framework Unit Of Work
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.EntityFrameworkUnitOfWork.Commit">
+            <summary>
+            commit changes adaptor for EF
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.EntityFrameworkUnitOfWork.Dispose">
+            <summary>
+            Implement IDisposable.
+            Do not make this method virtual.
+            A derived class should not be able to override this method.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.EntityFrameworkUnitOfWork.RollbackChanges">
+            <summary>
+            in EF don't call the save changes in a transaction is equivalent to rool back
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.EntityFrameworkUnitOfWork.Dispose(System.Boolean)">
+            <summary>
+            Dispose(bool disposing) executes in two distinct scenarios.
+            If disposing equals true, the method has been called directly
+            or indirectly by a user's code. Managed and unmanaged resources
+            can be disposed.
+            If disposing equals false, the method has been called by the
+            runtime from inside the finalizer and you should not reference
+            other objects. Only unmanaged resources can be disposed.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="T:Inflexion2.Domain.RootAggregateFrameworkUnitOfWorkFactory`1">
+            <summary>
+            Main Database factory operations for EF
+            </summary>
+            <typeparam name="TContext"></typeparam>
+        </member>
+        <member name="M:Inflexion2.Domain.RootAggregateFrameworkUnitOfWorkFactory`1.#ctor(System.String)">
+            <summary>
+            initialize the connection string
+            </summary>
+            <param name="connectionString"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.RootAggregateFrameworkUnitOfWorkFactory`1.Create">
+            <summary>
+            create the unity of work
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.RootAggregateFrameworkUnitOfWorkFactory`1.CreateDatabase">
+            <summary>
+            Create de database is the database don't exist
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.RootAggregateFrameworkUnitOfWorkFactory`1.DatabaseExists">
+            <summary>
+            ask if the database exist
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.RootAggregateFrameworkUnitOfWorkFactory`1.DeleteDatabase">
+            <summary>
+            delete the databade
+            </summary>
+        </member>
         <member name="M:Inflexion2.Domain.RootAggregateFrameworkUnitOfWorkFactory`1.ValidateDatabaseSchema">
             <summary>
             Este metodo valida el esquema de la base de datos.
             Esta validación solo se puede realizar si el modelo de la base de datos se ha llevado a cabo 
             con entity framework code first. Si la base de datos se ha obtenido de otra manera entonces la 
             invocación generara una excepción.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.RootAggregateFrameworkUnitOfWorkFactory`1.CreateContext">
+            <summary>
+            creates the context for the current conection string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Domain.IEntityFrameworkUnitOfWork">
+            <summary>
+            adapter interface for EF unit of work
             </summary>
         </member>
     </members>

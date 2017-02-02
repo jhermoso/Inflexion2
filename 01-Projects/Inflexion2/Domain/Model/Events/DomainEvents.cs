@@ -62,7 +62,7 @@ namespace Inflexion2.Domain
         /// Raises the specified event.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="@event">The args.</param>
+        /// <param name="event">The args.</param>
         public static void Raise<T>(T @event)
         where T : class
         {

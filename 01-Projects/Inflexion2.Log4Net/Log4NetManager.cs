@@ -13,15 +13,25 @@ namespace Inflexion2.Logging
     using log4net;
     using log4net.Config;
 
+    /// <summary>
+    /// basic Log 4 net operations
+    /// </summary>
     public class Log4NetManager
     {
         private static bool initialized;
 
+        /// <summary>
+        /// initialize the log4net instance
+        /// </summary>
         public static void Initialize()
         {
             Log4NetManager.Initialize(null);
         }
 
+        /// <summary>
+        /// initialize the log4net instance with a config file
+        /// </summary>
+        /// <param name="configFile"></param>
         public static void Initialize(FileInfo configFile)
         {
             if (!Log4NetManager.initialized)
@@ -47,11 +57,22 @@ namespace Inflexion2.Logging
             }
         }
 
+        /// <summary>
+        /// request of log instances by type
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public ILogger Create(Type type)
         {
             return new Log4NetLogger(type);
         }
 
+
+        /// <summary>
+        /// request of log instances
+        /// </summary>
+        /// <param name="typeName"></param>
+        /// <returns></returns>
         public ILogger Create(string typeName)
         {
             return new Log4NetLogger(typeName);

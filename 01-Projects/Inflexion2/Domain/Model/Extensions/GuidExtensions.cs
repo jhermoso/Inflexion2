@@ -15,7 +15,7 @@ namespace Inflexion2
         /// <summary>
         /// Determines whether [is empty or null] [the specified GUID].
         /// </summary>
-        /// <param name="guid">The GUID.</param>
+        /// <param name="value">The GUID.</param>
         /// <returns>
         /// <c>true</c> if [is empty or null] [the specified GUID]; otherwise, <c>false</c>.
         /// </returns>
@@ -27,7 +27,7 @@ namespace Inflexion2
         /// <summary>
         /// Determines whether [is empty or null] [the specified GUID].
         /// </summary>
-        /// <param name="guid">The GUID.</param>
+        /// <param name="value">The GUID.</param>
         /// <returns>
         /// <c>true</c> if [is empty or null] [the specified GUID]; otherwise, <c>false</c>.
         /// </returns>
@@ -39,7 +39,7 @@ namespace Inflexion2
         /// <summary>
         /// Determines whether the specified GUID is valid.
         /// </summary>
-        /// <param name="guid">The GUID.</param>
+        /// <param name="value">The GUID.</param>
         /// <returns>
         /// <c>true</c> if the specified GUID is valid; otherwise, <c>false</c>.
         /// </returns>
@@ -100,7 +100,7 @@ namespace Inflexion2
         /// <summary>
         /// Creates a new Guid object that conforms to the COMBGUID rules.
         /// </summary>
-        /// <param name="guid">The GUID.</param>
+        /// <param name="value">The GUID.</param>
         /// <returns></returns>
         public static Guid NewCombGuid(this Guid value)
         {
@@ -110,7 +110,7 @@ namespace Inflexion2
         /// <summary>
         /// Shows the date.
         /// </summary>
-        /// <param name="guid">The GUID.</param>
+        /// <param name="value">The GUID.</param>
         /// <returns></returns>
         public static DateTime ShowDate(this Guid value)
         {
@@ -155,7 +155,7 @@ namespace Inflexion2
         /// <summary>
         /// Is the Guid empty or null.
         /// </summary>
-        /// <param name="guid">The GUID.</param>
+        /// <param name="value">The GUID.</param>
         /// <returns></returns>
         private static bool __IsEmptyOrNull(this Guid? value)
         {

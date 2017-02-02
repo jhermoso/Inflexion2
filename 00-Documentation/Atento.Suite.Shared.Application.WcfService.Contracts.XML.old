@@ -62,20 +62,23 @@
             <summary>
             Método encargado de obtener todas las entidades Categoria.
             </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
             <returns>
             Devuelve listado de Dto´s de la entidad Categoria.
             </returns>
         </member>
         <member name="M:Atento.Suite.Shared.Application.WcfService.Contracts.ICategoriaService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad Categoria de acuerdo a su identificador.
+            </summary>
+            <param name="categoriaId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
             <returns>
-            Devuelve objeto dto <see cref="T:Atento.Suite.Shared.Application.Dtos.CategoriaDto"/> con la información
-            requerida.
+            Devuelve objeto dto <see cref="T:Atento.Suite.Shared.Application.Dtos.CategoriaDto"/> con la información requerida.
             </returns>
         </member>
-        <member name="M:Atento.Suite.Shared.Application.WcfService.Contracts.ICategoriaService.GetPaged(Inflexion2.Application.DataTransfer.Core.SpecificationDto)">
+        <member name="M:Atento.Suite.Shared.Application.WcfService.Contracts.ICategoriaService.GetPaged(Inflexion2.Application.SpecificationDto)">
             <summary>
             Recupera una lista paginada de entidades Categoria, según la especificación indicada.
             </summary>
@@ -94,24 +97,6 @@
             <remarks>
             Sin comentarios adicionales.
             </remarks>
-        </member>
-        <member name="M:Atento.Suite.Shared.Application.WcfService.Contracts.IPersonaService.Create(Atento.Suite.Shared.Application.Dtos.PersonaDto)">
-            <summary>
-            Función encargada de la creación de una entidad de tipo Persona.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <param name="personaDto">
-            Parámetro de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.PersonaDto"/> con los datos necesarios
-            para la creación de la entidad Persona.
-            </param>
-            <return>
-            Devuelve el identificador único de la entidad creada.
-            </return>
         </member>
         <member name="M:Atento.Suite.Shared.Application.WcfService.Contracts.IPersonaService.Update(Atento.Suite.Shared.Application.Dtos.PersonaDto)">
             <summary>
@@ -157,7 +142,7 @@
             requerida.
             </returns>
         </member>
-        <member name="M:Atento.Suite.Shared.Application.WcfService.Contracts.IPersonaService.GetPaged(Inflexion2.Application.DataTransfer.Core.SpecificationDto)">
+        <member name="M:Atento.Suite.Shared.Application.WcfService.Contracts.IPersonaService.GetPaged(Inflexion2.Application.SpecificationDto)">
             <summary>
             Recupera una lista paginada de entidades Persona, según la especificación indicada.
             </summary>

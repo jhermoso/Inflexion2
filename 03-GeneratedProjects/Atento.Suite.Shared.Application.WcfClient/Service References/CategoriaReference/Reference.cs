@@ -56,10 +56,10 @@ namespace Atento.Suite.Shared.Application.WcfClient.CategoriaReference {
         Atento.Suite.Shared.Application.Dtos.CategoriaDto EndGetById(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoriaService/GetPaged", ReplyAction="http://tempuri.org/ICategoriaService/GetPagedResponse")]
-        Inflexion2.Domain.PagedElements<Atento.Suite.Shared.Application.Dtos.CategoriaDto> GetPaged(Inflexion2.Application.DataTransfer.Core.SpecificationDto specificationDto);
+        Inflexion2.Domain.PagedElements<Atento.Suite.Shared.Application.Dtos.CategoriaDto> GetPaged(Inflexion2.Application.SpecificationDto specificationDto);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ICategoriaService/GetPaged", ReplyAction="http://tempuri.org/ICategoriaService/GetPagedResponse")]
-        System.IAsyncResult BeginGetPaged(Inflexion2.Application.DataTransfer.Core.SpecificationDto specificationDto, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginGetPaged(Inflexion2.Application.SpecificationDto specificationDto, System.AsyncCallback callback, object asyncState);
         
         Inflexion2.Domain.PagedElements<Atento.Suite.Shared.Application.Dtos.CategoriaDto> EndGetPaged(System.IAsyncResult result);
     }
@@ -501,12 +501,12 @@ namespace Atento.Suite.Shared.Application.WcfClient.CategoriaReference {
                         categoriaId}, this.onEndGetByIdDelegate, this.onGetByIdCompletedDelegate, userState);
         }
         
-        public Inflexion2.Domain.PagedElements<Atento.Suite.Shared.Application.Dtos.CategoriaDto> GetPaged(Inflexion2.Application.DataTransfer.Core.SpecificationDto specificationDto) {
+        public Inflexion2.Domain.PagedElements<Atento.Suite.Shared.Application.Dtos.CategoriaDto> GetPaged(Inflexion2.Application.SpecificationDto specificationDto) {
             return base.Channel.GetPaged(specificationDto);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetPaged(Inflexion2.Application.DataTransfer.Core.SpecificationDto specificationDto, System.AsyncCallback callback, object asyncState) {
+        public System.IAsyncResult BeginGetPaged(Inflexion2.Application.SpecificationDto specificationDto, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginGetPaged(specificationDto, callback, asyncState);
         }
         
@@ -516,7 +516,7 @@ namespace Atento.Suite.Shared.Application.WcfClient.CategoriaReference {
         }
         
         private System.IAsyncResult OnBeginGetPaged(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            Inflexion2.Application.DataTransfer.Core.SpecificationDto specificationDto = ((Inflexion2.Application.DataTransfer.Core.SpecificationDto)(inValues[0]));
+            Inflexion2.Application.SpecificationDto specificationDto = ((Inflexion2.Application.SpecificationDto)(inValues[0]));
             return this.BeginGetPaged(specificationDto, callback, asyncState);
         }
         
@@ -533,11 +533,11 @@ namespace Atento.Suite.Shared.Application.WcfClient.CategoriaReference {
             }
         }
         
-        public void GetPagedAsync(Inflexion2.Application.DataTransfer.Core.SpecificationDto specificationDto) {
+        public void GetPagedAsync(Inflexion2.Application.SpecificationDto specificationDto) {
             this.GetPagedAsync(specificationDto, null);
         }
         
-        public void GetPagedAsync(Inflexion2.Application.DataTransfer.Core.SpecificationDto specificationDto, object userState) {
+        public void GetPagedAsync(Inflexion2.Application.SpecificationDto specificationDto, object userState) {
             if ((this.onBeginGetPagedDelegate == null)) {
                 this.onBeginGetPagedDelegate = new BeginOperationDelegate(this.OnBeginGetPaged);
             }

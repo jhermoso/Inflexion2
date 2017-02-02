@@ -229,13 +229,16 @@ namespace Inflexion2.UX.WPF.Controls
         #endregion
 
         #region Events
-        
+
         /// <summary>
-        /// 
+        /// TODO: Update summary.
         /// </summary>
         public static readonly RoutedEvent SelectedTimeChangedEvent = EventManager.RegisterRoutedEvent("SelectedTimeChanged",
             RoutingStrategy.Bubble, typeof(TimeSelectedChangedEventHandler), typeof(TimePicker));
 
+        /// <summary>
+        /// TODO: Update summary.
+        /// </summary>
         public event TimeSelectedChangedEventHandler SelectedTimeChanged
         {
             add { AddHandler(SelectedTimeChangedEvent, value); }

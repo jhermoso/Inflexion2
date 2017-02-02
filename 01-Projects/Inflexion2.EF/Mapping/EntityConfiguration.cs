@@ -18,6 +18,9 @@ namespace Inflexion2.Domain
         where TEntity : Entity<TEntity, TIdentifier>, IEntity<TIdentifier> // si no usamos interfaces podemos derivar tambien de "Entity<TEntity, TIdentifier>,"
         where TIdentifier : struct, System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
     {
+        /// <summary>
+        /// base configuration entities
+        /// </summary>
         public EntityConfiguration()
         {
             this.HasKey(x => x.Id);

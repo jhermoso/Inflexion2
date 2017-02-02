@@ -14,6 +14,9 @@ namespace Inflexion2.UX.WPF.Controls.Controls.ToggleButton
     /// </summary>
     public class LockableToggleButton : ToggleButton
     {
+        /// <summary>
+        /// TODO: Update summary.
+        /// </summary>
         protected override void OnToggle()
         {
             if (!LockToggle)
@@ -22,15 +25,21 @@ namespace Inflexion2.UX.WPF.Controls.Controls.ToggleButton
             }
         }
 
+        /// <summary>
+        /// TODO: Update summary.
+        /// </summary>
         public bool LockToggle
         {
             get { return (bool)GetValue(LockToggleProperty); }
             set { SetValue(LockToggleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for LockToggle.  This enables animation, styling, binding, etc...
+        /// <summary>
+        /// TODO: Update summary.
+        /// </summary>
         public static readonly DependencyProperty LockToggleProperty =
             DependencyProperty.Register("LockToggle", typeof(bool), typeof(LockableToggleButton), new UIPropertyMetadata(false));
-
+        
+        // Using a DependencyProperty as the backing store for LockToggle.  This enables animation, styling, binding, etc...
     }
 }

@@ -10,8 +10,17 @@ namespace Inflexion2.Domain
     using FluentNHibernate;
     using FluentNHibernate.Conventions;
 
+    /// <summary>
+    /// naming convention for foreign column name
+    /// </summary>
     public class ForeignKeyColumnNames : ForeignKeyConvention
     {
+        /// <summary>
+        /// get name of key column
+        /// </summary>
+        /// <param name="property"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
         protected override string GetKeyName(Member property, Type type)
         {
             // many-to-many, one-to-many, join

@@ -24,7 +24,7 @@ namespace Atento.Suite.Shared.Application
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-	using Inflexion2;
+	using Inflexion2.Application;
     using Atento.Suite.Shared.Application.Dtos;
     using Atento.Suite.Shared.Domain;
 	#endregion

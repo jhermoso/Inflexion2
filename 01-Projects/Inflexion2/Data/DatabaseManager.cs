@@ -22,12 +22,40 @@ namespace Inflexion2.Data
     /// </summary>
     public class DatabaseManager
     {
+        #region fields and constants
+        /// <summary>
+        /// net data provider for firebird Database
+        /// </summary>
         public const string Firebird = "FirebirdSql.Data.FirebirdClient";
+
+        /// <summary>
+        ///  net data provider for Sql Server Database
+        /// </summary>
         public const string MsSqlProvider = "System.Data.SqlClient";
+
+        /// <summary>
+        /// net data provider for MySql Database
+        /// </summary>
         public const string MySqlProvider = "MySql.Data.MySQLClient";
+
+        /// <summary>
+        /// net data provider for Oracle Database
+        /// </summary>
         public const string OracleDataProvider = "Oracle.DataAccess.Client";
+
+        /// <summary>
+        /// net data provider for Postgress Database
+        /// </summary>
         public const string PostgreSQLProvider = "Npgsql";
+
+        /// <summary>
+        /// net data provider for SqlCe Database
+        /// </summary>
         public const string SqlCe = "System.Data.SqlServerCe.3.5";
+
+        /// <summary>
+        /// net data provider for SQLite Database
+        /// </summary>
         public const string SQLiteProvider = "System.Data.SQLite";
 
         private static readonly ILogger log = LoggerManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
@@ -36,11 +64,12 @@ namespace Inflexion2.Data
         private readonly string connectionString;
         private readonly string providerName;
 
+        #endregion
         /// <summary>
         /// Initializes a new instance of the <see cref="DatabaseManager"/> class.
         /// </summary>
-        /// <param name="connectionProvider">The connection provider.</param>
-        /// <param name="providerName">Name of the provider.</param>
+        ///// <param name="connectionProvider">The connection provider.</param>
+        ///// <param name="providerName">Name of the provider.</param>
         public DatabaseManager(DbProvider provider, string connectionString)
         {
             string providerName = provider.GetEnumMemberValue();
@@ -275,7 +304,9 @@ namespace Inflexion2.Data
         /// Strips out the database instance name from a connectionString.
         /// </summary>
         /// <param name="connectionString">The connection string.</param>
+        /// <param name="providerName">name of the provider.</param>
         /// <param name="dbName">Name of the db.</param>
+        /// <param name="dbFile">Name of the file db.</param>
         /// <returns>The newly created connection string.</returns>
         private static string _StripDbName(string connectionString, string providerName, out string dbName, out string dbFile)
         {

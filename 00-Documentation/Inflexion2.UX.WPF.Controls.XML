@@ -4,6 +4,49 @@
         <name>Inflexion2.UX.WPF.Controls</name>
     </assembly>
     <members>
+        <member name="T:Inflexion2.UX.WPF.Controls.ComboBoxWithRefreshButton">
+            <summary>
+            Dependency propertie for ComboBox with refresh button
+            </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.Controls.ComboBoxWithRefreshButton.ShowRefreshButtonProperty">
+            <summary>
+            Boolean Atached Dependency Property to show or not a button with the option to refresh
+            </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.Controls.ComboBoxWithRefreshButton.RefreshCommandProperty">
+            <summary>
+            command Attached dependency property to asig an action to the refresh button
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Controls.ComboBoxWithRefreshButton.SetShowRefreshButton(System.Windows.DependencyObject,System.Boolean)">
+            <summary>
+            method to set the refres button
+            </summary>
+            <param name="obj"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Controls.ComboBoxWithRefreshButton.GetShowRefreshButton(System.Windows.DependencyObject)">
+            <summary>
+            Get the visibility of the button
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Controls.ComboBoxWithRefreshButton.SetRefreshCommand(System.Windows.DependencyObject,System.Windows.Input.ICommand)">
+            <summary>
+            set the action for the command
+            </summary>
+            <param name="obj"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Controls.ComboBoxWithRefreshButton.GetRefreshCommand(System.Windows.DependencyObject)">
+            <summary>
+            get the command
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
         <member name="T:Inflexion2.UX.WPF.Controls.DataGridRowDoubleClickHandler">
             <summary>
             asociate an action to the gesture of double click in the datagrid
@@ -975,6 +1018,11 @@
             Inicializa el diálogo.
             </summary>
         </member>
+        <member name="M:Inflexion2.UX.WPF.Controls.Dialogs.ViewModels.QueryDialogViewModel.NavigateToSelectedItem">
+            <summary>
+            Navigate to the selected item by ok command execution
+            </summary>
+        </member>
         <member name="T:Inflexion2.UX.WPF.Controls.Dialogs.Views.MessageBoxInteractionView">
             <summary>
             Clase base con la Lógica de interacción con MessageBoxInteractionView.xaml 
@@ -1081,6 +1129,11 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:Inflexion2.UX.WPF.Controls.MathUtil">
+            <summary>
+            static math tools
+            </summary>
+        </member>
         <member name="M:Inflexion2.UX.WPF.Controls.MathUtil.IncrementDecrementNumber(System.String,System.Int32,System.Int32,System.Boolean)">
             <summary>
             Validates the string passed by parsing it as int and checking if it is inside the bounds specified 
@@ -1172,7 +1225,12 @@
         </member>
         <member name="F:Inflexion2.UX.WPF.Controls.TimePicker.SelectedTimeChangedEvent">
             <summary>
-            
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="E:Inflexion2.UX.WPF.Controls.TimePicker.SelectedTimeChanged">
+            <summary>
+            TODO: Update summary.
             </summary>
         </member>
         <member name="M:Inflexion2.UX.WPF.Controls.TimePicker.#ctor">
@@ -1245,13 +1303,25 @@
             TODO: Update summary.
             </summary>
         </member>
+        <member name="M:Inflexion2.UX.WPF.Controls.Controls.ToggleButton.LockableToggleButton.OnToggle">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.Controls.Controls.ToggleButton.LockableToggleButton.LockToggle">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.Controls.Controls.ToggleButton.LockableToggleButton.LockToggleProperty">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
         <member name="T:Inflexion2.UX.WPF.Controls.MyTextBox">
             <summary>
             Password watermarking code from: http://prabu-guru.blogspot.com/2010/06/how-to-add-watermark-text-to-textbox.html
             </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
         </member>
     </members>
 </doc>

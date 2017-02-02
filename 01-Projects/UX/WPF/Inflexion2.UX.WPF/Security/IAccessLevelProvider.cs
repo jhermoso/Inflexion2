@@ -8,7 +8,7 @@
         /// <summary>
         /// Gets the auth level base on permission name (string).
         /// </summary>
-        /// <param name="securityName">Name of the security.</param>
+        /// <param name="permissionName">Name of the security.</param>
         /// <returns></returns>
         AccessLevel GetAccessLevel(string permissionName);
     }

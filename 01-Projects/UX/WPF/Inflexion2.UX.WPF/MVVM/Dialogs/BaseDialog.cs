@@ -60,7 +60,7 @@ namespace Inflexion2.UX.WPF.MVVM.Dialogs
         /// <summary>
         /// Raises the <see cref="E:ConfirmEventHandler"/> or the <see cref="E:CancelEventHandler"/> event.
         /// </summary>
-        /// <param name="e">The <see cref="Teki.Frontend.Common.Interactions.InteractionEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="BaseDialogEventArgs"/> instance containing the event data.</param>
         protected void OnClose(BaseDialogEventArgs e)
         {
             var handler = (e.Type == DialogResultType.OK) ? this.ConfirmEventHandler : this.CancelEventHandler;

@@ -1,28 +1,14 @@
 ﻿
 namespace Inflexion2.Application
 {
-    #region usings
-    using System;
-    using System.Data.Entity;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Configuration;
-
     using Microsoft.Practices.Unity;
-    using Inflexion2;
-    using Inflexion2.Domain;
-    using Inflexion2.Data;
-
-    #endregion
-
 
     /// <summary>
     /// Host e inicializacion del contenedor de IOC
     /// </summary>
     public static class ApplicationLayer
     {
-        //#region fields
+        #region construction fields
         /// <summary>
         /// ciclo de vida para la unidad de trabajo
         /// </summary>
@@ -32,7 +18,8 @@ namespace Inflexion2.Application
         /// ciclo de vida para el contexto
         /// </summary>
         public static Inflexion2.Application.PerLifeTimeManager ContextPerTestLifeTimeManager = new Inflexion2.Application.PerLifeTimeManager();
-        //#endregion
+        #endregion
+
         #region fields
         private static IUnityContainer iocContainer;
         #endregion
@@ -53,7 +40,7 @@ namespace Inflexion2.Application
         /// </summary>
         public static void ContainerInit()
         {
-            ServiceLocator.Initialize(
+            Inflexion2.ServiceLocator.Initialize(
                 (x, y) => IocContainer.RegisterType(x, y),
                 (x, y) => IocContainer.RegisterInstance(x, y),
                 (x) => { return IocContainer.Resolve(x); },

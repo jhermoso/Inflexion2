@@ -9,6 +9,9 @@ namespace Inflexion2.Domain
 
     using NHibernate.Dialect;
 
+    /// <summary>
+    /// mapping extension for datetime regarding sql dialects
+    /// </summary>
     public static class MappingExtensions
     {
         private static PropertyPart TimePartWithDatabaseDefault<TEntity>(PropertyPart datePart, Dialect dialect)

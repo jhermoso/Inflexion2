@@ -8,8 +8,15 @@ namespace Inflexion2.Domain
     using FluentNHibernate.Conventions;
     using FluentNHibernate.Conventions.Instances;
 
+    /// <summary>
+    /// naming convention for ForeignKey
+    /// </summary>
     public class ForeignKeyConstraintNames : IReferenceConvention, IHasManyConvention
     {
+        /// <summary>
+        /// naming convention for one to many instance
+        /// </summary>
+        /// <param name="instance"></param>
         public void Apply(IOneToManyCollectionInstance instance)
         {
             string entity = instance.EntityType.Name;
@@ -19,6 +26,10 @@ namespace Inflexion2.Domain
             instance.Key.ForeignKey(string.Format("FK_{0}{1}_{2}", entity, member, child));
         }
 
+        /// <summary>
+        /// naming convention for many to one instance
+        /// </summary>
+        /// <param name="instance"></param>
         public void Apply(IManyToOneInstance instance)
         {
             string entity = instance.EntityType.Name;

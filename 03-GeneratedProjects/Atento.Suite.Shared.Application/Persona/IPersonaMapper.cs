@@ -19,11 +19,10 @@
 namespace Atento.Suite.Shared.Application
 {
 
-    using System;
-    using System.Runtime.Serialization;
-    using Inflexion2.Application.Core;
     using Atento.Suite.Shared.Application.Dtos;
     using Atento.Suite.Shared.Domain;
+    using Inflexion2.Application;
+    using System;
 
     /// <summary>
     /// Clase pública encargada de mapear los datos de una entidad <see cref="PersonaMapper"/>.

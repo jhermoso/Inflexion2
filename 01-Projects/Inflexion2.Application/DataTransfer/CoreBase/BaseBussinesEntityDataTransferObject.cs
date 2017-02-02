@@ -3,9 +3,10 @@
 //     Copyright (c) 2012. Inflexion Software. All Rights Reserved.
 // </copyright>
 // -----------------------------------------------------------------------
-namespace Inflexion2.Application.DataTransfer.Core
+namespace Inflexion2.Application
 {
     using System.Runtime.Serialization;
+    using Inflexion2;
 
     /// <summary>
     /// Clase base para los objetos DTO que representan entidades persistidas.
@@ -63,14 +64,14 @@ namespace Inflexion2.Application.DataTransfer.Core
         /// Valor que es utilizado para obtenerel valor que indica si la entidad representada
         /// por el DTO ha sido persistida previamente o no.
         /// </value>
-        //public virtual bool IsTransient()
-        //{
-        //    if (this.Id==null && default(TIdentifier) == null)
-        //    { 
-        //        return true; 
-        //    }
-        //    return this.Id.Equals(default(TIdentifier)); 
-        //}
+        public virtual bool IsTransient()
+        {
+            if (this.Id == null && default(TIdentifier) == null)
+            {
+                return true;
+            }
+            return this.Id.Equals(default(TIdentifier));
+        }
 
         #endregion Properties
     }

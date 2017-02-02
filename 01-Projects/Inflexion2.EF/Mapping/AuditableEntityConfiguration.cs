@@ -8,17 +8,25 @@ namespace Inflexion2.Domain
     using System;
     using System.Data.Entity.ModelConfiguration;
 
-    public class AuditableEntityConfiguration<TEntity, TIdentifier> : AuditableEntityConfiguration<TEntity, TIdentifier, string>
-        where TEntity : AuditableEntity<TEntity, TIdentifier>, IEquatable<TEntity>
-        where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
-    {
-    }
+    //public class AuditableEntityConfiguration<TEntity, TIdentifier> : AuditableEntityConfiguration<TEntity, TIdentifier, string>
+    //    where TEntity : AuditableEntity<TEntity, TIdentifier>, IEquatable<TEntity>
+    //    where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
+    //{
+    //}
 
+    /// <summary>
+    /// Generic Base class for configuration classes of auditable entities in EntityFramework.
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TIdentifier"></typeparam>
+    /// <typeparam name="TUserKey"></typeparam>
     public class AuditableEntityConfiguration<TEntity, TIdentifier, TUserKey> : EntityTypeConfiguration<TEntity>
-        where TEntity : AuditableEntity<TEntity, TIdentifier>, IEquatable<TEntity>
-        where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
-
+    where TEntity : AuditableEntity<TEntity, TIdentifier>, IEquatable<TEntity>
+    where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
     {
+        /// <summary>
+        /// constructor
+        /// </summary>
         public AuditableEntityConfiguration()
         {
             this.Property(x => x.AuditInfo.CreatedTimestamp) // CreatedAt

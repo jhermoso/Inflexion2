@@ -21,7 +21,10 @@ namespace Inflexion2.Domain
     using NHibernate.Tool.hbm2ddl;
     using Environment = NHibernate.Cfg.Environment;
 
-
+    /// <summary>
+    /// nh unit of work factory
+    /// </summary>
+    /// <typeparam name="TIdentifier"></typeparam>
     public sealed class NHibernateUnitOfWorkFactory< TIdentifier> : IDatabaseManager
 
         where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
@@ -34,6 +37,13 @@ namespace Inflexion2.Domain
 
         private ISessionFactory _sessionFactory;
 
+        /// <summary>
+        /// factory constructor
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <param name="connectionString"></param>
+        /// <param name="cacheProvider"></param>
+        /// <param name="mappingAssemblies"></param>
         public NHibernateUnitOfWorkFactory(
             DbProvider provider,
             string connectionString,
@@ -190,6 +200,10 @@ namespace Inflexion2.Domain
         {
         }
 
+        /// <summary>
+        /// get the UoW
+        /// </summary>
+        /// <returns></returns>
         public ISessionFactory Create()
         {
             this._CreateSessionFactory();
@@ -197,6 +211,9 @@ namespace Inflexion2.Domain
             return this._sessionFactory;
         }
 
+        /// <summary>
+        /// create database
+        /// </summary>
         public void CreateDatabase()
         {
             var dbManager = new DatabaseManager(_DbProvider, _connectionString);
@@ -223,12 +240,19 @@ namespace Inflexion2.Domain
             }
         }
 
+        /// <summary>
+        /// check if the database exist 
+        /// </summary>
+        /// <returns></returns>
         public bool DatabaseExists()
         {
             var dbManager = new DatabaseManager(_DbProvider, _connectionString);
             return dbManager.DatabaseExists();
         }
 
+        /// <summary>
+        /// delete the database
+        /// </summary>
         public void DeleteDatabase()
         {
             var dbManager = new DatabaseManager(_DbProvider, _connectionString);
@@ -239,6 +263,9 @@ namespace Inflexion2.Domain
             }
         }
 
+        /// <summary>
+        /// database validation
+        /// </summary>
         public void ValidateDatabaseSchema()
         {
             if (!_InMemoryDatabase && _validationSupported)

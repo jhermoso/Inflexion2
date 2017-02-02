@@ -7,7 +7,7 @@
 namespace Inflexion2.UX.WPF.MVVM.CRUD
 {
     using Converters;
-    using Inflexion2.Application.DataTransfer.Base;
+    using Inflexion2.Application;
     using Inflexion2.UX.WPF.MVVM.ViewModels;
     using System;
     using System.Linq.Expressions;
@@ -111,12 +111,14 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         //    }
         //} // Activo
 
+        #pragma warning disable CS0693 // Type parameter has the same name as the type parameter from outer type
         /// <summary>
-        /// 
+        /// TODO: update summary
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="propertyExpresssion"></param>
         protected override void RaisePropertyChanged<T>(Expression<Func<T>> propertyExpresssion)
+        #pragma warning restore CS0693 // Type parameter has the same name as the type parameter from outer type
         {
             base.RaisePropertyChanged(propertyExpresssion);
 

@@ -2,10 +2,10 @@
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Atento.Suite.Shared.Application.Dtos" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Atento.Suite.Shared.Application.Dtos" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import namespace="http://schemas.datacontract.org/2004/07/System" />
   <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:import namespace="http://schemas.datacontract.org/2004/07/Inflexion2.Application.DataTransfer.Base" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/Inflexion2.Application" />
   <xs:complexType name="PersonaDto">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Inflexion2.Application.DataTransfer.Base" base="q1:BaseEntityDataTransferObjectOfint">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Inflexion2.Application" base="q1:BaseEntityDataTransferObjectOfint">
         <xs:sequence>
           <xs:element minOccurs="0" name="BooleanField" type="xs:boolean" />
           <xs:element minOccurs="0" name="ByteField" type="xs:unsignedByte" />

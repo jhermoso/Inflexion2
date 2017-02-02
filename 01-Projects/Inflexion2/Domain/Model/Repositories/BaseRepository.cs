@@ -18,12 +18,9 @@ namespace Inflexion2.Domain
     /// <summary>
     /// .en Default base class for repositories. This generic repository
     /// is a default implementation of <see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/>
-    /// and your specific repositories can inherit from this base class so automatically will get default implementation.
-    /// IMPORTANT: Using this Base Repository class IS NOT mandatory. It is just a useful base class:
-    /// You could also decide that you do not want to use this base Repository class, because sometimes you don't want a
-    /// specific Repository getting all these features and it might be wrong for a specific Repository.
-    /// For instance, you could want just read-only data methods for your Repository, etc.
-    /// in that case, just simply do not use this base class on your Repository.
+    /// and the specific repositories for every ORM (nhibernate, entity framework, other ) inherit from this base class 
+    /// calling to their own functions. For example from this class inherit EfRepository which overrite the  generic abstract members of this base class to use the EF memebers.
+    /// Why to do that, and don't use EF directly becouse in this case is possible to write the logic decopled from the technology EF, NH etc.
     /// </summary>
     /// <typeparam name="TEntity">Type of elements in repostory</typeparam>
     /// <typeparam name="TIdentifier">identifier</typeparam>
@@ -36,14 +33,17 @@ namespace Inflexion2.Domain
         /// <summary>
         /// Default constructor for GenericRepository
         /// </summary>
-        /// <param name="traceManager">Trace Manager dependency</param>
-        /// <param name="context">A context for this repository</param>
+        // <param name="traceManager">Trace Manager dependency</param>
+        // <param name="context">A context for this repository</param>
         protected BaseRepository()
         {
             this.logger = LoggerManager.GetLogger(GetType());
             this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Created repository for type: {0}", typeof(TEntity).Name));
         }
 
+        /// <summary>
+        /// loger instance for tracing porpouses
+        /// </summary>
         protected ILogger Logger
         {
             get
@@ -153,6 +153,17 @@ namespace Inflexion2.Domain
                    .ToList();
         }
 
+
+        /// <summary>
+        /// Get a filtered sorted paged collection of enties ascending or descending
+        /// </summary>
+        /// <typeparam name="S"></typeparam>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="filter"></param>
+        /// <param name="orderByExpression"></param>
+        /// <param name="ascending"></param>
+        /// <returns></returns>
         public PagedElements<TEntity> GetPagedElements<S>(
             int pageIndex,
             int pageSize,
@@ -195,6 +206,14 @@ namespace Inflexion2.Domain
                        total);
         }
 
+        /// <summary>
+        ///  Get a filtered sorted paged collection of enties
+        /// </summary>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="specification"></param>
+        /// <param name="orderBySpecification"></param>
+        /// <returns></returns>
         public PagedElements<TEntity> GetPagedElements(
             int pageIndex,
             int pageSize,
@@ -232,6 +251,10 @@ namespace Inflexion2.Domain
                        total);
         }
 
+        /// <summary>
+        /// modify entity
+        /// </summary>
+        /// <param name="entity"></param>
         public virtual void Modify(TEntity entity)
         {
             Guard.IsNotNull(entity, "entity");
@@ -255,14 +278,34 @@ namespace Inflexion2.Domain
             this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Deleted a {0} entity", typeof(TEntity).Name));
         }
 
+        /// <summary>
+        /// method to be over writed to add operations
+        /// </summary>
+        /// <param name="entity"></param>
         protected abstract void InternalAdd(TEntity entity);
 
+        /// <summary>
+        /// method to be over writed to attach operations
+        /// </summary>
+        /// <param name="entity"></param>
         protected abstract void InternalAttach(TEntity entity);
 
+        /// <summary>
+        /// method to be over writed to modify operations
+        /// </summary>
+        /// <param name="entity"></param>
         protected abstract void InternalModify(TEntity entity);
 
+        /// <summary>
+        /// method to be over writed to remove operations
+        /// </summary>
+        /// <param name="entity"></param>
         protected abstract void InternalRemove(TEntity entity);
 
+        /// <summary>
+        /// method to write to query operations
+        /// </summary>
+        /// <returns></returns>
         protected abstract IQueryable<TEntity> Query();
 
     }

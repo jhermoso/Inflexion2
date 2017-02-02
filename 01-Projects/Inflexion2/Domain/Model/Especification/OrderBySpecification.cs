@@ -4,12 +4,26 @@
     using System.Linq;
     using System.Linq.Expressions;
 
+    /// <summary>
+    /// directions of sorting, ascending or descending
+    /// </summary>
     public enum OrderDirection
     {
+        /// <summary>
+        /// Ascendign sorting
+        /// </summary>
         Ascending,
+
+        /// <summary>
+        /// descending sorting
+        /// </summary>
         Descending
     }
 
+    /// <summary>
+    /// sort implementation with an expresion tree
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
     public class OrderBySpecification<TEntity> : IOrderBySpecification<TEntity>
         where TEntity : class
     {
@@ -89,6 +103,9 @@
         {
         }
 
+        /// <summary>
+        /// get or sets the direction of sorting
+        /// </summary>
         public OrderDirection Direction
         {
             get
@@ -102,6 +119,9 @@
             }
         }
 
+        /// <summary>
+        /// second sorting option
+        /// </summary>
         public OrderDirection ThenByDirection
         {
             get
@@ -115,6 +135,11 @@
             }
         }
 
+        /// <summary>
+        /// apply sorting
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         public IOrderedQueryable<TEntity> ApplyOrderBy(IQueryable<TEntity> query)
         {
             IOrderedQueryable<TEntity> ret = this.descending

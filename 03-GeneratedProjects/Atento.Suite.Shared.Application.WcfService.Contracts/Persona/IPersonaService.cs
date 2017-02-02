@@ -28,7 +28,7 @@ namespace Atento.Suite.Shared.Application.WcfService.Contracts
     using System.ServiceModel;
 
     using Inflexion2.Domain;
-    using Inflexion2.Application.DataTransfer.Core;
+    using Inflexion2.Application;
     //using Inflexion.Framework.Application.Security.Data.Base;
     using Atento.Suite.Shared.Application.Dtos;
     #endregion
@@ -45,26 +45,6 @@ namespace Atento.Suite.Shared.Application.WcfService.Contracts
     {
 
         #region Methods
-        /// <summary>
-        /// Función encargada de la creación de una entidad de tipo Persona.
-        /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
-        /// <param name="personaDto">
-        /// Parámetro de tipo <see cref="PersonaDto"/> con los datos necesarios
-        /// para la creación de la entidad Persona.
-        /// </param>
-        /// <return>
-        /// Devuelve el identificador único de la entidad creada.
-        /// </return>
-        [OperationContract]
-        //[FaultContract(typeof(FaultObject))]
-        int Create(
-                    PersonaDto personaDto);
 
         /// <summary>
         /// Función encargada de la actualziación de una entidad de tipo Persona.

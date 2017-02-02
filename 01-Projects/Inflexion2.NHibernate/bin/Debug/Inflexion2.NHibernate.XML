@@ -4,6 +4,107 @@
         <name>Inflexion2.NHibernate</name>
     </assembly>
     <members>
+        <member name="T:Inflexion2.Domain.EnumConvention">
+            <summary>
+            convention implementation
+            https://github.com/jagregory/fluent-nhibernate/wiki/Conventions
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.EnumConvention.Accept(FluentNHibernate.Conventions.AcceptanceCriteria.IAcceptanceCriteria{FluentNHibernate.Conventions.Inspections.IPropertyInspector})">
+            <summary>
+            accept convention
+            </summary>
+            <param name="criteria"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.EnumConvention.Apply(FluentNHibernate.Conventions.Instances.IPropertyInstance)">
+            <summary>
+            apply convention
+            </summary>
+            <param name="instance"></param>
+        </member>
+        <member name="T:Inflexion2.Domain.ForeignKeyColumnNames">
+            <summary>
+            naming convention for foreign column name
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.ForeignKeyColumnNames.GetKeyName(FluentNHibernate.Member,System.Type)">
+            <summary>
+            get name of key column
+            </summary>
+            <param name="property"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Domain.ForeignKeyConstraintNames">
+            <summary>
+            naming convention for ForeignKey
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.ForeignKeyConstraintNames.Apply(FluentNHibernate.Conventions.Instances.IOneToManyCollectionInstance)">
+            <summary>
+            naming convention for one to many instance
+            </summary>
+            <param name="instance"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.ForeignKeyConstraintNames.Apply(FluentNHibernate.Conventions.Instances.IManyToOneInstance)">
+            <summary>
+            naming convention for many to one instance
+            </summary>
+            <param name="instance"></param>
+        </member>
+        <member name="T:Inflexion2.Domain.NotNullable">
+            <summary>
+            convention for not nullable atributte
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.NotNullable.Apply(FluentNHibernate.Conventions.Instances.IPropertyInstance)">
+            <summary>
+            apply convention for not nullable atributte
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="T:Inflexion2.Domain.StringLengthConvention">
+            <summary>
+            convention for string lenght attributte
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.StringLengthConvention.Apply(FluentNHibernate.Conventions.Instances.IPropertyInstance)">
+            <summary>
+            applies convention for string lenght attributte
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="T:Inflexion2.Domain.ManyToManyTableName">
+            <summary>
+            convention for many to many table name
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.ManyToManyTableName.GetBiDirectionalTableName(FluentNHibernate.Conventions.Inspections.IManyToManyCollectionInspector,FluentNHibernate.Conventions.Inspections.IManyToManyCollectionInspector)">
+            <summary>
+            get the name of the intermediate table for M:M realtionship
+            </summary>
+            <param name="collection"></param>
+            <param name="otherSide"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.ManyToManyTableName.GetUniDirectionalTableName(FluentNHibernate.Conventions.Inspections.IManyToManyCollectionInspector)">
+            <summary>
+            get the name of the father table
+            </summary>
+            <param name="collection"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Domain.TableNameConvention">
+            <summary>
+            apply the convention for M:M table
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.TableNameConvention.Apply(FluentNHibernate.Conventions.Instances.IClassInstance)">
+            <summary>
+            get the english plural for the table name in upperr charaters
+            </summary>
+            <param name="instance"></param>
+        </member>
         <member name="T:Inflexion2.Domain.EventDescriptorMap">
             <summary>
             EventDescriptor Map
@@ -15,17 +116,21 @@
             </summary>
         </member>
         <member name="T:Inflexion2.Domain.AuditFlushEntityEventListener`1">
-             <summary>
-            
-             </summary>
-             http://stackoverflow.com/questions/5087888/ipreupdateeventlistener-and-dynamic-update-true
+            <summary>
+            http://stackoverflow.com/questions/5087888/ipreupdateeventlistener-and-dynamic-update-true
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.AuditFlushEntityEventListener`1.DirtyCheck(NHibernate.Event.FlushEntityEvent)">
+            <summary>
+            modification check
+            </summary>
+            <param name="event"></param>
         </member>
         <member name="T:Inflexion2.Domain.FixedDefaultFlushEventListener">
             <summary>
             Fix for issue: https://hibernate.onjira.com/browse/HHH-2763
             http://stackoverflow.com/questions/3090733/an-nhibernate-audit-trail-that-doesnt-cause-collection-was-not-processed-by-fl
             </summary>
-            <param name="session">The session.</param>
         </member>
         <member name="M:Inflexion2.Domain.FixedDefaultFlushEventListener.PerformExecutions(NHibernate.Event.IEventSource)">
             <summary>
@@ -34,11 +139,77 @@
             </summary>
             <param name="session">The session.</param>
         </member>
+        <member name="T:Inflexion2.Domain.BaseClassMap`1">
+            <summary>
+            map base
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseClassMap`1.#ctor">
+            <summary>
+            map base initilization
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.BaseClassMap`1.Configuration">
+            <summary>
+            nh configuration
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.BaseClassMap`1.Dialect">
+            <summary>
+            nh dialect
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Domain.EntityMap`2">
+            <summary>
+            map entity class
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TKey"></typeparam>
+        </member>
+        <member name="M:Inflexion2.Domain.EntityMap`2.#ctor">
+            <summary>
+            base mapper constructor
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Domain.MappingExtensions">
+            <summary>
+            mapping extension for datetime regarding sql dialects
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Domain.SqlExceptionHandler">
+            <summary>
+            manage the sql exceptions
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.SqlExceptionHandler.Convert(NHibernate.Exceptions.AdoExceptionContextInfo)">
+            <summary>
+            convert an ado exception context to exception
+            </summary>
+            <param name="exInfo"></param>
+            <returns></returns>
+        </member>
         <member name="M:Inflexion2.Domain.SqlExceptionHandler._ParseConstraintName(System.String)">
             <summary>
             Gets the name of a constraint.
             </summary>
             <value>The name of the constraint.</value>
+        </member>
+        <member name="T:Inflexion2.Domain.INHibernateUnitOfWork">
+            <summary>
+            mark interface for implemtation of nhibernate unit of work
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Domain.NHibernateUnitOfWork">
+            <summary>
+            nhberante unit of work implementation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.NHibernateUnitOfWork.#ctor(NHibernate.ISession)">
+            <summary>
+            unit of work constructor
+            </summary>
+            <param name="session"></param>
         </member>
         <member name="M:Inflexion2.Domain.NHibernateUnitOfWork.Commit">
             <summary>
@@ -62,26 +233,585 @@
             </summary>
             <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:Inflexion2.Domain.TicksAsString" -->
+        <member name="T:Inflexion2.Domain.NHibernateUnitOfWorkFactory`1">
+            <summary>
+            nh unit of work factory
+            </summary>
+            <typeparam name="TIdentifier"></typeparam>
+        </member>
+        <member name="M:Inflexion2.Domain.NHibernateUnitOfWorkFactory`1.#ctor(Inflexion2.Data.DbProvider,System.String,System.String,System.Reflection.Assembly[])">
+            <summary>
+            factory constructor
+            </summary>
+            <param name="provider"></param>
+            <param name="connectionString"></param>
+            <param name="cacheProvider"></param>
+            <param name="mappingAssemblies"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.NHibernateUnitOfWorkFactory`1.Create">
+            <summary>
+            get the UoW
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.NHibernateUnitOfWorkFactory`1.CreateDatabase">
+            <summary>
+            create database
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.NHibernateUnitOfWorkFactory`1.DatabaseExists">
+            <summary>
+            check if the database exist 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.NHibernateUnitOfWorkFactory`1.DeleteDatabase">
+            <summary>
+            delete the database
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.NHibernateUnitOfWorkFactory`1.ValidateDatabaseSchema">
+            <summary>
+            database validation
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Domain.NHRepository`2">
+            <summary>
+            nh repository implementation
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TIdentifier"></typeparam>
+        </member>
+        <member name="M:Inflexion2.Domain.NHRepository`2.#ctor(NHibernate.ISession)">
+            <summary>
+            repository constructor and intialization
+            </summary>
+            <param name="session"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.NHRepository`2.InternalAdd(`0)">
+            <summary>
+            add operation
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.NHRepository`2.InternalAttach(`0)">
+            <summary>
+            attach operation
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.NHRepository`2.InternalModify(`0)">
+            <summary>
+            override modify
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.NHRepository`2.InternalRemove(`0)">
+            <summary>
+            delete operation
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.NHRepository`2.Query">
+            <summary>
+            gets UoW
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Domain.IPAddressType">
+            <summary>
+            mapping for IP address
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.IPAddressType.IsMutable">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.IPAddressType.ReturnedType">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.IPAddressType.SqlTypes">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.IPAddressType.Assemble(System.Object,System.Object)">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.IPAddressType.DeepCopy(System.Object)">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.IPAddressType.Disassemble(System.Object)">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.IPAddressType.GetHashCode(System.Object)">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.IPAddressType.NHibernate#UserTypes#IUserType#Equals(System.Object,System.Object)">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.IPAddressType.NullSafeGet(System.Data.IDataReader,System.String[],System.Object)">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.IPAddressType.NullSafeSet(System.Data.IDbCommand,System.Object,System.Int32)">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.IPAddressType.Replace(System.Object,System.Object,System.Object)">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Domain.JsonType">
+            <summary>
+            map json
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.JsonType.IsMutable">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.JsonType.ReturnedType">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.JsonType.SqlTypes">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.JsonType.Assemble(System.Object,System.Object)">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.JsonType.DeepCopy(System.Object)">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.JsonType.Disassemble(System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.JsonType.Equals(System.Object,System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.JsonType.GetHashCode(System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.JsonType.NullSafeGet(System.Data.IDataReader,System.String[],System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.JsonType.NullSafeSet(System.Data.IDbCommand,System.Object,System.Int32)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.JsonType.Replace(System.Object,System.Object,System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.JsonType.Deserialize(System.String,System.String)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.JsonType.Deserialize(System.String,System.Type)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.JsonType.GetType(System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.JsonType.Serialize(System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Domain.TypeNameHelper">
+            <summary>
+            helper to get type json 
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.TypeNameHelper.GetSimpleTypeName(System.Object)">
+            <summary>
+            get the type's name
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.TypeNameHelper.GetType(System.String)">
+            <summary>
+            gets the type
+            </summary>
+            <param name="simpleTypeName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Domain.StringToGuid">
+            <summary>
+            maps guids from string
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.StringToGuid.IsMutable">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.StringToGuid.ReturnedType">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.StringToGuid.SqlTypes">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.StringToGuid.Assemble(System.Object,System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.StringToGuid.DeepCopy(System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.StringToGuid.Disassemble(System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.StringToGuid.GetHashCode(System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.StringToGuid.NHibernate#UserTypes#IUserType#Equals(System.Object,System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.StringToGuid.NullSafeGet(System.Data.IDataReader,System.String[],System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.StringToGuid.NullSafeSet(System.Data.IDbCommand,System.Object,System.Int32)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.StringToGuid.Replace(System.Object,System.Object,System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Domain.StringToInt">
+            <summary>
+            maps int from string
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.StringToInt.IsMutable">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.StringToInt.ReturnedType">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.StringToInt.SqlTypes">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.StringToInt.Assemble(System.Object,System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.StringToInt.DeepCopy(System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.StringToInt.Disassemble(System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.StringToInt.GetHashCode(System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.StringToInt.NHibernate#UserTypes#IUserType#Equals(System.Object,System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.StringToInt.NullSafeGet(System.Data.IDataReader,System.String[],System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.StringToInt.NullSafeSet(System.Data.IDbCommand,System.Object,System.Int32)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.StringToInt.Replace(System.Object,System.Object,System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Domain.TicksAsString">
+            <summary >
+            Implements a IUserVersionType based on TicksType, but returned as String instead of DateTime.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.TicksAsString.IsMutable">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.TicksAsString.ReturnedType">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.TicksAsString.SqlTypes">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.TicksAsString.Assemble(System.Object,System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.TicksAsString.Compare(System.Object,System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.TicksAsString.DeepCopy(System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.TicksAsString.Disassemble(System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.TicksAsString.GetHashCode(System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.TicksAsString.NHibernate#UserTypes#IUserType#Equals(System.Object,System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.TicksAsString.Next(System.Object,NHibernate.Engine.ISessionImplementor)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.TicksAsString.NullSafeGet(System.Data.IDataReader,System.String[],System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.TicksAsString.NullSafeSet(System.Data.IDbCommand,System.Object,System.Int32)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.TicksAsString.Replace(System.Object,System.Object,System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.TicksAsString.Seed(NHibernate.Engine.ISessionImplementor)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Domain.SqlXmlType">
+             <summary>
+            helper class to map xml
+             </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.SqlXmlType.#ctor">
+            <summary>
+            constructor
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Domain.XmlType">
+            <summary>
+             maps xml
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.XmlType.IsMutable">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.XmlType.ReturnedType">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.XmlType.SqlTypes">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.XmlType.Assemble(System.Object,System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.XmlType.DeepCopy(System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.XmlType.Disassemble(System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.XmlType.Equals(System.Object,System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.XmlType.GetHashCode(System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.XmlType.NullSafeGet(System.Data.IDataReader,System.String[],System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.XmlType.NullSafeSet(System.Data.IDbCommand,System.Object,System.Int32)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.XmlType.Replace(System.Object,System.Object,System.Object)">
+            <summary>
+            NH IUserType implemetation
+            </summary>
+        </member>
         <member name="T:uNhAddIns.UserTypes.GenericWellKnownInstanceType`2">
             <summary>
-            http://code.google.com/p/unhaddins/
-            Esta clase permite persistir una clase generica con otro tipo.
+            https://bitbucket.org/fabiomaulo/unhaddins
+            http://stackoverflow.com/questions/6366956/mapping-an-iusertype-to-a-component-property-in-fluent-nhibernate/6416718
+            base class to map componed entities
             </summary>
             <typeparam name="T"></typeparam>
             <typeparam name="TId">The type of the id.</typeparam>
         </member>
         <member name="M:uNhAddIns.UserTypes.GenericWellKnownInstanceType`2.#ctor(System.Collections.Generic.IEnumerable{`0},System.Func{`0,`1,System.Boolean},System.Func{`0,`1})">
             <summary>
-            Base constructor
+            IUserType implemetation
             </summary>
             <param name="repository">The collection that represent a in-memory repository.</param>
             <param name="findPredicate">The predicate an instance by the persisted value.</param>
             <param name="idGetter">The getter of the persisted value.</param>
         </member>
+        <member name="P:uNhAddIns.UserTypes.GenericWellKnownInstanceType`2.IsMutable">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="P:uNhAddIns.UserTypes.GenericWellKnownInstanceType`2.ReturnedType">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
         <member name="P:uNhAddIns.UserTypes.GenericWellKnownInstanceType`2.SqlTypes">
             <summary>
             The SQL types for the columns mapped by this type.
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.GenericWellKnownInstanceType`2.Assemble(System.Object,System.Object)">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.GenericWellKnownInstanceType`2.DeepCopy(System.Object)">
+            <summary>
+            todo: update summary
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.GenericWellKnownInstanceType`2.Disassemble(System.Object)">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.GenericWellKnownInstanceType`2.Equals(System.Object,System.Object)">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.GenericWellKnownInstanceType`2.GetHashCode(System.Object)">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.GenericWellKnownInstanceType`2.NullSafeGet(System.Data.IDataReader,System.String[],System.Object)">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.GenericWellKnownInstanceType`2.NullSafeSet(System.Data.IDbCommand,System.Object,System.Int32)">
+            <summary>
+            IUserType implemetation
+            </summary>
+        </member>
+        <member name="M:uNhAddIns.UserTypes.GenericWellKnownInstanceType`2.Replace(System.Object,System.Object,System.Object)">
+            <summary>
+            IUserType implemetation
             </summary>
         </member>
     </members>

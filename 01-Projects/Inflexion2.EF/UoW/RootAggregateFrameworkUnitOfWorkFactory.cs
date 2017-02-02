@@ -10,21 +10,36 @@ namespace Inflexion2.Domain
     using System.Data.Entity;
     using Data;
 
+    /// <summary>
+    /// Main Database factory operations for EF
+    /// </summary>
+    /// <typeparam name="TContext"></typeparam>
     public class RootAggregateFrameworkUnitOfWorkFactory<TContext> : IDatabaseManager
         where TContext : RootAggregateContext
     {
         private string connectionString;
 
+        /// <summary>
+        /// initialize the connection string
+        /// </summary>
+        /// <param name="connectionString"></param>
         public RootAggregateFrameworkUnitOfWorkFactory(string connectionString)
         {
             this.connectionString = connectionString;
         }
 
+        /// <summary>
+        /// create the unity of work
+        /// </summary>
+        /// <returns></returns>
         public IUnitOfWork Create()
         {
             return new EntityFrameworkUnitOfWork(this.CreateContext());
         }
 
+        /// <summary>
+        /// Create de database is the database don't exist
+        /// </summary>
         public void CreateDatabase()
         {
             using (DbContext context = this.CreateContext())
@@ -33,6 +48,10 @@ namespace Inflexion2.Domain
             }
         }
 
+        /// <summary>
+        /// ask if the database exist
+        /// </summary>
+        /// <returns></returns>
         public bool DatabaseExists()
         {
             using (DbContext context = this.CreateContext())
@@ -41,6 +60,9 @@ namespace Inflexion2.Domain
             }
         }
 
+        /// <summary>
+        /// delete the databade
+        /// </summary>
         public void DeleteDatabase()
         {
             using (DbContext context = this.CreateContext())
@@ -64,6 +86,10 @@ namespace Inflexion2.Domain
             }
         }
 
+        /// <summary>
+        /// creates the context for the current conection string
+        /// </summary>
+        /// <returns></returns>
         private TContext CreateContext()
         {
             var result =  Activator.CreateInstance(typeof(TContext), new object[] { this.connectionString }) as TContext;

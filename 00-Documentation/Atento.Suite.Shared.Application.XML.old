@@ -108,7 +108,7 @@
             La entidad Categoria recuperada o valor nulo si no se encuentra.
             </returns>
         </member>
-        <member name="M:Atento.Suite.Shared.Application.CategoriaServices.GetPaged(Inflexion2.Application.DataTransfer.Core.SpecificationDto)">
+        <member name="M:Atento.Suite.Shared.Application.CategoriaServices.GetPaged(Inflexion2.Application.SpecificationDto)">
             <summary>
             Recupera una lista paginada de entidades Categoria, según la especificación indicada.
             </summary>
@@ -154,9 +154,6 @@
             Parámetro de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.CategoriaDto"/> con los datos necesarios
             para la creación de la entidad Categoria.
             </param>
-            <param name="userContextDto"> 
-            Parámetro de tipo <see cref="!:UserContextDto"/> que representa el contexto del usuario.
-            </param>
             <exception cref="T:System.ArgumentNullException">
             Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
             </exception>
@@ -174,9 +171,6 @@
             <param name="CategoriaId">
             Parámetro que indica el identificador único de la entidad.
             </param>
-            <param name="userContextDto">
-            Parámetro de tipo <see cref="!:UserContextDto"/> que representa el contexto del usuario.
-            </param>
             <exception cref="T:System.ArgumentNullException">
             Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
             </exception>
@@ -192,22 +186,16 @@
             <remarks>
             Devuelve la totalidad de las entidades.
             </remarks>
-            <param name="userContextDto">
-            Parámetro de tipo <see cref="!:UserContextDto"/> que representa el contexto del usuario.
-            </param>
             <returns>
             Devuelve listado de Dto´s de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.CategoriaDto"/>.
             </returns>
         </member>
-        <member name="M:Atento.Suite.Shared.Application.ICategoriaServices.GetPaged(Inflexion2.Application.DataTransfer.Core.SpecificationDto)">
+        <member name="M:Atento.Suite.Shared.Application.ICategoriaServices.GetPaged(Inflexion2.Application.SpecificationDto)">
             <summary>
             Recupera una lista paginada de entidades Categoria, según la especificación indicada.
             </summary>
             <param name="specificationDto">
             Especificación que se va a aplicar.
-            </param>
-            <param name="userContextDto">
-            Información de contexto del usuario.
             </param>
             <returns>
             La lista paginada de entidades Categoria, según la especificación indicada.
@@ -232,9 +220,6 @@
             <param name="categoriaDto">
             DTO que contiene la información de la entidad que se va a actualizar.
             </param>
-            <param name="userContextDto">
-            Información de contexto del usuario.
-            </param>
             <returns>
             Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
             </returns>
@@ -253,100 +238,6 @@
              .es Define el contrato para los servicios de administración de la entidad.
             de tipo <see cref="T:Atento.Suite.Shared.Application.IPersonaServices"/>.
             </summary>
-        </member>
-        <member name="M:Atento.Suite.Shared.Application.IPersonaServices.Create(Atento.Suite.Shared.Application.Dtos.PersonaDto)">
-            <summary>
-            .en Create an entity of type IPersona.
-            .es Función encargada de la creación de una entidad de tipo IPersona.
-            </summary>
-            <param name="personaDto">
-            Parámetro de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.PersonaDto"/> con los datos necesarios
-            para la creación de la entidad Persona.
-            </param>
-            <param name="userContextDto"> 
-            Parámetro de tipo <see cref="!:UserContextDto"/> que representa el contexto del usuario.
-            </param>
-            <exception cref="T:System.ArgumentNullException">
-            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
-            </exception>
-            <returns>
-            Devuelve el identificador único de la entidad creada.
-            </returns>
-        </member>
-        <member name="M:Atento.Suite.Shared.Application.IPersonaServices.Delete(System.Int32)">
-            <summary>
-            Función encargada del borrado de una entidad de tipo Persona.
-            </summary>
-            <remarks>
-            Se trata de un borrado lógico.
-            </remarks>
-            <param name="PersonaId">
-            Parámetro que indica el identificador único de la entidad.
-            </param>
-            <param name="userContextDto">
-            Parámetro de tipo <see cref="!:UserContextDto"/> que representa el contexto del usuario.
-            </param>
-            <exception cref="T:System.ArgumentNullException">
-            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
-            </exception>
-            <returns>
-            Devuelve <b>True</b> si la eliminación ha sido correcta y
-            <b>False</b> en caso contrario.
-            </returns>
-        </member>
-        <member name="M:Atento.Suite.Shared.Application.IPersonaServices.GetAll">
-            <summary>
-            Función encargada de obtener todas las entidades de tipo Persona.
-            </summary>
-            <remarks>
-            Devuelve la totalidad de las entidades.
-            </remarks>
-            <param name="userContextDto">
-            Parámetro de tipo <see cref="!:UserContextDto"/> que representa el contexto del usuario.
-            </param>
-            <returns>
-            Devuelve listado de Dto´s de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.PersonaDto"/>.
-            </returns>
-        </member>
-        <member name="M:Atento.Suite.Shared.Application.IPersonaServices.GetPaged(Inflexion2.Application.DataTransfer.Core.SpecificationDto)">
-            <summary>
-            Recupera una lista paginada de entidades Persona, según la especificación indicada.
-            </summary>
-            <param name="specificationDto">
-            Especificación que se va a aplicar.
-            </param>
-            <param name="userContextDto">
-            Información de contexto del usuario.
-            </param>
-            <returns>
-            La lista paginada de entidades Persona, según la especificación indicada.
-            </returns>
-        </member>
-        <member name="M:Atento.Suite.Shared.Application.IPersonaServices.GetById(System.Int32)">
-            <summary>
-            Función encargada de obtener una entidad Persona de acuerdo a
-            su identificador.
-            </summary>
-            <param name="personaId">
-            Parámetro que indica el identificador único de la entidad.
-            </param>
-            <returns>
-            Devuelve objeto Dto <see cref="T:Atento.Suite.Shared.Application.Dtos.PersonaDto"/> con la información requerida.
-            </returns>
-        </member>
-        <member name="M:Atento.Suite.Shared.Application.IPersonaServices.Update(Atento.Suite.Shared.Application.Dtos.PersonaDto)">
-            <summary>
-            Actualiza una determinada entidad Persona.
-            </summary>
-            <param name="personaDto">
-            DTO que contiene la información de la entidad que se va a actualizar.
-            </param>
-            <param name="userContextDto">
-            Información de contexto del usuario.
-            </param>
-            <returns>
-            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
-            </returns>
         </member>
         <member name="T:Atento.Suite.Shared.Application.PersonaMapper">
             <summary>
@@ -411,17 +302,6 @@
             Obtiene la referencia al mapeador de la entidad <see cref="T:IPersona"/>.
             </summary>
         </member>
-        <member name="M:Atento.Suite.Shared.Application.PersonaServices.Create(Atento.Suite.Shared.Application.Dtos.PersonaDto)">
-            <summary>
-            Crea una entidad Persona.
-            </summary>
-            <param name="personaDto">
-            DTO que contiene la información para crear la entidad.
-            </param>
-            <returns>
-            El identificador de la entidad creada.
-            </returns>
-        </member>
         <member name="M:Atento.Suite.Shared.Application.PersonaServices.Delete(System.Int32)">
             <summary>
             Elimina una determinada entidad Persona.
@@ -452,7 +332,7 @@
             La entidad Persona recuperada o valor nulo si no se encuentra.
             </returns>
         </member>
-        <member name="M:Atento.Suite.Shared.Application.PersonaServices.GetPaged(Inflexion2.Application.DataTransfer.Core.SpecificationDto)">
+        <member name="M:Atento.Suite.Shared.Application.PersonaServices.GetPaged(Inflexion2.Application.SpecificationDto)">
             <summary>
             Recupera una lista paginada de entidades Persona, según la especificación indicada.
             </summary>
@@ -473,6 +353,11 @@
             <returns>
             Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
             </returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.PersonaServices.Commit">
+            <summary>
+            wraper for comitt adapter to be independent from the ORM used.
+            </summary>
         </member>
     </members>
 </doc>

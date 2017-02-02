@@ -13,8 +13,14 @@ namespace Inflexion2.Domain
     using NHibernate.SqlTypes;
     using NHibernate.UserTypes;
 
+    /// <summary>
+    /// mapping for IP address
+    /// </summary>
     public class IPAddressType : IUserType
     {
+        /// <summary>
+        /// IUserType implemetation
+        /// </summary>
         public bool IsMutable
         {
             get
@@ -23,6 +29,9 @@ namespace Inflexion2.Domain
             }
         }
 
+        /// <summary>
+        /// IUserType implemetation
+        /// </summary>
         public Type ReturnedType
         {
             get
@@ -31,6 +40,9 @@ namespace Inflexion2.Domain
             }
         }
 
+        /// <summary>
+        /// IUserType implemetation
+        /// </summary>
         public SqlType[] SqlTypes
         {
             get
@@ -39,11 +51,17 @@ namespace Inflexion2.Domain
             }
         }
 
+        /// <summary>
+        /// IUserType implemetation
+        /// </summary>
         public object Assemble(object cached, object owner)
         {
             return cached;
         }
 
+        /// <summary>
+        /// IUserType implemetation
+        /// </summary>
         public object DeepCopy(object value)
         {
             if (value == null)
@@ -54,21 +72,33 @@ namespace Inflexion2.Domain
             return new IPAddress(((IPAddress)value).GetAddressBytes());
         }
 
+        /// <summary>
+        /// IUserType implemetation
+        /// </summary>
         public object Disassemble(object value)
         {
             return value;
         }
 
+        /// <summary>
+        /// IUserType implemetation
+        /// </summary>
         public int GetHashCode(object x)
         {
             return x.GetHashCode();
         }
 
+        /// <summary>
+        /// IUserType implemetation
+        /// </summary>
         bool IUserType.Equals(object x, object y)
         {
             return Equals(x, y);
         }
 
+        /// <summary>
+        /// IUserType implemetation
+        /// </summary>
         public object NullSafeGet(IDataReader rs, string[] names, object owner)
         {
             int index = rs.GetOrdinal(names[0]);
@@ -88,6 +118,9 @@ namespace Inflexion2.Domain
             }
         }
 
+        /// <summary>
+        /// IUserType implemetation
+        /// </summary>
         public void NullSafeSet(IDbCommand cmd, object value, int index)
         {
             if (value == null || value == DBNull.Value)
@@ -100,6 +133,9 @@ namespace Inflexion2.Domain
             NHibernateUtil.String.Set(cmd, obj.ToString(), index);
         }
 
+        /// <summary>
+        /// IUserType implemetation
+        /// </summary>
         public object Replace(object original, object target, object owner)
         {
             return original;

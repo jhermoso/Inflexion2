@@ -9,10 +9,17 @@ namespace Inflexion2.Domain
     using System.Transactions;
     using NHibernate;
 
+    /// <summary>
+    /// nhberante unit of work implementation
+    /// </summary>
     public class NHibernateUnitOfWork : INHibernateUnitOfWork
     {
         ISession session;
 
+        /// <summary>
+        /// unit of work constructor
+        /// </summary>
+        /// <param name="session"></param>
         public NHibernateUnitOfWork(ISession session)
         {
             this.session = session;

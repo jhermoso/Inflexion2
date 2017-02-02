@@ -11,8 +11,15 @@ namespace Inflexion2.Domain
     using FluentNHibernate.Conventions;
     using FluentNHibernate.Conventions.Instances;
 
+    /// <summary>
+    /// convention for not nullable atributte
+    /// </summary>
     public class NotNullable : IPropertyConvention
     {
+        /// <summary>
+        /// apply convention for not nullable atributte
+        /// </summary>
+        /// <param name="target"></param>
         public void Apply(IPropertyInstance target)
         {
             var attribute =

@@ -73,19 +73,13 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Base\EF\PerLifeTimeManager.cs" />
-    <Compile Include="Base\Settings.cs" />
+    <Compile Include="Core\Mappers\IDataEntityMapper.cs" />
+    <Compile Include="Core\Services\IGenericServices.cs" />
+    <Compile Include="DataTransfer\CoreBase\IEntityDataTransferObject.cs" />
     <Compile Include="IoC\ApplicationLayer.cs" />
     <Compile Include="Core\IConfiguration.cs" />
-    <Compile Include="Core\IDataEntityMapper.cs" />
-    <Compile Include="Core\IDataMapper.cs" />
-    <Compile Include="Core\IEntityMapper.cs" />
-    <Compile Include="Core\IGenericMapper.cs" />
-    <Compile Include="Core\IMapper.cs" />
-    <Compile Include="Core\IService.cs" />
     <Compile Include="DataTransfer\CoreBase\BaseBussinesEntityDataTransferObject.cs" />
     <Compile Include="DataTransfer\CoreBase\BaseEntityDataTransferObject.cs" />
-    <Compile Include="DataTransfer\CoreBase\IEntityDataTransferObject.cs" />
-    <Compile Include="DataTransfer\CoreBase\IDataTransferObject.cs" />
     <Compile Include="DataTransfer\CoreBase\IBussinessEntityDataTransferObject.cs" />
     <Compile Include="DataTransfer\CoreBase\SpecificationDto\CompositeFilter.cs" />
     <Compile Include="DataTransfer\CoreBase\SpecificationDto\CompositeFilterLogicalOperator.cs" />

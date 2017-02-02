@@ -37,19 +37,19 @@ namespace Atento.Suite.Shared.Domain
     /// .en Interfaz for an Entity implemented by Persona/>.
     /// .es Interfaz que representa  una entidad implementado enPersona/>.
     /// </remarks>
-    public interface IPersona : 	Inflexion2.Domain.IAggregateRoot<IPersona, Int32> 	
+    public interface IPersona : Inflexion2.Domain.IAggregateRoot<IPersona, Int32> 	
     {
 
         #region Properties
         /// <summary>
-        /// .en Property to get & set Nombre.
+        /// .en Property to get and set Nombre.
         /// .es Propiedad que permite obtener y establecer Nombre.
         /// </summary>
         /// <remarks>
         /// Test with auto property and public setter.
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set Nombre.
+        /// .en Value used to get and set Nombre.
         /// .es Valor que es utilizado para obtener y establecer Nombre.
         /// </value>
         string Nombre { get; set; }

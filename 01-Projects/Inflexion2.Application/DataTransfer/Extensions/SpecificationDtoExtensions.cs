@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 // Based on https://github.com/cmendible/Hexa.Core/blob/master/Hexa.Core/Domain/Specification/SpecificationModel.cs
-namespace Inflexion2.Application.DataTransfer.Core
+namespace Inflexion2.Application
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace Inflexion2.Application.DataTransfer.Core
     using System.Text;
 
     using Inflexion2.Domain.Specification;
-
+    /// <summary>
     /// TODO: Update summary.
     /// </summary>
     public static class SpecificationDtoExtensions
@@ -30,6 +30,9 @@ namespace Inflexion2.Application.DataTransfer.Core
             return specificationDto.ToSpecification<TEntity>(null);
         }
 
+        /// <summary>
+        /// TODO: Update summary.
+        /// </summary>
         public static ISpecification<TEntity> ToSpecification<TEntity>(this SpecificationDto specificationDto, Inflexion2.Domain.Specification.ISpecification<TEntity> specification)
         where TEntity : class
         {

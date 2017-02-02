@@ -15,11 +15,22 @@ namespace Inflexion2.Extensions
     using Inflexion2.Domain;
     using Inflexion2.Domain.Specification;
 
-
+    /// <summary>
+    /// 
+    /// </summary>
     public static class SpecificationsLinqExtensions
     {
         #region Methods
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="query"></param>
+        /// <param name="column"></param>
+        /// <param name="value"></param>
+        /// <param name="operation"></param>
+        /// <returns></returns>
         public static ISpecification<T> AndAlso<T>(this ISpecification<T> query, string column, object value,
                 string operation)
         where T : class
@@ -27,6 +38,14 @@ namespace Inflexion2.Extensions
             return query.AndAlso(CreateSpecification<T>(column, value, operation));
         }
 
+        /// <summary>
+        /// TODO: update comments
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="column"></param>
+        /// <param name="value"></param>
+        /// <param name="operation"></param>
+        /// <returns></returns>
         public static ISpecification<T> CreateSpecification<T>(string column, object value, string operation)
         where T : class
         {
@@ -130,6 +149,15 @@ namespace Inflexion2.Extensions
             return new DirectSpecification<T>(hLambda);
         }
 
+        /// <summary>
+        /// TODO: update comments
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="query"></param>
+        /// <param name="column"></param>
+        /// <param name="value"></param>
+        /// <param name="operation"></param>
+        /// <returns></returns>
         public static ISpecification<T> OrElse<T>(this ISpecification<T> query, string column, object value,
                 string operation)
         where T : class

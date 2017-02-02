@@ -9,8 +9,9 @@
     using NHibernate.UserTypes;
 
     /// <summary>
-    /// http://code.google.com/p/unhaddins/
-    /// Esta clase permite persistir una clase generica con otro tipo.
+    /// https://bitbucket.org/fabiomaulo/unhaddins
+    /// http://stackoverflow.com/questions/6366956/mapping-an-iusertype-to-a-component-property-in-fluent-nhibernate/6416718
+    /// base class to map componed entities
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <typeparam name="TId">The type of the id.</typeparam>
@@ -23,7 +24,7 @@
         private readonly IEnumerable<T> repository;
 
         /// <summary>
-        /// Base constructor
+        /// IUserType implemetation
         /// </summary>
         /// <param name="repository">The collection that represent a in-memory repository.</param>
         /// <param name="findPredicate">The predicate an instance by the persisted value.</param>
@@ -40,6 +41,9 @@
             this.idGetter = idGetter;
         }
 
+        /// <summary>
+        /// IUserType implemetation
+        /// </summary>
         public bool IsMutable
         {
             get
@@ -48,6 +52,9 @@
             }
         }
 
+        /// <summary>
+        /// IUserType implemetation
+        /// </summary>
         public Type ReturnedType
         {
             get
@@ -64,21 +71,33 @@
             get;
         }
 
+        /// <summary>
+        /// IUserType implemetation
+        /// </summary>
         public object Assemble(object cached, object owner)
         {
             return cached;
         }
 
+        /// <summary>
+        /// todo: update summary
+        /// </summary>
         public object DeepCopy(object value)
         {
             return value;
         }
 
+        /// <summary>
+        /// IUserType implemetation
+        /// </summary>
         public object Disassemble(object value)
         {
             return value;
         }
 
+        /// <summary>
+        /// IUserType implemetation
+        /// </summary>
         public new bool Equals(object x, object y)
         {
             if (ReferenceEquals(x, y))
@@ -94,11 +113,17 @@
             return x.Equals(y);
         }
 
+        /// <summary>
+        /// IUserType implemetation
+        /// </summary>
         public int GetHashCode(object x)
         {
             return (x == null) ? 0 : x.GetHashCode();
         }
 
+        /// <summary>
+        /// IUserType implemetation
+        /// </summary>
         public object NullSafeGet(IDataReader rs, string[] names, object owner)
         {
             int index0 = rs.GetOrdinal(names[0]);
@@ -111,6 +136,9 @@
             return this.repository.FirstOrDefault(x => this.findPredicate(x, value));
         }
 
+        /// <summary>
+        /// IUserType implemetation
+        /// </summary>
         public void NullSafeSet(IDbCommand cmd, object value, int index)
         {
             if (value == null)
@@ -123,6 +151,9 @@
             }
         }
 
+        /// <summary>
+        /// IUserType implemetation
+        /// </summary>
         public object Replace(object original, object target, object owner)
         {
             return original;

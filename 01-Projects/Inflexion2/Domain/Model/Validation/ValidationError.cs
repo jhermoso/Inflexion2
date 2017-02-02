@@ -59,6 +59,7 @@ namespace Inflexion2.Domain.Validation
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidationError"/> struct.
         /// </summary>
+        /// <param name="property"></param>
         /// <param name="ex">The exception which caused the validation error.</param>
         public ValidationError(string property, Exception ex)
         : this(ex.Message, property)

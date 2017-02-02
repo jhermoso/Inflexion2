@@ -2,6 +2,7 @@
 
 namespace Inflexion2.Domain
 {
+    using Domain;
     using System;
 
     /// <summary>
@@ -9,7 +10,7 @@ namespace Inflexion2.Domain
     ///     entity.  See Entity.GetTypeSpecificSignatureProperties() for when this is leveraged.
     /// </summary>
     /// <remarks>
-    ///     This is intended for use with <see cref="Entity{TIdentifier}" />.  It may NOT be used on a <see cref="ValueObject" />.
+    ///     This is intended for use with <see cref="IEntity{TIdentifier}" />.  It may NOT be used on a <see cref="ValueObject" />.
     /// </remarks>
     [Serializable]
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]

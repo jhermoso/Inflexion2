@@ -14,7 +14,7 @@ namespace Inflexion2.Domain
     /// Clase pública abstracta para representar las entidades del negocio.
     /// </summary>
     /// <remarks>
-    /// La clase abstracta <see cref="Entity{TIdentifier}"/> representa una clase base de tipo
+    /// La clase abstracta <see cref="IEntity{TIdentifier}"/> representa una clase base de tipo
     /// entidad de negocio.
     /// </remarks>
     /// <typeparam name="TEntity">
@@ -293,8 +293,8 @@ namespace Inflexion2.Domain
         {
             return this.Equals(other as IEntity<TIdentifier>);
         }
-        
-        /// 
+
+        /// <summary>
         /// Equalses the specified compare to.
         /// </summary>
         /// <param name="other">The compare to.</param>

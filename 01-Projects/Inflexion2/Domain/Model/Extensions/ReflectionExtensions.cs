@@ -38,16 +38,31 @@ namespace Inflexion2
             return false;
         }
 
+        /// <summary>
+        /// TODO: update comments
+        /// </summary>
+        /// <param name="pi"></param>
+        /// <returns></returns>
         public static bool IsNonStringEnumerable(this PropertyInfo pi)
         {
             return pi != null && pi.PropertyType.IsNonStringEnumerable();
         }
 
+        /// <summary>
+        /// TODO: update comments
+        /// </summary>
+        /// <param name="instance"></param>
+        /// <returns></returns>
         public static bool IsNonStringEnumerable(this object instance)
         {
             return instance != null && instance.GetType().IsNonStringEnumerable();
         }
 
+        /// <summary>
+        /// TODO: update comments
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public static bool IsNonStringEnumerable(this Type type)
         {
             if (type == null || type == typeof(string))

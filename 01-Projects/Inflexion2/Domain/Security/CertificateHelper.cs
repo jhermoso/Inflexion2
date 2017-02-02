@@ -6,6 +6,9 @@
 
     using Inflexion2.Resources;
 
+    /// <summary>
+    /// helper class to manage certificates
+    /// </summary>
     public static class CertificateHelper
     {
         /// <summary>

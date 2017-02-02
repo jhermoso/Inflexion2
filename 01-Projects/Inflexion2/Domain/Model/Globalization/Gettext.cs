@@ -97,6 +97,7 @@ namespace GNU.Gettext
         /// </summary>
         /// <param name="baseName">the resource name, also the assembly base
         /// name</param>
+        /// <param name="assembly"></param>
         public GettextResourceManager(string baseName, Assembly assembly)
         : base(baseName, assembly, typeof(GettextResourceSet))
         {
@@ -114,6 +115,7 @@ namespace GNU.Gettext
         /// <param name="n">the number, should be &gt;= 0</param>
         /// <returns>the translation, or <paramref name="msgid"/> or
         /// <paramref name="msgidPlural"/> if none is found</returns>
+        /// <param name="culture"/>
         [SuppressMessage("Microsoft.Naming",
                          "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "n"),
          SuppressMessage("Microsoft.Naming",
@@ -161,6 +163,7 @@ namespace GNU.Gettext
         /// string</param>
         /// <returns>the translation of <paramref name="msgid"/>, or
         /// <paramref name="msgid"/> if none is found</returns>
+        /// <param name="culture"></param>
         [SuppressMessage("Microsoft.Naming",
                          "CA1725:ParameterNamesShouldMatchBaseDeclaration", MessageId = "0#")]
         public override string GetString(string msgid, CultureInfo culture)
@@ -556,6 +559,7 @@ namespace GNU.Gettext
         /// </summary>
         /// <param name="msgid">the key string to be translated, an ASCII
         /// string</param>
+        /// <param name="ignoreCase"></param>
         /// <returns>the translation of <paramref name="msgid"/>, or <c>null</c> if
         /// none is found</returns>
         // The default implementation essentially does (String)Table[msgid].

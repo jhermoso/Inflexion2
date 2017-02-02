@@ -21,13 +21,10 @@ namespace Inflexion2.Domain
         #region Fields
 
         /// <summary>
-        /// Variable privada encargad de almacenar el mensaje de error.
+        /// Variable encargada de almacenar el mensaje de error.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
-        private string errorMessage;
-
+        private string errorMessage = "TODO: escribir mensaje de error y pasarlo a recursos";
+        
         #endregion Fields
 
         #region Constructors

@@ -16,12 +16,15 @@ namespace Inflexion2.Domain
     using NHibernate.Persister.Entity;
 
     /// <summary>
-    ///
-    /// </summary>
     /// http://stackoverflow.com/questions/5087888/ipreupdateeventlistener-and-dynamic-update-true
+    /// </summary>
     public class AuditFlushEntityEventListener<TIdentifier> : DefaultFlushEntityEventListener
         where TIdentifier : IEquatable<TIdentifier>, IComparable<TIdentifier>
     {
+        /// <summary>
+        /// modification check
+        /// </summary>
+        /// <param name="event"></param>
         protected override void DirtyCheck(FlushEntityEvent @event)
         {
             base.DirtyCheck(@event);

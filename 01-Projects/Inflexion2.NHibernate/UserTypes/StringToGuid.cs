@@ -7,8 +7,14 @@
     using NHibernate.SqlTypes;
     using NHibernate.UserTypes;
 
+    /// <summary>
+    /// maps guids from string
+    /// </summary>
     public class StringToGuid : IUserType
     {
+        /// <summary>
+        /// NH IUserType implemetation
+        /// </summary>
         public bool IsMutable
         {
             get
@@ -17,6 +23,9 @@
             }
         }
 
+        /// <summary>
+        /// NH IUserType implemetation
+        /// </summary>
         public Type ReturnedType
         {
             get
@@ -25,6 +34,9 @@
             }
         }
 
+        /// <summary>
+        /// NH IUserType implemetation
+        /// </summary>
         public SqlType[] SqlTypes
         {
             get
@@ -33,11 +45,17 @@
             }
         }
 
+        /// <summary>
+        /// NH IUserType implemetation
+        /// </summary>
         public object Assemble(object cached, object owner)
         {
             return cached;
         }
 
+        /// <summary>
+        /// NH IUserType implemetation
+        /// </summary>
         public object DeepCopy(object value)
         {
             if (value == null)
@@ -48,21 +66,33 @@
             return value.ToString();
         }
 
+        /// <summary>
+        /// NH IUserType implemetation
+        /// </summary>
         public object Disassemble(object value)
         {
             return value;
         }
 
+        /// <summary>
+        /// NH IUserType implemetation
+        /// </summary>
         public int GetHashCode(object x)
         {
             return x.GetHashCode();
         }
 
+        /// <summary>
+        /// NH IUserType implemetation
+        /// </summary>
         bool IUserType.Equals(object x, object y)
         {
             return Equals(x, y);
         }
 
+        /// <summary>
+        /// NH IUserType implemetation
+        /// </summary>
         public object NullSafeGet(IDataReader rs, string[] names, object owner)
         {
             int index = rs.GetOrdinal(names[0]);
@@ -81,6 +111,9 @@
             }
         }
 
+        /// <summary>
+        /// NH IUserType implemetation
+        /// </summary>
         public void NullSafeSet(IDbCommand cmd, object value, int index)
         {
             if (value == null || value == DBNull.Value)
@@ -93,6 +126,9 @@
             NHibernateUtil.String.Set(cmd, obj, index);
         }
 
+        /// <summary>
+        /// NH IUserType implemetation
+        /// </summary>
         public object Replace(object original, object target, object owner)
         {
             return original;

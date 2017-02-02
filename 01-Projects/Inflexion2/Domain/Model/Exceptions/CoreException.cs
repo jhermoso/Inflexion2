@@ -40,7 +40,7 @@ namespace Inflexion2
         /// <summary>
         /// Initializes a new instance of the <see cref="CoreException"/> class.
         /// </summary>
-        /// <param name="p_Message">The p_ message.</param>
+        /// <param name="message">The  message.</param>
         protected CoreException(string message)
         : base(message)
         {

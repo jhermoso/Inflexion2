@@ -3,10 +3,9 @@
 //     Copyright (c) 2012. Inflexion Software. All Rights Reserved.
 // </copyright>
 // -----------------------------------------------------------------------
-namespace Inflexion2.Application.DataTransfer.Base
+namespace Inflexion2.Application
 {
     using System.Runtime.Serialization;
-    using Inflexion2.Application.DataTransfer.Core;
 
     /// <summary>
     /// Clase base para los objetos DTO que representan entidades persistidas.

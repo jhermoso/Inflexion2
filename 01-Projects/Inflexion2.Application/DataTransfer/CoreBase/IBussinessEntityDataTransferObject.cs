@@ -3,10 +3,8 @@
 //     Copyright (c) 2012. Inflexion Software. All Rights Reserved.
 // </copyright>
 // -----------------------------------------------------------------------
-namespace Inflexion2.Application.DataTransfer.Core
+namespace Inflexion2.Application
 {
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// Interfaz para representar los objetos de transferencia de datos para una entidad.
     /// </summary>
