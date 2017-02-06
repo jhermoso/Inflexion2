@@ -115,6 +115,69 @@
             Initializes a new instance of the <see cref="T:Inflexion2.Domain.EventDescriptorMap"/> class.
             </summary>
         </member>
+        <member name="T:Inflexion2.Domain.NHibernateEventStore">
+            <summary>
+            nh event repository implementation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.NHibernateEventStore.#ctor(Inflexion2.Domain.IEventPublisher,NHibernate.IStatelessSession)">
+            <summary>
+            initialization of repository using the session like UoW
+            </summary>
+            <param name="publisher"></param>
+            <param name="session"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.NHibernateEventStore.LoadEventDescriptorsForAggregate(System.Guid)">
+            <summary>
+            gets the list of events for one aggregate
+            </summary>
+            <param name="aggregateId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.NHibernateEventStore.PersistEventDescriptors(System.Collections.Generic.IEnumerable{Inflexion2.Domain.EventDescriptor},System.Guid,System.Int32)">
+            <summary>
+            save the list of events for one descriptor
+            </summary>
+            <param name="newEventDescriptors"></param>
+            <param name="aggregateId"></param>
+            <param name="expectedVersion"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.NHibernateEventStore.Transact``1(System.Func{``0})">
+            <summary>
+            apply a dynamic function in a transaction
+            </summary>
+            <typeparam name="TResult"></typeparam>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.NHibernateEventStore.Transact(System.Action)">
+            <summary>
+            aplies an action in a transaction 
+            </summary>
+            <param name="action"></param>
+        </member>
+        <member name="T:Inflexion2.Domain.AuditEventListener`1">
+            <summary>
+            https://ayende.com/blog/3987/nhibernate-ipreupdateeventlistener-ipreinserteventlistener
+            This class allow us to execute our custom logic before the update / insert is sent to the database
+            the logic implemented is used to audit the entity related
+            </summary>
+            <typeparam name="TIdentifier"></typeparam>
+        </member>
+        <member name="M:Inflexion2.Domain.AuditEventListener`1.OnPreInsert(NHibernate.Event.PreInsertEvent)">
+            <summary>
+            IPreInsertEventListener interface implementation
+            </summary>
+            <param name="event"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.AuditEventListener`1.OnPreUpdate(NHibernate.Event.PreUpdateEvent)">
+            <summary>
+            IPreUpdateEventListener inteface implementation
+            </summary>
+            <param name="event"></param>
+            <returns></returns>
+        </member>
         <member name="T:Inflexion2.Domain.AuditFlushEntityEventListener`1">
             <summary>
             http://stackoverflow.com/questions/5087888/ipreupdateeventlistener-and-dynamic-update-true
@@ -138,6 +201,32 @@
             http://stackoverflow.com/questions/3090733/an-nhibernate-audit-trail-that-doesnt-cause-collection-was-not-processed-by-fl
             </summary>
             <param name="session">The session.</param>
+        </member>
+        <member name="T:Inflexion2.Domain.ValidateEventListener">
+            <summary>
+            https://ayende.com/blog/3987/nhibernate-ipreupdateeventlistener-ipreinserteventlistener
+            this class allow validation in presinsert and preupdate events
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.ValidateEventListener.Initialize(NHibernate.Cfg.Configuration)">
+            <summary>
+            nh IInitializable interface implementation 
+            </summary>
+            <param name="cfg"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.ValidateEventListener.OnPreInsert(NHibernate.Event.PreInsertEvent)">
+            <summary>
+            IPreInsertEventListener nh interface implementation
+            </summary>
+            <param name="event"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.ValidateEventListener.OnPreUpdate(NHibernate.Event.PreUpdateEvent)">
+            <summary>
+            IPreUpdateEventListener nh interface implementation
+            </summary>
+            <param name="event"></param>
+            <returns></returns>
         </member>
         <member name="T:Inflexion2.Domain.BaseClassMap`1">
             <summary>

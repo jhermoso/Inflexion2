@@ -1252,7 +1252,7 @@
         </member>
         <member name="T:Inflexion2.Domain.Event">
             <summary>
-            CQRS implementation test
+             poc for CQRS implementation 
             </summary>
         </member>
         <member name="P:Inflexion2.Domain.Event.Version">
@@ -3953,6 +3953,193 @@
             method to write to query operations
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Domain.BaseEventStore">
+            <summary>
+            poc for CQRS implementation 
+            event store implementation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseEventStore.#ctor(Inflexion2.Domain.IEventPublisher)">
+            <summary>
+            event store constructor and inizialitation
+            </summary>
+            <param name="publisher"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseEventStore.GetEventsForAggregate(System.Guid)">
+            <summary>
+            get events of one entity (root agregate)
+            </summary>
+            <param name="aggregateId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseEventStore.SaveEvents(System.Guid,System.Collections.Generic.IEnumerable{Inflexion2.Domain.Event},System.Int32)">
+            <summary>
+            save events of one aggregate
+            </summary>
+            <param name="aggregateId"></param>
+            <param name="events"></param>
+            <param name="expectedVersion"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseEventStore.LoadEventDescriptorsForAggregate(System.Guid)">
+            <summary>
+            abstract method to load event descriptor of one entity (R. aggregate)
+            </summary>
+            <param name="aggregateId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseEventStore.PersistEventDescriptors(System.Collections.Generic.IEnumerable{Inflexion2.Domain.EventDescriptor},System.Guid,System.Int32)">
+            <summary>
+            abstract save descriptor
+            </summary>
+            <param name="newEventDescriptors"></param>
+            <param name="aggregateId"></param>
+            <param name="expectedVersion"></param>
+        </member>
+        <member name="T:Inflexion2.Domain.EventDescriptor">
+            <summary>
+            value object event descriptor
+            TODO: add inheritence from value object
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.EventDescriptor.#ctor">
+            <summary>
+            parameterless constructor for event descriptor
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.EventDescriptor.#ctor(System.Guid,Inflexion2.Domain.Event,System.Int32)">
+            <summary>
+            pararmetrized event descriptor constructor
+            </summary>
+            <param name="id"></param>
+            <param name="eventData"></param>
+            <param name="version"></param>
+        </member>
+        <member name="P:Inflexion2.Domain.EventDescriptor.EventData">
+            <summary>
+            realted data of the event
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.EventDescriptor.Id">
+            <summary>
+            related Id
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.EventDescriptor.Version">
+            <summary>
+            entity version
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.EventDescriptor.GetHashCode">
+            <summary>
+            has code to get the value object identity
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.EventDescriptor.Equals(System.Object)">
+            <summary>
+            equals comparation for value objet identity
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Domain.EventSourcedRepository`1">
+            <summary>
+            poc for CQRS implementation 
+            repository iplementation for Event Sourced Entities 
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Inflexion2.Domain.EventSourcedRepository`1.#ctor(Inflexion2.Domain.IEventStore)">
+            <summary>
+            constructor ann initialization of the repository for the related Event Sourced Entity
+            </summary>
+            <param name="storage"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.EventSourcedRepository`1.GetById(System.Guid)">
+            <summary>
+            get by id the Event Sourced Entity
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.EventSourcedRepository`1.Save(Inflexion2.Domain.EventSourcedEntity,System.Int32)">
+            <summary>
+            save the Event Sourced Entity
+            </summary>
+            <param name="aggregate"></param>
+            <param name="expectedVersion"></param>
+        </member>
+        <member name="T:Inflexion2.Domain.IEventSourcedRepository`1">
+            <summary>
+             poc for CQRS implementation 
+             repository interface for Event Sourced Entities 
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Inflexion2.Domain.IEventSourcedRepository`1.GetById(System.Guid)">
+            <summary>
+            get the entity by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.IEventSourcedRepository`1.Save(Inflexion2.Domain.EventSourcedEntity,System.Int32)">
+            <summary>
+            save a new version of a Event Sourced entity 
+            </summary>
+            <param name="aggregate"></param>
+            <param name="expectedVersion"></param>
+        </member>
+        <member name="T:Inflexion2.Domain.IEventStore">
+            <summary>
+            poc for CQRS implementation 
+            main interface to save events
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.IEventStore.GetEventsForAggregate(System.Guid)">
+            <summary>
+            poc for CQRS implementation 
+            store for the id of the entities afected
+            important in this case the id type has to be a guid
+            </summary>
+            <param name="aggregateId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.IEventStore.SaveEvents(System.Guid,System.Collections.Generic.IEnumerable{Inflexion2.Domain.Event},System.Int32)">
+            <summary>
+            saving  events interface operation
+            </summary>
+            <param name="aggregateId"></param>
+            <param name="events"></param>
+            <param name="expectedVersion"></param>
+        </member>
+        <member name="T:Inflexion2.Domain.MemoryEventStore">
+            <summary>
+            poc for CQRS implementation 
+            final event store implementation 
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.MemoryEventStore.#ctor(Inflexion2.Domain.IEventPublisher)">
+            <summary>
+            constructor
+            </summary>
+            <param name="publisher"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.MemoryEventStore.LoadEventDescriptorsForAggregate(System.Guid)">
+            <summary>
+            get the vents for one entity
+            </summary>
+            <param name="aggregateId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.MemoryEventStore.PersistEventDescriptors(System.Collections.Generic.IEnumerable{Inflexion2.Domain.EventDescriptor},System.Guid,System.Int32)">
+            <summary>
+            save the events for one entity
+            </summary>
+            <param name="newEventDescriptors"></param>
+            <param name="aggregateId"></param>
+            <param name="expectedVersion"></param>
         </member>
         <member name="T:Inflexion2.Domain.IRepository`2">
             <summary>
