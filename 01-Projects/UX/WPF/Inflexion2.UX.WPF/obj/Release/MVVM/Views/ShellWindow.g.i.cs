@@ -20,6 +20,8 @@ using Inflexion2.UX.WPF.MVVM.Dialogs;
 using Inflexion2.UX.WPF.MVVM.ViewModels;
 using Inflexion2.UX.WPF.MVVM.Views.Dialogs;
 using Inflexion2.UX.WPF.ValueConverters;
+using Itenso.Common;
+using Itenso.Configuration;
 using MahApps.Metro.Controls;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
