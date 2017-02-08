@@ -4,5 +4,219 @@
         <name>Inflexion2.Framework.Testing</name>
     </assembly>
     <members>
+        <member name="T:Inflexion2.Testing.EntityTransientTest">
+            <summary>
+            testing entities equality
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Testing.EntityTransientTest.IntEntity1">
+            <summary>
+            first class
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.EntityTransientTest.IntEntity1.#ctor">
+            <summary>
+            parameterless constructor
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.EntityTransientTest.IntEntity1.#ctor(System.Int32)">
+            <summary>
+            initialized id constructor
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:Inflexion2.Testing.EntityTransientTest.IntEntity1.#ctor(System.String)">
+            <summary>
+            initialized propertie constructor
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:Inflexion2.Testing.EntityTransientTest.IntEntity1.Create">
+            <summary>
+            factory
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Testing.EntityTransientTest.IntEntity1.Create(System.String)">
+            <summary>
+            factory
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Testing.EntityTransientTest.IntEntity1.Create(System.Int32)">
+            <summary>
+            factory entity
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Testing.EntityTransientTest.IntEntity2">
+            <summary>
+            inherited entity
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Testing.EntityTransientTest.IntEntity2.Name">
+            <summary>
+            test property
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.EntityTransientTest.IntEntity2.#ctor">
+            <summary>
+            constructor
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.EntityTransientTest.IntEntity2.#ctor(System.Int32)">
+            <summary>
+            constructor
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:Inflexion2.Testing.EntityTransientTest.IntEntity2.#ctor(System.String)">
+            <summary>
+            parametrized constructor 
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:Inflexion2.Testing.EntityTransientTest.IntEntity2.Create">
+            <summary>
+            factory
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Testing.EntityTransientTest.IntEntity2.Create(System.String)">
+            <summary>
+            factory
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Testing.EntityTransientTest.IntEntity2.Create(System.Int32)">
+            <summary>
+            factory
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Testing.EntityTransientTest.IntEntityEqualsWithTwoNullsEntitiesSameTypeReturnTrue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.EntityTransientTest.IntEntityEqualsWithTwoNullsEntitiesDifferentTypeReturnFalse">
+            <summary>
+            test equality two null entities
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.EntityTransientTest.IntEntityEqualsWithOneNullEntityReturnFalse">
+            <summary>
+            test equality one null entity
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.EntityTransientTest.IntEntityEqualsWithTwoTransientEntitiesReturnFalse">
+            <summary>
+            test equality
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.EntityTransientTest.IntEntityEqualsWithSameTransientEntitieReturnTrue">
+            <summary>
+            test equality same entity
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.EntityTransientTest.IntEntityTransientNewEntitieReturnTrue">
+            <summary>
+            test equality same transient entity 
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.EntityTransientTest.IntEntityEqualsWithTwoSetedIdDifferentEntitiesTypeReturnFalse">
+            <summary>
+            test equality with one initialized entity
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.EntityTransientTest.IntEntityEqualsWithTwoSetedDifferentIdSameEntitiesTypeReturnFalse">
+            <summary>
+            test equality with same class diferent objects
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.EntityTransientTest.IntEntityEqualsWithTwoSetedSameIdSameEntitiesTypeReturnTrue">
+            <summary>
+            same class same id test 
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Testing.StringEntityTransientTest">
+            <summary>
+            creates entities with string id identifier
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Testing.StringEntityTransientTest.Entity1">
+            <summary>
+            first entity with string id
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Testing.StringEntityTransientTest.Entity2">
+            <summary>
+            second entity with string id entity
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.StringEntityTransientTest.StringEqualsWithTwoNullsEntitiesSameTypeReturnTrue">
+            <summary>
+            null equality testing
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.StringEntityTransientTest.StringEqualsWithTwoNullsEntitiesDifferentTypeReturnFalse">
+            <summary>
+            same content different entities testing
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.StringEntityTransientTest.StringEqualsWithOneNullEntityReturnFalse">
+            <summary>
+            compare one entity with a null entity
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.StringEntityTransientTest.StringEqualsWithTwoTransientEntitiesReturnFalse">
+            <summary>
+            compare 2 transient entities (id=null)
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.StringEntityTransientTest.StringEqualsWithSameTransientEntitieReturnTrue">
+            <summary>
+            equality
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Testing.ValidatableEntityTransientTest">
+            <summary>
+            validetable entities testing
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Testing.ValidatableEntityTransientTest.Entity1">
+            <summary>
+            first validatable entity
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Testing.ValidatableEntityTransientTest.Entity2">
+            <summary>
+            second validatable entity
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.ValidatableEntityTransientTest.ValidatableEntityGuidEqualsWithTwoNullsEntitiesSameTypeReturnTrue">
+            <summary>
+            test equality with two nulls entities
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.ValidatableEntityTransientTest.ValidatableEntityGuidEqualsWithOneNullEntityReturnFalse">
+            <summary>
+            test equality with one null entity
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.ValidatableEntityTransientTest.ValidatableEntityGuidEqualsWithTwoTransientEntitiesReturnFalse">
+            <summary>
+            test equality with two trasient entities
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.ValidatableEntityTransientTest.ValidatableEntityGuidEqualsWithSameTransientEntitieReturnTrue">
+            <summary>
+            test equality with same entity
+            </summary>
+        </member>
     </members>
 </doc>
