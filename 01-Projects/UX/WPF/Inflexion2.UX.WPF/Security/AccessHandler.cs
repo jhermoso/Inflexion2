@@ -9,8 +9,15 @@
     using System.Windows.Interactivity;
     using System.Windows.Controls.Primitives;
 
+    /// <summary>
+    /// todo: update sumary
+    /// </summary>
     public sealed class AccessHandler
     {
+        /// <summary>
+        /// todo: update sumary
+        /// </summary>
+        /// <param name="obj"></param>
         public AccessHandler(DependencyObject obj)
         {
             bool authorize = GetCheck(obj);
@@ -47,16 +54,29 @@
             }         
         }
 
+        /// <summary>
+        /// todo: update sumary
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public static bool GetCheck(DependencyObject obj)
         {
             return (bool)obj.GetValue(CheckProperty);
         }
 
+        /// <summary>
+        /// todo: update sumary
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="value"></param>
         public static void SetCheck(DependencyObject obj, bool value)
         {
             obj.SetValue(CheckProperty, value);
         }
 
+        /// <summary>
+        /// todo: update sumary
+        /// </summary>
         public static readonly DependencyProperty CheckProperty = DependencyProperty.RegisterAttached(
             "Check",
             typeof(bool),
