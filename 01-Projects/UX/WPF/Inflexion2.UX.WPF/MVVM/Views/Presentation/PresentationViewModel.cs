@@ -5,6 +5,10 @@ using System.Text;
 
 namespace Inflexion2.UX.WPF.MVVM.ViewModels
 {
+
+    /// <summary>
+    /// presentation view model
+    /// </summary>
     public class PresentationViewModel : WorkspaceViewModel
     {
         /// <summary>

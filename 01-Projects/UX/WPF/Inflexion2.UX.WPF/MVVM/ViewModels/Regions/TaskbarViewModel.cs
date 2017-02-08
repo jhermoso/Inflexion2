@@ -138,8 +138,10 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
             set { this.showModuleRibbonView = value; }
         }
 
-
-        public RegionViewModel ModuleRibbonViewModel//*
+        /// <summary>
+        /// view model for the ribbon region
+        /// </summary>
+        public RegionViewModel ModuleRibbonViewModel
         {
             get { return this.moduleRibbonViewModel; }
             set { this.moduleRibbonViewModel = value; }

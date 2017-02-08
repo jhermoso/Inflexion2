@@ -6,7 +6,6 @@
 
 namespace Inflexion2.UX.WPF.Controls
 {
-
     using System;
     using System.Collections.Generic;
     using System.Text;
@@ -15,6 +14,9 @@ namespace Inflexion2.UX.WPF.Controls
     using System.Windows.Controls;
     using System.Windows.Controls.Primitives;
 
+    /// <summary>
+    /// TimePicker implementation
+    /// </summary>
     [TemplatePart(Name = "PART_Hours", Type = typeof(TextBox)),
     TemplatePart(Name = "PART_Minutes", Type = typeof(TextBox)),
     TemplatePart(Name = "PART_Seconds", Type = typeof(TextBox)),

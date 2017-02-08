@@ -9,28 +9,68 @@ namespace Inflexion2.Testing
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Inflexion2.Domain;
 
+    /// <summary>
+    /// test equality with value objects
+    /// </summary>
     [TestClass]
     public class EqualityValueObject
     {
+        /// <summary>
+        /// first value object with 2 properties
+        /// </summary>
         public class SimpleValueObject : ValueObject<SimpleValueObject>
         {
+            /// <summary>
+            /// first property
+            /// </summary>
             public string s { get; set; }
+
+            /// <summary>
+            /// second property
+            /// </summary>
             public int    i { get; set; }
         }
 
+        /// <summary>
+        /// second value object with 2 same properties than first object value
+        /// </summary>
         public class OtherSimpleValueObject : ValueObject<OtherSimpleValueObject>
         {
+            /// <summary>
+            /// first property same type and name 
+            /// </summary>
             public string s { get; set; }
+
+            /// <summary>
+            /// second same property same type and name than first object value
+            /// </summary>
             public int    i { get; set; }
         }
 
+        /// <summary>
+        /// composed object value
+        /// </summary>
         public class NestedValueObject : ValueObject<NestedValueObject>
         {
+            /// <summary>
+            /// first property
+            /// </summary>
             public string            s { get; set; }
+
+            /// <summary>
+            /// second property
+            /// </summary>
             public int               i { get; set; }
+
+            /// <summary>
+            /// composed property
+            /// </summary>
             public SimpleValueObject n { get; set; }
         }
 
+        /// <summary>
+        /// test equality with nulls
+        /// </summary>
         [TestMethod]
         public void EqualsWithTwoNullsValueObjectsReturnTrue()
         {
@@ -40,7 +80,9 @@ namespace Inflexion2.Testing
             Assert.AreEqual(true, equality);
         }
 
-
+        /// <summary>
+        /// test equality with one null
+        /// </summary>
         [TestMethod]
         public void EqualsWithOneNullValueObjectReturnFalse()
         {
@@ -50,6 +92,9 @@ namespace Inflexion2.Testing
             Assert.AreEqual(false, equality);
         }
 
+        /// <summary>
+        /// test equality with two object values
+        /// </summary>
         [TestMethod]
         public void EqualsWithEmptyValueObjectsReturnTrue()
         {
@@ -59,6 +104,9 @@ namespace Inflexion2.Testing
             Assert.AreEqual(true, equality);
         }
 
+        /// <summary>
+        /// test equality with two same object values but same value properties
+        /// </summary>
         [TestMethod]
         public void EqualsWithEqualsValueObjectsReturnTrue()
         {
@@ -73,6 +121,9 @@ namespace Inflexion2.Testing
             Assert.AreEqual(true, equality);
         }
 
+        /// <summary>
+        /// test equality with one property different
+        /// </summary>
         [TestMethod]
         public void EqualsWithOneDifferentPropertyReturnFalse()
         {
@@ -87,6 +138,9 @@ namespace Inflexion2.Testing
             Assert.AreEqual(false, equality);
         }
 
+        /// <summary>
+        /// test equality with composed objects
+        /// </summary>
         [TestMethod]
         public void EqualsWithNestedValueObjectReturnTrue()
         {
@@ -110,6 +164,9 @@ namespace Inflexion2.Testing
             Assert.AreEqual(true, equality);
         }
 
+        /// <summary>
+        /// test equality with different composed objects
+        /// </summary>
         [TestMethod]
         public void EqualsWithNestedDifferentValueObjectReturnFalse()
         {
@@ -132,10 +189,13 @@ namespace Inflexion2.Testing
             var equality = vo1.Equals(vo2);
             Assert.AreEqual(false, equality);
         }
+
+        /// <summary>
+        /// test equality with differnt object value
+        /// </summary>
         [TestMethod]
         public void EqualsWithNestedDifferentRootValueObjectReturnFalse()
         {
-
             NestedValueObject vo1 = new NestedValueObject();
             NestedValueObject vo2 = new NestedValueObject();
 

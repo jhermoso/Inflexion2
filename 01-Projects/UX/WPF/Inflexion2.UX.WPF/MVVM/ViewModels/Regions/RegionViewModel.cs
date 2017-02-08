@@ -123,6 +123,9 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
             }
         }
 
+        /// <summary>
+        /// get instace of i navigation service to manage the navigation betwen views
+        /// </summary>
         protected INavigationService NavigationService
         {
             get

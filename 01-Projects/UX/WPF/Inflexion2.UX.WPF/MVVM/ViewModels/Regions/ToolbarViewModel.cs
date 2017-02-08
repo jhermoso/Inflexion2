@@ -96,6 +96,9 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
 
         #region Public Methods
 
+        /// <summary>
+        /// test :todo comment or use like example
+        /// </summary>
         public void PruebaTonta()
         {
             RibbonTab tab = new RibbonTab()

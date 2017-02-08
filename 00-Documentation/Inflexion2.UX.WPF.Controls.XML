@@ -1163,6 +1163,11 @@
             <param name="maxValue">The max value for the bound checking</param>
             <returns>Returns the int that was constructed from the string + bound checking</returns>
         </member>
+        <member name="T:Inflexion2.UX.WPF.Controls.TimePicker">
+            <summary>
+            TimePicker implementation
+            </summary>
+        </member>
         <member name="P:Inflexion2.UX.WPF.Controls.TimePicker.MinTime">
             <summary>
             Gets or sets the minimum time that can be selected
@@ -1322,6 +1327,71 @@
             <summary>
             Password watermarking code from: http://prabu-guru.blogspot.com/2010/06/how-to-add-watermark-text-to-textbox.html
             </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.Controls.MyTextBox.IsMonitoringProperty">
+            <summary>
+            monitor de input of the text box
+            </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.Controls.MyTextBox.WatermarkProperty">
+            <summary>
+            Watermark text
+            </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.Controls.MyTextBox.HasTextProperty">
+            <summary>
+            internal property which decides whether the watermark text needs to be shown in box or not
+            </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.Controls.MyTextBox.TextLengthProperty">
+            <summary>
+            finding the input text length
+            </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.Controls.MyTextBox.ClearTextButtonProperty">
+            <summary>
+            clear watermark when click on text box
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Controls.MyTextBox.SetIsMonitoring(System.Windows.DependencyObject,System.Boolean)">
+            <summary>
+            Setter Property ismonitoring
+            </summary>
+            <param name="obj"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Controls.MyTextBox.GetWatermark(System.Windows.DependencyObject)">
+            <summary>
+            Getter property
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Controls.MyTextBox.SetWatermark(System.Windows.DependencyObject,System.String)">
+            <summary>
+            Setter Property
+            </summary>
+            <param name="obj"></param>
+            <param name="value"></param>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.Controls.MyTextBox.HasText">
+            <summary>
+            Wrapper dependency property has text
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Controls.MyTextBox.GetClearTextButton(System.Windows.DependencyObject)">
+            <summary>
+            Wrapper dependency property get clear
+            </summary>
+            <param name="d"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Controls.MyTextBox.SetClearTextButton(System.Windows.DependencyObject,System.Boolean)">
+            <summary>
+            Setter Clear 
+            </summary>
+            <param name="obj"></param>
+            <param name="value"></param>
         </member>
     </members>
 </doc>

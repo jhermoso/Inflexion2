@@ -9,17 +9,27 @@ namespace Inflexion2.Testing
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Inflexion2.Domain;
 
-
+    /// <summary>
+    /// Equality testing with entities
+    /// </summary>
     [TestClass]
     public class AuditableEntityTransientTest
     {
-
+        /// <summary>
+        /// first entity to compare
+        /// </summary>
         public class Entity1 : AuditableEntity<Entity1, Guid>
         { }
 
+        /// <summary>
+        /// second entity to compare
+        /// </summary>
         public class Entity2 : AuditableEntity<Entity2, Guid>
         { }
 
+        /// <summary>
+        /// test equality with two null entities
+        /// </summary>
         [TestMethod]
         public void EqualsWithTwoNullsEntitiesSameTypeReturnTrue()
         {
@@ -29,6 +39,9 @@ namespace Inflexion2.Testing
             Assert.AreEqual(true, equality);
         }
 
+        /// <summary>
+        /// test equality with two entities
+        /// </summary>
         [TestMethod]
         public void EqualsWithTwoNullsEntitiesDifferentTypeReturnFalse()
         {
@@ -38,6 +51,9 @@ namespace Inflexion2.Testing
             Assert.AreEqual(false, equality);
         }
 
+        /// <summary>
+        /// test equality with one intialized entyty and a null entity same class
+        /// </summary>
         [TestMethod]
         public void EqualsWithOneNullEntityReturnFalse()
         {
@@ -47,6 +63,9 @@ namespace Inflexion2.Testing
             Assert.AreEqual(false, equality);
         }
 
+        /// <summary>
+        /// test equality with two differnt entities
+        /// </summary>
         [TestMethod]
         public void EqualsWithTwoTransientEntitiesReturnFalse()
         {
@@ -56,6 +75,9 @@ namespace Inflexion2.Testing
             Assert.AreEqual(false, equality);
         }
 
+        /// <summary>
+        /// test equality with same entity reference
+        /// </summary>
         [TestMethod]
         public void EqualsWithSameTransientEntitieReturnTrue()
         {
@@ -65,6 +87,9 @@ namespace Inflexion2.Testing
             Assert.AreEqual(true, equality);
         }
 
+        /// <summary>
+        /// transient test
+        /// </summary>
         [TestMethod]
         public void IntEntityTransientNewEntitieReturnTrue()
         {

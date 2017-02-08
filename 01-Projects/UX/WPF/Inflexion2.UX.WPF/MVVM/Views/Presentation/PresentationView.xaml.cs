@@ -20,6 +20,9 @@ namespace Inflexion2.UX.WPF.MVVM.Views.Presentation
     /// </summary>
     public partial class PresentationView : UserControl
     {
+        /// <summary>
+        /// view constructor and datacontext association
+        /// </summary>
         public PresentationView()
         {
             InitializeComponent();

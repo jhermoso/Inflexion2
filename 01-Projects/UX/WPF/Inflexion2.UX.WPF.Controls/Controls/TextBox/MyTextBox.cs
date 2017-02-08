@@ -19,12 +19,36 @@ namespace Inflexion2.UX.WPF.Controls
     /// </summary>
     public class MyTextBox : DependencyObject
     {
+        /// <summary>
+        /// monitor de input of the text box
+        /// </summary>
         public static readonly DependencyProperty IsMonitoringProperty = DependencyProperty.RegisterAttached("IsMonitoring", typeof(bool), typeof(MyTextBox), new UIPropertyMetadata(false, OnIsMonitoringChanged));
+
+        /// <summary>
+        /// Watermark text
+        /// </summary>
         public static readonly DependencyProperty WatermarkProperty = DependencyProperty.RegisterAttached("Watermark", typeof(string), typeof(MyTextBox), new UIPropertyMetadata(string.Empty));
+
+        /// <summary>
+        /// internal property which decides whether the watermark text needs to be shown in box or not
+        /// </summary>
         private static readonly DependencyProperty HasTextProperty = DependencyProperty.RegisterAttached("HasText", typeof(bool), typeof(MyTextBox), new FrameworkPropertyMetadata(false));
+
+        /// <summary>
+        /// finding the input text length
+        /// </summary>
         public static readonly DependencyProperty TextLengthProperty = DependencyProperty.RegisterAttached("TextLength", typeof(int), typeof(MyTextBox), new UIPropertyMetadata(0));
+
+        /// <summary>
+        /// clear watermark when click on text box
+        /// </summary>
         public static readonly DependencyProperty ClearTextButtonProperty = DependencyProperty.RegisterAttached("ClearTextButton", typeof(bool), typeof(MyTextBox), new FrameworkPropertyMetadata(false, ClearTextChanged));
 
+        /// <summary>
+        /// Setter Property ismonitoring
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="value"></param>
         public static void SetIsMonitoring(
                                            DependencyObject obj,
                                            bool value)
@@ -32,26 +56,35 @@ namespace Inflexion2.UX.WPF.Controls
             obj.SetValue(IsMonitoringProperty, value);
         }
 
+        /// <summary>
+        /// Getter property
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public static string GetWatermark(DependencyObject obj)
         {
             return (string)obj.GetValue(WatermarkProperty);
         }
 
-        public static void SetWatermark(
-                                        DependencyObject obj,
-                                        string value)
+        /// <summary>
+        /// Setter Property
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="value"></param>
+        public static void SetWatermark( DependencyObject obj, string value)
         {
             obj.SetValue(WatermarkProperty, value);
         }
 
-        private static void SetTextLength(
-                                          DependencyObject obj,
-                                          int value)
+        private static void SetTextLength( DependencyObject obj, int value)
         {
             obj.SetValue(TextLengthProperty, value);
             obj.SetValue(HasTextProperty, value >= 1);
         }
 
+        /// <summary>
+        /// Wrapper dependency property has text
+        /// </summary>
         public bool HasText
         {
             get { return (bool)GetValue(HasTextProperty); }
@@ -107,14 +140,22 @@ namespace Inflexion2.UX.WPF.Controls
             SetTextLength(passBox, passBox.Password.Length);
         }
 
+        /// <summary>
+        /// Wrapper dependency property get clear
+        /// </summary>
+        /// <param name="d"></param>
+        /// <returns></returns>
         public static bool GetClearTextButton(DependencyObject d)
         {
             return (bool)d.GetValue(ClearTextButtonProperty);
         }
 
-        public static void SetClearTextButton(
-                                              DependencyObject obj,
-                                              bool value)
+        /// <summary>
+        /// Setter Clear 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="value"></param>
+        public static void SetClearTextButton(DependencyObject obj, bool value)
         {
             obj.SetValue(ClearTextButtonProperty, value);
         }

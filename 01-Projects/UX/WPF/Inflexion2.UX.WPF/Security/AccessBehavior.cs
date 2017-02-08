@@ -14,14 +14,29 @@ namespace Inflexion2.UX.WPF.Security
     /// </summary>
     public class AccessBehavior : Behavior<FrameworkElement>
     {
+        /// <summary>
+        /// todo: update sumary
+        /// </summary>
         public static DependencyProperty VMBoundedProperty = DependencyProperty.Register("VMBounded", typeof(object), typeof(AccessBehavior), new PropertyMetadata(null));
 
+        /// <summary>
+        /// todo: update sumary
+        /// </summary>
         public static DependencyProperty RemoveInvisibleProperty = DependencyProperty.Register("RemoveInvisible", typeof(bool), typeof(AccessBehavior), new PropertyMetadata(null));
 
+        /// <summary>
+        /// todo: update sumary
+        /// </summary>
         public static DependencyProperty CollapseInvisibleProperty = DependencyProperty.Register("CollapseInvisible", typeof(bool), typeof(AccessBehavior), new PropertyMetadata(null));
 
+        /// <summary>
+        /// todo: update sumary
+        /// </summary>
         public static DependencyProperty ContextProperty = DependencyProperty.Register("Context", typeof(object), typeof(AccessBehavior), new PropertyMetadata(null));
 
+        /// <summary>
+        /// todo: update sumary
+        /// </summary>
         public static DependencyProperty DTemplateProperty = DependencyProperty.Register("DTemplate", typeof(string), typeof(AccessBehavior), new PropertyMetadata(null));
 
         /// <summary>
@@ -29,6 +44,9 @@ namespace Inflexion2.UX.WPF.Security
         /// </summary>
         public static DependencyProperty DTemplateNameProperty = DependencyProperty.Register("DTemplateName", typeof(object), typeof(AccessBehavior), new PropertyMetadata(null));
 
+        /// <summary>
+        /// todo: update sumary
+        /// </summary>
         public static DependencyProperty ReadOnlyTemplateProperty = DependencyProperty.Register("$NAME", typeof(DataTemplate), typeof(AccessBehavior), new PropertyMetadata(null));
         private AccessLevel _level;
 
@@ -62,24 +80,36 @@ namespace Inflexion2.UX.WPF.Security
             set { SetValue(CollapseInvisibleProperty, value); }
         }
 
+        /// <summary>
+        /// todo: update sumary
+        /// </summary>
         public object Context
         {
             set { SetValue(ContextProperty, value); }
             get { return GetValue(ContextProperty); }
         }
 
+        /// <summary>
+        /// todo: update sumary
+        /// </summary>
         public string DTemplate
         {
             set { SetValue(DTemplateProperty, value); }
             get { return (string)GetValue(DTemplateProperty); }
         }
 
+        /// <summary>
+        /// todo: update sumary
+        /// </summary>
         public object DTemplateName
         {
             set { SetValue(DTemplateNameProperty, value); }
             get { return GetValue(DTemplateNameProperty); }
         }
 
+        /// <summary>
+        /// todo: update sumary
+        /// </summary>
         public DataTemplate ReadOnlyTemplate
         {
             set { SetValue(ReadOnlyTemplateProperty, value); }
