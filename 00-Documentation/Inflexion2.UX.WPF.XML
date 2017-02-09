@@ -2954,6 +2954,51 @@
             </summary>
             <param name="e">La instancia <see cref="T:System.Collections.Specialized.NotifyCollectionChangedEventArgs" /> conteniendo los datos del evento.</param>
         </member>
+        <member name="T:Inflexion2.UX.WPF.Helpers.AsyncCallHelper">
+            <summary>
+            TODO: update summary
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Helpers.AsyncCallHelper.Execute(System.Action{System.Boolean},System.Func{Inflexion2.UX.WPF.Helpers.AsyncCallResult},System.Action{Inflexion2.UX.WPF.Helpers.AsyncCallResult})">
+            <summary>
+            todo: update summary
+            </summary>
+            <param name="isBusy"></param>
+            <param name="operation"></param>
+            <param name="resultHandler"></param>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.Helpers.AsyncCallResult">
+            <summary>
+            A class designed to encapsulate the result of an asynchronous operation.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.Helpers.AsyncCallResult.Result">
+            <summary>
+            Todo: update summary
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.Helpers.AsyncCallResult.Error">
+            <summary>
+            Todo: update summary
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.Helpers.AsyncCallResult.OperationFailed">
+            <summary>
+            Todo: update summary
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Helpers.AsyncCallResult.#ctor(System.Exception)">
+            <summary>
+            Todo: update summary
+            </summary>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Helpers.AsyncCallResult.#ctor(System.Object)">
+            <summary>
+            Todo: update summary
+            </summary>
+            <param name="result"></param>
+        </member>
         <member name="T:Inflexion2.UX.WPF.Helpers.DataGridHelper">
             <summary>
             Clase pública estática utilzada como ayuda adicional a acciones 
@@ -3043,9 +3088,148 @@
             <returns></returns>
         </member>
         <member name="T:Inflexion2.UX.WPF.Helpers.PasswordHelper">
+             <summary>
+            Password box binding helper
+            https://wpftutorial.net/PasswordBox.html
+             </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.Helpers.PasswordHelper.PasswordProperty">
             <summary>
-            TODO: Update summary.
+            wpf depedency property for passwords
             </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.Helpers.PasswordHelper.AttachProperty">
+            <summary>
+            todo:update summary
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Helpers.PasswordHelper.SetAttach(System.Windows.DependencyObject,System.Boolean)">
+            <summary>
+            todo:update summary
+            </summary>
+            <param name="dp"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Helpers.PasswordHelper.GetAttach(System.Windows.DependencyObject)">
+            <summary>
+            todo:update summary
+            </summary>
+            <param name="dp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Helpers.PasswordHelper.GetPassword(System.Windows.DependencyObject)">
+            <summary>
+            todo:update summary
+            </summary>
+            <param name="dp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Helpers.PasswordHelper.SetPassword(System.Windows.DependencyObject,System.String)">
+            <summary>
+            todo:update summary
+            </summary>
+            <param name="dp"></param>
+            <param name="value"></param>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.ValueConverters.BoolToVisibility">
+            <summary>
+            wpf Boolean converter To Visibility property
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.BoolToVisibility.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            IValueConverter implementation
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.BoolToVisibility.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            ConvertBack implementation
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.ValueConverters.MultiplyConverter">
+            <summary>
+            https://github.com/JohanLarsson/So.Wpf/blob/master/So.Wpf/Converters/MultiplyConverter.cs
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.MultiplyConverter.Convert(System.Object[],System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            IValueConverter implementation
+            </summary>
+            <param name="values"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.MultiplyConverter.ConvertBack(System.Object,System.Type[],System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            IValueConverter implementation
+            </summary>
+            <param name="value"></param>
+            <param name="targetTypes"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.ValueConverters.SelectedToColorConverter">
+            <summary>
+            wpf Selected Color Converter
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.SelectedToColorConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            IValueConverter implementation
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.SelectedToColorConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            IValueConverter implementation
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.ValueConverters.StringStateToPathConverter">
+            <summary>
+            use an image to show an item with 3 status
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.StringStateToPathConverter.Convert(System.Object[],System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            IMultiValueConverter implementation
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.StringStateToPathConverter.ConvertBack(System.Object,System.Type[],System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            IMultiValueConverter implementation
+            </summary>
+            <param name="value"></param>
+            <param name="targetTypes"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
         </member>
         <member name="T:Inflexion2.UX.WPF.ValueConverters.StringToGeometryConverter">
             <summary>
@@ -3111,6 +3295,16 @@
             <param name="parameter">El parámetro.</param>
             <param name="culture">La cultura.</param>
             <returns>Devuelve un BitmapSource con la imagen para mostrar.</returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.SystemIconConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            method notimplemented
+            </summary>
+            <param name="value"></param>
+            <param name="type"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
         </member>
         <member name="T:Inflexion2.UX.WPF.ValueConverters.BooleanActivoValueConverter">
             <summary>
@@ -3339,6 +3533,43 @@
             Miembro de la interfaz <see cref="T:System.Windows.Data.IValueConverter"/>.
             </remarks>
         </member>
+        <member name="T:Inflexion2.UX.WPF.ValueConverters.MarkupConverter">
+            <summary>
+            http://sourcebrowser.io/Browse/MahApps/MahApps.Metro/MahApps.Metro/Converters/MarkupConverter.cs
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.MarkupConverter.ProvideValue(System.IServiceProvider)">
+            <summary>
+            todo: update summary
+            </summary>
+            <param name="serviceProvider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.MarkupConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            IValueConverter implementation
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.MarkupConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            IValueConverter implementation
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.ValueConverters.OffOnConverter">
+            <summary>
+            off on converter
+            </summary>
+        </member>
         <member name="M:Inflexion2.UX.WPF.ValueConverters.OffOnConverter.#ctor">
             <summary>
             Constructor de la clase.
@@ -3414,6 +3645,11 @@
             <param name="culture"></param>
             <returns></returns>
         </member>
+        <member name="T:Inflexion2.UX.WPF.ValueConverters.StringToPathGeometryConverter">
+            <summary>
+            String To PathGeometry Converter
+            </summary>
+        </member>
         <member name="M:Inflexion2.UX.WPF.ValueConverters.StringToPathGeometryConverter.Convert(System.String)">
             <summary>
             converter from string to file path
@@ -3426,6 +3662,16 @@
             not implemented
             </summary>
             <param name="geometry"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.StringToPathGeometryConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            IValueConverter implementation
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
             <returns></returns>
         </member>
         <member name="M:Inflexion2.UX.WPF.ValueConverters.StringToPathGeometryConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
@@ -3454,6 +3700,41 @@
             <param name="parameter">
             Valor con el que se compara el objeto a comprobar.
             </param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.TextToColorConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            method not implemented
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.ValueConverters.ThicknessToDoubleConverter">
+            <summary>
+            Thickness To Double Converter
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.ThicknessToDoubleConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            IValueConverter implementation
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.ThicknessToDoubleConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            not implemented
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
             <param name="culture"></param>
             <returns></returns>
         </member>
@@ -3543,6 +3824,56 @@
             <remarks>
             Miembro de la interfaz <see cref="T:System.Windows.Data.IValueConverter"/>.
             </remarks>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.ValueConverters.ToLowerConverter">
+            <summary>
+            to lower
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.ToLowerConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            IValueConverter implementation
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.ToLowerConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            IValueConverter implementation
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.ValueConverters.ToUpperConverter">
+            <summary>
+            to upper
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.ToUpperConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            IValueConverter implementation
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.ToUpperConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            IValueConverter implementation
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
         </member>
         <member name="T:Inflexion2.UX.WPF.LoginView">
             <summary>
@@ -3961,6 +4292,60 @@
             La representación de cadena de la instancia actual.
             </returns>
         </member>
+        <member name="T:Inflexion2.UX.WPF.Services.NavigationService">
+            <summary>
+            <see cref="T:Inflexion2.UX.WPF.Services.INavigationService"/> implementation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.NavigationService.NavigateTo(System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            <see cref="M:Inflexion2.UX.WPF.Services.INavigationService.NavigateToWorkSpace(System.String,System.Collections.Generic.IDictionary{System.String,System.String})"/>
+            </summary>
+            <param name="region"></param>
+            <param name="view"></param>
+            <param name="parameters"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.NavigationService.NavigateToWorkSpace(System.String,System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.UX.WPF.Services.INavigationService.NavigateToWorkSpace(System.String,System.Object)"/>
+            </summary>
+            <param name="view"></param>
+            <param name="id"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.NavigationService.NavigateToWorkSpace(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            <see cref="M:Inflexion2.UX.WPF.Services.INavigationService.NavigateToWorkSpace(System.String,System.Collections.Generic.IDictionary{System.String,System.String})"/>
+            </summary>
+            <param name="view"></param>
+            <param name="parameters"></param>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.Services.INavigationService">
+            <summary>
+            navigation services with regions and views
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.INavigationService.NavigateTo(System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            open or focus a view in a region
+            </summary>
+            <param name="region"></param>
+            <param name="view"></param>
+            <param name="parameters"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.INavigationService.NavigateToWorkSpace(System.String,System.Object)">
+            <summary>
+            open a view with a dynamic id entity
+            </summary>
+            <param name="view"></param>
+            <param name="id"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.INavigationService.NavigateToWorkSpace(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            open a view with parameters
+            </summary>
+            <param name="view"></param>
+            <param name="parameters"></param>
+        </member>
         <member name="T:Inflexion2.UX.WPF.Services.BaseKeyValueItem">
             <summary>
             Representa la clase base para los elementos clave-valor.
@@ -4092,10 +4477,135 @@
             La representación de cadena de la instancia actual.
             </returns>
         </member>
+        <member name="T:Inflexion2.UX.WPF.Services.MessageBoxService">
+            <summary>
+            IMessageBoxService implementation
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.MessageBoxService.Show(System.String,System.String,System.Windows.MessageBoxButton,System.Windows.MessageBoxImage,System.Windows.MessageBoxResult)">
+            <summary>
+            <see cref="M:Inflexion2.UX.WPF.Services.IMessageBoxService.Show(System.String,System.String,System.Windows.MessageBoxButton,System.Windows.MessageBoxImage,System.Windows.MessageBoxResult)"/> implementation
+            </summary>
+            <param name="message"></param>
+            <param name="caption"></param>
+            <param name="buttons"></param>
+            <param name="icon"></param>
+            <param name="defaultResult"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.MessageBoxService.Show(System.String,System.String,System.Windows.MessageBoxButton,System.Windows.MessageBoxImage)">
+            <summary>
+            <see cref="M:Inflexion2.UX.WPF.Services.IMessageBoxService.Show(System.String,System.String,System.Windows.MessageBoxButton,System.Windows.MessageBoxImage)"/>
+            </summary>
+            <param name="message"></param>
+            <param name="caption"></param>
+            <param name="buttons"></param>
+            <param name="icon"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.MessageBoxService.Show(System.String,System.String,System.Windows.MessageBoxButton)">
+            <summary>
+            <see cref="M:Inflexion2.UX.WPF.Services.IMessageBoxService.Show(System.String,System.String,System.Windows.MessageBoxButton)"/> implementation
+            </summary>
+            <param name="message"></param>
+            <param name="caption"></param>
+            <param name="buttons"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.MessageBoxService.Show(System.String,System.String)">
+            <summary>
+            <see cref="M:Inflexion2.UX.WPF.Services.IMessageBoxService.Show(System.String,System.String)"/>
+            </summary>
+            <param name="message"></param>
+            <param name="caption"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.MessageBoxService.Show(System.String)">
+            <summary>
+            <see cref="M:Inflexion2.UX.WPF.Services.IMessageBoxService.Show(System.String,System.String)"/> implementation
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.Services.IMessageBoxService">
+            <summary>
+            Messages services for user interface
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.IMessageBoxService.Show(System.String,System.String,System.Windows.MessageBoxButton,System.Windows.MessageBoxImage,System.Windows.MessageBoxResult)">
+            <summary>
+            Show a message with captation, buttons icon and default result
+            </summary>
+            <param name="message"></param>
+            <param name="caption"></param>
+            <param name="buttons"></param>
+            <param name="icon"></param>
+            <param name="defaultResult"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.IMessageBoxService.Show(System.String,System.String,System.Windows.MessageBoxButton,System.Windows.MessageBoxImage)">
+            <summary>
+            Show e message with captation buttons and icon
+            </summary>
+            <param name="message"></param>
+            <param name="caption"></param>
+            <param name="buttons"></param>
+            <param name="icon"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.IMessageBoxService.Show(System.String,System.String,System.Windows.MessageBoxButton)">
+            <summary>
+            Show a message with captation and buttons
+            </summary>
+            <param name="message"></param>
+            <param name="caption"></param>
+            <param name="buttons"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.IMessageBoxService.Show(System.String,System.String)">
+            <summary>
+            Show a message with captatio
+            </summary>
+            <param name="message"></param>
+            <param name="caption"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.IMessageBoxService.Show(System.String)">
+            <summary>
+            Show a message.
+            </summary>
+            <param name="message"></param>
+        </member>
         <member name="T:Inflexion2.UX.WPF.Services.QueryServiceFactory">
             <summary>
-            TODO: Update summary.
+            IQueryServiceFactory implemetation <see cref="T:Inflexion2.UX.WPF.Services.IQueryServiceFactory"/>
             </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.QueryServiceFactory.RegisterInstance``2">
+            <summary>
+            <see cref="M:Inflexion2.UX.WPF.Services.IQueryServiceFactory.RegisterInstance``2"/>
+            </summary>
+            <typeparam name="TInterface"></typeparam>
+            <typeparam name="TService"></typeparam>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.QueryServiceFactory.RegisterInstance``2(System.String)">
+            <summary>
+            <see cref="M:Inflexion2.UX.WPF.Services.IQueryServiceFactory.RegisterInstance``2(System.String)"/>
+            </summary>
+            <typeparam name="TInterface"></typeparam>
+            <typeparam name="TService"></typeparam>
+            <param name="serviceName"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.QueryServiceFactory.GetInstance(System.String)">
+            <summary>
+            <see cref="M:Inflexion2.UX.WPF.Services.IQueryServiceFactory.GetInstance(System.String)"/>
+            </summary>
+            <param name="serviceName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.QueryServiceFactory.GetInstance``1">
+            <summary>
+            <see cref="M:Inflexion2.UX.WPF.Services.IQueryServiceFactory.GetInstance``1"/>
+            </summary>
+            <typeparam name="TInterface"></typeparam>
+            <returns></returns>
         </member>
         <member name="T:Inflexion2.UX.WPF.Services.IQueryService">
             <summary>
@@ -4123,8 +4633,37 @@
         </member>
         <member name="T:Inflexion2.UX.WPF.Services.IQueryServiceFactory">
             <summary>
-            TODO: Update summary.
+            IQuery service Factory Interface
             </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.IQueryServiceFactory.RegisterInstance``2">
+            <summary>
+            Register an instance of query service 
+            </summary>
+            <typeparam name="TInterface"></typeparam>
+            <typeparam name="TService"></typeparam>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.IQueryServiceFactory.RegisterInstance``2(System.String)">
+            <summary>
+            REgister a query instace of a query service with a service name
+            </summary>
+            <typeparam name="TInterface"></typeparam>
+            <typeparam name="TService"></typeparam>
+            <param name="serviceName"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.IQueryServiceFactory.GetInstance(System.String)">
+            <summary>
+            Get the instance of the service name
+            </summary>
+            <param name="serviceName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.IQueryServiceFactory.GetInstance``1">
+            <summary>
+            Get the instance of one interface
+            </summary>
+            <typeparam name="TInterface"></typeparam>
+            <returns></returns>
         </member>
         <member name="T:Inflexion2.UX.WPF.Services.IKeyValueItem">
             <summary>
@@ -4182,6 +4721,36 @@
             Valor que es utilizado para obtener o 
             establecer si un registro está seleccionado o no.
             </value>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
         </member>
     </members>
 </doc>

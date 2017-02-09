@@ -59,11 +59,17 @@ namespace Inflexion2.UX.WPF.ValueConverters
             }
         }
 
-        [SuppressMessage("Microsoft.StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Método no implementado.")]
-        [SuppressMessage("Microsoft.StyleCop.CSharp.DocumentationRules", "CS1591:Missing XML comment for publicly visible type or member", Justification = "Método no implementado.")]
+        /// <summary>
+        /// method not implemented
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="targetType"></param>
+        /// <param name="parameter"></param>
+        /// <param name="culture"></param>
+        /// <returns></returns>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException("ConvertBack not implemented");
+            return Binding.DoNothing;
         }
 
     }
