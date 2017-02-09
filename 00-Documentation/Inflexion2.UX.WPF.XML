@@ -318,8 +318,38 @@
         </member>
         <member name="T:Inflexion2.UX.WPF.MVVM.BindingListener">
             <summary>
-            TODO: Update summary.
+            https://msdn.microsoft.com/de-de/library/4y5y10s7(v=vs.110).aspx
+            DefaultTraceListener 
             </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.BindingListener.SetTrace">
+            <summary>
+            set trace level to none
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.BindingListener.SetTrace(System.Diagnostics.SourceLevels,System.Diagnostics.TraceOptions)">
+            <summary>
+            set trace level option
+            </summary>
+            <param name="level"></param>
+            <param name="options"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.BindingListener.CloseTrace">
+            <summary>
+            close trace
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.BindingListener.Write(System.String)">
+            <summary>
+            add message to trace
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.BindingListener.WriteLine(System.String)">
+            <summary>
+            trace to console, command window
+            </summary>
+            <param name="message"></param>
         </member>
         <member name="T:Inflexion2.UX.WPF.MVVM.Commands.MultipleViewsNavigationCommand`1">
             <summary>
@@ -795,6 +825,7 @@
         <member name="T:Inflexion2.UX.WPF.MVVM.Views.ShellWindow">
             <summary>
             Representa la ventana principal de aplicación.
+            todo: check if new versions of metrowindow are cls compliant
             </summary>
             <remarks>
             Ventana de alto nivel Prism.
@@ -810,11 +841,6 @@
             <remarks>
             Constructor de la clase <see cref="T:ShellWindow"/>.
             </remarks>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.Views.ShellWindow.ApplicationRibbon_Loaded(System.Object,System.Windows.RoutedEventArgs)">
-            <summary>
-            Atributo para salvar la configuración del usuario el idioma seleccionado.
-            </summary>
         </member>
         <member name="M:Inflexion2.UX.WPF.MVVM.Views.ShellWindow.InitializeComponent">
             <summary>
@@ -850,6 +876,11 @@
             </summary>
             <summary>
             PresentationView
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.Views.Presentation.PresentationView.#ctor">
+            <summary>
+            view constructor and datacontext association
             </summary>
         </member>
         <member name="M:Inflexion2.UX.WPF.MVVM.Views.Presentation.PresentationView.InitializeComponent">
@@ -1666,9 +1697,29 @@
             Se usa para inicializar el diálogo.
             </summary>
         </member>
+        <member name="T:Inflexion2.UX.WPF.MVVM.ViewModels.PresentationViewModel">
+            <summary>
+            presentation view model
+            </summary>
+        </member>
         <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.PresentationViewModel.Title">
             <summary>
             Obtiene el título de la ventana.
+            </summary>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.MVVM.ViewModels.Regions.IWorkspaceViewModel">
+            <summary>
+            base class for work space view model
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.Regions.IWorkspaceViewModel.Title">
+            <summary>
+            title of the work space
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.Regions.IWorkspaceViewModel.IsBusy">
+            <summary>
+            has focus
             </summary>
         </member>
         <member name="T:Inflexion2.UX.WPF.MVVM.ViewModels.NavigationViewModel">
@@ -1745,6 +1796,11 @@
             <value>
             Indica el comando de carga de la vista de navegación de este módulo.
             </value>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.TaskbarViewModel.ModuleRibbonViewModel">
+            <summary>
+            view model for the ribbon region
+            </summary>
         </member>
         <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.TaskbarViewModel.TaskButtonImage">
             <summary>
@@ -1827,6 +1883,11 @@
             <returns>
             La referencia al ViewModel asociado a la barra de herramientas actual.
             </returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.ViewModels.ToolbarViewModel.PruebaTonta">
+            <summary>
+            test :todo comment or use like example
+            </summary>
         </member>
         <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.ToolbarViewModel.KeepAlive">
             <summary>
@@ -2392,6 +2453,11 @@
             <remarks>
             Miembro de la interfaz <see cref="T:Microsoft.Practices.Prism.Regions.IRegionMemberLifetime"/>.
             </remarks>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.RegionViewModel.NavigationService">
+            <summary>
+            get instace of i navigation service to manage the navigation betwen views
+            </summary>
         </member>
         <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.RegionViewModel.EventAggregator">
             <summary>
@@ -3511,9 +3577,39 @@
             This behavior controls the UI elements. 
             </summary>
         </member>
+        <member name="F:Inflexion2.UX.WPF.Security.AccessBehavior.VMBoundedProperty">
+            <summary>
+            todo: update sumary
+            </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.Security.AccessBehavior.RemoveInvisibleProperty">
+            <summary>
+            todo: update sumary
+            </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.Security.AccessBehavior.CollapseInvisibleProperty">
+            <summary>
+            todo: update sumary
+            </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.Security.AccessBehavior.ContextProperty">
+            <summary>
+            todo: update sumary
+            </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.Security.AccessBehavior.DTemplateProperty">
+            <summary>
+            todo: update sumary
+            </summary>
+        </member>
         <member name="F:Inflexion2.UX.WPF.Security.AccessBehavior.DTemplateNameProperty">
             <summary>
             The template key for readonly mode.
+            </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.Security.AccessBehavior.ReadOnlyTemplateProperty">
+            <summary>
+            todo: update sumary
             </summary>
         </member>
         <member name="P:Inflexion2.UX.WPF.Security.AccessBehavior.VMBounded">
@@ -3533,6 +3629,26 @@
             Gets or sets a value indicating whether [collapse invisible].
             </summary>
             <value><c>true</c> if [collapse invisible]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.Security.AccessBehavior.Context">
+            <summary>
+            todo: update sumary
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.Security.AccessBehavior.DTemplate">
+            <summary>
+            todo: update sumary
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.Security.AccessBehavior.DTemplateName">
+            <summary>
+            todo: update sumary
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.Security.AccessBehavior.ReadOnlyTemplate">
+            <summary>
+            todo: update sumary
+            </summary>
         </member>
         <member name="P:Inflexion2.UX.WPF.Security.AccessBehavior.Provider">
             <summary>
@@ -3582,6 +3698,36 @@
             <param name="info">The info.</param>
             <returns></returns>
         </member>
+        <member name="T:Inflexion2.UX.WPF.Security.AccessHandler">
+            <summary>
+            todo: update sumary
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Security.AccessHandler.#ctor(System.Windows.DependencyObject)">
+            <summary>
+            todo: update sumary
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Security.AccessHandler.GetCheck(System.Windows.DependencyObject)">
+            <summary>
+            todo: update sumary
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Security.AccessHandler.SetCheck(System.Windows.DependencyObject,System.Boolean)">
+            <summary>
+            todo: update sumary
+            </summary>
+            <param name="obj"></param>
+            <param name="value"></param>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.Security.AccessHandler.CheckProperty">
+            <summary>
+            todo: update sumary
+            </summary>
+        </member>
         <member name="T:Inflexion2.UX.WPF.Security.AccessLevel">
             <summary>
             Lsita enumerada que determina el nivel de seguridad.
@@ -3622,6 +3768,27 @@
             <value>
             El valor del enumerado es <c>4</c>.
             </value>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.Security.CheckAccessAttribute">
+            <summary>
+            using System;
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Security.CheckAccessAttribute.#ctor">
+            <summary>
+            using System;
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Security.CheckAccessAttribute.#ctor(System.String)">
+            <summary>
+            using System;
+            </summary>
+            <param name="permissionName"></param>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.Security.CheckAccessAttribute.PermissionName">
+            <summary>
+            using System;
+            </summary>
         </member>
         <member name="T:Inflexion2.UX.WPF.Security.AccessLevelProvider">
             <summary>

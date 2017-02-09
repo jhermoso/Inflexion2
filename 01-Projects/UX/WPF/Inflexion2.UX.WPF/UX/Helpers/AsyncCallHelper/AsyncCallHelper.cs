@@ -7,14 +7,20 @@
 namespace Inflexion2.UX.WPF.Helpers
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Windows.Threading;
     using System.Threading;
+    using System.Windows.Threading;
 
+    /// <summary>
+    /// TODO: update summary
+    /// </summary>
     public partial class AsyncCallHelper
     {
+        /// <summary>
+        /// todo: update summary
+        /// </summary>
+        /// <param name="isBusy"></param>
+        /// <param name="operation"></param>
+        /// <param name="resultHandler"></param>
         public static void Execute(Action<bool> isBusy, Func<AsyncCallResult> operation, Action<AsyncCallResult> resultHandler)
         {
             if (isBusy == null)

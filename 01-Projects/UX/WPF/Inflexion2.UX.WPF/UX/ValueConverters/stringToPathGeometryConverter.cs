@@ -1,11 +1,14 @@
-﻿using System;
-using System.Windows.Media;
-using System.Globalization;
-using System.Windows;
-using System.Windows.Data;
-
-namespace Inflexion2.UX.WPF.ValueConverters
+﻿namespace Inflexion2.UX.WPF.ValueConverters
 {
+    using System;
+    using System.Windows.Media;
+    using System.Globalization;
+    using System.Windows;
+    using System.Windows.Data;
+
+    /// <summary>
+    /// String To PathGeometry Converter
+    /// </summary>
     public class StringToPathGeometryConverter : IValueConverter
     {
         #region Const & Private Variables
@@ -614,6 +617,14 @@ namespace Inflexion2.UX.WPF.ValueConverters
 
         #region IValueConverter Members
 
+        /// <summary>
+        /// IValueConverter implementation
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="targetType"></param>
+        /// <param name="parameter"></param>
+        /// <param name="culture"></param>
+        /// <returns></returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             string path = value as string;

@@ -6,23 +6,28 @@
 
 namespace Inflexion2.UX.WPF.Helpers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using System.Windows;
     using System.Windows.Controls;
 
     /// <summary>
-    /// TODO: Update summary.
+    ///Password box binding helper
+    ///https://wpftutorial.net/PasswordBox.html
     /// </summary>
+    // <code><PasswordBox   ui:PasswordHelper.Password="{Binding Password,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  /></code>
+
     public static class PasswordHelper
     {
+        /// <summary>
+        /// wpf depedency property for passwords
+        /// </summary>
         public static readonly DependencyProperty PasswordProperty =
             DependencyProperty.RegisterAttached("Password",
             typeof(string), typeof(PasswordHelper),
             new FrameworkPropertyMetadata(string.Empty, OnPasswordPropertyChanged));
 
+        /// <summary>
+        /// todo:update summary
+        /// </summary>
         public static readonly DependencyProperty AttachProperty =
             DependencyProperty.RegisterAttached("Attach",
             typeof(bool), typeof(PasswordHelper), new PropertyMetadata(false, Attach));
@@ -31,22 +36,41 @@ namespace Inflexion2.UX.WPF.Helpers
            DependencyProperty.RegisterAttached("IsUpdating", typeof(bool),
            typeof(PasswordHelper));
 
-
+        /// <summary>
+        /// todo:update summary
+        /// </summary>
+        /// <param name="dp"></param>
+        /// <param name="value"></param>
         public static void SetAttach(DependencyObject dp, bool value)
         {
             dp.SetValue(AttachProperty, value);
         }
 
+        /// <summary>
+        /// todo:update summary
+        /// </summary>
+        /// <param name="dp"></param>
+        /// <returns></returns>
         public static bool GetAttach(DependencyObject dp)
         {
             return (bool)dp.GetValue(AttachProperty);
         }
 
+        /// <summary>
+        /// todo:update summary
+        /// </summary>
+        /// <param name="dp"></param>
+        /// <returns></returns>
         public static string GetPassword(DependencyObject dp)
         {
             return (string)dp.GetValue(PasswordProperty);
         }
 
+        /// <summary>
+        /// todo:update summary
+        /// </summary>
+        /// <param name="dp"></param>
+        /// <param name="value"></param>
         public static void SetPassword(DependencyObject dp, string value)
         {
             dp.SetValue(PasswordProperty, value);

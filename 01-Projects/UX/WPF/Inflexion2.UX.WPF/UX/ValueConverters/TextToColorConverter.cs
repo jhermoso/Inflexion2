@@ -8,10 +8,9 @@ namespace Inflexion2.UX.WPF.ValueConverters
     #region Imports
 
     using System;
-    using System.Windows;
+    using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.Windows.Data;
-    using System.Windows.Media;
 
     #endregion
 
@@ -60,6 +59,8 @@ namespace Inflexion2.UX.WPF.ValueConverters
             }
         }
 
+        [SuppressMessage("Microsoft.StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Método no implementado.")]
+        [SuppressMessage("Microsoft.StyleCop.CSharp.DocumentationRules", "CS1591:Missing XML comment for publicly visible type or member", Justification = "Método no implementado.")]
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException("ConvertBack not implemented");

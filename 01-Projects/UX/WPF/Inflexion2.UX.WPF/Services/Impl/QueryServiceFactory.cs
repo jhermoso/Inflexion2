@@ -14,12 +14,17 @@ namespace Inflexion2.UX.WPF.Services
     using Microsoft.Practices.ServiceLocation;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// IQueryServiceFactory implemetation <see cref="IQueryServiceFactory"/>
     /// </summary>
     public class QueryServiceFactory : IQueryServiceFactory
     {
         private static IDictionary<string, Type> registeredTypes = new Dictionary<string, Type>();
 
+        /// <summary>
+        /// <see cref="IQueryServiceFactory.RegisterInstance{TInterface, TService}()"/>
+        /// </summary>
+        /// <typeparam name="TInterface"></typeparam>
+        /// <typeparam name="TService"></typeparam>
         public void RegisterInstance<TInterface, TService>()
             where TInterface : IQueryService
             where TService : TInterface
@@ -29,6 +34,12 @@ namespace Inflexion2.UX.WPF.Services
             RegisterInstance<TInterface, TService>(serviceName);
         }
 
+        /// <summary>
+        /// <see cref="IQueryServiceFactory.RegisterInstance{TInterface, TService}(string) "/>
+        /// </summary>
+        /// <typeparam name="TInterface"></typeparam>
+        /// <typeparam name="TService"></typeparam>
+        /// <param name="serviceName"></param>
         public void RegisterInstance<TInterface, TService>(string serviceName)
             where TInterface : IQueryService
             where TService : TInterface
@@ -43,8 +54,13 @@ namespace Inflexion2.UX.WPF.Services
             registeredTypes.Add(lowerCaseServiceName, typeof(TService));
             IUnityContainer unityContainer = ServiceLocator.Current.GetInstance<IUnityContainer>();
             unityContainer.RegisterType<TInterface, TService>(lowerCaseServiceName);
-        }       
+        }
 
+        /// <summary>
+        /// <see cref="IQueryServiceFactory.GetInstance(string) "/>
+        /// </summary>
+        /// <param name="serviceName"></param>
+        /// <returns></returns>
         public IQueryService GetInstance(string serviceName)
         {
             string lowerCaseServiceName = serviceName.ToLower();
@@ -59,6 +75,11 @@ namespace Inflexion2.UX.WPF.Services
             return unityContainer.Resolve(type, lowerCaseServiceName) as IQueryService;
         }
 
+        /// <summary>
+        /// <see cref="IQueryServiceFactory.GetInstance{TInterface}"/>
+        /// </summary>
+        /// <typeparam name="TInterface"></typeparam>
+        /// <returns></returns>
         public TInterface GetInstance<TInterface>()
             where TInterface : IQueryService
         {

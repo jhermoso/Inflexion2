@@ -7,25 +7,43 @@
 namespace Inflexion2.UX.WPF.Helpers
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
 
+    /// <summary>
+    /// A class designed to encapsulate the result of an asynchronous operation.
+    /// </summary>
     public class AsyncCallResult
     {
+        /// <summary>
+        /// Todo: update summary
+        /// </summary>
         public object Result { get; private set; }
+
+        /// <summary>
+        /// Todo: update summary
+        /// </summary>
         public Exception Error { get; set; }
 
+        /// <summary>
+        /// Todo: update summary
+        /// </summary>
         public bool OperationFailed
         {
             get { return Error != null; }
         }
 
+        /// <summary>
+        /// Todo: update summary
+        /// </summary>
+        /// <param name="exception"></param>
         public AsyncCallResult(Exception exception)
         {
             Error = exception;
         }
 
+        /// <summary>
+        /// Todo: update summary
+        /// </summary>
+        /// <param name="result"></param>
         public AsyncCallResult(object result)
         {
             Result = result;

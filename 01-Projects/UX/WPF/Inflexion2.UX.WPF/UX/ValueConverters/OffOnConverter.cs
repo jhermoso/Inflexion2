@@ -5,7 +5,9 @@
     using System.Globalization;
     using System.Windows.Data;
 
-
+    /// <summary>
+    /// off on converter
+    /// </summary>
     public class OffOnConverter : IValueConverter
     {
 

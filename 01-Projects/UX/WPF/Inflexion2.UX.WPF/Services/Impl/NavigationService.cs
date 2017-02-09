@@ -6,19 +6,24 @@
 
 namespace Inflexion2.UX.WPF.Services
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Windows;
-    using Microsoft.Practices.ServiceLocation;
+    using Inflexion2.UX.WPF.MVVM;
     using Microsoft.Practices.Prism;
     using Microsoft.Practices.Prism.Regions;
+    using Microsoft.Practices.ServiceLocation;
+    using System;
+    using System.Collections.Generic;
 
-    using Inflexion2.UX.WPF.MVVM;
-
+    /// <summary>
+    /// <see cref="INavigationService"/> implementation
+    /// </summary>
     public class NavigationService : INavigationService
     {
+        /// <summary>
+        /// <see cref="INavigationService.NavigateToWorkSpace(string, IDictionary{string, string})"/>
+        /// </summary>
+        /// <param name="region"></param>
+        /// <param name="view"></param>
+        /// <param name="parameters"></param>
         public void NavigateTo(string region, string view, IDictionary<string, string> parameters)
         {
             IRegionManager regionManger = ServiceLocator.Current.GetInstance<IRegionManager>();
@@ -34,6 +39,11 @@ namespace Inflexion2.UX.WPF.Services
             regionManger.RequestNavigate(region, uri);
         }
 
+        /// <summary>
+        /// <see cref="INavigationService.NavigateToWorkSpace(string, dynamic)"/>
+        /// </summary>
+        /// <param name="view"></param>
+        /// <param name="id"></param>
         public void NavigateToWorkSpace(string view, dynamic id)
         {
             IDictionary<string, string> parameters = new Dictionary<string, string>();
@@ -41,6 +51,11 @@ namespace Inflexion2.UX.WPF.Services
             this.NavigateTo(RegionNames.WorkspaceRegion, view, parameters);
         }
 
+        /// <summary>
+        /// <see cref="INavigationService.NavigateToWorkSpace(string, IDictionary{string, string})"/>
+        /// </summary>
+        /// <param name="view"></param>
+        /// <param name="parameters"></param>
         public void NavigateToWorkSpace(string view, IDictionary<string, string> parameters)
         {
             this.NavigateTo(RegionNames.WorkspaceRegion, view, parameters);
