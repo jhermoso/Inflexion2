@@ -46,6 +46,7 @@
         public OrderBySpecification(Expression<Func<TEntity, object>> orderBy, bool descending, Expression<Func<TEntity, object>> thenBy, bool thenByDescending)
         {
             Guard.Against<ArgumentNullException>(orderBy == null, "Expected a non null expression as a predicate for the specification.");
+
             this.predicate = orderBy;
             this.descending = descending;
             this.predicate2 = thenBy;

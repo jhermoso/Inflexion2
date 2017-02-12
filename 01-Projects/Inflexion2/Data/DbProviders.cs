@@ -25,7 +25,7 @@ namespace Inflexion2.Data
         /// <summary>
         /// MsSqlProvider
         /// </summary>
-        [EnumMember(Value = "System.Data.SqlClient")] MsSqlProvider,
+        [EnumMember(Value = "System.Data.SqlClient")] MSSqlProvider,
 
         /// <summary>
         /// OracleDataProvider
@@ -35,7 +35,7 @@ namespace Inflexion2.Data
         /// <summary>
         /// PostgreSQLProvider
         /// </summary>
-        [EnumMember(Value = "Npgsql")] PostgreSQLProvider,
+        [EnumMember(Value = "Npgsql")] PostgreSqlProvider,
 
         /// <summary>
         /// SqlCe

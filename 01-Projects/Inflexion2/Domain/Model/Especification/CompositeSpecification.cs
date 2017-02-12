@@ -5,10 +5,6 @@
 // -----------------------------------------------------------------------
 namespace Inflexion2.Domain.Specification
 {
-    using System;
-    using System.Linq.Expressions;
-
-
     /// <summary>
     /// Clase base para especificaciones compuestas.
     /// </summary>

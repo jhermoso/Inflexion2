@@ -15,8 +15,10 @@
 // CREDIT -  Originaly adapted from Inflector.Net (http://andrewpeters.net/inflectornet/)
 namespace Inflexion2.Domain
 {
+    using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+    using System.Diagnostics.Contracts;
     using System.Text.RegularExpressions;
 
     /// <summary>
@@ -102,6 +104,7 @@ namespace Inflexion2.Domain
         /// <returns>string. The word in Camel case.</returns>
         public static string Camelize(string lowercaseAndUnderscoredWord)
         {
+            Contract.Requires<ArgumentNullException>(lowercaseAndUnderscoredWord != null);
             return Uncapitalize(Pascalize(lowercaseAndUnderscoredWord));
         }
 
@@ -112,6 +115,7 @@ namespace Inflexion2.Domain
         /// <returns>The Capitalized word.</returns>
         public static string Capitalize(string word)
         {
+            Contract.Requires<ArgumentNullException>(word != null);
             return word.Substring(0, 1).ToUpper() + word.Substring(1).ToLower();
         }
 
@@ -122,6 +126,7 @@ namespace Inflexion2.Domain
         /// <returns>The word with dashes instead of underscores.</returns>
         public static string Dasherize(string underscoredWord)
         {
+            Contract.Requires<ArgumentNullException>(underscoredWord != null);
             return underscoredWord.Replace('_', '-');
         }
 
@@ -133,6 +138,7 @@ namespace Inflexion2.Domain
         /// <returns>The humanized word.</returns>
         public static string Humanize(string lowercaseAndUnderscoredWord)
         {
+            Contract.Requires<ArgumentNullException>(lowercaseAndUnderscoredWord != null);
             return Capitalize(Regex.Replace(lowercaseAndUnderscoredWord, @"_", " "));
         }
 
@@ -144,6 +150,7 @@ namespace Inflexion2.Domain
         /// <returns>string. The ordinalized number.</returns>
         public static string Ordinalize(string number)
         {
+            Contract.Requires<ArgumentNullException>(number != null);
             int n = int.Parse(number);
             int nMod100 = n % 100;
 

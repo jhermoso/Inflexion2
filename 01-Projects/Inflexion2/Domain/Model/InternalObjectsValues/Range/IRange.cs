@@ -5,8 +5,6 @@
 // -----------------------------------------------------------------------
 namespace Inflexion2.Domain
 {
-    using System;
-
     /// <summary>
     /// Interfaz que expone el contrato para el objeto-valor de rango.
     /// </summary>

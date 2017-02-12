@@ -6,8 +6,6 @@
 namespace Inflexion2.Domain
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
 
     /// <summary>
     /// Interfaz que expone el contrato para el objeto valor

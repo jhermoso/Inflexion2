@@ -12,7 +12,7 @@
     <AssemblyName>Inflexion2</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
+    <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\10-Solutions\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -25,12 +25,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\..\00-Documentation\Inflexion2.XML</DocumentationFile>
-    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
     <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
     <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
     <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
     <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
-    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsRunCodeAnalysis>True</CodeContractsRunCodeAnalysis>
     <CodeContractsNonNullObligations>True</CodeContractsNonNullObligations>
     <CodeContractsBoundsObligations>True</CodeContractsBoundsObligations>
     <CodeContractsArithmeticObligations>True</CodeContractsArithmeticObligations>
@@ -77,7 +77,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\..\00-Documentation\Inflexion2.XML</DocumentationFile>
-    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
     <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
     <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
     <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
@@ -85,16 +85,16 @@
     <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
     <CodeContractsNonNullObligations>True</CodeContractsNonNullObligations>
     <CodeContractsBoundsObligations>True</CodeContractsBoundsObligations>
-    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
-    <CodeContractsEnumObligations>False</CodeContractsEnumObligations>
-    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsArithmeticObligations>True</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>True</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>True</CodeContractsRedundantAssumptions>
     <CodeContractsMissingPublicRequiresAsWarnings>True</CodeContractsMissingPublicRequiresAsWarnings>
     <CodeContractsInferRequires>True</CodeContractsInferRequires>
-    <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
-    <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
-    <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
+    <CodeContractsInferEnsures>True</CodeContractsInferEnsures>
+    <CodeContractsInferObjectInvariants>True</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>True</CodeContractsSuggestAssumptions>
     <CodeContractsSuggestRequires>True</CodeContractsSuggestRequires>
-    <CodeContractsSuggestObjectInvariants>False</CodeContractsSuggestObjectInvariants>
+    <CodeContractsSuggestObjectInvariants>True</CodeContractsSuggestObjectInvariants>
     <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
     <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
     <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
@@ -117,9 +117,9 @@
     <CodeContractsSuggestReadonly>True</CodeContractsSuggestReadonly>
     <CodeContractsBeingOptimisticOnExternal>True</CodeContractsBeingOptimisticOnExternal>
     <CodeContractsAssertsToContractsCheckBox>True</CodeContractsAssertsToContractsCheckBox>
-    <CodeContractsMissingPublicEnsuresAsWarnings>False</CodeContractsMissingPublicEnsuresAsWarnings>
+    <CodeContractsMissingPublicEnsuresAsWarnings>True</CodeContractsMissingPublicEnsuresAsWarnings>
     <CodeContractsInferEnsuresAutoProperties>True</CodeContractsInferEnsuresAutoProperties>
-    <CodeContractsSuggestAssumptionsForCallees>False</CodeContractsSuggestAssumptionsForCallees>
+    <CodeContractsSuggestAssumptionsForCallees>True</CodeContractsSuggestAssumptionsForCallees>
     <CodeContractsNecessaryEnsures>True</CodeContractsNecessaryEnsures>
     <CodeContractsSkipAnalysisIfCannotConnectToCache>False</CodeContractsSkipAnalysisIfCannotConnectToCache>
   </PropertyGroup>
@@ -193,12 +193,14 @@
     <Compile Include="Domain\Model\EntityDefinitions\RootAgregate\Validetable\ValidatableAggregateRoot.cs" />
     <Compile Include="Domain\Model\Especification\AndSpecification.cs" />
     <Compile Include="Domain\Model\Especification\CompositeSpecification.cs" />
+    <Compile Include="Domain\Model\Especification\Core\IOrderBySpecificationContract.cs" />
     <Compile Include="Domain\Model\Especification\DirectSpecification.cs" />
     <Compile Include="Domain\Model\Especification\ExpressionBuilder.cs" />
-    <Compile Include="Domain\Model\Especification\IOrderBySpecification.cs" />
+    <Compile Include="Domain\Model\Especification\Core\IOrderBySpecification.cs" />
     <Compile Include="Domain\Model\Especification\Core\ISpecification.cs" />
     <Compile Include="Domain\Model\Especification\NotSpecification.cs" />
     <Compile Include="Domain\Model\Especification\OrderBySpecification.cs" />
+    <Compile Include="Domain\Model\Especification\OrderBySpecificationExtensions.cs" />
     <Compile Include="Domain\Model\Especification\OrSpecification.cs" />
     <Compile Include="Domain\Model\Especification\ParameterRebinder.cs" />
     <Compile Include="Domain\Model\Especification\Specification.cs" />
@@ -257,6 +259,7 @@
     <Compile Include="Domain\Model\Repositories\EventSourcing\IEventStore.cs" />
     <Compile Include="Domain\Model\Repositories\EventSourcing\MemoryEventStore.cs" />
     <Compile Include="Domain\Model\Repositories\IRepository.cs" />
+    <Compile Include="Domain\Model\Repositories\IRepositoryContract.cs" />
     <Compile Include="Domain\Model\Repositories\PagedElements.cs" />
     <Compile Include="Domain\Model\Services\IAuditTrailFactory.cs" />
     <Compile Include="Domain\Model\Validation\DataAnnotationHelper.cs" />
@@ -274,6 +277,7 @@
     <Compile Include="Domain\Security\CoreIdentity.cs" />
     <Compile Include="Domain\Security\CorePrincipal.cs" />
     <Compile Include="Domain\Security\ICoreIdentity.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Infrastructure\DataAccess\AdoNet\Manager.cs" />
     <Compile Include="IoC\ApplicationContext.cs" />
     <Compile Include="IoC\ServiceLocator.cs" />

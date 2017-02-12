@@ -27,6 +27,8 @@ namespace Inflexion2.Domain.Validation
                                                 string.IsNullOrEmpty(property),
                                                 "Please provide a valid non null string as the validation property name");
 
+            //Contract.Requires
+
             this.EntityType = typeof(void); // Avoid make this.EntityType == null as to not breaking existing code.
             this.Message = message;
             this.PropertyName = property;

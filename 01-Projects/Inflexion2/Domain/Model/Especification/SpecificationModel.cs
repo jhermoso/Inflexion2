@@ -12,7 +12,7 @@ namespace Inflexion2.Domain.Specification
     using System.Runtime.Serialization.Json;
     using System.Text;
 
-    
+
     /// <summary>
     /// Filtering class with specifications
     /// </summary>

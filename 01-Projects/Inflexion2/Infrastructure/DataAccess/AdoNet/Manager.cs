@@ -5,7 +5,6 @@
 // -----------------------------------------------------------------------
 namespace Inflexion2.Infrastructure
 {
-    using global::System.Collections.Generic;
     using global::System.Data;
     using global::System.Data.Common;
     using global::System.Threading;

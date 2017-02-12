@@ -7,6 +7,7 @@ namespace Inflexion2.Domain.Specification
 {
     using System;
     using System.Linq.Expressions;
+    using System.Diagnostics.Contracts;
 
     /// <summary>
     /// Interfaz para el patrón Especificación.

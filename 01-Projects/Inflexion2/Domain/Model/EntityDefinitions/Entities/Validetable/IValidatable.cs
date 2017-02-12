@@ -1,7 +1,5 @@
 namespace Inflexion2.Domain.Validation
 {
-    using System.Collections.Generic;
-
     /// <summary>
     /// Interface for validatable objects.
     /// </summary>

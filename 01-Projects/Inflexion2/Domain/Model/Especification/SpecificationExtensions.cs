@@ -6,12 +6,6 @@
 // Based on https://github.com/cmendible/Hexa.Core/blob/master/Hexa.Core/Domain/Specification/SpecificationExtensions.cs
 namespace Inflexion2.Domain.Specification
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
-
     /// <summary>
     /// TODO: Update summary.
     /// </summary>

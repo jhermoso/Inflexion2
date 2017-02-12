@@ -6,7 +6,6 @@
 namespace Inflexion2.Domain.Specification
 {
     using System;
-    using System.Linq;
     using System.Linq.Expressions;
 
 

@@ -147,7 +147,7 @@
             SQLiteProvider
             </summary>
         </member>
-        <member name="F:Inflexion2.Data.DbProvider.MsSqlProvider">
+        <member name="F:Inflexion2.Data.DbProvider.MSSqlProvider">
             <summary>
             MsSqlProvider
             </summary>
@@ -157,7 +157,7 @@
             OracleDataProvider
             </summary>
         </member>
-        <member name="F:Inflexion2.Data.DbProvider.PostgreSQLProvider">
+        <member name="F:Inflexion2.Data.DbProvider.PostgreSqlProvider">
             <summary>
             PostgreSQLProvider
             </summary>
@@ -1783,7 +1783,7 @@
         </member>
         <member name="M:Inflexion2.Domain.AuditableAggregateRoot`2.CanBeDeleted">
             <summary>
-            
+            this method decide is is possible to delete / deactivate this entity
             </summary>
             <returns></returns>
         </member>
@@ -2113,20 +2113,6 @@
             <param name="query"></param>
             <returns></returns>
         </member>
-        <member name="T:Inflexion2.Domain.Specification.OrderBySpecificationExtensions">
-            <summary>
-            extension
-            </summary>
-        </member>
-        <member name="M:Inflexion2.Domain.Specification.OrderBySpecificationExtensions.OrderBySpecification``1(System.Linq.IQueryable{``0},Inflexion2.Domain.Specification.IOrderBySpecification{``0})">
-            <summary>
-            sort by specification
-            </summary>
-            <typeparam name="TEntity"></typeparam>
-            <param name="query"></param>
-            <param name="orderBy"></param>
-            <returns></returns>
-        </member>
         <member name="T:Inflexion2.Domain.Specification.ISpecification`1">
             <summary>
             Interfaz para el patrón Especificación.
@@ -2283,6 +2269,20 @@
             apply sorting
             </summary>
             <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Domain.Specification.OrderBySpecificationExtensions">
+            <summary>
+            extension
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.Specification.OrderBySpecificationExtensions.OrderBySpecification``1(System.Linq.IQueryable{``0},Inflexion2.Domain.Specification.IOrderBySpecification{``0})">
+            <summary>
+            sort by specification
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="query"></param>
+            <param name="orderBy"></param>
             <returns></returns>
         </member>
         <member name="T:Inflexion2.Domain.Specification.OrSpecification`1">
@@ -4159,7 +4159,7 @@
             <summary>
             Add item into repository
             </summary>
-            <param name="item">Item to add to repository</param>
+            <param name="entity">Item to add to repository</param>
         </member>
         <member name="M:Inflexion2.Domain.IRepository`2.Attach(`0)">
             <summary>
@@ -4168,7 +4168,7 @@
             for this object is not  mark as 'Added, Modifed or Deleted', submit changes
             in Unit Of Work don't send anything to storage
             </summary>
-            <param name="item">Item to attach</param>
+            <param name="entity">Item to attach</param>
         </member>
         <member name="M:Inflexion2.Domain.IRepository`2.GetAll">
             <summary>

@@ -6,7 +6,6 @@
 namespace Inflexion2.Domain
 {
     using System;
-    using System.Linq;
 
     /// <summary>
     /// Contract for UnitOfWork pattern. For more

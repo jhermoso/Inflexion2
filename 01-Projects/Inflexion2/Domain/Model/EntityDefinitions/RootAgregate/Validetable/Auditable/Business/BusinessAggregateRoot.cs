@@ -2,11 +2,10 @@
 
 namespace Inflexion2.Domain
 {
+    using Inflexion2.Domain.Validation;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using Inflexion2.Domain.Validation;
     using System.Reflection;
 
     /// <summary>
@@ -19,7 +18,6 @@ namespace Inflexion2.Domain
         where TEntity : BusinessAggregateRoot<TEntity, TIdentifier>
         where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
     {
-        
         /// <summary>
         /// .es esta propiedad indica si podemos o no salvar el agregado
         /// por norma general esto dependera de si se cumplen  los invariantes o no
@@ -36,25 +34,24 @@ namespace Inflexion2.Domain
         
         virtual public bool CanBeSaved()
         {
+            // comprobamos si tiene settings 
+            // si no tiene settings devolvemos invocamos miramos si tiene validación o si es validable
+            // si no tiene metodo metodo de validación devolvemos true
+            // 
+            // si tiene settings tenemos las siguientes posibilidades.
+            // true -siempre grabamos - esto es util para cqrs o determinados repositorios.
+            // false si tiene validador depende del validador
+            if (this.GetType().GetInterfaces().Any(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(IValidatable<>)))
+            {
+                Type callType = this.GetType();
 
-                // comprobamos si tiene settings 
-                // si no tiene settings devolvemos invocamos miramos si tiene validación o si es validable
-                // si no tiene metodo metodo de validación devolvemos true
-                // 
-                // si tiene settings tenemos las siguientes posibilidades.
-                // true -siempre grabamos - esto es util para cqrs o determinados repositorios.
-                // false si tiene validador depende del validador
-                if (this.GetType().GetInterfaces().Any(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(IValidatable<>)))
-                {
-                    Type callType = this.GetType();
+                object result = callType.InvokeMember("IsValid",
+                                BindingFlags.InvokeMethod | BindingFlags.Public,
+                                null, null, null);
+                return (bool) result;
+            }
 
-                    object result = callType.InvokeMember("IsValid",
-                                    BindingFlags.InvokeMethod | BindingFlags.Public,
-                                    null, null, null);
-                    return (bool) result;
-                }
-                return true;
-
+            return true;
         }
         /// <summary>
         /// 

@@ -5,6 +5,8 @@
 //-----------------------------------------------------------------------------------------------
 namespace Inflexion2.Data
 {
+    using Inflexion2.Domain.Extensions;
+    using Inflexion2.Logging;
     using System;
     using System.Data.Common;
     using System.Data.SqlClient;
@@ -13,10 +15,6 @@ namespace Inflexion2.Data
     using System.Reflection;
     using System.Text;
     using System.Text.RegularExpressions;
-
-    using Inflexion2;
-    using Inflexion2.Logging;
-    using Inflexion2.Domain.Extensions;
     /// <summary>
     /// Handles Db creation, deletion, etc.
     /// </summary>

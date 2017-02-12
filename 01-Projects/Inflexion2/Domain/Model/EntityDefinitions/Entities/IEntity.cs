@@ -5,10 +5,6 @@
 // -----------------------------------------------------------------------
 namespace Inflexion2.Domain
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Reflection;
-
     /// <summary>
     /// .es Interfaz para representar una entidad basica siguiendo la defenición de Eric Evans.
     /// Las entidades estan pensadas para que tengan 2 factorias estaticas con la responsabilidad de crear la propia entidad.

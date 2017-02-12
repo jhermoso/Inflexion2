@@ -4,6 +4,51 @@
         <name>Inflexion2.Framework.Testing</name>
     </assembly>
     <members>
+        <member name="T:Inflexion2.Testing.AuditableEntityTransientTest">
+            <summary>
+            Equality testing with entities
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Testing.AuditableEntityTransientTest.Entity1">
+            <summary>
+            first entity to compare
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Testing.AuditableEntityTransientTest.Entity2">
+            <summary>
+            second entity to compare
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.AuditableEntityTransientTest.EqualsWithTwoNullsEntitiesSameTypeReturnTrue">
+            <summary>
+            test equality with two null entities
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.AuditableEntityTransientTest.EqualsWithTwoNullsEntitiesDifferentTypeReturnFalse">
+            <summary>
+            test equality with two entities
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.AuditableEntityTransientTest.EqualsWithOneNullEntityReturnFalse">
+            <summary>
+            test equality with one intialized entyty and a null entity same class
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.AuditableEntityTransientTest.EqualsWithTwoTransientEntitiesReturnFalse">
+            <summary>
+            test equality with two differnt entities
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.AuditableEntityTransientTest.EqualsWithSameTransientEntitieReturnTrue">
+            <summary>
+            test equality with same entity reference
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.AuditableEntityTransientTest.IntEntityTransientNewEntitieReturnTrue">
+            <summary>
+            transient test
+            </summary>
+        </member>
         <member name="T:Inflexion2.Testing.EntityTransientTest">
             <summary>
             testing entities equality
@@ -216,6 +261,233 @@
         <member name="M:Inflexion2.Testing.ValidatableEntityTransientTest.ValidatableEntityGuidEqualsWithSameTransientEntitieReturnTrue">
             <summary>
             test equality with same entity
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Testing.GuidEntityTransientTest">
+            <summary>
+            test equality with entities based on id with guid
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Testing.GuidEntityTransientTest.Entity1">
+            <summary>
+            first entity
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Testing.GuidEntityTransientTest.Entity2">
+            <summary>
+            second entity
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.GuidEntityTransientTest.GuidEntityEqualsWithTwoNullsEntitiesSameTypeReturnTrue">
+            <summary>
+            test equality with two null entities
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.GuidEntityTransientTest.GuidEntityEqualsWithTwoNullsEntitiesDifferentTypeReturnFalse">
+            <summary>
+            test equality with two different entities
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.GuidEntityTransientTest.GuidEntityEqualsWithOneNullEntityReturnFalse">
+            <summary>
+            test equality with one null entity
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.GuidEntityTransientTest.GuidEntityEqualsWithTwoTransientEntitiesReturnFalse">
+            <summary>
+            test equality with two transient entities
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.GuidEntityTransientTest.GuidEntityEqualsWithSameTransientEntitieReturnTrue">
+            <summary>
+            test equality with two same guid entities
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.GuidEntityTransientTest.GuidEntityTransientNewEntitieReturnTrue">
+            <summary>
+            test transient
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Testing.EqualityValueObject">
+            <summary>
+            test equality with value objects
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Testing.EqualityValueObject.SimpleValueObject">
+            <summary>
+            first value object with 2 properties
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Testing.EqualityValueObject.SimpleValueObject.s">
+            <summary>
+            first property
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Testing.EqualityValueObject.SimpleValueObject.i">
+            <summary>
+            second property
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Testing.EqualityValueObject.OtherSimpleValueObject">
+            <summary>
+            second value object with 2 same properties than first object value
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Testing.EqualityValueObject.OtherSimpleValueObject.s">
+            <summary>
+            first property same type and name 
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Testing.EqualityValueObject.OtherSimpleValueObject.i">
+            <summary>
+            second same property same type and name than first object value
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Testing.EqualityValueObject.NestedValueObject">
+            <summary>
+            composed object value
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Testing.EqualityValueObject.NestedValueObject.s">
+            <summary>
+            first property
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Testing.EqualityValueObject.NestedValueObject.i">
+            <summary>
+            second property
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Testing.EqualityValueObject.NestedValueObject.n">
+            <summary>
+            composed property
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.EqualityValueObject.EqualsWithTwoNullsValueObjectsReturnTrue">
+            <summary>
+            test equality with nulls
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.EqualityValueObject.EqualsWithOneNullValueObjectReturnFalse">
+            <summary>
+            test equality with one null
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.EqualityValueObject.EqualsWithEmptyValueObjectsReturnTrue">
+            <summary>
+            test equality with two object values
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.EqualityValueObject.EqualsWithEqualsValueObjectsReturnTrue">
+            <summary>
+            test equality with two same object values but same value properties
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.EqualityValueObject.EqualsWithOneDifferentPropertyReturnFalse">
+            <summary>
+            test equality with one property different
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.EqualityValueObject.EqualsWithNestedValueObjectReturnTrue">
+            <summary>
+            test equality with composed objects
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.EqualityValueObject.EqualsWithNestedDifferentValueObjectReturnFalse">
+            <summary>
+            test equality with different composed objects
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.EqualityValueObject.EqualsWithNestedDifferentRootValueObjectReturnFalse">
+            <summary>
+            test equality with differnt object value
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Testing.IntEntityTransientTest">
+            <summary>
+            test equality entities based on int id 
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Testing.IntEntityTransientTest.IntEntity1">
+            <summary>
+            first entity
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.IntEntityTransientTest.IntEntity1.#ctor">
+            <summary>
+            parameter less constructor
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.IntEntityTransientTest.IntEntity1.#ctor(System.Int32)">
+            <summary>
+            parametrized constructor
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="T:Inflexion2.Testing.IntEntityTransientTest.IntEntity2">
+            <summary>
+            second entity
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.IntEntityTransientTest.IntEntity2.#ctor">
+            <summary>
+            parameter less constructor
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.IntEntityTransientTest.IntEntity2.#ctor(System.Int32)">
+            <summary>
+            id parametrized constructor
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:Inflexion2.Testing.IntEntityTransientTest.IntEntityEqualsWithTwoNullsEntitiesSameTypeReturnTrue">
+            <summary>
+            test equality with two nulls entities
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.IntEntityTransientTest.IntEntityEqualsWithTwoNullsEntitiesDifferentTypeReturnFalse">
+            <summary>
+            test equality with two initialized entities
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.IntEntityTransientTest.IntEntityEqualsWithOneNullEntityReturnFalse">
+            <summary>
+            test equality with one null entity
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.IntEntityTransientTest.IntEntityEqualsWithTwoTransientEntitiesReturnFalse">
+            <summary>
+            test equality with two transient entities
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.IntEntityTransientTest.IntEntityEqualsWithSameTransientEntitieReturnTrue">
+            <summary>
+            test equality with same entity
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.IntEntityTransientTest.IntEntityTransientNewEntitieReturnTrue">
+            <summary>
+            test equality with one transient entity
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.IntEntityTransientTest.IntEntityEqualsWithTwoSetedIdDifferentEntitiesTypeReturnFalse">
+            <summary>
+            test equality with two entities
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.IntEntityTransientTest.IntEntityEqualsWithTwoSetedDifferentIdSameEntitiesTypeReturnFalse">
+            <summary>
+            test equality with two different entities
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.IntEntityTransientTest.IntEntityEqualsWithTwoSetedSameIdSameEntitiesTypeReturnFalse">
+            <summary>
+            test equality with same entities
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Testing.IntEntityTransientTest.IntEntityEqualsWithSameEntityReturnTrue">
+            <summary>
+            test equality with same entities
             </summary>
         </member>
     </members>

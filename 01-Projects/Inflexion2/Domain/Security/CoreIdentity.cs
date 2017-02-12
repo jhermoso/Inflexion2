@@ -14,9 +14,8 @@
 // ===================================================================================
 namespace Inflexion2.Security
 {
-    using System;
-
     using Inflexion2.Resources;
+    using System;
 
     /// <summary>
     /// Class used to hold user name info.

@@ -5,8 +5,6 @@
 // -----------------------------------------------------------------------
 namespace Inflexion2.Domain
 {
-    using System;
-
     /// <summary>
     /// Interfaz para representar las entidades del negocio auditables.
     /// </summary>

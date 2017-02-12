@@ -57,7 +57,7 @@ namespace Inflexion2.Domain
 
             switch (_DbProvider)
             {
-            case DbProvider.MsSqlProvider:
+            case DbProvider.MSSqlProvider:
             {
                 cfg = Fluently.Configure().Database(MsSqlConfiguration.MsSql2008
                                                     .Raw("format_sql", "true")
@@ -108,7 +108,7 @@ namespace Inflexion2.Domain
                 break;
             }
 
-            case DbProvider.PostgreSQLProvider:
+            case DbProvider.PostgreSqlProvider:
             {
                 cfg = Fluently.Configure().Database(PostgreSQLConfiguration.PostgreSQL82
                                                     .Raw("format_sql", "true")
@@ -224,7 +224,7 @@ namespace Inflexion2.Domain
                 dbManager.CreateDatabase();
                 new SchemaExport(_builtConfiguration).Create(false, true);
 
-                if (_DbProvider == DbProvider.MsSqlProvider)
+                if (_DbProvider == DbProvider.MSSqlProvider)
                 {
                     using (var conn = new SqlConnection(_connectionString))
                     {

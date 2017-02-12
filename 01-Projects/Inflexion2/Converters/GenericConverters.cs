@@ -30,6 +30,7 @@ namespace Inflexion2.Converters
                 {
                     return ChangeType<T>(new Guid(Convert.ToString(value, cultureInfo)), cultureInfo);
                 }
+
                 if ((string)value == string.Empty && toType != typeof(string))
                 {
                     return ChangeType<T>(null, cultureInfo);

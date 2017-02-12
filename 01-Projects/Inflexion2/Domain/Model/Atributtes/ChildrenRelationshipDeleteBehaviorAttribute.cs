@@ -2,7 +2,6 @@
 
 namespace Inflexion2.Domain
 {
-    using Domain;
     using System;
 
     /// <summary>

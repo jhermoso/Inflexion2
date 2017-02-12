@@ -5,9 +5,9 @@
 //-----------------------------------------------------------------------------------------------
 namespace Inflexion2.Domain
 {
+    using Inflexion2.DynamicExtensions;
     using System;
     using System.Collections.Generic;
-    using Inflexion2.DynamicExtensions;
 
     /// <summary>
     ///  poc for CQRS implementation 

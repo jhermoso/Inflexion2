@@ -8,8 +8,6 @@ namespace Inflexion2.Domain
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    using Inflexion2.Domain.Validation;
-    
 
     /// <summary>
     /// Clase pública que representa un intervalo.

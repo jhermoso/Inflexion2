@@ -14,10 +14,9 @@
 // ===================================================================================
 namespace Inflexion2.Security
 {
+    using Inflexion2.Resources;
     using System;
     using System.Security.Principal;
-
-    using Inflexion2.Resources;
 
     /// <summary>
     /// Main class used to hold user identity and roles

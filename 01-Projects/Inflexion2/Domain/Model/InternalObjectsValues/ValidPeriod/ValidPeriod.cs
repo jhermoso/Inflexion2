@@ -6,7 +6,6 @@
 namespace Inflexion2.Domain
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     /// <summary>

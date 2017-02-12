@@ -139,7 +139,7 @@ namespace Inflexion2.Domain
         /// <param name="id">
         /// Identificador unívoco de la entidad.
         /// </param>
-        protected Entity(TIdentifier id):base()
+        protected Entity(TIdentifier id)//:base()
         {
             this.Id = id;
         }

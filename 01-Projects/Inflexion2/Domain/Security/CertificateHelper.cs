@@ -1,10 +1,9 @@
 ﻿namespace Inflexion2.Security
 {
+    using Inflexion2.Resources;
     using System;
     using System.IO;
     using System.Security.Cryptography.X509Certificates;
-
-    using Inflexion2.Resources;
 
     /// <summary>
     /// helper class to manage certificates

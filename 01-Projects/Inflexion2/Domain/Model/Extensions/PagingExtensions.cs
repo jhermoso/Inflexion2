@@ -7,9 +7,8 @@ namespace Inflexion2.Domain
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.Contracts;
     using System.Linq;
-
-    using Inflexion2.Domain.Validation;
 
 
     /// <summary>
@@ -27,7 +26,8 @@ namespace Inflexion2.Domain
         /// <returns></returns>
         public static IQueryable<T> Page<T>(this IQueryable<T> query, int pageNumber, int pageSize)
         {
-            Guard.Against<ArgumentException>(pageNumber <= 0, "pageNumber");
+            //Guard.Against<ArgumentException>(pageNumber <= 0, "pageNumber");
+            Contract.Requires<ArgumentException>(pageNumber <= 0, "pageNumber");
 
             return query.Skip((pageNumber - 1) * pageSize).Take(pageSize);
         }
@@ -42,7 +42,8 @@ namespace Inflexion2.Domain
         /// <returns></returns>
         public static IEnumerable<T> Page<T>(this IEnumerable<T> query, int pageNumber, int pageSize)
         {
-            Guard.Against<ArgumentException>(pageNumber <= 0, "pageNumber");
+            //Guard.Against<ArgumentException>(pageNumber <= 0, "pageNumber");
+            Contract.Requires<ArgumentException>(pageNumber <= 0, "pageNumber");
 
             return query.Skip((pageNumber - 1) * pageSize).Take(pageSize);
         }

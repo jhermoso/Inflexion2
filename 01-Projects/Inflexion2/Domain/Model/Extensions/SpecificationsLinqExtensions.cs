@@ -6,14 +6,10 @@
 // Based on https://github.com/cmendible/Hexa.Core/blob/master/Hexa.Core/Domain/Specification/SpecificationModel.cs
 namespace Inflexion2.Extensions
 {
+    using Inflexion2.Domain.Specification;
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Linq.Expressions;
     using System.Reflection;
-    using System.Text;
-    using Inflexion2.Domain;
-    using Inflexion2.Domain.Specification;
 
     /// <summary>
     /// 

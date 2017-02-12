@@ -5,8 +5,6 @@
 // -----------------------------------------------------------------------
 namespace Inflexion2.Domain
 {
-    using System;
-
     /// <summary>
     /// Clase estática factoría para la creación de objetos
     /// valor de tipo <see cref="IRange"/>.

@@ -6,7 +6,6 @@
 namespace Inflexion2.Domain
 {
     using System;
-    using Inflexion2.Domain.Validation;
 
 
     /// <summary>

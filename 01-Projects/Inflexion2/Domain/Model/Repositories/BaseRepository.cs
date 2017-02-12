@@ -5,15 +5,13 @@
 //-----------------------------------------------------------------------------------------------
 namespace Inflexion2.Domain
 {
+    using Logging;
+    using Specification;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Linq.Expressions;
-
-    using Logging;
-
-    using Specification;
 
     /// <summary>
     /// .en Default base class for repositories. This generic repository
@@ -58,7 +56,8 @@ namespace Inflexion2.Domain
         /// <param name="entity"><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></param>
         public virtual void Add(TEntity entity)
         {
-            Guard.IsNotNull(entity, "entity");
+            //Guard.IsNotNull(entity, "entity");
+            //Contract.Requires<ArgumentNullException>(entity != null, "entity");
 
             this.InternalAdd(entity);
 
@@ -71,8 +70,8 @@ namespace Inflexion2.Domain
         /// <param name="entity"><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></param>
         public void Attach(TEntity entity)
         {
-            Guard.IsNotNull(entity, "entity");
-
+            //Guard.IsNotNull(entity, "entity");
+            //Contract.Requires<ArgumentNullException>(entity != null, "entity");
             this.InternalAttach(entity);
 
             this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Attached {0} to context", typeof(TEntity).Name));
@@ -94,8 +93,8 @@ namespace Inflexion2.Domain
         /// <returns><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></returns>
         public IEnumerable<TEntity> GetBySpec(ISpecification<TEntity> specification)
         {
-            Guard.IsNotNull(specification, "specification");
-
+            //Guard.IsNotNull(specification, "specification");
+            //Contract.Requires<ArgumentNullException>(specification != null, "specification");
             this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Getting {0} by specification", typeof(TEntity).Name));
 
             return (this.Query()
@@ -111,8 +110,8 @@ namespace Inflexion2.Domain
         public IEnumerable<TEntity> GetFilteredElements(Expression<Func<TEntity, bool>> filter)
         {
             // checking query arguments
-            Guard.IsNotNull(filter, "filter");
-
+            //Guard.IsNotNull(filter, "filter");
+            //Contract.Requires<ArgumentNullException>(filter != null, "filter");
             this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Getting filtered elements {0} with filer: {1}", typeof(TEntity).Name, filter.ToString()));
 
             // Create IObjectSet and perform query
@@ -134,23 +133,22 @@ namespace Inflexion2.Domain
             bool ascending = true)
         {
             // Checking query arguments
-            Guard.IsNotNull(filter, "filter");
-            Guard.IsNotNull(orderByExpression, "orderByExpression");
+            //Guard.IsNotNull(filter, "filter");
+            //Guard.IsNotNull(orderByExpression, "orderByExpression");
+            //Contract.Requires<ArgumentNullException>(filter != null, "filter");
+            //Contract.Requires<ArgumentNullException>(orderByExpression != null, "orderByExpression");
 
             this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Getting filtered elements {0} with filter: {1}", typeof(TEntity).Name, filter.ToString()));
 
             // Create IObjectSet for this type and perform query
             var objectSet = this.Query();
 
-            return ascending
-                   ? objectSet
-                   .Where(filter)
-                   .OrderBy(orderByExpression)
-                   .ToList()
-                   : objectSet
-                   .Where(filter)
-                   .OrderByDescending(orderByExpression)
-                   .ToList();
+            return ascending ? objectSet.Where(filter)
+                                       .OrderBy(orderByExpression)
+                                       .ToList()
+                             : objectSet.Where(filter)
+                                        .OrderByDescending(orderByExpression)
+                                        .ToList();
         }
 
 
@@ -172,10 +170,15 @@ namespace Inflexion2.Domain
             bool ascending = true)
         {
             // checking arguments for this query
-            Guard.Against<ArgumentException>(pageIndex < 0, "pageIndex");
-            Guard.Against<ArgumentException>(pageSize <= 0, "pageSize");
-            Guard.IsNotNull(orderByExpression, "orderByExpression");
-            Guard.IsNotNull(filter, "filter");
+            //Guard.Against<ArgumentException>(pageIndex < 0, "pageIndex");
+            //Guard.Against<ArgumentException>(pageSize <= 0, "pageSize");
+            //Guard.IsNotNull(orderByExpression, "orderByExpression");
+            //Guard.IsNotNull(filter, "filter");
+
+            //Contract.Requires<ArgumentException>(pageIndex >= 0, "pageIndex");
+            //Contract.Requires<ArgumentException>(pageSize > 0, "pageSize");
+            //Contract.Requires<ArgumentNullException>(filter != null, "filter");
+            //Contract.Requires<ArgumentNullException>(orderByExpression != null, "orderByExpression");
 
             this.logger.Debug(
                 string.Format(
@@ -221,11 +224,16 @@ namespace Inflexion2.Domain
             IOrderBySpecification<TEntity> orderBySpecification
             )
         {
-            // checking arguments for this query
-            Guard.Against<ArgumentException>(pageIndex < 0, "pageIndex");
-            Guard.Against<ArgumentException>(pageSize <= 0, "pageSize");
-            Guard.IsNotNull(orderBySpecification, "orderBySpecification");
-            Guard.IsNotNull(specification, "specification");
+            //// checking arguments for this query
+            //Guard.Against<ArgumentException>(pageIndex < 0, "pageIndex");
+            //Guard.Against<ArgumentException>(pageSize <= 0, "pageSize");
+            //Guard.IsNotNull(orderBySpecification, "orderBySpecification");
+            //Guard.IsNotNull(specification, "specification");
+
+            //Contract.Requires<ArgumentException>(pageIndex >= 0, "pageIndex");
+            //Contract.Requires<ArgumentException>(pageSize > 0, "pageSize");
+            //Contract.Requires<ArgumentNullException>(specification != null, "specification");
+            //Contract.Requires<ArgumentNullException>(orderBySpecification != null, "orderBySpecification");
 
             this.logger.Debug(
                 string.Format(
@@ -257,8 +265,8 @@ namespace Inflexion2.Domain
         /// <param name="entity"></param>
         public virtual void Modify(TEntity entity)
         {
-            Guard.IsNotNull(entity, "entity");
-
+            //Guard.IsNotNull(entity, "entity");
+            //Contract.Requires<ArgumentNullException>(entity != null, "entity");
             this.InternalModify(entity);
 
             this.logger.Info(string.Format(CultureInfo.InvariantCulture, "Applied changes to: {0}", typeof(TEntity).Name));
@@ -271,8 +279,8 @@ namespace Inflexion2.Domain
         public virtual void Remove(TEntity entity)
         {
             // check entity
-            Guard.IsNotNull(entity, "entity");
-
+            //Guard.IsNotNull(entity, "entity");
+            //Contract.Requires<ArgumentNullException>(entity != null, "entity");
             this.InternalRemove(entity);
 
             this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Deleted a {0} entity", typeof(TEntity).Name));

@@ -8,6 +8,7 @@ namespace Inflexion2.Domain
     using Inflexion2.Domain.Specification;
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.Contracts;
     using System.Linq.Expressions;
 
     /// <summary>
@@ -22,6 +23,7 @@ namespace Inflexion2.Domain
     /// </remarks>
     /// <typeparam name="TEntity">Type of entity for this repository </typeparam>
     /// <typeparam name="TIdentifier">Type of identity for this repository </typeparam>
+    [ContractClass(typeof(IRepositoryContract<,>))]
     public interface IRepository<TEntity, TIdentifier>
     where TEntity : class, IAggregateRoot<TEntity, TIdentifier>, IEntity<TIdentifier>
     where TIdentifier: IComparable<TIdentifier>, IEquatable<TIdentifier>
@@ -29,8 +31,8 @@ namespace Inflexion2.Domain
         /// <summary>
         /// Add item into repository
         /// </summary>
-        /// <param name="item">Item to add to repository</param>
-        void Add(TEntity item);
+        /// <param name="entity">Item to add to repository</param>
+        void Add(TEntity entity);
 
         /// <summary>
         /// Attach entity to this repository.
@@ -38,8 +40,8 @@ namespace Inflexion2.Domain
         /// for this object is not  mark as 'Added, Modifed or Deleted', submit changes
         /// in Unit Of Work don't send anything to storage
         /// </summary>
-        /// <param name="item">Item to attach</param>
-        void Attach(TEntity item);
+        /// <param name="entity">Item to attach</param>
+        void Attach(TEntity entity);
 
         /// <summary>
         /// Get all elements of type {T} in repository
