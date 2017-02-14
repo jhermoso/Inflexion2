@@ -45,7 +45,7 @@ foreach (var item in sharedKernelUsings)
 <#+
     }// end foreach para los using del shared kernel
 #>
-    using Inflexion2.Application.Core;
+    using Inflexion2.Application;//.Core;
     using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Dtos;
     using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain;
 

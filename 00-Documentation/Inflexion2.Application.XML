@@ -30,7 +30,7 @@
             <summary>
             Interfaz para los mapeadores entre entidades del dominio.
             (<see cref="T:Inflexion2.Domain.IEntity`1"/>) y
-            objetos de transferencia de datos (<see cref="T:Inflexion2.IDataTransferObject"/>).
+            objetos de transferencia de datos (<see cref="T:Inflexion2.Application.IDataTransferObject"/>).
             </summary>
             <remarks>
             La interfaz <c>IMapper</c> permite mapear entre entidades del dominio.
@@ -53,7 +53,7 @@
             <summary>
             Interfaz para los mapeadores entre entidades del dominio.
             (<see cref="T:Inflexion2.Domain.IEntity`1"/>) y
-            objetos de transferencia de datos (<see cref="T:Inflexion2.IDataTransferObject"/>).
+            objetos de transferencia de datos (<see cref="T:Inflexion2.Application.IDataTransferObject"/>).
             </summary>
             <remarks>
             La interfaz <c>IGenericMapper</c> permite mapear entre entidades del dominio.
@@ -67,6 +67,13 @@
             <typeparam name="TIdentifier">
             Representa un identificador unívoco de entidad.
             </typeparam>
+        </member>
+        <member name="M:Inflexion2.Application.IGenericServices`3.Create(`0)">
+            <summary>
+            Service to create a new entity
+            </summary>
+            <param name="entityDto"></param>
+            <returns></returns>
         </member>
         <member name="M:Inflexion2.Application.IGenericServices`3.Delete(`2)">
             <summary>
@@ -101,6 +108,11 @@
             </summary>
             <param name="dto"></param>
             <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Application.IDataTransferObject">
+            <summary>
+            Interfaz para representar los objetos de transferencia de datos.
+            </summary>
         </member>
         <member name="T:Inflexion2.Application.IEntityDataTransferObject`1">
             <summary>

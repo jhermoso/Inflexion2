@@ -46,7 +46,7 @@ foreach (var item in sharedKernelUsings)
     #region usings
     using System;
     using System.Runtime.Serialization;
-    using Inflexion2.Application.DataTransfer.Base;
+    using Inflexion2.Application;//.DataTransfer.Base;
 
 <#+ if (cbc.OwnBoundedContextHasEnums) {#>
     using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain.Data;
@@ -85,7 +85,7 @@ foreach (var item in sharedKernelUsings)
             this.<#= T4Help.ToPascalCase(property.SourceRolName) #> = new <#= GetTypeFromAssociationLink(property, false, null, true) #>();
 <#+ } // end foreach propertyAssociationSources #>
 <#+  if(cbc.LogicDelete ){#>
-            this.Activo = true;
+            //this.Activo = true;
 <#+ }#>
         } // <#= cbc.secureEntityName #>Dto Constructor
 

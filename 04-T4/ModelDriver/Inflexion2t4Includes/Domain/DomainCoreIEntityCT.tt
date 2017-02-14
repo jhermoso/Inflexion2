@@ -194,7 +194,7 @@ namespace <#=  projectNamespace #>
         /// <value>
         /// .es Parametro con el que establecemos el nuevo valor de <#= T4Help.SecureName(property.AtributteName) #>.
         /// </value>
-        <#= I #><#= cbc.secureEntityName #> Set<#= T4Help.SecureName(property.AtributteName) #> ( <#= property.AtributteType #><#= (property.IsNullable & cbc.propertyIsValueType )?"?":"" #> <#= T4Help.ToCamelCase(property.AtributteName) #> ); 
+        I<#= cbc.secureEntityName #> Set<#= T4Help.SecureName(property.AtributteName) #> ( <#= property.AtributteType #><#= (property.IsNullable & cbc.propertyIsValueType )?"?":"" #> <#= T4Help.ToCamelCase(property.AtributteName) #> ); 
 
 <#+      } // end del  if (property.OnlyGetProperty)
   }// end del foreach (var property in propertyObjects)
@@ -222,7 +222,7 @@ namespace <#=  projectNamespace #>
         /// <value>
         /// .es Parametro con el que establecemos el nuevo valor de <#= T4Help.SecureName(property.TargetRolName) #>.
         /// </value>
-        <#= I #><#= cbc.pascalSecureEntityName #> Set<#= T4Help.SecureName(property.TargetRolName) #> ( <#= (property.Source is Enumeration)?"":I #><#= T4Help.SecureName(property.Source.Name) #> <#= T4Help.ToCamelCase(property.Source.Name) #> );
+        I<#= cbc.pascalSecureEntityName #> Set<#= T4Help.SecureName(property.TargetRolName) #> ( <#= (property.Source is Enumeration)?"":I #><#= T4Help.SecureName(property.Source.Name) #> <#= T4Help.ToCamelCase(property.Source.Name) #> );
 
 <#+
       //}
@@ -257,7 +257,7 @@ namespace <#=  projectNamespace #>
         /// .es proviene de target con multiplicidad mínima 'Many' es colección y añadimos set, add y remove.
         /// </remarks>
         
-        <#= I #><#= cbc.pascalSecureEntityName #> Set<#= T4Help.SecureName(property.SourceRolName) #> ( <#= GetTypeFromAssociationLink(property, (I=="I"), cbc.idtype, false) #> <#= T4Help.ToCamelCase(property.Target.Name) #>Collection );
+        I<#= cbc.pascalSecureEntityName #> Set<#= T4Help.SecureName(property.SourceRolName) #> ( <#= GetTypeFromAssociationLink(property, (I=="I"), cbc.idtype, false) #> <#= T4Help.ToCamelCase(property.Target.Name) #>Collection );
 
 <#+      } // end if( IsMaxMultiplicityMany( property.TargetMultiplicity ) ) #>
 <#+ 
@@ -272,7 +272,7 @@ namespace <#=  projectNamespace #>
         /// <value>
         /// .esParametro con el que se proporciona la colección <#= T4Help.SecureName(property.Target.Name) #> a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
         /// </value>
-        <#= I #><#= cbc.pascalSecureEntityName #> Add<#= T4Help.SecureName(property.Target.Name) #>To<#= T4Help.SecureName(property.SourceRolName) #> ( <#= I #><#= T4Help.SecureName(property.Target.Name) #> <#= T4Help.ToCamelCase(property.Target.Name) #> );
+        I<#= cbc.pascalSecureEntityName #> Add<#= T4Help.SecureName(property.Target.Name) #>To<#= T4Help.SecureName(property.SourceRolName) #> ( <#= I #><#= T4Help.SecureName(property.Target.Name) #> <#= T4Help.ToCamelCase(property.Target.Name) #> );
 
         /// <summary>
         /// .es Método encargado de eliminar un elemento de la collección <#= T4Help.SecureName(property.SourceRolName) #> en la entidad <#= T4Help.SecureName(property.Target.Name) #>.
@@ -281,7 +281,7 @@ namespace <#=  projectNamespace #>
         /// <value>
         /// .es Identificador a borrar <#= T4Help.SecureName(property.Target.Name) #> a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
         /// </value>
-        <#= I #><#= cbc.pascalSecureEntityName #> Remove<#= T4Help.SecureName(property.Target.Name) #>From<#= T4Help.SecureName(property.SourceRolName) #> ( <#= I #><#= T4Help.SecureName(property.Target.Name) #> <#= T4Help.ToCamelCase(property.Target.Name) #> );
+        I<#= cbc.pascalSecureEntityName #> Remove<#= T4Help.SecureName(property.Target.Name) #>From<#= T4Help.SecureName(property.SourceRolName) #> ( <#= I #><#= T4Help.SecureName(property.Target.Name) #> <#= T4Help.ToCamelCase(property.Target.Name) #> );
 
 <#+      } /* end del  if (la multiplicida minima es many)*/#>
 <#+  }/* end del foreach (var property in cbc.propertyAssociationTargets)*/#>
@@ -297,7 +297,7 @@ namespace <#=  projectNamespace #>
         /// <#= method.ProgramRemarks.Trim() #>
         /// </summary>
 <#+
-        // para la documetación de los parametros lo hacemos en dos veces, 1º para los no opcionales y 2º para los opcionales que han de tener un valor por defecto
+        // para la documentación de los parametros lo hacemos en dos veces, 1º para los no opcionales y 2º para los opcionales que han de tener un valor por defecto
         global::Microsoft.VisualStudio.Modeling.LinkedElementCollection<Parameter> ParametersList = kayak.MoneyGen.OperationHasParameters.GetParameters ( method );
         foreach (var parameter in ParametersList.Where(p => p.DefaultValue.Length==0))
         {

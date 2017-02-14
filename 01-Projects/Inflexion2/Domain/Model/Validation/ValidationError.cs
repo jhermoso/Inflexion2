@@ -6,7 +6,7 @@
 namespace Inflexion2.Domain.Validation
 {
     using System;
-
+    using System.Diagnostics.Contracts;
     /// <summary>
     /// Details of a validation error
     /// </summary>
@@ -20,14 +20,14 @@ namespace Inflexion2.Domain.Validation
         /// <param name="property">string. The property that was validated.</param>
         public ValidationError(string message, string property)
         {
-            Guard.Against<ArgumentNullException>(
-                                                string.IsNullOrEmpty(message),
-                                                "Please provide a valid non null string as the validation error message");
-            Guard.Against<ArgumentNullException>(
-                                                string.IsNullOrEmpty(property),
-                                                "Please provide a valid non null string as the validation property name");
-
-            //Contract.Requires
+            Contract.Requires<ArgumentNullException>(message != null, "Please provide a valid non null string as the validation error message");
+            Contract.Requires<ArgumentNullException>(property != null, "Please provide a valid non null string as the validation property name");
+            //Guard.Against<ArgumentNullException>(
+            //                                    string.IsNullOrEmpty(message),
+            //                                    "Please provide a valid non null string as the validation error message");
+            //Guard.Against<ArgumentNullException>(
+            //                                    string.IsNullOrEmpty(property),
+            //                                    "Please provide a valid non null string as the validation property name");
 
             this.EntityType = typeof(void); // Avoid make this.EntityType == null as to not breaking existing code.
             this.Message = message;
@@ -42,17 +42,21 @@ namespace Inflexion2.Domain.Validation
         /// <param name="property">string. The property that was validated.</param>
         public ValidationError(Type entityType, string message, string property)
         {
-            Guard.Against<ArgumentNullException>(
-                                                entityType == null,
-                                                "Please provide a valid non null Type as the validated Entity");
-            
-            Guard.Against<ArgumentNullException>(
-                                                string.IsNullOrEmpty("message"),
-                                                "Please provide a valid non null string as the validation error message");
+            Contract.Requires<ArgumentNullException>(entityType != null, "Please provide a valid non null Type as the validated Entity");
+            Contract.Requires<ArgumentNullException>(message != null, "Please provide a valid non null string as the validation error message");
+            Contract.Requires<ArgumentNullException>(property != null, "Please provide a valid non null string as the validation property name");
 
-            Guard.Against<ArgumentNullException>(
-                                                string.IsNullOrEmpty("property"),
-                                                "Please provide a valid non null string as the validation property name");
+            //Guard.Against<ArgumentNullException>(
+            //                                    entityType == null,
+            //                                    "Please provide a valid non null Type as the validated Entity");
+            
+            //Guard.Against<ArgumentNullException>(
+            //                                    string.IsNullOrEmpty("message"),
+            //                                    "Please provide a valid non null string as the validation error message");
+
+            //Guard.Against<ArgumentNullException>(
+            //                                    string.IsNullOrEmpty("property"),
+            //                                    "Please provide a valid non null string as the validation property name");
             this.EntityType = entityType;
             this.Message = message;
             this.PropertyName = property;

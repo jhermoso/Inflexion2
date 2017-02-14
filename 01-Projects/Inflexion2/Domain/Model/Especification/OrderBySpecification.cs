@@ -27,12 +27,15 @@
     public class OrderBySpecification<TEntity> : IOrderBySpecification<TEntity>
         where TEntity : class
     {
+        #region private fields
         private readonly Expression<Func<TEntity, object>> predicate;
         private readonly Expression<Func<TEntity, object>> predicate2;
 
         private bool descending;
         private bool descending2;
+        #endregion
 
+        #region constructors
         /// <summary>
         /// Default Constructor.
         /// Creates a new instance of the <see cref="Specification{TEntity}"/> instnace with the
@@ -45,7 +48,7 @@
         /// <param name="thenByDescending">if set to <c>true</c> [then by descending].</param>
         public OrderBySpecification(Expression<Func<TEntity, object>> orderBy, bool descending, Expression<Func<TEntity, object>> thenBy, bool thenByDescending)
         {
-            Guard.Against<ArgumentNullException>(orderBy == null, "Expected a non null expression as a predicate for the specification.");
+            //Guard.Against<ArgumentNullException>(orderBy == null, "Expected a non null expression as a predicate for the specification.");
 
             this.predicate = orderBy;
             this.descending = descending;
@@ -103,7 +106,9 @@
         : this(predicate, false)
         {
         }
+        #endregion
 
+        #region properties
         /// <summary>
         /// get or sets the direction of sorting
         /// </summary>
@@ -135,7 +140,9 @@
                 this.descending2 = (value == OrderDirection.Descending) ? true : false;
             }
         }
+        #endregion
 
+        #region methods
         /// <summary>
         /// apply sorting
         /// </summary>
@@ -154,5 +161,6 @@
 
             return ret;
         }
+        #endregion
     }
 }

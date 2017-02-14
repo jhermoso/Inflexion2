@@ -63,9 +63,6 @@ namespace Inflexion2.Domain
         /// </summary>
         bool IsTransient();
 
-
-
-
         #endregion
     }
 }

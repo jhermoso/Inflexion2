@@ -13,4 +13,42 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="BaseEntityDataTransferObjectOfint" nillable="true" type="tns:BaseEntityDataTransferObjectOfint" />
+  <xs:complexType name="SpecificationDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CompositeFilter" nillable="true" type="tns:CompositeFilter" />
+      <xs:element minOccurs="0" name="PageIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+      <xs:element minOccurs="0" name="SortColumn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SortOrder" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SpecificationDto" nillable="true" type="tns:SpecificationDto" />
+  <xs:complexType name="CompositeFilter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Filters" nillable="true" type="tns:ArrayOfFilter" />
+      <xs:element minOccurs="0" name="LogicalOperator" type="tns:CompositeFilterLogicalOperator" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompositeFilter" nillable="true" type="tns:CompositeFilter" />
+  <xs:complexType name="ArrayOfFilter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Filter" nillable="true" type="tns:Filter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFilter" nillable="true" type="tns:ArrayOfFilter" />
+  <xs:complexType name="Filter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Operator" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Property" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Filter" nillable="true" type="tns:Filter" />
+  <xs:simpleType name="CompositeFilterLogicalOperator">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AND" />
+      <xs:enumeration value="OR" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CompositeFilterLogicalOperator" nillable="true" type="tns:CompositeFilterLogicalOperator" />
 </xs:schema>

@@ -27,6 +27,12 @@
         where TEntity : Inflexion2.Domain.IAggregateRoot<TEntity, TIdentifier>
         where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
     {
+        /// <summary>
+        /// Service to create a new entity
+        /// </summary>
+        /// <param name="entityDto"></param>
+        /// <returns></returns>
+        Int32 Create(TDto entityDto);
 
         /// <summary>
         /// Service to ask for to remove or to deactivate the entity identified by the id

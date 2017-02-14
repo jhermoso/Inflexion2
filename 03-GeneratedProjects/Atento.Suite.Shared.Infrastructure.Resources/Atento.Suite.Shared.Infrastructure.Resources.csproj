@@ -115,6 +115,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharedNeutral.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SharedNeutral.resx</DependentUpon>
+    </Compile>
     <Compile Include="SharedResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -174,6 +179,10 @@
   <ItemGroup>
     <EmbeddedResource Include="SharedNeutral.ar.resx" />
     <EmbeddedResource Include="SharedNeutral.ja.resx" />
+    <EmbeddedResource Include="SharedNeutral.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SharedNeutral.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="SharedResources.ar.resx" />
     <EmbeddedResource Include="SharedResources.de.resx" />
     <EmbeddedResource Include="SharedResources.en.resx" />

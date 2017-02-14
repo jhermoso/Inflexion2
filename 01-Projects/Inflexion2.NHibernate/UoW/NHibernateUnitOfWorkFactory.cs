@@ -5,7 +5,7 @@
 //-----------------------------------------------------------------------------------------------
 namespace Inflexion2.Domain
 {
-    using System;
+    using System.Diagnostics.Contracts;
     using System.Data;
     using System.Data.SqlClient;
     using System.Linq;
@@ -45,86 +45,15 @@ namespace Inflexion2.Domain
         /// <param name="cacheProvider"></param>
         /// <param name="mappingAssemblies"></param>
         public NHibernateUnitOfWorkFactory(
-            DbProvider provider,
-            string connectionString,
-            string cacheProvider,
-            Assembly[] mappingAssemblies)
+                                            DbProvider provider,
+                                            string connectionString,
+                                            string cacheProvider,
+                                            Assembly[] mappingAssemblies)
         {
             _DbProvider = provider;
             _connectionString = connectionString;
 
-            FluentConfiguration cfg = null;
-
-            switch (_DbProvider)
-            {
-            case DbProvider.MSSqlProvider:
-            {
-                cfg = Fluently.Configure().Database(MsSqlConfiguration.MsSql2008
-                                                    .Raw("format_sql", "true")
-                                                    .ConnectionString(_connectionString))
-                      .ExposeConfiguration(
-                          c =>
-                          c.Properties.Add(
-                              Environment.SqlExceptionConverter,
-                              typeof(SqlExceptionHandler).AssemblyQualifiedName))
-                      .ExposeConfiguration(c => c.Properties.Add(Environment.DefaultSchema, "dbo"));
-
-                break;
-            }
-
-            case DbProvider.SQLiteProvider:
-            {
-                cfg = Fluently.Configure().Database(SQLiteConfiguration.Standard
-                                                    .Raw("format_sql", "true")
-                                                    .ConnectionString(_connectionString));
-
-                _InMemoryDatabase = _connectionString.ToUpperInvariant().Contains(":MEMORY:");
-
-                break;
-            }
-
-            case DbProvider.SqlCe:
-            {
-                cfg = Fluently.Configure().Database(MsSqlCeConfiguration.Standard
-                                                    .Raw("format_sql", "true")
-                                                    .ConnectionString(_connectionString))
-                      .ExposeConfiguration(
-                          c =>
-                          c.Properties.Add(
-                              Environment.SqlExceptionConverter,
-                              typeof(SqlExceptionHandler).AssemblyQualifiedName));
-
-                _validationSupported = false;
-
-                break;
-            }
-
-            case DbProvider.Firebird:
-            {
-                cfg = Fluently.Configure().Database(new FirebirdConfiguration()
-                                                    .Raw("format_sql", "true")
-                                                    .ConnectionString(_connectionString));
-
-                break;
-            }
-
-            case DbProvider.PostgreSqlProvider:
-            {
-                cfg = Fluently.Configure().Database(PostgreSQLConfiguration.PostgreSQL82
-                                                    .Raw("format_sql", "true")
-                                                    .ConnectionString(_connectionString));
-
-                _validationSupported = false;
-
-                break;
-            }
-            }
-
-            Guard.IsNotNull(
-                cfg,
-                string.Format(
-                    "Db provider {0} is currently not supported.",
-                    EnumExtension.GetEnumMemberValue(_DbProvider)));
+            FluentConfiguration cfg = GetConfigurationFromDbProvider();
 
             PropertyInfo pinfo = typeof(FluentConfiguration)
                                  .GetProperty(
@@ -194,6 +123,87 @@ namespace Inflexion2.Domain
             new IPreUpdateEventListener[] { new ValidateEventListener(), new AuditEventListener<TIdentifier>() }).ToArray());
 
             #endregion
+        }
+
+        private static FluentConfiguration GetConfigurationFromDbProvider()
+        {
+            Contract.Ensures(Contract.Result<FluentConfiguration>() != null, 
+                                "Db provider is currently not supported.");
+
+            FluentConfiguration cfg = null;
+
+            switch (_DbProvider)
+            {
+                case DbProvider.MSSqlProvider:
+                    {
+                        cfg = Fluently.Configure().Database(MsSqlConfiguration.MsSql2008
+                                                            .Raw("format_sql", "true")
+                                                            .ConnectionString(_connectionString))
+                              .ExposeConfiguration(
+                                  c =>
+                                  c.Properties.Add(
+                                      Environment.SqlExceptionConverter,
+                                      typeof(SqlExceptionHandler).AssemblyQualifiedName))
+                              .ExposeConfiguration(c => c.Properties.Add(Environment.DefaultSchema, "dbo"));
+
+                        break;
+                    }
+
+                case DbProvider.SQLiteProvider:
+                    {
+                        cfg = Fluently.Configure().Database(SQLiteConfiguration.Standard
+                                                            .Raw("format_sql", "true")
+                                                            .ConnectionString(_connectionString));
+
+                        _InMemoryDatabase = _connectionString.ToUpperInvariant().Contains(":MEMORY:");
+
+                        break;
+                    }
+
+                case DbProvider.SqlCe:
+                    {
+                        cfg = Fluently.Configure().Database(MsSqlCeConfiguration.Standard
+                                                            .Raw("format_sql", "true")
+                                                            .ConnectionString(_connectionString))
+                              .ExposeConfiguration(
+                                  c =>
+                                  c.Properties.Add(
+                                      Environment.SqlExceptionConverter,
+                                      typeof(SqlExceptionHandler).AssemblyQualifiedName));
+
+                        _validationSupported = false;
+
+                        break;
+                    }
+
+                case DbProvider.Firebird:
+                    {
+                        cfg = Fluently.Configure().Database(new FirebirdConfiguration()
+                                                            .Raw("format_sql", "true")
+                                                            .ConnectionString(_connectionString));
+
+                        break;
+                    }
+
+                case DbProvider.PostgreSqlProvider:
+                    {
+                        cfg = Fluently.Configure().Database(PostgreSQLConfiguration.PostgreSQL82
+                                                            .Raw("format_sql", "true")
+                                                            .ConnectionString(_connectionString));
+
+                        _validationSupported = false;
+
+                        break;
+                    }
+            }
+
+            //Guard.IsNotNull(
+            //    cfg,
+            //    string.Format(
+            //        "Db provider {0} is currently not supported.",
+            //        EnumExtension.GetEnumMemberValue(_DbProvider)));
+
+            return cfg;
         }
 
         internal NHibernateUnitOfWorkFactory()

@@ -58,6 +58,8 @@
     <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
     <DocumentationFile>..\..\00-Documentation\Atento.Suite.Shared.Application.WcfClient.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+    <NoWarn>CS1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -185,9 +187,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\PersonaReference\Inflexion2.Application.DataTransfer.Base.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PersonaReference\Inflexion2.Application.DataTransfer.Core.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\PersonaReference\Inflexion2.Domain.xsd">

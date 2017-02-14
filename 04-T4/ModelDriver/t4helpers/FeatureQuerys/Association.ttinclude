@@ -16,7 +16,8 @@
 
         if (association.Target is Enumeration)
             versionInterface = false;
-
+        if (association.Source is Enumeration)
+            versionInterface = false;
 
 //
         //// Controlamos si la multiplicidad del target es igual a uno 
