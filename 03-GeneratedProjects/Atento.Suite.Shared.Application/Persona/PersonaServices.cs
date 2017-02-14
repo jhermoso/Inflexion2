@@ -25,7 +25,7 @@ namespace Atento.Suite.Shared.Application
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    //using System.Linq.Expressions;
+    using System.Linq.Expressions;
     using System.Text;
     using System.Globalization;
     using System.Reflection;
@@ -36,7 +36,6 @@ namespace Atento.Suite.Shared.Application
 
     using Inflexion2.Domain;
     using Inflexion2.Application;
-    using Inflexion2.Application;//.DataTransfer.Core;
     using Inflexion2;
     using Inflexion2.Domain.Specification;
     using Inflexion2.Logging;
@@ -264,7 +263,7 @@ namespace Atento.Suite.Shared.Application
         /// <returns>
         /// La entidad Persona recuperada o valor nulo si no se encuentra.
         /// </returns>
-        public PersonaDto GetById(Int32 entityBId)
+        public PersonaDto GetById(Int32 id)
         {
             // Variable de respuesta.
             PersonaDto entityDto = null;
@@ -275,8 +274,8 @@ namespace Atento.Suite.Shared.Application
 
                 // Obtener y comprobar la entidad.
                 //ISpecification<Persona> spec = new DirectSpecification<Persona>(t => t.Id == entityBId);
-                var temp = repo.GetFilteredElements(t => t.Id == entityBId);
-                //string s = string.Format(Inflexion2.Resources.NoDataById, "Person", entityBId);
+                var temp = repo.GetFilteredElements(t => t.Id == id);
+                //string s = string.Format(Inflexion2.Resources.NoDataById, "Person", id);
 
                 //Guard.ArgumentIsNotNull( entity, s );
 
@@ -459,6 +458,9 @@ namespace Atento.Suite.Shared.Application
         #endregion
 
 
+        /// <summary>
+        /// adapter of commit operation independent form the ORM
+        /// </summary>
         public void Commit()
         {
             if (unitOfWork == null) unitOfWork = ApplicationLayer.IocContainer.Resolve<IUnitOfWork>();

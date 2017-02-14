@@ -28,7 +28,7 @@ namespace Atento.Suite.Shared.Application.WcfService.Contracts
     using System.ServiceModel;
 
     using Inflexion2.Domain;
-    using Inflexion2.Application;//.DataTransfer.Core;
+    using Inflexion2.Application;
     //using Inflexion.Framework.Application.Security.Data.Base;
     using Atento.Suite.Shared.Application.Dtos;
     #endregion
@@ -121,7 +121,7 @@ namespace Atento.Suite.Shared.Application.WcfService.Contracts
         /// <param name="personaId">
         /// Parámetro que indica el identificador único de la entidad cuya
         /// información se desea obtener.
-        // </param>
+        /// </param>
         /// <returns>
         /// Devuelve objeto dto <see cref="PersonaDto"/> con la información
         /// requerida.

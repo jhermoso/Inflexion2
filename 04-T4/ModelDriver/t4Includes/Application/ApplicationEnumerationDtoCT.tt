@@ -47,7 +47,6 @@ namespace <#= projectNamespace #>
         centinela++;
 #>
         //<#= (!string.IsNullOrEmpty(enumerado.Description.Trim()))?"[Description(\""+ enumerado.Description.Trim() +"\")]":"" #>
-        //<#= T4Help.ToPascalCase(enumerado.Value) #> = <#= enumerado.Sorting.ToString() #><#= (centinela < totalEnum)?",":"" #>
         [EnumMember] // los valores que no sea precedidos por estos atributos no pueden serializarse.
         <#= T4Help.ToPascalCase(enumerado.Value) #> = <#= enumerado.Sorting.ToString() #><#= (centinela < totalEnum)?",":"" #>
 <#+

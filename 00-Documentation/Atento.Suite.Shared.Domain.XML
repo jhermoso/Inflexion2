@@ -4,8 +4,21 @@
     <name>Atento.Suite.Shared.Domain</name>
   </assembly>
   <members>
-    <!-- Badly formed XML comment ignored for member "T:Atento.Suite.Shared.Domain.Categoria" -->
-    <!-- Badly formed XML comment ignored for member "M:Atento.Suite.Shared.Domain.Categoria.#ctor" -->
+    <member name="T:Atento.Suite.Shared.Domain.Categoria">
+      <summary>
+        <see cref="T:Atento.Suite.Shared.Domain.Categoria" />
+      </summary>
+    </member>
+    <member name="M:Atento.Suite.Shared.Domain.Categoria.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:Atento.Suite.Shared.Domain.Categoria" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:Atento.Suite.Shared.Domain.Categoria" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
     <member name="P:Atento.Suite.Shared.Domain.Categoria.Name">
       <summary>
             Propiedad pública que permite obtener Name.
@@ -60,7 +73,17 @@
             .es Interfaz que representa  una entidad implementado enCategoria/&gt;.
             </remarks>
     </member>
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.ICategoria.Name" -->
+    <member name="P:Atento.Suite.Shared.Domain.ICategoria.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
     <member name="T:Atento.Suite.Shared.Domain.ICategoriaRepository">
       <summary>
             Interfaz repositorio para persistir y obtener información a partir
@@ -97,31 +120,218 @@
             .es Interfaz que representa  una entidad implementado enPersona/&gt;.
             </remarks>
     </member>
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.Nombre" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.BooleanField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.DatetimeField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.ByteField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.GuidField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.DecimalField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.DobleField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.FloatField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.IntField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.LongField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.DateTimeOffsetField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.ShortField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.TimeSpanField" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.Int16Field" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.Int32Field" -->
-    <!-- Badly formed XML comment ignored for member "P:Atento.Suite.Shared.Domain.IPersona.Int64Field" -->
+    <member name="P:Atento.Suite.Shared.Domain.IPersona.Nombre">
+      <summary>
+            .en Property to get and set Nombre.
+            .es Propiedad que permite obtener y establecer Nombre.
+            </summary>
+      <remarks>
+            Test with auto property and public setter.
+            </remarks>
+      <value>
+            .en Value used to get and set Nombre.
+            .es Valor que es utilizado para obtener y establecer Nombre.
+            </value>
+    </member>
+    <member name="P:Atento.Suite.Shared.Domain.IPersona.BooleanField">
+      <summary>
+            .en Property to get and set BooleanField.
+            .es Propiedad que permite obtener y establecer BooleanField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set BooleanField.
+            .es Valor que es utilizado para obtener y establecer BooleanField.
+            </value>
+    </member>
+    <member name="P:Atento.Suite.Shared.Domain.IPersona.DatetimeField">
+      <summary>
+            .en Property to get and set DatetimeField.
+            .es Propiedad que permite obtener y establecer DatetimeField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set DatetimeField.
+            .es Valor que es utilizado para obtener y establecer DatetimeField.
+            </value>
+    </member>
+    <member name="P:Atento.Suite.Shared.Domain.IPersona.ByteField">
+      <summary>
+            .en Property to get and set ByteField.
+            .es Propiedad que permite obtener y establecer ByteField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set ByteField.
+            .es Valor que es utilizado para obtener y establecer ByteField.
+            </value>
+    </member>
+    <member name="P:Atento.Suite.Shared.Domain.IPersona.GuidField">
+      <summary>
+            .en Property to get and set GuidField.
+            .es Propiedad que permite obtener y establecer GuidField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set GuidField.
+            .es Valor que es utilizado para obtener y establecer GuidField.
+            </value>
+    </member>
+    <member name="P:Atento.Suite.Shared.Domain.IPersona.DecimalField">
+      <summary>
+            .en Property to get and set DecimalField.
+            .es Propiedad que permite obtener y establecer DecimalField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set DecimalField.
+            .es Valor que es utilizado para obtener y establecer DecimalField.
+            </value>
+    </member>
+    <member name="P:Atento.Suite.Shared.Domain.IPersona.DobleField">
+      <summary>
+            .en Property to get and set DobleField.
+            .es Propiedad que permite obtener y establecer DobleField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set DobleField.
+            .es Valor que es utilizado para obtener y establecer DobleField.
+            </value>
+    </member>
+    <member name="P:Atento.Suite.Shared.Domain.IPersona.FloatField">
+      <summary>
+            .en Property to get and set FloatField.
+            .es Propiedad que permite obtener y establecer FloatField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set FloatField.
+            .es Valor que es utilizado para obtener y establecer FloatField.
+            </value>
+    </member>
+    <member name="P:Atento.Suite.Shared.Domain.IPersona.IntField">
+      <summary>
+            .en Property to get and set IntField.
+            .es Propiedad que permite obtener y establecer IntField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set IntField.
+            .es Valor que es utilizado para obtener y establecer IntField.
+            </value>
+    </member>
+    <member name="P:Atento.Suite.Shared.Domain.IPersona.LongField">
+      <summary>
+            .en Property to get and set LongField.
+            .es Propiedad que permite obtener y establecer LongField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set LongField.
+            .es Valor que es utilizado para obtener y establecer LongField.
+            </value>
+    </member>
+    <member name="P:Atento.Suite.Shared.Domain.IPersona.DateTimeOffsetField">
+      <summary>
+            .en Property to get and set DateTimeOffsetField.
+            .es Propiedad que permite obtener y establecer DateTimeOffsetField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set DateTimeOffsetField.
+            .es Valor que es utilizado para obtener y establecer DateTimeOffsetField.
+            </value>
+    </member>
+    <member name="P:Atento.Suite.Shared.Domain.IPersona.ShortField">
+      <summary>
+            .en Property to get and set ShortField.
+            .es Propiedad que permite obtener y establecer ShortField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set ShortField.
+            .es Valor que es utilizado para obtener y establecer ShortField.
+            </value>
+    </member>
+    <member name="P:Atento.Suite.Shared.Domain.IPersona.TimeSpanField">
+      <summary>
+            .en Property to get and set TimeSpanField.
+            .es Propiedad que permite obtener y establecer TimeSpanField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set TimeSpanField.
+            .es Valor que es utilizado para obtener y establecer TimeSpanField.
+            </value>
+    </member>
+    <member name="P:Atento.Suite.Shared.Domain.IPersona.Int16Field">
+      <summary>
+            .en Property to get and set Int16Field.
+            .es Propiedad que permite obtener y establecer Int16Field.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Int16Field.
+            .es Valor que es utilizado para obtener y establecer Int16Field.
+            </value>
+    </member>
+    <member name="P:Atento.Suite.Shared.Domain.IPersona.Int32Field">
+      <summary>
+            .en Property to get and set Int32Field.
+            .es Propiedad que permite obtener y establecer Int32Field.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Int32Field.
+            .es Valor que es utilizado para obtener y establecer Int32Field.
+            </value>
+    </member>
+    <member name="P:Atento.Suite.Shared.Domain.IPersona.Int64Field">
+      <summary>
+            .en Property to get and set Int64Field.
+            .es Propiedad que permite obtener y establecer Int64Field.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Int64Field.
+            .es Valor que es utilizado para obtener y establecer Int64Field.
+            </value>
+    </member>
     <member name="T:Atento.Suite.Shared.Domain.IPersonaRepository">
       <summary>
             Interfaz repositorio para persistir y obtener información a partir
             de entidades <see cref="T:Atento.Suite.Shared.Domain.IPersona" />.
             </summary>
     </member>
-    <!-- Badly formed XML comment ignored for member "T:Atento.Suite.Shared.Domain.Persona" -->
-    <!-- Badly formed XML comment ignored for member "M:Atento.Suite.Shared.Domain.Persona.#ctor" -->
-    <!-- Badly formed XML comment ignored for member "M:Atento.Suite.Shared.Domain.Persona.#ctor(System.String)" -->
+    <member name="T:Atento.Suite.Shared.Domain.Persona">
+      <summary>
+        <see cref="T:Atento.Suite.Shared.Domain.Persona" />
+      </summary>
+    </member>
+    <member name="M:Atento.Suite.Shared.Domain.Persona.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:Atento.Suite.Shared.Domain.Persona" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:Atento.Suite.Shared.Domain.Persona" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="M:Atento.Suite.Shared.Domain.Persona.#ctor(System.String)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Atento.Suite.Shared.Domain.Persona" />.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:Atento.Suite.Shared.Domain.Persona" />.
+            </remarks>
+      <param name="nombre"> 
+            Parametro <see cref="P:Atento.Suite.Shared.Domain.Persona.Nombre" /> del constructor de campos mandatory de la clase <see cref="T:Atento.Suite.Shared.Domain.Persona" />
+            Propiedad deducida del rol source de una relación
+            </param>
+    </member>
     <member name="P:Atento.Suite.Shared.Domain.Persona.Nombre">
       <summary>
             Propiedad pública que permite obtener Nombre.

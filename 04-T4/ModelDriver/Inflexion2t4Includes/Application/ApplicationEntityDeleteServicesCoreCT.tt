@@ -30,6 +30,10 @@ public class ApplicationEntityDeleteServicesCoreCT : Template
 
         var cpyrigth = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity, T4Help.getLeftStringSlice(this.ToString(), '+', -1).Substring(1));
         string cpyrigthText = cpyrigth.TransformText();
+
+		bool Secured = cbc.MainEntityStereotype.Contains("Bussiness"); // si es una entidad de negocio entoces esta securizada es decir necesita identificación y autorización
+        bool Trazable = cbc.MainEntityStereotype.Contains("Bussiness") || cbc.MainEntityStereotype.Contains("Auditable"); // si es una entidad de negocio entoces esta securizada es decir necesita identificación y autorización
+
 #>
 <#= cpyrigthText #>
 namespace <#= projectNamespace #>
@@ -76,10 +80,10 @@ foreach (var item in sharedKernelUsings)
             /// </remarks>
             /// <param name="<#= cbc.pascalSecureEntityName #>Id">
             /// Parámetro que indica el identificador único de la entidad.
-            /// </param>
+            /// </param><#+if (Secured){ #>
             /// <param name="userContextDto">
             /// Parámetro de tipo <see cref="UserContextDto"/> que representa el contexto del usuario.
-            /// </param>
+            /// </param><#+ }#>
             /// <exception cref="System.ArgumentNullException">
             /// Lanzada cuando el valor del argumento de entrada <c>userContextDto<c> es <b>null</b>.
             /// </exception>

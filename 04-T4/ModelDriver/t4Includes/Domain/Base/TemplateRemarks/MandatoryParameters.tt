@@ -35,7 +35,7 @@ if(cbc.TotalMandatoryProperties>0)     // el identificador es siempre mandatory 
         {
 #>
         /// <param name="<#= T4Help.ToCamelCase(property.AtributteName) #>"> 
-        /// Parametro <see cref="<#= cbc.pascalSecureEntityName #>.<#= T4Help.ToPascalCase(property.AtributteName) #>/> del constructor de campos mandatory de la clase <see cref="<#= cbc.pascalSecureEntityName #>"/>
+        /// Parametro <see cref="<#= cbc.pascalSecureEntityName #>.<#= T4Help.ToPascalCase(property.AtributteName) #>""/> del constructor de campos mandatory de la clase <see cref="<#= cbc.pascalSecureEntityName #>"/>
         /// Propiedad deducida del rol source de una relación
         /// </param>
 <#+
@@ -59,7 +59,7 @@ if(cbc.TotalMandatoryProperties>0)     // el identificador es siempre mandatory 
             if(string.IsNullOrEmpty(property.TargetRolName))                 {                    continue;                }
 #>
         /// <param name="<#= T4Help.ToCamelCase(property.TargetRolName) #>">
-        /// Parametro <see cref="<#= cbc.pascalSecureEntityName #>.<#= T4Help.ToPascalCase(property.TargetRolName) #>/> del constructor de campos mandatory de la clase <see cref="<#= cbc.pascalSecureEntityName #>"/>
+        /// Parametro <see cref="<#= cbc.pascalSecureEntityName #>.<#= T4Help.ToPascalCase(property.TargetRolName) #>"/> del constructor de campos mandatory de la clase <see cref="<#= cbc.pascalSecureEntityName #>"/>
         /// Propiedad <#= (IsMaxMultiplicityMany(property.TargetMultiplicity))?" de colección":"de unica instancia" #> deducida del target rol source de una relación
         /// </param>
 <#+ 

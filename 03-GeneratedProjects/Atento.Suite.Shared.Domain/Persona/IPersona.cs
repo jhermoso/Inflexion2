@@ -42,194 +42,194 @@ namespace Atento.Suite.Shared.Domain
 
         #region Properties
         /// <summary>
-        /// .en Property to get & set Nombre.
+        /// .en Property to get and set Nombre.
         /// .es Propiedad que permite obtener y establecer Nombre.
         /// </summary>
         /// <remarks>
         /// Test with auto property and public setter.
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set Nombre.
+        /// .en Value used to get and set Nombre.
         /// .es Valor que es utilizado para obtener y establecer Nombre.
         /// </value>
         string Nombre { get; set; }
         /// <summary>
-        /// .en Property to get & set BooleanField.
+        /// .en Property to get and set BooleanField.
         /// .es Propiedad que permite obtener y establecer BooleanField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set BooleanField.
+        /// .en Value used to get and set BooleanField.
         /// .es Valor que es utilizado para obtener y establecer BooleanField.
         /// </value>
         bool BooleanField { get; set; }
         /// <summary>
-        /// .en Property to get & set DatetimeField.
+        /// .en Property to get and set DatetimeField.
         /// .es Propiedad que permite obtener y establecer DatetimeField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set DatetimeField.
+        /// .en Value used to get and set DatetimeField.
         /// .es Valor que es utilizado para obtener y establecer DatetimeField.
         /// </value>
         DateTime DatetimeField { get; set; }
         /// <summary>
-        /// .en Property to get & set ByteField.
+        /// .en Property to get and set ByteField.
         /// .es Propiedad que permite obtener y establecer ByteField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set ByteField.
+        /// .en Value used to get and set ByteField.
         /// .es Valor que es utilizado para obtener y establecer ByteField.
         /// </value>
         byte ByteField { get; set; }
         /// <summary>
-        /// .en Property to get & set GuidField.
+        /// .en Property to get and set GuidField.
         /// .es Propiedad que permite obtener y establecer GuidField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set GuidField.
+        /// .en Value used to get and set GuidField.
         /// .es Valor que es utilizado para obtener y establecer GuidField.
         /// </value>
         Guid GuidField { get; set; }
         /// <summary>
-        /// .en Property to get & set DecimalField.
+        /// .en Property to get and set DecimalField.
         /// .es Propiedad que permite obtener y establecer DecimalField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set DecimalField.
+        /// .en Value used to get and set DecimalField.
         /// .es Valor que es utilizado para obtener y establecer DecimalField.
         /// </value>
         decimal DecimalField { get; set; }
         /// <summary>
-        /// .en Property to get & set DobleField.
+        /// .en Property to get and set DobleField.
         /// .es Propiedad que permite obtener y establecer DobleField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set DobleField.
+        /// .en Value used to get and set DobleField.
         /// .es Valor que es utilizado para obtener y establecer DobleField.
         /// </value>
         double DobleField { get; set; }
         /// <summary>
-        /// .en Property to get & set FloatField.
+        /// .en Property to get and set FloatField.
         /// .es Propiedad que permite obtener y establecer FloatField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set FloatField.
+        /// .en Value used to get and set FloatField.
         /// .es Valor que es utilizado para obtener y establecer FloatField.
         /// </value>
         float FloatField { get; set; }
         /// <summary>
-        /// .en Property to get & set IntField.
+        /// .en Property to get and set IntField.
         /// .es Propiedad que permite obtener y establecer IntField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set IntField.
+        /// .en Value used to get and set IntField.
         /// .es Valor que es utilizado para obtener y establecer IntField.
         /// </value>
         int IntField { get; set; }
         /// <summary>
-        /// .en Property to get & set LongField.
+        /// .en Property to get and set LongField.
         /// .es Propiedad que permite obtener y establecer LongField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set LongField.
+        /// .en Value used to get and set LongField.
         /// .es Valor que es utilizado para obtener y establecer LongField.
         /// </value>
         long LongField { get; set; }
         /// <summary>
-        /// .en Property to get & set DateTimeOffsetField.
+        /// .en Property to get and set DateTimeOffsetField.
         /// .es Propiedad que permite obtener y establecer DateTimeOffsetField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set DateTimeOffsetField.
+        /// .en Value used to get and set DateTimeOffsetField.
         /// .es Valor que es utilizado para obtener y establecer DateTimeOffsetField.
         /// </value>
         DateTimeOffset DateTimeOffsetField { get; set; }
         /// <summary>
-        /// .en Property to get & set ShortField.
+        /// .en Property to get and set ShortField.
         /// .es Propiedad que permite obtener y establecer ShortField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set ShortField.
+        /// .en Value used to get and set ShortField.
         /// .es Valor que es utilizado para obtener y establecer ShortField.
         /// </value>
         short ShortField { get; set; }
         /// <summary>
-        /// .en Property to get & set TimeSpanField.
+        /// .en Property to get and set TimeSpanField.
         /// .es Propiedad que permite obtener y establecer TimeSpanField.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set TimeSpanField.
+        /// .en Value used to get and set TimeSpanField.
         /// .es Valor que es utilizado para obtener y establecer TimeSpanField.
         /// </value>
         TimeSpan TimeSpanField { get; set; }
         /// <summary>
-        /// .en Property to get & set Int16Field.
+        /// .en Property to get and set Int16Field.
         /// .es Propiedad que permite obtener y establecer Int16Field.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set Int16Field.
+        /// .en Value used to get and set Int16Field.
         /// .es Valor que es utilizado para obtener y establecer Int16Field.
         /// </value>
         Int16 Int16Field { get; set; }
         /// <summary>
-        /// .en Property to get & set Int32Field.
+        /// .en Property to get and set Int32Field.
         /// .es Propiedad que permite obtener y establecer Int32Field.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set Int32Field.
+        /// .en Value used to get and set Int32Field.
         /// .es Valor que es utilizado para obtener y establecer Int32Field.
         /// </value>
         Int32 Int32Field { get; set; }
         /// <summary>
-        /// .en Property to get & set Int64Field.
+        /// .en Property to get and set Int64Field.
         /// .es Propiedad que permite obtener y establecer Int64Field.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <value>
-        /// .en Value used to get & set Int64Field.
+        /// .en Value used to get and set Int64Field.
         /// .es Valor que es utilizado para obtener y establecer Int64Field.
         /// </value>
         Int64 Int64Field { get; set; }

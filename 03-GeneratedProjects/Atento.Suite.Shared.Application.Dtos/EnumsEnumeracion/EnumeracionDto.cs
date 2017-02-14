@@ -22,13 +22,15 @@ namespace Atento.Suite.Shared.Application.Dtos
     using System.ComponentModel;
 
     /// <summary>
-    /// 
+    /// Enumeration user remarks
     /// </summary>    
     [DataContract(Name = "Enumeracion")]
     public enum EnumeracionDto 
     {
     
-        //
+		/// <summary>
+        /// [Description("Description")]
+		/// </summary> 
         //Valor1 = 0
         [EnumMember] // los valores que no sea precedidos por estos atributos no pueden serializarse.
         Valor1 = 0

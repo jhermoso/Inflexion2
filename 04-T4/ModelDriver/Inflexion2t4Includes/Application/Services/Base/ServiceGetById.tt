@@ -28,7 +28,7 @@ public class ServiceGetById : Template
         /// <returns>
         /// La entidad <#= cbc.pascalSecureEntityName #> recuperada o valor nulo si no se encuentra.
         /// </returns>
-        public <#= cbc.pascalSecureEntityName #>Dto GetById(<#=cbc.idtype #> entityBId<#=(Secured)?", UserContextDto userContextDto":"" #>)
+        public <#= cbc.pascalSecureEntityName #>Dto GetById(<#=cbc.idtype #> id<#=(Secured)?", UserContextDto userContextDto":"" #>)
         {
             // Variable de respuesta.
             <#= cbc.pascalSecureEntityName #>Dto entityDto = null;
@@ -39,8 +39,8 @@ public class ServiceGetById : Template
 
                 // Obtener y comprobar la entidad.
                 //ISpecification<<#= cbc.pascalSecureEntityName #>> spec = new DirectSpecification<<#= cbc.pascalSecureEntityName #>>(t => t.Id == entityBId);
-                var temp = repo.GetFilteredElements(t => t.Id == entityBId);
-                //string s = string.Format(Inflexion2.Resources.NoDataById, "<#= cbc.entity.AliasFrontEnd #>", entityBId);
+                var temp = repo.GetFilteredElements(t => t.Id == id);
+                //string s = string.Format(Inflexion2.Resources.NoDataById, "<#= cbc.entity.AliasFrontEnd #>", id);
 
                 //Guard.ArgumentIsNotNull( entity, s );
 

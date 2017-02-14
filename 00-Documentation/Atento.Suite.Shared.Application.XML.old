@@ -130,6 +130,11 @@
             Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
             </returns>
         </member>
+        <member name="M:Atento.Suite.Shared.Application.CategoriaServices.Commit">
+            <summary>
+            adapter of commit operation independent form the ORM
+            </summary>
+        </member>
         <member name="T:Atento.Suite.Shared.Application.ICategoriaMapper">
             <summary>
             Clase pública encargada de mapear los datos de una entidad <see cref="T:Atento.Suite.Shared.Application.CategoriaMapper"/>.
@@ -153,11 +158,7 @@
             <param name="categoriaDto">
             Parámetro de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.CategoriaDto"/> con los datos necesarios
             para la creación de la entidad Categoria.
-            </param>
-            <param name="userContextDto"> 
-            Parámetro de tipo <see cref="!:UserContextDto"/> que representa el contexto del usuario.
-            </param>
-            <exception cref="T:System.ArgumentNullException">
+            </param>        /// <exception cref="T:System.ArgumentNullException">
             Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
             </exception>
             <returns>
@@ -173,11 +174,7 @@
             </remarks>
             <param name="CategoriaId">
             Parámetro que indica el identificador único de la entidad.
-            </param>
-            <param name="userContextDto">
-            Parámetro de tipo <see cref="!:UserContextDto"/> que representa el contexto del usuario.
-            </param>
-            <exception cref="T:System.ArgumentNullException">
+            </param>        /// <exception cref="T:System.ArgumentNullException">
             Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
             </exception>
             <returns>
@@ -191,11 +188,7 @@
             </summary>
             <remarks>
             Devuelve la totalidad de las entidades.
-            </remarks>
-            <param name="userContextDto">
-            Parámetro de tipo <see cref="!:UserContextDto"/> que representa el contexto del usuario.
-            </param>
-            <returns>
+            </remarks>        /// <returns>
             Devuelve listado de Dto´s de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.CategoriaDto"/>.
             </returns>
         </member>
@@ -205,11 +198,7 @@
             </summary>
             <param name="specificationDto">
             Especificación que se va a aplicar.
-            </param>
-            <param name="userContextDto">
-            Información de contexto del usuario.
-            </param>
-            <returns>
+            </param>        /// <returns>
             La lista paginada de entidades Categoria, según la especificación indicada.
             </returns>
         </member>
@@ -231,11 +220,7 @@
             </summary>
             <param name="categoriaDto">
             DTO que contiene la información de la entidad que se va a actualizar.
-            </param>
-            <param name="userContextDto">
-            Información de contexto del usuario.
-            </param>
-            <returns>
+            </param>        /// <returns>
             Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
             </returns>
         </member>
@@ -262,11 +247,7 @@
             <param name="personaDto">
             Parámetro de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.PersonaDto"/> con los datos necesarios
             para la creación de la entidad Persona.
-            </param>
-            <param name="userContextDto"> 
-            Parámetro de tipo <see cref="!:UserContextDto"/> que representa el contexto del usuario.
-            </param>
-            <exception cref="T:System.ArgumentNullException">
+            </param>        /// <exception cref="T:System.ArgumentNullException">
             Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
             </exception>
             <returns>
@@ -282,11 +263,7 @@
             </remarks>
             <param name="PersonaId">
             Parámetro que indica el identificador único de la entidad.
-            </param>
-            <param name="userContextDto">
-            Parámetro de tipo <see cref="!:UserContextDto"/> que representa el contexto del usuario.
-            </param>
-            <exception cref="T:System.ArgumentNullException">
+            </param>        /// <exception cref="T:System.ArgumentNullException">
             Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
             </exception>
             <returns>
@@ -300,11 +277,7 @@
             </summary>
             <remarks>
             Devuelve la totalidad de las entidades.
-            </remarks>
-            <param name="userContextDto">
-            Parámetro de tipo <see cref="!:UserContextDto"/> que representa el contexto del usuario.
-            </param>
-            <returns>
+            </remarks>        /// <returns>
             Devuelve listado de Dto´s de tipo <see cref="T:Atento.Suite.Shared.Application.Dtos.PersonaDto"/>.
             </returns>
         </member>
@@ -314,11 +287,7 @@
             </summary>
             <param name="specificationDto">
             Especificación que se va a aplicar.
-            </param>
-            <param name="userContextDto">
-            Información de contexto del usuario.
-            </param>
-            <returns>
+            </param>        /// <returns>
             La lista paginada de entidades Persona, según la especificación indicada.
             </returns>
         </member>
@@ -340,11 +309,7 @@
             </summary>
             <param name="personaDto">
             DTO que contiene la información de la entidad que se va a actualizar.
-            </param>
-            <param name="userContextDto">
-            Información de contexto del usuario.
-            </param>
-            <returns>
+            </param>        /// <returns>
             Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
             </returns>
         </member>
@@ -473,6 +438,11 @@
             <returns>
             Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
             </returns>
+        </member>
+        <member name="M:Atento.Suite.Shared.Application.PersonaServices.Commit">
+            <summary>
+            adapter of commit operation independent form the ORM
+            </summary>
         </member>
     </members>
 </doc>

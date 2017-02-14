@@ -33,7 +33,7 @@ namespace Atento.Suite.Shared.Domain
     #endregion
 
     /// <summary>
-    /// <see cref="Persona".
+    /// <see cref="Persona"/>
     /// </summary>
     [Serializable]
     public partial class Persona : Inflexion2.Domain.AggregateRoot<Persona, Int32>, IPersona
@@ -45,8 +45,8 @@ namespace Atento.Suite.Shared.Domain
         #region Constructors
 
         /// <summary>
-        /// .en Empty Constructor for the class <see cref="Persona" it is required by nHibernate and EntityFramework.
-        /// .es Constructor vacio de la clase <see cref="Persona" exigido por nHibernate o EntityFramework.
+        /// .en Empty Constructor for the class <see cref="Persona"/> it is required by nHibernate and EntityFramework.
+        /// .es Constructor vacio de la clase <see cref="Persona"/> exigido por nHibernate o EntityFramework.
         /// </summary>
         /// <remarks>
         /// .en by convention the empty constructor initialize the default values and make the news for the collections.
@@ -55,19 +55,15 @@ namespace Atento.Suite.Shared.Domain
         protected internal Persona()                
         {
         } // end empty constructor Persona
-
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Persona"/>.
         /// con un constructor parametrizado con los campos de tipo mandatory.
         /// </summary>
         /// <remarks>
         /// Constructor de la clase <see cref="Persona"/>.
-        /// </remarks>
-        /// <param name="Id">
-        /// Parámetro que indica el identificador raiz de la entidad.
-        /// </param>
+		/// </remarks>
         /// <param name="nombre"> 
-        /// Parametro <see cref="Persona.Nombre/> del constructor de campos mandatory de la clase <see cref="Persona"/>
+        /// Parametro <see cref="Persona.Nombre"/> del constructor de campos mandatory de la clase <see cref="Persona"/>
         /// Propiedad deducida del rol source de una relación
         /// </param>
         protected internal Persona( string nombre ) :  this()  //cbc.isDerivedFromOneEntity ='False', IsDerived(cbc.entitySuperClass ) = ''

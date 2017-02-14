@@ -8,7 +8,7 @@ public void HexaCoreControlCodeGeneration(DslContextDefinitionDiagram MainDiagra
     string bdName = MainDiagram.SolutionFolderCommon; // este es el parametro que junto con diagrama, solución y arq pasamos como parametros a las clases de plantillas de generación.
     string secureBdName = bdName.Replace('\\','.');
     // VARIABLES INTERNAS
-    string OutputFile= null;  // nombre del fichero output donde vamos a escribir el fuente correspondiente
+    string OutputFile = null;  // nombre del fichero output donde vamos a escribir el fuente correspondiente
     string prjName= null;
     Project prj;              // proyecto donde se escribe el codigo fuente
     

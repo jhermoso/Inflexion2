@@ -28,7 +28,7 @@ public class HeaderClass : Template
         }
 #>
     /// <summary>
-    /// <see cref="<#= I #><#= cbc.pascalSecureEntityName #>".
+    /// <see cref="<#= I #><#= cbc.pascalSecureEntityName #>"/>
     /// </summary>
     [Serializable]
     <#= cbc.accesModifier #>class <#= cbc.pascalSecureEntityName #> : <#= (cbc.isDerivedFromOneEntity)? cbc.parentEntityName : baseEntity /*cbc.entityBase*/ #>, I<#= cbc.pascalSecureEntityName #>

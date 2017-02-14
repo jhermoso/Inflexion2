@@ -102,14 +102,14 @@ namespace <#=  projectNamespace #>
 #>
 <#+     if(property.LiveCycleAtributte.Equals(LiveCycleAtributte.Variable) ) { // || property.LiveCycleAtributte.Equals(LiveCycleAtributte.Derivado) no incluimos los derivados porque no pueden ser públicos. #>
         /// <summary>
-        /// .en Property to <#= (property.OnlyGetProperty)?"get":"get & set" #> <#= T4Help.SecureName(property.AtributteName) #>.
+        /// .en Property to <#= (property.OnlyGetProperty)?"get":"get and set" #> <#= T4Help.SecureName(property.AtributteName) #>.
         /// .es Propiedad que permite <#= (property.OnlyGetProperty)?"obtener":"obtener y establecer" #> <#= T4Help.SecureName(property.AtributteName) #>.
         /// </summary>
         /// <remarks>
         /// <#= property.ProgramerRemarks #>
         /// </remarks>
         /// <value>
-        /// .en Value used to <#= (property.OnlyGetProperty)?"get":"get & set" #> <#= T4Help.SecureName(property.AtributteName) #>.
+        /// .en Value used to <#= (property.OnlyGetProperty)?"get":"get and set" #> <#= T4Help.SecureName(property.AtributteName) #>.
         /// .es Valor que es utilizado para <#= (property.OnlyGetProperty)?"obtener":"obtener y establecer" #> <#= T4Help.SecureName(property.AtributteName) #>.
         /// </value>
         <#= property.AtributteType #><#= (property.IsNullable & cbc.propertyIsValueType )?"?":"" #> <#= T4Help.ToPascalCase(property.AtributteName) #> { <#= (property.OnlyGetProperty)?"get;":"get; set;" #> }

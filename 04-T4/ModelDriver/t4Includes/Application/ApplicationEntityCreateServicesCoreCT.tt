@@ -72,10 +72,10 @@ foreach (var item in sharedKernelUsings)
             /// <param name="<#= T4Help.ToCamelCase(cbc.secureEntityName) #>Dto">
             /// Parámetro de tipo <see cref="<#= cbc.secureEntityName #>Dto"> con los datos necesarios
             /// para la creación de la entidad <#= cbc.secureEntityName #>.
-            /// </param>
-            /// <param name="userContextDto"> 
+            /// </param><#+if (Secured){ #>
+            /// <param name="userContextDto">
             /// Parámetro de tipo <see cref="UserContextDto"/> que representa el contexto del usuario.
-            /// </param>
+            /// </param><#+ }#>
             /// <exception cref="System.ArgumentNullException">
             /// Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
             /// </exception>

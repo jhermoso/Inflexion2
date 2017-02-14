@@ -54,7 +54,7 @@ namespace <#= projectNamespace #>
     using System.ServiceModel;
 
     using Inflexion2.Domain;
-    using Inflexion2.Application;//.DataTransfer.Core;
+    using Inflexion2.Application;
     //using Inflexion.Framework.Application.Security.Data.Base;
     using <#=prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Dtos;
     #endregion
@@ -185,7 +185,7 @@ namespace <#= projectNamespace #>
         /// <param name="<#= cbc.camelSecureEntityName #>Id">
         /// Parámetro que indica el identificador único de la entidad cuya
         /// información se desea obtener.
-        // </param>
+        /// </param>
 <#+ if (Secured){#>        /// <param name="userContextDto"> Parámetro de tipo <see cref="UserContextDto"/> que representa el contexto del usuario. </param><#+ }#>
         /// <returns>
         /// Devuelve objeto dto <see cref="<#= cbc.secureEntityName #>Dto"/> con la información

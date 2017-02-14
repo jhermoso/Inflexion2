@@ -68,7 +68,7 @@ namespace <#= projectNamespace #>
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    //using System.Linq.Expressions;
+    using System.Linq.Expressions;
     using System.Text;
     using System.Globalization;
     using System.Reflection;
@@ -79,7 +79,6 @@ namespace <#= projectNamespace #>
 
     using Inflexion2.Domain;
     using Inflexion2.Application;
-    using Inflexion2.Application;//.DataTransfer.Core;
     using Inflexion2;
     using Inflexion2.Domain.Specification;
     using Inflexion2.Logging;
@@ -135,6 +134,9 @@ namespace <#= projectNamespace #>
 <#= ServiceUpdateMethodTxt.TrimEnd(' ') #>
 <#= ServiceAddRemoveUpdateTargetsTxt.TrimEnd(' ') #>
 
+        /// <summary>
+        /// adapter of commit operation independent form the ORM
+        /// </summary>
         public void Commit()
         {
             if (unitOfWork == null) unitOfWork = ApplicationLayer.IocContainer.Resolve<IUnitOfWork>();

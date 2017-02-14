@@ -23,7 +23,7 @@ namespace Atento.Suite.Shared.Domain.Data
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// 
+    /// Enumeraction program remarks
     /// </summary>
     
     
@@ -31,9 +31,9 @@ namespace Atento.Suite.Shared.Domain.Data
     {
     
         /// <summary>
-        /// 
+        /// Program test remark
         /// </summary>
-        
+        [Description("Description")]
         
         Valor1 = 0
 
