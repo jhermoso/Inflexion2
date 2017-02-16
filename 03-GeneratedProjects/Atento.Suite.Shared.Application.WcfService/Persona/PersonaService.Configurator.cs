@@ -24,6 +24,7 @@ namespace Atento.Suite.Shared.Application.WcfService
     #region general usings
     using System;
 	using System.Configuration;
+    using System.Diagnostics.Contracts;
     using System.Collections.Generic;
     using System.ServiceModel;
 
@@ -53,13 +54,13 @@ namespace Atento.Suite.Shared.Application.WcfService
         /// https://msdn.microsoft.com/en-us/library/hh205277(v=vs.110).aspx
         /// </summary>
         /// <param name="config"></param>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
         public static void Configure(ServiceConfiguration config)
         {
-            {
-                config.LoadFromConfiguration(ConfigurationManager.OpenMappedExeConfiguration(new ExeConfigurationFileMap { ExeConfigFilename = @"C:\Atento\03-GeneratedProjects\Atento.Suite.Shared.Application.WcfService\App.config" }, ConfigurationUserLevel.None));              
-                ApplicationLayer.ContainerInit();
-                SharedRepositoryLayer.IocRegistry();
-            }
+            System.Diagnostics.Contracts.Contract.Requires<ArgumentNullException>(config != null, "config parameter can't be null");
+            config.LoadFromConfiguration(ConfigurationManager.OpenMappedExeConfiguration(new ExeConfigurationFileMap { ExeConfigFilename = @"C:\Atento\03-GeneratedProjects\Atento.Suite.Shared.Application.WcfService\App.config" }, ConfigurationUserLevel.None));              
+            ApplicationLayer.ContainerInit();
+            SharedRepositoryLayer.IocRegistry();
         }
 
         #endregion

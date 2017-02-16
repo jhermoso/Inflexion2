@@ -656,7 +656,7 @@ public static string  GetFatherCompouserFolder(ClassBase entity)
                 // Para ello obtenemos el string de parametros en las mismas condiciones de parametros de la llamada y acontinuación
                 //  quitamos las referencias a la entidad padre. Posteriormente el constructor debera discernir que le viene una lista nula 
                 // o unos campos nulos para determinar que hacer.
-                string calculatedPrefix = ((pascalCase)?T4Help.ToPascalCase(property.Target.Name):T4Help.ToCamelCase(property.Target.Name))+prefijo;
+                string calculatedPrefix = ((pascalCase)? T4Help.ToPascalCase(property.Target.Name) : T4Help.ToCamelCase(property.Target.Name))+prefijo;
                 string parametesFromTarget = GetConstructorParametersString(
                                                          property.Target, 
                                                          autonumerico ,

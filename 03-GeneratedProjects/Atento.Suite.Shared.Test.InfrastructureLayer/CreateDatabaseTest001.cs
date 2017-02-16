@@ -40,7 +40,9 @@ namespace Atento.Suite.Shared.Test.InfrastructureLayer
     using Atento.Suite.Shared.Infrastructure;
     #endregion
 
-    // test de creación de la base de datos para sqlserver
+    /// <summary>
+    /// test de creación de la base de datos para sqlserver
+    /// </summary>
     [TestClass]
     public class SharedCreateDaBase 
     {
@@ -49,6 +51,9 @@ namespace Atento.Suite.Shared.Test.InfrastructureLayer
         Microsoft.Practices.Unity.UnityContainer unityContainer;
         string connString = null;
 
+		/// <summary>
+        /// use this test to create the database
+        /// </summary>
         [TestMethod]
         public void DataBaseCreateTest()
         {
@@ -72,10 +77,16 @@ namespace Atento.Suite.Shared.Test.InfrastructureLayer
         }// end data base create
 
         #region Common Methods
+		/// <summary>
+        /// method to get the conection string and create the database
+        /// </summary>
         protected virtual string ConnectionString()
         {
             return System.Configuration.ConfigurationManager.ConnectionStrings["Suite.Connection"].ConnectionString;        }
-
+		
+        /// <summary>
+        /// commit adapter for the UoW of the current ORM
+        /// </summary>
         public void Commit()
         {
             IUnitOfWork unitOfWork = this.unityContainer.Resolve<IUnitOfWork>();

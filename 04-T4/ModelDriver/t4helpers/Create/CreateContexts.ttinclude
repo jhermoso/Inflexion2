@@ -78,7 +78,7 @@
                                                                )
     {
         bool okDebug = elementReference.ElementDisplayName.ToString().Equals("Emisora");
-        ClassBase entity = null;
+     //   ClassBase entity = null;
      //   if (okDebug) Debug.WriteLine(string.Format("elementReference = '{0}' ",elementReference.ToString() ));
      //   if (okDebug) Debug.WriteLine(string.Format("elementReference.IsAdapterReferenceResolved = '{0}' ",elementReference.IsAdapterReferenceResolved.ToString() ));
      //   if (okDebug) Debug.WriteLine(string.Format("elementReference.LastStatus = '{0}' ",elementReference.LastStatus.ToString() ));
@@ -313,7 +313,7 @@ public ITree<LocalizedBounded> GetSolutionSubContextTree(string newkey, kayak.Mo
 
 public void AddContextsFoldersAndProjects(DslContextDefinitionDiagram  mainDiagram, ActiveSolution solutionInfo,  ITree<LocalizedBounded> treeApp)
 {
-  bool okDebug = true;
+  //bool okDebug = true;
 
     foreach( INode<LocalizedBounded> context in treeApp.All.Nodes )
     {

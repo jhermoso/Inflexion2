@@ -1,13 +1,13 @@
 ﻿<#@ template inherits="Microsoft.VisualStudio.TextTemplating.Modeling.ModelBusEnabledTextTransformation" language="C#" debug="true" hostspecific="True" #>
 <#@ output extension=".txt" #>
-<#@ MoneyGen processor="MoneyGenDirectiveProcessor"  requires="fileName='HexaCoreTest.kyk'"  #>
+
 <#@ include file="T4Toolbox.tt" #>
 <#@ include file="t4helpers\T4Application\Assemblys.ttinclude" #>
 <#@ include file="t4helpers\T4Application\Imports.ttinclude" #>
 <#@ include file="t4helpers\T4Application\T4SourceCode.ttinclude" #>
-<#@ include file="t4helpers\T4Application\HexacCoreIncludes.ttinclude" #>
 <#@ include file="t4helpers\Create\ControlCodeGeneration.ttinclude" #>
-
+<# // @ MoneyGen processor="MoneyGenDirectiveProcessor"  requires="fileName='HexaCoreTest.kyk'"  #>
+<# // @ include file="t4helpers\T4Application\HexacCoreIncludes.ttinclude" #>
 <#
 
 
@@ -103,51 +103,51 @@ if (okDebug)
 
 /* Si estamos en hexacore solo tenemos realmente un bounded context que utilizamos despues para hacer las carpetas */
 /*  Por esta razón las saltamos*/
-        if( true
-            //MainDiagram.Architecture == ArchitectureOptions.HexaCore & secureBdName.Equals(MainDiagram.SolutionFolderCommon) ||
-            //MainDiagram.Architecture == ArchitectureOptions.PureDDD
-          )
-        {
-                ICollection<Architecture.ArqLayer> layersList= null;
-                if (MainDiagram.Architecture == ArchitectureOptions.Inflexion2)
-                    layersList = Architecture.Inflexion2WPFLayers;
-                else if (MainDiagram.Architecture == ArchitectureOptions.HexaCore)
-                    layersList = Architecture.HexaCoreMVCLayers;
-                else
-                    layersList = Architecture.ArqLayers;
-
-                foreach (Architecture.ArqLayer layer in layersList)
-                {
-                    if (okDebug) Debug.WriteLine(String.Format( "layer '{0}'", layer.LayerType.ToString()));
-
-                    foreach (Architecture.ArqLayer.ArqProject project in layer.LayerProyects)
-                    {
-                        if (okDebug) Debug.WriteLine(String.Format( "project '{0}'", project.Name));
-                        if( project.References.Where( p => p.ReferenceType == ReferenceKind.Nuget).Any() )
-                        {
-                            Debug.WriteLine("");
-                            Debug.WriteLine("   hemos encontrado un projecto que tiene una referencia nuget");
-                            string FolderLayerName = GetFolderLayerName( MainDiagram, layer.LayerType);
-                            string nombreprojecto = GetProjectName( MainDiagram, layer.LayerType, project, secureBdName);
-                            string temppath = MainDiagram.AbsProyectsPath +System.IO.Path.DirectorySeparatorChar+nombreprojecto ;
-                            string nombreprojectoConExtension = nombreprojecto + ".csproj";
-                                Debug.WriteLine(String.Format( "FolderLayerName: '{0}'", FolderLayerName));
-                                Debug.WriteLine(String.Format( "nombreprojecto : '{0}'", nombreprojecto));
-                                Debug.WriteLine(String.Format( "temppath       : '{0}'", temppath));
-                                Debug.WriteLine(String.Format( "nombreprojectoConExtension       : '{0}'", nombreprojectoConExtension));
-
-                            var tPackageConfig  = new PackageConfig(MainDiagram, project);
-                            tPackageConfig.Output.File = "packages.config";
-                            //tPackageConfig.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
-                            tPackageConfig.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
-                            tPackageConfig.Output.BuildAction = BuildAction.None;
-                            tPackageConfig.Render();
-                            Debug.WriteLine("");
-                        }
-                    }
-                }
-            }
-        }
+       //if( true
+       //    //MainDiagram.Architecture == ArchitectureOptions.HexaCore & secureBdName.Equals(MainDiagram.SolutionFolderCommon) ||
+       //    //MainDiagram.Architecture == ArchitectureOptions.PureDDD
+       //  )
+       //{
+       //        ICollection<Architecture.ArqLayer> layersList= null;
+       //        if (MainDiagram.Architecture == ArchitectureOptions.Inflexion2)
+       //            layersList = Architecture.Inflexion2WPFLayers;
+       //        else if (MainDiagram.Architecture == ArchitectureOptions.HexaCore)
+       //            layersList = Architecture.HexaCoreMVCLayers;
+       //        else
+       //            layersList = Architecture.ArqLayers;
+	   //
+       //        foreach (Architecture.ArqLayer layer in layersList)
+       //        {
+       //            if (okDebug) Debug.WriteLine(String.Format( "layer '{0}'", layer.LayerType.ToString()));
+	   //
+       //            foreach (Architecture.ArqLayer.ArqProject project in layer.LayerProyects)
+       //            {
+       //                if (okDebug) Debug.WriteLine(String.Format( "project '{0}'", project.Name));
+       //                if( project.References.Where( p => p.ReferenceType == ReferenceKind.Nuget).Any() )
+       //                {
+       //                    Debug.WriteLine("");
+       //                    Debug.WriteLine("   hemos encontrado un projecto que tiene una referencia nuget");
+       //                    string FolderLayerName = GetFolderLayerName( MainDiagram, layer.LayerType);
+       //                    string nombreprojecto = GetProjectName( MainDiagram, layer.LayerType, project, secureBdName);
+       //                    string temppath = MainDiagram.AbsProyectsPath +System.IO.Path.DirectorySeparatorChar+nombreprojecto ;
+       //                    string nombreprojectoConExtension = nombreprojecto + ".csproj";
+       //                        Debug.WriteLine(String.Format( "FolderLayerName: '{0}'", FolderLayerName));
+       //                        Debug.WriteLine(String.Format( "nombreprojecto : '{0}'", nombreprojecto));
+       //                        Debug.WriteLine(String.Format( "temppath       : '{0}'", temppath));
+       //                        Debug.WriteLine(String.Format( "nombreprojectoConExtension       : '{0}'", nombreprojectoConExtension));
+	   //
+       //                    var tPackageConfig  = new PackageConfig(MainDiagram, project);
+       //                    tPackageConfig.Output.File = "packages.config";
+       //                    //tPackageConfig.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+       //                    tPackageConfig.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+       //                    tPackageConfig.Output.BuildAction = BuildAction.None;
+       //                    tPackageConfig.Render();
+       //                    Debug.WriteLine("");
+       //                }
+       //            }
+       //        }
+       //    }
+       //}
     }
 
 
@@ -187,9 +187,9 @@ if (okDebug)
     }
 
 
-    if (MainDiagram.Architecture == ArchitectureOptions.HexaCore)
-    {
+    //if (MainDiagram.Architecture == ArchitectureOptions.HexaCore)
+    //{
             // acontinuación invocamos el control de generación del codigo de hexa core
-            HexaCoreControlCodeGeneration(  MainDiagram,  SolutionInfo, TreeApp);
-    }
+            //HexaCoreControlCodeGeneration(  MainDiagram,  SolutionInfo, TreeApp);
+    //}
 #>

@@ -235,6 +235,17 @@
             Parámetro con información adicional.
             </param>
         </member>
+        <member name="M:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaViewModel.SetupValidation(MvvmValidation.ValidationHelper)">
+            <summary>
+            execute the validation rules
+            </summary>
+            <param name="validation"></param>
+        </member>
+        <member name="M:Atento.Suite.Shared.FrontEnd.WpfModule.CategoriaViewModel.OnNavigatedTo(Microsoft.Practices.Prism.Regions.NavigationContext)">
+            <summary>
+            int his method is possible to override to add the previus action to execute when there is a navigation request
+            </summary>
+        </member>
         <member name="T:Atento.Suite.Shared.FrontEnd.WpfModule.PersonaQueryViewModel">
             <summary>
             .en Interaction logic for PersonaQueryView.xaml
@@ -445,6 +456,17 @@
             Parámetro con información adicional.
             </param>
         </member>
+        <member name="M:Atento.Suite.Shared.FrontEnd.WpfModule.PersonaViewModel.SetupValidation(MvvmValidation.ValidationHelper)">
+            <summary>
+            execute the validation rules
+            </summary>
+            <param name="validation"></param>
+        </member>
+        <member name="M:Atento.Suite.Shared.FrontEnd.WpfModule.PersonaViewModel.OnNavigatedTo(Microsoft.Practices.Prism.Regions.NavigationContext)">
+            <summary>
+            int his method is possible to override to add the previus action to execute when there is a navigation request
+            </summary>
+        </member>
         <member name="T:Atento.Suite.Shared.FrontEnd.WpfModule.SharedModuleNavigationView">
             <summary>
             .es Lógica de interacción para <see cref="T:SharedModuleNavigationView.xaml"/>.
@@ -478,6 +500,15 @@
             <summary>
             .en Initialize a new instace for the class <see cref="T:SharedModuleRibbonTab"/>.
             .es Inicializa una nueva instancia de la clase <see cref="T:SharedModuleRibbonTab"/>.
+            </summary>
+        </member>
+        <member name="P:Atento.Suite.Shared.FrontEnd.WpfModule.SharedModuleRibbonTab.KeepAlive">
+            <summary>
+            IRegionMemberLifetime implementation
+            Gets a value indicating whether this instance should be kept-alive upon deactivation.
+            http://stackoverflow.com/questions/5115484/how-to-create-a-new-view-every-time-navigation-occurs-in-prism
+            http://codefinders.blogspot.de/2013/11/disposing-views-in-prism.html
+            Returning a false value everytime that there is a request of a view creates a new view
             </summary>
         </member>
         <member name="M:Atento.Suite.Shared.FrontEnd.WpfModule.SharedModuleRibbonTab.InitializeComponent">

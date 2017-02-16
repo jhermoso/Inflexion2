@@ -23,7 +23,7 @@ public class ApplicationIocRepositoryLayer : Template
             string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
 
   // conceptos propios de la clase
-  string baseEntity= null;
+  // string baseEntity = null;
   // conceptos propios del projecto en curso
   ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
 
@@ -68,8 +68,17 @@ namespace <#= projectNamespace #>
     public static class <#= prjCon.boundedContextName #>RepositoryLayer
     {
         private static string ConnString = null;
+		
+        /// <summary>
+        /// UoW instance
+        /// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2211:NonConstantFieldsShouldNotBeVisible")]
         public static RootAggregateFrameworkUnitOfWorkFactory<<#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Infrastructure.BootstrapUnitOfWork> CtxFactory = null;
-        public static void IocRegistry()
+        
+        /// <summary>
+        /// Register in IoC container the repository
+        /// </summary>
+		public static void IocRegistry()
         {
             // Context Factory
             ConnString = ConnectionString();

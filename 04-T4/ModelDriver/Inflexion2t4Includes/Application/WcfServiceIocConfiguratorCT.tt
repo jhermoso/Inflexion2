@@ -23,7 +23,7 @@ public class WcfServiceIocConfiguratorCT : Template
             string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
 
   // conceptos propios de la clase
-  string baseEntity= null;
+  // string baseEntity = null;
   // conceptos propios del projecto en curso
   ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
 
@@ -92,11 +92,10 @@ foreach (var item in sharedKernelUsings)
         /// <param name="config"></param>
         public static void Configure(ServiceConfiguration config)
         {
-            {
+
                 config.LoadFromConfiguration(ConfigurationManager.OpenMappedExeConfiguration(new ExeConfigurationFileMap { ExeConfigFilename = @"<#=@"C:\" + prjCon.company+ @"\03-GeneratedProjects\"+ prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Application.WcfService\App.config" }, ConfigurationUserLevel.None));              
                 ApplicationLayer.ContainerInit();
                 <#= prjCon.boundedContextName #>RepositoryLayer.IocRegistry();
-            }
         }
 
         #endregion

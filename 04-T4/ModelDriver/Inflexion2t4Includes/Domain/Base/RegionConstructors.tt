@@ -191,7 +191,7 @@ public class RegionConstructors : Template
      if (
             cbc.entity.DeleteBehavior.Equals(DeleteBehavior.OnCascade) && 
             cbc.propertyAssociationTargets.Where( 
-                                                    p=> string.IsNullOrEmpty( p.SourceRolName.Trim() ) && p is Entity 
+                                                    p => string.IsNullOrEmpty( p.SourceRolName.Trim() ) && p is Entity 
                                                 ).Any() 
         )
      {

@@ -433,6 +433,10 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
 
         #region Protected Methods
 
+        /// <summary>
+        /// execute the validation rules
+        /// </summary>
+        /// <param name="validation"></param>
         protected override void SetupValidation(MvvmValidation.ValidationHelper validation)
         {
             //ejemplo de validacion
@@ -445,6 +449,9 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
 
         }
 
+		/// <summary>
+        /// int his method is possible to override to add the previus action to execute when there is a navigation request
+        /// </summary>
         public override void OnNavigatedTo(Microsoft.Practices.Prism.Regions.NavigationContext navigationContext)
         {
             //es aqui donde se invoca a los metodos de carga de las entidades adicionales.

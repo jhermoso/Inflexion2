@@ -50,7 +50,9 @@ namespace <#= projectNamespace #>
     using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Infrastructure;
     #endregion
 
-    // test de creación de la base de datos para sqlserver
+    /// <summary>
+    /// test de creación de la base de datos para sqlserver
+    /// </summary>
     [TestClass]
     public class <#= prjCon.boundedContextName #>CreateDaBase 
     {
@@ -59,6 +61,9 @@ namespace <#= projectNamespace #>
         Microsoft.Practices.Unity.UnityContainer unityContainer;
         string connString = null;
 
+		/// <summary>
+        /// use this test to create the database
+        /// </summary>
         [TestMethod]
         public void DataBaseCreateTest()
         {
@@ -82,11 +87,17 @@ namespace <#= projectNamespace #>
         }// end data base create
 
         #region Common Methods
+		/// <summary>
+        /// method to get the conection string and create the database
+        /// </summary>
         protected virtual string ConnectionString()
         {
             return System.Configuration.ConfigurationManager.ConnectionStrings["<#= prjCon.product #>.Connection"].ConnectionString;<#+ // TODO: en el futuro habra que sustituir este por el contexto limitado en caso de que cada uno tenga su cadena de conexión. #>
         }
-
+		
+        /// <summary>
+        /// commit adapter for the UoW of the current ORM
+        /// </summary>
         public void Commit()
         {
             IUnitOfWork unitOfWork = this.unityContainer.Resolve<IUnitOfWork>();
