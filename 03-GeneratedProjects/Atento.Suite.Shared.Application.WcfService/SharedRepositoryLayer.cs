@@ -42,17 +42,17 @@ namespace Atento.Suite.Shared.Application.WcfService
     public static class SharedRepositoryLayer
     {
         private static string ConnString = null;
-
+		
         /// <summary>
         /// UoW instance
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2211:NonConstantFieldsShouldNotBeVisible")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2211:NonConstantFieldsShouldNotBeVisible")]
         public static RootAggregateFrameworkUnitOfWorkFactory<Atento.Suite.Shared.Infrastructure.BootstrapUnitOfWork> CtxFactory = null;
-
+        
         /// <summary>
         /// Register in IoC container the repository
         /// </summary>
-        public static void IocRegistry()
+		public static void IocRegistry()
         {
             // Context Factory
             ConnString = ConnectionString();

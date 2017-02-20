@@ -40,11 +40,11 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
         {
             InitializeComponent();
             //this.DataContext = new SharedModuleRibbonTabViewModel();
-        }
+        } 
         #endregion
 
         #region IRegionMemberLifetime Members
-        /// <summary>
+		/// <summary>
         /// IRegionMemberLifetime implementation
         /// Gets a value indicating whether this instance should be kept-alive upon deactivation.
         /// http://stackoverflow.com/questions/5115484/how-to-create-a-new-view-every-time-navigation-occurs-in-prism
