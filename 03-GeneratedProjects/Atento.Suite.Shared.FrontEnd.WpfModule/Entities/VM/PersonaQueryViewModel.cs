@@ -21,11 +21,14 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
 {
 
     #region usings   
-    using System.Collections.ObjectModel;
     using System;
+    using System.Collections.ObjectModel;
     using System.Linq;
+    using System.ServiceModel;
     using System.Windows;
     using System.Windows.Input;
+
+    using Microsoft.Practices.Prism.Commands;
 
     using Inflexion2.Domain;
     using Inflexion2.UX.WPF;
@@ -35,7 +38,6 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
     using Atento.Suite.Shared.Application.Dtos;
     using Atento.Suite.Shared.Application.WcfClient.PersonaReference;
     using Atento.Suite.Shared.Infrastructure.Resources;
-    using Microsoft.Practices.Prism.Commands;
 
     #endregion
 
@@ -63,7 +65,7 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
 
         #region PROPERTIES
         /// <summary>
-		/// .en Property to set the title of the window 
+        /// .en Property to set the title of the window 
         /// .es Propiedad para establecer el Titulo de la ventana
         /// </summary>
         public override string Title
@@ -75,7 +77,7 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
         }
 
         /// <summary>
-		/// .en Property to get the command of changing state.
+        /// .en Property to get the command of changing state.
         /// .es Propiedad que obtiene el comando de cambio de estado.
         /// </summary>
         /// <value>
@@ -151,12 +153,47 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
                 this.IsBusy = true;
                 // Instanciamos el proxy.
                 PersonaServiceClient serviceClient = new PersonaServiceClient();
-
-                //Ejecutamos el servicio de forma asíncrona.
-                serviceClient.BeginGetPaged(this.Specification,                     (asyncResult) =>
+                try
+                {
+                    this.IsBusy = true;
+                    PagedElements<PersonaDto> result = null;
+                    //Ejecutamos el servicio de forma asíncrona.
+                    serviceClient.BeginGetPaged(this.Specification,                                                 (asyncResult) =>
                     {
                         // Obtenemos el resultado.
-                        PagedElements<PersonaDto> result = serviceClient.EndGetPaged(asyncResult);
+                        try
+                        {
+                            result = serviceClient.EndGetPaged(asyncResult);
+                        }
+                        catch (TimeoutException e)
+                        {
+                            this.MessageBoxService.Show("The service operation timed out. " + e.Message);
+                            serviceClient.Abort();
+                        }
+                        catch (FaultException<Inflexion2.Application.ValidationException> e)
+                        {
+                            this.MessageBoxService.Show("Validation Exception. Message: {0}", e.Message);
+                            serviceClient.Abort();
+                        }
+                        catch (FaultException<Inflexion2.Application.InternalException> e)
+                        {
+                            this.MessageBoxService.Show("Internal Exception. Message: {0}", e.Message);
+                            serviceClient.Abort();
+                        }
+                        // Catch unrecognized faults.This handler receives exceptions thrown by WCF
+                        //services when ServiceDebugBehavior.IncludeExceptionDetailInFaults
+                        //is set to true or when un - typed FaultExceptions raised.
+                        catch (FaultException fe)
+                        {
+                            this.MessageBoxService.Show("Unhalded fault exception. Message:" + fe.Message);
+                            serviceClient.Abort();
+                        }
+                        catch (Exception e)
+                        {
+                            this.MessageBoxService.Show("Unexpected exception" + e.Message);
+                            serviceClient.Abort();
+                            throw;
+                        }
 
                         this.Items = new ObservableCollection<PersonaViewModel>(result.Select(i => new PersonaViewModel(i)));
                         this.TotalRecordCount = result.TotalElements;
@@ -164,15 +201,22 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
                         this.RefreshPagingCommands();
                     },
                     null);
+                }
+                catch (Exception e)
+                {
+                    this.MessageBoxService.Show("cathed on PersonaQueryViewModel" + e.Message);
+                    serviceClient.Abort();
+                    throw;
+                }
             }
         } // OnGetRecords
 
 
-		/// <summary>
+        /// <summary>
         /// .en Get First Page records method. 
-		///     This command answer to a call from the ribbon region tab.
+        ///     This command answer to a call from the ribbon region tab.
         /// .es ejecutamos el servicio de ir a la primera página de la lista de registros. 
-		///     responde al command invocado desde su comando en la region del ribbon.
+        ///     responde al command invocado desde su comando en la region del ribbon.
         /// </summary>
         /// <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
         public override void OnGetFirstPageRecords(object parameter)
@@ -181,11 +225,11 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
             OnGetRecords(parameter);
         }
 
-		/// <summary>
+        /// <summary>
         /// .en Get Next Page records method. 
-		///     This command answer to a call from the ribbon region tab.
+        ///     This command answer to a call from the ribbon region tab.
         /// .es ejecutamos el servicio de ir a la siguiente página de la lista de registros. 
-		///     responde al command invocado desde su comando en la region del ribbon.
+        ///     responde al command invocado desde su comando en la region del ribbon.
         /// </summary>
         /// <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
         public override void OnGetNextPageRecords(object parameter)
@@ -194,11 +238,11 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
             OnGetRecords(parameter);
         }
 
-		/// <summary>
+        /// <summary>
         /// .en Get Previus Page records method. 
-		///     This command answer to a call from the ribbon region tab.
+        ///     This command answer to a call from the ribbon region tab.
         /// .es ejecutamos el servicio de ir a la página anterior de la lista de registros. 
-		///     responde al command invocado desde su comando en la region del ribbon.
+        ///     responde al command invocado desde su comando en la region del ribbon.
         /// </summary>
         /// <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
         public override void OnGetPreviousPageRecords(object parameter)
@@ -207,11 +251,11 @@ namespace Atento.Suite.Shared.FrontEnd.WpfModule
             OnGetRecords(parameter);
         }
 
-		/// <summary>
+        /// <summary>
         /// .en Get Last Page records method. 
-		///     This command answer to a call from the ribbon region tab.
+        ///     This command answer to a call from the ribbon region tab.
         /// .es ejecutamos el servicio de ir a la ultima página de la lista de registros. 
-		///     responde al command invocado desde su comando en la region del ribbon.
+        ///     responde al command invocado desde su comando en la region del ribbon.
         /// </summary>
         /// <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
         public override void OnGetLastPageRecords(object parameter)

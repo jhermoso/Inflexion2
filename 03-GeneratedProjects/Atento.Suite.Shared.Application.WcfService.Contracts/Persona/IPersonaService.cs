@@ -40,7 +40,7 @@ namespace Atento.Suite.Shared.Application.WcfService.Contracts
     /// <remarks>
     /// Sin comentarios adicionales.
     /// </remarks>
-    [ServiceContract]//, ServiceFaultContracts]
+    [ServiceContract, ServiceFaultContracts]
     public partial interface IPersonaService
     {
 
@@ -61,8 +61,9 @@ namespace Atento.Suite.Shared.Application.WcfService.Contracts
         /// <return>
         /// Devuelve el identificador único de la entidad creada.
         /// </return>
-        [OperationContract]
-        //[FaultContract(typeof(FaultObject))]
+        [OperationContract, FaultContract(typeof(FaultObject))]
+        [FaultContract(typeof(ValidationException))]
+        [FaultContract(typeof(InternalException))]
         int Create(
                     PersonaDto personaDto);
 
@@ -80,8 +81,9 @@ namespace Atento.Suite.Shared.Application.WcfService.Contracts
         /// Devuelve <b>true</b> si la actualización ha sido correcta y
         /// <b>false</b> en caso contrario.
         /// </returns>
-        [OperationContract]
-        //[FaultContract(typeof(FaultObject))]
+        [OperationContract, FaultContract(typeof(FaultObject))]
+        [FaultContract(typeof(ValidationException))]
+        [FaultContract(typeof(InternalException))]
         bool Update(
                     PersonaDto personaDto);
 
@@ -94,8 +96,9 @@ namespace Atento.Suite.Shared.Application.WcfService.Contracts
         /// <returns>
         /// Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
         /// </returns>
-        [OperationContract]
-        //[FaultContract(typeof(FaultObject))]
+        [OperationContract, FaultContract(typeof(FaultObject))]
+        [FaultContract(typeof(ValidationException))]
+        [FaultContract(typeof(InternalException))]
         bool Delete(int id);
         /// <summary>
         /// Método encargado de obtener todas las entidades Persona.
@@ -106,8 +109,9 @@ namespace Atento.Suite.Shared.Application.WcfService.Contracts
         /// <returns>
         /// Devuelve listado de Dto´s de la entidad Persona.
         /// </returns>
-        [OperationContract]
-        //[FaultContract(typeof(FaultObject))]
+        [OperationContract, FaultContract(typeof(FaultObject))]
+        [FaultContract(typeof(ValidationException))]
+        [FaultContract(typeof(InternalException))]
         IEnumerable<PersonaDto> GetAll();
 
 
@@ -126,8 +130,9 @@ namespace Atento.Suite.Shared.Application.WcfService.Contracts
         /// Devuelve objeto dto <see cref="PersonaDto"/> con la información
         /// requerida.
         /// </returns>
-        [OperationContract]
-        //[FaultContract(typeof(FaultObject))]
+        [OperationContract, FaultContract(typeof(FaultObject))]
+        [FaultContract(typeof(ValidationException))]
+        [FaultContract(typeof(InternalException))]
         PersonaDto GetById(
                             Int32 personaId );
 
@@ -140,8 +145,9 @@ namespace Atento.Suite.Shared.Application.WcfService.Contracts
         /// <returns>
         /// La lista paginada de entidades Persona, según la especificación indicada.
         /// </returns>
-        [OperationContract]
-        //[FaultContract(typeof(FaultObject))]
+        [OperationContract, FaultContract(typeof(FaultObject))]
+        [FaultContract(typeof(ValidationException))]
+        [FaultContract(typeof(InternalException))]
         PagedElements<PersonaDto> GetPaged(SpecificationDto specificationDto);
 
         #endregion

@@ -23,7 +23,7 @@ namespace Atento.Suite.Shared.Application.WcfService
 
     #region general usings
     using System;
-	using System.Configuration;
+    using System.Configuration;
     using System.Collections.Generic;
     using System.ServiceModel;
 
@@ -37,7 +37,7 @@ namespace Atento.Suite.Shared.Application.WcfService
     using Inflexion2.Infrastructure;
 
     using Atento.Suite.Shared.Application;
-	using Atento.Suite.Shared.Application.WcfService.Contracts;
+    using Atento.Suite.Shared.Application.WcfService.Contracts;
     //using AppSrvCore = Atento.Suite.Shared.Application;
     #endregion
 
@@ -49,7 +49,7 @@ namespace Atento.Suite.Shared.Application.WcfService
     public partial class CategoriaService : ICategoriaService
     {
      //   #region Configuration
-	 //
+     //
      //   /// <summary>
      //   /// https://msdn.microsoft.com/en-us/library/hh205277(v=vs.110).aspx
      //   /// </summary>
@@ -62,7 +62,7 @@ namespace Atento.Suite.Shared.Application.WcfService
      //           SharedRepositoryLayer.IocRegistry();
      //       }
      //   }
-	 //
+     //
      //   #endregion
 
         #region Fields
@@ -103,7 +103,7 @@ namespace Atento.Suite.Shared.Application.WcfService
         /// <return>
         /// Devuelve el identificador único de la entidad creada.
         /// </return>
-        public int Create( CategoriaDto categoriaDto)
+        public Int32 Create( CategoriaDto categoriaDto)
         {
             // opción 1
             // Instanciamos el servicio de aplicación de creación mediante el contenedor de IoC.
@@ -114,8 +114,18 @@ namespace Atento.Suite.Shared.Application.WcfService
             // return identifier;
 
             //opción 2
-            return this.service.Create(categoriaDto);
+            Int32 result = 0;
+            try
+            {
+                result = this.service.Create(categoriaDto);
+            }
+            catch (Exception ex)
+            {
+                Inflexion2.Application.InternalException ie = new Inflexion2.Application.InternalException(ex);
+                FaultObject.Throw<Inflexion2.Application.FaultObject>(ie);
+            }
 
+            return result;
         } // end Create
 
 
@@ -141,7 +151,18 @@ namespace Atento.Suite.Shared.Application.WcfService
             // return response;
 
             // opción 2
-            return this.service.Update(categoriaDto);
+			bool result = false;
+            try
+            {
+                result = this.service.Update(categoriaDto);
+			}
+            catch (Exception ex)
+            {
+                Inflexion2.Application.InternalException ie = new Inflexion2.Application.InternalException(ex);
+                FaultObject.Throw<Inflexion2.Application.FaultObject>(ie);
+            }
+
+            return result;
         } // end Update
 
         /// <summary>
@@ -169,8 +190,18 @@ namespace Atento.Suite.Shared.Application.WcfService
             //return response;
 
             //opcion 2
-            return this.service.Delete(id);
+			bool result = false;
+            try
+            {
+                result = this.service.Delete(id);
+			}
+            catch (Exception ex)
+            {
+                Inflexion2.Application.InternalException ie = new Inflexion2.Application.InternalException(ex);
+                FaultObject.Throw<Inflexion2.Application.FaultObject>(ie);
+            }
 
+            return result;
         } // Delete
 
 
@@ -191,7 +222,18 @@ namespace Atento.Suite.Shared.Application.WcfService
             //return result;
             
             // opcion 2
-            return this.service.GetAll();
+			IEnumerable<CategoriaDto> result = null;
+            try
+            {
+                result = this.service.GetAll();
+            }
+            catch (Exception ex)
+            {
+                Inflexion2.Application.InternalException ie = new Inflexion2.Application.InternalException(ex);
+                FaultObject.Throw<Inflexion2.Application.FaultObject>(ie);
+            }
+
+            return result;
         } // GetAll
 
         /// <summary>
@@ -217,7 +259,18 @@ namespace Atento.Suite.Shared.Application.WcfService
             //return categoriaDto;
 
             // opcion 2
-            return this.service.GetById(categoriaId);
+			CategoriaDto result = null;
+            try
+            {
+                result = this.service.GetById(categoriaId);
+            }
+            catch (Exception ex)
+            {
+                Inflexion2.Application.InternalException ie = new Inflexion2.Application.InternalException(ex);
+                FaultObject.Throw<Inflexion2.Application.FaultObject>(ie);
+            }
+
+            return result;
         } // GetById
 
         /// <summary>
@@ -231,7 +284,18 @@ namespace Atento.Suite.Shared.Application.WcfService
         /// </returns>
         public PagedElements<CategoriaDto> GetPaged(SpecificationDto specificationDto)
         {
-            return this.service.GetPaged(specificationDto);
+			PagedElements<CategoriaDto>	result = null;
+            try
+            {
+                result = this.service.GetPaged(specificationDto);
+            }
+            catch (Exception ex)
+            {
+                Inflexion2.Application.InternalException ie = new Inflexion2.Application.InternalException(ex);
+                FaultObject.Throw<Inflexion2.Application.FaultObject>(ie);
+            }
+
+            return result;
         }
 
 

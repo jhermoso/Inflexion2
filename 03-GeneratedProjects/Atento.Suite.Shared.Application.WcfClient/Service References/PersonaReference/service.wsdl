@@ -7,7 +7,9 @@
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/Atento.Suite.Shared.Application.Dtos" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/Inflexion2.Application" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/Inflexion2.Domain" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IPersonaService_Create_InputMessage">
@@ -46,6 +48,15 @@
   <wsdl:message name="IPersonaService_GetPaged_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPagedResponse" />
   </wsdl:message>
+  <wsdl:message name="IPersonaService_GetPaged_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IPersonaService_GetPaged_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IPersonaService_GetPaged_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
   <wsdl:portType name="IPersonaService">
     <wsdl:operation name="Create">
       <wsdl:input wsaw:Action="http://tempuri.org/IPersonaService/Create" message="tns:IPersonaService_Create_InputMessage" />
@@ -70,6 +81,9 @@
     <wsdl:operation name="GetPaged">
       <wsdl:input wsaw:Action="http://tempuri.org/IPersonaService/GetPaged" message="tns:IPersonaService_GetPaged_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPersonaService/GetPagedResponse" message="tns:IPersonaService_GetPaged_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IPersonaService/GetPagedFaultObjectFault" name="FaultObjectFault" message="tns:IPersonaService_GetPaged_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IPersonaService/GetPagedValidationExceptionFault" name="ValidationExceptionFault" message="tns:IPersonaService_GetPaged_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IPersonaService/GetPagedInternalExceptionFault" name="InternalExceptionFault" message="tns:IPersonaService_GetPaged_InternalExceptionFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IPersonaService" type="tns:IPersonaService">
@@ -127,6 +141,15 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="PersonaService">

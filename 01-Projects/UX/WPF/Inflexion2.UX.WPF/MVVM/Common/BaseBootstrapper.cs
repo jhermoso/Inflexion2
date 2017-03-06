@@ -251,7 +251,7 @@ namespace Inflexion2.UX.WPF.MVVM
         {
             IMessageBoxService messageBoxService = ServiceLocator.Current.GetInstance<IMessageBoxService>();
 
-            FaultException<Inflexion2.UX.WPF.Fault.ValidationException> validationException = e.Exception as FaultException<Inflexion2.UX.WPF.Fault.ValidationException>;
+            FaultException<Inflexion2.Application.ValidationException> validationException = e.Exception as FaultException<Inflexion2.Application.ValidationException>;
             if (validationException != null)
             {
                 // Mostramos el error
@@ -272,7 +272,7 @@ namespace Inflexion2.UX.WPF.MVVM
                 return;
             }
 
-            FaultException<Inflexion2.UX.WPF.Fault.InternalException> faultObject = e.Exception as FaultException<Inflexion2.UX.WPF.Fault.InternalException>;
+            FaultException<Inflexion2.Application.InternalException> faultObject = e.Exception as FaultException<Inflexion2.Application.InternalException>;
             if (faultObject != null)
             {
                 // Mostramos el mensaje.

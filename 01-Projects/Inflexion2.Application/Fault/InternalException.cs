@@ -3,7 +3,7 @@
 //     Copyright (c) 2012. Inflexion Software. All Rights Reserved.
 // </copyright>
 // -----------------------------------------------------------------------
-namespace Inflexion2.UX.WPF.Fault
+namespace Inflexion2.Application
 {
     using System;
     using System.Collections.Generic;
@@ -14,9 +14,7 @@ namespace Inflexion2.UX.WPF.Fault
     /// <summary>
     /// Clase de excepción interna para el Fault.
     /// </summary>
-    /// <remarks>
-    /// Sin comentarios adicionales.
-    /// </remarks>
+
     [DataContract(Namespace = "")]
     public class InternalException : FaultObject
     {

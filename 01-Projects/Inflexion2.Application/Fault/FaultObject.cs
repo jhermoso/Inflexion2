@@ -3,7 +3,7 @@
 //     Copyright (c) 2012. Inflexion Software. All Rights Reserved.
 // </copyright>
 // ----------------------------------------------------------------------
-namespace Inflexion2.UX.WPF.Fault
+namespace Inflexion2.Application
 {
     using System;
     using System.Runtime.Serialization;
@@ -12,14 +12,12 @@ namespace Inflexion2.UX.WPF.Fault
     /// <summary>
     /// Clase pública para la captura de excepciones desde los servicios.
     /// </summary>
-    /// <remarks>
-    /// Sin comentarios especiales.
-    /// </remarks>
     [DataContract(Namespace="")]
     [KnownType(typeof(InternalException))]
     [KnownType(typeof(ValidationException))]
     public class FaultObject
     {
+        private readonly DateTime DateException;
         #region Constructors
 
         /// <summary>
@@ -31,34 +29,28 @@ namespace Inflexion2.UX.WPF.Fault
         public FaultObject(string reason)
         {
             this.Reason = reason;
-            //this.DateException = DateTime.Now;
+            this.DateException = DateTime.Now;
         }
 
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="T:FaultObject"/>.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios especiales.
-        /// </remarks>
         public FaultObject(Exception innerException)
         {
             this.Reason = innerException.Message;
-            //this.DateException = DateTime.Now;
+            this.DateException = DateTime.Now;
         }
 
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="T:FaultObject"/>.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         public FaultObject(
             string reason,
             Exception innerException)
-        : this(reason)
         {
             // Inicializamos la excepción.
-            this.Reason = reason;
+            this.Reason = reason + " Inner Exception: "+ innerException.Message;
+            this.DateException = DateTime.Now;
         }
 
         #endregion Constructors
@@ -66,13 +58,13 @@ namespace Inflexion2.UX.WPF.Fault
         #region Enumerations
 
         /// <summary>
-        ///
+        /// this enum code the possible origin of the error
         /// </summary>
         [DataContract(Namespace = "")]
         public enum FaultCode
         {
             /// <summary>
-            ///
+            /// the error is originated in the server
             /// </summary>
             [EnumMember]
             Sever = 0
@@ -83,11 +75,8 @@ namespace Inflexion2.UX.WPF.Fault
         #region Properties
 
         /// <summary>
-        /// Propiedad que obtiene o establece el código de la excepción.
+        /// Propiedad que obtiene o establece el origen de la excepción.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         /// <value>
         /// Valor que es utilizado para obtener o establecer el código de la excepción.
         /// </value>
@@ -101,9 +90,6 @@ namespace Inflexion2.UX.WPF.Fault
         /// <summary>
         /// Propiedad pública que obtiene o establece el texto del mensaje de excepción.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         /// <value>
         /// Valor que es utilizado para obtener o establecer el texto del mensaje de excepción.
         /// </value>

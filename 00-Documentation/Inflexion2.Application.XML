@@ -133,6 +133,291 @@
             Sin comentarios adicionales.
             </remarks>
         </member>
+        <member name="T:Inflexion2.Application.ApplicationErrorHandler">
+            <summary>
+            Clase pública sellada encargada de la gestión de errores para la
+            fachada remota WCF.
+            </summary>
+            <remarks>
+            Sin comentarios especiales.
+            </remarks>
+        </member>
+        <member name="M:Inflexion2.Application.ApplicationErrorHandler.HandleError(System.Exception)">
+            <summary>
+            Permite errores de procesamiento y devuelve un valor que indica si
+            el transportador del envío cancela la sesión y el contexto de la
+            instancia en ciertos casos.
+            </summary>
+            <remarks>
+            Traza el error y lo maneja.
+            </remarks>
+            <param name="exception">
+            Parámetro de tipo <see cref="T:System.Exception"/> que representa la
+            excepción lanzada durante el proceso.
+            </param>
+            <returns>
+            Devuelve <c>true</c> si  o debería abortar la sesión y
+            el contexto de la instancia si no es de tipo
+            System.ServiceModel.InstanceContextMode.Single;
+            de lo contrario devuelve <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Inflexion2.Application.ApplicationErrorHandler.ProvideFault(System.Exception,System.ServiceModel.Channels.MessageVersion,System.ServiceModel.Channels.Message@)">
+            <summary>
+            Método que encargado de la creación de <see cref="T:System.ServiceModel.FaultException"/>
+            personalizadas que será devuelta como una excepción en la ejecución de un método de un servicio.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="exception">
+            Parámetro de tipo <see cref="T:System.Exception"/> lanzada en la ejecución de un
+            método de un servicio.
+            </param>
+            <param name="version">
+            Parámetro que indica la versión SOAP del mensaje.
+            </param>
+            <param name="message">
+            Parámetro de tipo <see cref="T:System.ServiceModel.Channels.Message" />
+            que es devuelto al cliente.
+            </param>
+        </member>
+        <member name="T:Inflexion2.Application.ApplicationErrorHandlerAttribute">
+            <summary>
+            Clase pública sellada encargada de indicar el comportamiento del
+            servicio permitiendo agregar el DefaultErrorHandler a todos los
+            servicios WCF.
+            </summary>
+            <remarks>
+            Sin comentarios especiales.
+            </remarks>
+        </member>
+        <member name="M:Inflexion2.Application.ApplicationErrorHandlerAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Inflexion2.Application.ApplicationErrorHandlerAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Application.ApplicationErrorHandlerAttribute.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Inflexion2.Application.ApplicationErrorHandlerAttribute"/> class.
+            </summary>
+            <param name="handlerType">The handler.</param>
+        </member>
+        <member name="M:Inflexion2.Application.ApplicationErrorHandlerAttribute.AddBindingParameters(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase,System.Collections.ObjectModel.Collection{System.ServiceModel.Description.ServiceEndpoint},System.ServiceModel.Channels.BindingParameterCollection)">
+            <summary>
+            Método que ofrece la posibilidad de pasar datos personalizados para
+            los elementos de enlace para apoyar la ejecución del contrato.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="serviceDescription">
+            Parámetro que indica la descripción del servicio.
+            </param>
+            <param name="serviceHostBase">
+            Parámetro que indica el host que está siendo construido.
+            </param>
+            <param name="endpoints">
+            Parámetro que indica la colección de endponits de los servicios.
+            </param>
+            <param name="bindingParameters">
+            Parámetro que indica la colección de objetos personalizados
+            a los que los elementos de enlace tienen acceso.
+            </param>
+        </member>
+        <member name="M:Inflexion2.Application.ApplicationErrorHandlerAttribute.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)">
+            <summary>
+            Método encargado de cambiar valores de propiedades o insertar extensiones de objetos
+            tales como gestores de errores, mensajes, en tiempo de ejecución.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="serviceDescription">
+            Parámetro que indica la descripción del servicio.
+            </param>
+            <param name="serviceHostBase">
+            Parámetro que indica el host que está siendo construido.
+            </param>
+        </member>
+        <member name="M:Inflexion2.Application.ApplicationErrorHandlerAttribute.Validate(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)">
+            <summary>
+            Método que ofrece la posibilidad de inspeccionar el service host y
+            la descripción del servicio para confirmar que el servicio puede
+            ejecutarse correctamente.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="serviceDescription">
+            Parámetro que indica la descripción del servicio.
+            </param>
+            <param name="serviceHostBase">
+            Parámetro que indica el host que está siendo construido.
+            </param>
+        </member>
+        <member name="T:Inflexion2.Application.FaultObject">
+            <summary>
+            Clase pública para la captura de excepciones desde los servicios.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Application.FaultObject.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:FaultObject"/>.
+            </summary>
+            <remarks>
+            Sin comentarios especiales.
+            </remarks>
+        </member>
+        <member name="M:Inflexion2.Application.FaultObject.#ctor(System.Exception)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:FaultObject"/>.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Application.FaultObject.#ctor(System.String,System.Exception)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:FaultObject"/>.
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Application.FaultObject.FaultCode">
+            <summary>
+            this enum code the possible origin of the error
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Application.FaultObject.FaultCode.Sever">
+            <summary>
+            the error is originated in the server
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Application.FaultObject.Code">
+            <summary>
+            Propiedad que obtiene o establece el origen de la excepción.
+            </summary>
+            <value>
+            Valor que es utilizado para obtener o establecer el código de la excepción.
+            </value>
+        </member>
+        <member name="P:Inflexion2.Application.FaultObject.Reason">
+            <summary>
+            Propiedad pública que obtiene o establece el texto del mensaje de excepción.
+            </summary>
+            <value>
+            Valor que es utilizado para obtener o establecer el texto del mensaje de excepción.
+            </value>
+        </member>
+        <member name="M:Inflexion2.Application.FaultObject.Create``1(``0)">
+            <summary>
+            Creates a WCF SOAP FaultException based on a CAS Exception.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="exception">The exception.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Application.FaultObject.Throw``1(``0)">
+            <summary>
+            Throws the specified exception.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="T:Inflexion2.Application.InternalException">
+            <summary>
+            Clase de excepción interna para el Fault.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Application.InternalException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:InternalException"/> con el
+            mensaje de error especificado.
+            </summary>
+            <param name="message">
+            Parámetro que indica el mensaje de la excepción.
+            </param>
+        </member>
+        <member name="M:Inflexion2.Application.InternalException.#ctor(System.Exception)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:InternalException"/> con el
+            la excepción especificada.
+            </summary>
+            <param name="exception">
+            Parámetro de tipo <see cref="T:System.Exception"/> que indica la excepción producida.
+            </param>
+        </member>
+        <member name="M:Inflexion2.Application.InternalException.#ctor(System.String,System.Exception)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:InternalException"/> con el
+            mensaje de error especificado y la excepción interna.
+            </summary>
+            <param name="message">
+            Parámetro que indica el mensaje de la excepción.
+            </param>
+            <param name="innerException">
+            Parámetro de tipo <see cref="T:System.Exception"/> que identifica la excepción interna.
+            </param>
+        </member>
+        <member name="T:Inflexion2.Application.ValidationException">
+            <summary>
+            Validation exception
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Application.ValidationException.#ctor(Inflexion2.Domain.Validation.ValidationException)">
+            <summary>
+            constructs and gets the message for a validation exception
+            </summary>
+            <param name="validationException"></param>
+        </member>
+        <member name="P:Inflexion2.Application.ValidationException.ValidationErrors">
+            <summary>
+            .en collection of errors messages
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Application.ServiceFaultContracts">
+            <summary>
+            Services for contract exceptions
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Application.ServiceFaultContracts.#ctor">
+            <summary>
+            gets the info from the exception
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Application.ServiceFaultContracts.#ctor(System.Type[])">
+            <summary>
+            add the info from the exception contracts
+            </summary>
+            <param name="knownFaultTypes"></param>
+        </member>
+        <member name="M:Inflexion2.Application.ServiceFaultContracts.AddBindingParameters(System.ServiceModel.Description.ContractDescription,System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)">
+            <summary>
+            add info from the parameters in the contracts
+            </summary>
+            <param name="contractDescription"></param>
+            <param name="endpoint"></param>
+            <param name="bindingParameters"></param>
+        </member>
+        <member name="M:Inflexion2.Application.ServiceFaultContracts.ApplyClientBehavior(System.ServiceModel.Description.ContractDescription,System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)">
+            <summary>
+            not implemented
+            </summary>
+            <param name="contractDescription"></param>
+            <param name="endpoint"></param>
+            <param name="clientRuntime"></param>
+        </member>
+        <member name="M:Inflexion2.Application.ServiceFaultContracts.ApplyDispatchBehavior(System.ServiceModel.Description.ContractDescription,System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.DispatchRuntime)">
+            <summary>
+            not implemented
+            </summary>
+            <param name="contractDescription"></param>
+            <param name="endpoint"></param>
+            <param name="dispatchRuntime"></param>
+        </member>
+        <member name="M:Inflexion2.Application.ServiceFaultContracts.Validate(System.ServiceModel.Description.ContractDescription,System.ServiceModel.Description.ServiceEndpoint)">
+            <summary>
+            not implemented
+            </summary>
+            <param name="contractDescription"></param>
+            <param name="endpoint"></param>
+        </member>
         <member name="T:Inflexion2.Application.ApplicationLayer">
             <summary>
             Host e inicializacion del contenedor de IOC

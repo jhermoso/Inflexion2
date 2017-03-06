@@ -3,7 +3,7 @@
 //     Copyright (c) 2012. Inflexion Software. All Rights Reserved.
 // </copyright>
 // ---------------------------------------------------------------------------------
-namespace Inflexion2.UX.WPF.Fault
+namespace Inflexion2.Application
 {
     using System;
     using System.Linq;

@@ -215,7 +215,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         #endregion
 
         /// <summary>
-        /// .en General method to get a record by is id.
+        /// .en General method to get a record by id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

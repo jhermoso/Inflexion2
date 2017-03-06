@@ -106,6 +106,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -121,6 +122,11 @@
     <Compile Include="Core\Services\IGenericServices.cs" />
     <Compile Include="DataTransfer\CoreBase\IDataTransferObject.cs" />
     <Compile Include="DataTransfer\CoreBase\IEntityDataTransferObject.cs" />
+    <Compile Include="ErrorHandlers\ApplicationErrorHandler.cs" />
+    <Compile Include="ErrorHandlers\ApplicationErrorHandlerAttribute.cs" />
+    <Compile Include="Fault\FaultObject.cs" />
+    <Compile Include="Fault\InternalException.cs" />
+    <Compile Include="Fault\ServiceFaultContracts.cs" />
     <Compile Include="IoC\ApplicationLayer.cs" />
     <Compile Include="Core\IConfiguration.cs" />
     <Compile Include="DataTransfer\CoreBase\BaseBussinesEntityDataTransferObject.cs" />
@@ -142,6 +148,10 @@
     <ProjectReference Include="..\Inflexion2.EF\Inflexion2.EF.csproj">
       <Project>{0FB2C801-BD90-400A-8D2B-817481985499}</Project>
       <Name>Inflexion2.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Inflexion2.Resources\Inflexion2.Resources.csproj">
+      <Project>{e5f79d13-0e92-4e5c-9251-6922741afcaa}</Project>
+      <Name>Inflexion2.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\Inflexion2\Inflexion2.csproj">
       <Project>{BF5456D4-B276-459B-98D4-853FCEF99ADE}</Project>

@@ -53,7 +53,7 @@ foreach (var item in sharedKernelUsings)
 
     #region general usings
     using System;
-	using System.Configuration;
+    using System.Configuration;
     using System.Collections.Generic;
     using System.ServiceModel;
 
@@ -67,7 +67,7 @@ foreach (var item in sharedKernelUsings)
     using Inflexion2.Infrastructure;
 
     using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Application;
-	using <#= projectNamespace #>.Contracts;
+    using <#= projectNamespace #>.Contracts;
     //using AppSrvCore = <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Application;
     #endregion
 
@@ -79,7 +79,7 @@ foreach (var item in sharedKernelUsings)
     public partial class <#= cbc.secureEntityName #>Service : I<#= cbc.secureEntityName #>Service
     {
      //   #region Configuration
-	 //
+     //
      //   /// <summary>
      //   /// https://msdn.microsoft.com/en-us/library/hh205277(v=vs.110).aspx
      //   /// </summary>
@@ -92,7 +92,7 @@ foreach (var item in sharedKernelUsings)
      //           <#= prjCon.boundedContextName #>RepositoryLayer.IocRegistry();
      //       }
      //   }
-	 //
+     //
      //   #endregion
 
         #region Fields
@@ -136,7 +136,18 @@ foreach (var item in sharedKernelUsings)
         /// </returns>
         public bool Activate(int id<#= (Secured)?", UserContextDto userContextDto":""#>)
         {
-            return this.service.Activate(id<#= (Secured)?", userContextDto":""#>);
+            bool result = false;
+            try
+            {
+                result =  this.service.Activate(id<#= (Secured)?", userContextDto":""#>);
+            }
+            catch (Exception ex)
+            {
+                Inflexion2.Application.InternalException ie = new Inflexion2.Application.InternalException(ex);
+                FaultObject.Throw<Inflexion2.Application.FaultObject>(ie);
+            }
+
+            return result;
         }
 <#+ } #>
         /// <summary>
@@ -150,7 +161,7 @@ foreach (var item in sharedKernelUsings)
         /// <return>
         /// Devuelve el identificador único de la entidad creada.
         /// </return>
-        public int Create( <#= cbc.secureEntityName #>Dto <#= cbc.camelSecureEntityName #>Dto<#= (Secured)?", UserContextDto userContextDto":""#>)
+        public <#= cbc.idtype #> Create( <#= cbc.secureEntityName #>Dto <#= cbc.camelSecureEntityName #>Dto<#= (Secured)?", UserContextDto userContextDto":""#>)
         {
             // opción 1
             // Instanciamos el servicio de aplicación de creación mediante el contenedor de IoC.
@@ -161,8 +172,18 @@ foreach (var item in sharedKernelUsings)
             // return identifier;
 
             //opción 2
-            return this.service.Create(<#= cbc.camelSecureEntityName #>Dto<#= (Secured)?", userContextDto":""#>);
+            <#= cbc.idtype #> result = <#= cbc.nullidtype #>;
+            try
+            {
+                result = this.service.Create(<#= cbc.camelSecureEntityName #>Dto<#= (Secured)?", userContextDto":""#>);
+            }
+            catch (Exception ex)
+            {
+                Inflexion2.Application.InternalException ie = new Inflexion2.Application.InternalException(ex);
+                FaultObject.Throw<Inflexion2.Application.FaultObject>(ie);
+            }
 
+            return result;
         } // end Create
 
 
@@ -189,7 +210,18 @@ foreach (var item in sharedKernelUsings)
             // return response;
 
             // opción 2
-            return this.service.Update(<#= cbc.camelSecureEntityName #>Dto<#= (Secured)?", userContextDto":""#>);
+			bool result = false;
+            try
+            {
+                result = this.service.Update(<#= cbc.camelSecureEntityName #>Dto<#= (Secured)?", userContextDto":""#>);
+			}
+            catch (Exception ex)
+            {
+                Inflexion2.Application.InternalException ie = new Inflexion2.Application.InternalException(ex);
+                FaultObject.Throw<Inflexion2.Application.FaultObject>(ie);
+            }
+
+            return result;
         } // end Update
 
         /// <summary>
@@ -218,8 +250,18 @@ foreach (var item in sharedKernelUsings)
             //return response;
 
             //opcion 2
-            return this.service.Delete(id<#= (Secured)?", userContextDto":""#>);
+			bool result = false;
+            try
+            {
+                result = this.service.Delete(id<#= (Secured)?", userContextDto":""#>);
+			}
+            catch (Exception ex)
+            {
+                Inflexion2.Application.InternalException ie = new Inflexion2.Application.InternalException(ex);
+                FaultObject.Throw<Inflexion2.Application.FaultObject>(ie);
+            }
 
+            return result;
         } // Delete
 
 
@@ -241,7 +283,18 @@ foreach (var item in sharedKernelUsings)
             //return result;
             
             // opcion 2
-            return this.service.GetAll(<#= (Secured)?", userContextDto":""#>);
+			IEnumerable<<#= cbc.secureEntityName #>Dto> result = null;
+            try
+            {
+                result = this.service.GetAll(<#= (Secured)?", userContextDto":""#>);
+            }
+            catch (Exception ex)
+            {
+                Inflexion2.Application.InternalException ie = new Inflexion2.Application.InternalException(ex);
+                FaultObject.Throw<Inflexion2.Application.FaultObject>(ie);
+            }
+
+            return result;
         } // GetAll
 
         /// <summary>
@@ -268,7 +321,18 @@ foreach (var item in sharedKernelUsings)
             //return <#= cbc.camelSecureEntityName #>Dto;
 
             // opcion 2
-            return this.service.GetById(<#= cbc.camelSecureEntityName #>Id<#= (Secured)?", userContextDto":""#>);
+			<#= cbc.secureEntityName #>Dto result = null;
+            try
+            {
+                result = this.service.GetById(<#= cbc.camelSecureEntityName #>Id<#= (Secured)?", userContextDto":""#>);
+            }
+            catch (Exception ex)
+            {
+                Inflexion2.Application.InternalException ie = new Inflexion2.Application.InternalException(ex);
+                FaultObject.Throw<Inflexion2.Application.FaultObject>(ie);
+            }
+
+            return result;
         } // GetById
 
 <#+if (cbc.LogicDelete){ #>
@@ -281,7 +345,18 @@ foreach (var item in sharedKernelUsings)
         /// </returns>
         public IEnumerable<<#= cbc.pascalSecureEntityName #>Dto> GetEnabled(<#= (Secured)?", UserContextDto userContextDto":""#>)
         {
-            return this.service.GetEnabled(<#= (Secured)?", userContextDto":""#>);
+			IEnumerable<<#= cbc.pascalSecureEntityName #>Dto> result = null;
+            try
+            {
+                result = this.service.GetEnabled(<#= (Secured)?", userContextDto":""#>);
+			}
+            catch (Exception ex)
+            {
+                Inflexion2.Application.InternalException ie = new Inflexion2.Application.InternalException(ex);
+                FaultObject.Throw<Inflexion2.Application.FaultObject>(ie);
+            }
+
+            return result;
         }
 <#+ }#>
         /// <summary>
@@ -296,7 +371,18 @@ foreach (var item in sharedKernelUsings)
         /// </returns>
         public PagedElements<<#= cbc.pascalSecureEntityName #>Dto> GetPaged(SpecificationDto specificationDto<#= (Secured)?", UserContextDto userContextDto":""#>)
         {
-            return this.service.GetPaged(specificationDto<#= (Secured)?", userContextDto":""#>);
+			PagedElements<<#= cbc.pascalSecureEntityName #>Dto>	result = null;
+            try
+            {
+                result = this.service.GetPaged(specificationDto<#= (Secured)?", userContextDto":""#>);
+            }
+            catch (Exception ex)
+            {
+                Inflexion2.Application.InternalException ie = new Inflexion2.Application.InternalException(ex);
+                FaultObject.Throw<Inflexion2.Application.FaultObject>(ie);
+            }
+
+            return result;
         }
 
 

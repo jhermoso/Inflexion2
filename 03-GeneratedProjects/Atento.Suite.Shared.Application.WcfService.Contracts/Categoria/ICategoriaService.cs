@@ -40,7 +40,7 @@ namespace Atento.Suite.Shared.Application.WcfService.Contracts
     /// <remarks>
     /// Sin comentarios adicionales.
     /// </remarks>
-    [ServiceContract]//, ServiceFaultContracts]
+    [ServiceContract, ServiceFaultContracts]
     public partial interface ICategoriaService
     {
 
@@ -61,8 +61,9 @@ namespace Atento.Suite.Shared.Application.WcfService.Contracts
         /// <return>
         /// Devuelve el identificador único de la entidad creada.
         /// </return>
-        [OperationContract]
-        //[FaultContract(typeof(FaultObject))]
+        [OperationContract, FaultContract(typeof(FaultObject))]
+        [FaultContract(typeof(ValidationException))]
+        [FaultContract(typeof(InternalException))]
         int Create(
                     CategoriaDto categoriaDto);
 
@@ -80,8 +81,9 @@ namespace Atento.Suite.Shared.Application.WcfService.Contracts
         /// Devuelve <b>true</b> si la actualización ha sido correcta y
         /// <b>false</b> en caso contrario.
         /// </returns>
-        [OperationContract]
-        //[FaultContract(typeof(FaultObject))]
+        [OperationContract, FaultContract(typeof(FaultObject))]
+        [FaultContract(typeof(ValidationException))]
+        [FaultContract(typeof(InternalException))]
         bool Update(
                     CategoriaDto categoriaDto);
 
@@ -94,8 +96,9 @@ namespace Atento.Suite.Shared.Application.WcfService.Contracts
         /// <returns>
         /// Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
         /// </returns>
-        [OperationContract]
-        //[FaultContract(typeof(FaultObject))]
+        [OperationContract, FaultContract(typeof(FaultObject))]
+        [FaultContract(typeof(ValidationException))]
+        [FaultContract(typeof(InternalException))]
         bool Delete(int id);
         /// <summary>
         /// Método encargado de obtener todas las entidades Categoria.
@@ -106,8 +109,9 @@ namespace Atento.Suite.Shared.Application.WcfService.Contracts
         /// <returns>
         /// Devuelve listado de Dto´s de la entidad Categoria.
         /// </returns>
-        [OperationContract]
-        //[FaultContract(typeof(FaultObject))]
+        [OperationContract, FaultContract(typeof(FaultObject))]
+        [FaultContract(typeof(ValidationException))]
+        [FaultContract(typeof(InternalException))]
         IEnumerable<CategoriaDto> GetAll();
 
 
@@ -126,8 +130,9 @@ namespace Atento.Suite.Shared.Application.WcfService.Contracts
         /// Devuelve objeto dto <see cref="CategoriaDto"/> con la información
         /// requerida.
         /// </returns>
-        [OperationContract]
-        //[FaultContract(typeof(FaultObject))]
+        [OperationContract, FaultContract(typeof(FaultObject))]
+        [FaultContract(typeof(ValidationException))]
+        [FaultContract(typeof(InternalException))]
         CategoriaDto GetById(
                             Int32 categoriaId );
 
@@ -140,8 +145,9 @@ namespace Atento.Suite.Shared.Application.WcfService.Contracts
         /// <returns>
         /// La lista paginada de entidades Categoria, según la especificación indicada.
         /// </returns>
-        [OperationContract]
-        //[FaultContract(typeof(FaultObject))]
+        [OperationContract, FaultContract(typeof(FaultObject))]
+        [FaultContract(typeof(ValidationException))]
+        [FaultContract(typeof(InternalException))]
         PagedElements<CategoriaDto> GetPaged(SpecificationDto specificationDto);
 
         #endregion

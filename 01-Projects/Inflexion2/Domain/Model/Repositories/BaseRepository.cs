@@ -196,17 +196,17 @@ namespace Inflexion2.Domain
 
             return ascending
                    ? new PagedElements<TEntity>(
-                       query.OrderBy(orderByExpression)
-                       .Skip(pageIndex * pageSize)
-                       .Take(pageSize)
-                       .ToList(),
-                       total)
+                                                   query.OrderBy(orderByExpression)
+                                                   .Skip(pageIndex * pageSize)
+                                                   .Take(pageSize)
+                                                   .ToList(),
+                                                   total)
                    : new PagedElements<TEntity>(
-                       query.OrderByDescending(orderByExpression)
-                       .Skip(pageIndex * pageSize)
-                       .Take(pageSize)
-                       .ToList(),
-                       total);
+                                                   query.OrderByDescending(orderByExpression)
+                                                   .Skip(pageIndex * pageSize)
+                                                   .Take(pageSize)
+                                                   .ToList(),
+                                                   total);
         }
 
         /// <summary>

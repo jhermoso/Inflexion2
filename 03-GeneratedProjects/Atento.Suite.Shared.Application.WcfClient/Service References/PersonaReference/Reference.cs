@@ -56,6 +56,9 @@ namespace Atento.Suite.Shared.Application.WcfClient.PersonaReference {
         Atento.Suite.Shared.Application.Dtos.PersonaDto EndGetById(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPersonaService/GetPaged", ReplyAction="http://tempuri.org/IPersonaService/GetPagedResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.FaultObject), Action="http://tempuri.org/IPersonaService/GetPagedFaultObjectFault", Name="FaultObject", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.ValidationException), Action="http://tempuri.org/IPersonaService/GetPagedValidationExceptionFault", Name="ValidationException", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.InternalException), Action="http://tempuri.org/IPersonaService/GetPagedInternalExceptionFault", Name="InternalException", Namespace="")]
         Inflexion2.Domain.PagedElements<Atento.Suite.Shared.Application.Dtos.PersonaDto> GetPaged(Inflexion2.Application.SpecificationDto specificationDto);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IPersonaService/GetPaged", ReplyAction="http://tempuri.org/IPersonaService/GetPagedResponse")]

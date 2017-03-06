@@ -66,7 +66,7 @@ namespace <#= projectNamespace #>
     /// <remarks>
     /// Sin comentarios adicionales.
     /// </remarks>
-    [ServiceContract]//, ServiceFaultContracts]
+    [ServiceContract, ServiceFaultContracts]
     public partial interface I<#= cbc.pascalSecureEntityName #>Service
     {
 
@@ -82,8 +82,9 @@ namespace <#= projectNamespace #>
         /// <returns>
         /// Es <b>true</b> si la activación ha sido correcta, en caso contrario <b>false</b>.
         /// </returns>
-        [OperationContract]
-        //[FaultContract(typeof(FaultObject))]
+        [OperationContract, FaultContract(typeof(FaultObject))]
+        [FaultContract(typeof(ValidationException))]
+        [FaultContract(typeof(InternalException))]
         bool Activate(int id<#= (Secured)?", UserContextDto userContextDto":""#>);
 <#+ }#>
         /// <summary>
@@ -103,8 +104,9 @@ namespace <#= projectNamespace #>
         /// <return>
         /// Devuelve el identificador único de la entidad creada.
         /// </return>
-        [OperationContract]
-        //[FaultContract(typeof(FaultObject))]
+        [OperationContract, FaultContract(typeof(FaultObject))]
+        [FaultContract(typeof(ValidationException))]
+        [FaultContract(typeof(InternalException))]
         int Create(
                     <#= cbc.pascalSecureEntityName #>Dto <#= cbc.camelSecureEntityName #>Dto<#=(Secured)?", UserContextDto userContextDto":""#>);
 
@@ -123,8 +125,9 @@ namespace <#= projectNamespace #>
         /// Devuelve <b>true</b> si la actualización ha sido correcta y
         /// <b>false</b> en caso contrario.
         /// </returns>
-        [OperationContract]
-        //[FaultContract(typeof(FaultObject))]
+        [OperationContract, FaultContract(typeof(FaultObject))]
+        [FaultContract(typeof(ValidationException))]
+        [FaultContract(typeof(InternalException))]
         bool Update(
                     <#= cbc.pascalSecureEntityName #>Dto <#= cbc.camelSecureEntityName #>Dto<#= (Secured)?", UserContextDto userContextDto":""#>);
 
@@ -138,8 +141,9 @@ namespace <#= projectNamespace #>
         /// <returns>
         /// Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
         /// </returns>
-        [OperationContract]
-        //[FaultContract(typeof(FaultObject))]
+        [OperationContract, FaultContract(typeof(FaultObject))]
+        [FaultContract(typeof(ValidationException))]
+        [FaultContract(typeof(InternalException))]
         bool Delete(int id<#= (Secured)?", UserContextDto userContextDto":""#>);
 <#+ if (false){ #>
         /// <summary>
@@ -156,8 +160,9 @@ namespace <#= projectNamespace #>
         /// Devuelve <b>true</b> si la eliminación ha sido correcta y
         /// <b>false</b> en caso contrario.
         /// </returns>
-        [OperationContract]
-        //[FaultContract(typeof(FaultObject))]
+        [OperationContract, FaultContract(typeof(FaultObject))]
+        [FaultContract(typeof(ValidationException))]
+        [FaultContract(typeof(InternalException))]
         bool Delete( <#= cbc.pascalSecureEntityName #>Dto <#= cbc.camelSecureEntityName #>Dto<#= (Secured)?", UserContextDto userContextDto":""#>);
 <#+ } #>
         /// <summary>
@@ -170,8 +175,9 @@ namespace <#= projectNamespace #>
         /// <returns>
         /// Devuelve listado de Dto´s de la entidad <#= I #><#= cbc.pascalSecureEntityName #>.
         /// </returns>
-        [OperationContract]
-        //[FaultContract(typeof(FaultObject))]
+        [OperationContract, FaultContract(typeof(FaultObject))]
+        [FaultContract(typeof(ValidationException))]
+        [FaultContract(typeof(InternalException))]
         IEnumerable<<#= cbc.pascalSecureEntityName #>Dto> GetAll(<#= (Secured)?", UserContextDto userContextDto":""#>);
 
 
@@ -191,8 +197,9 @@ namespace <#= projectNamespace #>
         /// Devuelve objeto dto <see cref="<#= cbc.secureEntityName #>Dto"/> con la información
         /// requerida.
         /// </returns>
-        [OperationContract]
-        //[FaultContract(typeof(FaultObject))]
+        [OperationContract, FaultContract(typeof(FaultObject))]
+        [FaultContract(typeof(ValidationException))]
+        [FaultContract(typeof(InternalException))]
         <#= cbc.secureEntityName #>Dto GetById(
                             <#= cbc.idtype #> <#= cbc.camelSecureEntityName #>Id <#= (Secured)?", UserContextDto userContextDto":""#>);
 
@@ -206,8 +213,9 @@ namespace <#= projectNamespace #>
         /// <returns>
         /// La lista paginada de entidades <#= cbc.pascalSecureEntityName #>, según la especificación indicada.
         /// </returns>
-        [OperationContract]
-        //[FaultContract(typeof(FaultObject))]
+        [OperationContract, FaultContract(typeof(FaultObject))]
+        [FaultContract(typeof(ValidationException))]
+        [FaultContract(typeof(InternalException))]
         PagedElements<<#= cbc.secureEntityName #>Dto> GetPaged(SpecificationDto specificationDto<#= (Secured)?", UserContextDto userContextDto":""#>);
 
         #endregion

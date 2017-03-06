@@ -81,7 +81,7 @@ foreach (var item in sharedKernelUsings)
     /// Clase pública del servicio Wcf encargada de realizar las tareas 
     /// relacionadas con la entidad <#= I #><#= cbc.secureEntityName #>.
     /// </summary>
-    //[ApplicationErrorHandlerAttribute]
+    [ApplicationErrorHandlerAttribute]
     public partial class <#= cbc.secureEntityName #>Service : I<#= cbc.secureEntityName #>Service
     {
         #region Configuration
