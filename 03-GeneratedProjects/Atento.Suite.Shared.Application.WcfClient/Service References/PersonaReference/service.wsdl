@@ -3,13 +3,13 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/Atento.Suite.Shared.Application.Dtos" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/Inflexion2.Application" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/System" />
-      <xsd:import />
-      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Inflexion2.Domain" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Inflexion2.Domain" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IPersonaService_Create_InputMessage">
@@ -18,11 +18,29 @@
   <wsdl:message name="IPersonaService_Create_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateResponse" />
   </wsdl:message>
+  <wsdl:message name="IPersonaService_Create_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IPersonaService_Create_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IPersonaService_Create_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
   <wsdl:message name="IPersonaService_Update_InputMessage">
     <wsdl:part name="parameters" element="tns:Update" />
   </wsdl:message>
   <wsdl:message name="IPersonaService_Update_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonaService_Update_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IPersonaService_Update_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IPersonaService_Update_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
   </wsdl:message>
   <wsdl:message name="IPersonaService_Delete_InputMessage">
     <wsdl:part name="parameters" element="tns:Delete" />
@@ -30,17 +48,44 @@
   <wsdl:message name="IPersonaService_Delete_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteResponse" />
   </wsdl:message>
+  <wsdl:message name="IPersonaService_Delete_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IPersonaService_Delete_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IPersonaService_Delete_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
   <wsdl:message name="IPersonaService_GetAll_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAll" />
   </wsdl:message>
   <wsdl:message name="IPersonaService_GetAll_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllResponse" />
   </wsdl:message>
+  <wsdl:message name="IPersonaService_GetAll_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IPersonaService_GetAll_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IPersonaService_GetAll_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
   <wsdl:message name="IPersonaService_GetById_InputMessage">
     <wsdl:part name="parameters" element="tns:GetById" />
   </wsdl:message>
   <wsdl:message name="IPersonaService_GetById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonaService_GetById_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IPersonaService_GetById_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IPersonaService_GetById_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
   </wsdl:message>
   <wsdl:message name="IPersonaService_GetPaged_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPaged" />
@@ -61,22 +106,37 @@
     <wsdl:operation name="Create">
       <wsdl:input wsaw:Action="http://tempuri.org/IPersonaService/Create" message="tns:IPersonaService_Create_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPersonaService/CreateResponse" message="tns:IPersonaService_Create_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IPersonaService/CreateFaultObjectFault" name="FaultObjectFault" message="tns:IPersonaService_Create_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IPersonaService/CreateValidationExceptionFault" name="ValidationExceptionFault" message="tns:IPersonaService_Create_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IPersonaService/CreateInternalExceptionFault" name="InternalExceptionFault" message="tns:IPersonaService_Create_InternalExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="Update">
       <wsdl:input wsaw:Action="http://tempuri.org/IPersonaService/Update" message="tns:IPersonaService_Update_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPersonaService/UpdateResponse" message="tns:IPersonaService_Update_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IPersonaService/UpdateFaultObjectFault" name="FaultObjectFault" message="tns:IPersonaService_Update_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IPersonaService/UpdateValidationExceptionFault" name="ValidationExceptionFault" message="tns:IPersonaService_Update_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IPersonaService/UpdateInternalExceptionFault" name="InternalExceptionFault" message="tns:IPersonaService_Update_InternalExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="Delete">
       <wsdl:input wsaw:Action="http://tempuri.org/IPersonaService/Delete" message="tns:IPersonaService_Delete_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPersonaService/DeleteResponse" message="tns:IPersonaService_Delete_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IPersonaService/DeleteFaultObjectFault" name="FaultObjectFault" message="tns:IPersonaService_Delete_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IPersonaService/DeleteValidationExceptionFault" name="ValidationExceptionFault" message="tns:IPersonaService_Delete_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IPersonaService/DeleteInternalExceptionFault" name="InternalExceptionFault" message="tns:IPersonaService_Delete_InternalExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAll">
       <wsdl:input wsaw:Action="http://tempuri.org/IPersonaService/GetAll" message="tns:IPersonaService_GetAll_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPersonaService/GetAllResponse" message="tns:IPersonaService_GetAll_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IPersonaService/GetAllFaultObjectFault" name="FaultObjectFault" message="tns:IPersonaService_GetAll_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IPersonaService/GetAllValidationExceptionFault" name="ValidationExceptionFault" message="tns:IPersonaService_GetAll_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IPersonaService/GetAllInternalExceptionFault" name="InternalExceptionFault" message="tns:IPersonaService_GetAll_InternalExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetById">
       <wsdl:input wsaw:Action="http://tempuri.org/IPersonaService/GetById" message="tns:IPersonaService_GetById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPersonaService/GetByIdResponse" message="tns:IPersonaService_GetById_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IPersonaService/GetByIdFaultObjectFault" name="FaultObjectFault" message="tns:IPersonaService_GetById_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IPersonaService/GetByIdValidationExceptionFault" name="ValidationExceptionFault" message="tns:IPersonaService_GetById_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IPersonaService/GetByIdInternalExceptionFault" name="InternalExceptionFault" message="tns:IPersonaService_GetById_InternalExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetPaged">
       <wsdl:input wsaw:Action="http://tempuri.org/IPersonaService/GetPaged" message="tns:IPersonaService_GetPaged_InputMessage" />
@@ -96,6 +156,15 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="Update">
       <soap:operation soapAction="http://tempuri.org/IPersonaService/Update" style="document" />
@@ -105,6 +174,15 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="Delete">
       <soap:operation soapAction="http://tempuri.org/IPersonaService/Delete" style="document" />
@@ -114,6 +192,15 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetAll">
       <soap:operation soapAction="http://tempuri.org/IPersonaService/GetAll" style="document" />
@@ -123,6 +210,15 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetById">
       <soap:operation soapAction="http://tempuri.org/IPersonaService/GetById" style="document" />
@@ -132,6 +228,15 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetPaged">
       <soap:operation soapAction="http://tempuri.org/IPersonaService/GetPaged" style="document" />

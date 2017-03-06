@@ -16,6 +16,9 @@ namespace Atento.Suite.Shared.Application.WcfClient.CategoriaReference {
     public interface ICategoriaService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoriaService/Create", ReplyAction="http://tempuri.org/ICategoriaService/CreateResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.FaultObject), Action="http://tempuri.org/ICategoriaService/CreateFaultObjectFault", Name="FaultObject", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.ValidationException), Action="http://tempuri.org/ICategoriaService/CreateValidationExceptionFault", Name="ValidationException", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.InternalException), Action="http://tempuri.org/ICategoriaService/CreateInternalExceptionFault", Name="InternalException", Namespace="")]
         int Create(Atento.Suite.Shared.Application.Dtos.CategoriaDto categoriaDto);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ICategoriaService/Create", ReplyAction="http://tempuri.org/ICategoriaService/CreateResponse")]
@@ -24,6 +27,9 @@ namespace Atento.Suite.Shared.Application.WcfClient.CategoriaReference {
         int EndCreate(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoriaService/Update", ReplyAction="http://tempuri.org/ICategoriaService/UpdateResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.FaultObject), Action="http://tempuri.org/ICategoriaService/UpdateFaultObjectFault", Name="FaultObject", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.ValidationException), Action="http://tempuri.org/ICategoriaService/UpdateValidationExceptionFault", Name="ValidationException", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.InternalException), Action="http://tempuri.org/ICategoriaService/UpdateInternalExceptionFault", Name="InternalException", Namespace="")]
         bool Update(Atento.Suite.Shared.Application.Dtos.CategoriaDto categoriaDto);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ICategoriaService/Update", ReplyAction="http://tempuri.org/ICategoriaService/UpdateResponse")]
@@ -32,6 +38,9 @@ namespace Atento.Suite.Shared.Application.WcfClient.CategoriaReference {
         bool EndUpdate(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoriaService/Delete", ReplyAction="http://tempuri.org/ICategoriaService/DeleteResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.FaultObject), Action="http://tempuri.org/ICategoriaService/DeleteFaultObjectFault", Name="FaultObject", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.ValidationException), Action="http://tempuri.org/ICategoriaService/DeleteValidationExceptionFault", Name="ValidationException", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.InternalException), Action="http://tempuri.org/ICategoriaService/DeleteInternalExceptionFault", Name="InternalException", Namespace="")]
         bool Delete(int id);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ICategoriaService/Delete", ReplyAction="http://tempuri.org/ICategoriaService/DeleteResponse")]
@@ -40,6 +49,9 @@ namespace Atento.Suite.Shared.Application.WcfClient.CategoriaReference {
         bool EndDelete(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoriaService/GetAll", ReplyAction="http://tempuri.org/ICategoriaService/GetAllResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.FaultObject), Action="http://tempuri.org/ICategoriaService/GetAllFaultObjectFault", Name="FaultObject", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.ValidationException), Action="http://tempuri.org/ICategoriaService/GetAllValidationExceptionFault", Name="ValidationException", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.InternalException), Action="http://tempuri.org/ICategoriaService/GetAllInternalExceptionFault", Name="InternalException", Namespace="")]
         System.Collections.ObjectModel.ObservableCollection<Atento.Suite.Shared.Application.Dtos.CategoriaDto> GetAll();
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ICategoriaService/GetAll", ReplyAction="http://tempuri.org/ICategoriaService/GetAllResponse")]
@@ -48,6 +60,9 @@ namespace Atento.Suite.Shared.Application.WcfClient.CategoriaReference {
         System.Collections.ObjectModel.ObservableCollection<Atento.Suite.Shared.Application.Dtos.CategoriaDto> EndGetAll(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoriaService/GetById", ReplyAction="http://tempuri.org/ICategoriaService/GetByIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.FaultObject), Action="http://tempuri.org/ICategoriaService/GetByIdFaultObjectFault", Name="FaultObject", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.ValidationException), Action="http://tempuri.org/ICategoriaService/GetByIdValidationExceptionFault", Name="ValidationException", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.InternalException), Action="http://tempuri.org/ICategoriaService/GetByIdInternalExceptionFault", Name="InternalException", Namespace="")]
         Atento.Suite.Shared.Application.Dtos.CategoriaDto GetById(int categoriaId);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ICategoriaService/GetById", ReplyAction="http://tempuri.org/ICategoriaService/GetByIdResponse")]
@@ -56,6 +71,9 @@ namespace Atento.Suite.Shared.Application.WcfClient.CategoriaReference {
         Atento.Suite.Shared.Application.Dtos.CategoriaDto EndGetById(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoriaService/GetPaged", ReplyAction="http://tempuri.org/ICategoriaService/GetPagedResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.FaultObject), Action="http://tempuri.org/ICategoriaService/GetPagedFaultObjectFault", Name="FaultObject", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.ValidationException), Action="http://tempuri.org/ICategoriaService/GetPagedValidationExceptionFault", Name="ValidationException", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.InternalException), Action="http://tempuri.org/ICategoriaService/GetPagedInternalExceptionFault", Name="InternalException", Namespace="")]
         Inflexion2.Domain.PagedElements<Atento.Suite.Shared.Application.Dtos.CategoriaDto> GetPaged(Inflexion2.Application.SpecificationDto specificationDto);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ICategoriaService/GetPaged", ReplyAction="http://tempuri.org/ICategoriaService/GetPagedResponse")]

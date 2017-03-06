@@ -16,6 +16,9 @@ namespace Atento.Suite.Shared.Application.WcfClient.PersonaReference {
     public interface IPersonaService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPersonaService/Create", ReplyAction="http://tempuri.org/IPersonaService/CreateResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.FaultObject), Action="http://tempuri.org/IPersonaService/CreateFaultObjectFault", Name="FaultObject", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.ValidationException), Action="http://tempuri.org/IPersonaService/CreateValidationExceptionFault", Name="ValidationException", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.InternalException), Action="http://tempuri.org/IPersonaService/CreateInternalExceptionFault", Name="InternalException", Namespace="")]
         int Create(Atento.Suite.Shared.Application.Dtos.PersonaDto personaDto);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IPersonaService/Create", ReplyAction="http://tempuri.org/IPersonaService/CreateResponse")]
@@ -24,6 +27,9 @@ namespace Atento.Suite.Shared.Application.WcfClient.PersonaReference {
         int EndCreate(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPersonaService/Update", ReplyAction="http://tempuri.org/IPersonaService/UpdateResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.FaultObject), Action="http://tempuri.org/IPersonaService/UpdateFaultObjectFault", Name="FaultObject", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.ValidationException), Action="http://tempuri.org/IPersonaService/UpdateValidationExceptionFault", Name="ValidationException", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.InternalException), Action="http://tempuri.org/IPersonaService/UpdateInternalExceptionFault", Name="InternalException", Namespace="")]
         bool Update(Atento.Suite.Shared.Application.Dtos.PersonaDto personaDto);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IPersonaService/Update", ReplyAction="http://tempuri.org/IPersonaService/UpdateResponse")]
@@ -32,6 +38,9 @@ namespace Atento.Suite.Shared.Application.WcfClient.PersonaReference {
         bool EndUpdate(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPersonaService/Delete", ReplyAction="http://tempuri.org/IPersonaService/DeleteResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.FaultObject), Action="http://tempuri.org/IPersonaService/DeleteFaultObjectFault", Name="FaultObject", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.ValidationException), Action="http://tempuri.org/IPersonaService/DeleteValidationExceptionFault", Name="ValidationException", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.InternalException), Action="http://tempuri.org/IPersonaService/DeleteInternalExceptionFault", Name="InternalException", Namespace="")]
         bool Delete(int id);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IPersonaService/Delete", ReplyAction="http://tempuri.org/IPersonaService/DeleteResponse")]
@@ -40,6 +49,9 @@ namespace Atento.Suite.Shared.Application.WcfClient.PersonaReference {
         bool EndDelete(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPersonaService/GetAll", ReplyAction="http://tempuri.org/IPersonaService/GetAllResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.FaultObject), Action="http://tempuri.org/IPersonaService/GetAllFaultObjectFault", Name="FaultObject", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.ValidationException), Action="http://tempuri.org/IPersonaService/GetAllValidationExceptionFault", Name="ValidationException", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.InternalException), Action="http://tempuri.org/IPersonaService/GetAllInternalExceptionFault", Name="InternalException", Namespace="")]
         System.Collections.ObjectModel.ObservableCollection<Atento.Suite.Shared.Application.Dtos.PersonaDto> GetAll();
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IPersonaService/GetAll", ReplyAction="http://tempuri.org/IPersonaService/GetAllResponse")]
@@ -48,6 +60,9 @@ namespace Atento.Suite.Shared.Application.WcfClient.PersonaReference {
         System.Collections.ObjectModel.ObservableCollection<Atento.Suite.Shared.Application.Dtos.PersonaDto> EndGetAll(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPersonaService/GetById", ReplyAction="http://tempuri.org/IPersonaService/GetByIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.FaultObject), Action="http://tempuri.org/IPersonaService/GetByIdFaultObjectFault", Name="FaultObject", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.ValidationException), Action="http://tempuri.org/IPersonaService/GetByIdValidationExceptionFault", Name="ValidationException", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.InternalException), Action="http://tempuri.org/IPersonaService/GetByIdInternalExceptionFault", Name="InternalException", Namespace="")]
         Atento.Suite.Shared.Application.Dtos.PersonaDto GetById(int personaId);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IPersonaService/GetById", ReplyAction="http://tempuri.org/IPersonaService/GetByIdResponse")]

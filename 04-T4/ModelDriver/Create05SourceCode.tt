@@ -48,11 +48,11 @@
         {
             string secureBdName = bdName.Replace('\\','.');
 
-			/* Si estamos en hexacore solo tenemos realmente un bounded context que utilizamos despues para hacer las carpetas */
-			/*  Por esta razón las saltamos*/
-			if( MainDiagram.Architecture == ArchitectureOptions.HexaCore & secureBdName.Equals(MainDiagram.SolutionFolderCommon) ||
-				MainDiagram.Architecture == ArchitectureOptions.PureDDD )
-			{
+            /* Si estamos en hexacore solo tenemos realmente un bounded context que utilizamos despues para hacer las carpetas */
+            /*  Por esta razón las saltamos*/
+            if( MainDiagram.Architecture == ArchitectureOptions.HexaCore & secureBdName.Equals(MainDiagram.SolutionFolderCommon) ||
+                MainDiagram.Architecture == ArchitectureOptions.PureDDD )
+            {
                 ICollection<Architecture.ArqLayer> layersList= null;
                 if (MainDiagram.Architecture == ArchitectureOptions.Inflexion2)
                     layersList = Architecture.Inflexion2WPFLayers;

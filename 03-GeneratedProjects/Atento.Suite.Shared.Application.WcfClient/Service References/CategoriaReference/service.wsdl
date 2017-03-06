@@ -3,9 +3,11 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/Atento.Suite.Shared.Application.Dtos" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/Inflexion2.Application" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/Inflexion2.Domain" />
     </xsd:schema>
   </wsdl:types>
@@ -15,11 +17,29 @@
   <wsdl:message name="ICategoriaService_Create_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateResponse" />
   </wsdl:message>
+  <wsdl:message name="ICategoriaService_Create_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="ICategoriaService_Create_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="ICategoriaService_Create_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
   <wsdl:message name="ICategoriaService_Update_InputMessage">
     <wsdl:part name="parameters" element="tns:Update" />
   </wsdl:message>
   <wsdl:message name="ICategoriaService_Update_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICategoriaService_Update_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="ICategoriaService_Update_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="ICategoriaService_Update_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
   </wsdl:message>
   <wsdl:message name="ICategoriaService_Delete_InputMessage">
     <wsdl:part name="parameters" element="tns:Delete" />
@@ -27,11 +47,29 @@
   <wsdl:message name="ICategoriaService_Delete_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteResponse" />
   </wsdl:message>
+  <wsdl:message name="ICategoriaService_Delete_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="ICategoriaService_Delete_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="ICategoriaService_Delete_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
   <wsdl:message name="ICategoriaService_GetAll_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAll" />
   </wsdl:message>
   <wsdl:message name="ICategoriaService_GetAll_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICategoriaService_GetAll_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="ICategoriaService_GetAll_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="ICategoriaService_GetAll_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
   </wsdl:message>
   <wsdl:message name="ICategoriaService_GetById_InputMessage">
     <wsdl:part name="parameters" element="tns:GetById" />
@@ -39,36 +77,72 @@
   <wsdl:message name="ICategoriaService_GetById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetByIdResponse" />
   </wsdl:message>
+  <wsdl:message name="ICategoriaService_GetById_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="ICategoriaService_GetById_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="ICategoriaService_GetById_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
   <wsdl:message name="ICategoriaService_GetPaged_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPaged" />
   </wsdl:message>
   <wsdl:message name="ICategoriaService_GetPaged_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPagedResponse" />
   </wsdl:message>
+  <wsdl:message name="ICategoriaService_GetPaged_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="ICategoriaService_GetPaged_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="ICategoriaService_GetPaged_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
   <wsdl:portType name="ICategoriaService">
     <wsdl:operation name="Create">
       <wsdl:input wsaw:Action="http://tempuri.org/ICategoriaService/Create" message="tns:ICategoriaService_Create_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICategoriaService/CreateResponse" message="tns:ICategoriaService_Create_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICategoriaService/CreateFaultObjectFault" name="FaultObjectFault" message="tns:ICategoriaService_Create_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICategoriaService/CreateValidationExceptionFault" name="ValidationExceptionFault" message="tns:ICategoriaService_Create_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICategoriaService/CreateInternalExceptionFault" name="InternalExceptionFault" message="tns:ICategoriaService_Create_InternalExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="Update">
       <wsdl:input wsaw:Action="http://tempuri.org/ICategoriaService/Update" message="tns:ICategoriaService_Update_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICategoriaService/UpdateResponse" message="tns:ICategoriaService_Update_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICategoriaService/UpdateFaultObjectFault" name="FaultObjectFault" message="tns:ICategoriaService_Update_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICategoriaService/UpdateValidationExceptionFault" name="ValidationExceptionFault" message="tns:ICategoriaService_Update_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICategoriaService/UpdateInternalExceptionFault" name="InternalExceptionFault" message="tns:ICategoriaService_Update_InternalExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="Delete">
       <wsdl:input wsaw:Action="http://tempuri.org/ICategoriaService/Delete" message="tns:ICategoriaService_Delete_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICategoriaService/DeleteResponse" message="tns:ICategoriaService_Delete_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICategoriaService/DeleteFaultObjectFault" name="FaultObjectFault" message="tns:ICategoriaService_Delete_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICategoriaService/DeleteValidationExceptionFault" name="ValidationExceptionFault" message="tns:ICategoriaService_Delete_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICategoriaService/DeleteInternalExceptionFault" name="InternalExceptionFault" message="tns:ICategoriaService_Delete_InternalExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAll">
       <wsdl:input wsaw:Action="http://tempuri.org/ICategoriaService/GetAll" message="tns:ICategoriaService_GetAll_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICategoriaService/GetAllResponse" message="tns:ICategoriaService_GetAll_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICategoriaService/GetAllFaultObjectFault" name="FaultObjectFault" message="tns:ICategoriaService_GetAll_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICategoriaService/GetAllValidationExceptionFault" name="ValidationExceptionFault" message="tns:ICategoriaService_GetAll_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICategoriaService/GetAllInternalExceptionFault" name="InternalExceptionFault" message="tns:ICategoriaService_GetAll_InternalExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetById">
       <wsdl:input wsaw:Action="http://tempuri.org/ICategoriaService/GetById" message="tns:ICategoriaService_GetById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICategoriaService/GetByIdResponse" message="tns:ICategoriaService_GetById_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICategoriaService/GetByIdFaultObjectFault" name="FaultObjectFault" message="tns:ICategoriaService_GetById_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICategoriaService/GetByIdValidationExceptionFault" name="ValidationExceptionFault" message="tns:ICategoriaService_GetById_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICategoriaService/GetByIdInternalExceptionFault" name="InternalExceptionFault" message="tns:ICategoriaService_GetById_InternalExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetPaged">
       <wsdl:input wsaw:Action="http://tempuri.org/ICategoriaService/GetPaged" message="tns:ICategoriaService_GetPaged_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICategoriaService/GetPagedResponse" message="tns:ICategoriaService_GetPaged_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICategoriaService/GetPagedFaultObjectFault" name="FaultObjectFault" message="tns:ICategoriaService_GetPaged_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICategoriaService/GetPagedValidationExceptionFault" name="ValidationExceptionFault" message="tns:ICategoriaService_GetPaged_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICategoriaService/GetPagedInternalExceptionFault" name="InternalExceptionFault" message="tns:ICategoriaService_GetPaged_InternalExceptionFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICategoriaService" type="tns:ICategoriaService">
@@ -81,6 +155,15 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="Update">
       <soap:operation soapAction="http://tempuri.org/ICategoriaService/Update" style="document" />
@@ -90,6 +173,15 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="Delete">
       <soap:operation soapAction="http://tempuri.org/ICategoriaService/Delete" style="document" />
@@ -99,6 +191,15 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetAll">
       <soap:operation soapAction="http://tempuri.org/ICategoriaService/GetAll" style="document" />
@@ -108,6 +209,15 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetById">
       <soap:operation soapAction="http://tempuri.org/ICategoriaService/GetById" style="document" />
@@ -117,6 +227,15 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetPaged">
       <soap:operation soapAction="http://tempuri.org/ICategoriaService/GetPaged" style="document" />
@@ -126,6 +245,15 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="CategoriaService">
