@@ -8,7 +8,7 @@ namespace Inflexion2.Logging
     using System;
 
     /// <summary>
-    /// logger implementation for console
+    /// Ilogger implementation for console
     /// </summary>
     public class ConsoleLogger : ILogger
     {

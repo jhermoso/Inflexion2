@@ -8,12 +8,13 @@ namespace Inflexion2.Logging
     using System;
 
     /// <summary>
-    /// inyect an empty logger
+    /// Empty logger implementation for testing 
+    /// this implementation is independent of any technology selected
     /// </summary>
     public static class LoggerManager
     {
         /// <summary>
-        /// TODO: update summary
+        ///this an exampl how to inject the implementation of ILogger
         /// </summary>
         public static Func<Type, ILogger> GetLogger = type => new EmptyLogger();
     }

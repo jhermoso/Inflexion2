@@ -14,7 +14,7 @@ namespace Inflexion2.Logging
     using log4net.Config;
 
     /// <summary>
-    /// basic Log 4 net operations
+    /// common adapter for the implementation class.
     /// </summary>
     public class Log4NetManager
     {

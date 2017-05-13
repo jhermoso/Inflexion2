@@ -247,10 +247,6 @@
     <Compile Include="Domain\Model\InternalObjectsValues\ValidPeriod\ValidPeriodFactory.cs" />
     <Compile Include="Domain\Model\IUnitOfWork\IUnitOfWork.cs" />
     <Compile Include="Domain\Model\IUnitOfWork\UnitOfWorkScope.cs" />
-    <Compile Include="Domain\Model\Loggin\ILogger.cs" />
-    <Compile Include="Domain\Model\Loggin\Impl\ConsoleLogger.cs" />
-    <Compile Include="Domain\Model\Loggin\Impl\EmptyLogger.cs" />
-    <Compile Include="Domain\Model\Loggin\LoggerManager.cs" />
     <Compile Include="Domain\Model\Repositories\BaseRepository.cs" />
     <Compile Include="Domain\Model\Repositories\EventSourcing\BaseEventStore.cs" />
     <Compile Include="Domain\Model\Repositories\EventSourcing\EventDescriptor.cs" />
@@ -293,6 +289,14 @@
     <Content Include="Domain\Model\EntityDefinitions\entities Herarquie.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Inflexion2.Logging.Log4Net\Inflexion2.Logging.Log4Net.csproj">
+      <Project>{7ab7bdac-23c6-471b-97ce-93fad74ba5da}</Project>
+      <Name>Inflexion2.Logging.Log4Net</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Inflexion2.Logging\Inflexion2.Logging.csproj">
+      <Project>{8c00a051-13ca-4702-b74c-fd672e843bde}</Project>
+      <Name>Inflexion2.Logging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Inflexion2.Resources\Inflexion2.Resources.csproj">
       <Project>{E5F79D13-0E92-4E5C-9251-6922741AFCAA}</Project>
       <Name>Inflexion2.Resources</Name>

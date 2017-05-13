@@ -5,7 +5,7 @@
 //-----------------------------------------------------------------------------------------------
 namespace Inflexion2.Domain
 {
-    using Logging;
+    using Inflexion2.Logging;
     using Specification;
     using System;
     using System.Collections.Generic;
@@ -35,7 +35,7 @@ namespace Inflexion2.Domain
         // <param name="context">A context for this repository</param>
         protected BaseRepository()
         {
-            this.logger = LoggerManager.GetLogger(GetType());
+            this.logger = LogManager.GetLogger(GetType());
             this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Created repository for type: {0}", typeof(TEntity).Name));
         }
 

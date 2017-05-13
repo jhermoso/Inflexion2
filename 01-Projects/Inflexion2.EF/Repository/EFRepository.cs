@@ -8,7 +8,7 @@ namespace Inflexion2.Domain
     using System.Data.Entity;
     using System.Globalization;
     using System.Linq;
-    using Logging;
+    using Inflexion2.Logging;
 
     /// <summary>
     /// see the remarks class
@@ -32,7 +32,7 @@ namespace Inflexion2.Domain
         /// <param name="dbContext"></param>
         public EFRepository(DbContext dbContext) : base()
         {
-            this.logger = LoggerManager.GetLogger(GetType());
+            this.logger = LogManager.GetLogger(GetType());
             this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Created repository for type: {0}", typeof(TEntity).Name));
             this.dbContext = dbContext;
         }

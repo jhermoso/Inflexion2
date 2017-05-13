@@ -22,7 +22,7 @@ namespace Inflexion2.Domain
         /// </summary>
         public EmptyEventPublisher()
         {
-            this.logger = LoggerManager.GetLogger(this.GetType());
+            this.logger = LogManager.GetLogger(this.GetType());
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Inflexion2.Domain
         /// <param name="event">The event.</param>
         public void Publish<T>(T @event) where T : class
         {
-            logger.DebugFormat("Publishing event of type: {0}", typeof(T).FullName);
+            logger.Debug("Publishing event of type: {0}", typeof(T).FullName);
         }
     }
 }

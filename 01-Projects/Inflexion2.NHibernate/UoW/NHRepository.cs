@@ -30,7 +30,7 @@ namespace Inflexion2.Domain
         /// <param name="session"></param>
         public NHRepository(ISession session) : base()
         {
-            this.logger = LoggerManager.GetLogger(GetType());
+            this.logger = LogManager.GetLogger(GetType());
             this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Created repository for type: {0}", typeof(TEntity).Name));
             this.session = session;
         }

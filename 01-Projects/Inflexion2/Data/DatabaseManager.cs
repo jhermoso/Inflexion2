@@ -56,7 +56,7 @@ namespace Inflexion2.Data
         /// </summary>
         public const string SQLiteProvider = "System.Data.SQLite";
 
-        private static readonly ILogger log = LoggerManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILogger log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         private readonly DbProviderFactory connectionProvider;
         private readonly string connectionString;
@@ -214,9 +214,9 @@ namespace Inflexion2.Data
                 }
             }
 
-            log.DebugFormat(CultureInfo.InvariantCulture, "Creating Database '{0}..", dbName);
+            log.Debug( "Creating Database '{0}..", dbName, CultureInfo.InvariantCulture);
             provider.ExecuteNonQuery(connStr, command.ToString());
-            log.InfoFormat(CultureInfo.InvariantCulture, "Database instance '{0}' created!", dbName);
+            log.Info( "Database instance '{0}' created!", dbName, CultureInfo.InvariantCulture);
         }
 
         private static bool _DatabaseExists(DbProviderFactory provider, string connectionString, string providerName)
@@ -226,12 +226,11 @@ namespace Inflexion2.Data
 
             try
             {
-                log.DebugFormat(
-                    CultureInfo.InvariantCulture,
-                    "Checking if database '{0}' exists, with provider: {1}, and connectionString: {2}",
+                log.Debug( "Checking if database '{0}' exists, with provider: {1}, and connectionString: {2}",
                     dbName,
                     providerName,
-                    connStr);
+                    connStr,
+                    CultureInfo.InvariantCulture);
 
                 if (providerName == SQLiteProvider)
                 {
@@ -294,7 +293,7 @@ namespace Inflexion2.Data
                 log.Error("Database connection failed", ex);
             }
 
-            log.DebugFormat(CultureInfo.InvariantCulture, "Database '{0}' does not exists", dbName);
+            log.Debug("Database '{0}' does not exists", dbName, CultureInfo.InvariantCulture);
             return false;
         }
 
