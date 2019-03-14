@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="ee8e0ad6-1d06-4c85-b146-f4b473de078f" sGBD="Oracle" culture="es" rootNameSpace="Inflexion.Suite" company="Inflexion" product="Players" copyright="I3 Televisión" branding="I3 Televisión" version="0.1" solutionFolderCommon="NGC\Players" libraryPath="..\Librarys" xmlns="http://schemas.microsoft.com/dsltools/MoneyGen">
+  <classBases>
+    <applicationHasElements Id="d4310bee-d090-407c-b3a9-5e1cf1e2c4ab">
+      <entity Id="3a9367d4-9452-4b45-965c-cc3d6fee833d" name="Player" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <targets>
+          <aggregation Id="5c4f2756-5b07-43c6-a808-133ff4bc26cc" sourceRoleName="ActuaComo" targetMultiplicity="OneMany" targetRolName="Para">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/Rol" />
+          </aggregation>
+          <aggregation Id="a81f5345-346f-49e0-bce1-aef052f24764" sourceRoleName="ClasificadoPor" targetMultiplicity="OneMany" targetRolName="ClasificaA">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/Clasification" />
+          </aggregation>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="3d7dbf4d-7f99-45c0-a576-c05a46519b24">
+            <atributte Id="2e6adad1-72c3-48c5-a943-58e895988da0" atributteName="PlayerName" isID="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="String PlayerName" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="12775a57-8a15-4e59-b30d-68409e0e4082">
+            <atributte Id="5acd2987-2e66-49c2-8048-52d3dc0adf1d" atributteName="CIF" isID="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="String CIF" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="9c5ebdca-a5d1-4b73-acdf-1164747c09f9">
+            <atributte Id="f3180211-b135-4e24-839f-e9e8aaf1f193" atributteName="cp" isID="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="String cp" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="279b2c4c-4d4e-4647-9c05-7be90854557a">
+      <entity Id="7f045638-2eb4-4fb5-913e-5c953c96185a" name="Rol" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <targets>
+          <aggregation Id="d60fe27d-92a8-405c-ba20-729f9c8186b6" sourceRoleName="ReferenceRelation" targetMultiplicity="OneMany" targetRolName="ReferenceRol" realtionshipName="From">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/Relationship" />
+          </aggregation>
+          <aggregation Id="1c507de2-87cc-4273-9c1d-9a1c70dc9e41" sourceRoleName="TargetRelation" targetMultiplicity="OneMany" targetRolName="TargetRoles" realtionshipName="To">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/Relationship" />
+          </aggregation>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="03364b6c-4451-4b55-9c67-12adefc3785f">
+            <atributte Id="a56e3c3a-4718-4dc8-a666-f4c0f49037e5" atributteName="RolName" isID="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="String RolName" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="b6ab0536-ce5b-4111-8a7e-d48322810524">
+      <entity Id="a4f785f2-c4a0-4ee9-90e9-e5bb900c1225" name="Relationship" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="bab5ed12-f970-4665-8f9f-a2919242ace0">
+            <atributte Id="8b00b3d8-177c-44b0-9335-632bff040bfb" atributteName="RelationshipName" isID="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="String RelationshipName" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="9eb2800b-90eb-4ff2-97a7-ebb33f744853">
+      <entity Id="85acb88e-c032-42db-9507-68d06a6d58b8" name="Organization" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="5267bcbb-c3ce-40b9-87b4-4ea48cf4f1b4">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/Player" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="a6d660ba-5acb-4a39-89eb-689d6e8eea27">
+      <entity Id="994fb279-138d-4bc2-a1c1-ddbe242b8987" name="Person" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="c276f97a-bf6e-4466-91e6-35953f746b1c">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/Player" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="0bbb67fa-a0e5-4554-bab5-00db81880949">
+      <entity Id="3f2f8122-098e-4688-8996-ca37c6ca189a" name="Legal" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="da676058-5137-4d87-a1d1-6ea7cbd01ac2">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/Organization" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="215ee920-66e1-4693-bb53-917c3614a37e">
+      <entity Id="de335142-2620-4fc6-bfc3-ed1af87b3322" name="Informal" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="3cb81514-29a9-4d16-85e4-977dec4c3dce">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/Organization" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="3c333581-c573-4eda-8ca1-0b895b8a1330">
+      <entity Id="df47e306-c6e0-4f7d-a0cc-9429e3917325" name="Clasification" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="" />
+    </applicationHasElements>
+    <applicationHasElements Id="a9c17b36-49c5-4c3a-a7dd-8641819502b8">
+      <entity Id="2bee5b41-ce3c-4500-ad58-df1063c851c7" name="PersonRol" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="e03a957d-91a2-4ab9-80b2-950d80ee21f6">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/Rol" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="d0769423-6ff3-4134-aa10-883b6457b0b3">
+      <entity Id="5ac819ff-8f36-480b-aaba-90b0eeb7af4d" name="OrganizationRol" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="cc6b03bd-0f38-4b99-91cf-696f7769cefa">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/Rol" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="aaf3c7a1-4b2e-480a-9a78-61cab660d964">
+      <entity Id="d666ba10-5089-46f7-92d4-3af24ccd59bd" name="Customer" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="bedd7c7a-b3e9-42b0-8aa9-efbd27daa61a">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/Rol" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="0c49f90f-142b-4cba-8192-99b8f40d21cf">
+      <entity Id="59f4069e-015d-4c05-82cb-b73ddcc75f14" name="Shareholder" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="00599149-4429-484c-8371-02fa8d72a2d9">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/Rol" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="620eb48d-2186-41fd-ad92-70c48371b91f">
+      <entity Id="d2b14147-cfa3-4bb8-bc7e-b48d5c3b75ae" name="Potencial" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="1554db86-450a-4c7c-ad37-15123b8e8c51">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/Rol" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="ac3635a6-378e-4a5b-9faa-d07283ef9904">
+      <entity Id="d3b87815-f670-47a5-8635-9f577fcd10e1" name="OrganizationUnit" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="0db11494-b86b-4cf6-ac86-fd44397204dc">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/OrganizationRol" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="3bff5b03-ee9e-4c43-ba30-a2bc2cdc8304">
+      <entity Id="45cc3170-7228-4512-8e5a-6149b65a6fb0" name="Referencia" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="32ed4380-4d4d-40cb-ac67-3e6a80129389">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/OrganizationRol" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="a30d4460-2ef0-440a-9710-29954a97bcf0">
+      <entity Id="381c4292-0bdd-4860-82ae-2ebd1ec49908" name="Employee" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="769120b4-b0a2-4e03-ad43-c69c41b40a1a">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/PersonRol" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="646c2331-7e36-4feb-91c0-903565d4fd92">
+      <entity Id="349e11f5-4096-4618-941f-e13f1d43901f" name="Contact" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="ce3bb93b-6349-47c3-b714-08773aa985c2">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/PersonRol" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="03404146-5719-4d63-bc5b-0624f2d6f771">
+      <entity Id="3095160f-6763-49e5-bdbd-1a8641ec8529" name="Bill" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="377dd7f3-60c3-4880-9d2c-0bef3f0009eb">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/Customer" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="d1129e13-216c-430e-aa18-3cb6e3acdb44">
+      <entity Id="1ef5b9f1-57b9-4a5c-a671-00430a6ab6b9" name="Ship" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="21a68c90-6344-4be4-91d2-e4d81af139bf">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/Customer" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="18223c63-dea2-4f78-9202-758d3f6cd9c8">
+      <entity Id="c86b3681-8fd6-4864-9aba-f00c21257bba" name="EndUser" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="d82b0f8a-b948-4583-8360-c4c9b85674c5">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/Customer" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="5a1d8496-85da-432e-93b5-5a1b2630b340">
+      <entity Id="d1d98b3a-3aa6-4652-84c6-ed6c6d2bc514" name="Partner" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="f723e62d-6056-452f-a47a-bcea7b4fe1f6">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/OrganizationRol" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="5c1776e8-7686-46c2-bd8c-6eb94471da2d">
+      <entity Id="06909196-009f-47cb-89b1-792910b4d411" name="HouseHold" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="2da7b206-e480-4c5b-9e6a-e892ddd6016f">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/OrganizationRol" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="2bd43b08-8cd6-472e-b39e-2c1863cef5da">
+      <entity Id="42cab429-7c0a-404a-bb7c-4fdd20e6a34c" name="Cliente" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="5374914c-7a38-45cb-ac80-12646236ca49">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/Relationship" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="5cd5d8ed-4546-43ea-904e-9f406919102d">
+      <entity Id="067087a9-a2c2-403f-b52e-62cffc9dfadb" name="Empleado" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="4a8cdd83-a827-492d-885b-98ac401ba5de">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/Relationship" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="1daa869e-1198-4d9b-9e83-9994aecb08c2">
+      <entity Id="59261944-c662-4287-a861-3625ec1bde34" name="Organigrama" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="b4585b44-a9db-4b59-b42e-02ad2fbdcbf2">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/Relationship" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="48a4ce05-7436-47ca-b602-b62b34aeeb5a">
+      <entity Id="fc3a4f97-1dd3-4466-84c2-b49207686864" name="TypeRelationship" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <targets>
+          <aggregation Id="dd0b4e12-c00c-4671-a441-56b52982af18" sourceRoleName="Discriminados" targetRolName="Discriminante" realtionshipName="Type">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/Relationship" />
+          </aggregation>
+        </targets>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="fad7cab8-58d0-4209-bcec-54bd24ce80d2">
+      <entity Id="2e5d4504-c28d-448f-8383-9b2ac838bcf0" name="TypeRol" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <targets>
+          <aggregation Id="5abbb1ee-651b-443f-96c8-63298217464d" sourceRoleName="Discriminados" targetRolName="Discriminante">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/Rol" />
+          </aggregation>
+          <aggregation Id="599b4d08-47f5-4a68-9d3a-7f936830169b" sourceRoleName="ReferenceRelation" targetMultiplicity="OneMany" targetRolName="TargetRelation" realtionshipName="From">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/TypeRelationship" />
+          </aggregation>
+          <aggregation Id="7febde2a-4488-445c-921c-54f42650660f" sourceRoleName="TargetRelation" targetMultiplicity="OneMany" targetRolName="TargetRoles" realtionshipName="To">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/TypeRelationship" />
+          </aggregation>
+        </targets>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="40125c30-5ea7-4397-b4b2-1ae896436dc3">
+      <entity Id="edb39ca6-5448-4975-a2ef-203aea86a9c2" name="TypePlayer" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <targets>
+          <aggregation Id="fb3123c8-796d-41da-8733-ec4ce80fe77a" sourceRoleName="Discriminados" targetMultiplicity="OneMany" targetRolName="Discriminante">
+            <entityMoniker name="/ee8e0ad6-1d06-4c85-b146-f4b473de078f/Player" />
+          </aggregation>
+        </targets>
+      </entity>
+    </applicationHasElements>
+  </classBases>
+</application>

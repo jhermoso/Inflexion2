@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AirBus.Suite.SifyX.Application.WcfService.Contracts</name>
+    </assembly>
+    <members>
+        <member name="T:AirBus.Suite.SifyX.Application.WcfService.Contracts.IMetaClassService">
+            <summary>
+            Interfaz que permite definir el contrato de servicio para las acciones
+            relacionadas con la entidad MetaClass.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.WcfService.Contracts.IMetaClassService.Create(AirBus.Suite.SifyX.Application.Dtos.MetaClassDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo MetaClass.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="metaClassDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SifyX.Application.Dtos.MetaClassDto"/> con los datos necesarios
+            para la creación de la entidad MetaClass.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.WcfService.Contracts.IMetaClassService.Update(AirBus.Suite.SifyX.Application.Dtos.MetaClassDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo MetaClass.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="metaClassDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SifyX.Application.Dtos.MetaClassDto"/> con los datos necesarios
+            para el borrado de la entidad MetaClassr.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.WcfService.Contracts.IMetaClassService.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad MetaClass.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.WcfService.Contracts.IMetaClassService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades MetaClass.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <returns>
+            Devuelve listado de Dto´s de la entidad MetaClass.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.WcfService.Contracts.IMetaClassService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad MetaClass de acuerdo a
+            su identificador.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="metaClassId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:AirBus.Suite.SifyX.Application.Dtos.MetaClassDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.WcfService.Contracts.IMetaClassService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades MetaClass, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades MetaClass, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SifyX.Application.WcfService.Contracts.IMetaSchemaService">
+            <summary>
+            Interfaz que permite definir el contrato de servicio para las acciones
+            relacionadas con la entidad MetaSchema.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.WcfService.Contracts.IMetaSchemaService.Create(AirBus.Suite.SifyX.Application.Dtos.MetaSchemaDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo MetaSchema.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="metaSchemaDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SifyX.Application.Dtos.MetaSchemaDto"/> con los datos necesarios
+            para la creación de la entidad MetaSchema.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.WcfService.Contracts.IMetaSchemaService.Update(AirBus.Suite.SifyX.Application.Dtos.MetaSchemaDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo MetaSchema.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="metaSchemaDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SifyX.Application.Dtos.MetaSchemaDto"/> con los datos necesarios
+            para el borrado de la entidad MetaSchemar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.WcfService.Contracts.IMetaSchemaService.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad MetaSchema.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.WcfService.Contracts.IMetaSchemaService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades MetaSchema.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <returns>
+            Devuelve listado de Dto´s de la entidad MetaSchema.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.WcfService.Contracts.IMetaSchemaService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad MetaSchema de acuerdo a
+            su identificador.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="metaSchemaId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:AirBus.Suite.SifyX.Application.Dtos.MetaSchemaDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.WcfService.Contracts.IMetaSchemaService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades MetaSchema, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades MetaSchema, según la especificación indicada.
+            </returns>
+        </member>
+    </members>
+</doc>

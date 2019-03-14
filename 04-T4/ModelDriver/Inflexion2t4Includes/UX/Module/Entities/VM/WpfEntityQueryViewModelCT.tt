@@ -40,11 +40,13 @@ namespace <#= projectNamespace #>
     using Inflexion2.UX.WPF;
     using Inflexion2.UX.WPF.MVVM.CRUD;
 
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Application;
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Application.Dtos;
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Application.WcfClient.<#= cbc.secureEntityName #>Reference;
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Infrastructure.Resources;
-
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Application;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Application.Dtos;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Application.WcfClient.<#= cbc.secureEntityName #>Reference;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Infrastructure.Resources;
+    using System.Collections.Generic;
+    using Inflexion2.Application;
+    using Microsoft.Practices.Prism.Events;
     #endregion
 
     /// <summary>
@@ -69,16 +71,63 @@ namespace <#= projectNamespace #>
         /// .es Inicializa una nueva instancia de la clase <see cref="T:<#= cbc.pascalSecureEntityName #>QueryViewModel"/>.
         /// </summary>
         public <#= cbc.pascalSecureEntityName #>QueryViewModel()
+            :base()
         {
             if (!this.IsDesignTime)
             {
                 this.ChangeActivateStatusCommand = new DelegateCommand(this.Reset<#= cbc.secureEntityName #>);
             }
+
+            // https://github.com/SeriousM/WPFLocalizationExtension/issues/87#issuecomment-174510689
+            // bind the property title of the VM to a dependecy property for the view. To allow the localization of the property tittle.
+            // becouse this property don´t belong the clas UserControl who is the base for the view
+            // but avalon dock uses this property to set the title of the dockable elements
+            // if we wont tha this can be updated when the selected culture is changed we need this work arround.
+            var targetProperty = this.GetType().GetProperty(nameof(<#= cbc.pascalSecureEntityName #>QueryViewModel.Title));
+            var locBinding = new WPFLocalizeExtension.Extensions.LocTextExtension("<#= cbc.pascalSecureEntityName #>PluralEntity");
+            locBinding.SetBinding(this, targetProperty);
+
+            // after to bind the property with the depdendecy property watch if theres is a change of the 
+            // the culture to raise an event to warning that the title property has changed
+            WPFLocalizeExtension.Engine.LocalizeDictionary.Instance.PropertyChanged += (sender, e) =>
+            {
+                if (e.PropertyName == "Culture")
+                {
+                    this.RaisePropertyChanged(() => Title);
+                }
+            };
+
 <#+ if (Secured){#>
             // Contexto de seguridad.
             //this.userContext = ApplicationContext.UserContext;
 <#+  } #>  
         } // <#= cbc.pascalSecureEntityName #>QueryView Constructor
+
+<#+
+	if (cbc.TotalLinksSources > 0)
+    {
+#>
+        /// <summary>
+        /// Constructor for nested view models in master detail from parent entities
+        /// </summary>
+        /// <param name="baseFilter"></param>
+        /// <param name="parentViewName"></param>
+        public <#= cbc.pascalSecureEntityName #>QueryViewModel(SpecificationDto baseFilter, string parentViewName )
+            : this()
+        {
+            this.Specification = baseFilter;
+            this.ParentViewName = parentViewName;
+            this.OnGetRecords("1");
+            this.IsBusy = false;
+
+            // only in this case there is a need of subscription to update a parent view
+            if (!CompositeViewUpdateEvent.Contains(this.OnReceiveCompositeViewUpdateEvent))
+            {
+                CompositeViewUpdateEvent.Subscribe(this.OnReceiveCompositeViewUpdateEvent, ThreadOption.UIThread);
+            }
+        }
+<#+ } // end  if (cbc.targetLinksCounter > 0) #>
+
         #endregion
 
         #region PROPERTIES
@@ -86,13 +135,7 @@ namespace <#= projectNamespace #>
         /// .en Property to set the title of the window 
         /// .es Propiedad para establecer el Titulo de la ventana
         /// </summary>
-        public override string Title
-        {
-            get
-            {
-                return <#= prjCon.boundedContextName #>Resources.<#= cbc.secureEntityName #>Alias; 
-            }
-        }
+        public override string Title { get; set; }
 
         /// <summary>
         /// .en Property to get the command of changing state.
@@ -194,6 +237,8 @@ namespace <#= projectNamespace #>
                                                     Application.Current.MainWindow.Title,
                                                     MessageBoxButton.OK,
                                                     MessageBoxImage.Information);
+                        UpdateParentView();
+
                         this.RefreshCommands();
                     }
                     else
@@ -204,6 +249,8 @@ namespace <#= projectNamespace #>
                                                     MessageBoxButton.OK,
                                                     MessageBoxImage.Exclamation);
                     }
+
+                    this.Rebind();
                 }
             }
             catch (System.Exception ex)
@@ -219,23 +266,25 @@ namespace <#= projectNamespace #>
         } // OnDeleteRecord
 
         /// <summary>
-        /// Método encargado de obtener todos los registros de <#= cbc.pascalSecureEntityName #>.
+        /// .en get records from <#= cbc.pascalSecureEntityName #>.
+        /// .es Método encargado de obtener todos los registros de <#= cbc.pascalSecureEntityName #>.
         /// </summary>
         /// <param name="parameter">
-        /// Parámetro con información adicional.
+        /// .en parameter with additional info
+        /// .es Parámetro con información adicional.
         /// </param>
         public override void OnGetRecords(object parameter)
         {
             if (<#+if(cbc.LogicDelete){ #>this.IsActive && <#+ }#>!this.IsBusy)
             {
                 this.IsBusy = true;
-                // Instanciamos el proxy.
+                // .en proxy instation // .es Instanciamos el proxy.
                 <#= cbc.secureEntityName #>ServiceClient serviceClient = new <#= cbc.secureEntityName #>ServiceClient();
                 try
                 {
                     this.IsBusy = true;
                     PagedElements<<#= cbc.secureEntityName #>Dto> result = null;
-                    //Ejecutamos el servicio de forma asíncrona.
+                    //.en Asyncronous execution of the service. //.es Ejecutamos el servicio de forma asíncrona.
                     serviceClient.BeginGetPaged(this.Specification, <#+ if (Secured){#> /*this.userContext,*/<#+ }#>
                                                 (asyncResult) =>
                     {
@@ -259,9 +308,10 @@ namespace <#= projectNamespace #>
                             this.MessageBoxService.Show("Internal Exception. Message: {0}", e.Message);
                             serviceClient.Abort();
                         }
-                        // Catch unrecognized faults.This handler receives exceptions thrown by WCF
-                        //services when ServiceDebugBehavior.IncludeExceptionDetailInFaults
-                        //is set to true or when un - typed FaultExceptions raised.
+
+                        // .en Catch unrecognized faults.This handler receives exceptions thrown by WCF
+                        // services when ServiceDebugBehavior.IncludeExceptionDetailInFaults
+                        // is set to true or when un - typed FaultExceptions raised.
                         catch (FaultException fe)
                         {
                             this.MessageBoxService.Show("Unhalded fault exception. Message:" + fe.Message);
@@ -274,10 +324,22 @@ namespace <#= projectNamespace #>
                             throw;
                         }
 
-                        this.Items = new ObservableCollection<<#= cbc.secureEntityName #>ViewModel>(result.Select(i => new <#= cbc.secureEntityName #>ViewModel(i)));
+						<#+
+	if (cbc.targetLinksCounter > 0)
+    {
+#>
+                        var first = result.FirstOrDefault();
+                        var last = result.LastOrDefault();
+
+                        this.Items = new ObservableCollection<<#= cbc.secureEntityName #>ViewModel>(result.Select(i => new <#= cbc.secureEntityName #>ViewModel(i, first, result.GetPrevious(i), result.GetNext(i), last)));
+<#+ }// end  if (cbc.targetLinksCounter > 0)
+    else{#>
+this.Items = new ObservableCollection<<#= cbc.secureEntityName #>ViewModel>(result.Select(i => new <#= cbc.secureEntityName #>ViewModel(i)));
+<#+ } // else (cbc.targetLinksCounter > 0)#>
                         this.TotalRecordCount = result.TotalElements;
                         this.IsBusy = false;
                         this.RefreshPagingCommands();
+                        this.Rebind();
                     },
                     null);
                 }
@@ -290,7 +352,10 @@ namespace <#= projectNamespace #>
             }
         } // OnGetRecords
 
-
+<#+
+	if (cbc.targetLinksCounter > 0)
+    {
+#>
         /// <summary>
         /// .en Get First Page records method. 
         ///     This command answer to a call from the ribbon region tab.
@@ -342,7 +407,7 @@ namespace <#= projectNamespace #>
             this.PageIndex = this.TotalPagesCount;
             OnGetRecords(parameter);
         } 
-
+<#+ } // end  if (cbc.targetLinksCounter > 0) #>
         #endregion
 
         #region PRIVATE METHODS
@@ -357,14 +422,34 @@ namespace <#= projectNamespace #>
             {
                 OnActivateRecord(null);
             }
-            else<#+ } #> if (CanDeleteRecord(null))
+			else
+<#+ } #>
+            if (CanDeleteRecord(null))
             {
                 OnDeleteRecord(null);
             }
         } // Reset<#= cbc.secureEntityName #>
 
-        #endregion
+<#+
+	///if (cbc.sourceLinksCounter > 0 || cbc.targetLinksCounter > 0)
+    //{
+#>
+        /// <summary>
+        /// .en refresh the collection of items raising a property changed event
+        /// </summary>
+        /// <param name="navigationContext"></param>
+        public override void OnNavigatedTo(Microsoft.Practices.Prism.Regions.NavigationContext navigationContext)
+        {
+            base.OnNavigatedTo(navigationContext);
+        }
 
+        internal void RefreshItems()
+        {
+            RaisePropertyChanged(() => this.Items);
+        }
+<#+ //} // end  if (cbc.sourceLinksCounter > 0) #>
+
+        #endregion
     }// <#= cbc.secureEntityName #>QueryViewModel
 } //  <#= projectNamespace #>
 <#+

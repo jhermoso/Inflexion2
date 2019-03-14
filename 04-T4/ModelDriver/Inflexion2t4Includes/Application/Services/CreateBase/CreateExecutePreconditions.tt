@@ -110,7 +110,8 @@ if (cbc.mandatorySourceLinksCounter>0) // comprobamos si tenemos relaciones de c
 <#+    } // end for each property from sources#>
             #endregion
 <#+} // end if sourlinks >0#>
-            // el dto debe corresponder a un transient el id debe tener el valor por defecto
+            // .en the dto has to be transient, so the Id has to have a default value.
+            // .es el dto debe corresponder a un transient por lo que el id debe tener el valor por defecto
             Guard.Against<ArgumentException>(<#= cbc.camelSecureEntityName #>Dto.Id != default(<#=cbc.idtype #>),                                    
                                                     string.Format(
                                                                 FrameworkResource.IsNotTransient,

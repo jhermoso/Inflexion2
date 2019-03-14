@@ -1,0 +1,588 @@
+﻿<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>AirBus.Suite.Domain</name>
+  </assembly>
+  <members>
+    <member name="T:AirBus.Suite.Domain.AppSetting">
+      <summary>
+        <see cref="T:AirBus.Suite.Domain.AppSetting" />
+      </summary>
+    </member>
+    <member name="M:AirBus.Suite.Domain.AppSetting.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.Domain.AppSetting" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.Domain.AppSetting" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.Domain.AppSetting.Key">
+      <summary>
+            Propiedad pública que permite obtener Key.
+            </summary>
+      <remarks>
+            App setting identity
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener Key.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.Domain.AppSetting.Value">
+      <summary>
+            Propiedad pública que permite obtener Value.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Value.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.Domain.AppSettingSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:AppSetting" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.Domain.IAppSetting">
+      <summary>
+            .en Interfaz to identify an entidad of type AppSetting in the application.
+            .es Interfaz que identifica una entidad de tipo AppSetting de la aplicación.
+            Clasificador
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by AppSetting/&gt;.
+            .es Interfaz que representa  una entidad implementado enAppSetting/&gt;.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.Domain.IAppSetting.Key">
+      <summary>
+            .en Property to get and set Key.
+            .es Propiedad que permite obtener y establecer Key.
+            </summary>
+      <remarks>
+            App setting identity
+            </remarks>
+      <value>
+            .en Value used to get and set Key.
+            .es Valor que es utilizado para obtener y establecer Key.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.Domain.IAppSetting.Value">
+      <summary>
+            .en Property to get and set Value.
+            .es Propiedad que permite obtener y establecer Value.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Value.
+            .es Valor que es utilizado para obtener y establecer Value.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.Domain.IAppSettingRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.Domain.IAppSetting" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.Domain.Department">
+      <summary>
+        <see cref="T:AirBus.Suite.Domain.Department" />
+      </summary>
+    </member>
+    <member name="M:AirBus.Suite.Domain.Department.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.Domain.Department" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.Domain.Department" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.Domain.Department.Name">
+      <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.Domain.Department.Visible">
+      <summary>
+            Propiedad pública que permite obtener Visible.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Visible.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.Domain.DepartmentSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:Department" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.Domain.IDepartment">
+      <summary>
+            .en Interfaz to identify an entidad of type Department in the application.
+            .es Interfaz que identifica una entidad de tipo Department de la aplicación.
+            Airbus Depatment organigram
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by Department/&gt;.
+            .es Interfaz que representa  una entidad implementado enDepartment/&gt;.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.Domain.IDepartment.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.Domain.IDepartment.Visible">
+      <summary>
+            .en Property to get and set Visible.
+            .es Propiedad que permite obtener y establecer Visible.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Visible.
+            .es Valor que es utilizado para obtener y establecer Visible.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.Domain.IDepartmentRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.Domain.IDepartment" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.Domain.Holiday">
+      <summary>
+        <see cref="T:AirBus.Suite.Domain.Holiday" />
+      </summary>
+    </member>
+    <member name="M:AirBus.Suite.Domain.Holiday.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.Domain.Holiday" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.Domain.Holiday" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.Domain.Holiday.Name">
+      <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.Domain.Holiday.Date">
+      <summary>
+            Propiedad pública que permite obtener Date.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Date.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.Domain.HolidaySpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:Holiday" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.Domain.IHoliday">
+      <summary>
+            .en Interfaz to identify an entidad of type Holiday in the application.
+            .es Interfaz que identifica una entidad de tipo Holiday de la aplicación.
+            
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by Holiday/&gt;.
+            .es Interfaz que representa  una entidad implementado enHoliday/&gt;.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.Domain.IHoliday.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.Domain.IHoliday.Date">
+      <summary>
+            .en Property to get and set Date.
+            .es Propiedad que permite obtener y establecer Date.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Date.
+            .es Valor que es utilizado para obtener y establecer Date.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.Domain.IHolidayRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.Domain.IHoliday" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.Domain.PerLifeTimeManager">
+      <summary>
+            LifetimeManager implementation
+            </summary>
+    </member>
+    <member name="F:AirBus.Suite.Domain.PerLifeTimeManager.value">
+      <summary />
+    </member>
+    <member name="M:AirBus.Suite.Domain.PerLifeTimeManager.GetValue">
+      <summary />
+      <returns />
+    </member>
+    <member name="M:AirBus.Suite.Domain.PerLifeTimeManager.RemoveValue">
+      <summary />
+    </member>
+    <member name="M:AirBus.Suite.Domain.PerLifeTimeManager.SetValue(System.Object)">
+      <summary />
+      <param name="newValue" />
+    </member>
+    <member name="T:AirBus.Suite.Domain.IMail">
+      <summary>
+            .en Interfaz to identify an entidad of type Mail in the application.
+            .es Interfaz que identifica una entidad de tipo Mail de la aplicación.
+            
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by Mail/&gt;.
+            .es Interfaz que representa  una entidad implementado enMail/&gt;.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.Domain.IMail.Body">
+      <summary>
+            .en Property to get and set Body.
+            .es Propiedad que permite obtener y establecer Body.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Body.
+            .es Valor que es utilizado para obtener y establecer Body.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.Domain.IMailRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.Domain.IMail" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.Domain.Mail">
+      <summary>
+        <see cref="T:AirBus.Suite.Domain.Mail" />
+      </summary>
+    </member>
+    <member name="M:AirBus.Suite.Domain.Mail.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.Domain.Mail" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.Domain.Mail" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.Domain.Mail.Body">
+      <summary>
+            Propiedad pública que permite obtener Body.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Body.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.Domain.MailSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:Mail" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.Domain.ITask">
+      <summary>
+            .en Interfaz to identify an entidad of type Task in the application.
+            .es Interfaz que identifica una entidad de tipo Task de la aplicación.
+            
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by Task/&gt;.
+            .es Interfaz que representa  una entidad implementado enTask/&gt;.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.Domain.ITask.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.Domain.ITaskRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.Domain.ITask" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.Domain.Task">
+      <summary>
+        <see cref="T:AirBus.Suite.Domain.Task" />
+      </summary>
+    </member>
+    <member name="M:AirBus.Suite.Domain.Task.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.Domain.Task" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.Domain.Task" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.Domain.Task.Name">
+      <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.Domain.TaskSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:Task" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.Domain.IUserRole">
+      <summary>
+            .en Interfaz to identify an entidad of type UserRole in the application.
+            .es Interfaz que identifica una entidad de tipo UserRole de la aplicación.
+            
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by UserRole/&gt;.
+            .es Interfaz que representa  una entidad implementado enUserRole/&gt;.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.Domain.IUserRole.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.Domain.IUserRoleRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.Domain.IUserRole" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.Domain.UserRole">
+      <summary>
+        <see cref="T:AirBus.Suite.Domain.UserRole" />
+      </summary>
+    </member>
+    <member name="M:AirBus.Suite.Domain.UserRole.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.Domain.UserRole" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.Domain.UserRole" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.Domain.UserRole.Name">
+      <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.Domain.UserRoleSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:UserRole" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.Domain.IUsersGroup">
+      <summary>
+            .en Interfaz to identify an entidad of type UsersGroup in the application.
+            .es Interfaz que identifica una entidad de tipo UsersGroup de la aplicación.
+            
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by UsersGroup/&gt;.
+            .es Interfaz que representa  una entidad implementado enUsersGroup/&gt;.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.Domain.IUsersGroup.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.Domain.IUsersGroupRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.Domain.IUsersGroup" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.Domain.UsersGroup">
+      <summary>
+        <see cref="T:AirBus.Suite.Domain.UsersGroup" />
+      </summary>
+    </member>
+    <member name="M:AirBus.Suite.Domain.UsersGroup.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.Domain.UsersGroup" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.Domain.UsersGroup" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.Domain.UsersGroup.Name">
+      <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.Domain.UsersGroupSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:UsersGroup" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.Domain.IUser">
+      <summary>
+            .en Interfaz to identify an entidad of type User in the application.
+            .es Interfaz que identifica una entidad de tipo User de la aplicación.
+            User information data
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by User/&gt;.
+            .es Interfaz que representa  una entidad implementado enUser/&gt;.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.Domain.IUser.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks>
+            Test with auto property and public setter.
+            </remarks>
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.Domain.IUserRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.Domain.IUser" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.Domain.User">
+      <summary>
+        <see cref="T:AirBus.Suite.Domain.User" />
+      </summary>
+    </member>
+    <member name="M:AirBus.Suite.Domain.User.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.Domain.User" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.Domain.User" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.Domain.User.#ctor(System.String)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Domain.User" />.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:AirBus.Suite.Domain.User" />.
+            </remarks>
+      <param name="name"> 
+            Parametro <see cref="P:AirBus.Suite.Domain.User.Name" /> del constructor de campos mandatory de la clase <see cref="T:AirBus.Suite.Domain.User" />
+            Propiedad deducida del rol source de una relación
+            </param>
+    </member>
+    <member name="P:AirBus.Suite.Domain.User.Name">
+      <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+      <remarks>
+            Test with auto property and public setter.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.Domain.UserSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:User" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+  </members>
+</doc>

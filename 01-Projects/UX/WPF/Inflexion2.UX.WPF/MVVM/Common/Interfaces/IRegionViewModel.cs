@@ -14,6 +14,11 @@ namespace Inflexion2.UX.WPF.MVVM
     /// </summary>
     public interface IRegionViewModel : IActiveAware, INavigationAware, IRegionMemberLifetime
     {
-
+        /// <summary>
+        /// Method to be overrided in viewmodels and deactivate all the nested viewmodels 
+        /// of usercontrols implemented to manage children realtionships that appears like 
+        /// 
+        /// </summary>
+        void DeactivateChildrenCollections();
     }
 }

@@ -1,0 +1,587 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AirBus.Suite.SyfiXBase.Application.WcfService</name>
+    </assembly>
+    <members>
+        <member name="T:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldNameService">
+            <summary>
+            Clase pública del servicio Wcf encargada de realizar las tareas 
+            relacionadas con la entidad DocumentFieldName.
+            </summary>
+        </member>
+        <member name="F:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldNameService.service">
+            <summary>
+            Referencia a los servicios de administración de la entidad DocumentFieldName.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldNameService.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:DocumentFieldNameService"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:DocumentFieldNameService"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldNameService.Create(AirBus.Suite.SyfiXBase.Application.Dtos.DocumentFieldNameDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo DocumentFieldName.
+            </summary>
+            <param name="documentFieldNameDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SyfiXBase.Application.Dtos.DocumentFieldNameDto"/> con los datos necesarios
+            para la creación de la entidad DocumentFieldName.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldNameService.Update(AirBus.Suite.SyfiXBase.Application.Dtos.DocumentFieldNameDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo DocumentFieldName.
+            </summary>
+            <param name="documentFieldNameDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SyfiXBase.Application.Dtos.DocumentFieldNameDto"/> con los datos necesarios
+            para el borrado de la entidad DocumentFieldNamer.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldNameService.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo DocumentFieldName.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="id">
+            Parámetro que indica el identificador único de la entidad a borrar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la eliminación ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldNameService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades DocumentFieldName.
+            </summary>
+            <returns>
+            Devuelve listado de Dto´s de la entidad DocumentFieldName.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldNameService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad DocumentFieldName de acuerdo a
+            su identificador.
+            </summary>
+            <param name="documentFieldNameId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:AirBus.Suite.SyfiXBase.Application.Dtos.DocumentFieldNameDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldNameService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades DocumentFieldName, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades DocumentFieldName, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldValueService">
+            <summary>
+            Clase pública del servicio Wcf encargada de realizar las tareas 
+            relacionadas con la entidad DocumentFieldValue.
+            </summary>
+        </member>
+        <member name="F:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldValueService.service">
+            <summary>
+            Referencia a los servicios de administración de la entidad DocumentFieldValue.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldValueService.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:DocumentFieldValueService"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:DocumentFieldValueService"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldValueService.Create(AirBus.Suite.SyfiXBase.Application.Dtos.DocumentFieldValueDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo DocumentFieldValue.
+            </summary>
+            <param name="documentFieldValueDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SyfiXBase.Application.Dtos.DocumentFieldValueDto"/> con los datos necesarios
+            para la creación de la entidad DocumentFieldValue.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldValueService.Update(AirBus.Suite.SyfiXBase.Application.Dtos.DocumentFieldValueDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo DocumentFieldValue.
+            </summary>
+            <param name="documentFieldValueDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SyfiXBase.Application.Dtos.DocumentFieldValueDto"/> con los datos necesarios
+            para el borrado de la entidad DocumentFieldValuer.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldValueService.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo DocumentFieldValue.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="id">
+            Parámetro que indica el identificador único de la entidad a borrar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la eliminación ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldValueService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades DocumentFieldValue.
+            </summary>
+            <returns>
+            Devuelve listado de Dto´s de la entidad DocumentFieldValue.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldValueService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad DocumentFieldValue de acuerdo a
+            su identificador.
+            </summary>
+            <param name="documentFieldValueId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:AirBus.Suite.SyfiXBase.Application.Dtos.DocumentFieldValueDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldValueService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades DocumentFieldValue, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades DocumentFieldValue, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldService">
+            <summary>
+            Clase pública del servicio Wcf encargada de realizar las tareas 
+            relacionadas con la entidad DocumentField.
+            </summary>
+        </member>
+        <member name="F:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldService.service">
+            <summary>
+            Referencia a los servicios de administración de la entidad DocumentField.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldService.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:DocumentFieldService"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:DocumentFieldService"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldService.Create(AirBus.Suite.SyfiXBase.Application.Dtos.DocumentFieldDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo DocumentField.
+            </summary>
+            <param name="documentFieldDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SyfiXBase.Application.Dtos.DocumentFieldDto"/> con los datos necesarios
+            para la creación de la entidad DocumentField.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldService.Update(AirBus.Suite.SyfiXBase.Application.Dtos.DocumentFieldDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo DocumentField.
+            </summary>
+            <param name="documentFieldDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SyfiXBase.Application.Dtos.DocumentFieldDto"/> con los datos necesarios
+            para el borrado de la entidad DocumentFieldr.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldService.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo DocumentField.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="id">
+            Parámetro que indica el identificador único de la entidad a borrar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la eliminación ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades DocumentField.
+            </summary>
+            <returns>
+            Devuelve listado de Dto´s de la entidad DocumentField.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad DocumentField de acuerdo a
+            su identificador.
+            </summary>
+            <param name="documentFieldId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:AirBus.Suite.SyfiXBase.Application.Dtos.DocumentFieldDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentFieldService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades DocumentField, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades DocumentField, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentTypeService">
+            <summary>
+            Clase pública del servicio Wcf encargada de realizar las tareas 
+            relacionadas con la entidad DocumentType.
+            </summary>
+        </member>
+        <member name="F:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentTypeService.service">
+            <summary>
+            Referencia a los servicios de administración de la entidad DocumentType.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentTypeService.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:DocumentTypeService"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:DocumentTypeService"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentTypeService.Create(AirBus.Suite.SyfiXBase.Application.Dtos.DocumentTypeDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo DocumentType.
+            </summary>
+            <param name="documentTypeDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SyfiXBase.Application.Dtos.DocumentTypeDto"/> con los datos necesarios
+            para la creación de la entidad DocumentType.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentTypeService.Update(AirBus.Suite.SyfiXBase.Application.Dtos.DocumentTypeDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo DocumentType.
+            </summary>
+            <param name="documentTypeDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SyfiXBase.Application.Dtos.DocumentTypeDto"/> con los datos necesarios
+            para el borrado de la entidad DocumentTyper.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentTypeService.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo DocumentType.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="id">
+            Parámetro que indica el identificador único de la entidad a borrar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la eliminación ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentTypeService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades DocumentType.
+            </summary>
+            <returns>
+            Devuelve listado de Dto´s de la entidad DocumentType.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentTypeService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad DocumentType de acuerdo a
+            su identificador.
+            </summary>
+            <param name="documentTypeId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:AirBus.Suite.SyfiXBase.Application.Dtos.DocumentTypeDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentTypeService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades DocumentType, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades DocumentType, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentVersionService">
+            <summary>
+            Clase pública del servicio Wcf encargada de realizar las tareas 
+            relacionadas con la entidad DocumentVersion.
+            </summary>
+        </member>
+        <member name="F:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentVersionService.service">
+            <summary>
+            Referencia a los servicios de administración de la entidad DocumentVersion.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentVersionService.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:DocumentVersionService"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:DocumentVersionService"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentVersionService.Create(AirBus.Suite.SyfiXBase.Application.Dtos.DocumentVersionDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo DocumentVersion.
+            </summary>
+            <param name="documentVersionDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SyfiXBase.Application.Dtos.DocumentVersionDto"/> con los datos necesarios
+            para la creación de la entidad DocumentVersion.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentVersionService.Update(AirBus.Suite.SyfiXBase.Application.Dtos.DocumentVersionDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo DocumentVersion.
+            </summary>
+            <param name="documentVersionDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SyfiXBase.Application.Dtos.DocumentVersionDto"/> con los datos necesarios
+            para el borrado de la entidad DocumentVersionr.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentVersionService.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo DocumentVersion.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="id">
+            Parámetro que indica el identificador único de la entidad a borrar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la eliminación ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentVersionService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades DocumentVersion.
+            </summary>
+            <returns>
+            Devuelve listado de Dto´s de la entidad DocumentVersion.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentVersionService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad DocumentVersion de acuerdo a
+            su identificador.
+            </summary>
+            <param name="documentVersionId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:AirBus.Suite.SyfiXBase.Application.Dtos.DocumentVersionDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentVersionService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades DocumentVersion, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades DocumentVersion, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentService">
+            <summary>
+            Clase pública del servicio Wcf encargada de realizar las tareas 
+            relacionadas con la entidad Document.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentService.Configure(System.ServiceModel.ServiceConfiguration)">
+            <summary>
+            https://msdn.microsoft.com/en-us/library/hh205277(v=vs.110).aspx
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="F:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentService.service">
+            <summary>
+            Referencia a los servicios de administración de la entidad Document.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentService.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:DocumentService"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:DocumentService"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentService.Create(AirBus.Suite.SyfiXBase.Application.Dtos.DocumentDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo Document.
+            </summary>
+            <param name="documentDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SyfiXBase.Application.Dtos.DocumentDto"/> con los datos necesarios
+            para la creación de la entidad Document.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentService.Update(AirBus.Suite.SyfiXBase.Application.Dtos.DocumentDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo Document.
+            </summary>
+            <param name="documentDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SyfiXBase.Application.Dtos.DocumentDto"/> con los datos necesarios
+            para el borrado de la entidad Documentr.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentService.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo Document.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="id">
+            Parámetro que indica el identificador único de la entidad a borrar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la eliminación ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades Document.
+            </summary>
+            <returns>
+            Devuelve listado de Dto´s de la entidad Document.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad Document de acuerdo a
+            su identificador.
+            </summary>
+            <param name="documentId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:AirBus.Suite.SyfiXBase.Application.Dtos.DocumentDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.DocumentService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Document, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades Document, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.Application.WcfService.SuiteSyfiXBaseRepositoryLayer">
+            <summary>
+            Registra en el contenedor de Ioc de la capa de aplicacion las clases de acceso al repositorio
+            </summary>
+        </member>
+        <member name="F:AirBus.Suite.SyfiXBase.Application.WcfService.SuiteSyfiXBaseRepositoryLayer.CtxFactory">
+            <summary>
+            UoW instance
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.SuiteSyfiXBaseRepositoryLayer.IocRegistry">
+            <summary>
+            Register in IoC container the repository
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.Application.WcfService.SuiteSyfiXBaseRepositoryLayer.ConnectionString">
+            <summary>
+            Get the conection string from the app.config or web config file asociated to the project on execution.
+            </summary>
+            <returns>The database connection string </returns>
+        </member>
+    </members>
+</doc>

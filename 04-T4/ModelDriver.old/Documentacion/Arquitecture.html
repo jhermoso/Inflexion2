@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Product Documentation </title>
+</head>
+<body>
+    <h2>Arquitectura general de la solución</h2>
+    <h3>Por carpetas en la solución</h3>
+    <table>
+        <tr><td>&nbsp;Capa 'None'</td><td> equivale a la carpeta </td><td>&nbsp;&nbsp;'Model' </td></tr>
+    </table>
+
+    <h3>Lista de proyectos por Carpeta</h3>
+    <table>
+    <tr><td colspan = "2">&nbsp;Capa '<strong>Model'</strong> </td></tr>
+    <tr><td>&nbsp; proyecto 'Domain' </td><td> &nbsp; con project template </td><td>'HexaCoreProjectTemplate' </td></tr>
+    <tr><td>&nbsp; proyecto 'Data' </td><td> &nbsp; con project template </td><td>'HexaCoreProjectTemplate' </td></tr>
+    <tr><td>&nbsp; proyecto 'Bootstrapper' </td><td> &nbsp; con project template </td><td>'HexaCoreProjectTemplate' </td></tr>
+    </table>
+
+    <h3>Lista de referencias fijas por projecto</h3>
+    <table>
+    <tr><td colspan = "2">&nbsp;Capa <strong>'Model'</strong> </td></tr>
+    <tr><td colspan = "2">&nbsp;&nbsp;&nbsp;&nbsp; proyecto <em>'Domain'</em> </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Microsoft.CSharp'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System.ComponentModel.DataAnnotations'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System.Core'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System.Data'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System.Data.DataSetExtensions'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System.Xml'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System.Xml.Linq'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Hexa.Core'</strong></td><td> tipo de referencia</td><td>ThirdParty </td></tr>
+    <tr><td colspan = "2">&nbsp;&nbsp;&nbsp;&nbsp; proyecto <em>'Data'</em> </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Microsoft.CSharp'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System.ComponentModel.Composition'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System.Core'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System.Data'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System.Data.DataSetExtensions'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System.Xml'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System.Xml.Linq'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'NHibernate'</strong></td><td> tipo de referencia</td><td>Nuget </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'FluentNHibernate'</strong></td><td> tipo de referencia</td><td>Nuget </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Iesi.Collections'</strong></td><td> tipo de referencia</td><td>Nuget </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Domain'</strong></td><td> tipo de referencia</td><td>OwnContext </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Hexa.Core'</strong></td><td> tipo de referencia</td><td>ThirdParty </td></tr>
+    <tr><td colspan = "2">&nbsp;&nbsp;&nbsp;&nbsp; proyecto <em>'Bootstrapper'</em> </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Microsoft.CSharp'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System.ComponentModel.Composition'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System.configuration'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System.Core'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System.Data'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System.Data.DataSetExtensions'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System.Xml'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System.Xml.Linq'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Microsoft.Practices.Unity'</strong></td><td> tipo de referencia</td><td>Nuget </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Microsoft.Practices.Unity.Configuration'</strong></td><td> tipo de referencia</td><td>Nuget </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Microsoft.Practices.Unity.Interception'</strong></td><td> tipo de referencia</td><td>Nuget </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Microsoft.Practices.Unity.Interception.Configuration'</strong></td><td> tipo de referencia</td><td>Nuget </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Microsoft.Practices.ServiceLocation'</strong></td><td> tipo de referencia</td><td>Nuget </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Microsoft.Practices.Unity.ServiceLocatorAdapter'</strong></td><td> tipo de referencia</td><td>Nuget </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'NHibernate'</strong></td><td> tipo de referencia</td><td>Nuget </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'FluentNHibernate'</strong></td><td> tipo de referencia</td><td>Nuget </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Iesi.Collections'</strong></td><td> tipo de referencia</td><td>Nuget </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Microsoft.Mef.CommonServiceLocator'</strong></td><td> tipo de referencia</td><td>Nuget </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Hexa.Core'</strong></td><td> tipo de referencia</td><td>ThirdParty </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Domain'</strong></td><td> tipo de referencia</td><td>OwnContext </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Data'</strong></td><td> tipo de referencia</td><td>OwnContext </td></tr>
+    </table>
+
+<table>
+<tr><td></td><td> <a href="Intro.html"> Intro </a>  </td></tr>
+<tr><td></td><td> <a href="SharedKernels.html"> SharedKernels </a>  </td></tr>
+</table>
+</body>
+</html>

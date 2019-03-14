@@ -261,7 +261,7 @@ public static ClassBase GetSuperEntity(ClassBase entity)
 ///  NOTA : llamar a este método solo y exclusivamente si se ha comprobado previamente que es una clase derivada llamando a IsDerived(Entity entity)
 public static string GetSuperFolders(ClassBase entity)
 {
-    bool okDebug = false; //entity.Name.Equals("Fisica");
+    bool okDebug = false; 
     bool centinela  = IsDerived(entity) ; // Esta función nos dice si deriva de forma simple de alguna otra entidad con la flecha de especialización o derivación.
     string superFolder = null;
     ClassBase superEntity = null;

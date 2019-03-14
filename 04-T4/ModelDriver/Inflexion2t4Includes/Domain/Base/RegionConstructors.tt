@@ -51,7 +51,7 @@ public class RegionConstructors : Template
 #>
         #region Constructors
 <#+
-            if(cbc.IsEntity) // Los objetos valor no tienen constructor vacio pues no se persisten
+            if(cbc.IsEntity) // Los objetos valor no tienen constructor vacio pues no se pueden actualizar. Se han de crear con sus valores desde el principio.
             {
 #>
 

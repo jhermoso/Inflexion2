@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------------------------------
-// <copyright file="DataAnnotationHelper.cs" company="HexaSystems Inc">
-// Copyright (c) HexaSystems Inc. Licensed under the Apache License, Version 2.0 (the "License")
+// <copyright file="DataAnnotationHelper.cs" company="Inflexion2 Inc">
+// Copyright (c) Inflexion2 Inc. Licensed under the Apache License, Version 2.0 (the "License")
 // </copyright>
 //-----------------------------------------------------------------------------------------------
 namespace Inflexion2.Domain.Validation
@@ -12,7 +12,7 @@ namespace Inflexion2.Domain.Validation
     using System.Linq;
 
     /// <summary>
-    /// Static class capable of readinng de DataAnnotations of a type and return a list of corresponding IValidationInfos.
+    /// Static class capable of readinng the DataAnnotations of a type and return a list of corresponding IValidationInfos.
     /// </summary>
     internal static class DataAnnotationHelper
     {

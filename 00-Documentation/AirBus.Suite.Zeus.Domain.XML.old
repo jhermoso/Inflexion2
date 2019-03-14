@@ -1,0 +1,1426 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AirBus.Suite.Zeus.Domain</name>
+    </assembly>
+    <members>
+        <member name="T:AirBus.Suite.Zeus.Domain.PerLifeTimeManager">
+            <summary>
+            LifetimeManager implementation
+            </summary>
+        </member>
+        <member name="F:AirBus.Suite.Zeus.Domain.PerLifeTimeManager.value">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.PerLifeTimeManager.GetValue">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.PerLifeTimeManager.RemoveValue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.PerLifeTimeManager.SetValue(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="newValue"></param>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.IProject">
+            <summary>
+            .en Interfaz to identify an entidad of type Project in the application.
+            .es Interfaz que identifica una entidad de tipo Project de la aplicación.
+            Main concept for accounting planned resources for projects imported from ASP system.
+            </summary>
+            <remarks>
+            .en Interfaz for an Entity implemented by Project/>.
+            .es Interfaz que representa  una entidad implementado enProject/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IProject.Num">
+            <summary>
+            .en Property to get and set Num.
+            .es Propiedad que permite obtener y establecer Num.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set Num.
+            .es Valor que es utilizado para obtener y establecer Num.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IProject.Name">
+            <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+            <remarks>
+            Name of the project
+            </remarks>
+            <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IProject.ProgramName">
+            <summary>
+            .en Property to get and set ProgramName.
+            .es Propiedad que permite obtener y establecer ProgramName.
+            </summary>
+            <remarks>
+            Program Name wich belongs
+            </remarks>
+            <value>
+            .en Value used to get and set ProgramName.
+            .es Valor que es utilizado para obtener y establecer ProgramName.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IProject.Locked">
+            <summary>
+            .en Property to get and set Locked.
+            .es Propiedad que permite obtener y establecer Locked.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set Locked.
+            .es Valor que es utilizado para obtener y establecer Locked.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IProject.MH_V3">
+            <summary>
+            .en Property to get and set MH_V3.
+            .es Propiedad que permite obtener y establecer MH_V3.
+            </summary>
+            <remarks>
+            Man hours
+            </remarks>
+            <value>
+            .en Value used to get and set MH_V3.
+            .es Valor que es utilizado para obtener y establecer MH_V3.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IProject.MH_V1">
+            <summary>
+            .en Property to get and set MH_V1.
+            .es Propiedad que permite obtener y establecer MH_V1.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set MH_V1.
+            .es Valor que es utilizado para obtener y establecer MH_V1.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IProject.MH_PreviousYears">
+            <summary>
+            .en Property to get and set MH_PreviousYears.
+            .es Propiedad que permite obtener y establecer MH_PreviousYears.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set MH_PreviousYears.
+            .es Valor que es utilizado para obtener y establecer MH_PreviousYears.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IProject.MH_ExternalService">
+            <summary>
+            .en Property to get and set MH_ExternalService.
+            .es Propiedad que permite obtener y establecer MH_ExternalService.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set MH_ExternalService.
+            .es Valor que es utilizado para obtener y establecer MH_ExternalService.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IProject.MH_Actual">
+            <summary>
+            .en Property to get and set MH_Actual.
+            .es Propiedad que permite obtener y establecer MH_Actual.
+            </summary>
+            <remarks>
+            MH Actual
+            </remarks>
+            <value>
+            .en Value used to get and set MH_Actual.
+            .es Valor que es utilizado para obtener y establecer MH_Actual.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IProject.MH_Rest">
+            <summary>
+            .en Property to get and set MH_Rest.
+            .es Propiedad que permite obtener y establecer MH_Rest.
+            </summary>
+            <remarks>
+            MH Rest
+            </remarks>
+            <value>
+            .en Value used to get and set MH_Rest.
+            .es Valor que es utilizado para obtener y establecer MH_Rest.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IProject.Date">
+            <summary>
+            .en Property to get and set Date.
+            .es Propiedad que permite obtener y establecer Date.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set Date.
+            .es Valor que es utilizado para obtener y establecer Date.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IProject.MC_V3">
+            <summary>
+            .en Property to get and set MC_V3.
+            .es Propiedad que permite obtener y establecer MC_V3.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set MC_V3.
+            .es Valor que es utilizado para obtener y establecer MC_V3.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IProject.MC_PreviousYears">
+            <summary>
+            .en Property to get and set MC_PreviousYears.
+            .es Propiedad que permite obtener y establecer MC_PreviousYears.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set MC_PreviousYears.
+            .es Valor que es utilizado para obtener y establecer MC_PreviousYears.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IProject.MC_ExternalService">
+            <summary>
+            .en Property to get and set MC_ExternalService.
+            .es Propiedad que permite obtener y establecer MC_ExternalService.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set MC_ExternalService.
+            .es Valor que es utilizado para obtener y establecer MC_ExternalService.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IProject.MC_Actual">
+            <summary>
+            .en Property to get and set MC_Actual.
+            .es Propiedad que permite obtener y establecer MC_Actual.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set MC_Actual.
+            .es Valor que es utilizado para obtener y establecer MC_Actual.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IProject.MC_Rest">
+            <summary>
+            .en Property to get and set MC_Rest.
+            .es Propiedad que permite obtener y establecer MC_Rest.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set MC_Rest.
+            .es Valor que es utilizado para obtener y establecer MC_Rest.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IProject.MC_V1">
+            <summary>
+            .en Property to get and set MC_V1.
+            .es Propiedad que permite obtener y establecer MC_V1.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set MC_V1.
+            .es Valor que es utilizado para obtener y establecer MC_V1.
+            </value>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.IProjectRepository">
+            <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.Zeus.Domain.IProject"/>.
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.Project">
+            <summary>
+            <see cref="T:AirBus.Suite.Zeus.Domain.Project"/>
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.Project.#ctor">
+            <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.Zeus.Domain.Project"/> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.Zeus.Domain.Project"/> exigido por nHibernate o EntityFramework.
+            </summary>
+            <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.Project.#ctor(System.String,System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Zeus.Domain.Project"/>.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:AirBus.Suite.Zeus.Domain.Project"/>.
+            </remarks>
+            <param name="num"> 
+            Parametro <see cref="P:AirBus.Suite.Zeus.Domain.Project.Num"/> del constructor de campos mandatory de la clase <see cref="T:AirBus.Suite.Zeus.Domain.Project"/>
+            Propiedad deducida del rol source de una relación
+            </param>
+            <param name="name"> 
+            Parametro <see cref="P:AirBus.Suite.Zeus.Domain.Project.Name"/> del constructor de campos mandatory de la clase <see cref="T:AirBus.Suite.Zeus.Domain.Project"/>
+            Propiedad deducida del rol source de una relación
+            </param>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.Project.Num">
+            <summary>
+            Propiedad pública que permite obtener Num.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Num.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.Project.Name">
+            <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+            <remarks>
+            Name of the project
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.Project.ProgramName">
+            <summary>
+            Propiedad pública que permite obtener ProgramName.
+            </summary>
+            <remarks>
+            Program Name wich belongs
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener ProgramName.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.Project.Locked">
+            <summary>
+            Propiedad pública que permite obtener Locked.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Locked.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.Project.MH_V3">
+            <summary>
+            Propiedad pública que permite obtener MH_V3.
+            </summary>
+            <remarks>
+            Man hours
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener MH_V3.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.Project.MH_V1">
+            <summary>
+            Propiedad pública que permite obtener MH_V1.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener MH_V1.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.Project.MH_PreviousYears">
+            <summary>
+            Propiedad pública que permite obtener MH_PreviousYears.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener MH_PreviousYears.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.Project.MH_ExternalService">
+            <summary>
+            Propiedad pública que permite obtener MH_ExternalService.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener MH_ExternalService.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.Project.MH_Actual">
+            <summary>
+            Propiedad pública que permite obtener MH_Actual.
+            </summary>
+            <remarks>
+            MH Actual
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener MH_Actual.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.Project.MH_Rest">
+            <summary>
+            Propiedad pública que permite obtener MH_Rest.
+            </summary>
+            <remarks>
+            MH Rest
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener MH_Rest.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.Project.Date">
+            <summary>
+            Propiedad pública que permite obtener Date.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Date.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.Project.MC_V3">
+            <summary>
+            Propiedad pública que permite obtener MC_V3.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener MC_V3.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.Project.MC_PreviousYears">
+            <summary>
+            Propiedad pública que permite obtener MC_PreviousYears.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener MC_PreviousYears.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.Project.MC_ExternalService">
+            <summary>
+            Propiedad pública que permite obtener MC_ExternalService.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener MC_ExternalService.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.Project.MC_Actual">
+            <summary>
+            Propiedad pública que permite obtener MC_Actual.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener MC_Actual.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.Project.MC_Rest">
+            <summary>
+            Propiedad pública que permite obtener MC_Rest.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener MC_Rest.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.Project.MC_V1">
+            <summary>
+            Propiedad pública que permite obtener MC_V1.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener MC_V1.
+            </value>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.ProjectFactory">
+            <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.Zeus.Domain.Project"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.ProjectFactory.#cctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Zeus.Domain.ProjectFactory"/>.
+            </summary>
+            <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.Zeus.Domain.ProjectFactory"/>.
+            </remarks>
+            <returns>
+            Devuelve una instancia de dela clase ProjectFactory />
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.ProjectFactory.Create(System.String,System.String)">
+            <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+            <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.Zeus.Domain.Project"/>
+            </remarks>
+            <param name="num"> 
+            
+            </param>
+            <param name="name"> 
+            Name of the project
+            </param>
+            <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.Zeus.Domain.ProjectFactory"/>
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.ProjectSpecifications">
+            <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:Project"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.ProjectSpecifications.FindAllByName(System.String)">
+            <summary>
+            Método que devuelve especificación de aquellos objetos de tipo Project  
+            seleccionados por el valor del campo Name.
+            </summary>
+            <param name="nameId">
+            Parámetro que indica el valor del campo Name.
+            </param>
+            <returns>
+            Devuelve <see cref="T:Inflexion2.Domain.Specification.Specification`1"/> asociado con este criterio.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.ProjectSpecifications.FindAllByProgramName(System.String)">
+            <summary>
+            Método que devuelve especificación de aquellos objetos de tipo Project  
+            seleccionados por el valor del campo ProgramName.
+            </summary>
+            <param name="programNameId">
+            Parámetro que indica el valor del campo ProgramName.
+            </param>
+            <returns>
+            Devuelve <see cref="T:Inflexion2.Domain.Specification.Specification`1"/> asociado con este criterio.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.ProjectSpecifications.FindAllByLocked(System.Boolean)">
+            <summary>
+            Método que devuelve especificación de aquellos objetos de tipo Project  
+            seleccionados por el valor del campo Locked.
+            </summary>
+            <param name="lockedId">
+            Parámetro que indica el valor del campo Locked.
+            </param>
+            <returns>
+            Devuelve <see cref="T:Inflexion2.Domain.Specification.Specification`1"/> asociado con este criterio.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.ITimeRecord">
+            <summary>
+            .en Interfaz to identify an entidad of type TimeRecord in the application.
+            .es Interfaz que identifica una entidad de tipo TimeRecord de la aplicación.
+            
+            </summary>
+            <remarks>
+            .en Interfaz for an Entity implemented by TimeRecord/>.
+            .es Interfaz que representa  una entidad implementado enTimeRecord/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.ITimeRecord.Active">
+            <summary>
+            .en Property to get and set Active.
+            .es Propiedad que permite obtener y establecer Active.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set Active.
+            .es Valor que es utilizado para obtener y establecer Active.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.ITimeRecord.FromDate">
+            <summary>
+            .en Property to get and set FromDate.
+            .es Propiedad que permite obtener y establecer FromDate.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set FromDate.
+            .es Valor que es utilizado para obtener y establecer FromDate.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.ITimeRecord.ToDate">
+            <summary>
+            .en Property to get and set ToDate.
+            .es Propiedad que permite obtener y establecer ToDate.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set ToDate.
+            .es Valor que es utilizado para obtener y establecer ToDate.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.ITimeRecord.Approved">
+            <summary>
+            .en Property to get and set Approved.
+            .es Propiedad que permite obtener y establecer Approved.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set Approved.
+            .es Valor que es utilizado para obtener y establecer Approved.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.ITimeRecord.Processed">
+            <summary>
+            .en Property to get and set Processed.
+            .es Propiedad que permite obtener y establecer Processed.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set Processed.
+            .es Valor que es utilizado para obtener y establecer Processed.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.ITimeRecord.Planned">
+            <summary>
+            .en Property to get and set Planned.
+            .es Propiedad que permite obtener y establecer Planned.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set Planned.
+            .es Valor que es utilizado para obtener y establecer Planned.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.ITimeRecord.PrivateCard">
+            <summary>
+            .en Property to get and set PrivateCard.
+            .es Propiedad que permite obtener y establecer PrivateCard.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set PrivateCard.
+            .es Valor que es utilizado para obtener y establecer PrivateCard.
+            </value>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.ITimeRecordRepository">
+            <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.Zeus.Domain.ITimeRecord"/>.
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.TimeRecord">
+            <summary>
+            <see cref="T:AirBus.Suite.Zeus.Domain.TimeRecord"/>
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.TimeRecord.#ctor">
+            <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.Zeus.Domain.TimeRecord"/> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.Zeus.Domain.TimeRecord"/> exigido por nHibernate o EntityFramework.
+            </summary>
+            <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.TimeRecord.Active">
+            <summary>
+            Propiedad pública que permite obtener Active.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Active.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.TimeRecord.FromDate">
+            <summary>
+            Propiedad pública que permite obtener FromDate.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener FromDate.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.TimeRecord.ToDate">
+            <summary>
+            Propiedad pública que permite obtener ToDate.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener ToDate.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.TimeRecord.Approved">
+            <summary>
+            Propiedad pública que permite obtener Approved.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Approved.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.TimeRecord.Processed">
+            <summary>
+            Propiedad pública que permite obtener Processed.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Processed.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.TimeRecord.Planned">
+            <summary>
+            Propiedad pública que permite obtener Planned.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Planned.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.TimeRecord.PrivateCard">
+            <summary>
+            Propiedad pública que permite obtener PrivateCard.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener PrivateCard.
+            </value>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.TimeRecordFactory">
+            <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.Zeus.Domain.TimeRecord"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.TimeRecordFactory.#cctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Zeus.Domain.TimeRecordFactory"/>.
+            </summary>
+            <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.Zeus.Domain.TimeRecordFactory"/>.
+            </remarks>
+            <returns>
+            Devuelve una instancia de dela clase TimeRecordFactory />
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.TimeRecordFactory.Create">
+            <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+            <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.Zeus.Domain.TimeRecord"/>
+            </remarks>
+            <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.Zeus.Domain.TimeRecordFactory"/>
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.TimeRecordSpecifications">
+            <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:TimeRecord"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.IUserMessage">
+            <summary>
+            .en Interfaz to identify an entidad of type UserMessage in the application.
+            .es Interfaz que identifica una entidad de tipo UserMessage de la aplicación.
+            
+            </summary>
+            <remarks>
+            .en Interfaz for an Entity implemented by UserMessage/>.
+            .es Interfaz que representa  una entidad implementado enUserMessage/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IUserMessage.CreationDate">
+            <summary>
+            .en Property to get and set CreationDate.
+            .es Propiedad que permite obtener y establecer CreationDate.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set CreationDate.
+            .es Valor que es utilizado para obtener y establecer CreationDate.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IUserMessage.Text">
+            <summary>
+            .en Property to get and set Text.
+            .es Propiedad que permite obtener y establecer Text.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set Text.
+            .es Valor que es utilizado para obtener y establecer Text.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IUserMessage.ZeusDepartment">
+            <summary>
+            .en Public property ZeusDepartment.
+            .es Propiedad pública  ZeusDepartment.
+            </summary>
+            <remarks>
+            .en (SOURCE) This property comes from a relationship Composición y Asociación
+            .es (SOURCE)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener ZeusDepartment.
+            </remarks>
+            <value>
+            .es Valor que es utilizado para establecer y obtener ZeusDepartment.
+            </value>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.IUserMessage.SetZeusDepartment(AirBus.Suite.Zeus.Domain.ZeusDepartment)">
+            <summary>
+            .es Método encargado de establecer un nuevo valor para la propiedad ZeusDepartment.
+            </summary>
+            <value>
+            .es Parametro con el que establecemos el nuevo valor de ZeusDepartment.
+            </value>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.UserMessage">
+            <summary>
+            <see cref="T:AirBus.Suite.Zeus.Domain.UserMessage"/>
+            </summary>
+        </member>
+        <member name="F:AirBus.Suite.Zeus.Domain.UserMessage.zeusDepartment">
+            <summary>
+            campo privado que almacena el valor de zeusDepartment.
+            </summary>
+            <remarks>
+            campo privado proveniente de una relación zeusDepartment.
+            La relación es de tipo Composición y Asociación
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.UserMessage.#ctor">
+            <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.Zeus.Domain.UserMessage"/> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.Zeus.Domain.UserMessage"/> exigido por nHibernate o EntityFramework.
+            </summary>
+            <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.UserMessage.#ctor(AirBus.Suite.Zeus.Domain.ZeusDepartment)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Zeus.Domain.UserMessage"/>.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:AirBus.Suite.Zeus.Domain.UserMessage"/>.
+            </remarks>
+            <param name="userMessages">
+            Parametro <see cref="!:UserMessage.UserMessages"/> del constructor de campos mandatory de la clase <see cref="T:AirBus.Suite.Zeus.Domain.UserMessage"/>
+            Propiedad de unica instancia deducida del source rol source de una relación
+            </param>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.UserMessage.CreationDate">
+            <summary>
+            Propiedad pública que permite obtener CreationDate.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener CreationDate.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.UserMessage.Text">
+            <summary>
+            Propiedad pública que permite obtener Text.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Text.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.UserMessage.ZeusDepartment">
+            <summary>
+            Propiedad pública que permite establecer y obtener ZeusDepartment.
+            </summary>
+            <remarks>
+            Nos permite establecer y obtener ZeusDepartment.
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener ZeusDepartment.
+            </value>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.UserMessage.SetZeusDepartment(AirBus.Suite.Zeus.Domain.ZeusDepartment)">
+            <summary>
+            Método encargado de establecer un nuevo valor para la propiedad ZeusDepartment.
+            </summary>
+            <param name="ZeusDepartment"> 
+            Parametro con el que establecemos el nuevo valor de <see cref="P:AirBus.Suite.Zeus.Domain.UserMessage.ZeusDepartment"/>. de la clase <see cref="T:AirBus.Suite.Zeus.Domain.UserMessage"/>
+            </param>
+            <returns>
+            Devuelve el propio objeto para facilitar las interfaces 'fluent'/>
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.UserMessageFactory">
+            <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.Zeus.Domain.UserMessage"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.UserMessageFactory.#cctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Zeus.Domain.UserMessageFactory"/>.
+            </summary>
+            <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.Zeus.Domain.UserMessageFactory"/>.
+            </remarks>
+            <returns>
+            Devuelve una instancia de dela clase UserMessageFactory />
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.UserMessageFactory.Create(AirBus.Suite.Zeus.Domain.ZeusDepartment)">
+            <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+            <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.Zeus.Domain.UserMessage"/>
+            </remarks>
+            <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.Zeus.Domain.UserMessageFactory"/>
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.UserMessageSpecifications">
+            <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:UserMessage"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.UserMessageSpecifications.FindAllByCreationDate(System.DateTime)">
+            <summary>
+            Método que devuelve especificación de aquellos objetos de tipo UserMessage  
+            seleccionados por el valor del campo CreationDate.
+            </summary>
+            <param name="creationDateId">
+            Parámetro que indica el valor del campo CreationDate.
+            </param>
+            <returns>
+            Devuelve <see cref="T:Inflexion2.Domain.Specification.Specification`1"/> asociado con este criterio.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.IZeusAppSetting">
+            <summary>
+            .en Interfaz to identify an entidad of type ZeusAppSetting in the application.
+            .es Interfaz que identifica una entidad de tipo ZeusAppSetting de la aplicación.
+            Clasificador
+            </summary>
+            <remarks>
+            .en Interfaz for an Entity implemented by ZeusAppSetting/>.
+            .es Interfaz que representa  una entidad implementado enZeusAppSetting/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IZeusAppSetting.Key">
+            <summary>
+            .en Property to get and set Key.
+            .es Propiedad que permite obtener y establecer Key.
+            </summary>
+            <remarks>
+            App setting identity
+            </remarks>
+            <value>
+            .en Value used to get and set Key.
+            .es Valor que es utilizado para obtener y establecer Key.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IZeusAppSetting.Value">
+            <summary>
+            .en Property to get and set Value.
+            .es Propiedad que permite obtener y establecer Value.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set Value.
+            .es Valor que es utilizado para obtener y establecer Value.
+            </value>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.IZeusAppSettingRepository">
+            <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.Zeus.Domain.IZeusAppSetting"/>.
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.ZeusAppSetting">
+            <summary>
+            <see cref="T:AirBus.Suite.Zeus.Domain.ZeusAppSetting"/>
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.ZeusAppSetting.#ctor">
+            <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.Zeus.Domain.ZeusAppSetting"/> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.Zeus.Domain.ZeusAppSetting"/> exigido por nHibernate o EntityFramework.
+            </summary>
+            <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.ZeusAppSetting.Key">
+            <summary>
+            Propiedad pública que permite obtener Key.
+            </summary>
+            <remarks>
+            App setting identity
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Key.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.ZeusAppSetting.Value">
+            <summary>
+            Propiedad pública que permite obtener Value.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Value.
+            </value>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.ZeusAppSettingFactory">
+            <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.Zeus.Domain.ZeusAppSetting"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.ZeusAppSettingFactory.#cctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Zeus.Domain.ZeusAppSettingFactory"/>.
+            </summary>
+            <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.Zeus.Domain.ZeusAppSettingFactory"/>.
+            </remarks>
+            <returns>
+            Devuelve una instancia de dela clase ZeusAppSettingFactory />
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.ZeusAppSettingFactory.Create">
+            <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+            <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.Zeus.Domain.ZeusAppSetting"/>
+            </remarks>
+            <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.Zeus.Domain.ZeusAppSettingFactory"/>
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.ZeusAppSettingSpecifications">
+            <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:ZeusAppSetting"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.ZeusAppSettingSpecifications.FindAllByKey(System.String)">
+            <summary>
+            Método que devuelve especificación de aquellos objetos de tipo ZeusAppSetting  
+            seleccionados por el valor del campo Key.
+            </summary>
+            <param name="keyId">
+            Parámetro que indica el valor del campo Key.
+            </param>
+            <returns>
+            Devuelve <see cref="T:Inflexion2.Domain.Specification.Specification`1"/> asociado con este criterio.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.IZeusDepartment">
+            <summary>
+            .en Interfaz to identify an entidad of type ZeusDepartment in the application.
+            .es Interfaz que identifica una entidad de tipo ZeusDepartment de la aplicación.
+            Airbus Depatment organigram
+            </summary>
+            <remarks>
+            .en Interfaz for an Entity implemented by ZeusDepartment/>.
+            .es Interfaz que representa  una entidad implementado enZeusDepartment/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IZeusDepartment.Name">
+            <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IZeusDepartment.Visible">
+            <summary>
+            .en Property to get and set Visible.
+            .es Propiedad que permite obtener y establecer Visible.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set Visible.
+            .es Valor que es utilizado para obtener y establecer Visible.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IZeusDepartment.UserMessages">
+            <summary>
+            .es Propiedad pública que permite establecer y obtener la colleción de valores UserMessages.
+            </summary>
+            <remarks>
+            .es (TARGET)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener UserMessages.
+            </remarks>
+            <value>
+            .es Valor que es utilizado para establecer y obtener UserMessages.
+            </value>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.IZeusDepartment.AddUserMessageToUserMessages(AirBus.Suite.Zeus.Domain.UserMessage)">
+            <summary>
+            .es Método encargado de añadir un elemento a la collección UserMessages en la entidad UserMessage.
+            El UserMessage ha de existir previamente.
+            </summary>
+            <value>
+            .es Parametro con el que se proporciona la colección UserMessage a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.IZeusDepartment.RemoveUserMessageFromUserMessages(AirBus.Suite.Zeus.Domain.UserMessage)">
+            <summary>
+            .es Método encargado de eliminar un elemento de la collección UserMessages en la entidad UserMessage.
+            El UserMessage ha de existir previamente.
+            </summary>
+            <value>
+            .es Identificador a borrar UserMessage a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.IZeusDepartmentRepository">
+            <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.Zeus.Domain.IZeusDepartment"/>.
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.ZeusDepartment">
+            <summary>
+            <see cref="T:AirBus.Suite.Zeus.Domain.ZeusDepartment"/>
+            </summary>
+        </member>
+        <member name="F:AirBus.Suite.Zeus.Domain.ZeusDepartment.userMessages">
+            <summary>
+            Campo privado para almacenar la colección de  userMessages.
+            </summary>
+            <remarks>
+            campo privado proveniente de una relación userMessages.
+            La relación es una Asociación  de tipo Composición 
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.ZeusDepartment.#ctor">
+            <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.Zeus.Domain.ZeusDepartment"/> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.Zeus.Domain.ZeusDepartment"/> exigido por nHibernate o EntityFramework.
+            </summary>
+            <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.ZeusDepartment.Name">
+            <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.ZeusDepartment.Visible">
+            <summary>
+            Propiedad pública que permite obtener Visible.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Visible.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.ZeusDepartment.UserMessages">
+            <summary>
+            Propiedad pública que provine de una relación (Target) y permite establecer y obtener la coleción de valores UserMessages.
+            </summary>
+            <remarks>
+            Nos permite establecer y obtener UserMessages.
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener UserMessages.
+            </value>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.Zeus.Domain.ZeusDepartment.SetUserMessages(System.Collections.Generic.List{AirBus.Suite.Zeus.Domain.UserMessage})" -->
+        <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.Zeus.Domain.ZeusDepartment.AddUserMessageToUserMessages(AirBus.Suite.Zeus.Domain.UserMessage)" -->
+        <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.Zeus.Domain.ZeusDepartment.RemoveUserMessageFromUserMessages(AirBus.Suite.Zeus.Domain.UserMessage)" -->
+        <member name="T:AirBus.Suite.Zeus.Domain.ZeusDepartmentFactory">
+            <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.Zeus.Domain.ZeusDepartment"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.ZeusDepartmentFactory.#cctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Zeus.Domain.ZeusDepartmentFactory"/>.
+            </summary>
+            <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.Zeus.Domain.ZeusDepartmentFactory"/>.
+            </remarks>
+            <returns>
+            Devuelve una instancia de dela clase ZeusDepartmentFactory />
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.ZeusDepartmentFactory.Create">
+            <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+            <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.Zeus.Domain.ZeusDepartment"/>
+            </remarks>
+            <param name="userMessages"> 
+            referencia al rol target de la relación.
+            </param>
+            <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.Zeus.Domain.ZeusDepartmentFactory"/>
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.ZeusDepartmentSpecifications">
+            <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:ZeusDepartment"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.ZeusDepartmentSpecifications.FindAllByName(System.String)">
+            <summary>
+            Método que devuelve especificación de aquellos objetos de tipo ZeusDepartment  
+            seleccionados por el valor del campo Name.
+            </summary>
+            <param name="nameId">
+            Parámetro que indica el valor del campo Name.
+            </param>
+            <returns>
+            Devuelve <see cref="T:Inflexion2.Domain.Specification.Specification`1"/> asociado con este criterio.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.IZeusUser">
+            <summary>
+            .en Interfaz to identify an entidad of type ZeusUser in the application.
+            .es Interfaz que identifica una entidad de tipo ZeusUser de la aplicación.
+            User information data
+            </summary>
+            <remarks>
+            .en Interfaz for an Entity implemented by ZeusUser/>.
+            .es Interfaz que representa  una entidad implementado enZeusUser/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.IZeusUser.Name">
+            <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+            <remarks>
+            Test with auto property and public setter.
+            </remarks>
+            <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.IZeusUserRepository">
+            <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.Zeus.Domain.IZeusUser"/>.
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.ZeusUser">
+            <summary>
+            <see cref="T:AirBus.Suite.Zeus.Domain.ZeusUser"/>
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.ZeusUser.#ctor">
+            <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.Zeus.Domain.ZeusUser"/> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.Zeus.Domain.ZeusUser"/> exigido por nHibernate o EntityFramework.
+            </summary>
+            <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.ZeusUser.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Zeus.Domain.ZeusUser"/>.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:AirBus.Suite.Zeus.Domain.ZeusUser"/>.
+            </remarks>
+            <param name="name"> 
+            Parametro <see cref="P:AirBus.Suite.Zeus.Domain.ZeusUser.Name"/> del constructor de campos mandatory de la clase <see cref="T:AirBus.Suite.Zeus.Domain.ZeusUser"/>
+            Propiedad deducida del rol source de una relación
+            </param>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Domain.ZeusUser.Name">
+            <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+            <remarks>
+            Test with auto property and public setter.
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.ZeusUserFactory">
+            <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.Zeus.Domain.ZeusUser"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.ZeusUserFactory.#cctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Zeus.Domain.ZeusUserFactory"/>.
+            </summary>
+            <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.Zeus.Domain.ZeusUserFactory"/>.
+            </remarks>
+            <returns>
+            Devuelve una instancia de dela clase ZeusUserFactory />
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.ZeusUserFactory.Create(System.String)">
+            <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+            <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.Zeus.Domain.ZeusUser"/>
+            </remarks>
+            <param name="name"> 
+            Test with auto property and public setter.
+            </param>
+            <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.Zeus.Domain.ZeusUserFactory"/>
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Domain.ZeusUserSpecifications">
+            <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:ZeusUser"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Domain.ZeusUserSpecifications.FindAllByName(System.String)">
+            <summary>
+            Método que devuelve especificación de aquellos objetos de tipo ZeusUser  
+            seleccionados por el valor del campo Name.
+            </summary>
+            <param name="nameId">
+            Parámetro que indica el valor del campo Name.
+            </param>
+            <returns>
+            Devuelve <see cref="T:Inflexion2.Domain.Specification.Specification`1"/> asociado con este criterio.
+            </returns>
+        </member>
+    </members>
+</doc>

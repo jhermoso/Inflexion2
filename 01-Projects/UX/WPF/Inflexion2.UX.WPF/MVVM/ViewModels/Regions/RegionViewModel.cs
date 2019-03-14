@@ -43,7 +43,7 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
         /// <summary>
         /// Valor que indica si esta instancia está activa.
         /// </summary>
-        private bool isActive;
+        protected bool isActive;
 
         #endregion
 
@@ -82,7 +82,8 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
         #region Public Properties
 
         /// <summary>
-        /// Obtiene o establece un valor que indica si esta instancia está activa.
+        /// Obtiene o establece un valor que indica si esta instancia de la region en curso está activa.
+        /// Se utiliza tambien para viewmodels anidados activando y desactivando en funcion del focus.
         /// </summary>
         /// <value>
         /// Es true para indicar que la instancia está activa; en caso contrario, false.
@@ -98,12 +99,27 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
             }
             set
             {
-                if (value != this.isActive)
+                if (value == true)
+                {
+                    DeactivateChildrenCollections();
+                }
+
+                if (this.isActive != value)
                 {
                     this.isActive = value;
                     this.RaiseIsActiveChanged();
                 }
             }
+        }
+
+        /// <summary>
+        /// Deactivate all the children collections in the current viewmodel
+        /// This method works form the IsactiveProperty and his implementation is overrided
+        /// in every
+        /// </summary>
+        public virtual void DeactivateChildrenCollections()
+        {
+
         }
 
         /// <summary>

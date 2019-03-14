@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="832e4230-b698-408d-9000-6227a1773b18" sGDB="Oracle" isModule="false" xmlns="http://schemas.microsoft.com/dsltools/MoneyGen">
+  <classBases>
+    <applicationHasElements Id="7958bb19-7bd7-4e58-a680-b12b078f893f">
+      <entity Id="b47069e0-6ca6-4c34-8789-975d43414164" name="Emisora" inheritanceClassModifier="Public, Partial" alias="Emisora" Stereotype="Discriminant" volumen="100" remarks="Jerarquia de emisoras" tooltip="Información acerca de la emisora y su posible jerraquia." referencedRootEntity="modelbus://kayak.MoneyGen.MoneyGenAdapter/SPE/Emisora/.\SPE.kyk%2f35904815-2baa-4000-abe9-e0cd23e1d8b8">
+        <targets>
+          <composition Id="900692ef-9aa5-4d3c-9385-945803051b62" sourceMultiplicity="OneOne" sourceRoleName="Schedule" targetRolName="Emisora" targetCollectionField="System.Collections.Generic.IList">
+            <entityMoniker name="/832e4230-b698-408d-9000-6227a1773b18/Schedule" />
+          </composition>
+        </targets>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="cc390ec5-8b08-43ca-8847-33ad508646a3">
+      <entity Id="0f1c356f-5709-494c-8936-26911838077a" name="Schedule" inheritanceClassModifier="Abstract, Public, Partial" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="modelbus://kayak.MoneyGen.MoneyGenAdapter/SPE/Schedule/.\SPE.kyk%2f02cb1a88-d8ca-4c9c-bca1-ce322aacf564">
+        <targets>
+          <composition Id="0cf402f4-190d-489f-83ff-104dbfb0cea7" sourceMultiplicity="OneOne" sourceRoleName="Contenedores" targetRolName="Schedule" targetICollection="System.Collections.Generic.List" targetCollection="System.Collections.Generic.IList">
+            <entityMoniker name="/832e4230-b698-408d-9000-6227a1773b18/Contenedor" />
+          </composition>
+        </targets>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="8fca5fea-798f-486d-b22d-0cfe9165e997">
+      <entity Id="80200a8b-87d7-4501-aee9-a7a20fc1313c" name="Contenedor" inheritanceClassModifier="Abstract, Public, Partial" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="modelbus://kayak.MoneyGen.MoneyGenAdapter/SPE/Contenedor/.\SPE.kyk%2fd2f2ba31-271b-41ff-99e0-fcef56214bb8">
+        <targets>
+          <composition Id="f910450f-355f-4e1c-83db-9d4f1f36323d" sourceMultiplicity="OneOne" sourceRoleName="Contenidos" targetRolName="Contenedor" targetICollection="System.Collections.Generic.List" targetCollection="System.Collections.Generic.IList">
+            <entityMoniker name="/832e4230-b698-408d-9000-6227a1773b18/Contenido" />
+          </composition>
+          <aggregation Id="6f03e79f-75dd-4dfd-9c71-d6f41e599ecd" sourceRoleName="ContenedoresHijos" targetRolName="ContenedorPadre">
+            <entityMoniker name="/832e4230-b698-408d-9000-6227a1773b18/Contenedor" />
+          </aggregation>
+        </targets>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="b3b628fb-5209-48a9-88f1-8398119a54df">
+      <entity Id="4f6d91ec-e77d-4579-bde1-9538595d1146" name="Contenido" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="modelbus://kayak.MoneyGen.MoneyGenAdapter/SPE/Contenido/.\SPE.kyk%2fae371fce-e979-4919-b660-940dac39fcbe">
+        <classBases>
+          <classBaseHasNestedClassBases Id="6e5e2118-2075-46c4-b856-92a8bcc2b327">
+            <entity Id="658644fa-cafc-4fae-864f-c09b47b58d3b" name="PathFinder" inheritanceClassModifier="Public, Partial" volumen="0" programRemarks="Deriva de contenido y su misión es gestionar las piezas de este tipo." referencedRootEntity="" />
+          </classBaseHasNestedClassBases>
+          <classBaseHasNestedClassBases Id="3fb53c5f-9518-44bc-a75f-1f0285e8563b">
+            <entity Id="82f787a8-8c64-46d9-b3c6-fcf7b141d106" name="Promocion" inheritanceClassModifier="Public, Partial" volumen="0" programRemarks="Deriva de contenido y su misión es gestionar las piezas de este tipo." referencedRootEntity="" />
+          </classBaseHasNestedClassBases>
+        </classBases>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="87f36553-77c3-4359-b323-2101ddd062b7">
+      <entity Id="c95fc071-de8f-45e7-ae25-cc84d34dbdad" name="PautaMK" inheritanceClassModifier="Public, Partial" volumen="0" remarks="Pauta MK, es el agrupador de contenedores (intervalos ) que almacenan el contenido (piezas) con el que se compone la Pauta de Mk (Schedule.) " programRemarks="Deriva de Schedule e introduce una propiedad versión para poder tener diferentes planificaciones de un mismo día. " referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="285f07b1-f8d9-4a4b-81aa-1c5e12dcbf63">
+            <atributte Id="1da9d6f6-55ea-4365-9367-912e78901a68" atributteName="Version" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" requestUponCreation="yes" nameAndType="string Version" />
+          </classBaseHasAtributtes>
+        </atributtes>
+        <superClasses>
+          <inherintance Id="77b09adc-52f0-4d5a-8a89-049b8fa4637b">
+            <entityMoniker name="/832e4230-b698-408d-9000-6227a1773b18/Schedule" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="fbecaefb-f9bd-4426-bed5-ae9e1fdc844f">
+      <entity Id="b078a6ad-7f27-4732-a98b-d80152f4eb83" name="CorteMK" inheritanceClassModifier="Public, Partial" volumen="0" remarks="Aquí tendremos la lista de programas o huecos. Esta lista es la que se agrupa bajo la entidad de 'PautaMK' y actua como contenedor de las piezas. La misión del ‘Planner’ es establecer esta distribución. " programRemarks="Deriva de contenedor y su construcción dependerá de la pauta de emisiones, que proporciona los huecos de programas donde podemos insertar las piezas del libro de bloques. " referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="db66bf32-a3ad-46e9-94ca-6a28fe245af4">
+            <entityMoniker name="/832e4230-b698-408d-9000-6227a1773b18/Contenedor" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="9ec8ca85-7e6f-471f-8985-f36bfa41664d">
+      <objectValue Id="cca35b18-fd20-4205-a70b-fa81e3e11a49" name="Intervalo" inheritanceClassModifier="Public, Partial" alias="Intervalo" Stereotype="TipoCategoria" volumen="0" remarks="Rango de tiempo establecido por un inicio  y una duración." tooltip="Rango de tiempo de  inicio  y duración." programRemarks="Clase parcial incluida para obtener un segundo constructor. En este segundo constructor se inicializa el inicio y la duración." referencedRootEntity="modelbus://kayak.MoneyGen.MoneyGenAdapter/SPE/Intervalo/.\SPE.kyk%2f779c4772-c24d-4713-9585-73d6c15c0596" />
+    </applicationHasElements>
+    <applicationHasElements Id="7dbaeb20-f227-492f-b11a-597e5899689a">
+      <entity Id="29c901b9-eae8-460c-a628-c48589c24551" name="Bloque" inheritanceClassModifier="Public, Partial" alias="Libro de Bloques" Stereotype="ExternalContext" volumen="0" programRemarks="Legacy, corresponde al libro de bloques. " referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="4979ef38-d269-45d2-ae98-de98561fc71c">
+            <atributte Id="07822624-aca5-4bfa-85f9-5470e5fc6b45" atributteName="Emisora" atributteType="int" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="int Emisora" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="f8c6ecbf-acb8-471d-ac76-7238511d48be">
+            <atributte Id="988c321c-39b3-46d6-9fe9-cd22c75b0c5d" atributteName="Titulo" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string Titulo" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="cdfad49e-b3df-4669-ae1e-65ddc741ad67">
+            <atributte Id="60847993-0ba0-4fc9-a70c-14d828c963b1" atributteName="CdDia" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string CdDia" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="637d827b-5c2f-4c8c-b090-e7dc9d13660a">
+            <atributte Id="b48088e0-1e41-49c7-85fc-504212df2682" atributteName="CdMaster" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string CdMaster" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="4977512a-cd05-465a-866a-a2782be833e9">
+            <atributte Id="25c8b987-2b97-4093-82a3-b78013e69b6d" atributteName="LbDuracion" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string LbDuracion" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="1e08612c-926e-45e4-955a-6b1e87dcbc65">
+            <atributte Id="5d99d2e2-cee1-4211-98ef-9398dc7cac63" atributteName="LbEntreg" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string LbEntreg" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="7c3e9dc4-f694-4e1b-a399-b8e61bdb094c">
+            <atributte Id="c50719a2-786b-4604-b8d3-271ecf0105ae" atributteName="LbPatroc" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string LbPatroc" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="29bc6383-3d1e-4ba9-9eef-8decaa69956c">
+            <atributte Id="dd7c7a85-4ad8-45e6-a45d-558fbd4d8f3c" atributteName="Fecemi" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string Fecemi" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="24534358-2936-4fd4-8afe-4956349e4d50">
+            <atributte Id="ac0fd677-d641-4757-b6c4-cb331b027236" atributteName="LbObserv" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string LbObserv" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="274b8b6a-8029-482a-962d-a00c59f977a1">
+            <atributte Id="78d2d812-5fed-4d4e-ac72-9312183d7c4c" atributteName="LbContin" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string LbContin" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="8c593879-eca8-40b5-92fd-14c351c3c9cb">
+            <atributte Id="0e9de6e7-de92-4c5b-8b34-a90b5deb2a0f" atributteName="CdTipPro" atributteType="int" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="int CdTipPro" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="9740a4ea-3a0b-4ce2-8328-4b6c637f5e02">
+            <atributte Id="132859fa-aae1-4420-b244-875332646e9d" atributteName="LbTCin" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string LbTCin" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="dd8f7091-99e6-4164-aee1-2769195a1493">
+            <atributte Id="e3f7c523-938a-4db7-a9e6-50a4626f584f" atributteName="LbTCout" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string LbTCout" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="3ce77846-023f-42cc-879f-fae9998a5c8a">
+            <atributte Id="7e4e1813-22a7-41ec-a3eb-1a9b154db1a2" atributteName="LbEnemi" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string LbEnemi" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="65ed8dab-20ee-49ae-b3d6-9c4eab90c391">
+            <atributte Id="86c017fd-674a-49f4-818a-55ff648e6f6a" atributteName="Cdtipo" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string Cdtipo" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="704acc7a-179c-4ff1-be4c-d41bd1b55351">
+            <atributte Id="1f5d9f95-3b10-485e-9a1d-96c8f8156350" atributteName="TpAbrev" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string TpAbrev" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="49fe8355-236f-4fd3-88ce-aa98726302e4">
+            <atributte Id="6595fd3a-5ed1-450c-a9c4-a843de26fc75" atributteName="FecSys" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string FecSys" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="31b7f6c3-8160-49d9-b421-42830cb6490b">
+            <atributte Id="0a668121-1f05-4f2d-b7fb-dbcbcd13a6a7" atributteName="UsuSys" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string UsuSys" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="a57af353-3f51-4cf7-aaf5-5a731652cf87">
+            <atributte Id="6286bb17-4d9e-43ed-b755-dc23e74f598a" atributteName="CDLimLegal" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string CDLimLegal" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="6b1dcc7b-a854-473c-ba42-b151125715cf">
+            <atributte Id="8ef814dd-b9e2-4dcb-b617-1ab3de46244b" atributteName="D12" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string D12" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="047e1fcf-0f66-40ae-b9f2-124fb60b10fb">
+            <atributte Id="adab0e93-cd17-42e7-a35f-7fc20717bf8f" atributteName="D17" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string D17" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="af4bf368-f99b-46f1-8e7d-27bd87e51143">
+            <atributte Id="3d166292-3d48-4a45-9cf7-2a3c9ee0fc2f" atributteName="DNC" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string DNC" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="31a97d8b-2043-4cb1-b60f-1208d7080bf2">
+            <atributte Id="83517e01-2916-43b9-bf32-5e1680e2f154" atributteName="TIPLimLegal" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string TIPLimLegal" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="467daddf-d82f-47f7-b07c-e8aafa337259">
+            <atributte Id="22a47ff2-2f1c-4671-934a-3aa1956a3749" atributteName="FecBaja" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string FecBaja" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="1c64839b-a803-494a-85e0-b1ba37dc8a0a">
+            <atributte Id="385b006c-24b8-48f0-a4b7-f3e545b04ffc" atributteName="CdCalifica" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string CdCalifica" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="2cde8e77-85f4-4210-a3f5-681074961b52">
+            <atributte Id="4b6f9d75-1cba-47a1-8f5d-cb958a2845c7" atributteName="CdTipPantalla" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string CdTipPantalla" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="fe3f71e6-7e82-4278-9ee2-36c0a7436afe">
+            <atributte Id="3fa69c1d-07ec-4e48-8f79-c635c48193b6" atributteName="ComunSimul" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string ComunSimul" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="079a616b-d4e7-4f00-8945-2233d3239b14">
+            <atributte Id="b8e0e1ce-1c40-4692-97cf-c72cce90c22b" atributteName="D3" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string D3" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="8e43f023-71af-4a78-af24-6a0849bf3b63">
+            <atributte Id="7ebd8eb1-ac91-4feb-bdb6-1851b9e863ca" atributteName="AtColor" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string AtColor" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="9fe39c56-7c74-434f-b007-a1e3b2162e25">
+            <atributte Id="a2ec7967-a4e5-4abf-880a-a13ce0d312fb" atributteName="LB_Hora" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string LB_Hora" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="24961c4b-cda2-4399-9332-7619debf70f9">
+            <atributte Id="bd14425a-d9ed-4055-b6d5-ed969af7515e" atributteName="Atributte1" atributteType="string" isID="false" isIdentification="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="string Atributte1" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="b82d97a9-7912-471b-afde-4da88682ffba">
+      <entity Id="f7525184-6821-4940-8301-8caf74527ee6" name="Emision" inheritanceClassModifier="Public, Partial" alias="Emision" volumen="0" programRemarks="Legacy, entidad preparada para almacenar la información referente a la pauta de emisión de la que se extraen los huecos sobre los que se incluirán las diferentes piezas. " referencedRootEntity="" />
+    </applicationHasElements>
+  </classBases>
+  <boundedContexts>
+    <applicationHasBoundedContexts Id="f39aefbd-21ab-493f-be53-9f56ace51964">
+      <boundedContext Id="6692d70d-5ff5-4dbf-ab04-8bc77f4dbc34" name="From SPE" mBR="modelbus://kayak.MoneyGen.MoneyGenAdapter/SPE//.\SPE.kyk" />
+    </applicationHasBoundedContexts>
+  </boundedContexts>
+</application>

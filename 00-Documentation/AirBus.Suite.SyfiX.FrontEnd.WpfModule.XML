@@ -1,0 +1,548 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AirBus.Suite.SyfiX.FrontEnd.WpfModule</name>
+    </assembly>
+    <members>
+        <member name="T:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentQueryView">
+            <summary>
+            .en Interaction logic for DocumentQueryView.xaml
+            .es Logica de interación para la vista DocumentQueryView.xaml
+            </summary>
+            <summary>
+            DocumentQueryView
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentQueryView.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:DocumentQueryView"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:DocumentQueryView"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentQueryView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentView">
+            <summary>
+            .en Interaction logic for DocumentView.xaml
+            .es Logica de interación para la vista DocumentView.xaml
+            </summary>
+            <remarks>
+            .en No coment
+            .es Sin comentarios adicionales.
+            </remarks>
+            <summary>
+            DocumentView
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentView.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:DocumentView"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:DocumentView"/>.
+            </summary>
+            <remarks>
+            .en No coment
+            .es Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentQueryView">
+            <summary>
+            .en Interaction logic for IncidentQueryView.xaml
+            .es Logica de interación para la vista IncidentQueryView.xaml
+            </summary>
+            <summary>
+            IncidentQueryView
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentQueryView.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:IncidentQueryView"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:IncidentQueryView"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentQueryView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentView">
+            <summary>
+            .en Interaction logic for IncidentView.xaml
+            .es Logica de interación para la vista IncidentView.xaml
+            </summary>
+            <remarks>
+            .en No coment
+            .es Sin comentarios adicionales.
+            </remarks>
+            <summary>
+            IncidentView
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentView.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:IncidentView"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:IncidentView"/>.
+            </summary>
+            <remarks>
+            .en No coment
+            .es Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentQueryViewModel">
+            <summary>
+            .en Interaction logic for DocumentQueryView.xaml
+            .es Logica de interación para la vista DocumentQueryView.xaml
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentQueryViewModel.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:DocumentQueryViewModel"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:DocumentQueryViewModel"/>.
+            </summary>
+        </member>
+        <member name="P:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentQueryViewModel.Title">
+            <summary>
+            .en Property to set the title of the window 
+            .es Propiedad para establecer el Titulo de la ventana
+            </summary>
+        </member>
+        <member name="P:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentQueryViewModel.ChangeActivateStatusCommand">
+            <summary>
+            .en Property to get the command of changing state.
+            .es Propiedad que obtiene el comando de cambio de estado.
+            </summary>
+            <value>
+            Valor utilizado para obtener el comando de cambio de estado.
+            </value>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentQueryViewModel.OnDeleteRecord(System.Object)">
+            <summary>
+            Método público encargado del borrado de una entidad .
+            </summary>
+            <param name="parameter">
+            Parámetro con información adicional.
+            </param>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentQueryViewModel.OnGetRecords(System.Object)">
+            <summary>
+            Método encargado de obtener todos los registros de Document.
+            </summary>
+            <param name="parameter">
+            Parámetro con información adicional.
+            </param>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentQueryViewModel.OnGetFirstPageRecords(System.Object)">
+            <summary>
+            .en Get First Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la primera página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentQueryViewModel.OnGetNextPageRecords(System.Object)">
+            <summary>
+            .en Get Next Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la siguiente página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentQueryViewModel.OnGetPreviousPageRecords(System.Object)">
+            <summary>
+            .en Get Previus Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la página anterior de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentQueryViewModel.OnGetLastPageRecords(System.Object)">
+            <summary>
+            .en Get Last Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la ultima página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentQueryViewModel.ResetDocument">
+            <summary>
+            .es Método privado para resetear el ViewModel.
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentViewModel">
+            <summary>
+            .en Interaction logic for DocumentViewModel.xaml
+            .es Logica de interación para la vista DocumentViewModel.xaml
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentViewModel.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:DocumentViewModel"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:DocumentViewModel"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentViewModel.#ctor(AirBus.Suite.SyfiX.Application.Dtos.DocumentDto)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:DocumentViewModel"/>.
+            </summary>
+            <param name="element">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.DocumentDto"/> que contiene la información necesaria.
+            </param>
+        </member>
+        <member name="P:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentViewModel.Title">
+            <summary>
+            Propiedad para establecer el Título de la ventana cuando este view model se utiliza 
+            en un control de usuario o ventana exclusivamente para el.
+            cuando este view model se utiliza solo en una lista esta propiedad no se utiliza.
+            </summary>
+        </member>
+        <member name="P:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentViewModel.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentViewModel.GetById(System.Int32)">
+            <summary>
+            Método encargado de recuperar los datos de una entidad mediante su identificador.
+            </summary>
+            <param name="identifier">
+            Parámetro que indica el identificador de la entidad que se va a recuperar.
+            </param>
+            <returns>
+            Devuelve el objeto Dto <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.DocumentDto"/> correspondiente.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentViewModel.OnSaveRecord(System.Object)">
+            <summary>
+            Método encargado de crear o actualizar una entidad de tipo Document.
+            </summary>
+            <param name="parameter">
+            Parámetro con información adicional.
+            </param>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentViewModel.SetupValidation(MvvmValidation.ValidationHelper)">
+            <summary>
+            execute the validation rules
+            </summary>
+            <param name="validation"></param>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.DocumentViewModel.OnNavigatedTo(Microsoft.Practices.Prism.Regions.NavigationContext)">
+            <summary>
+            int his method is possible to override to add the previus action to execute when there is a navigation request
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentQueryViewModel">
+            <summary>
+            .en Interaction logic for IncidentQueryView.xaml
+            .es Logica de interación para la vista IncidentQueryView.xaml
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentQueryViewModel.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:IncidentQueryViewModel"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:IncidentQueryViewModel"/>.
+            </summary>
+        </member>
+        <member name="P:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentQueryViewModel.Title">
+            <summary>
+            .en Property to set the title of the window 
+            .es Propiedad para establecer el Titulo de la ventana
+            </summary>
+        </member>
+        <member name="P:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentQueryViewModel.ChangeActivateStatusCommand">
+            <summary>
+            .en Property to get the command of changing state.
+            .es Propiedad que obtiene el comando de cambio de estado.
+            </summary>
+            <value>
+            Valor utilizado para obtener el comando de cambio de estado.
+            </value>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentQueryViewModel.OnDeleteRecord(System.Object)">
+            <summary>
+            Método público encargado del borrado de una entidad .
+            </summary>
+            <param name="parameter">
+            Parámetro con información adicional.
+            </param>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentQueryViewModel.OnGetRecords(System.Object)">
+            <summary>
+            Método encargado de obtener todos los registros de Incident.
+            </summary>
+            <param name="parameter">
+            Parámetro con información adicional.
+            </param>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentQueryViewModel.OnGetFirstPageRecords(System.Object)">
+            <summary>
+            .en Get First Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la primera página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentQueryViewModel.OnGetNextPageRecords(System.Object)">
+            <summary>
+            .en Get Next Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la siguiente página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentQueryViewModel.OnGetPreviousPageRecords(System.Object)">
+            <summary>
+            .en Get Previus Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la página anterior de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentQueryViewModel.OnGetLastPageRecords(System.Object)">
+            <summary>
+            .en Get Last Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la ultima página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentQueryViewModel.ResetIncident">
+            <summary>
+            .es Método privado para resetear el ViewModel.
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentViewModel">
+            <summary>
+            .en Interaction logic for IncidentViewModel.xaml
+            .es Logica de interación para la vista IncidentViewModel.xaml
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentViewModel.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:IncidentViewModel"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:IncidentViewModel"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentViewModel.#ctor(AirBus.Suite.SyfiX.Application.Dtos.IncidentDto)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:IncidentViewModel"/>.
+            </summary>
+            <param name="element">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.IncidentDto"/> que contiene la información necesaria.
+            </param>
+        </member>
+        <member name="P:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentViewModel.Title">
+            <summary>
+            Propiedad para establecer el Título de la ventana cuando este view model se utiliza 
+            en un control de usuario o ventana exclusivamente para el.
+            cuando este view model se utiliza solo en una lista esta propiedad no se utiliza.
+            </summary>
+        </member>
+        <member name="P:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentViewModel.Name">
+            <summary>
+            Application name
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentViewModel.GetById(System.Int32)">
+            <summary>
+            Método encargado de recuperar los datos de una entidad mediante su identificador.
+            </summary>
+            <param name="identifier">
+            Parámetro que indica el identificador de la entidad que se va a recuperar.
+            </param>
+            <returns>
+            Devuelve el objeto Dto <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.IncidentDto"/> correspondiente.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentViewModel.OnSaveRecord(System.Object)">
+            <summary>
+            Método encargado de crear o actualizar una entidad de tipo Incident.
+            </summary>
+            <param name="parameter">
+            Parámetro con información adicional.
+            </param>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentViewModel.SetupValidation(MvvmValidation.ValidationHelper)">
+            <summary>
+            execute the validation rules
+            </summary>
+            <param name="validation"></param>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.IncidentViewModel.OnNavigatedTo(Microsoft.Practices.Prism.Regions.NavigationContext)">
+            <summary>
+            int his method is possible to override to add the previus action to execute when there is a navigation request
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.FrontEnd.WpfModule.SuiteSyfiXModuleNavigationView">
+            <summary>
+            .es Lógica de interacción para <see cref="T:SuiteSyfiXModuleNavigationView.xaml"/>.
+            .en Interaction logic for <see cref="T:SuiteSyfiXModuleNavigationView.xaml"/>.
+            </summary>
+            <summary>
+            SuiteSyfiXModuleNavigationView
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.SuiteSyfiXModuleNavigationView.#ctor(AirBus.Suite.SyfiX.FrontEnd.WpfModule.SuiteSyfiXModuleNavigationViewModel)">
+            <summary>
+            .es constructor <see cref="T:SuiteSyfiXModuleNavigationView"/>.
+            .en constructor <see cref="T:SuiteSyfiXModuleNavigationView"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.SuiteSyfiXModuleNavigationView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.FrontEnd.WpfModule.SuiteSyfiXModuleRibbonTab">
+            <summary>
+            .en Interaction logic for SuiteSyfiXModuleRibbonTab.xaml
+            .es logica de interacción para SuiteSyfiXModuleRibbonTab.xaml
+            </summary>
+            <summary>
+            SuiteSyfiXModuleRibbonTab
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.SuiteSyfiXModuleRibbonTab.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:SuiteSyfiXModuleRibbonTab"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:SuiteSyfiXModuleRibbonTab"/>.
+            </summary>
+        </member>
+        <member name="P:AirBus.Suite.SyfiX.FrontEnd.WpfModule.SuiteSyfiXModuleRibbonTab.KeepAlive">
+            <summary>
+            IRegionMemberLifetime implementation
+            Gets a value indicating whether this instance should be kept-alive upon deactivation.
+            http://stackoverflow.com/questions/5115484/how-to-create-a-new-view-every-time-navigation-occurs-in-prism
+            http://codefinders.blogspot.de/2013/11/disposing-views-in-prism.html
+            Returning a false value everytime that there is a request of a view creates a new view
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.SuiteSyfiXModuleRibbonTab.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.FrontEnd.WpfModule.SuiteSyfiXModuleTaskBarView">
+            <summary>SuiteSyfiXModuleTaskBarView.xaml
+            .es logica de interacción para SuiteSyfiXTaskBarView.xaml
+            </summary>
+            <summary>
+            SuiteSyfiXModuleTaskBarView
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.SuiteSyfiXModuleTaskBarView.#ctor(AirBus.Suite.SyfiX.FrontEnd.WpfModule.SuiteSyfiXModuleTaskBarViewModel)">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:SuiteSyfiXTaskBarView"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:SuiteSyfiXTaskBarView"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.SuiteSyfiXModuleTaskBarView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.FrontEnd.WpfModule.SuiteSyfiXModuleNavigationViewModel">
+            <summary>
+            navigation viewmodel for the bounded context SuiteSyfiX .
+            </summary>
+            <summary>
+            navigation viewmodel for the bounded context SuiteSyfiX .
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.SuiteSyfiXModuleNavigationViewModel.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:SuiteSyfiXModuleNavigationViewModel"/>.
+            </summary>
+        </member>
+        <member name="P:AirBus.Suite.SyfiX.FrontEnd.WpfModule.SuiteSyfiXModuleNavigationViewModel.ShowIncidentView">
+            <summary>
+            .en Gets or Sets the command to load the view of the entity Incident.
+            .es Obtiene o establece el comando de carga de la vista de Incident.
+            </summary>
+            <value>
+            .en Tells to load the view of the entity Incident.
+            .es Indica el comando de carga de la vista Incident.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiX.FrontEnd.WpfModule.SuiteSyfiXModuleNavigationViewModel.ShowDocumentView">
+            <summary>
+            .en Gets or Sets the command to load the view of the entity Document.
+            .es Obtiene o establece el comando de carga de la vista de Document.
+            </summary>
+            <value>
+            .en Tells to load the view of the entity Document.
+            .es Indica el comando de carga de la vista Document.
+            </value>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.SuiteSyfiXModuleNavigationViewModel.Initialize">
+            <summary>
+            Inicializa el modelo de vista.
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.FrontEnd.WpfModule.SuiteSyfiXModuleRibbonViewModel">
+            <summary>
+            ViewModel del tool bar ribbon for SuiteSyfiX/>.
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.FrontEnd.WpfModule.SuiteSyfiXModuleTaskBarViewModel">
+            <summary>
+            ViewModel para el boton del bounded context SuiteSyfiX.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.SuiteSyfiXModuleTaskBarViewModel.#ctor">
+             <summary>
+             Inicializa una nueva instancia de la clase <see cref="T:SuiteSyfiXModuleTaskBarViewModel"/>.
+             </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:SuiteSyfiXModuleTaskBarViewModel"/>.
+            </remarks>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.FrontEnd.WpfModule.SuiteSyfiXModule">
+            <summary>
+            .en class module implementation. 
+            This implementation become the compiled dll of this project on a module dynamically loaded by the 
+            main programm.
+            .es implementación de la clases "module". Esta implementación convierte la ddl de la compilación 
+            de este proyecto en un modulo que puede ser cargado por el programa principal de forma dinamica. 
+            (en tiempo de ejecución)
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.FrontEnd.WpfModule.SuiteSyfiXModule.Initialize">
+            <summary>
+            .en module initialization.
+            .es Inicializa el módulo.
+            </summary>
+            <remarks>
+            .en Register the controls whose has to be always available
+            with iregionmanager of Prism and the controls whose has to available on demand
+            with the inyection unity container. The controls on-demand will be loaded when
+            the method IregionManager.RequestNavigate() would be executed.
+            
+            .es Registramos los controles que han de estar siempre disponibles
+            con el gestor de regiones Prism (IRegionManager), y los controles que
+            han de solicitarse (bajo demanda) con el contenedor de inyección de
+            dependencias Unity.  Los controles bajo demanda serán cargados cuando
+            se invoque el método "IregionManager.RequestNavigate()".
+            </remarks>
+        </member>
+    </members>
+</doc>

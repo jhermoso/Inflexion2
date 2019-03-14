@@ -1,0 +1,519 @@
+﻿<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>Centum.Shared.Domain</name>
+  </assembly>
+  <members>
+    <member name="T:Centum.Shared.Domain.Categoria">
+      <summary>
+        <see cref="T:Centum.Shared.Domain.Categoria" />
+      </summary>
+    </member>
+    <member name="M:Centum.Shared.Domain.Categoria.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:Centum.Shared.Domain.Categoria" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:Centum.Shared.Domain.Categoria" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="P:Centum.Shared.Domain.Categoria.Name">
+      <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+    </member>
+    <member name="T:Centum.Shared.Domain.CategoriaFactory">
+      <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:Centum.Shared.Domain.Categoria" />.
+            </summary>
+    </member>
+    <member name="M:Centum.Shared.Domain.CategoriaFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Centum.Shared.Domain.CategoriaFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:Centum.Shared.Domain.CategoriaFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase CategoriaFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:Centum.Shared.Domain.CategoriaFactory.Create">
+      <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Crea una entidad de tipo <see cref="T:Centum.Shared.Domain.Categoria" /></remarks>
+      <returns>
+            Devuelve  una entidad de tipo <see cref="T:Centum.Shared.Domain.CategoriaFactory" /></returns>
+    </member>
+    <member name="T:Centum.Shared.Domain.CategoriaSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:Categoria" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="T:Centum.Shared.Domain.ICategoria">
+      <summary>
+            .en Interfaz to identify an entidad of type Categoria in the application.
+            .es Interfaz que identifica una entidad de tipo Categoria de la aplicación.
+            Clasificador
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by Categoria/&gt;.
+            .es Interfaz que representa  una entidad implementado enCategoria/&gt;.
+            </remarks>
+    </member>
+    <member name="P:Centum.Shared.Domain.ICategoria.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
+    <member name="T:Centum.Shared.Domain.ICategoriaRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:Centum.Shared.Domain.ICategoria" />.
+            </summary>
+    </member>
+    <member name="T:Centum.Shared.Domain.PerLifeTimeManager">
+      <summary>
+            LifetimeManager implementation
+            </summary>
+    </member>
+    <member name="F:Centum.Shared.Domain.PerLifeTimeManager.value">
+      <summary />
+    </member>
+    <member name="M:Centum.Shared.Domain.PerLifeTimeManager.GetValue">
+      <summary />
+      <returns />
+    </member>
+    <member name="M:Centum.Shared.Domain.PerLifeTimeManager.RemoveValue">
+      <summary />
+    </member>
+    <member name="M:Centum.Shared.Domain.PerLifeTimeManager.SetValue(System.Object)">
+      <summary />
+      <param name="newValue" />
+    </member>
+    <member name="T:Centum.Shared.Domain.IPersona">
+      <summary>
+            .en Interfaz to identify an entidad of type Persona in the application.
+            .es Interfaz que identifica una entidad de tipo Persona de la aplicación.
+            datos acerca de personas fisica y juridicas.
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by Persona/&gt;.
+            .es Interfaz que representa  una entidad implementado enPersona/&gt;.
+            </remarks>
+    </member>
+    <member name="P:Centum.Shared.Domain.IPersona.Nombre">
+      <summary>
+            .en Property to get and set Nombre.
+            .es Propiedad que permite obtener y establecer Nombre.
+            </summary>
+      <remarks>
+            Test with auto property and public setter.
+            </remarks>
+      <value>
+            .en Value used to get and set Nombre.
+            .es Valor que es utilizado para obtener y establecer Nombre.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.IPersona.BooleanField">
+      <summary>
+            .en Property to get and set BooleanField.
+            .es Propiedad que permite obtener y establecer BooleanField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set BooleanField.
+            .es Valor que es utilizado para obtener y establecer BooleanField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.IPersona.DatetimeField">
+      <summary>
+            .en Property to get and set DatetimeField.
+            .es Propiedad que permite obtener y establecer DatetimeField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set DatetimeField.
+            .es Valor que es utilizado para obtener y establecer DatetimeField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.IPersona.ByteField">
+      <summary>
+            .en Property to get and set ByteField.
+            .es Propiedad que permite obtener y establecer ByteField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set ByteField.
+            .es Valor que es utilizado para obtener y establecer ByteField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.IPersona.GuidField">
+      <summary>
+            .en Property to get and set GuidField.
+            .es Propiedad que permite obtener y establecer GuidField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set GuidField.
+            .es Valor que es utilizado para obtener y establecer GuidField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.IPersona.DecimalField">
+      <summary>
+            .en Property to get and set DecimalField.
+            .es Propiedad que permite obtener y establecer DecimalField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set DecimalField.
+            .es Valor que es utilizado para obtener y establecer DecimalField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.IPersona.DobleField">
+      <summary>
+            .en Property to get and set DobleField.
+            .es Propiedad que permite obtener y establecer DobleField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set DobleField.
+            .es Valor que es utilizado para obtener y establecer DobleField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.IPersona.FloatField">
+      <summary>
+            .en Property to get and set FloatField.
+            .es Propiedad que permite obtener y establecer FloatField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set FloatField.
+            .es Valor que es utilizado para obtener y establecer FloatField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.IPersona.IntField">
+      <summary>
+            .en Property to get and set IntField.
+            .es Propiedad que permite obtener y establecer IntField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set IntField.
+            .es Valor que es utilizado para obtener y establecer IntField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.IPersona.LongField">
+      <summary>
+            .en Property to get and set LongField.
+            .es Propiedad que permite obtener y establecer LongField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set LongField.
+            .es Valor que es utilizado para obtener y establecer LongField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.IPersona.DateTimeOffsetField">
+      <summary>
+            .en Property to get and set DateTimeOffsetField.
+            .es Propiedad que permite obtener y establecer DateTimeOffsetField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set DateTimeOffsetField.
+            .es Valor que es utilizado para obtener y establecer DateTimeOffsetField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.IPersona.ShortField">
+      <summary>
+            .en Property to get and set ShortField.
+            .es Propiedad que permite obtener y establecer ShortField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set ShortField.
+            .es Valor que es utilizado para obtener y establecer ShortField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.IPersona.TimeSpanField">
+      <summary>
+            .en Property to get and set TimeSpanField.
+            .es Propiedad que permite obtener y establecer TimeSpanField.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set TimeSpanField.
+            .es Valor que es utilizado para obtener y establecer TimeSpanField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.IPersona.Int16Field">
+      <summary>
+            .en Property to get and set Int16Field.
+            .es Propiedad que permite obtener y establecer Int16Field.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Int16Field.
+            .es Valor que es utilizado para obtener y establecer Int16Field.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.IPersona.Int32Field">
+      <summary>
+            .en Property to get and set Int32Field.
+            .es Propiedad que permite obtener y establecer Int32Field.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Int32Field.
+            .es Valor que es utilizado para obtener y establecer Int32Field.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.IPersona.Int64Field">
+      <summary>
+            .en Property to get and set Int64Field.
+            .es Propiedad que permite obtener y establecer Int64Field.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Int64Field.
+            .es Valor que es utilizado para obtener y establecer Int64Field.
+            </value>
+    </member>
+    <member name="T:Centum.Shared.Domain.IPersonaRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:Centum.Shared.Domain.IPersona" />.
+            </summary>
+    </member>
+    <member name="T:Centum.Shared.Domain.Persona">
+      <summary>
+        <see cref="T:Centum.Shared.Domain.Persona" />
+      </summary>
+    </member>
+    <member name="M:Centum.Shared.Domain.Persona.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:Centum.Shared.Domain.Persona" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:Centum.Shared.Domain.Persona" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="M:Centum.Shared.Domain.Persona.#ctor(System.String)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Centum.Shared.Domain.Persona" />.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:Centum.Shared.Domain.Persona" />.
+            </remarks>
+      <param name="nombre"> 
+            Parametro <see cref="P:Centum.Shared.Domain.Persona.Nombre" /> del constructor de campos mandatory de la clase <see cref="T:Centum.Shared.Domain.Persona" />
+            Propiedad deducida del rol source de una relación
+            </param>
+    </member>
+    <member name="P:Centum.Shared.Domain.Persona.Nombre">
+      <summary>
+            Propiedad pública que permite obtener Nombre.
+            </summary>
+      <remarks>
+            Test with auto property and public setter.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener Nombre.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.Persona.BooleanField">
+      <summary>
+            Propiedad pública que permite obtener BooleanField.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener BooleanField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.Persona.DatetimeField">
+      <summary>
+            Propiedad pública que permite obtener DatetimeField.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener DatetimeField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.Persona.ByteField">
+      <summary>
+            Propiedad pública que permite obtener ByteField.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener ByteField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.Persona.GuidField">
+      <summary>
+            Propiedad pública que permite obtener GuidField.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener GuidField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.Persona.DecimalField">
+      <summary>
+            Propiedad pública que permite obtener DecimalField.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener DecimalField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.Persona.DobleField">
+      <summary>
+            Propiedad pública que permite obtener DobleField.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener DobleField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.Persona.FloatField">
+      <summary>
+            Propiedad pública que permite obtener FloatField.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener FloatField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.Persona.IntField">
+      <summary>
+            Propiedad pública que permite obtener IntField.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener IntField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.Persona.LongField">
+      <summary>
+            Propiedad pública que permite obtener LongField.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener LongField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.Persona.DateTimeOffsetField">
+      <summary>
+            Propiedad pública que permite obtener DateTimeOffsetField.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener DateTimeOffsetField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.Persona.ShortField">
+      <summary>
+            Propiedad pública que permite obtener ShortField.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener ShortField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.Persona.TimeSpanField">
+      <summary>
+            Propiedad pública que permite obtener TimeSpanField.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener TimeSpanField.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.Persona.Int16Field">
+      <summary>
+            Propiedad pública que permite obtener Int16Field.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Int16Field.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.Persona.Int32Field">
+      <summary>
+            Propiedad pública que permite obtener Int32Field.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Int32Field.
+            </value>
+    </member>
+    <member name="P:Centum.Shared.Domain.Persona.Int64Field">
+      <summary>
+            Propiedad pública que permite obtener Int64Field.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Int64Field.
+            </value>
+    </member>
+    <member name="T:Centum.Shared.Domain.PersonaFactory">
+      <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:Centum.Shared.Domain.Persona" />.
+            </summary>
+    </member>
+    <member name="M:Centum.Shared.Domain.PersonaFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Centum.Shared.Domain.PersonaFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:Centum.Shared.Domain.PersonaFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase PersonaFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:Centum.Shared.Domain.PersonaFactory.Create(System.String)">
+      <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Crea una entidad de tipo <see cref="T:Centum.Shared.Domain.Persona" /></remarks>
+      <param name="nombre"> 
+            Test with auto property and public setter.
+            </param>
+      <returns>
+            Devuelve  una entidad de tipo <see cref="T:Centum.Shared.Domain.PersonaFactory" /></returns>
+    </member>
+    <member name="T:Centum.Shared.Domain.PersonaSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:Persona" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+  </members>
+</doc>

@@ -18,7 +18,7 @@ namespace Inflexion2.Testing
         /// <summary>
         /// first value object with 2 properties
         /// </summary>
-        public class SimpleValueObject : ValueObject<SimpleValueObject>
+        public class SimpleValueObject : ValueObject<SimpleValueObject>, ISimpleValueObject
         {
             /// <summary>
             /// first property
@@ -34,7 +34,7 @@ namespace Inflexion2.Testing
         /// <summary>
         /// second value object with 2 same properties than first object value
         /// </summary>
-        public class OtherSimpleValueObject : ValueObject<OtherSimpleValueObject>
+        public class OtherSimpleValueObject : ValueObject<OtherSimpleValueObject>, IOtherSimpleValueObject
         {
             /// <summary>
             /// first property same type and name 
@@ -50,7 +50,7 @@ namespace Inflexion2.Testing
         /// <summary>
         /// composed object value
         /// </summary>
-        public class NestedValueObject : ValueObject<NestedValueObject>
+        public class NestedValueObject : ValueObject<NestedValueObject>, INestedValueObject
         {
             /// <summary>
             /// first property

@@ -43,7 +43,7 @@ if (cbc.diagram.ValidationContracts.Equals("DataAnotations"))
         }
     }
 #>
-        public <#=(cbc.diagram.ORM.Length >0)?"virtual":"" #> <#= (property.Source is Enumeration)?"": I #><#= T4Help.SecureName(property.Source.Name) #> <#= T4Help.SecureName(property.TargetRolName) #> 
+        public <#=(cbc.diagram.ORM.Length >0)?"virtual":"" #> <#= (property.Source is Enumeration)?"": I #><#= T4Help.SecureName(property.Source.Name) #><#=((property.Source is Enumeration) && IsMinMultiplicityCero(property.SourceMultiplicity))? "?" : String.Empty  #> <#= T4Help.SecureName(property.TargetRolName) #> 
             {
                 get 
                 {

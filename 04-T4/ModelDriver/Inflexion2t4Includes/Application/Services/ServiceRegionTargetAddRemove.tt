@@ -63,7 +63,7 @@ public class ServiceRegionTargetAddRemove : Template
         /// <returns>
         /// Devuelve 'this' (<#= (cbc.IsEntity)?" la propia entidad":"el mismo objeto valor." #>) de tipo <see cref="<#= I #><#= cbc.secureEntityName #>" para permitir fluent Interfaces/>
         /// </returns>
-        public <#=(cbc.diagram.ORM.Length >0)?"virtual":"" #> <#= I #><#= cbc.pascalSecureEntityName #> Add<#= T4Help.SecureName(property.Target.Name) #>To<#= T4Help.SecureName(property.SourceRolName) #> ( <#= I #><#= T4Help.SecureName(property.Target.Name) #> <#= T4Help.ToCamelCase(property.Target.Name) #> )
+        public <#=(cbc.diagram.ORM.Length >0)?"virtual":"" #> I<#= cbc.pascalSecureEntityName #> Add<#= T4Help.SecureName(property.Target.Name) #>To<#= T4Help.SecureName(property.SourceRolName) #> ( <#= I #><#= T4Help.SecureName(property.Target.Name) #> <#= T4Help.ToCamelCase(property.Target.Name) #> )
         {
 <#+ 
             if (cbc.diagram.ValidationContracts.Equals("DataAnotations"))
@@ -77,7 +77,7 @@ public class ServiceRegionTargetAddRemove : Template
 #>
             // NO se permiten valores repetidos en esta propiedad.
             Guard.Against(this.<#= T4Help.SecureName(property.SourceRolName) #>.Contains(<#= T4Help.ToCamelCase(property.Target.Name) #>),
-                          new System.InvalidOperationException(<#= T4Help.SecureName( prjCon.boundedContextName) #>Neutral.<#= cbc.secureEntityName + "Duplicated" + T4Help.SecureName(property.SourceRolName) #>)); 
+                          new System.InvalidOperationException(<#= T4Help.SecureName( prjCon.boundedContextName) #>Resources.<#= cbc.secureEntityName + "Duplicated" + T4Help.SecureName(property.SourceRolName) #>)); 
 <#+ 
             }
             else
@@ -163,7 +163,7 @@ public class ServiceRegionTargetAddRemove : Template
         /// <returns>
         /// Devuelve 'this' (<#= (cbc.IsEntity)?" la propia entidad":"el mismo objeto valor." #>) de tipo <see cref="<#= I #><#= cbc.secureEntityName #>" para permitir fluent Interfaces/>
         /// </returns>
-        public <#=(cbc.diagram.ORM.Length >0)?"virtual":"" #> <#= I #><#= cbc.pascalSecureEntityName #> Remove<#= T4Help.SecureName(property.Target.Name) #>From<#= T4Help.SecureName(property.SourceRolName) #> ( <#= I #><#= T4Help.SecureName(property.Target.Name) #> <#= T4Help.ToCamelCase(property.Target.Name) #> )
+        public <#=(cbc.diagram.ORM.Length >0)?"virtual":"" #> I<#= cbc.pascalSecureEntityName #> Remove<#= T4Help.SecureName(property.Target.Name) #>From<#= T4Help.SecureName(property.SourceRolName) #> ( <#= I #><#= T4Help.SecureName(property.Target.Name) #> <#= T4Help.ToCamelCase(property.Target.Name) #> )
         {
             Guard.ArgumentIsNotNull(<#= T4Help.ToCamelCase(property.Target.Name) #>, "El parametro <#= T4Help.ToCamelCase(property.Target.Name) #> es null");          // comprobamos que el parametro no es nulo. Resources
 <#+ if (!property.AllowTargetRepeatedValues) // si la propiedad no permite valores repetidos tenemos que comprobar que no existe, previamente

@@ -1,0 +1,206 @@
+﻿<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>AirBus.Suite.Zeus.Infrastructure</name>
+  </assembly>
+  <members>
+    <member name="T:AirBus.Suite.Zeus.Infrastructure.ProjectConfiguration">
+      <summary>
+            inicializa una nueva instancia de  una entidad Project/&gt;.
+            </summary>
+      <remarks>
+            Mapea un objeto <see cref="T:AirBus.Suite.Zeus.Domain.Project" /></remarks>
+    </member>
+    <member name="M:AirBus.Suite.Zeus.Infrastructure.ProjectConfiguration.#ctor">
+      <summary>
+            inicializa una nueva instancia de <see cref="T:AirBus.Suite.Zeus.Infrastructure.ProjectConfiguration" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.Zeus.Infrastructure.ProjectRepository">
+      <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:AirBus.Suite.Zeus.Domain.Project" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.Zeus.Infrastructure.ProjectRepository.#ctor(System.Data.Entity.DbContext)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Zeus.Infrastructure.ProjectRepository" />.
+            </summary>
+      <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+      <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext" /> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+    </member>
+    <member name="T:AirBus.Suite.Zeus.Infrastructure.BootstrapUnitOfWork">
+      <summary>
+            .en Class to implement unit of work and give the assemblys where are the configuration clases to Entity Framework
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.Zeus.Infrastructure.BootstrapUnitOfWork.#ctor(System.String)">
+      <summary>
+            constructor BootstrapUnitOfWork
+            </summary>
+      <param name="nameOrConnectionString" />
+    </member>
+    <member name="M:AirBus.Suite.Zeus.Infrastructure.BootstrapUnitOfWork.OnModelCreating(System.Data.Entity.DbModelBuilder)">
+      <summary>
+            .en add all configuration files from the assembly where is located the entity in the second parameter.
+            .es añadimos todos los ficheros de configuración del ensamblado de la entidad que pasamos.
+            </summary>
+      <param name="modelBuilder" />
+    </member>
+    <member name="T:AirBus.Suite.Zeus.Infrastructure.TimeRecordConfiguration">
+      <summary>
+            inicializa una nueva instancia de  una entidad TimeRecord/&gt;.
+            </summary>
+      <remarks>
+            Mapea un objeto <see cref="T:AirBus.Suite.Zeus.Domain.TimeRecord" /></remarks>
+    </member>
+    <member name="M:AirBus.Suite.Zeus.Infrastructure.TimeRecordConfiguration.#ctor">
+      <summary>
+            inicializa una nueva instancia de <see cref="T:AirBus.Suite.Zeus.Infrastructure.TimeRecordConfiguration" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.Zeus.Infrastructure.TimeRecordRepository">
+      <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:AirBus.Suite.Zeus.Domain.TimeRecord" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.Zeus.Infrastructure.TimeRecordRepository.#ctor(System.Data.Entity.DbContext)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Zeus.Infrastructure.TimeRecordRepository" />.
+            </summary>
+      <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+      <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext" /> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+    </member>
+    <member name="T:AirBus.Suite.Zeus.Infrastructure.ZeusAppSettingConfiguration">
+      <summary>
+            inicializa una nueva instancia de  una entidad ZeusAppSetting/&gt;.
+            </summary>
+      <remarks>
+            Mapea un objeto <see cref="T:AirBus.Suite.Zeus.Domain.ZeusAppSetting" /></remarks>
+    </member>
+    <member name="M:AirBus.Suite.Zeus.Infrastructure.ZeusAppSettingConfiguration.#ctor">
+      <summary>
+            inicializa una nueva instancia de <see cref="T:AirBus.Suite.Zeus.Infrastructure.ZeusAppSettingConfiguration" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.Zeus.Infrastructure.ZeusAppSettingRepository">
+      <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:AirBus.Suite.Zeus.Domain.ZeusAppSetting" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.Zeus.Infrastructure.ZeusAppSettingRepository.#ctor(System.Data.Entity.DbContext)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Zeus.Infrastructure.ZeusAppSettingRepository" />.
+            </summary>
+      <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+      <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext" /> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+    </member>
+    <member name="T:AirBus.Suite.Zeus.Infrastructure.ZeusDepartmentConfiguration">
+      <summary>
+            inicializa una nueva instancia de  una entidad ZeusDepartment/&gt;.
+            </summary>
+      <remarks>
+            Mapea un objeto <see cref="T:AirBus.Suite.Zeus.Domain.ZeusDepartment" /></remarks>
+    </member>
+    <member name="M:AirBus.Suite.Zeus.Infrastructure.ZeusDepartmentConfiguration.#ctor">
+      <summary>
+            inicializa una nueva instancia de <see cref="T:AirBus.Suite.Zeus.Infrastructure.ZeusDepartmentConfiguration" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.Zeus.Infrastructure.ZeusDepartmentRepository">
+      <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:AirBus.Suite.Zeus.Domain.ZeusDepartment" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.Zeus.Infrastructure.ZeusDepartmentRepository.#ctor(System.Data.Entity.DbContext)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Zeus.Infrastructure.ZeusDepartmentRepository" />.
+            </summary>
+      <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+      <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext" /> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+    </member>
+    <member name="T:AirBus.Suite.Zeus.Infrastructure.ZeusUserConfiguration">
+      <summary>
+            inicializa una nueva instancia de  una entidad ZeusUser/&gt;.
+            </summary>
+      <remarks>
+            Mapea un objeto <see cref="T:AirBus.Suite.Zeus.Domain.ZeusUser" /></remarks>
+    </member>
+    <member name="M:AirBus.Suite.Zeus.Infrastructure.ZeusUserConfiguration.#ctor">
+      <summary>
+            inicializa una nueva instancia de <see cref="T:AirBus.Suite.Zeus.Infrastructure.ZeusUserConfiguration" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.Zeus.Infrastructure.ZeusUserRepository">
+      <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:AirBus.Suite.Zeus.Domain.ZeusUser" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.Zeus.Infrastructure.ZeusUserRepository.#ctor(System.Data.Entity.DbContext)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Zeus.Infrastructure.ZeusUserRepository" />.
+            </summary>
+      <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+      <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext" /> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+    </member>
+  </members>
+</doc>

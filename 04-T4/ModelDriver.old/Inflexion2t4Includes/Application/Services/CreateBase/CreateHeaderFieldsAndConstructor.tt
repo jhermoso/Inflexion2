@@ -1,0 +1,94 @@
+﻿<#+
+///<sumary>
+/// Esta plantilla incluye la cabecera los general usings, los fields y los constructores, de las clases create de la capa de servicios de aplicación.
+///</sumary>
+public class CreateHeaderFieldsAndConstructor : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public CreateHeaderFieldsAndConstructor(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+#>
+    #region general using references
+
+    using System;
+    using System.Globalization;
+    using System.Linq;
+    using System.Diagnostics.Contracts;
+    using System.Collections.Generic;
+    using Inflexion.Framework.Application.Security.Data.Base;
+    using Inflexion.Framework.Application.Security.Services.Base;
+    using Inflexion.Framework.Core;
+    using Inflexion.Framework.Infrastructure.DataAccess.UoW;
+    using Inflexion.Framework.Infrastructure.IoC;
+    using Inflexion.Framework.Logging;
+
+   // using CoreResources /* Esta linea aparece comentada pues se utiliza el name espace en cada sitio para distinguirlo de los resources propios del contexto limitado ya que todos los ficheros de recursos generados desde la t4 tienen el nombre de neutral */
+   // TODO: Esto significa que para una instalación es necesario generar los core resources en función del idioma neutral.
+   // tambien podemo introducir el \<\#= T4Help.ToPascalCase(secureBdName) \#\>. como namespace corto del los ficheros de recursos
+ // using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Core;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Data.Base;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Services.Core;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain.Core;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain.Base;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Infrastructure.Data.Repositories;
+<#+ if (!prjCon.boundedContextName.Contains(cbc.diagram.SolutionFolderCommon))   { /* El contexto es un shared kernel entonces este using ya aparece en */#>
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain.Resources;
+<#+         } #>
+
+    #endregion
+
+    /// <summary>
+    /// Interfaz que permite definir las acciones del servicio de creación de 
+    /// una entidad de tipo <see cref="<#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.<#= I #><#= cbc.pascalSecureEntityName #>"/>.
+    /// </summary>
+    /// <remarks>
+    /// Sin comentarios adicionales.
+    /// </remarks>
+    public sealed class Create<#= cbc.pascalSecureEntityName #> : ApplicationServiceBase, ICreate<#= cbc.pascalSecureEntityName #>
+    {
+        #region FIELDS
+
+        /// <summary>
+        /// Variable privada estática que representa el logger.
+        /// </summary>
+        /// <remarks>
+        /// Sin comentarios adicionales.
+        /// </remarks>
+        private static ILogger <#= cbc.pascalSecureEntityName #>Logger;
+
+        #endregion
+
+        #region CONSTRUCTORS
+
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="Create<#= cbc.pascalSecureEntityName #>"/>.
+        /// </summary>
+        /// <remarks>
+        /// Sin comentarios especiales.
+        /// </remarks>
+        public Create<#= cbc.pascalSecureEntityName #>()
+        {
+            if (<#= cbc.pascalSecureEntityName #>Logger == null)
+            {
+                // Intanciamos el logger.
+                <#= cbc.pascalSecureEntityName #>Logger = ManagerIoC.Container.Resolve<ILoggerFactory>().Create(this.GetType());
+            }
+        } // end constructor Create<#= cbc.pascalSecureEntityName #>
+
+        #endregion
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

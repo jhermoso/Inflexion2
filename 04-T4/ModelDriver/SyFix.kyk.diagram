@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<moneyGenDiagram dslVersion="2.0.0.0" Id="c52d000d-899a-493f-913e-710147c2ccf9" absoluteBounds="0, 0, 11, 8.5" name="SyFix">
+  <applicationMoniker Id="760d8172-14ff-49ca-a1ef-024c819ae5ed" />
+  <nestedChildShapes>
+    <boundedContextShape Id="17b30266-3292-4fd6-854c-e4a74aaa2b55" absoluteBounds="0.5, 0.625, 1.625, 0.5">
+      <boundedContextMoniker name="/760d8172-14ff-49ca-a1ef-024c819ae5ed/From SyfiXBase" />
+    </boundedContextShape>
+    <entityShape Id="aa18e674-a2e7-493e-b507-d0ec544515f5" absoluteBounds="2.375, 1.625, 1.5, 2.4071907552083331" outlineColor="LightSteelBlue" outlineThickness="0.01" outlineDashStyle="Solid" fillGradientMode="ForwardDiagonal" fillColor="Lavender" textColor="Black">
+      <entityMoniker name="/760d8172-14ff-49ca-a1ef-024c819ae5ed/Incident" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a55b2c58-4094-43a8-baed-af156ec698ef" absoluteBounds="2.3900000000000006, 1.8849999999999998, 1.4700000000000002, 1.7878011067708333" name="Attributtes" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="248d10fb-144b-458b-ac69-362beb9c55ad" absoluteBounds="2.3900000000000006, 3.6828011067708335, 1.4700000000000002, 0.2493896484375" name="Invariants" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </entityShape>
+    <enumerationShape Id="cfd29245-fd85-4bb0-a271-f1e6f7b8be29" absoluteBounds="4.625, 2.875, 1.5, 1.8208968098958325">
+      <enumerationMoniker name="/760d8172-14ff-49ca-a1ef-024c819ae5ed/SyfiXDataType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a95f3fdf-8fad-4100-aba5-8900eaff939f" absoluteBounds="4.6400000000000006, 3.385, 1.4700000000000002, 1.2108968098958333" name="EnumerationValues" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </enumerationShape>
+    <entityShape Id="51553c28-f67c-4069-b2e6-4aa2499f559e" absoluteBounds="2.125, 4.75, 1.5, 2.4071907552083331" outlineColor="LightSteelBlue" outlineThickness="0.01" outlineDashStyle="Solid" fillGradientMode="ForwardDiagonal" fillColor="Lavender" textColor="Black">
+      <entityMoniker name="/760d8172-14ff-49ca-a1ef-024c819ae5ed/Metadata" />
+      <nestedChildShapes>
+        <elementListCompartment Id="91a12035-5eb4-4236-b610-f2ff7706b6c8" absoluteBounds="2.1400000000000006, 5.01, 1.4700000000000002, 1.7878011067708333" name="Attributtes" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="1dd91ba7-f5bd-433c-bd56-06728442c0bf" absoluteBounds="2.1400000000000006, 6.8078011067708335, 1.4700000000000002, 0.2493896484375" name="Invariants" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </entityShape>
+    <entityShape Id="00f74c37-682f-421b-924e-e5386ab17dde" absoluteBounds="6.25, 4.875, 1.5, 1.6379850260416662" outlineColor="LightSteelBlue" outlineThickness="0.01" outlineDashStyle="Solid" fillGradientMode="ForwardDiagonal" fillColor="Lavender" textColor="Black">
+      <entityMoniker name="/760d8172-14ff-49ca-a1ef-024c819ae5ed/MetadataValue" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6c7c4f40-8a3e-4501-8179-e4f9740c9826" absoluteBounds="6.2650000000000006, 5.135, 1.4700000000000002, 1.0185953776041665" name="Attributtes" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="f4e5e2eb-5235-48d7-938c-d0ab4133da8b" absoluteBounds="6.2650000000000006, 6.1635953776041665, 1.4700000000000002, 0.2493896484375" name="Invariants" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </entityShape>
+    <aggregationConnector Id="62868037-5147-45f4-959b-bd9c36b34418" edgePoints="[(2.125 : 5.05562668506198); (1.50572916666667 : 5.05562668506198); (1.50572916666667 : 4.375); (3.3967065682298 : 4.375); (3.3967065682298 : 4.75)]" manuallyRouted="true" fixedFrom="NotFixed" fixedTo="NotFixed" color="113, 111, 110">
+      <aggregationMoniker Id="e9337853-bd6e-486e-987b-cd8e2d4a1aee" />
+      <relativeChildShapes />
+      <nodes>
+        <entityShapeMoniker Id="51553c28-f67c-4069-b2e6-4aa2499f559e" />
+        <entityShapeMoniker Id="51553c28-f67c-4069-b2e6-4aa2499f559e" />
+      </nodes>
+    </aggregationConnector>
+    <compositionConnector Id="85f33d2a-e401-4b4c-a925-fbe4fc35d457" edgePoints="[(3.625 : 6.06950314429123); (6.25 : 6.06950314429123)]" fixedFrom="Algorithm" fixedTo="Algorithm" color="192, 0, 192">
+      <compositionMoniker Id="04815996-359c-414b-ac69-88e2db0e7015" />
+      <relativeChildShapes />
+      <nodes>
+        <entityShapeMoniker Id="51553c28-f67c-4069-b2e6-4aa2499f559e" />
+        <entityShapeMoniker Id="00f74c37-682f-421b-924e-e5386ab17dde" />
+      </nodes>
+    </compositionConnector>
+    <compositionConnector Id="151cf715-2354-4a07-bdf0-5c22b46da673" edgePoints="[(5.375 : 4.69589680989583); (5.375 : 5.5635162625408); (3.625 : 5.5635162625408)]" fixedFrom="Algorithm" fixedTo="Caller" color="113, 111, 110">
+      <compositionMoniker Id="1b575bbc-f1b1-4426-a33a-0780603e7d10" />
+      <relativeChildShapes />
+      <moveableDecoratorHostShapes>
+        <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="3.6875, 5.3143148685814925, 0.85746252536773682, 0.181884765625" shapeFieldName="RolTargetNameDecorator" />
+      </moveableDecoratorHostShapes>
+      <nodes>
+        <enumerationShapeMoniker Id="cfd29245-fd85-4bb0-a271-f1e6f7b8be29" />
+        <entityShapeMoniker Id="51553c28-f67c-4069-b2e6-4aa2499f559e" />
+      </nodes>
+    </compositionConnector>
+    <entityShape Id="c1c30ad3-ece1-43e6-ba63-a9570fb23ce9" absoluteBounds="6, 6.75, 1.875, 1.0610807291666671" outlineColor="LightSteelBlue" outlineThickness="0.01" outlineDashStyle="Solid" fillGradientMode="ForwardDiagonal" fillColor="Lavender" textColor="Black">
+      <entityMoniker name="/760d8172-14ff-49ca-a1ef-024c819ae5ed/MetadataBynaryValue" />
+      <nestedChildShapes>
+        <elementListCompartment Id="62d723f6-ebcb-4a4f-8a39-6d1cfbda88c8" absoluteBounds="6.0150000000000006, 7.01, 1.8450000000000002, 0.44169108072916663" name="Attributtes" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="bebd8c2c-ed09-4573-be21-5ae56adc7a5f" absoluteBounds="6.0150000000000006, 7.4616910807291665, 1.8450000000000002, 0.2493896484375" name="Invariants" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </entityShape>
+    <compositionConnector Id="6b67bf4c-457a-4255-8787-e550e0b8d1d8" edgePoints="[(3.625 : 6.95359537760417); (6 : 6.95359537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm" color="192, 0, 192">
+      <compositionMoniker Id="ee0eab84-e779-49e4-8fb4-d475c1a9e560" />
+      <relativeChildShapes />
+      <nodes>
+        <entityShapeMoniker Id="51553c28-f67c-4069-b2e6-4aa2499f559e" />
+        <entityShapeMoniker Id="c1c30ad3-ece1-43e6-ba63-a9570fb23ce9" />
+      </nodes>
+    </compositionConnector>
+  </nestedChildShapes>
+</moneyGenDiagram>

@@ -32,6 +32,13 @@ public class InfraestructureEntityRepositoryCT : Template
 
         var cpyrigth = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity, T4Help.getLeftStringSlice(this.ToString(), '+', -1).Substring(1));
         string cpyrigthText = cpyrigth.TransformText();
+
+		string classBaseName = "EFRepository";
+	//	if (cbc.MainEntityStereotype.Contains("Entity") )
+	//	  {
+	//		classBaseName = "EFEntityRepository" ;
+	//	  }
+
 #>
 <#= cpyrigthText #>
 namespace <#= projectNamespace #>
@@ -56,8 +63,8 @@ foreach (var item in sharedKernelUsings)
 #>
     using Inflexion2;
     using Inflexion2.Domain;
-    using <#= company #>.<#= product #>.<#= boundedContextName #>.Domain;
-    using <#= company #>.<#= product #>.<#= boundedContextName #>.Domain.Data;
+    using <#= cbc.diagram.RootNameSpace #>.<#= boundedContextName #>.Domain;
+    using <#= cbc.diagram.RootNameSpace #>.<#= boundedContextName #>.Domain.Data;
     <#= (cbc.diagram.ORM.Contains("nh"))?"":"using System.Data.Entity;" #>
   
     /// <summary>
@@ -67,7 +74,7 @@ foreach (var item in sharedKernelUsings)
     /// <remarks>
     /// Sin comentarios adicionales.
     /// </remarks>
-    public partial class <#= cbc.secureEntityName #>Repository : <#=(cbc.diagram.ORM.Contains("nh"))?"NHRepository<I":"EFRepository<" #><#= cbc.secureEntityName #>, <#= cbc.idtype #>>, I<#= cbc.secureEntityName #>Repository
+    public partial class <#= cbc.secureEntityName #>Repository : <#=(cbc.diagram.ORM.Contains("nh"))?"NHRepository<I":classBaseName + "<" #><#= cbc.secureEntityName #>, <#= cbc.idtype #>>, I<#= cbc.secureEntityName #>Repository
     {
 
         #region constructors

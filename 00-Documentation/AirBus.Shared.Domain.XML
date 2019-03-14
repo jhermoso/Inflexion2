@@ -1,0 +1,259 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AirBus.Shared.Domain</name>
+    </assembly>
+    <members>
+        <member name="T:AirBus.Shared.Domain.AppSettings">
+            <summary>
+            <see cref="T:AirBus.Shared.Domain.AppSettings"/>
+            </summary>
+        </member>
+        <member name="M:AirBus.Shared.Domain.AppSettings.#ctor">
+            <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Shared.Domain.AppSettings"/> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Shared.Domain.AppSettings"/> exigido por nHibernate o EntityFramework.
+            </summary>
+            <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Shared.Domain.AppSettings.Key">
+            <summary>
+            Propiedad pública que permite obtener Key.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Key.
+            </value>
+        </member>
+        <member name="P:AirBus.Shared.Domain.AppSettings.Value">
+            <summary>
+            Propiedad pública que permite obtener Value.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Value.
+            </value>
+        </member>
+        <member name="T:AirBus.Shared.Domain.AppSettingsFactory">
+            <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Shared.Domain.AppSettings"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Shared.Domain.AppSettingsFactory.#cctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Shared.Domain.AppSettingsFactory"/>.
+            </summary>
+            <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Shared.Domain.AppSettingsFactory"/>.
+            </remarks>
+            <returns>
+            Devuelve una instancia de dela clase AppSettingsFactory />
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Domain.AppSettingsFactory.Create">
+            <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+            <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Shared.Domain.AppSettings"/>
+            </remarks>
+            <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Shared.Domain.AppSettingsFactory"/>
+            </returns>
+        </member>
+        <member name="T:AirBus.Shared.Domain.AppSettingsSpecifications">
+            <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:AppSettings"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="T:AirBus.Shared.Domain.IAppSettings">
+            <summary>
+            .en Interfaz to identify an entidad of type AppSettings in the application.
+            .es Interfaz que identifica una entidad de tipo AppSettings de la aplicación.
+            Clasificador
+            </summary>
+            <remarks>
+            .en Interfaz for an Entity implemented by AppSettings/>.
+            .es Interfaz que representa  una entidad implementado enAppSettings/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Shared.Domain.IAppSettings.Key">
+            <summary>
+            .en Property to get and set Key.
+            .es Propiedad que permite obtener y establecer Key.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set Key.
+            .es Valor que es utilizado para obtener y establecer Key.
+            </value>
+        </member>
+        <member name="P:AirBus.Shared.Domain.IAppSettings.Value">
+            <summary>
+            .en Property to get and set Value.
+            .es Propiedad que permite obtener y establecer Value.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set Value.
+            .es Valor que es utilizado para obtener y establecer Value.
+            </value>
+        </member>
+        <member name="T:AirBus.Shared.Domain.IAppSettingsRepository">
+            <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Shared.Domain.IAppSettings"/>.
+            </summary>
+        </member>
+        <member name="T:AirBus.Shared.Domain.PerLifeTimeManager">
+            <summary>
+            LifetimeManager implementation
+            </summary>
+        </member>
+        <member name="F:AirBus.Shared.Domain.PerLifeTimeManager.value">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AirBus.Shared.Domain.PerLifeTimeManager.GetValue">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AirBus.Shared.Domain.PerLifeTimeManager.RemoveValue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AirBus.Shared.Domain.PerLifeTimeManager.SetValue(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="newValue"></param>
+        </member>
+        <member name="T:AirBus.Shared.Domain.IUser">
+            <summary>
+            .en Interfaz to identify an entidad of type User in the application.
+            .es Interfaz que identifica una entidad de tipo User de la aplicación.
+            datos acerca de personas fisica y juridicas.
+            </summary>
+            <remarks>
+            .en Interfaz for an Entity implemented by User/>.
+            .es Interfaz que representa  una entidad implementado enUser/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Shared.Domain.IUser.Nombre">
+            <summary>
+            .en Property to get and set Nombre.
+            .es Propiedad que permite obtener y establecer Nombre.
+            </summary>
+            <remarks>
+            Test with auto property and public setter.
+            </remarks>
+            <value>
+            .en Value used to get and set Nombre.
+            .es Valor que es utilizado para obtener y establecer Nombre.
+            </value>
+        </member>
+        <member name="T:AirBus.Shared.Domain.IUserRepository">
+            <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Shared.Domain.IUser"/>.
+            </summary>
+        </member>
+        <member name="T:AirBus.Shared.Domain.User">
+            <summary>
+            <see cref="T:AirBus.Shared.Domain.User"/>
+            </summary>
+        </member>
+        <member name="M:AirBus.Shared.Domain.User.#ctor">
+            <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Shared.Domain.User"/> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Shared.Domain.User"/> exigido por nHibernate o EntityFramework.
+            </summary>
+            <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Shared.Domain.User.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Shared.Domain.User"/>.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:AirBus.Shared.Domain.User"/>.
+            </remarks>
+            <param name="nombre"> 
+            Parametro <see cref="P:AirBus.Shared.Domain.User.Nombre"/> del constructor de campos mandatory de la clase <see cref="T:AirBus.Shared.Domain.User"/>
+            Propiedad deducida del rol source de una relación
+            </param>
+        </member>
+        <member name="P:AirBus.Shared.Domain.User.Nombre">
+            <summary>
+            Propiedad pública que permite obtener Nombre.
+            </summary>
+            <remarks>
+            Test with auto property and public setter.
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Nombre.
+            </value>
+        </member>
+        <member name="T:AirBus.Shared.Domain.UserFactory">
+            <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Shared.Domain.User"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Shared.Domain.UserFactory.#cctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Shared.Domain.UserFactory"/>.
+            </summary>
+            <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Shared.Domain.UserFactory"/>.
+            </remarks>
+            <returns>
+            Devuelve una instancia de dela clase UserFactory />
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Domain.UserFactory.Create(System.String)">
+            <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+            <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Shared.Domain.User"/>
+            </remarks>
+            <param name="nombre"> 
+            Test with auto property and public setter.
+            </param>
+            <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Shared.Domain.UserFactory"/>
+            </returns>
+        </member>
+        <member name="T:AirBus.Shared.Domain.UserSpecifications">
+            <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:User"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+    </members>
+</doc>

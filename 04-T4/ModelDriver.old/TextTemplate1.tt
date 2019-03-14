@@ -1,0 +1,30 @@
+﻿<#@ template inherits="Microsoft.VisualStudio.TextTemplating.VSHost.ModelingTextTransformation" #>
+<#@ output extension=".txt" #>
+<#@ template debug="true" #>
+<#@ MoneyGen processor="MoneyGenDirectiveProcessor" requires="fileName='Main.kyk'" #>
+
+<# 
+System.Diagnostics.Debugger.Break();
+Store store = new Store(typeof(MoneyGenDomainModel));
+    MoneyGenDiagram mgd;
+    //var d = this.MoneyGenModel;
+    
+#>
+
+Generated material. Generating code in C#.
+<#= this.ToString() #>
+<#= this.Store.ToString() #>
+
+<#= this.Application.ToString() #>
+<#= Application #>
+<#
+
+  // When you change the DSL Definition, some of the code below may not work.
+
+  foreach (BoundedContext element in this.Application.BoundedContexts)
+  {
+#>
+	<#= element.Name #>
+<#    
+  }
+#>

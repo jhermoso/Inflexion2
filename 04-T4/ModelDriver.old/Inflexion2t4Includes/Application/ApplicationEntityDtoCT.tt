@@ -1,0 +1,220 @@
+﻿<#+
+
+public class ApplicationEntityDtoCT : Template
+{
+    // parametros de la plantilla
+    public ClassBaseContext  cbc ;
+    public string projectNamespace;
+    public ITree<BoundedContextMetadata> Skt;
+        
+    // constructor de la plantilla
+    public ApplicationEntityDtoCT(ClassBaseContext  classBaseContext, string nombreProjecto, ITree<BoundedContextMetadata> skt)
+    {
+        cbc = classBaseContext;             // contexto de la clase base a interpretar
+        projectNamespace = nombreProjecto;  // nombre del proyecto para el que estamos interpretando
+        Skt = skt;                          // shared kernel tree
+    }
+
+    // metodo de generación de la plantilla
+    public override string TransformText()
+    {
+
+        IList<string> sharedKernelUsings =  GetSharedKernelReferencesByProject(projectNamespace, Skt, cbc.diagram);
+
+        var cpyrigth = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity, T4Help.getLeftStringSlice(this.ToString(), '+', -1).Substring(1));
+        string cpyrigthText = cpyrigth.TransformText();
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+        bool IsSharedBoundedcontext = prjCon.boundedContextName.Contains(cbc.diagram.SolutionFolderCommon);
+#>
+<#= cpyrigthText #>
+namespace <#= projectNamespace #>
+{
+
+    #region SharedKernel usings
+<#+
+if (sharedKernelUsings != null)
+foreach (var item in sharedKernelUsings)
+    {
+#>
+    using <#= item #>;
+<#+
+    }// end foreach para los using del shared kernel
+#>
+    #endregion
+
+    #region usings
+    using System;
+    using System.Runtime.Serialization;
+    using Inflexion2.Application;//.DataTransfer.Base;
+
+<#+ if (cbc.OwnBoundedContextHasEnums) {#>
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain.Data;
+<#+            } #>
+<#+ if (cbc.targetLinksCounter>0)     {#>
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+<#+ }#>
+    #endregion
+
+    /// <summary>
+    /// Clase que representa a la entidad <see cref="<#= cbc.secureEntityName #>Dto"/>.
+    /// </summary>
+    /// <remarks>
+    /// Crea un objeto <see cref="<#= cbc.secureEntityName #>Dto"/>.
+    /// </remarks>
+    // <#= (Inherintance.GetLinksToSubClasses( cbc.entity ).Any())?"tiene subclases":"no tiene subclases" #>
+    // <#= (Inherintance.GetLinksToSuperClasses( cbc.entity ).Any())?"tiene superclases":"no tiene superclases" #>
+    [DataContract]
+    public <#= (cbc.entityHasChildren || IsSharedBoundedcontext )?"":"sealed" #> class <#= cbc.secureEntityName #>Dto : <#= cbc.isDerivedFromOneEntity? cbc.entitySuperClass.Name+"Dto ":"BaseEntityDataTransferObject<"+cbc.idtype+">" #> 
+    {
+       #region CONSTRUCTORS
+        
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="<#= cbc.secureEntityName #>Dto"/>.
+        /// </summary>
+        /// <remarks>
+        /// Constructor de la clase <see cref="<#= cbc.secureEntityName #>Dto"/>.
+        /// </remarks>
+        public <#= cbc.secureEntityName #>Dto()
+        {
+<#+
+    foreach (var property in cbc.propertyAssociationTargets)
+    {
+#>
+            this.<#= T4Help.ToPascalCase(property.SourceRolName) #> = new <#= GetTypeFromAssociationLink(property, false, null, true) #>();
+<#+ } // end foreach propertyAssociationSources #>
+<#+  if(cbc.LogicDelete ){#>
+            //this.Activo = true;
+<#+ }#>
+        } // <#= cbc.secureEntityName #>Dto Constructor
+
+       #endregion
+
+       #region PROPERTIES
+<#+
+    if( cbc.IsEntity & false && !cbc.isDerivedFromOneEntity) // Solo tiene id si es entidad. Si es una entidad derivada el id proviene del dto del que deriva. 
+    {
+#>
+
+        /// <summary>
+        /// Variable privada que identifica el identificador del Dto.
+        /// </summary>
+        /// <remarks>
+        /// Identifica Dto.
+        /// </remarks>
+        [DataMember]
+        public <#= cbc.idtype #> Id {get; set;}
+<#+
+    }
+#>
+<#+    foreach (var property in cbc.propertyObjects)    {#>
+<#+			if(property.LiveCycleAtributte.Equals(LiveCycleAtributte.Variable) || property.LiveCycleAtributte.Equals(LiveCycleAtributte.Derivado)) {#>
+
+        /// <summary>
+        /// Variable privada que identifica <#= property.AtributteName #>.
+        /// </summary>
+        /// <remarks>
+        /// <#= T4Help.StrCleanLfCR(property.ProgramerRemarks) #>
+        /// </remarks>
+        [DataMember]
+        public <#= property.AtributteType #><#= (property.IsNullable & T4Help.IsValueType(property.AtributteType) )?"?":"" #> <#= T4Help.ToPascalCase(property.AtributteName) #> {get; set;}
+<#+			}#>
+<#+		}#>
+<#+
+    foreach (var property in cbc.propertyAssociationSources)
+    {
+                // Debug.WriteLine("composition target link encontrado",property.ToString() );
+                // string propertyType= property.Target.Name;
+#>
+
+<#+ if ( property.Source is Entity ) {#>
+
+        // Este campo proviene de una relación de tipo <#=(property is Aggregation)?"Agregación":"" #><#=(property is Composition)?"Composición":"" #> y <#=(property is Association)?"Asociación":"" #>
+        /// <summary>
+        /// Propiedad que almacena el valor de <#= T4Help.ToPascalCase(property.TargetRolName) #>.
+        /// </summary>
+        /// <remarks>
+        /// Propiedad proveniente del rol source de una relación.
+        /// </remarks>
+        [DataMember]
+        public <#= T4Help.SecureName(property.Source.Name) #>Dto <#= T4Help.ToPascalCase(property.TargetRolName) #> {get; set;} /*entity from source asociation, target rol*/
+<#+            } #>
+<#+ if ( property.Source is Enumeration ) {#>
+
+        // Este campo proviene de una relación de tipo <#=(property is Aggregation)?"Agregación":"" #><#=(property is Composition)?"Composición":"" #> y <#=(property is Association)?"Asociación":"" #>
+        /// <summary>
+        /// Propiedad que almacena el valor de <#= T4Help.ToPascalCase(property.TargetRolName) #>.
+        /// </summary>
+        /// <remarks>
+        /// Propiedad proveniente del rol source de una relación.
+        /// </remarks>
+        [DataMember]
+        public <#= T4Help.SecureName(property.Source.Name) #> <#= T4Help.ToPascalCase(property.TargetRolName) #> {get; set;} /*enumeration from source asociation, target rol*/
+<#+            } #>
+<#+ if ( property.Source is ObjectValue) {#>
+
+<#+
+        var propertiesCollection = ClassBaseHasAtributtes.GetAtributtes(property.Source);
+                    foreach(var atribute in propertiesCollection){#>
+
+        // Este campo proviene de una relación de tipo <#=(property is Aggregation)?"Agregación":"" #><#=(property is Composition)?"Composición":"" #> y <#=(property is Association)?"Asociación":"" #>
+        /// <summary>
+        /// Propiedad que almacena la propiedad <#= T4Help.SecureName(atribute.AtributteName) #> del objeto valor <#= T4Help.ToPascalCase(property.TargetRolName) #>.
+        /// </summary>
+        /// <remarks>
+        /// Propiedad proveniente del source rol de una relación de composición con un objeto valor.
+        /// </remarks>
+        public <#= atribute.AtributteType #> <#= T4Help.ToPascalCase(property.TargetRolName) #><#= T4Help.SecureName(atribute.AtributteName) #> {get; set;} /* value object from source asociation, target rol*/
+
+<#+                    }#>
+<#+            } #>
+<#+
+    }
+#>
+<#+
+    foreach (var property in cbc.propertyAssociationTargets)
+    {
+        // Debug.WriteLine("camposition target link encontrado",property.ToString() );
+        // string propertyType= property.Target.Name;
+        // public static string GetTypeFromAssociationLink(kayak.MoneyGen.Association association, bool versionInterface, string idtype, bool dtoversion = false, bool fieldversion = false)
+#>
+
+        /// <summary>
+        /// Campo privado para almacenar la colección de  <#= T4Help.ToPascalCase(property.SourceRolName) #>.
+        /// </summary>
+        /// <remarks>
+        /// Nos permite establecer y obtener <#= T4Help.ToPascalCase(property.SourceRolName) #>.
+        /// Propiedad proveniente del rol target de una relación.
+        /// </remarks>
+        [DataMember]
+        public <#= GetTypeFromAssociationLink(property, false, cbc.idtype, true, true)/*asociación, version intreface, type id, versión dto*/ #> <#= T4Help.ToPascalCase(property.SourceRolName) #> {get; set;}/*from targets*/
+<#+ }
+#>
+<#+
+    if( cbc.IsEntity && cbc.LogicDelete /*&& !cbc.isDerivedFromOneEntity*/) // ¿Solo tiene campo activo si es entidad. Si es una entidad derivada el id proviene del dto del que deriva. 
+    {
+#>
+        /// <summary>
+        /// Propiedad pública que permite obtener ó establecer si el cliente está activo.
+        /// </summary>
+        /// <remarks>
+        /// Sin comentarios especiales.
+        /// </remarks>
+        /// <value>
+        /// Valor que es utilizado para obtener ó 
+        /// establecer si el cliente está activo.
+        /// </value>
+        [DataMember]
+        public bool Activo { get; set; }
+<#+ } #>
+        #endregion
+
+    } // end class <#= cbc.secureEntityName #>Dto
+} //  <#= projectNamespace #>
+
+<#+
+        return this.GenerationEnvironment.ToString();
+    } //end method override TransformText method
+} // end class ApplicationEntityDtoCT
+#>

@@ -1,0 +1,589 @@
+﻿<?xml version="1.0" ?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="flow" xml:space="preserve">
+    <value>RightToLeft</value>
+    <comment>dirección de lectura del idioma al que pertenece el fichero de recursos</comment>
+  </data>
+  <data name="Any" xml:space="preserve">
+    <value></value>
+    <comment>ComboBoxItem.Content</comment>
+  </data>
+  <data name="Accept" xml:space="preserve">
+    <value></value>
+    <comment>ComboBoxItem.Content</comment>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value></value>
+    <comment>ComboBoxItem.Content</comment>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value></value>
+    <comment>ComboBoxItem.Content</comment>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value></value>
+    <comment>Button.Content</comment>
+  </data>
+  <data name="SelectLanguage" xml:space="preserve">
+    <value></value>
+    <comment>Label.Content</comment>
+  </data>
+  <data name="SelectTheme" xml:space="preserve">
+    <value></value>
+    <comment>Label.Content</comment>
+  </data>
+  <data name="SistemaOperativo" xml:space="preserve">
+    <value></value>
+    <comment>ComboBoxItem.Content</comment>
+  </data>
+  <data name="GestordeEsquemasdeBD" xml:space="preserve">
+    <value></value>
+    <comment>Window.Title</comment>
+  </data>
+  <data name="ContextoLimitado" xml:space="preserve">
+    <value></value>
+    <comment>TabItem.Header</comment>
+  </data>
+  <data name="Tecnologíadelabasededatos" xml:space="preserve">
+    <value></value>
+    <comment>TextBlock.Text</comment>
+  </data>
+  <data name="Nombredelabasededatos" xml:space="preserve">
+    <value></value>
+    <comment>TextBlock.Text</comment>
+  </data>
+  <data name="Nombredelservidor" xml:space="preserve">
+    <value></value>
+    <comment>TextBlock.Text</comment>
+  </data>
+  <data name="usuario" xml:space="preserve">
+    <value></value>
+    <comment>TextBlock.Text</comment>
+  </data>
+  <data name="contraseña" xml:space="preserve">
+    <value></value>
+    <comment>TextBlock.Text</comment>
+  </data>
+  <data name="ScriptCreación" xml:space="preserve">
+    <value></value>
+    <comment>TextBlock.Text</comment>
+  </data>
+  <data name="ScriptActualización" xml:space="preserve">
+    <value></value>
+    <comment>TextBlock.Text</comment>
+  </data>
+  <data name="MsSql2008" xml:space="preserve">
+    <value></value>
+    <comment>TextBlock.Text</comment>
+  </data>
+  <data name="NH3BeginnersGuide" xml:space="preserve">
+    <value></value>
+    <comment>TextBlock.Text</comment>
+  </data>
+  <data name="QUAD" xml:space="preserve">
+    <value></value>
+    <comment>TextBlock.Text</comment>
+  </data>
+  <data name="usuario" xml:space="preserve">
+    <value></value>
+    <comment>TextBlock.Text</comment>
+  </data>
+  <data name="NombreDeUsuario" xml:space="preserve">
+    <value></value>
+    <comment>TextBlock.Text</comment>
+  </data>
+  <data name="contraseña" xml:space="preserve">
+    <value></value>
+    <comment>TextBlock.Text</comment>
+  </data>
+  <data name="BorraryCrearEsquemaProduct" xml:space="preserve">
+    <value></value>
+    <comment>Button.Content</comment>
+  </data>
+  <data name="ActualizarEsquemaProduct" xml:space="preserve">
+    <value></value>
+    <comment>Button.Content</comment>
+  </data>
+  <data name="AñadirDatosMaquetaProduct" xml:space="preserve">
+    <value></value>
+    <comment>Button.Content</comment>
+  </data>
+  <data name="BorrarDatosMaquetaProduct" xml:space="preserve">
+    <value></value>
+    <comment>Button.Content</comment>
+  </data>
+  <data name="ScriptSqlBorraryCrearEsquemaPr" xml:space="preserve">
+    <value></value>
+    <comment>Button.Content</comment>
+  </data>
+  <data name="Ayuda" xml:space="preserve">
+    <value></value>
+    <comment>TabItem.Header</comment>
+  </data>
+  <data name="Elobjetodeestaaplicacióneselde" xml:space="preserve">
+    <value></value>
+    <comment>Button.Content</comment>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value></value>
+    <comment>Language name in english</comment>
+  </data>
+  <data name="en" xml:space="preserve">
+    <value>(en)</value>
+    <comment>2 chars Language-culture Iso code</comment>
+  </data>
+  <data name="Arabic" xml:space="preserve">
+    <value></value>
+    <comment>Language name in english</comment>
+  </data>
+  <data name="ar" xml:space="preserve">
+    <value>(ar)</value>
+    <comment>2 chars Language-culture Iso code</comment>
+  </data>
+  <data name="French" xml:space="preserve">
+    <value></value>
+    <comment>Language name in english</comment>
+  </data>
+  <data name="fr" xml:space="preserve">
+    <value>(fr)</value>
+    <comment>2 chars Language-culture Iso code</comment>
+  </data>
+  <data name="German" xml:space="preserve">
+    <value></value>
+    <comment>Language name in english</comment>
+  </data>
+  <data name="de" xml:space="preserve">
+    <value>(de)</value>
+    <comment>2 chars Language-culture Iso code</comment>
+  </data>
+  <data name="Hebrew" xml:space="preserve">
+    <value></value>
+    <comment>Language name in english</comment>
+  </data>
+  <data name="he" xml:space="preserve">
+    <value>(he)</value>
+    <comment>2 chars Language-culture Iso code</comment>
+  </data>
+  <data name="Italian" xml:space="preserve">
+    <value></value>
+    <comment>Language name in english</comment>
+  </data>
+  <data name="it" xml:space="preserve">
+    <value>(it)</value>
+    <comment>2 chars Language-culture Iso code</comment>
+  </data>
+  <data name="Japanese" xml:space="preserve">
+    <value></value>
+    <comment>Language name in english</comment>
+  </data>
+  <data name="ja" xml:space="preserve">
+    <value>(ja)</value>
+    <comment>2 chars Language-culture Iso code</comment>
+  </data>
+  <data name="Portuguese" xml:space="preserve">
+    <value></value>
+    <comment>Language name in english</comment>
+  </data>
+  <data name="pt" xml:space="preserve">
+    <value>(pt)</value>
+    <comment>2 chars Language-culture Iso code</comment>
+  </data>
+  <data name="Spanish" xml:space="preserve">
+    <value></value>
+    <comment>Language name in english</comment>
+  </data>
+  <data name="es" xml:space="preserve">
+    <value>(es)</value>
+    <comment>2 chars Language-culture Iso code</comment>
+  </data>
+  <data name="BureauBlack" xml:space="preserve">
+    <value>BureauBlack</value>
+    <comment>Wpf theme for front end style</comment>
+  </data>
+  <data name="BureauBlue" xml:space="preserve">
+    <value>BureauBlue</value>
+    <comment>Wpf theme for front end style</comment>
+  </data>
+  <data name="ExpressionDark" xml:space="preserve">
+    <value>ExpressionDark</value>
+    <comment>Wpf theme for front end style</comment>
+  </data>
+  <data name="ExpressionLight" xml:space="preserve">
+    <value>ExpressionLight</value>
+    <comment>Wpf theme for front end style</comment>
+  </data>
+  <data name="ShinyBlue" xml:space="preserve">
+    <value>ShinyBlue</value>
+    <comment>Wpf theme for front end style</comment>
+  </data>
+  <data name="ShinyRed" xml:space="preserve">
+    <value>ShinyRed</value>
+    <comment>Wpf theme for front end style</comment>
+  </data>
+  <data name="WhistlerBlue" xml:space="preserve">
+    <value>WhistlerBlue</value>
+    <comment>Wpf theme for front end style</comment>
+  </data>
+  <data name="UserAlias" xml:space="preserve">
+    <value></value>
+    <comment>Singular Alias of entity User in diagram.</comment>
+  </data>
+  <data name="UserRemarks" xml:space="preserve">
+    <value></value>
+    <comment>Remarks of entity User in diagram.</comment>
+  </data>
+  <data name="UserTooltip" xml:space="preserve">
+    <value></value>
+    <comment>Tooltip of entity User in diagram.</comment>
+  </data>
+  <data name="UserPluralEntity" xml:space="preserve">
+    <value></value>
+    <comment>Plural name of the entity User in diagram.</comment>
+  </data>
+  <data name="User_NameAlias" xml:space="preserve">
+    <value></value>
+    <comment>Alias of field "Name" of entity User in diagram.</comment>
+  </data>
+  <data name="User_NameUserRemarks" xml:space="preserve">
+    <value>يرجى شرح هنا ما هو مينج لهذا الحقل.</value>
+    <comment>Remarks of field "Name" of entity User in diagram.</comment>
+  </data>
+  <data name="User_NameTooltip" xml:space="preserve">
+    <value>شرح الميدانية.</value>
+    <comment>Tooltip of field "Name" of entity User in diagram.</comment>
+  </data>
+  <data name="User_Name" xml:space="preserve">
+    <value></value>
+    <comment>Error menssage of lenght value out of limits.	For User:Name in diagram.</comment>
+  </data>
+  <data name="User_DepartmentAlias_" xml:space="preserve">
+    <value></value>
+    <comment>Navegation property name. Source Rol from relationship.</comment>
+  </data>
+  <data name="User_AddressesAlias__" xml:space="preserve">
+    <value></value>
+    <comment>Navegation property name. Target Rol from relationship.</comment>
+  </data>
+  <data name="AppSettingTypeAlias" xml:space="preserve">
+    <value></value>
+    <comment>Singular Alias of entity AppSettingType in diagram.</comment>
+  </data>
+  <data name="AppSettingTypeRemarks" xml:space="preserve">
+    <value></value>
+    <comment>Remarks of entity AppSettingType in diagram.</comment>
+  </data>
+  <data name="AppSettingTypeTooltip" xml:space="preserve">
+    <value></value>
+    <comment>Tooltip of entity AppSettingType in diagram.</comment>
+  </data>
+  <data name="AppSettingTypePluralEntity" xml:space="preserve">
+    <value></value>
+    <comment>Plural name of the entity AppSettingType in diagram.</comment>
+  </data>
+  <data name="InternalUser" xml:space="preserve">
+    <value>المستخدم الداخلية</value>
+    <comment>Enum value from cbc.secureEntityName.</comment>
+  </data>
+  <data name="Application" xml:space="preserve">
+    <value>التطبيق</value>
+    <comment>Enum value from cbc.secureEntityName.</comment>
+  </data>
+  <data name="ExternalUser" xml:space="preserve">
+    <value>المستخدم الخارجي</value>
+    <comment>Enum value from cbc.secureEntityName.</comment>
+  </data>
+  <data name="AppSettingAlias" xml:space="preserve">
+    <value></value>
+    <comment>Singular Alias of entity AppSetting in diagram.</comment>
+  </data>
+  <data name="AppSettingRemarks" xml:space="preserve">
+    <value>إعدادات التطبيق لإدارة خيارات مختلفة.</value>
+    <comment>Remarks of entity AppSetting in diagram.</comment>
+  </data>
+  <data name="AppSettingTooltip" xml:space="preserve">
+    <value></value>
+    <comment>Tooltip of entity AppSetting in diagram.</comment>
+  </data>
+  <data name="AppSettingPluralEntity" xml:space="preserve">
+    <value></value>
+    <comment>Plural name of the entity AppSetting in diagram.</comment>
+  </data>
+  <data name="AppSetting_KeyAlias" xml:space="preserve">
+    <value></value>
+    <comment>Alias of field "Key" of entity AppSetting in diagram.</comment>
+  </data>
+  <data name="AppSetting_KeyUserRemarks" xml:space="preserve">
+    <value>وهذا تفضيل تديرها عادة المبرمجين لتعديل بيهافيور التطبيق لكل أو بعض المستخدمين فقط.</value>
+    <comment>Remarks of field "Key" of entity AppSetting in diagram.</comment>
+  </data>
+  <data name="AppSetting_KeyTooltip" xml:space="preserve">
+    <value></value>
+    <comment>Tooltip of field "Key" of entity AppSetting in diagram.</comment>
+  </data>
+  <data name="AppSetting_ValueAlias" xml:space="preserve">
+    <value></value>
+    <comment>Alias of field "Value" of entity AppSetting in diagram.</comment>
+  </data>
+  <data name="AppSetting_ValueUserRemarks" xml:space="preserve">
+    <value></value>
+    <comment>Remarks of field "Value" of entity AppSetting in diagram.</comment>
+  </data>
+  <data name="AppSetting_ValueTooltip" xml:space="preserve">
+    <value></value>
+    <comment>Tooltip of field "Value" of entity AppSetting in diagram.</comment>
+  </data>
+  <data name="AppSetting_RemarkAlias" xml:space="preserve">
+    <value>هذا التصريح</value>
+    <comment>Alias of field "Remark" of entity AppSetting in diagram.</comment>
+  </data>
+  <data name="AppSetting_RemarkUserRemarks" xml:space="preserve">
+    <value>الرجاء إدخال هيرير كيفية استخدام هذه الإعدادات أو ما هو معنى له.</value>
+    <comment>Remarks of field "Remark" of entity AppSetting in diagram.</comment>
+  </data>
+  <data name="AppSetting_RemarkTooltip" xml:space="preserve">
+    <value>وصف تتساوى قيمة المفتاح.</value>
+    <comment>Tooltip of field "Remark" of entity AppSetting in diagram.</comment>
+  </data>
+  <data name="AppSetting_AppSettingUsingAlias_" xml:space="preserve">
+    <value></value>
+    <comment>Navegation property name. Source Rol from relationship.</comment>
+  </data>
+  <data name="DepartmentAlias" xml:space="preserve">
+    <value></value>
+    <comment>Singular Alias of entity Department in diagram.</comment>
+  </data>
+  <data name="DepartmentRemarks" xml:space="preserve">
+    <value>الهيكل التنظيمي مستحقات الشركة</value>
+    <comment>Remarks of entity Department in diagram.</comment>
+  </data>
+  <data name="DepartmentTooltip" xml:space="preserve">
+    <value></value>
+    <comment>Tooltip of entity Department in diagram.</comment>
+  </data>
+  <data name="DepartmentPluralEntity" xml:space="preserve">
+    <value></value>
+    <comment>Plural name of the entity Department in diagram.</comment>
+  </data>
+  <data name="Department_NameAlias" xml:space="preserve">
+    <value></value>
+    <comment>Alias of field "Name" of entity Department in diagram.</comment>
+  </data>
+  <data name="Department_NameUserRemarks" xml:space="preserve">
+    <value>الرجاء إدخال هنا إيدينتيفكيشن يا اسم الإدارة.</value>
+    <comment>Remarks of field "Name" of entity Department in diagram.</comment>
+  </data>
+  <data name="Department_NameTooltip" xml:space="preserve">
+    <value>اسم الإدارة.</value>
+    <comment>Tooltip of field "Name" of entity Department in diagram.</comment>
+  </data>
+  <data name="Department_VisibleAlias" xml:space="preserve">
+    <value></value>
+    <comment>Alias of field "Visible" of entity Department in diagram.</comment>
+  </data>
+  <data name="Department_VisibleUserRemarks" xml:space="preserve">
+    <value>استخدم هذا الحقل لإلغاء تنشيط هذا متخرجين.</value>
+    <comment>Remarks of field "Visible" of entity Department in diagram.</comment>
+  </data>
+  <data name="Department_VisibleTooltip" xml:space="preserve">
+    <value>تسمح الرؤية/تفعيل هذه الإدارة.</value>
+    <comment>Tooltip of field "Visible" of entity Department in diagram.</comment>
+  </data>
+  <data name="Department_DescriptionAlias" xml:space="preserve">
+    <value></value>
+    <comment>Alias of field "Description" of entity Department in diagram.</comment>
+  </data>
+  <data name="Department_DescriptionUserRemarks" xml:space="preserve">
+    <value>يرجى شرح هنا ما هي أنشطتها الرئيسية أو مهام هذه الإدارة.</value>
+    <comment>Remarks of field "Description" of entity Department in diagram.</comment>
+  </data>
+  <data name="Department_DescriptionTooltip" xml:space="preserve">
+    <value>وصف للإدارة.</value>
+    <comment>Tooltip of field "Description" of entity Department in diagram.</comment>
+  </data>
+  <data name="Department_CreationTimeAlias" xml:space="preserve">
+    <value>وقت الإنشاء</value>
+    <comment>Alias of field "CreationTime" of entity Department in diagram.</comment>
+  </data>
+  <data name="Department_CreationTimeUserRemarks" xml:space="preserve">
+    <value>وقت الإنشاء</value>
+    <comment>Remarks of field "CreationTime" of entity Department in diagram.</comment>
+  </data>
+  <data name="Department_CreationTimeTooltip" xml:space="preserve">
+    <value>وقت الإنشاء</value>
+    <comment>Tooltip of field "CreationTime" of entity Department in diagram.</comment>
+  </data>
+  <data name="Department_UpdateTimeAlias" xml:space="preserve">
+    <value>وقت التحديث</value>
+    <comment>Alias of field "UpdateTime" of entity Department in diagram.</comment>
+  </data>
+  <data name="Department_UpdateTimeUserRemarks" xml:space="preserve">
+    <value>وقت التحديث</value>
+    <comment>Remarks of field "UpdateTime" of entity Department in diagram.</comment>
+  </data>
+  <data name="Department_UpdateTimeTooltip" xml:space="preserve">
+    <value>وقت التحديث</value>
+    <comment>Tooltip of field "UpdateTime" of entity Department in diagram.</comment>
+  </data>
+  <data name="Department_UsersAlias__" xml:space="preserve">
+    <value></value>
+    <comment>Navegation property name. Target Rol from relationship.</comment>
+  </data>
+  <data name="AddressAlias" xml:space="preserve">
+    <value></value>
+    <comment>Singular Alias of entity Address in diagram.</comment>
+  </data>
+  <data name="AddressRemarks" xml:space="preserve">
+    <value></value>
+    <comment>Remarks of entity Address in diagram.</comment>
+  </data>
+  <data name="AddressTooltip" xml:space="preserve">
+    <value></value>
+    <comment>Tooltip of entity Address in diagram.</comment>
+  </data>
+  <data name="AddressPluralEntity" xml:space="preserve">
+    <value></value>
+    <comment>Plural name of the entity Address in diagram.</comment>
+  </data>
+  <data name="Address_StreetNameAlias" xml:space="preserve">
+    <value>اسم الشارع</value>
+    <comment>Alias of field "StreetName" of entity Address in diagram.</comment>
+  </data>
+  <data name="Address_StreetNameUserRemarks" xml:space="preserve">
+    <value>اسم الشارع</value>
+    <comment>Remarks of field "StreetName" of entity Address in diagram.</comment>
+  </data>
+  <data name="Address_StreetNameTooltip" xml:space="preserve">
+    <value>اسم الشارع</value>
+    <comment>Tooltip of field "StreetName" of entity Address in diagram.</comment>
+  </data>
+  <data name="Address_BuildingNumberAlias" xml:space="preserve">
+    <value>رقم المبنى</value>
+    <comment>Alias of field "BuildingNumber" of entity Address in diagram.</comment>
+  </data>
+  <data name="Address_BuildingNumberUserRemarks" xml:space="preserve">
+    <value>رقم المبنى</value>
+    <comment>Remarks of field "BuildingNumber" of entity Address in diagram.</comment>
+  </data>
+  <data name="Address_BuildingNumberTooltip" xml:space="preserve">
+    <value>رقم المبنى</value>
+    <comment>Tooltip of field "BuildingNumber" of entity Address in diagram.</comment>
+  </data>
+</root>

@@ -6,9 +6,18 @@ public class UXAppConfigCT : Template
 		public string projectNamespace; 
 		public ITree<BoundedContextMetadata> Skt; 
 		public string KindTimeCall;
+		ITree<LocalizedBounded> TreeApp;
+		DslContextDefinitionDiagram MainDiagram;
     // constructor de la plantilla con parametros
-    public UXAppConfigCT(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt, string kindTimeCall)
-        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; this.KindTimeCall = kindTimeCall;}
+    public UXAppConfigCT(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt, string kindTimeCall, ITree<LocalizedBounded> treeApp, DslContextDefinitionDiagram mainDiagram)
+        {
+			this.cbc= cbc; 
+			this.projectNamespace = projectNamespace;  
+			this.Skt = Skt; 
+			this.KindTimeCall = kindTimeCall;
+			this.TreeApp = treeApp;
+			this.MainDiagram = mainDiagram;
+		}
 
     public override string TransformText()
         {
@@ -35,8 +44,29 @@ public class UXAppConfigCT : Template
     <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2"/>
   </startup>
   <connectionStrings>
-    <add name="<#=cbc.diagram.Product #>.Connection"
-    connectionString="<#=cbc.diagram.BCConnectionString #>"/>
+  <#+
+    foreach( INode<LocalizedBounded> context in TreeApp.All.Nodes )
+    {
+        kayak.MoneyGen.Application boundedContext = context.Data.Context.Value;
+		string bdName = null; 
+		if(context.Depth == 0)
+		{
+			bdName = MainDiagram.SolutionFolderCommon;
+		}
+		else 
+		{
+			bdName = context.Data.Context.Key; 
+		}
+
+        if (boundedContext != null && bdName != null  ) // si el contexto limitado tiene asociado un diagrama y un nombre lo procesamos.
+        {
+  #>
+    <add name="<#= boundedContext.Product #>.Connection"
+    connectionString="<#=boundedContext.ConectionString #>"/>
+  <#+
+		}
+	}
+  #>
   </connectionStrings>
 
     <system.web>
@@ -50,15 +80,43 @@ public class UXAppConfigCT : Template
     <bindings>
       <basicHttpBinding>
 <#+ 
-foreach(INode<ClassBase> entity in cbc.OwnClassBaseTreeBoundedContext.All.Nodes.Where(p=> p.Data is Entity ))
-{
-    if (entity.Data.ReferencedRootEntity != null || ( entity.Data.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Abstract ) == kayak.MoneyGen.InheritClassKeywords.Abstract ) continue;
-	if (cbc.IsRoot)
-	{
+//foreach(INode<ClassBase> entity in cbc.OwnClassBaseTreeBoundedContext.All.Nodes.Where(p=> p.Data is Entity ))
+//{
+
+    foreach( INode<LocalizedBounded> context in TreeApp.All.Nodes )
+        {
+         kayak.MoneyGen.Application boundedContext = context.Data.Context.Value;
+		 string bdName = null; 
+		 if(context.Depth == 0)
+			{
+				bdName = MainDiagram.SolutionFolderCommon;
+			}
+			else 
+			{
+				bdName = context.Data.Context.Key; 
+			}
+
+         if (boundedContext != null && bdName != null  ) // si el contexto limitado tiene asociado un diagrama y un nombre lo procesamos.
+         {
+			ITree<ClassBase> boundedContextElements = ReadClassesHierarchie(boundedContext);
+
+            foreach (INode<ClassBase> entity in boundedContextElements.All.Nodes.Where(p=> p.Data is Entity && 
+					(( p.Data.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Abstract) != kayak.MoneyGen.InheritClassKeywords.Abstract &
+                                                ( p.Data.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Public) == kayak.MoneyGen.InheritClassKeywords.Public ))
+				 						)
+            {
+
+
+
+    if ( ( entity.Data.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Abstract ) == kayak.MoneyGen.InheritClassKeywords.Abstract ) continue;
+	//if (!entity.IsEnumeration && !entity.isAbstract)
+	//{
 	string entityName =  T4Help.ToPascalCase(T4Help.SecureName(entity.Data.Name));
 #>
         <binding name="BasicHttpBinding_I<#= entityName #>Service" />
 <#+
+			//}
+		}
     }
 }
  #>
@@ -70,17 +128,46 @@ foreach(INode<ClassBase> entity in cbc.OwnClassBaseTreeBoundedContext.All.Nodes.
 			//empieza el bloque repetición// en este caso no usamos el bloque de repetición sino que rrecoremos las entidades que son root
  #>
 <#+ 
-foreach(INode<ClassBase> entity in cbc.OwnClassBaseTreeBoundedContext.All.Nodes.Where(p=> p.Data is Entity ))
-{
-    if (entity.Data.ReferencedRootEntity != null || ( entity.Data.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Abstract ) == kayak.MoneyGen.InheritClassKeywords.Abstract ) continue;
-	if (cbc.IsRoot)
-	{
+//foreach(INode<ClassBase> entity in cbc.OwnClassBaseTreeBoundedContext.All.Nodes.Where(p=> p.Data is Entity ))
+//{
+
+    foreach( INode<LocalizedBounded> context in TreeApp.All.Nodes )
+        {
+         kayak.MoneyGen.Application boundedContext = context.Data.Context.Value;
+		 string bdName = null; //GetBoundedContextNameFromTreeAppAndDeep( context.Depth,  context,  MainDiagram);
+		 if(context.Depth == 0)
+			{
+				bdName = MainDiagram.SolutionFolderCommon;
+			}
+			else 
+			{
+				bdName = context.Data.Context.Key; 
+			}
+
+		string secureBdName = bdName.Replace('\\','.');
+        if (boundedContext != null && bdName != null  ) // si el contexto limitado tiene asociado un diagrama y un nombre lo procesamos.
+        {
+			ITree<ClassBase> boundedContextElements = ReadClassesHierarchie(boundedContext);
+
+			foreach (INode<ClassBase> entity in boundedContextElements.All.Nodes.Where(p=> (p.Data is Entity || p.Data is ObjectValue) && 
+				(( p.Data.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Abstract) != kayak.MoneyGen.InheritClassKeywords.Abstract &
+                                            ( p.Data.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Public) == kayak.MoneyGen.InheritClassKeywords.Public ))
+				 					)
+            {
+
+
+    if ( ( entity.Data.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Abstract ) == kayak.MoneyGen.InheritClassKeywords.Abstract ) continue;
+	//if (!entity.IsEnumeration && !entity.isAbstract)
+	//{
 	string entityName =  T4Help.ToPascalCase(T4Help.SecureName(entity.Data.Name));
 #>
-      <endpoint address="http://localhost:8733/Design_Time_Addresses/<#=cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Application.WcfService/<#= entityName #>Service/"
+
+      <endpoint address="http://localhost:8733/Design_Time_Addresses/<#=cbc.diagram.RootNameSpace #>.<#= secureBdName #>.Application.WcfService/<#= entityName #>Service/"
           binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_I<#= entityName #>Service"
           contract="<#= entityName #>Reference.I<#= entityName #>Service" name="BasicHttpBinding_I<#= entityName #>Service" />
 <#+
+			//}
+		}
     }
 }
  #>

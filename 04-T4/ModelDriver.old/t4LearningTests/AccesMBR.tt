@@ -1,0 +1,268 @@
+﻿<#@ template inherits="Microsoft.VisualStudio.TextTemplating.Modeling.14.0.ModelBusEnabledTextTransformation" language="C#" debug="true" hostspecific="True" #>
+<#@ output extension=".txt" #>
+<#@ MoneyGen processor="MoneyGenDirectiveProcessor"  requires="fileName='Main2.kyk'"  #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="t4helpers\T4Application\Assemblys.ttinclude" #>
+<#@ import namespace ="System.Collections.Generic" #>
+<#@ import namespace ="System.Text" #>
+<#@ import namespace ="System.Text.RegularExpressions" #>
+<#@ import namespace ="System.Xml" #>
+<#@ import namespace ="Microsoft.VisualStudio.Shell.Interop" #>
+<#@ import namespace ="EnvDTE" #>
+<#@ import namespace ="EnvDTE80" #>
+<#@ import namespace ="Microsoft.VisualStudio.TextTemplating" #>
+<#@ import namespace ="System" #>
+<#@ import namespace ="System.IO" #>
+<#@ import namespace ="System.Diagnostics" #>
+<#@ import namespace ="System.Diagnostics.Contracts" #>
+<#@ import namespace ="System.Linq" #>
+<#@ import namespace ="System.Xml.Linq" #>
+<#@ import namespace ="System.Collections" #>
+<#@ import namespace ="System.Collections.Generic" #>
+<#@ import namespace ="System.Collections.ObjectModel" #>
+<#@ import namespace ="System.ComponentModel" #>
+<#@ import namespace ="Common" #>
+<#@ import namespace = "kayak.MoneyGen" #>
+<#@ import namespace = "kayak.MoneyGen.T4ModelBusAdapters" #>
+<#@ import namespace = "Microsoft.VisualStudio.Modeling.Integration" #>
+<#@ import namespace = "Microsoft.VisualStudio.Modeling.Integration.Shell" #>
+<#@ include file="t4helpers\StringsFuntions\T4Helpers.ttinclude" #>
+<#@ include file="t4helpers\FeatureQuerys\Entity.ttinclude" #>
+<#@ include file="t4helpers\FeatureQuerys\ClassBase.ttinclude" #>
+<#@ include file="t4helpers\FeatureQuerys\Association.ttinclude" #>
+<#@ include file="t4helpers\Initialitation\DSLContextDefinition.ttinclude" #>
+<#@ include file="t4helpers\Create\IOWindows.ttinclude" #>
+<#@ include file="t4helpers\Create\Solution.ttinclude" #>
+<#@ include file="t4helpers\Create\CreateContexts.ttinclude" #>
+<#@ include file="t4helpers\Create\ControlCodeGeneration.ttinclude" #>
+<#@ include file="nuget\PackageConfig.tt" #>
+<#@ include file="t4helpers\Initialitation\Constants.ttinclude" #>
+<#@ include file="t4helpers\Initialitation\SharedKernel.tt" #>
+<#@ include file="t4helpers\Create\ArchitectureDefinition.ttinclude" #>
+<#@ include file="t4helpers\Generation\ClassBaseContext.ttinclude" #>
+<#@ include file="t4Includes\Domain\DomainCoreIEntityCT.tt" #>
+<#@ include file="t4helpers\NameProjects\NamesProjects.tt" #>
+<#@ include file="t4helpers\NameProjects\LayersAndProjects.tt" #>
+<#@ include file="t4Includes\Domain\DomainCoreIEntityValidatorCT.tt" #>
+<#@ include file="t4Includes\Domain\DomainCoreInterfaceFactoryCT.tt" #>
+<#@ include file="t4Includes\Domain\DomainCoreRepositoryCT.tt" #>
+<#@ include file="t4Includes\Domain\DomainCoreRepositoryFactoryCT.tt" #>
+<#@ include file="t4Includes\Domain\DomainBaseEntityCT.tt" #>
+<#@ include file="t4Includes\Domain\DomainBaseEntityFactoryCT.tt" #>
+<#@ include file="t4Includes\Domain\DomainEnumerationCT.tt" #>
+<#@ include file="t4Includes\Application\ApplicationEntityDtoCT.tt" #>
+<#@ include file="t4Includes\Application\ApplicationEnumerationDtoCT.tt" #>
+<#@ include file="t4Includes\Application\ApplicationEntityMapperCT.tt" #>
+<#@ include file="t4Includes\Application\ApplicationEntityMapperInterfaceCT.tt" #>
+<#@ include file="t4Includes\Application\ApplicationEntityCreateServicesCoreCT.tt" #>
+<#@ include file="t4Includes\Application\ApplicationEntityDeleteServicesCoreCT.tt" #>
+<#@ include file="t4Includes\Application\ApplicationEntityGetAllPagedServicesCoreCT.tt" #>
+<#@ include file="t4Includes\Application\ApplicationEntityGetAllServicesCoreCT.tt" #>
+<#@ include file="t4Includes\Application\ApplicationEntityGetByServicesCoreIdCT.tt" #>
+<#@ include file="t4Includes\Application\ApplicationEntityUpdateServicesCoreCT.tt" #>
+<#@ include file="t4Includes\Application\ApplicationEntityCreateServicesBaseCT.tt" #>
+<#@ include file="t4Includes\Application\ApplicationRemoteFacadeHibernateConfigCT.tt" #>
+<#@ include file="t4Includes\Application\ApplicationRemoteFrameworkUnityConfigCT.tt" #>
+<#@ include file="t4Includes\Application\ApplicationRemoteBoundedContextUnityConfigCT.tt" #>
+<#@ include file="t4Includes\Application\ApplicationRemoteFacadeCoreServiceCT.tt" #>
+<#@ include file="t4Includes\Application\ApplicationRemoteFacadeBaseSvcCT.tt" #>
+<#@ include file="t4Includes\Application\ApplicationRemoteFacadeBaseSvcCsCT.tt" #>
+<#@ include file="t4Includes\Infra\InfraestructureEntityRepositoryCT.tt" #>
+<#@ include file="t4Includes\Infra\InfraestructureEntityRepositoryFactoryCT.tt" #>
+<#@ include file="t4Includes\Infra\InfraestructureEntityOracleHbmCT.tt" #>
+<#@ include file="t4Includes\Infra\InfraestructureResourcesCT.tt" #>
+<#@ include file="t4Includes\AllCommonLayers\usings.tt" #>
+<#@ include file="t4Includes\Copyright.ttinclude" #>
+<# // @ include file="HexaCore\HexaCoreControlCodeGeneration.tt" #>
+<# // @ include file="HexaCore\ModelTemplate\HxModelCT.tt" #>
+<# // @ include file="HexaCore\ModelTemplate\OneContextHxModelCT.tt" #>
+<#
+
+#if DEBUG
+bool okDebug = true;
+if (okDebug)
+    {    
+        Debug.WriteLine(""); 
+        Debug.WriteLine("Empezamos con la transformación de AccesMBR");
+        //Debug.WriteLine("1ª Leemos la estructura de contextos limitados y la metemos en un árbol");
+        //Debug.WriteLine("");
+    }
+#endif
+
+  var source = this.Application; // Usual access to source model.
+  // In the source DSL Definition, the root element has a model reference:
+
+    // inicialización del arbol de contextos
+    //A partir de la raiz de un modelo obtenemos la jerarquia de constextos que cuelgan del mismo
+    ITree<LocalizedBounded> TreeApp = GetSolutionContextTree( source);
+#if DEBUG
+    if (false)
+    {
+        string mensajeDepuracion;
+        foreach( INode<LocalizedBounded> context in TreeApp.All.Nodes )
+        {
+            if (context.Data.Context.Value != null)
+                mensajeDepuracion = context.Data.Context.Value.Elements.Count().ToString();
+            else
+                mensajeDepuracion = null;
+            if (okDebug) Debug.WriteLine(String.Format( "{0} (key) es '{1}' Con {2} hijos directos. Y tiene '{3}' elementos",Indent(context.Depth*4),context.Data.Context.Key,context.DirectChildCount, mensajeDepuracion, context.Depth ));
+        }
+    }
+#endif
+
+    // primera parte: recolectamos información acerca de la solucion los diagramas y las definiciones
+    // almacenandolas en estructuras de datos facilmente accesibles.
+    // 1º acerca del diagrama
+    DslContextDefinitionDiagram MainDiagram = new DslContextDefinitionDiagram(this.Application, TreeApp);
+    //Debug.WriteLine(MainDiagram.ToString());
+    // 2º acerca de la propia solución
+    ActiveSolution SolutionInfo = new ActiveSolution(this.Host);
+    //Debug.WriteLine(SolutionInfo.ToString());
+    // 3º obtenemos en la clase de maindiagram los path absolutos de las principales carpetas de la solución. 
+    MainDiagram.SetAbsolutePath(SolutionInfo.DirectoryName);
+
+    // 4º instanciamos la clases con la definición de la arquitectura
+    //Architecture Arq = new Architecture();
+
+if (false)
+    {
+        Debug.WriteLine(String.Format("El path de Proyects es '{0}'", MainDiagram.ProyectsPath));
+        Debug.WriteLine(String.Format("El path de la solución es '{0}'", SolutionInfo.DirectoryName));
+        Debug.WriteLine(String.Format("El path abs de projectos es '{0}'", MainDiagram.AbsProyectsPath));
+        Debug.WriteLine("");
+        Debug.WriteLine("          árbol de proyectos");
+        foreach(var pr in  SolutionInfo.SolutionTree.All.Nodes )
+        {
+            Debug.WriteLine(String.Format("{0}{1}",Indent(pr.Depth*5), pr.Data.Name));
+        }
+        Debug.WriteLine("");
+    }
+
+    IList<Project> Projectos = SolutionProjects.ProjectsList(); // este es un método estático que nos permite acceder de forma rapida a la lista de proyectos para buscar uno concreto.
+        
+    // Segunda parte utilizamos la información recolectada para generar los proyectos de la solución.
+    
+    // Comprobamos y chequeamos la existencia de las carpetas de apoyo a la solución.
+    // primero con la carpeta de Documentación
+    IOWindows.NewChequedFolder(SolutionInfo.DirectoryName+System.IO.Path.DirectorySeparatorChar+MainDiagram.DocumentationPath);
+    // Acontinuación con la carpeta de Documentación
+    IOWindows.NewChequedFolder(SolutionInfo.DirectoryName+System.IO.Path.DirectorySeparatorChar+MainDiagram.AsemblysPath);
+    // Seguidamente con la carpeta de librerias de terceros
+    IOWindows.NewChequedFolder(SolutionInfo.DirectoryName+System.IO.Path.DirectorySeparatorChar+MainDiagram.LibraryPath);
+    // Por último con la carpeta de projectos
+    IOWindows.NewChequedFolder(SolutionInfo.DirectoryName+System.IO.Path.DirectorySeparatorChar+MainDiagram.ProyectsPath);
+    
+     //Comprobamos y chequemos la existencia de las carpetas de solución en la raiz
+     //obteniendo la referencia como projecto de cada una de ellas
+
+    // 1º con la carpeta de contextos limitados
+    MainDiagram.SFBoundedContextRef = SolutionInfo.AddSolutionFolderPath(MainDiagram.SolutionFolderBoundedContext);
+
+    if (MainDiagram.SFBoundedContextRef!=null & false)
+        Debug.WriteLine(String.Format("añadimos u obtenemos la carpeta '{0}' cuyo nombre es {1}",MainDiagram.SolutionFolderBoundedContext, MainDiagram.SFBoundedContextRef.Name));
+
+    // 3º con la carpeta de Framework 
+    MainDiagram.SFFrameworkRef = SolutionInfo.AddSolutionFolderPath(MainDiagram.SolutionFolderFramework);
+
+    if (MainDiagram.SFFrameworkRef!=null & false)
+        Debug.WriteLine(String.Format("añadimos u obtenemos la carpeta '{0}' cuyo nombre es {1}",MainDiagram.SolutionFolderFramework, MainDiagram.SFFrameworkRef.Name));
+
+    // 1º añadimos las carpetas de los contextos para cada uno de los contextos anidados
+    // la carpeta de 'Common' es a todos los efectos otro Bounded Context y se trata como tal.
+
+    AddContextsFoldersAndProjects(  MainDiagram,  SolutionInfo,   TreeApp);
+
+    foreach( INode<LocalizedBounded> context in TreeApp.All.Nodes )
+    {
+        if (false) Debug.WriteLine(String.Format( "{0} (key) es '{1}' Con {2} hijos directos. Y tiene '{3}' elementos",Indent(context.Depth*4),context.Data.Context.Key,context.DirectChildCount, context.Depth ));
+        kayak.MoneyGen.Application boundedContext = context.Data.Context.Value;
+        string bdName = GetBoundedContextName( MainDiagram, context);
+
+        if (boundedContext != null & bdName != null) // si el contexto limitado tiene asociado un diagrama y un nombre lo procesamos.
+        {
+            string secureBdName = bdName.Replace('\\','.');
+        if (false) Debug.WriteLine(String.Format( "secureBdName '{0}'", secureBdName));
+
+       //if( /* Si estamos en hexacore solo tenemos realmente un bounded context que utilizamos despues para hacer las carpetas */
+       //    /*  Por esta razón las saltamos*/
+       //    MainDiagram.Architecture == ArchitectureOptions.HexaCore & secureBdName.Equals(MainDiagram.SolutionFolderCommon) ||
+       //    MainDiagram.Architecture == ArchitectureOptions.PureDDD
+       //  )
+       //{
+       //        ICollection<Architecture.ArqLayer> layersList= null;
+       //        if (MainDiagram.Architecture == ArchitectureOptions.HexaCore)
+       //            layersList = Architecture.HexaCoreMVCLayers;
+       //        else
+       //            layersList = Architecture.ArqLayers;
+	   //
+       //        foreach (Architecture.ArqLayer layer in layersList)
+       //        {
+       //            if (false) Debug.WriteLine(String.Format( "layer '{0}'", layer.LayerType.ToString()));
+	   //
+       //            foreach (Architecture.ArqLayer.ArqProject project in layer.LayerProyects)
+       //            {
+       //                if (false) Debug.WriteLine(String.Format( "project '{0}'", project.Name));
+       //                if( project.References.Where( p => p.ReferenceType == ReferenceKind.Nuget).Any() )
+       //                {
+       //                    string FolderLayerName = GetFolderLayerName( MainDiagram, layer.LayerType);
+       //                    string nombreprojecto = GetProjectName( MainDiagram, layer.LayerType, project, secureBdName);
+       //                    string temppath = MainDiagram.AbsProyectsPath +System.IO.Path.DirectorySeparatorChar+nombreprojecto ;
+       //                    string nombreprojectoConExtension = nombreprojecto + ".csproj";
+	   //
+       //                    var tPackageConfig  = new PackageConfig(MainDiagram, project);
+       //                    tPackageConfig.Output.File = "packages.config";
+       //                    //tPackageConfig.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+       //                    tPackageConfig.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+       //                    tPackageConfig.Output.BuildAction = BuildAction.None;
+       //                    tPackageConfig.Render();
+       //                }
+       //            }
+       //        }
+       //    }
+       //}
+    }
+    ITree<BoundedContextMetadata> SharedKernelTree = GetSharedKernelProjects(  MainDiagram,  SolutionInfo,  TreeApp);
+    //foreach (var sharedContext in SharedKernelTree.All.Nodes)
+    //{
+       //Debug.WriteLine(String.Format("{0}{1}", Indent(sharedContext.Depth*4),sharedContext.Data.Name));
+    //}
+
+
+    if (MainDiagram.Architecture == ArchitectureOptions.PureDDD)
+    {
+        // Obtenemos el árbol de referencias de los shared kernel;
+
+        // TestDebugConsoleSK( SharedKernelTree );
+        if (false) 
+        {
+            Debug.WriteLine(String.Format( "Leemos Las referencias del proyecto"));
+            //IList<string> listaUsingsSK = GetSharedKernelReferencesByProject("Inflexion.Suite.Shared.Application.Services.Base", SharedKernelTree, MainDiagram);
+            //IList<string> listaUsingsSK = GetSharedKernelReferencesByProject("Inflexion.Suite.SPE.Shared.Application.Services.Base", SharedKernelTree, MainDiagram);
+            IList<string> listaUsingsSK = GetSharedKernelReferencesByProject("Inflexion.Suite.SPE.Alfiler.Application.Services.Base", SharedKernelTree, MainDiagram);
+
+            Debug.WriteLine(String.Format(""));
+            Debug.WriteLine(String.Format( "Las referencias obtenida son:"));
+            if (listaUsingsSK !=null)
+            foreach(string s in listaUsingsSK) 
+            {
+                Debug.WriteLine(String.Format( "{0}",s));
+            }
+        }
+
+if (true)
+{
+        // añadimos las referencias de los shared kernel a los proyectos.
+        AddSharedKernelReferences(  MainDiagram,  SolutionInfo,  SharedKernelTree);
+
+
+            // acontinuación invocamos el control de generación del codigo.
+        ControlCodeGeneration(  MainDiagram,  SolutionInfo, TreeApp, SharedKernelTree);
+}
+    }
+
+   //if (MainDiagram.Architecture == ArchitectureOptions.HexaCore)
+   //{
+   //        // acontinuación invocamos el control de generación del codigo de hexa core
+   //        HexaCoreControlCodeGeneration(  MainDiagram,  SolutionInfo, TreeApp);
+   //}
+#>

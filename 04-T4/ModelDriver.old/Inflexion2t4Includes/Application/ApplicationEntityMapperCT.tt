@@ -1,0 +1,129 @@
+﻿<#+
+
+public class ApplicationEntityMapperCT : Template
+{
+    // parametros de la plantilla
+    public ClassBaseContext  cbc ;
+    public string projectNamespace;
+    public ITree<BoundedContextMetadata> Skt;
+        
+    // constructor de la plantilla
+    public ApplicationEntityMapperCT(ClassBaseContext  classBaseContext, string nombreProjecto, ITree<BoundedContextMetadata> skt)
+    {
+        cbc = classBaseContext;             // contexto de la clase base a interpretar
+        projectNamespace = nombreProjecto;  // nombre del proyecto para el que estamos interpretando
+        Skt = skt;                          // shared kernel tree
+    }
+
+    // metodo de generación de la plantilla
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        IList<string> sharedKernelUsings =  GetSharedKernelReferencesByProject(projectNamespace, Skt, cbc.diagram);
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+
+        var cpyrigth = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity, T4Help.getLeftStringSlice(this.ToString(), '+', -1).Substring(1));
+        string cpyrigthText = cpyrigth.TransformText();
+#>
+<#= cpyrigthText #>
+namespace <#= projectNamespace #>
+{
+
+	#region usings
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+	using Inflexion2;
+
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Dtos;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain;
+	#endregion
+
+    /// <summary>
+    /// Clase pública encargada de mapear los datos de una entidad <see cref="<#= I #><#= cbc.secureEntityName #>Mapper"/>.
+    /// </summary>
+    /// <remarks>
+    /// Mapea los datos del Dto <see cref="<#= cbc.secureEntityName #>Dto"/> con una entidad <see cref="<#= I #><#= cbc.secureEntityName #>Mapper"/>.
+    /// </remarks>
+    public class <#= cbc.secureEntityName #>Mapper : I<#= cbc.secureEntityName #>Mapper
+    {
+        #region CONSTRUCTORS
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="<#= cbc.secureEntityName #>Mapper"/>.
+        /// </summary>
+        public <#= cbc.secureEntityName #>Mapper()
+        {
+        } // <#= cbc.secureEntityName #>Mapper Constructor
+        #endregion
+
+        #region FUNCTIONS
+
+          /// <summary>
+          /// Función pública que mapea las entidades para devolver el
+          /// correspondiente Dto.
+          /// </summary>
+          /// <remarks>
+          /// Se encarga de mapear objetos <see cref="<#= I #><#= cbc.secureEntityName #>"/> 
+          /// devolviendo un objeto <see cref="<#= cbc.secureEntityName #>Dto"/>.
+          /// </remarks>
+          /// <param name="entity<#= cbc.secureEntityName #>">
+          /// Objeto de la entidad <see cref="<#= I #><#= cbc.secureEntityName #>"/>.
+          /// </param>
+          /// <exception cref="System.ArgumentNullException">
+          /// Lanzada cuando el valor de <c>entity<#= cbc.secureEntityName #></c> es null.
+          /// </exception>
+          /// <returns>
+          /// Devuelve un objeto de tipo <see cref="<#= cbc.secureEntityName #>Dto"/> 
+          /// con los datos mapeados.
+          /// </returns>
+          public <#= cbc.secureEntityName #>Dto EntityMapping(I<#= cbc.secureEntityName #> entity<#= cbc.secureEntityName #>)
+          {
+            // Comprobamos el valor del argumento de entrada.
+            if (entity<#= cbc.secureEntityName #> == null)
+            {
+                // Error, lanzamos la excepción.
+                throw new System.ArgumentNullException("entity<#= cbc.secureEntityName #>");
+            }
+            else
+            {
+                // Objeto de respuesta.
+                <#= cbc.secureEntityName #>Dto dto<#= cbc.secureEntityName #> = new <#= cbc.secureEntityName #>Dto();
+                // Mapeamos cada propiedad.
+<#+
+    if(cbc.IsEntity)
+    {
+#>
+                dto<#= cbc.secureEntityName #>.Id = entity<#= cbc.secureEntityName #>.Id;
+<#+ if(cbc.LogicDelete){#>
+                dto<#= cbc.secureEntityName #>.Activo = entity<#= cbc.secureEntityName #>.IsActive;
+<#+ }#>
+<#+
+    }
+#>
+<#+
+    foreach (var property in cbc.propertyObjects)
+    {
+#>
+                dto<#= cbc.secureEntityName #>.<#= T4Help.ToPascalCase(property.AtributteName) #> = entity<#= cbc.secureEntityName #>.<#= T4Help.ToPascalCase(property.AtributteName) #>;
+<#+
+    }
+#>
+                // Devolvemos el resultado.
+                return dto<#= cbc.secureEntityName #>;
+            }
+          } // EntityMapping
+        
+        #endregion
+    } // end class <#= cbc.secureEntityName #>Mapper
+} //  <#= projectNamespace #>
+
+
+<#+
+        return this.GenerationEnvironment.ToString();
+    } //end method override TransformText method
+} // end class ApplicationEntityMapperCT
+#>

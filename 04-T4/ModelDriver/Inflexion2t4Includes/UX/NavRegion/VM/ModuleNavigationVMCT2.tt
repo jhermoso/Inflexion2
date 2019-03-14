@@ -52,9 +52,9 @@ namespace <#= projectNamespace #>
     #endregion
 
     /// <summary>
-    /// navigation viewmodel for the bounded context <#= prjCon.boundedContextName #> .
+    /// navigation viewmodel for the bounded context <#= T4Help.SecureName(prjCon.boundedContextName) #> .
     /// </summary>
-    public partial class <#= prjCon.boundedContextName #>ModuleNavigationViewModel : NavigationViewModel
+    public partial class <#= T4Help.SecureName(prjCon.boundedContextName) #>ModuleNavigationViewModel : NavigationViewModel
     {
 
         #region Private Methods
@@ -63,14 +63,14 @@ namespace <#= projectNamespace #>
         /// </summary>
         private void Initialize()
         {
-            //this.<#= prjCon.boundedContextName #>View = new NavigationCommand<<#= prjCon.boundedContextName #>ModuleNavigationViewModel>(
-                //this, RegionNames.ToolbarRegion, typeof(<#= prjCon.boundedContextName #>RibbonTab).FullName);
+            //this.<#= T4Help.SecureName(prjCon.boundedContextName) #>View = new NavigationCommand<<#= T4Help.SecureName(prjCon.boundedContextName) #>ModuleNavigationViewModel>(
+                //this, RegionNames.ToolbarRegion, typeof(<#= T4Help.SecureName(prjCon.boundedContextName) #>RibbonTab).FullName);
 <#+
             }
             // en el siguiente bloque viene le codigo que se repite para cada entidad
 #>
-<#+if (cbc.IsRoot) {#>
-            this.Show<#= cbc.pascalSecureEntityName #>View = new NavigationCommand<<#= prjCon.boundedContextName #>ModuleNavigationViewModel>(
+<#+if (cbc.IsEntity && (cbc.IsRoot || cbc.MainEntityStereotype.Contains("Root")) && !cbc.isAbstract) {#>
+            this.Show<#= cbc.pascalSecureEntityName #>View = new NavigationCommand<<#= T4Help.SecureName(prjCon.boundedContextName) #>ModuleNavigationViewModel>(
                 this, RegionNames.WorkspaceRegion, typeof(<#= cbc.pascalSecureEntityName #>QueryView).FullName);
 
 <#+ }#>

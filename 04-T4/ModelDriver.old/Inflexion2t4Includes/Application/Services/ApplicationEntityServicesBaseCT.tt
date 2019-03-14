@@ -1,0 +1,152 @@
+﻿<#@ include file="ServiceHeaderClass.tt" #>
+<#@ include file="ServiceRegionFields.tt" #>
+<#@ include file="ServiceRegionConstructors.tt" #>
+<#@ include file="ServiceRegionProperties.tt" #>
+<#@ include file="ServiceRegionPropertiesFromSources.tt" #>
+<#@ include file="I2ServiceRegionCreateMethod.tt" #>
+<#@ include file="ServiceRegionSourcesSetMethods.tt" #>
+<#@ include file="ServiceRegionPropertiesFromTargets.tt" #>
+<#@ include file="ServiceRegionTargetAddRemove.tt" #>
+<#@ include file="ServiceBodyMethod.tt" #>
+<#@ include file="ServiceRegionPrivateDuplicatedMethods.tt" #>
+<#@ include file="CreateBase\CreateGetById4MappingCollections.tt" #>
+<#@ include file="Base\ServiceActivateEntity.tt" #>
+<#@ include file="Base\ServiceActivateEntityPrivate.tt" #>
+<#@ include file="Base\ServiceGetAll.tt" #>
+<#@ include file="Base\ServiceGetById.tt" #>
+<#@ include file="Base\ServiceGetEnabled.tt" #>
+<#@ include file="Base\ServiceGetPaged.tt" #>
+<#@ include file="Base\ServiceDelete.tt" #>
+<#@ include file="Base\ServiceAddRemoveUpdateTargets.tt" #>
+<#@ include file="UpdateBase\ServiceUpdateMethod.tt" #>
+<#+
+public class ApplicationEntityServicesBaseCT : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    public ClassBaseContext cbc; public string projectNamespace; public ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public ApplicationEntityServicesBaseCT(ClassBaseContext cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+    {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    // metodo de ClassBaseContext cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt de la plantilla
+    public override string TransformText()
+    {
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+        // subplantillas generales
+        var cpyrigthTemplate    = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity, T4Help.getLeftStringSlice(this.ToString(), '+', -1).Substring(1) );  string cpyrigthText = cpyrigthTemplate.TransformText();
+        // subplantillas particulares
+        var usingTemplate                   = new usings( cbc, projectNamespace, Skt);                              string usingTxt                         = usingTemplate.TransformText(); //solo los shared kernel
+        var headerClass                     = new ServiceHeaderClass( cbc, projectNamespace, Skt);                  string HeaderClassTxt                   = headerClass.TransformText();
+        var regionFields                    = new ServiceRegionFields( cbc, projectNamespace, Skt);                 string RegionFieldsTxt                  = regionFields.TransformText();
+        var regionConstructors              = new ServiceRegionConstructors( cbc, projectNamespace, Skt);           string RegionConstructorsTxt            = regionConstructors.TransformText();
+        var regionProperties                = new ServiceRegionProperties( cbc, projectNamespace, Skt);             string RegionPropertiesTxt              = regionProperties.TransformText();
+        var regionPropertiesFromSources     = new ServiceRegionPropertiesFromSources( cbc, projectNamespace, Skt);  string RegionPropertiesFromSourcesTxt   = regionPropertiesFromSources.TransformText();
+        var regionCreateMethod                = new I2ServiceRegionCreateMethod( cbc, projectNamespace, Skt);         string RegionCreateMethodTxt              = regionCreateMethod.TransformText();
+        var regionSourcesSetMethods         = new ServiceRegionSourcesSetMethods( cbc, projectNamespace, Skt);      string RegionSourcesSetMethodsTxt       = regionSourcesSetMethods.TransformText();
+        var regionPropertiesFromTargets     = new ServiceRegionPropertiesFromTargets( cbc, projectNamespace, Skt);  string RegionPropertiesFromTargetsTxt   = regionPropertiesFromTargets.TransformText();
+        var regionTargetAddRemove           = new ServiceRegionTargetAddRemove( cbc, projectNamespace, Skt);        string RegionTargetAddRemoveTxt         = regionTargetAddRemove.TransformText();
+        var regionPrivateDuplicatedMethods           = new ServiceRegionPrivateDuplicatedMethods( cbc, projectNamespace, Skt);       string RegionPrivateDuplicatedMethodsTxt         = regionPrivateDuplicatedMethods.TransformText();
+        var createGetById4MappingCollections           = new CreateGetById4MappingCollections( cbc, projectNamespace, Skt);       string CreateGetById4MappingCollectionsTxt         = createGetById4MappingCollections.TransformText();
+        var serviceActivateEntity           = new ServiceActivateEntity( cbc, projectNamespace, Skt);               string ServiceActivateEntityTxt         = serviceActivateEntity.TransformText();
+        var serviceActivateEntityPrivate           = new ServiceActivateEntityPrivate( cbc, projectNamespace, Skt);               string ServiceActivateEntityPrivateTxt         = serviceActivateEntityPrivate.TransformText();
+        var serviceGetAll           = new ServiceGetAll( cbc, projectNamespace, Skt);               string ServiceGetAllTxt         = serviceGetAll.TransformText();
+        var serviceGetById           = new ServiceGetById( cbc, projectNamespace, Skt);               string ServiceGetByIdTxt         = serviceGetById.TransformText();
+        var serviceGetEnabled           = new ServiceGetEnabled( cbc, projectNamespace, Skt);               string ServiceGetEnabledTxt         = serviceGetEnabled.TransformText();
+        var serviceGetPaged           = new ServiceGetPaged( cbc, projectNamespace, Skt);               string ServiceGetPagedTxt         = serviceGetPaged.TransformText();
+        var serviceDelete           = new ServiceDelete( cbc, projectNamespace, Skt);               string ServiceDeleteTxt         = serviceDelete.TransformText();
+        var serviceAddRemoveUpdateTargets           = new ServiceAddRemoveUpdateTargets( cbc, projectNamespace, Skt);               string ServiceAddRemoveUpdateTargetsTxt         = serviceAddRemoveUpdateTargets.TransformText();
+        var serviceUpdateMethod           = new ServiceUpdateMethod( cbc, projectNamespace, Skt);               string ServiceUpdateMethodTxt         = serviceUpdateMethod.TransformText();
+#>
+<#= cpyrigthText #>
+namespace <#= projectNamespace #>
+{
+    #region usings 
+
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Linq.Expressions;
+    using System.Text;
+    using System.Globalization;
+    using System.Reflection;
+    using System.Data.Entity;
+    using System.Configuration;
+
+    using Microsoft.Practices.Unity;
+
+    using Inflexion2.Domain;
+    using Inflexion2.Application;
+    using Inflexion2;
+    using Inflexion2.Domain.Specification;
+    using Inflexion2.Logging;
+    using Inflexion2.Data;
+    using Inflexion2.Resources;
+
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Application.Dtos;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Application;    
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Infrastructure;
+<#+                if( !prjCon.boundedContextName.Contains(cbc.diagram.SolutionFolderCommon) ){#>
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Infrastructure.Resources;
+<#+                }else{#>
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Infrastructure.Resources;
+<#+                } #>
+// <#= cbc.diagram.SolutionFolderCommon #>
+
+<#+ if (cbc.diagram.ValidationContracts.Equals("CodeContracts")) {#>
+    using System.Diagnostics.Contracts;
+<#+ } #>
+<#+ if (cbc.diagram.ValidationContracts.Equals("DataAnotations")) {#>
+    using System.ComponentModel.DataAnnotations;
+<#+ } #>
+<#+ if (cbc.targetLinksCounter>0 || cbc.sourceLinksCounter>0 || true)    {#>
+    using System.Collections.ObjectModel;
+<#+ }#>
+    #endregion
+
+<#= HeaderClassTxt.TrimEnd(' ') #>
+<#= RegionFieldsTxt.TrimEnd(' ') #>
+<#+     if (cbc.HasConstructorDefinition)    { #>
+ // Los constructores y destructores se encuentran en clase parciales
+<#+     }     else    { #>
+<#= RegionConstructorsTxt.TrimEnd(' ') #>
+<#+                   } //end if tiene métodos para los constructores#>
+<#= RegionPropertiesTxt.TrimEnd(' ') #>
+<#+ if (cbc.sourceLinksCounter>0)    {#>
+<#= RegionPropertiesFromSourcesTxt.TrimEnd(' ') #>
+<#+ } #>
+<#+ if (cbc.targetLinksCounter>0)    {#>
+<#= RegionPropertiesFromTargetsTxt.TrimEnd(' ') #>
+<#+ } #>
+<#= RegionCreateMethodTxt.TrimEnd(' ') #>
+<#= ServiceDeleteTxt.TrimEnd(' ') #>
+<#= ServiceActivateEntityTxt.TrimEnd(' ') #>
+<#= ServiceGetAllTxt.TrimEnd(' ') #>
+<#= ServiceGetByIdTxt.TrimEnd(' ') #>
+<#= ServiceGetEnabledTxt.TrimEnd(' ') #>
+<#= ServiceGetPagedTxt.TrimEnd(' ') #>
+<#= RegionPrivateDuplicatedMethodsTxt.TrimEnd(' ') #>
+<#= CreateGetById4MappingCollectionsTxt.TrimEnd(' ') #>
+<#= ServiceActivateEntityPrivateTxt.TrimEnd(' ') #>
+<#= ServiceUpdateMethodTxt.TrimEnd(' ') #>
+<#= ServiceAddRemoveUpdateTargetsTxt.TrimEnd(' ') #>
+
+        /// <summary>
+        /// adapter of commit operation independent form the ORM
+        /// </summary>
+        public void Commit()
+        {
+            if (unitOfWork == null) unitOfWork = ApplicationLayer.IocContainer.Resolve<IUnitOfWork>();
+            unitOfWork.Commit();
+        }
+
+    } // class <#= cbc.pascalSecureEntityName #> 
+
+} //  <#= projectNamespace #>
+
+<#+
+        return this.GenerationEnvironment.ToString();
+    } //end method override TransformText method
+} // end class DomainBaseEntity
+#>

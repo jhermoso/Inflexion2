@@ -1,0 +1,1078 @@
+﻿<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>AirBus.Suite.MetaS.Application</name>
+  </assembly>
+  <members>
+    <member name="T:AirBus.Suite.MetaS.Application.IMetaClassMapper">
+      <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.MetaS.Application.MetaClassMapper" />.
+            </summary>
+      <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaClassDto" /> con una entidad <see cref="T:AirBus.Suite.MetaS.Application.MetaClassMapper" />.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Application.IMetaClassServices">
+      <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:AirBus.Suite.MetaS.Application.IMetaClassServices" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaClassServices.Create(AirBus.Suite.MetaS.Application.Dtos.MetaClassDto)">
+      <summary>
+            .en Create an entity of type IMetaClass.
+            .es Función encargada de la creación de una entidad de tipo IMetaClass.
+            </summary>
+      <param name="metaClassDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaClassDto" /> con los datos necesarios
+            para la creación de la entidad MetaClass.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
+            </exception><returns>
+            Devuelve el identificador único de la entidad creada.
+            </returns></member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaClassServices.Delete(System.Int32)">
+      <summary>
+            Función encargada del borrado de una entidad de tipo MetaClass.
+            </summary>
+      <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+      <param name="MetaClassId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
+            </exception><returns>
+            Devuelve <b>True</b> si la eliminación ha sido correcta y
+            <b>False</b> en caso contrario.
+            </returns></member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaClassServices.GetAll">
+      <summary>
+            Función encargada de obtener todas las entidades de tipo MetaClass.
+            </summary>
+      <remarks>
+            Devuelve la totalidad de las entidades.
+            </remarks>        /// <returns>
+            Devuelve listado de Dto´s de tipo <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaClassDto" />.
+            </returns></member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaClassServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+      <summary>
+            Recupera una lista paginada de entidades MetaClass, según la especificación indicada.
+            </summary>
+      <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>        /// <returns>
+            La lista paginada de entidades MetaClass, según la especificación indicada.
+            </returns></member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaClassServices.GetById(System.Int32)">
+      <summary>
+            Función encargada de obtener una entidad MetaClass de acuerdo a
+            su identificador.
+            </summary>
+      <param name="metaClassId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>
+      <returns>
+            Devuelve objeto Dto <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaClassDto" /> con la información requerida.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaClassServices.Update(AirBus.Suite.MetaS.Application.Dtos.MetaClassDto)">
+      <summary>
+            Actualiza una determinada entidad MetaClass.
+            </summary>
+      <param name="metaClassDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>        /// <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns></member>
+    <member name="T:AirBus.Suite.MetaS.Application.MetaClassMapper">
+      <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.MetaS.Application.MetaClassMapper" />.
+            </summary>
+      <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaClassDto" /> con una entidad <see cref="T:AirBus.Suite.MetaS.Application.MetaClassMapper" />.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaClassMapper.#ctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.MetaS.Application.MetaClassMapper" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaClassMapper.EntityMapping(AirBus.Suite.MetaS.Domain.IMetaClass)">
+      <summary>
+            Función pública que mapea las entidades para devolver el
+            correspondiente Dto.
+            </summary>
+      <remarks>
+            Se encarga de mapear objetos <see cref="T:AirBus.Suite.MetaS.Domain.MetaClass" /> 
+            devolviendo un objeto <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaClassDto" />.
+            </remarks>
+      <param name="entityMetaClass">
+            Objeto de la entidad <see cref="T:AirBus.Suite.MetaS.Domain.MetaClass" />.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de <c>entityMetaClass</c> es null.
+            </exception>
+      <returns>
+            Devuelve un objeto de tipo <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaClassDto" /> 
+            con los datos mapeados.
+            </returns>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Application.MetaClassServices">
+      <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity MetaClass.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad MetaClass.
+            </summary>
+      <remarks>
+            .en Create an object of type <see cref="T:AirBus.Suite.MetaS.Domain.MetaClass" />.
+            .es Crea un objeto <see cref="T:AirBus.Suite.MetaS.Domain.MetaClass" />.
+             permanent guid = 
+            </remarks>
+    </member>
+    <member name="F:AirBus.Suite.MetaS.Application.MetaClassServices.metaClassMapper">
+      <summary>
+            Referencia al mapeador de la entidad MetaClass.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaClassServices.#ctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:MetaClass&gt;Service" />.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:MetaClassServices" />.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.MetaS.Application.MetaClassServices.MetaClassMapper">
+      <summary>
+            Obtiene la referencia al mapeador de la entidad <see cref="T:IMetaClass" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaClassServices.Create(AirBus.Suite.MetaS.Application.Dtos.MetaClassDto)">
+      <summary>
+            Crea una entidad MetaClass.
+            </summary>
+      <param name="metaClassDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+      <returns>
+            El identificador de la entidad creada.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaClassServices.Delete(System.Int32)">
+      <summary>
+            Elimina una determinada entidad MetaClass.
+            </summary>
+      <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+      <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaClassServices.GetAll">
+      <summary>
+            Recupera todas las entidades MetaClass.
+            </summary>
+      <returns>
+            Todas las entidades MetaClass.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaClassServices.GetById(System.Int32)">
+      <summary>
+            Recupera una entidad MetaClass mediante su identificador correspondiente.
+            </summary>
+      <param name="id">
+            Identificador de la entidad que se va a recuperar.
+            </param>
+      <returns>
+            La entidad MetaClass recuperada o valor nulo si no se encuentra.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaClassServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+      <summary>
+            Recupera una lista paginada de entidades MetaClass, según la especificación indicada.
+            </summary>
+      <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+      <returns>
+            La lista paginada de entidades 'MetaClass', según la especificación indicada.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaClassServices.Update(AirBus.Suite.MetaS.Application.Dtos.MetaClassDto)">
+      <summary>
+            Actualiza una determinada entidad MetaClass.
+            </summary>
+      <param name="metaClassDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+      <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaClassServices.Commit">
+      <summary>
+            adapter of commit operation independent form the ORM
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Application.IMetaPropertyMapper">
+      <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.MetaS.Application.MetaPropertyMapper" />.
+            </summary>
+      <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaPropertyDto" /> con una entidad <see cref="T:AirBus.Suite.MetaS.Application.MetaPropertyMapper" />.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Application.IMetaPropertyServices">
+      <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:AirBus.Suite.MetaS.Application.IMetaPropertyServices" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaPropertyServices.Create(AirBus.Suite.MetaS.Application.Dtos.MetaPropertyDto)">
+      <summary>
+            .en Create an entity of type IMetaProperty.
+            .es Función encargada de la creación de una entidad de tipo IMetaProperty.
+            </summary>
+      <param name="metaPropertyDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaPropertyDto" /> con los datos necesarios
+            para la creación de la entidad MetaProperty.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
+            </exception><returns>
+            Devuelve el identificador único de la entidad creada.
+            </returns></member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaPropertyServices.Delete(System.Int32)">
+      <summary>
+            Función encargada del borrado de una entidad de tipo MetaProperty.
+            </summary>
+      <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+      <param name="MetaPropertyId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
+            </exception><returns>
+            Devuelve <b>True</b> si la eliminación ha sido correcta y
+            <b>False</b> en caso contrario.
+            </returns></member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaPropertyServices.GetAll">
+      <summary>
+            Función encargada de obtener todas las entidades de tipo MetaProperty.
+            </summary>
+      <remarks>
+            Devuelve la totalidad de las entidades.
+            </remarks>        /// <returns>
+            Devuelve listado de Dto´s de tipo <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaPropertyDto" />.
+            </returns></member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaPropertyServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+      <summary>
+            Recupera una lista paginada de entidades MetaProperty, según la especificación indicada.
+            </summary>
+      <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>        /// <returns>
+            La lista paginada de entidades MetaProperty, según la especificación indicada.
+            </returns></member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaPropertyServices.GetById(System.Int32)">
+      <summary>
+            Función encargada de obtener una entidad MetaProperty de acuerdo a
+            su identificador.
+            </summary>
+      <param name="metaPropertyId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>
+      <returns>
+            Devuelve objeto Dto <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaPropertyDto" /> con la información requerida.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaPropertyServices.Update(AirBus.Suite.MetaS.Application.Dtos.MetaPropertyDto)">
+      <summary>
+            Actualiza una determinada entidad MetaProperty.
+            </summary>
+      <param name="metaPropertyDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>        /// <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns></member>
+    <member name="T:AirBus.Suite.MetaS.Application.MetaPropertyMapper">
+      <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.MetaS.Application.MetaPropertyMapper" />.
+            </summary>
+      <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaPropertyDto" /> con una entidad <see cref="T:AirBus.Suite.MetaS.Application.MetaPropertyMapper" />.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaPropertyMapper.#ctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.MetaS.Application.MetaPropertyMapper" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaPropertyMapper.EntityMapping(AirBus.Suite.MetaS.Domain.IMetaProperty)">
+      <summary>
+            Función pública que mapea las entidades para devolver el
+            correspondiente Dto.
+            </summary>
+      <remarks>
+            Se encarga de mapear objetos <see cref="T:AirBus.Suite.MetaS.Domain.MetaProperty" /> 
+            devolviendo un objeto <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaPropertyDto" />.
+            </remarks>
+      <param name="entityMetaProperty">
+            Objeto de la entidad <see cref="T:AirBus.Suite.MetaS.Domain.MetaProperty" />.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de <c>entityMetaProperty</c> es null.
+            </exception>
+      <returns>
+            Devuelve un objeto de tipo <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaPropertyDto" /> 
+            con los datos mapeados.
+            </returns>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Application.MetaPropertyServices">
+      <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity MetaProperty.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad MetaProperty.
+            </summary>
+      <remarks>
+            .en Create an object of type <see cref="T:AirBus.Suite.MetaS.Domain.MetaProperty" />.
+            .es Crea un objeto <see cref="T:AirBus.Suite.MetaS.Domain.MetaProperty" />.
+             permanent guid = 
+            </remarks>
+    </member>
+    <member name="F:AirBus.Suite.MetaS.Application.MetaPropertyServices.metaPropertyMapper">
+      <summary>
+            Referencia al mapeador de la entidad MetaProperty.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaPropertyServices.#ctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:MetaProperty&gt;Service" />.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:MetaPropertyServices" />.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.MetaS.Application.MetaPropertyServices.MetaPropertyMapper">
+      <summary>
+            Obtiene la referencia al mapeador de la entidad <see cref="T:IMetaProperty" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaPropertyServices.Create(AirBus.Suite.MetaS.Application.Dtos.MetaPropertyDto)">
+      <summary>
+            Crea una entidad MetaProperty.
+            </summary>
+      <param name="metaPropertyDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+      <returns>
+            El identificador de la entidad creada.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaPropertyServices.Delete(System.Int32)">
+      <summary>
+            Elimina una determinada entidad MetaProperty.
+            </summary>
+      <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+      <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaPropertyServices.GetAll">
+      <summary>
+            Recupera todas las entidades MetaProperty.
+            </summary>
+      <returns>
+            Todas las entidades MetaProperty.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaPropertyServices.GetById(System.Int32)">
+      <summary>
+            Recupera una entidad MetaProperty mediante su identificador correspondiente.
+            </summary>
+      <param name="id">
+            Identificador de la entidad que se va a recuperar.
+            </param>
+      <returns>
+            La entidad MetaProperty recuperada o valor nulo si no se encuentra.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaPropertyServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+      <summary>
+            Recupera una lista paginada de entidades MetaProperty, según la especificación indicada.
+            </summary>
+      <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+      <returns>
+            La lista paginada de entidades 'MetaProperty', según la especificación indicada.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaPropertyServices.Update(AirBus.Suite.MetaS.Application.Dtos.MetaPropertyDto)">
+      <summary>
+            Actualiza una determinada entidad MetaProperty.
+            </summary>
+      <param name="metaPropertyDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+      <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaPropertyServices.Commit">
+      <summary>
+            adapter of commit operation independent form the ORM
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Application.IMetaSAppSettingMapper">
+      <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.MetaS.Application.MetaSAppSettingMapper" />.
+            </summary>
+      <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaSAppSettingDto" /> con una entidad <see cref="T:AirBus.Suite.MetaS.Application.MetaSAppSettingMapper" />.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Application.IMetaSAppSettingServices">
+      <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:AirBus.Suite.MetaS.Application.IMetaSAppSettingServices" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaSAppSettingServices.Create(AirBus.Suite.MetaS.Application.Dtos.MetaSAppSettingDto)">
+      <summary>
+            .en Create an entity of type IMetaSAppSetting.
+            .es Función encargada de la creación de una entidad de tipo IMetaSAppSetting.
+            </summary>
+      <param name="metaSAppSettingDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaSAppSettingDto" /> con los datos necesarios
+            para la creación de la entidad MetaSAppSetting.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
+            </exception><returns>
+            Devuelve el identificador único de la entidad creada.
+            </returns></member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaSAppSettingServices.Delete(System.Int32)">
+      <summary>
+            Función encargada del borrado de una entidad de tipo MetaSAppSetting.
+            </summary>
+      <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+      <param name="MetaSAppSettingId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
+            </exception><returns>
+            Devuelve <b>True</b> si la eliminación ha sido correcta y
+            <b>False</b> en caso contrario.
+            </returns></member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaSAppSettingServices.GetAll">
+      <summary>
+            Función encargada de obtener todas las entidades de tipo MetaSAppSetting.
+            </summary>
+      <remarks>
+            Devuelve la totalidad de las entidades.
+            </remarks>        /// <returns>
+            Devuelve listado de Dto´s de tipo <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaSAppSettingDto" />.
+            </returns></member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaSAppSettingServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+      <summary>
+            Recupera una lista paginada de entidades MetaSAppSetting, según la especificación indicada.
+            </summary>
+      <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>        /// <returns>
+            La lista paginada de entidades MetaSAppSetting, según la especificación indicada.
+            </returns></member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaSAppSettingServices.GetById(System.Int32)">
+      <summary>
+            Función encargada de obtener una entidad MetaSAppSetting de acuerdo a
+            su identificador.
+            </summary>
+      <param name="metaSAppSettingId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>
+      <returns>
+            Devuelve objeto Dto <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaSAppSettingDto" /> con la información requerida.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaSAppSettingServices.Update(AirBus.Suite.MetaS.Application.Dtos.MetaSAppSettingDto)">
+      <summary>
+            Actualiza una determinada entidad MetaSAppSetting.
+            </summary>
+      <param name="metaSAppSettingDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>        /// <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns></member>
+    <member name="T:AirBus.Suite.MetaS.Application.MetaSAppSettingMapper">
+      <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.MetaS.Application.MetaSAppSettingMapper" />.
+            </summary>
+      <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaSAppSettingDto" /> con una entidad <see cref="T:AirBus.Suite.MetaS.Application.MetaSAppSettingMapper" />.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaSAppSettingMapper.#ctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.MetaS.Application.MetaSAppSettingMapper" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaSAppSettingMapper.EntityMapping(AirBus.Suite.MetaS.Domain.IMetaSAppSetting)">
+      <summary>
+            Función pública que mapea las entidades para devolver el
+            correspondiente Dto.
+            </summary>
+      <remarks>
+            Se encarga de mapear objetos <see cref="T:AirBus.Suite.MetaS.Domain.MetaSAppSetting" /> 
+            devolviendo un objeto <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaSAppSettingDto" />.
+            </remarks>
+      <param name="entityMetaSAppSetting">
+            Objeto de la entidad <see cref="T:AirBus.Suite.MetaS.Domain.MetaSAppSetting" />.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de <c>entityMetaSAppSetting</c> es null.
+            </exception>
+      <returns>
+            Devuelve un objeto de tipo <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaSAppSettingDto" /> 
+            con los datos mapeados.
+            </returns>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Application.MetaSAppSettingServices">
+      <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity MetaSAppSetting.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad MetaSAppSetting.
+            </summary>
+      <remarks>
+            .en Create an object of type <see cref="T:AirBus.Suite.MetaS.Domain.MetaSAppSetting" />.
+            .es Crea un objeto <see cref="T:AirBus.Suite.MetaS.Domain.MetaSAppSetting" />.
+             permanent guid = 
+            </remarks>
+    </member>
+    <member name="F:AirBus.Suite.MetaS.Application.MetaSAppSettingServices.metaSAppSettingMapper">
+      <summary>
+            Referencia al mapeador de la entidad MetaSAppSetting.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaSAppSettingServices.#ctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:MetaSAppSetting&gt;Service" />.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:MetaSAppSettingServices" />.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.MetaS.Application.MetaSAppSettingServices.MetaSAppSettingMapper">
+      <summary>
+            Obtiene la referencia al mapeador de la entidad <see cref="T:IMetaSAppSetting" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaSAppSettingServices.Create(AirBus.Suite.MetaS.Application.Dtos.MetaSAppSettingDto)">
+      <summary>
+            Crea una entidad MetaSAppSetting.
+            </summary>
+      <param name="metaSAppSettingDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+      <returns>
+            El identificador de la entidad creada.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaSAppSettingServices.Delete(System.Int32)">
+      <summary>
+            Elimina una determinada entidad MetaSAppSetting.
+            </summary>
+      <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+      <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaSAppSettingServices.GetAll">
+      <summary>
+            Recupera todas las entidades MetaSAppSetting.
+            </summary>
+      <returns>
+            Todas las entidades MetaSAppSetting.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaSAppSettingServices.GetById(System.Int32)">
+      <summary>
+            Recupera una entidad MetaSAppSetting mediante su identificador correspondiente.
+            </summary>
+      <param name="id">
+            Identificador de la entidad que se va a recuperar.
+            </param>
+      <returns>
+            La entidad MetaSAppSetting recuperada o valor nulo si no se encuentra.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaSAppSettingServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+      <summary>
+            Recupera una lista paginada de entidades MetaSAppSetting, según la especificación indicada.
+            </summary>
+      <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+      <returns>
+            La lista paginada de entidades 'MetaSAppSetting', según la especificación indicada.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaSAppSettingServices.Update(AirBus.Suite.MetaS.Application.Dtos.MetaSAppSettingDto)">
+      <summary>
+            Actualiza una determinada entidad MetaSAppSetting.
+            </summary>
+      <param name="metaSAppSettingDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+      <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaSAppSettingServices.Commit">
+      <summary>
+            adapter of commit operation independent form the ORM
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Application.IMetaSUserMapper">
+      <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.MetaS.Application.MetaSUserMapper" />.
+            </summary>
+      <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaSUserDto" /> con una entidad <see cref="T:AirBus.Suite.MetaS.Application.MetaSUserMapper" />.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Application.IMetaSUserServices">
+      <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:AirBus.Suite.MetaS.Application.IMetaSUserServices" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaSUserServices.Create(AirBus.Suite.MetaS.Application.Dtos.MetaSUserDto)">
+      <summary>
+            .en Create an entity of type IMetaSUser.
+            .es Función encargada de la creación de una entidad de tipo IMetaSUser.
+            </summary>
+      <param name="metaSUserDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaSUserDto" /> con los datos necesarios
+            para la creación de la entidad MetaSUser.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
+            </exception><returns>
+            Devuelve el identificador único de la entidad creada.
+            </returns></member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaSUserServices.Delete(System.Int32)">
+      <summary>
+            Función encargada del borrado de una entidad de tipo MetaSUser.
+            </summary>
+      <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+      <param name="MetaSUserId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
+            </exception><returns>
+            Devuelve <b>True</b> si la eliminación ha sido correcta y
+            <b>False</b> en caso contrario.
+            </returns></member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaSUserServices.GetAll">
+      <summary>
+            Función encargada de obtener todas las entidades de tipo MetaSUser.
+            </summary>
+      <remarks>
+            Devuelve la totalidad de las entidades.
+            </remarks>        /// <returns>
+            Devuelve listado de Dto´s de tipo <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaSUserDto" />.
+            </returns></member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaSUserServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+      <summary>
+            Recupera una lista paginada de entidades MetaSUser, según la especificación indicada.
+            </summary>
+      <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>        /// <returns>
+            La lista paginada de entidades MetaSUser, según la especificación indicada.
+            </returns></member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaSUserServices.GetById(System.Int32)">
+      <summary>
+            Función encargada de obtener una entidad MetaSUser de acuerdo a
+            su identificador.
+            </summary>
+      <param name="metaSUserId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>
+      <returns>
+            Devuelve objeto Dto <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaSUserDto" /> con la información requerida.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaSUserServices.Update(AirBus.Suite.MetaS.Application.Dtos.MetaSUserDto)">
+      <summary>
+            Actualiza una determinada entidad MetaSUser.
+            </summary>
+      <param name="metaSUserDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>        /// <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns></member>
+    <member name="T:AirBus.Suite.MetaS.Application.MetaSUserMapper">
+      <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.MetaS.Application.MetaSUserMapper" />.
+            </summary>
+      <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaSUserDto" /> con una entidad <see cref="T:AirBus.Suite.MetaS.Application.MetaSUserMapper" />.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaSUserMapper.#ctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.MetaS.Application.MetaSUserMapper" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaSUserMapper.EntityMapping(AirBus.Suite.MetaS.Domain.IMetaSUser)">
+      <summary>
+            Función pública que mapea las entidades para devolver el
+            correspondiente Dto.
+            </summary>
+      <remarks>
+            Se encarga de mapear objetos <see cref="T:AirBus.Suite.MetaS.Domain.MetaSUser" /> 
+            devolviendo un objeto <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaSUserDto" />.
+            </remarks>
+      <param name="entityMetaSUser">
+            Objeto de la entidad <see cref="T:AirBus.Suite.MetaS.Domain.MetaSUser" />.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de <c>entityMetaSUser</c> es null.
+            </exception>
+      <returns>
+            Devuelve un objeto de tipo <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaSUserDto" /> 
+            con los datos mapeados.
+            </returns>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Application.MetaSUserServices">
+      <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity MetaSUser.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad MetaSUser.
+            </summary>
+      <remarks>
+            .en Create an object of type <see cref="T:AirBus.Suite.MetaS.Domain.MetaSUser" />.
+            .es Crea un objeto <see cref="T:AirBus.Suite.MetaS.Domain.MetaSUser" />.
+             permanent guid = 
+            </remarks>
+    </member>
+    <member name="F:AirBus.Suite.MetaS.Application.MetaSUserServices.metaSUserMapper">
+      <summary>
+            Referencia al mapeador de la entidad MetaSUser.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaSUserServices.#ctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:MetaSUser&gt;Service" />.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:MetaSUserServices" />.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.MetaS.Application.MetaSUserServices.MetaSUserMapper">
+      <summary>
+            Obtiene la referencia al mapeador de la entidad <see cref="T:IMetaSUser" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaSUserServices.Create(AirBus.Suite.MetaS.Application.Dtos.MetaSUserDto)">
+      <summary>
+            Crea una entidad MetaSUser.
+            </summary>
+      <param name="metaSUserDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+      <returns>
+            El identificador de la entidad creada.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaSUserServices.Delete(System.Int32)">
+      <summary>
+            Elimina una determinada entidad MetaSUser.
+            </summary>
+      <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+      <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaSUserServices.GetAll">
+      <summary>
+            Recupera todas las entidades MetaSUser.
+            </summary>
+      <returns>
+            Todas las entidades MetaSUser.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaSUserServices.GetById(System.Int32)">
+      <summary>
+            Recupera una entidad MetaSUser mediante su identificador correspondiente.
+            </summary>
+      <param name="id">
+            Identificador de la entidad que se va a recuperar.
+            </param>
+      <returns>
+            La entidad MetaSUser recuperada o valor nulo si no se encuentra.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaSUserServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+      <summary>
+            Recupera una lista paginada de entidades MetaSUser, según la especificación indicada.
+            </summary>
+      <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+      <returns>
+            La lista paginada de entidades 'MetaSUser', según la especificación indicada.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaSUserServices.Update(AirBus.Suite.MetaS.Application.Dtos.MetaSUserDto)">
+      <summary>
+            Actualiza una determinada entidad MetaSUser.
+            </summary>
+      <param name="metaSUserDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+      <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaSUserServices.Commit">
+      <summary>
+            adapter of commit operation independent form the ORM
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Application.IMetaViewMapper">
+      <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.MetaS.Application.MetaViewMapper" />.
+            </summary>
+      <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaViewDto" /> con una entidad <see cref="T:AirBus.Suite.MetaS.Application.MetaViewMapper" />.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Application.IMetaViewServices">
+      <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:AirBus.Suite.MetaS.Application.IMetaViewServices" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaViewServices.Create(AirBus.Suite.MetaS.Application.Dtos.MetaViewDto)">
+      <summary>
+            .en Create an entity of type IMetaView.
+            .es Función encargada de la creación de una entidad de tipo IMetaView.
+            </summary>
+      <param name="metaViewDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaViewDto" /> con los datos necesarios
+            para la creación de la entidad MetaView.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
+            </exception><returns>
+            Devuelve el identificador único de la entidad creada.
+            </returns></member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaViewServices.Delete(System.Int32)">
+      <summary>
+            Función encargada del borrado de una entidad de tipo MetaView.
+            </summary>
+      <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+      <param name="MetaViewId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
+            </exception><returns>
+            Devuelve <b>True</b> si la eliminación ha sido correcta y
+            <b>False</b> en caso contrario.
+            </returns></member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaViewServices.GetAll">
+      <summary>
+            Función encargada de obtener todas las entidades de tipo MetaView.
+            </summary>
+      <remarks>
+            Devuelve la totalidad de las entidades.
+            </remarks>        /// <returns>
+            Devuelve listado de Dto´s de tipo <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaViewDto" />.
+            </returns></member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaViewServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+      <summary>
+            Recupera una lista paginada de entidades MetaView, según la especificación indicada.
+            </summary>
+      <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>        /// <returns>
+            La lista paginada de entidades MetaView, según la especificación indicada.
+            </returns></member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaViewServices.GetById(System.Int32)">
+      <summary>
+            Función encargada de obtener una entidad MetaView de acuerdo a
+            su identificador.
+            </summary>
+      <param name="metaViewId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>
+      <returns>
+            Devuelve objeto Dto <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaViewDto" /> con la información requerida.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.IMetaViewServices.Update(AirBus.Suite.MetaS.Application.Dtos.MetaViewDto)">
+      <summary>
+            Actualiza una determinada entidad MetaView.
+            </summary>
+      <param name="metaViewDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>        /// <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns></member>
+    <member name="T:AirBus.Suite.MetaS.Application.MetaViewMapper">
+      <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.MetaS.Application.MetaViewMapper" />.
+            </summary>
+      <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaViewDto" /> con una entidad <see cref="T:AirBus.Suite.MetaS.Application.MetaViewMapper" />.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaViewMapper.#ctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.MetaS.Application.MetaViewMapper" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaViewMapper.EntityMapping(AirBus.Suite.MetaS.Domain.IMetaView)">
+      <summary>
+            Función pública que mapea las entidades para devolver el
+            correspondiente Dto.
+            </summary>
+      <remarks>
+            Se encarga de mapear objetos <see cref="T:AirBus.Suite.MetaS.Domain.MetaView" /> 
+            devolviendo un objeto <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaViewDto" />.
+            </remarks>
+      <param name="entityMetaView">
+            Objeto de la entidad <see cref="T:AirBus.Suite.MetaS.Domain.MetaView" />.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de <c>entityMetaView</c> es null.
+            </exception>
+      <returns>
+            Devuelve un objeto de tipo <see cref="T:AirBus.Suite.MetaS.Application.Dtos.MetaViewDto" /> 
+            con los datos mapeados.
+            </returns>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Application.MetaViewServices">
+      <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity MetaView.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad MetaView.
+            </summary>
+      <remarks>
+            .en Create an object of type <see cref="T:AirBus.Suite.MetaS.Domain.MetaView" />.
+            .es Crea un objeto <see cref="T:AirBus.Suite.MetaS.Domain.MetaView" />.
+             permanent guid = 
+            </remarks>
+    </member>
+    <member name="F:AirBus.Suite.MetaS.Application.MetaViewServices.metaViewMapper">
+      <summary>
+            Referencia al mapeador de la entidad MetaView.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaViewServices.#ctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:MetaView&gt;Service" />.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:MetaViewServices" />.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.MetaS.Application.MetaViewServices.MetaViewMapper">
+      <summary>
+            Obtiene la referencia al mapeador de la entidad <see cref="T:IMetaView" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaViewServices.Create(AirBus.Suite.MetaS.Application.Dtos.MetaViewDto)">
+      <summary>
+            Crea una entidad MetaView.
+            </summary>
+      <param name="metaViewDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+      <returns>
+            El identificador de la entidad creada.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaViewServices.Delete(System.Int32)">
+      <summary>
+            Elimina una determinada entidad MetaView.
+            </summary>
+      <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+      <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaViewServices.GetAll">
+      <summary>
+            Recupera todas las entidades MetaView.
+            </summary>
+      <returns>
+            Todas las entidades MetaView.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaViewServices.GetById(System.Int32)">
+      <summary>
+            Recupera una entidad MetaView mediante su identificador correspondiente.
+            </summary>
+      <param name="id">
+            Identificador de la entidad que se va a recuperar.
+            </param>
+      <returns>
+            La entidad MetaView recuperada o valor nulo si no se encuentra.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaViewServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+      <summary>
+            Recupera una lista paginada de entidades MetaView, según la especificación indicada.
+            </summary>
+      <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+      <returns>
+            La lista paginada de entidades 'MetaView', según la especificación indicada.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaViewServices.Update(AirBus.Suite.MetaS.Application.Dtos.MetaViewDto)">
+      <summary>
+            Actualiza una determinada entidad MetaView.
+            </summary>
+      <param name="metaViewDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+      <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Application.MetaViewServices.Commit">
+      <summary>
+            adapter of commit operation independent form the ORM
+            </summary>
+    </member>
+  </members>
+</doc>

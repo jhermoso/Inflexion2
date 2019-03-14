@@ -1,0 +1,82 @@
+﻿<#@ template language="C#" hostspecific="True" debug="True" #>
+<#@ output extension="cs" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="Microsoft.VisualStudio.Shell.Interop.8.0" #>
+<#@ assembly name="EnvDTE" #>
+<#@ assembly name="EnvDTE80" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ import namespace="Microsoft.VisualStudio.Shell.Interop" #>
+<#@ import namespace="EnvDTE" #>
+<#@ import namespace="EnvDTE80" #>
+<#
+// ADVERTENCIA: cuidar de no meter espacios al final de las directivas pues se reflejan como lineas blancas en el texto de salida.
+// DTE Development tools extensibility representa el api de extensibilidad de visual studio.
+// Como Objeto DTE es el objeto raiz del modelo de automatización de visual studio apartir de el podemos
+// acceder a la solución a los projectos o a los elementos que los componen.
+// Existen 7 modelos que componen el DTE
+// uno de ellos es el CodeModel que nos proporciona acceso a la construcción de codigo fuente por programación.
+
+EnvDTE.DTE dte = null;
+IServiceProvider serviceProvider = Host as IServiceProvider;
+if (serviceProvider != null) 
+	{
+        dte = serviceProvider.GetService(typeof(EnvDTE.DTE)) as DTE;
+    }
+
+if (dte == null) 
+	{
+  		throw new Exception("T4Generator can only execute through the Visual Studio host");
+	}
+WriteLine("//------------Lista de Proyectos-----------------------------");
+
+// la propiedad CodeModel de Project se define en EnvDTE.Codemodel y contine las propiedades de CodeElements, DTE, isCaseSensitive, Language,Parent.
+// La propiedad Name de Projecto contine el nombre del projecto
+	// LA PRINCIPAL UTILIDAD DE CODEMODEL ES EVITAR CONSTRUIR UN PARSER DEL LENGUAJE 
+	// PARA REALIZAR TAREAS DE AUTOMATIZACIÓN DEL MISMO.
+// cast es un metodo de extensión de linq para ienumerable que convierte un elemento de la collección al tipo proporcionado en sus parametros angulares.
+// para entender comofunciona consultar el link http://msdn.microsoft.com/es-es/library/bb341406.aspx
+// where igualmente es una extensión de linq para filtrar una secuencia de valores en fucnión de un predicado.
+/// Recorremos la lista de projectos de la solución. asegurandonos que dicha lista pertenece a alunos de los modelos previstos por vs2010 y que son ademas de tipo "Solution Items"
+foreach(var project in dte.Solution.Projects.Cast<Project>().Where(p=> p.CodeModel!=null && p.Name!="Solution Items"))
+    {
+	    var rootNamespace = project.Properties.Item("RootNamespace").Value.ToString();
+    	WriteLine("//Project:"+project.Name);
+		
+	}
+	WriteLine("//-----------------------------------------------------------");
+	
+	// Acontinuación recorremos las propiedades de cada proyecto y obtenemos su valor.
+
+	foreach(var project in dte.Solution.Projects.Cast<Project>().Where(p=> p.CodeModel!=null && p.Name!="Solution Items"))
+    {
+	    var rootNamespace = project.Properties.Item("RootNamespace").Value.ToString();
+    	WriteLine("// Para el el proyecto "+project.Name);
+		WriteLine("// encontramos las siguientes pripiedades del proyecto");
+		WriteLine(string.Empty);
+		WriteLine("#region "+project.Name+ " properties");
+        WriteLine(string.Empty);
+		// esta linea usa las caracteristicas de EnvDTE en vez de usar reflection.
+		foreach(var prop in project.Properties.Cast<EnvDTE.Property>())
+            {
+           
+                Write("//"+prop.Name+" : ");
+                try
+                    {           
+                        WriteLine(prop.Value.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        WriteLine("Exception : "+ex.Message);
+                    }
+            }
+            WriteLine("#endregion");
+            WriteLine(string.Empty);
+	}
+	
+#>

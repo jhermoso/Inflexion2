@@ -1,0 +1,107 @@
+﻿<#+
+
+public class MyApplicationSettings : Template
+{
+    // parametros de la plantilla
+    public ClassBaseContext  cbc ;
+    public string NamespaceProyecto;
+        public string projectNamespace;
+    public ITree<BoundedContextMetadata> Skt;
+    public string KindTimeCall ; /* Los valores posibles son "inicio", "desarrollo", "fin" y "soloUna" */
+            public ITree<ClassBase> EntitiesTree;
+        public bool okDebug= true;
+        
+    public MyApplicationSettings(ClassBaseContext  classBaseContext, string nombreProjecto, ITree<BoundedContextMetadata> skt, string kindTimeCall, ITree<ClassBase> entitiesTree)
+        {
+            cbc = classBaseContext;             // contexto de la clase base a interpretar
+            NamespaceProyecto = nombreProjecto;  // nombre del proyecto para el que estamos interpretando
+            Skt = skt;                          // shared kernel tree
+            KindTimeCall = kindTimeCall;
+            EntitiesTree = entitiesTree;
+            if (okDebug) Debug.WriteLine(string.Format("*NamespaceProyecto ='{0}'", NamespaceProyecto));
+        }
+        
+    public override string TransformText()
+        {
+            // ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+            if (okDebug) Debug.WriteLine(string.Format("**NamespaceProyecto  pasado como argumento='{0}'", NamespaceProyecto));
+             if (okDebug) Debug.WriteLine(string.Format("**projectNamespace establecido comopropiedad de la clase ='{0}'", projectNamespace));
+
+            IList<string> NameSpaceSection = SplitNamesProjects(NamespaceProyecto, cbc.diagram);
+            string company              = NameSpaceSection[0]; if (okDebug) Debug.WriteLine(string.Format("company ='{0}'", company));
+            string product              = NameSpaceSection[1]; if (okDebug) Debug.WriteLine(string.Format("product ='{0}'", product));
+            string boundedContextName   = NameSpaceSection[2]; if (okDebug) Debug.WriteLine(string.Format("boundedContextName ='{0}'", boundedContextName));
+            string layer                = NameSpaceSection[3]; if (okDebug) Debug.WriteLine(string.Format("layer ='{0}'", layer));
+            string kindProject          = NameSpaceSection[4]; if (okDebug) Debug.WriteLine(string.Format("kindProject ='{0}'", kindProject));
+
+            //var cpyrigth = new CopyrightHeader(diagram,solutionInfo,entity);
+            // string cpyrigthText = cpyrigth.TransformText(); // en principio esta linea se comenta pues no tenemos un texto de copywrigth para los fichero
+            // =proyecto = namespace = Company.Boundecontext1.BoundeDContex2....BoundeDContexN.Infraestructure.Maps.nHibernate31.Oracle
+            // la estrategia de generación es de un fichero por clase debido a que podemos tener varias formas de mapear la herencia en una misma taxonomia 
+            // y nhibernate nos exige que si en una misma taxonomia hay varias formas de herencia entonces se han de utilizar ficheros separados
+            // 2ª las clases base son Class
+            // Las clases que heredan de otra son 
+
+            string SgbdTechnology= null;
+            if (cbc.diagram.SGDB.Contains("Oracle"))
+            {
+                SgbdTechnology = "Oracle"; //  estas cadenas son las que hemos utilizado para los nombres de los proyectos en la arquitectura.
+            }
+            else if (cbc.diagram.SGDB.ToString().Contains("MsSql"))
+                {
+                    SgbdTechnology = "SqlServer";
+                }
+            else if (cbc.diagram.SGDB.ToString().Contains("MySql"))
+                {
+                    SgbdTechnology = "MySql";
+                }
+#>
+<#+
+            if(KindTimeCall.Equals("inicio") | KindTimeCall.Equals("soloUna") )
+            {
+#>
+// -- FILE
+// name       : MyApplicationSettings.cs
+// created by code generator only the first time to regenerate it's necesary to delete.
+// language   : c#
+// environment: .NET 4.0
+// -------------------------------------------------------------------------------------
+
+namespace CreateProductDataBase
+{
+    using System.Windows;
+    using Inflexion.Framework.UserInterface.Wpf.Utilities.Configuration;
+
+    public class MyApplicationSettings : WindowsApplicationSettings
+    {
+
+        public MyApplicationSettings(Application application)
+            : base(application, typeof(MyApplicationSettings))
+        {
+            //Settings.Add(new FieldSetting(this, "hostName"));
+        } // MyApplicationSettings
+
+        //public string HostName
+        //{
+        //    get { return hostName; }
+        //    set { hostName = value; }
+        //} // HostName
+
+        // members
+        //private string hostName;
+<#+
+            }
+ #>
+
+<#+
+ if(KindTimeCall.Equals("fin")  | KindTimeCall.Equals("soloUna") )
+            {
+#>
+    } //end class
+}// end name space
+<#+         } #>
+<#+
+                return this.GenerationEnvironment.ToString();
+            }
+        }
+#>

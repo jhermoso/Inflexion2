@@ -25,7 +25,7 @@ public class ApplicationEntityDtoCT : Template
         string cpyrigthText = cpyrigth.TransformText();
         // conceptos propios del projecto en curso
         ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
-        bool IsSharedBoundedcontext = prjCon.boundedContextName.Contains(cbc.diagram.SolutionFolderCommon);
+        bool IsSharedBoundedcontext = prjCon.boundedContextName.Contains(cbc.diagram.SolutionFolderCommon); 
 #>
 <#= cpyrigthText #>
 namespace <#= projectNamespace #>
@@ -49,7 +49,7 @@ foreach (var item in sharedKernelUsings)
     using Inflexion2.Application;//.DataTransfer.Base;
 
 <#+ if (cbc.OwnBoundedContextHasEnums) {#>
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain.Data;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain.Data;
 <#+            } #>
 <#+ if (cbc.targetLinksCounter>0)     {#>
     using System.Collections.Generic;
@@ -118,7 +118,7 @@ foreach (var item in sharedKernelUsings)
         /// <#= T4Help.StrCleanLfCR(property.ProgramerRemarks) #>
         /// </remarks>
         [DataMember]
-        public <#= property.AtributteType #><#= (property.IsNullable & cbc.propertyIsValueType )?"?":"" #> <#= T4Help.ToPascalCase(property.AtributteName) #> {get; set;}
+        public <#= property.AtributteType #><#= (property.IsNullable & T4Help.IsValueType(property.AtributteType) )?"?":"" #> <#= T4Help.ToPascalCase(property.AtributteName) #> {get; set;}
 <#+			}#>
 <#+		}#>
 <#+
@@ -150,7 +150,7 @@ foreach (var item in sharedKernelUsings)
         /// Propiedad proveniente del rol source de una relación.
         /// </remarks>
         [DataMember]
-        public <#= T4Help.SecureName(property.Source.Name) #> <#= T4Help.ToPascalCase(property.TargetRolName) #> {get; set;} /*enumeration from source asociation, target rol*/
+        public <#= T4Help.SecureName(property.Source.Name) #><#=((property.Source is Enumeration) && IsMinMultiplicityCero(property.SourceMultiplicity))? "?" : String.Empty  #> <#= T4Help.ToPascalCase(property.TargetRolName) #> {get; set;} /*enumeration from source asociation, target rol*/
 <#+            } #>
 <#+ if ( property.Source is ObjectValue) {#>
 

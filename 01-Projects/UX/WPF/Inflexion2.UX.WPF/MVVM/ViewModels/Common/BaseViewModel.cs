@@ -159,9 +159,10 @@ namespace Inflexion2.UX.WPF.MVVM
         #region Protected Methods
 
         /// <summary>
-        /// .en Raise the property change event with out a property to update the dependency properties.
+        /// .en Raise the property change event with out a property to update all the dependency properties.
+        /// in the current View Model.
         /// </summary>
-        protected void Rebind()
+        public void Rebind()
         {
             this.RaisePropertyChanged(string.Empty);
         }

@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AirBus.Suite.SyfiX.Domain</name>
+    </assembly>
+    <members>
+        <member name="T:AirBus.Suite.SyfiX.Domain.Document">
+            <summary>
+            <see cref="T:AirBus.Suite.SyfiX.Domain.Document"/>
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Domain.Document.#ctor">
+            <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.SyfiX.Domain.Document"/> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.SyfiX.Domain.Document"/> exigido por nHibernate o EntityFramework.
+            </summary>
+            <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.SyfiX.Domain.Document.Name">
+            <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.Domain.DocumentFactory">
+            <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.SyfiX.Domain.Document"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Domain.DocumentFactory.#cctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiX.Domain.DocumentFactory"/>.
+            </summary>
+            <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.SyfiX.Domain.DocumentFactory"/>.
+            </remarks>
+            <returns>
+            Devuelve una instancia de dela clase DocumentFactory />
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Domain.DocumentFactory.Create">
+            <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+            <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.SyfiX.Domain.Document"/>
+            </remarks>
+            <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.SyfiX.Domain.DocumentFactory"/>
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.Domain.DocumentSpecifications">
+            <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:Document"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.Domain.IDocument">
+            <summary>
+            .en Interfaz to identify an entidad of type Document in the application.
+            .es Interfaz que identifica una entidad de tipo Document de la aplicación.
+            Involves cross definition of a class and and how to see and how save in the repository.
+            </summary>
+            <remarks>
+            .en Interfaz for an Entity implemented by Document/>.
+            .es Interfaz que representa  una entidad implementado enDocument/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.SyfiX.Domain.IDocument.Name">
+            <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.Domain.IDocumentRepository">
+            <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.SyfiX.Domain.IDocument"/>.
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.Domain.IIncident">
+            <summary>
+            .en Interfaz to identify an entidad of type Incident in the application.
+            .es Interfaz que identifica una entidad de tipo Incident de la aplicación.
+            Aplication definition
+            </summary>
+            <remarks>
+            .en Interfaz for an Entity implemented by Incident/>.
+            .es Interfaz que representa  una entidad implementado enIncident/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.SyfiX.Domain.IIncident.Name">
+            <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+            <remarks>
+            Application name
+            </remarks>
+            <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.Domain.IIncidentRepository">
+            <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.SyfiX.Domain.IIncident"/>.
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.Domain.Incident">
+            <summary>
+            <see cref="T:AirBus.Suite.SyfiX.Domain.Incident"/>
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Domain.Incident.#ctor">
+            <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.SyfiX.Domain.Incident"/> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.SyfiX.Domain.Incident"/> exigido por nHibernate o EntityFramework.
+            </summary>
+            <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Domain.Incident.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiX.Domain.Incident"/>.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:AirBus.Suite.SyfiX.Domain.Incident"/>.
+            </remarks>
+            <param name="name"> 
+            Parametro <see cref="P:AirBus.Suite.SyfiX.Domain.Incident.Name"/> del constructor de campos mandatory de la clase <see cref="T:AirBus.Suite.SyfiX.Domain.Incident"/>
+            Propiedad deducida del rol source de una relación
+            </param>
+        </member>
+        <member name="P:AirBus.Suite.SyfiX.Domain.Incident.Name">
+            <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+            <remarks>
+            Application name
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.Domain.IncidentFactory">
+            <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.SyfiX.Domain.Incident"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Domain.IncidentFactory.#cctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiX.Domain.IncidentFactory"/>.
+            </summary>
+            <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.SyfiX.Domain.IncidentFactory"/>.
+            </remarks>
+            <returns>
+            Devuelve una instancia de dela clase IncidentFactory />
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Domain.IncidentFactory.Create(System.String)">
+            <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+            <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.SyfiX.Domain.Incident"/>
+            </remarks>
+            <param name="name"> 
+            Application name
+            </param>
+            <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.SyfiX.Domain.IncidentFactory"/>
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.Domain.IncidentSpecifications">
+            <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:Incident"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Domain.IncidentSpecifications.FindAllByName(System.String)">
+            <summary>
+            Método que devuelve especificación de aquellos objetos de tipo Incident  
+            seleccionados por el valor del campo Name.
+            </summary>
+            <param name="nameId">
+            Parámetro que indica el valor del campo Name.
+            </param>
+            <returns>
+            Devuelve <see cref="T:Inflexion2.Domain.Specification.Specification`1"/> asociado con este criterio.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.Domain.PerLifeTimeManager">
+            <summary>
+            LifetimeManager implementation
+            </summary>
+        </member>
+        <member name="F:AirBus.Suite.SyfiX.Domain.PerLifeTimeManager.value">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Domain.PerLifeTimeManager.GetValue">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Domain.PerLifeTimeManager.RemoveValue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Domain.PerLifeTimeManager.SetValue(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="newValue"></param>
+        </member>
+    </members>
+</doc>

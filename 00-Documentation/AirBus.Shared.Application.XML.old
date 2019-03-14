@@ -1,0 +1,448 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AirBus.Shared.Application</name>
+    </assembly>
+    <members>
+        <member name="T:AirBus.Shared.Application.AppSettingsMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Shared.Application.AppSettingsMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Shared.Application.Dtos.AppSettingsDto"/> con una entidad <see cref="T:AirBus.Shared.Application.AppSettingsMapper"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Shared.Application.AppSettingsMapper.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Shared.Application.AppSettingsMapper"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Shared.Application.AppSettingsMapper.EntityMapping(AirBus.Shared.Domain.IAppSettings)">
+            <summary>
+            Función pública que mapea las entidades para devolver el
+            correspondiente Dto.
+            </summary>
+            <remarks>
+            Se encarga de mapear objetos <see cref="T:AirBus.Shared.Domain.AppSettings"/> 
+            devolviendo un objeto <see cref="T:AirBus.Shared.Application.Dtos.AppSettingsDto"/>.
+            </remarks>
+            <param name="entityAppSettings">
+            Objeto de la entidad <see cref="T:AirBus.Shared.Domain.AppSettings"/>.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de <c>entityAppSettings</c> es null.
+            </exception>
+            <returns>
+            Devuelve un objeto de tipo <see cref="T:AirBus.Shared.Application.Dtos.AppSettingsDto"/> 
+            con los datos mapeados.
+            </returns>
+        </member>
+        <member name="T:AirBus.Shared.Application.AppSettingsServices">
+            <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity AppSettings.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad AppSettings.
+            </summary>
+            <remarks>
+            .en Create an object of type <see cref="T:AirBus.Shared.Domain.AppSettings"/>.
+            .es Crea un objeto <see cref="T:AirBus.Shared.Domain.AppSettings"/>.
+            </remarks>
+        </member>
+        <member name="F:AirBus.Shared.Application.AppSettingsServices.appSettingsMapper">
+            <summary>
+            Referencia al mapeador de la entidad AppSettings.
+            </summary>
+        </member>
+        <member name="M:AirBus.Shared.Application.AppSettingsServices.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AppSettings>Service"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:AppSettingsServices"/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Shared.Application.AppSettingsServices.AppSettingsMapper">
+            <summary>
+            Obtiene la referencia al mapeador de la entidad <see cref="T:IAppSettings"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Shared.Application.AppSettingsServices.Create(AirBus.Shared.Application.Dtos.AppSettingsDto)">
+            <summary>
+            Crea una entidad AppSettings.
+            </summary>
+            <param name="appSettingsDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+            <returns>
+            El identificador de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.AppSettingsServices.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad AppSettings.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.AppSettingsServices.GetAll">
+            <summary>
+            Recupera todas las entidades AppSettings.
+            </summary>
+            <returns>
+            Todas las entidades AppSettings.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.AppSettingsServices.GetById(System.Int32)">
+            <summary>
+            Recupera una entidad AppSettings mediante su identificador correspondiente.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a recuperar.
+            </param>
+            <returns>
+            La entidad AppSettings recuperada o valor nulo si no se encuentra.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.AppSettingsServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades AppSettings, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades 'AppSettings', según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.AppSettingsServices.Update(AirBus.Shared.Application.Dtos.AppSettingsDto)">
+            <summary>
+            Actualiza una determinada entidad AppSettings.
+            </summary>
+            <param name="appSettingsDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+            <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.AppSettingsServices.Commit">
+            <summary>
+            adapter of commit operation independent form the ORM
+            </summary>
+        </member>
+        <member name="T:AirBus.Shared.Application.IAppSettingsMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Shared.Application.AppSettingsMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Shared.Application.Dtos.AppSettingsDto"/> con una entidad <see cref="T:AirBus.Shared.Application.AppSettingsMapper"/>.
+            </remarks>
+        </member>
+        <member name="T:AirBus.Shared.Application.IAppSettingsServices">
+            <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:AirBus.Shared.Application.IAppSettingsServices"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Shared.Application.IAppSettingsServices.Create(AirBus.Shared.Application.Dtos.AppSettingsDto)">
+            <summary>
+            .en Create an entity of type IAppSettings.
+            .es Función encargada de la creación de una entidad de tipo IAppSettings.
+            </summary>
+            <param name="appSettingsDto">
+            Parámetro de tipo <see cref="T:AirBus.Shared.Application.Dtos.AppSettingsDto"/> con los datos necesarios
+            para la creación de la entidad AppSettings.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve el identificador único de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.IAppSettingsServices.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo AppSettings.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="AppSettingsId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve <b>True</b> si la eliminación ha sido correcta y
+            <b>False</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.IAppSettingsServices.GetAll">
+            <summary>
+            Función encargada de obtener todas las entidades de tipo AppSettings.
+            </summary>
+            <remarks>
+            Devuelve la totalidad de las entidades.
+            </remarks>        /// <returns>
+            Devuelve listado de Dto´s de tipo <see cref="T:AirBus.Shared.Application.Dtos.AppSettingsDto"/>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.IAppSettingsServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades AppSettings, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>        /// <returns>
+            La lista paginada de entidades AppSettings, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.IAppSettingsServices.GetById(System.Int32)">
+            <summary>
+            Función encargada de obtener una entidad AppSettings de acuerdo a
+            su identificador.
+            </summary>
+            <param name="appSettingsId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>
+            <returns>
+            Devuelve objeto Dto <see cref="T:AirBus.Shared.Application.Dtos.AppSettingsDto"/> con la información requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.IAppSettingsServices.Update(AirBus.Shared.Application.Dtos.AppSettingsDto)">
+            <summary>
+            Actualiza una determinada entidad AppSettings.
+            </summary>
+            <param name="appSettingsDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>        /// <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="T:AirBus.Shared.Application.IUserMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Shared.Application.UserMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Shared.Application.Dtos.UserDto"/> con una entidad <see cref="T:AirBus.Shared.Application.UserMapper"/>.
+            </remarks>
+        </member>
+        <member name="T:AirBus.Shared.Application.IUserServices">
+            <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:AirBus.Shared.Application.IUserServices"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Shared.Application.IUserServices.Create(AirBus.Shared.Application.Dtos.UserDto)">
+            <summary>
+            .en Create an entity of type IUser.
+            .es Función encargada de la creación de una entidad de tipo IUser.
+            </summary>
+            <param name="userDto">
+            Parámetro de tipo <see cref="T:AirBus.Shared.Application.Dtos.UserDto"/> con los datos necesarios
+            para la creación de la entidad User.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve el identificador único de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.IUserServices.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo User.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="UserId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve <b>True</b> si la eliminación ha sido correcta y
+            <b>False</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.IUserServices.GetAll">
+            <summary>
+            Función encargada de obtener todas las entidades de tipo User.
+            </summary>
+            <remarks>
+            Devuelve la totalidad de las entidades.
+            </remarks>        /// <returns>
+            Devuelve listado de Dto´s de tipo <see cref="T:AirBus.Shared.Application.Dtos.UserDto"/>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.IUserServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades User, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>        /// <returns>
+            La lista paginada de entidades User, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.IUserServices.GetById(System.Int32)">
+            <summary>
+            Función encargada de obtener una entidad User de acuerdo a
+            su identificador.
+            </summary>
+            <param name="userId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>
+            <returns>
+            Devuelve objeto Dto <see cref="T:AirBus.Shared.Application.Dtos.UserDto"/> con la información requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.IUserServices.Update(AirBus.Shared.Application.Dtos.UserDto)">
+            <summary>
+            Actualiza una determinada entidad User.
+            </summary>
+            <param name="userDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>        /// <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="T:AirBus.Shared.Application.UserMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Shared.Application.UserMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Shared.Application.Dtos.UserDto"/> con una entidad <see cref="T:AirBus.Shared.Application.UserMapper"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Shared.Application.UserMapper.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Shared.Application.UserMapper"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Shared.Application.UserMapper.EntityMapping(AirBus.Shared.Domain.IUser)">
+            <summary>
+            Función pública que mapea las entidades para devolver el
+            correspondiente Dto.
+            </summary>
+            <remarks>
+            Se encarga de mapear objetos <see cref="T:AirBus.Shared.Domain.User"/> 
+            devolviendo un objeto <see cref="T:AirBus.Shared.Application.Dtos.UserDto"/>.
+            </remarks>
+            <param name="entityUser">
+            Objeto de la entidad <see cref="T:AirBus.Shared.Domain.User"/>.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de <c>entityUser</c> es null.
+            </exception>
+            <returns>
+            Devuelve un objeto de tipo <see cref="T:AirBus.Shared.Application.Dtos.UserDto"/> 
+            con los datos mapeados.
+            </returns>
+        </member>
+        <member name="T:AirBus.Shared.Application.UserServices">
+            <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity User.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad User.
+            </summary>
+            <remarks>
+            .en Create an object of type <see cref="T:AirBus.Shared.Domain.User"/>.
+            .es Crea un objeto <see cref="T:AirBus.Shared.Domain.User"/>.
+            </remarks>
+        </member>
+        <member name="F:AirBus.Shared.Application.UserServices.userMapper">
+            <summary>
+            Referencia al mapeador de la entidad User.
+            </summary>
+        </member>
+        <member name="M:AirBus.Shared.Application.UserServices.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:User>Service"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:UserServices"/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Shared.Application.UserServices.UserMapper">
+            <summary>
+            Obtiene la referencia al mapeador de la entidad <see cref="T:IUser"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Shared.Application.UserServices.Create(AirBus.Shared.Application.Dtos.UserDto)">
+            <summary>
+            Crea una entidad User.
+            </summary>
+            <param name="userDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+            <returns>
+            El identificador de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.UserServices.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad User.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.UserServices.GetAll">
+            <summary>
+            Recupera todas las entidades User.
+            </summary>
+            <returns>
+            Todas las entidades User.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.UserServices.GetById(System.Int32)">
+            <summary>
+            Recupera una entidad User mediante su identificador correspondiente.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a recuperar.
+            </param>
+            <returns>
+            La entidad User recuperada o valor nulo si no se encuentra.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.UserServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades User, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades 'User', según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.UserServices.Update(AirBus.Shared.Application.Dtos.UserDto)">
+            <summary>
+            Actualiza una determinada entidad User.
+            </summary>
+            <param name="userDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+            <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.UserServices.Commit">
+            <summary>
+            adapter of commit operation independent form the ORM
+            </summary>
+        </member>
+    </members>
+</doc>

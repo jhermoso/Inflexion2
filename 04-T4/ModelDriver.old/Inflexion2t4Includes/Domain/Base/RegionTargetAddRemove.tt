@@ -1,0 +1,255 @@
+﻿<#+
+public class RegionTargetAddRemove : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public RegionTargetAddRemove(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+#>
+        #region Métodos Set, Add y Remove de propiedades procedentes de los roles de tipo target en una asociación
+<#+
+    // continuamos escribiendo los métodos  para realizar los metodos de add y delete  correspondientes a los padres de las asociaciones *-*-*-*-*-*
+    // tambien devolvemos la propia entidad en cada metodo para permitir la utilización de interfaces fluidas.
+    // Para construir los nombres de los métodos utilizamos los nombres de los roles y no de las entidades con objeto de poder 
+    // tirar relaciones dobles entre dos entidades.
+    foreach (var property in cbc.propertyAssociationTargets)
+    {
+        // para que sea una colección es necesario que la multiplicidad sea many
+        if(string.IsNullOrEmpty(property.SourceRolName)) continue;// Validación: Comprobamos que si no existe el nombre del rol source (significa que es una relación unidireccional y por tanto solo genera propiedad en la clase destino (target) y no en la clase  origen (source) la multiplicidad minima del target ha de ser cero. 
+
+#>
+
+        /// <summary>
+        /// Método encargado de establecer la propiedad de <#= T4Help.SecureName(property.SourceRolName) #> en la entidad <#= T4Help.SecureName(property.Target.Name) #>.
+        /// El <#= T4Help.SecureName(property.Target.Name) #> ha de existir previamente.
+        /// Permite introducir un valor nulo a la <#=( IsMaxMultiplicityMany( property.TargetMultiplicity ) )?"colección":" propiedad" #>.
+        /// </summary>
+        /// <param name="<#= T4Help.ToCamelCase(property.Target.Name) #><#=(IsMaxMultiplicityMany(property.TargetMultiplicity))?"Collection":"Object" #> "> 
+        /// Parametro con el que se proporciona la <#=( IsMaxMultiplicityMany( property.TargetMultiplicity ) )?"colección":" propiedad" #> <see cref="<#= T4Help.SecureName(property.Target.Name) #>"/> a asociar. El valor de este paramentro puede ser null para borrar la relación.
+        /// </param>
+        /// <returns>
+        /// Devuelve 'this' (<#= (cbc.IsEntity)?" la propia entidad":"el mismo objeto valor." #>) de tipo <see cref="<#= I #><#= cbc.secureEntityName #>" para permitir fluent Interfaces/>
+        /// </returns>
+        public <#=(cbc.diagram.ORM.Length >0)?"virtual":"" #> <#= I #><#= cbc.pascalSecureEntityName #> Set<#= T4Help.SecureName(property.SourceRolName) #> ( <#= GetTypeFromAssociationLink(property, (I=="I"), cbc.idtype, false) #> <#= T4Help.ToCamelCase(property.Target.Name) #><#=(IsMaxMultiplicityMany(property.TargetMultiplicity))?"Collection":"Object" #> )
+        {
+            this.<#= T4Help.ToCamelCase(property.SourceRolName) #> = (<#= GetTypeFromAssociationLink(property, (I=="I"), cbc.idtype, false, true)/*esta llamada controla la multiplicidad*/ #>)<#= T4Help.ToCamelCase(property.Target.Name) #><#=(IsMaxMultiplicityMany(property.TargetMultiplicity))?"Collection":"Object" #> ;
+            return this;
+        }
+
+<#+
+        // estos metodos se añaden solo si la multiplicidad de la relación es CeroMany o OneMany en caso contrario 
+        // se trata como una propiedad normal generando solo el anterior set.
+        // es necesario comprobar que la interface se encuentra en la misma situación.
+        if ( IsMaxMultiplicityMany( property.TargetMultiplicity ) ) // toda propiedad deducida de un relación o link tiene un set privado.
+        {
+#>
+        /// <summary>
+        /// Método encargado de añadir un elemento a la colección <#= T4Help.SecureName(property.SourceRolName) #> en la entidad <#= T4Help.SecureName(property.Target.Name) #>.
+        /// El <#= T4Help.SecureName(property.Target.Name) #> ha de existir previamente.
+        /// </summary>
+        /// <param name="<#= T4Help.ToCamelCase(property.Target.Name) #><#=(IsMaxMultiplicityMany(property.TargetMultiplicity))?"Collection":"Object" #> "> 
+        /// Parametro con el que se proporciona la colección <#= T4Help.SecureName(property.Target.Name) #> a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+        /// </param>
+        /// <returns>
+        /// Devuelve 'this' (<#= (cbc.IsEntity)?" la propia entidad":"el mismo objeto valor." #>) de tipo <see cref="<#= I #><#= cbc.secureEntityName #>" para permitir fluent Interfaces/>
+        /// </returns>
+        public <#=(cbc.diagram.ORM.Length >0)?"virtual":"" #> I<#= cbc.pascalSecureEntityName #> Add<#= T4Help.SecureName(property.Target.Name) #>To<#= T4Help.SecureName(property.SourceRolName) #> ( <#= I #><#= T4Help.SecureName(property.Target.Name) #> <#= T4Help.ToCamelCase(property.Target.Name) #> )
+        {
+<#+ 
+            if (cbc.diagram.ValidationContracts.Equals("DataAnotations"))
+            {
+#>
+            Guard.ArgumentIsNotNull(<#= T4Help.ToCamelCase(property.Target.Name) #>, "El parametro <#= T4Help.ToCamelCase(property.Target.Name) #> es null");          // comprobamos que el parametro no es nulo. Resources
+<#+         } /* end if DataAnotations*/#>
+<#+ 
+            if (!property.AllowTargetRepeatedValues)    // si la propiedad no permite valores repetidos tenemos que comprobar que no existe, previamente
+            {                                           // esto solo lo podemos hacer con un guard, no depende de que utilicemos data anotations o code contracts.
+#>
+            // NO se permiten valores repetidos en esta propiedad.
+            Guard.Against(this.<#= T4Help.SecureName(property.SourceRolName) #>.Contains(<#= T4Help.ToCamelCase(property.Target.Name) #>),
+                          new System.InvalidOperationException(<#= T4Help.SecureName( prjCon.boundedContextName) #>Neutral.<#= cbc.secureEntityName + "Duplicated" + T4Help.SecureName(property.SourceRolName) #>)); 
+<#+ 
+            }
+            else
+            {
+#>
+            // se permiten valores repetidos en esta propiedad
+<#+         } // end else (!property.AllowTargetRepeatedValues) #>
+<#+ 
+        if (cbc.diagram.ValidationContracts.Equals("CodeContracts")) // quitar este if el código con de add y remove con data anotations o codecontracts es identico.
+            {
+            if(property.TargetICollection.Contains ("Dictionary")) // si la colección es un diccionario  *** 
+                {
+#>
+            // observar que estamos utilizando el acceso al campo y no a la propiedad, 
+            // esto se debe a que debieramos utilizar a nivel de propiedades colecciones 
+            // que no publiquen operaciones sobre las mismas y asi utilizar las colecciones de los campos
+            this.<#= T4Help.ToCamelCase(property.SourceRolName) #>.Add( <#= T4Help.ToCamelCase(property.Target.Name) #>.Id, <#= T4Help.ToCamelCase(property.Target.Name) #> );
+<#+ 
+                } 
+                else //en caso contario utilizamos una colección normal
+                {
+#>
+            /* observar que estamos utilizando el acceso al campo y no a la propiedad, esto se debe a que debieramos utilizar a nivel de propiedades colecciones que no publiquen operaciones sobre las mismas y asi utilizar las colecciones de los campos, 2*/
+            this.<#= T4Help.ToCamelCase(property.SourceRolName) #>.Add( <#= T4Help.ToCamelCase(property.Target.Name) #> );
+<#+  
+                }
+#>
+<#+
+                if (!string.IsNullOrEmpty(property.TargetRolName ) ) 
+                {
+#>
+            <#= T4Help.ToCamelCase(property.Target.Name) #>.Set<#= T4Help.SecureName(property.TargetRolName) #>(this); // Relación bidereccional: es necesario establecer el valor en el rol opuesto.
+<#+ 
+                }
+#>
+<#+
+              } // end if para código con CodeContracts
+#>
+<#+ 
+            else if (cbc.diagram.ValidationContracts.Equals("DataAnotations"))
+              {
+                 if(property.TargetICollection.Contains ("Dictionary") && !(string.IsNullOrEmpty(property.TargetRolName)) ) // si la colección es un diccionario  *** 
+                    {
+#>
+            // observar que estamos utilizando el acceso al campo y no a la propiedad, 
+            // esto se debe a que se debe utilizar a nivel de propiedades colecciones 
+            // que no publiquen operaciones sobre las mismas y asi utilizar las colecciones de los campos.
+            this.<#= T4Help.ToCamelCase(property.SourceRolName) #>.Add(<#= T4Help.ToCamelCase(property.Target.Name) #>.Id, <#= T4Help.ToCamelCase(property.Target.Name) #> );
+<#+ 
+                    }// end if dictionary
+                else //en caso contario utilizamos una colección normal
+                {
+#>
+            // observar que estamos utilizando el acceso al campo y no a la propiedad, 
+            // esto se debe a que se debe utilizar a nivel de propiedades colecciones 
+            // que no publiquen operaciones sobre las mismas y asi utilizar las colecciones de los campos.
+            this.<#= T4Help.ToCamelCase(property.SourceRolName) #>.Add( <#= T4Help.ToCamelCase(property.Target.Name) #> ); 
+
+<#+
+                if (!string.IsNullOrEmpty(property.TargetRolName )) // si la relación es bidireccional es necesario hacer el set en el rol opuesto.
+                {
+#>
+            <#= T4Help.ToCamelCase(property.Target.Name) #>.Set<#= T4Help.SecureName(property.TargetRolName) #>(this); // Relación bidereccional: es necesario establecer el valor en el rol opuesto.
+<#+ 
+                }
+#>
+<#+  
+                } // end else caso contrario utilizamos una colección normal
+#>
+<#+ 
+              } // end if para código con DataAnotations
+#>
+            return this;
+        }
+
+        /// <summary>
+        /// Método encargado de eliminar un elemento de la colección <#= T4Help.SecureName(property.SourceRolName) #> en la entidad <#= T4Help.SecureName(property.Target.Name) #>.
+        /// El <#= T4Help.SecureName(property.Target.Name) #> ha de existir previamente.
+        /// </summary>
+        /// <param name="<#= T4Help.ToCamelCase(property.Target.Name) #><#=(IsMaxMultiplicityMany(property.TargetMultiplicity))?"Collection":"Object" #> "> 
+        /// Identificador a borrar <#= T4Help.SecureName(property.Target.Name) #> a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+        /// </param>
+        /// <returns>
+        /// Devuelve 'this' (<#= (cbc.IsEntity)?" la propia entidad":"el mismo objeto valor." #>) de tipo <see cref="<#= I #><#= cbc.secureEntityName #>" para permitir fluent Interfaces/>
+        /// </returns>
+        public <#=(cbc.diagram.ORM.Length >0)?"virtual":"" #> I<#= cbc.pascalSecureEntityName #> Remove<#= T4Help.SecureName(property.Target.Name) #>From<#= T4Help.SecureName(property.SourceRolName) #> ( <#= I #><#= T4Help.SecureName(property.Target.Name) #> <#= T4Help.ToCamelCase(property.Target.Name) #> )
+        {
+            Guard.ArgumentIsNotNull(<#= T4Help.ToCamelCase(property.Target.Name) #>, "El parametro <#= T4Help.ToCamelCase(property.Target.Name) #> es null");          // comprobamos que el parametro no es nulo. Resources
+<#+ if (!property.AllowTargetRepeatedValues) // si la propiedad no permite valores repetidos tenemos que comprobar que no existe, previamente
+    { 
+#>
+            Guard.Against(this.<#= T4Help.SecureName(property.SourceRolName) #>.Contains(<#= T4Help.ToCamelCase(property.Target.Name) #>), "Mensaje de error en recursos");
+<#+ 
+    }
+#>
+<#+
+        if (cbc.diagram.ValidationContracts.Equals("CodeContracts"))
+            {
+                if (property.TargetICollection.Contains ("Dictionary")) 
+                {
+#>
+            // observar que estamos utilizando el acceso al campo y no a la propiedad, 
+            // esto se debe a que se debe utilizar a nivel de propiedades colecciones que 
+            // no publiquen operaciones sobre las mismas y de esta forma se obliga a utilizar los métodos proporcionados
+            this.<#= T4Help.ToCamelCase(property.SourceRolName) #>.Remove(<#= T4Help.ToCamelCase(property.Target.Name) #>.Id );
+<#+ 
+                } 
+                else //en caso contario utilizamos una colección normal
+                {
+#>
+            // observar que estamos utilizando el acceso al campo y no a la propiedad, 
+            // esto se debe a que se debe utilizar a nivel de propiedades colecciones que 
+            // no publiquen operaciones sobre las mismas y de esta forma se obliga a utilizar los métodos proporcionados
+            this.<#= T4Help.ToCamelCase(property.SourceRolName) #>.Remove( <#= T4Help.ToCamelCase(property.Target.Name) #> );
+<#+  
+                }
+#>
+<#+
+                if (!string.IsNullOrEmpty(property.TargetRolName))
+                {
+#>
+                <#= T4Help.ToCamelCase(property.Target.Name) #>.Set<#= T4Help.SecureName(property.TargetRolName) #>(null);
+<#+
+                }
+#>
+<#+
+            }// end if para código con CodeContracts
+#>
+<#+ 
+            else if (cbc.diagram.ValidationContracts.Equals("DataAnotations"))
+              {
+                 if(property.TargetICollection.Contains ("Dictionary")) // si la colección es un diccionario  *** 
+                    {
+#>
+            // observar que estamos utilizando el acceso al campo y no a la propiedad, 
+            // esto se debe a que se debe utilizar a nivel de propiedades colecciones que 
+            // no publiquen operaciones sobre las mismas y de esta forma se obliga a utilizar los métodos proporcionados
+            this.<#= T4Help.ToCamelCase(property.SourceRolName) #>.Remove(<#= T4Help.ToCamelCase(property.Target.Name) #>.Id );
+<#+ 
+                } 
+                else //en caso contario utilizamos una colección normal
+                {
+#>
+            // observar que estamos utilizando el acceso al campo y no a la propiedad, 
+            // esto se debe a que se debe utilizar a nivel de propiedades colecciones que 
+            // no publiquen operaciones sobre las mismas y de esta forma se obliga a utilizar los métodos proporcionados
+            this.<#= T4Help.ToCamelCase(property.SourceRolName) #>.Remove( <#= T4Help.ToCamelCase(property.Target.Name) #> );
+<#+  
+                }
+#>
+<#+
+                if (!string.IsNullOrEmpty(property.TargetRolName))
+                {
+#>
+                <#= T4Help.ToCamelCase(property.Target.Name) #>.Set<#= T4Help.SecureName(property.TargetRolName) #>(null);
+<#+ 
+                    }
+#>
+<#+
+              } // end if para código con DataAnotations
+#>
+            return this;
+        }
+<#+
+    } // end if si la multiplicidad maxima no es many lo tratamos solo como una propiedad simple no como una colección.
+#>
+<#+ 
+    }// end del foreach (var property in propertyObjects)
+#>
+        #endregion
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

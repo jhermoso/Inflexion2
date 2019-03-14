@@ -1,0 +1,223 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AirBus.Shared.Application.WcfService</name>
+    </assembly>
+    <members>
+        <member name="T:AirBus.Shared.Application.WcfService.AppSettingsService">
+            <summary>
+            Clase pública del servicio Wcf encargada de realizar las tareas 
+            relacionadas con la entidad AppSettings.
+            </summary>
+        </member>
+        <member name="F:AirBus.Shared.Application.WcfService.AppSettingsService.service">
+            <summary>
+            Referencia a los servicios de administración de la entidad AppSettings.
+            </summary>
+        </member>
+        <member name="M:AirBus.Shared.Application.WcfService.AppSettingsService.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AppSettingsService"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:AppSettingsService"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Shared.Application.WcfService.AppSettingsService.Create(AirBus.Shared.Application.Dtos.AppSettingsDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo AppSettings.
+            </summary>
+            <param name="appSettingsDto">
+            Parámetro de tipo <see cref="T:AirBus.Shared.Application.Dtos.AppSettingsDto"/> con los datos necesarios
+            para la creación de la entidad AppSettings.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:AirBus.Shared.Application.WcfService.AppSettingsService.Update(AirBus.Shared.Application.Dtos.AppSettingsDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo AppSettings.
+            </summary>
+            <param name="appSettingsDto">
+            Parámetro de tipo <see cref="T:AirBus.Shared.Application.Dtos.AppSettingsDto"/> con los datos necesarios
+            para el borrado de la entidad AppSettingsr.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.WcfService.AppSettingsService.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo AppSettings.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="id">
+            Parámetro que indica el identificador único de la entidad a borrar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la eliminación ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.WcfService.AppSettingsService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades AppSettings.
+            </summary>
+            <returns>
+            Devuelve listado de Dto´s de la entidad AppSettings.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.WcfService.AppSettingsService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad AppSettings de acuerdo a
+            su identificador.
+            </summary>
+            <param name="appSettingsId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:AirBus.Shared.Application.Dtos.AppSettingsDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.WcfService.AppSettingsService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades AppSettings, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades AppSettings, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="T:AirBus.Shared.Application.WcfService.SharedRepositoryLayer">
+            <summary>
+            Registra en el contenedor de Ioc de la capa de aplicacion las clases de acceso al repositorio
+            </summary>
+        </member>
+        <member name="F:AirBus.Shared.Application.WcfService.SharedRepositoryLayer.CtxFactory">
+            <summary>
+            UoW instance
+            </summary>
+        </member>
+        <member name="M:AirBus.Shared.Application.WcfService.SharedRepositoryLayer.IocRegistry">
+            <summary>
+            Register in IoC container the repository
+            </summary>
+        </member>
+        <member name="M:AirBus.Shared.Application.WcfService.SharedRepositoryLayer.ConnectionString">
+            <summary>
+            Get the conection string from the app.config or web config file asociated to the project on execution.
+            </summary>
+            <returns>The database connection string </returns>
+        </member>
+        <member name="T:AirBus.Shared.Application.WcfService.UserService">
+            <summary>
+            Clase pública del servicio Wcf encargada de realizar las tareas 
+            relacionadas con la entidad User.
+            </summary>
+            <summary>
+            Clase pública del servicio Wcf encargada de realizar las tareas 
+            relacionadas con la entidad User.
+            </summary>
+        </member>
+        <member name="M:AirBus.Shared.Application.WcfService.UserService.Configure(System.ServiceModel.ServiceConfiguration)">
+            <summary>
+            https://msdn.microsoft.com/en-us/library/hh205277(v=vs.110).aspx
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="F:AirBus.Shared.Application.WcfService.UserService.service">
+            <summary>
+            Referencia a los servicios de administración de la entidad User.
+            </summary>
+        </member>
+        <member name="M:AirBus.Shared.Application.WcfService.UserService.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:UserService"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:UserService"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Shared.Application.WcfService.UserService.Create(AirBus.Shared.Application.Dtos.UserDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo User.
+            </summary>
+            <param name="userDto">
+            Parámetro de tipo <see cref="T:AirBus.Shared.Application.Dtos.UserDto"/> con los datos necesarios
+            para la creación de la entidad User.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:AirBus.Shared.Application.WcfService.UserService.Update(AirBus.Shared.Application.Dtos.UserDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo User.
+            </summary>
+            <param name="userDto">
+            Parámetro de tipo <see cref="T:AirBus.Shared.Application.Dtos.UserDto"/> con los datos necesarios
+            para el borrado de la entidad Userr.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.WcfService.UserService.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo User.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="id">
+            Parámetro que indica el identificador único de la entidad a borrar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la eliminación ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.WcfService.UserService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades User.
+            </summary>
+            <returns>
+            Devuelve listado de Dto´s de la entidad User.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.WcfService.UserService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad User de acuerdo a
+            su identificador.
+            </summary>
+            <param name="userId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:AirBus.Shared.Application.Dtos.UserDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.Application.WcfService.UserService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades User, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades User, según la especificación indicada.
+            </returns>
+        </member>
+    </members>
+</doc>

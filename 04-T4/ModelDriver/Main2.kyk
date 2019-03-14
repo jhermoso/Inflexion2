@@ -1,74 +1,89 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<application xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="8e098ed1-cff1-47b3-8d88-e446100457d6" sGDB="MsSql2008" culture="en" rootNameSpace="Atento.Suite" company="Atento" product="Suite" copyright="Inflexion2" branding="prueba" version="0.1" documentationPath="..\00-Documentation" asemblysPath="..\00-Assemblies" solutionFolderApplication="02. Application" solutionFolderDomain="03. Domain" solutionFolderInfraestructure="04. Infrastructure" libraryPath="..\02-Library" proyectsPath="..\03-GeneratedProjects" solutionFolderUX="01. FrontEnd" isModule="false" architecture="Inflexion2" oRM="EntityFramewokCodeFirst" mapper="Manual" getCodeTree="false" generateCode="Always" ifContracts="false" conectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=AtentoSuite;Integrated Security=True" schemaName="AtentoSuite" dataBaseServer="(localdb)\MSSQLLocalDB" translationsSet1="English, French, German, Hebrew, Italian" translationsSet2="Portuguese" xmlns="http://schemas.microsoft.com/dsltools/MoneyGen">
+<application xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.0" Id="8e098ed1-cff1-47b3-8d88-e446100457d6" sGDB="MsSql2008" iSO2Country="en" culture="en" rootNameSpace="Needel" company="Company" product="Needel" copyright="Company" branding="Brand" version="0.1" documentationPath="..\00-Documentation" asemblysPath="..\00-Assemblies" solutionFolderApplication="02. Application" solutionFolderDomain="03. Domain" solutionFolderInfraestructure="04. Infrastructure" solutionFolderCommon="Common" libraryPath="..\02-Library" proyectsPath="..\03-GeneratedProjects" solutionFolderUX="01. FrontEnd" isModule="false" architecture="Inflexion2" oRM="EntityFramewokCodeFirst" mapper="Manual" generateCode="Always" ifContracts="false" conectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NeedelDB;Integrated Security=True" schemaName="NeedelDB" dataBaseServer="(localdb)\MSSQLLocalDB" translationsSet1="Arabic, French, German, Hebrew, Italian, Japanese" translationsSet2="Portuguese, Spanish" xmlns="http://schemas.microsoft.com/dsltools/MoneyGen">
   <classBases>
     <applicationHasElements Id="1277f757-483a-4e08-896a-7e2f1c485aa1">
-      <entity Id="077131d2-5467-41ba-a6b7-b15270e47d11" name="Persona" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Person" volumen="0" remarks="datos acerca de personas fisica y juridicas." tooltip="Repositorio de personas físicas o juridicas." logicDelete="false" pluralName="Personas" programRemarks="datos acerca de personas fisica y juridicas." referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="Persona" gender="Femenino" grammarCategory="sustantivo" mainEntityStereotype="AggregateRoot">
+      <entity Id="077131d2-5467-41ba-a6b7-b15270e47d11" name="User" inheritanceClassModifier="Public, Partial" aliasFrontEnd="User" volumen="0" remarks="User information data" tooltip="User base information (internal, externals)" logicDelete="false" pluralName="Users" programRemarks="Data about user of the application." referencedRootEntity="" implementDomainInterface="true" aliasDataBase="USER" grammarCategory="sustantivo" mainEntityStereotype="Entity">
+        <targets>
+          <composition Id="e708981b-9719-486e-a005-897cb1f286c9" sourceMultiplicity="OneOne" sourceRolName="Addresses" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List" cascadeDelete="false">
+            <entityMoniker name="/8e098ed1-cff1-47b3-8d88-e446100457d6/Address" />
+          </composition>
+        </targets>
         <atributtes>
           <classBaseHasAtributtes Id="4599c6f2-f55c-4705-a7eb-4077252facd2">
-            <atributte Id="d18593af-30fc-41c1-b24b-4870fd656982" atributteName="Nombre" isIdentification="false" position="0" programerRemarks="Test with auto property and public setter." requestUponCreation="yes" nameAndType="string Nombre" minLength="3" maxLength="80" />
-          </classBaseHasAtributtes>
-          <classBaseHasAtributtes Id="1a6680cb-2a56-4b84-81bd-28e2a3b16bed">
-            <atributte Id="2a26fd84-64ca-4efe-b474-c1c4d97ecd91" atributteName="BooleanField" atributteType="bool" isIdentification="false" position="0" nameAndType="bool BooleanField" />
-          </classBaseHasAtributtes>
-          <classBaseHasAtributtes Id="3be55609-820f-4e2e-857f-696d07bc1eb6">
-            <atributte Id="9033bb24-366e-424f-b35b-950dea115bdd" atributteName="DatetimeField" atributteType="DateTime" isIdentification="false" position="0" nameAndType="DateTime DatetimeField" />
-          </classBaseHasAtributtes>
-          <classBaseHasAtributtes Id="30f4b500-7803-48c9-9424-21b565c30266">
-            <atributte Id="b4330099-d552-44a5-ae6f-fc810c3f6db1" atributteName="ByteField" atributteType="byte" isIdentification="false" position="0" nameAndType="byte ByteField" />
-          </classBaseHasAtributtes>
-          <classBaseHasAtributtes Id="6919f02e-1fc7-47a4-b1d1-25d32fefe9fb">
-            <atributte Id="2569ee2d-4ade-4c9a-bfd4-aa79921daf82" atributteName="GuidField" atributteType="Guid" isIdentification="false" position="0" nameAndType="Guid GuidField" />
-          </classBaseHasAtributtes>
-          <classBaseHasAtributtes Id="b8242301-aeb6-404f-9303-5a703f52db47">
-            <atributte Id="2dba0744-ee8e-46f5-ad74-1543581f9ec2" atributteName="DecimalField" atributteType="decimal" isIdentification="false" position="0" nameAndType="decimal DecimalField" />
-          </classBaseHasAtributtes>
-          <classBaseHasAtributtes Id="7cfaf97e-dc42-4789-9485-a4f402ab3d24">
-            <atributte Id="f8e85e57-a2d6-4623-a5ce-063b08be1583" atributteName="DobleField" atributteType="double" isIdentification="false" position="0" nameAndType="double DobleField" />
-          </classBaseHasAtributtes>
-          <classBaseHasAtributtes Id="9f00859a-7206-4a68-94cf-c4d2769e27a3">
-            <atributte Id="bbc5a810-5a1f-4eef-906b-03954b48dcb7" atributteName="FloatField" atributteType="float" isIdentification="false" position="0" nameAndType="float FloatField" />
-          </classBaseHasAtributtes>
-          <classBaseHasAtributtes Id="81b14ac8-1421-4192-85d8-7622b28cce22">
-            <atributte Id="86b2495d-580f-40d0-9339-79cb6ae8bf20" atributteName="IntField" atributteType="int" isIdentification="false" position="0" nameAndType="int IntField" />
-          </classBaseHasAtributtes>
-          <classBaseHasAtributtes Id="443aed97-d53d-41e0-9dc8-5917706147f0">
-            <atributte Id="f271d650-6bc1-47e8-ac4b-e2d85514bb28" atributteName="LongField" atributteType="long" isIdentification="false" position="0" nameAndType="long LongField" />
-          </classBaseHasAtributtes>
-          <classBaseHasAtributtes Id="ceddc494-d154-4d76-88ac-774dc31b8da8">
-            <atributte Id="cc6ab4b2-9a8b-4f78-a34b-dda82d643067" atributteName="DateTimeOffsetField" atributteType="DateTimeOffset" isIdentification="false" position="0" nameAndType="DateTimeOffset DateTimeOffsetField" />
-          </classBaseHasAtributtes>
-          <classBaseHasAtributtes Id="b3397250-1809-4699-8658-99dd5c091210">
-            <atributte Id="b9db5b89-e552-4222-acd6-4accef8bf6a0" atributteName="ShortField" atributteType="short" isIdentification="false" position="0" nameAndType="short ShortField" />
-          </classBaseHasAtributtes>
-          <classBaseHasAtributtes Id="4f24942d-8e52-45f9-8d46-712495f2f79a">
-            <atributte Id="6d6b00f7-40f6-4ad1-a606-46c1576f3dec" atributteName="TimeSpanField" atributteAlias="Télefono" atributteType="TimeSpan" isIdentification="false" position="0" nameAndType="TimeSpan TimeSpanField" />
-          </classBaseHasAtributtes>
-          <classBaseHasAtributtes Id="41dd77a2-9796-44c8-9830-3b88834cb301">
-            <atributte Id="3f8044c2-c3ba-4412-b4b0-5df06cb00fcf" atributteName="Int16Field" atributteType="Int16" isIdentification="false" position="0" nameAndType="Int16 Int16Field" />
-          </classBaseHasAtributtes>
-          <classBaseHasAtributtes Id="d4e2cf7c-0e06-438b-bbdd-599a3c6459ba">
-            <atributte Id="e9e0c367-5437-48b3-b37a-e7cee4a8e13e" atributteName="Int32Field" atributteType="Int32" isIdentification="false" position="0" nameAndType="Int32 Int32Field" />
-          </classBaseHasAtributtes>
-          <classBaseHasAtributtes Id="5855d1a1-cab1-4c50-99b6-6ca601dca5a0">
-            <atributte Id="3289bfdc-12f0-4a50-9cc6-ef01481d706d" atributteName="Int64Field" atributteType="Int64" isIdentification="false" position="0" nameAndType="Int64 Int64Field" />
+            <atributte Id="d18593af-30fc-41c1-b24b-4870fd656982" atributteName="Name" atributteAlias="Name" isIdentification="true" isFilter="true" position="0" tooltip="Field explanation." userRemarks="Please explain here what is the meanig of this field." programerRemarks="Field to explain the meaning of this key" size="100" requestUponCreation="yes" nameAndType="string Name" autoProperty="false" minLength="3" maxLength="80" aliasDatabaseField="REMARKS" plural="Names" grammarCategories="Personal Name" />
           </classBaseHasAtributtes>
         </atributtes>
       </entity>
     </applicationHasElements>
     <applicationHasElements Id="cdf10070-0209-4ce5-8d69-71c9561fc68a">
-      <enumeration Id="12c29ffe-49bd-47fc-a1c5-a1447dda71d8" name="Enumeracion" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Enumeración" volumen="0" remarks="Enumeration user remarks" pluralName="enumeraciones" programRemarks="Enumeraction program remarks" referencedRootEntity="" aliasDataBase="Enumeracion" mainEntityStereotype="None" serializable="false">
+      <enumeration Id="12c29ffe-49bd-47fc-a1c5-a1447dda71d8" name="AppSettingType" inheritanceClassModifier="Public, Partial" aliasFrontEnd="App Setting Type" volumen="0" remarks="Enumeration user remarks" logicDelete="false" pluralName="AppSettingTypes" programRemarks="Enumeraction program remarks" referencedRootEntity="" aliasDataBase="APP_SETTING_TYPE" serializable="false">
+        <targets>
+          <composition Id="29076ed2-9540-40b9-9b5f-11854ce5c396" sourceMultiplicity="OneOne" targetRolName="AppSettingUsing" targetICollection="System.Collections.Generic.List" targetCollection="System.Collections.Generic.IList" cascadeDelete="false">
+            <entityMoniker name="/8e098ed1-cff1-47b3-8d88-e446100457d6/AppSetting" />
+          </composition>
+        </targets>
         <enumValue>
           <enumerationHasEnumValue Id="d41643ac-12df-423c-80ab-3c23d771b785">
-            <enumValues Id="a258c273-70e7-4faf-9eba-5a02c61ea90f" description="Description" sorting="0" value="valor1" programRemarks="Program test remark" userRemarks="user test remark" />
+            <enumValues Id="a258c273-70e7-4faf-9eba-5a02c61ea90f" description="Internal User" sorting="0" value="InternalUser" programRemarks="Setting marked to apply only to internal or registered users" userRemarks="This setting value applies only to Internal users." />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="d57d2e98-267f-48b8-ba0b-45ce277b2efc">
+            <enumValues Id="12d3f12e-5a67-4e28-a5a1-9fd7e177ee39" description="Application" sorting="0" value="Application" programRemarks="This setting value applies only to users." userRemarks="This setting value applies only to users." />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="c9b66bad-b60f-4bce-ac7c-169678db8380">
+            <enumValues Id="988a2d6b-8b3b-4116-8a36-0e01156ea282" description="External User" sorting="0" value="ExternalUser" />
           </enumerationHasEnumValue>
         </enumValue>
       </enumeration>
     </applicationHasElements>
     <applicationHasElements Id="31a3c068-b66b-4d4a-95a7-cf51052d556f">
-      <entity Id="c997f491-fd94-45b9-a3c1-5081f8ca0a34" name="Categoria" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Categoria" volumen="0" remarks="Clasificador" tooltip="Clasificación" logicDelete="false" pluralName="Categorias" programRemarks="Clasificador de uso futuro" referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="Categoria" grammarCategory="Sustantivo" mainEntityStereotype="AggregateRoot">
+      <entity Id="c997f491-fd94-45b9-a3c1-5081f8ca0a34" name="AppSetting" inheritanceClassModifier="Public, Partial" aliasFrontEnd="App Setting" volumen="0" remarks="Application settings to manage diferent options." tooltip="Application Settings and user Options" logicDelete="false" pluralName="App Settings" programRemarks="Clasificador de uso futuro" referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="APP_SETTINGS" grammarCategory="Sustantiv" mainEntityStereotype="AggregateRoot">
         <atributtes>
           <classBaseHasAtributtes Id="498b9df0-55b6-4394-a3b4-5f32c6604307">
-            <atributte Id="1e49cff8-10f4-4a76-bf94-2a2cb041d45a" atributteName="Name" isIdentification="false" position="0" nameAndType="string Name" />
+            <atributte Id="1e49cff8-10f4-4a76-bf94-2a2cb041d45a" atributteName="Key" atributteAlias="Key" editPropertyControl="Key" editCollectionPropertyControl="Keys" groupNameDecorator="Key Value Par" isIdentification="true" isFilter="true" position="0" tooltip="App setting key" userRemarks="This is a preference usually managed by the programmers to modify the behavieur of the application for all or only some users." programerRemarks="App setting identity" size="100" requestUponCreation="yes" nameAndType="string Key" autoProperty="false" aliasDatabaseField="KEY" plural="Keys" grammarCategories="sustantive" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="90dbca23-dac2-43ec-8800-d5a3306a574b">
+            <atributte Id="59264f9c-a95e-4b9a-8400-329cb77966bd" atributteName="Value" groupNameDecorator="Key Value Par" isIdentification="false" isFilter="true" position="0" size="100" requestUponCreation="yes" nameAndType="string Value" autoProperty="false" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="339997e5-bf65-4491-889e-e1f23076c5fe">
+            <atributte Id="b69b7bdf-e072-4af9-9b15-d3fc8a1471ae" atributteName="Remark" atributteAlias="Remark" isIdentification="false" position="0" tooltip="Key value par description." userRemarks="Please introduce herer how to use this settings or what is his meaning." programerRemarks="Explanation of the meaning or use of this  key value par." isNullable="true" size="300" onlyGetProperty="true" nameAndType="string Remark" autoProperty="false" aliasDatabaseField="REMARK" plural="Remarks" grammarCategories="Sentence" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="25ac5e98-79d5-49ba-9e77-7d2161ab0418">
+      <entity Id="91b853da-6d06-4b80-b354-74a5094994be" name="Department" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Department" stereotype="AggregateRoot" volumen="0" remarks="Company Depatment organigram" tooltip="Department basic structure" logicDelete="false" pluralName="Departments" programRemarks="Company Depatment organigram" referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="DEPARTMENT" grammarCategory="Sustantive" mainEntityStereotype="AggregateRoot">
+        <targets>
+          <aggregation Id="a9ef78b0-574e-4b97-b051-3596a18672f4" sourceRolName="Users" targetRolName="Department" realtionshipName="DepartmentUsers" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List" userRemarks="Agreggation Example" cascadeDelete="false">
+            <entityMoniker name="/8e098ed1-cff1-47b3-8d88-e446100457d6/User" />
+          </aggregation>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="4d39e889-7e15-4c77-906b-c6e6118e2b3c">
+            <atributte Id="8c4066fa-26d7-4090-9691-543cf53035d2" atributteName="Name" atributteAlias="Name" isIdentification="true" isFilter="true" position="0" tooltip="Department's name." userRemarks="Please introduce here the name o identifcation of the department." programerRemarks="Name of the department." size="100" requestUponCreation="yes" nameAndType="string Name" autoProperty="false" aliasDatabaseField="NAME" plural="Names" grammarCategories="Name" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="63ed9888-963b-47cb-8256-041baf31f5c2">
+            <atributte Id="88fcd464-2969-4dfb-9b86-7d1e38efaca9" atributteName="Visible" atributteType="bool" isGrouping="true" isIdentification="false" isFilter="true" position="0" tooltip="Allow the visibility/activation of this department." userRemarks="use this field to deactivate/activate this deparment." programerRemarks="visibility mark" defaultValue="true" nameAndType="bool Visible" autoProperty="false" aliasDatabaseField="VISIBLE" plural="Visibilities" grammarCategories="Adjetive" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="b7d8db4e-4201-4bf9-8472-36f116f80179">
+            <atributte Id="4f712c14-fea4-41c7-a682-11d47101f547" atributteName="Description" atributteAlias="Description" isIdentification="false" position="0" tooltip="Department's description." userRemarks="Please explain here what are the main responsabilities or functions of this department." programerRemarks="Allow to the user to explain what is the responsabilities or functions of the department." isNullable="true" size="5000" nameAndType="string Description" aliasDatabaseField="DESCRIPTION" plural="Descriptions" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="e4211f77-793c-454e-aec6-6981103727de">
+            <atributte Id="eb6f4704-74e4-43e2-9c65-aacfd6e1ca7f" atributteName="CreationTime" atributteAlias="Creation Time" atributteType="DateTime?" isIdentification="false" position="0" nameAndType="DateTime? CreationTime" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="57162b2d-42f0-4e29-b86c-b62fc664d9d6">
+            <atributte Id="9bc48e95-f0b2-4a7c-bc9e-530dcec7dacd" atributteName="UpdateTime" atributteAlias="Update Time" atributteType="DateTime" isIdentification="false" position="0" isNullable="true" nameAndType="DateTime UpdateTime" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="708ece11-1024-49ae-a88b-36f8539dbdfd">
+      <entity Id="ad19c8f6-bea7-4a38-8c3d-2ea098cd2aef" name="Address" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Address" volumen="0" logicDelete="false" pluralName="Addresses" referencedRootEntity="" grammarCategory="Sustantive" mainEntityStereotype="Entity">
+        <atributtes>
+          <classBaseHasAtributtes Id="823b2619-0ac4-4c85-b916-cb1384a74990">
+            <atributte Id="4ad0523b-887d-4bc2-88bf-0a04ced76dc5" atributteName="StreetName" isIdentification="false" position="0" nameAndType="string StreetName" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="ff8d4f47-b462-47a2-b924-669395b9c828">
+            <atributte Id="f4cafefc-615a-460d-8b88-6b3a98bfd90a" atributteName="BuildingNumber" isIdentification="false" position="0" isNullable="true" nameAndType="string BuildingNumber" />
           </classBaseHasAtributtes>
         </atributtes>
       </entity>

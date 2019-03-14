@@ -14,7 +14,7 @@ public class ServiceUpdateMethod : Template
         string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
         // conceptos propios del projecto en curso
         ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
-        string ResxFileName = prjCon.boundedContextName.Replace(".","") + "Resources"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+        string ResxFileName = prjCon.boundedContextName.Replace(".","") + "Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
         bool Secured = cbc.MainEntityStereotype.Contains("Bussiness"); // si es una entidad de negocio entoces esta securizada es decir necesita identificación y autorización
         bool Trazable = cbc.MainEntityStereotype.Contains("Bussiness") || cbc.MainEntityStereotype.Contains("Auditable"); // si es una entidad de negocio entoces esta securizada es decir necesita identificación y autorización
 #>
@@ -45,10 +45,10 @@ public class ServiceUpdateMethod : Template
             try
             {
                 // Creamos el repositorio de la entidad.
-                I<#= cbc.pascalSecureEntityName #>Repository repo = ApplicationLayer.IocContainer.Resolve<I<#= cbc.pascalSecureEntityName #>Repository>();
+                I<#= cbc.pascalSecureEntityName #>Repository repo<#= cbc.pascalSecureEntityName #> = ApplicationLayer.IocContainer.Resolve<I<#= cbc.pascalSecureEntityName #>Repository>();
 
                 // Obtener y comprobar validez de la inserción a modificar.
-               <#= I #><#= cbc.pascalSecureEntityName #> entity2Update = repo.GetFilteredElements(t => t.Id == <#= cbc.camelSecureEntityName #>Dto.Id).Single();
+               <#= I #><#= cbc.pascalSecureEntityName #> entity2Update = repo<#= cbc.pascalSecureEntityName #>.GetFilteredElements(t => t.Id == <#= cbc.camelSecureEntityName #>Dto.Id).Single();
                 Guard.ArgumentIsNotNull(
                                         entity2Update,
                                         string.Format(
@@ -104,7 +104,7 @@ public class ServiceUpdateMethod : Template
 #>
 
                     // Actualización de la entidad.
-                    // Datos mandatory
+                    // Mandatory data
 <#+ foreach(var property in cbc.propertyObjects.Where(c=>c.RequestUponCreation==RequestUponCreation.yes)){ #>
 <#+     if(property.LiveCycleAtributte.Equals(LiveCycleAtributte.Variable) /*|| property.LiveCycleAtributte.Equals(LiveCycleAtributte.Derivado)*/) {#>
 <#+         if (property.AutoProperty || !property.OnlyGetProperty)     { #>
@@ -116,6 +116,39 @@ public class ServiceUpdateMethod : Template
 <#+     } #>
 <#+ } #>
 
+<#+ if (cbc.sourceLinksCounter>0)    {#>
+					// .en Updating properties that comes from parent relationships
+					// .es Actualizamos las propiedades que provienen the relaciones parentales.
+<#+
+    // continuamos con el mapping de las propiedades de las clases padres en las asociaciones 
+    foreach (var property in cbc.propertyAssociationSources)
+    {
+        // si no es una relación reflexiva generamos la misma pareja de métodos para los roles de target y source han de ser diferentes
+        if(string.IsNullOrEmpty(property.TargetRolName)) // Validación: Comprobamos que si no existe el nombre del rol source (significa que es una relación unidireccional y por tanto solo genera propiedad en la clase destino (target) y no en la clase  origen (source) la multiplicidad minima del target ha de ser cero. 
+        {
+            continue;
+        }
+
+        if (!(property.Source is Enumeration))
+		{
+#>
+					if (entity2Update.<#= T4Help.ToPascalCase(property.Source.Name) #>.Id != <#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.Source.Name) #>.Id)
+					{
+						I<#= T4Help.ToPascalCase(property.Source.Name) #>Repository repo<#= T4Help.ToCamelCase(property.Source.Name) #> = ApplicationLayer.IocContainer.Resolve<I<#= T4Help.ToPascalCase(property.Source.Name) #>Repository>();
+						<#= T4Help.ToPascalCase(property.Source.Name) #> <#= T4Help.ToCamelCase(property.Source.Name) #> = repo<#= T4Help.ToCamelCase(property.Source.Name) #>.GetById(<#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.Source.Name) #>.Id);
+						entity2Update.Set<#= T4Help.ToPascalCase(property.Source.Name) #>(<#= T4Help.ToCamelCase(property.Source.Name) #>);
+					}
+<#+
+		}
+		else
+		{
+#>
+                    entity2Update.Set<#= T4Help.ToPascalCase(property.TargetRolName) #>(<#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.TargetRolName) #>);
+<#+
+        }
+    }// end del foreach (var property in cbc.propertyAssociationSources)
+#>
+<#+ } // end  if (cbc.sourceLinksCounter>0) #>
                     // asignación de Datos no mandatory con ciclo de vida variable, no se incluyen aquellas propiedaes constantes o derivadas
 <#+ foreach(var property in cbc.propertyObjects.Where(c=>c.RequestUponCreation==RequestUponCreation.no)){ #>
 <#+     if(property.LiveCycleAtributte.Equals(LiveCycleAtributte.Variable) /*|| property.LiveCycleAtributte.Equals(LiveCycleAtributte.Derivado)*/) {#>
@@ -123,17 +156,19 @@ public class ServiceUpdateMethod : Template
                     entity2Update.<#= T4Help.ToPascalCase(property.AtributteName) #> = <#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.AtributteName) #>; // property.AutoProperty = <#= property.AutoProperty #>; property.OnlyGetProperty = <#= property.OnlyGetProperty #>
 <#+         } #>
 <#+         if ( !property.AutoProperty  &&  property.OnlyGetProperty)     { #>
-                    Set<#= T4Help.ToPascalCase(property.AtributteName) #> ( <#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.AtributteName) #> ); // property.AutoProperty = <#= property.AutoProperty #>; property.OnlyGetProperty = <#= property.OnlyGetProperty #>
+                    entity2Update.Set<#= T4Help.ToPascalCase(property.AtributteName) #> ( <#= cbc.camelSecureEntityName #>Dto.<#= T4Help.ToPascalCase(property.AtributteName) #> ); // property.AutoProperty = <#= property.AutoProperty #>; property.OnlyGetProperty = <#= property.OnlyGetProperty #>
 <#+         } #>
 <#+     } #>
 <#+ } #>
 
                 // igualmente hemos de mapear las entidades emparentadas.
+<#+ if(cbc.IsRoot){ #>
                 if (!entity2Update.CanBeSaved())
                 {
                     return false;
                 }
-                repo.Modify(entity2Update);
+<#+ } #>
+                repo<#= cbc.pascalSecureEntityName #>.Modify(entity2Update);
 
                 // Confirmamos la transacción.
                 this.Commit();

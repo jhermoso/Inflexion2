@@ -1,0 +1,34 @@
+﻿<#+
+public class PackageConfig : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    DslContextDefinitionDiagram Diagram; Architecture.ArqLayer.ArqProject Project;
+    // constructor de la plantilla con parametros
+    public PackageConfig(DslContextDefinitionDiagram diagram, Architecture.ArqLayer.ArqProject project)
+        {this.Diagram = diagram; this.Project = project;}
+
+    public override string TransformText()
+    {
+
+#>
+<?xml version="1.0" encoding="utf-8"?>
+<packages>
+<#+
+
+foreach (Architecture.ArqLayer.ArqProject.ArqReference reference in Project.References.Where( p => p.ReferenceType == ReferenceKind.Nuget))
+{
+    if(reference.version != null)
+    {
+#>
+  <package id="<#= reference.Name #>" version="<#= reference.version #>" targetFramework="net40" />
+<#+
+    }
+}
+
+#>
+</packages>
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

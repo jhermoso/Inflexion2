@@ -1,0 +1,414 @@
+﻿<#+ /*public class LocalizedBounded*/
+    /// el objeto de este tipo es poder crear un arbol donde los elementos son parejas de clave valor
+    /// siendo la clave el path de carpetas virtuales establecido por el anidamiento de los bounded contexts
+    /// y el valor la instancia de la raiz del modelo o digrama que en nuesro caso llamamos Application
+    [Serializable]
+    public class LocalizedBounded
+    {
+        private KeyValuePair<string, kayak.MoneyGen.Application> context;
+        
+        public KeyValuePair<string, kayak.MoneyGen.Application> Context 
+            {  
+                get {return context;} 
+                set{context = value;}
+            }
+
+        public LocalizedBounded()
+        {}
+
+        public LocalizedBounded(LocalizedBounded o)
+        {
+            context = o.Context;
+        }
+
+        public LocalizedBounded(KeyValuePair<string, kayak.MoneyGen.Application> parKeyValue)
+        {
+            context = parKeyValue;
+        }
+
+        public LocalizedBounded(string key, kayak.MoneyGen.Application application)
+        {
+            this.Context = new KeyValuePair<string, kayak.MoneyGen.Application>(key, application);
+        }
+
+        public override bool Equals( object obj)
+        {
+            if (obj == null) return false;
+
+            LocalizedBounded o = obj as LocalizedBounded;
+            if (o == null) {Debug.Assert(false); return false;}
+
+            return (context.Key.Equals(Context.Key)) & (context.Value == o.Context.Value);
+        }
+
+        public override int GetHashCode()
+        {
+            return context.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+           
+            if ( !string.IsNullOrEmpty(context.Key))
+            {
+                return context.Key;
+            }
+            else
+            {
+                if ( !string.IsNullOrEmpty(context.Value.Product))
+                {return context.Key;}
+                else
+                {
+                    return typeof(LocalizedBounded).ToString();
+                }
+            }
+        } // end override ToString()
+
+        public object CreateDeepCopy()
+        {
+            return new LocalizedBounded( Context  );
+        }
+    } // End class LocalizedBounded
+#>
+
+<#+
+    public static ClassBase GetClassBaseFromReferencedClassBase(
+                                                                    ITree<LocalizedBounded> treeApp,
+                                                                    Microsoft.VisualStudio.Modeling.Integration.ModelBusReference elementReference
+                                                               )
+    {
+        bool okDebug = elementReference.ElementDisplayName.ToString().Equals("Emisora");
+     //   ClassBase entity = null;
+     //   if (okDebug) Debug.WriteLine(string.Format("elementReference = '{0}' ",elementReference.ToString() ));
+     //   if (okDebug) Debug.WriteLine(string.Format("elementReference.IsAdapterReferenceResolved = '{0}' ",elementReference.IsAdapterReferenceResolved.ToString() ));
+     //   if (okDebug) Debug.WriteLine(string.Format("elementReference.LastStatus = '{0}' ",elementReference.LastStatus.ToString() ));
+     //   if (okDebug) Debug.WriteLine(string.Format("elementReference.ModelDisplayName = '{0}' ",elementReference.ModelDisplayName.ToString() ));
+     //   if (okDebug) Debug.WriteLine(string.Format("elementReference.ElementDisplayName = '{0}' ",elementReference.ElementDisplayName.ToString() ));
+	 //
+     //   if (okDebug) Debug.WriteLine(string.Format("elementReference.AdapterReference = '{0}' ",elementReference.AdapterReference.ToString() ));
+
+  
+        string boundecontextName = elementReference.ModelDisplayName;
+        string elementName = elementReference.ElementDisplayName;
+        if (okDebug) Debug.WriteLine(string.Format("boundecontextName = '{0}',elementName = '{1}' ",boundecontextName, elementName));
+        if (okDebug) Debug.WriteLine(string.Format("treeApp.All.Nodes tiene {0} nodos ",treeApp.All.Nodes.Count() ));
+        foreach (var bc in treeApp.All.Nodes)
+        {
+         if (bc.Data.Context.Key.Equals(boundecontextName))
+         {
+             if (okDebug) Debug.WriteLine(string.Format("bc.Data.Context.Key = '{0}' ",bc.Data.Context.Key ));
+             kayak.MoneyGen.Application boundedContext = bc.Data.Context.Value;
+             if (boundedContext != null)
+             {
+                 ITree<ClassBase> boundedContextElements = ReadClassesHierarchie(boundedContext);
+
+                 foreach (INode<ClassBase> item in boundedContextElements.All.Nodes.Where(p=> p.Data is Entity || p.Data is ObjectValue))
+                 {
+                    if (item.Data.Name.Equals(elementName))
+                    {
+                        return item.Data;
+                    }
+                 }
+             }
+         }
+        }
+    return null;
+    }
+#>
+
+<#+
+    // Obtenemos el inode del contexto al que pertenece una clasebase.
+    public static INode<LocalizedBounded> GetBoundeContextFromClassBase(
+                                                                    ITree<LocalizedBounded> treeApp,
+                                                                    ClassBase elementReference
+                                                          )
+    {
+      //  bool okDebug =false;
+  
+     //   string boundecontextName = "";
+     //   string elementName = "";
+        kayak.MoneyGen.Application boundedContext;
+
+        foreach (var bc in treeApp.All.Nodes)
+        {
+            boundedContext = bc.Data.Context.Value;
+            if (boundedContext != null)
+            {
+                ITree<ClassBase> boundedContextElements = ReadClassesHierarchie(boundedContext);
+                foreach (INode<ClassBase> item in boundedContextElements.All.Nodes)
+                {
+                    if (item.Data.Name.Equals(elementReference.Name))
+                    {
+                        return bc;
+                    }
+                }
+            }
+        }
+    return null;
+    }
+#>
+
+<#+
+
+    ///<sumary> 
+	///A partir de la raiz de un modelo obtenemos la jerarquia de contextos que cuelgan del mismo.
+	///<sumary>
+    public ITree<LocalizedBounded> GetSolutionContextTree( kayak.MoneyGen.Application application)
+    {
+
+        string boundedContexPath = application.SolutionFolderCommon;
+        string newKey = boundedContexPath;
+
+		// aqui vamos añadiendo el árbol que vamos a ir leyendo.
+        ITree<LocalizedBounded> rootTree = NodeTree<LocalizedBounded>.NewTree(); 
+
+        //INode<LocalizedBounded> workingNode = (INode<LocalizedBounded>)rootTree.AddChild(new LocalizedBounded(newKey, null));
+        INode<LocalizedBounded> workingNode = (INode<LocalizedBounded>)rootTree;
+
+		// creamos el par, a partir de los parametros.
+        LocalizedBounded boundedContextPair = new LocalizedBounded(newKey, application); 
+
+        workingNode = workingNode.AddChild(boundedContextPair); // lo añadimos al árbol
+
+        // cada vez que entramos es por que hemos obtenido un diagrama hoja o un diagrama raiz.
+        // por esa razón vamos construyendo el árbol a medida que nos metemos. 
+        // si el árbol no tiene hojas devolvemos el nuevo arbol que hemos creado, que se añadira a su vez en el retorno del metodo.
+        
+        kayak.MoneyGen.Application contextoDependiente = null;
+
+        foreach (BoundedContext element in application.BoundedContexts )
+        {
+			if (element.Name.StartsWith("From ")) 
+			{
+				continue; // Si el nombre empieza por From ignoramos este contexto.
+			}
+            
+            // Para cada contexto miramos si tiene un diagrama asociado  en el campo MBR (ModelBusReference)
+            // In the source DSL Definition, each SourceElement has a MBR property:
+            Microsoft.VisualStudio.Modeling.Integration.ModelBusReference elementReference = element.MBR;
+
+            if (element.MBR != null) // si el MBR no esta vacio intentamos obtener su adaptador
+            {
+                // El contexto TIENE Diagrama, tenemos que añadirlo como hijo y ver si tiene diagramas a su vez.
+                // sacamos la siguiente declaración de la instrucción using pues no podemos destruir las instancias de los diagramas de los 
+				// contextos hasta que hayamos terminado de llevar a cabo la transformación de las plantillas
+                using (Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter adapter = this.ModelBus.CreateAdapter(elementReference) as ModelBusAdapter)
+                {
+                    // en este punto ya tenemos una instancia del diagráma a la que acceder en modo aplicación en la variable adapter.
+                    // ahora vamos a ver si este tiene a su vez mas hijos.
+                    // pero primero vamos a obtener el path para utilizarlo como key.
+                    if (boundedContexPath != null) 
+					{ 
+						newKey = boundedContexPath + System.IO.Path.DirectorySeparatorChar + element.Name; 
+					}
+                    else                      
+					{ 
+						newKey = element.Name;
+					}
+
+                    // acontinuación vamos a averiguar si este diagrama tiene a su vez referencias a nuevos diagramas.
+                    bool tieneDiagramasAnidados = false;
+
+					var filename = System.IO.Path.GetFileName(elementReference.SerializedAdapterReference);
+					var path = this.Host.ResolvePath(filename);
+                    ModelBusAdapterManager manager = this.ModelBus.FindAdapterManagers(path).FirstOrDefault();
+                    ModelBusReference modelReference = manager.CreateReference(path);
+
+                    using(MoneyGenAdapter adaptador = this.ModelBus.CreateAdapter(modelReference) as MoneyGenAdapter)
+                    {
+                        contextoDependiente = adaptador.ModelRoot;
+                        
+                        if (contextoDependiente != null)
+                        {
+                            //GetSolutionContextTree(contextoDependiente);
+                            if (contextoDependiente.BoundedContexts.Count() > 0) 
+                            {
+								//si el contexto al que hemos accedido no tiene hijos añadimos un nodo
+                                tieneDiagramasAnidados = true;
+                            }
+                        }
+                    } // end 2nd using
+                    if (!tieneDiagramasAnidados) 
+                    {
+						//si el contexto al que hemos accedido no tiene hijos añadimos un nodo
+						// creamos el par a partir de los parametros.
+                        boundedContextPair = new LocalizedBounded(newKey, contextoDependiente); 
+                        workingNode.AddChild(boundedContextPair); // lo añadimos al árbol
+                    }
+                    else
+                    {
+						//si el contexto al que hemos accedido SI tiene hijos añadimos un árbol
+                        workingNode.AddChild(GetSolutionSubContextTree(newKey, contextoDependiente)); // lo añadimos al árbol
+                    } 
+                } //end first using 
+            }
+        }
+
+        return rootTree;
+    }
+#>
+
+<#+
+
+public ITree<LocalizedBounded> GetSolutionSubContextTree(string newkey, kayak.MoneyGen.Application application)
+    {
+        // nos pasan un contexto que tiene hijos por lo que buscamos el ultimo nodo de forma recursiva.
+        // creando el arbol en el callback.
+        ITree<LocalizedBounded> rootTree= NodeTree<LocalizedBounded>.NewTree(); // creamos el arbol a apartir del objeto que se nos ha pasado.
+        // la principal diferencia es que ahora no hacemos un nodo raiz sino que directamente añadimos el subarbol.
+        // esto es asi por que el arbol que vamos a crear lo vamos a añadir al salir del metodo.
+        INode<LocalizedBounded> workingNode = (INode<LocalizedBounded>)rootTree.AddChild( new LocalizedBounded(newkey, application));
+        kayak.MoneyGen.Application contextoDependiente =  null;
+
+        string nuevoPathKey= newkey;
+
+        foreach (BoundedContext element in application.BoundedContexts )
+        {
+            if (element.Name.StartsWith("From ")) continue; // Si el nombre empieza pro From ignoramos este contexto.
+            // ahora para cada nuevo diagrama obtenemos su instancia como "aplicacion" (Model root) 
+            Microsoft.VisualStudio.Modeling.Integration.ModelBusReference elementReference = element.MBR;
+            if (element.MBR != null) // si el MBR no esta vacio intentamos obtener su adaptador
+            {                
+                using (Microsoft.VisualStudio.Modeling.Integration.ModelBusAdapter adapter = this.ModelBus.CreateAdapter(elementReference) as ModelBusAdapter)
+                { 
+                    // en este punto ya tenemos una instancia a la que acceder del diagrama en modo aplicación en la variable adapter.
+                    // ahora vamos a ver si este tiene asu vez mas hijos.
+                    // pero primero vamos a obtener el path para utilizarlo como key.
+                    if (nuevoPathKey!= null) { nuevoPathKey= nuevoPathKey + System.IO.Path.DirectorySeparatorChar +element.Name; }
+                        else           { nuevoPathKey= element.Name; }
+
+                    // acontinuación vamos a averiguar si este diagrama tiene a su vez referencias a nuevos diagramas.
+                    bool tieneDiagramasAnidados = false;
+
+					var filename = System.IO.Path.GetFileName(elementReference.SerializedAdapterReference);
+					var path = this.Host.ResolvePath(filename);
+                    ModelBusAdapterManager manager = this.ModelBus.FindAdapterManagers(path).FirstOrDefault();
+					ModelBusReference modelReference = manager.CreateReference(path);
+                    using(MoneyGenAdapter adaptador = this.ModelBus.CreateAdapter(modelReference) as MoneyGenAdapter )
+                    {
+                        contextoDependiente = adaptador.ModelRoot;
+                        //Debug.Write("           El subcontexto es ");Debug.WriteLine(contextoDependiente.Product); 
+                        if (contextoDependiente != null)
+                        {
+                            //GetSolutionContextTree(contextoDependiente);
+                            if (contextoDependiente.BoundedContexts.Count() > 0) //si el contexto al que hemos accedido no tiene hijos añadimos un nodo
+                            {
+                                tieneDiagramasAnidados = true;
+                            }
+                        }
+                    }
+                    if (!tieneDiagramasAnidados) //si el contexto al que hemos accedido no tiene hijos añadimos un nodo
+                    {
+                        LocalizedBounded boundedContextPair = new LocalizedBounded(nuevoPathKey, contextoDependiente); // creamos el par a partir de los parametros.
+                        workingNode.AddChild( boundedContextPair); // lo añadimos al árbol
+                    }
+                    else//si el contexto al que hemos accedido SI tiene hijos añadimos un árbol
+                    {
+                        workingNode.AddChild(GetSolutionSubContextTree(nuevoPathKey, contextoDependiente)); // lo añadimos al árbol
+                    } // end if (!tieneDiagramasAnidados
+                } // using 
+            } // end  if (element.MBR != null)
+            nuevoPathKey = newkey; // reseteamos el valor en el callback para crear correctamente los nombres de las carpetas.
+        } // end for each
+        return rootTree;
+    }
+
+#>
+
+<#+
+
+public void AddContextsFoldersAndProjects(DslContextDefinitionDiagram  mainDiagram, ActiveSolution solutionInfo,  ITree<LocalizedBounded> treeApp)
+{
+    foreach( INode<LocalizedBounded> context in treeApp.All.Nodes )
+    {
+        // dependiendo de la posición del bounded context dentro del arbol de contextos el naming de los projectos es diferente.        
+        string boundedContextProjectName = GetBoundedContextNameFromTreeAppAndDeep( context.Depth,  context,  mainDiagram);
+
+        if (boundedContextProjectName != null)
+		{
+			boundedContextProjectName.Replace(".Layers", string.Empty);
+            Architecture.AddBoundedContextLayers(boundedContextProjectName, mainDiagram, solutionInfo);
+		}
+    }
+
+    foreach( INode<LocalizedBounded> context in treeApp.All.Nodes )
+    {
+        // El primer foreach nos añade para cada carpeta de cada bounde context los proyectos y sus referencias pero no puede añadir referencias
+        // de proyectos que no se han añadido previamente pòr eso una vez que finalizamos volvemos a recorrerlos para añadir las referencias de 
+        // de los proyectos que no estaban creados en la primera pasada.
+        string boundedContextProjectName = GetBoundedContextNameFromTreeAppAndDeep( context.Depth,  context,  mainDiagram);
+        if (boundedContextProjectName != null)
+		{
+			boundedContextProjectName.Replace(".Layers", string.Empty);
+            Architecture.AddBoundedContextReferences(boundedContextProjectName, mainDiagram, solutionInfo);		
+		}
+    }
+
+    // termina la generación de los proyectos de solución y sus correspondientes carpetas
+} //end method 
+
+#>
+
+<#+
+public string GetBoundedContextNameFromTreeAppAndDeep(int contextDepth, INode<LocalizedBounded> context, DslContextDefinitionDiagram  mainDiagram)
+{
+    string result = null;
+
+    if(context.Depth == 0)
+    {
+      //  if (context.Data.Context.Value.Elements.Count() > 0)
+      //      {
+                //Architecture.AddBoundedContextLayers(mainDiagram.SolutionFolderCommon, mainDiagram, solutionInfo);
+                result = mainDiagram.SolutionFolderCommon;
+       //     }
+    }
+    else 
+    {
+     //   if (context.HasChild ) // si es un contexto que alberga otros, los layer folders se anidan en un contexto comun y no quedan en la raiz de dicho contexto.
+     //   {
+     //      if (context.Data.Context.Value.Elements.Count() > 0)
+     //      {
+                result = context.Data.Context.Key; //+ System.IO.Path.DirectorySeparatorChar + "Layers"; //mainDiagram.SolutionFolderCommon;
+     //      }
+     //  }
+     //  else
+     //  {
+     //      if (string.IsNullOrEmpty(context.Data.Context.Key))
+     //      {
+     //          // si es nullo no se añade nada.
+     //      }
+     //      else
+     //      {
+     //          if (!context.Data.Context.Key.StartsWith("From "))
+     //          {
+     //              result = context.Data.Context.Key;
+     //          }
+     //      }
+     //  }
+    }
+
+    return result;
+}
+
+ #>
+
+
+
+<#+
+ public string GetBoundedContextName(DslContextDefinitionDiagram MainDiagram, INode<LocalizedBounded> context)
+{
+    string bdName = context.Data.Context.Key;
+    if (true) Debug.WriteLine(String.Format( "entramos en GetBoundedContextName  bdName='{0}'", bdName));
+    if(context.HasChild ) // si es un contexto que alberga otros, los layer folders se anidan en un contexto comun y no quedan en la raiz de dicho contexto.
+    {
+        if (context.Data.Context.Value != null )
+        if (context.Data.Context.Value.Elements.Count() > 0) // para añadir el nombre de carpeta que se usa para identificar los sharedkernel es necesario que el diagrama tenga algun elemento que no sea un contexto limitado
+        {
+            if (false) Debug.WriteLine(String.Format( "Es un sk y MainDiagram.Product ='{0}'", MainDiagram.Product));
+            bdName = context.Data.Context.Key+System.IO.Path.DirectorySeparatorChar+MainDiagram.SolutionFolderCommon;
+            if (context.Data.Context.Key.Equals(MainDiagram.Product)) bdName = MainDiagram.SolutionFolderCommon;
+        }
+    }
+    return bdName;
+}
+#>

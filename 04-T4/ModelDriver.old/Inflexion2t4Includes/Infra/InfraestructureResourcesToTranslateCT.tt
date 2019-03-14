@@ -1,0 +1,92 @@
+﻿<#+
+
+public class InfraestructureResourcesToTranslateCT : Template
+{
+    // parametros de la plantilla
+    public ClassBaseContext  cbc ;
+    public string projectNamespace;
+    public ITree<BoundedContextMetadata> Skt;
+    public string KindTimeCall ; /* Los valores posibles son "inicio", "desarrollo", "fin" y "soloUna" */
+        
+    public InfraestructureResourcesToTranslateCT(ClassBaseContext  classBaseContext, string nombreProjecto, ITree<BoundedContextMetadata> skt, string kindTimeCall)
+        {
+            cbc = classBaseContext;             // contexto de la clase base a interpretar
+            projectNamespace = nombreProjecto;  // nombre del proyecto para el que estamos interpretando
+            Skt = skt;                          // shared kernel tree
+            KindTimeCall = kindTimeCall;
+        }
+        
+    public override string TransformText()
+        {
+            IList<string> sharedKernelUsings = null;
+            if (Skt != null)
+            {
+                sharedKernelUsings =  GetSharedKernelReferencesByProject(projectNamespace, Skt, cbc.diagram);
+            }
+#>
+<#= cbc.secureEntityName + "Alias"			+ ResxHelp.spliTag #>(<#= cbc.diagram.App.Culture #>)<#= String.IsNullOrEmpty(cbc.entity.AliasFrontEnd	)? T4Help.SplitPascalCase(cbc.entity.Name) : cbc.entity.AliasFrontEnd #><#= ResxHelp.spliTag + ResxHelp.copyTag #>Singular Alias of entity <#=   cbc.secureEntityName #> in diagram.<#= ResxHelp.spliTag #>
+<#= cbc.secureEntityName + "Remarks"		+ ResxHelp.spliTag #>(<#= cbc.diagram.App.Culture #>)<#= String.IsNullOrEmpty(cbc.entity.Remarks		)? T4Help.SplitPascalCase(cbc.entity.Name) : cbc.entity.Remarks       #><#= ResxHelp.spliTag + ResxHelp.copyTag #>Remarks of entity <#= cbc.secureEntityName #> in diagram.<#= ResxHelp.spliTag #>
+<#= cbc.secureEntityName + "Tooltip"		+ ResxHelp.spliTag #>(<#= cbc.diagram.App.Culture #>)<#= String.IsNullOrEmpty(cbc.entity.Tooltip		)? T4Help.SplitPascalCase(cbc.entity.Name) : cbc.entity.Tooltip       #><#= ResxHelp.spliTag + ResxHelp.copyTag #>Tooltip of entity <#= cbc.secureEntityName #> in diagram.<#= ResxHelp.spliTag #>
+<#= cbc.secureEntityName + "PluralEntity"	+ ResxHelp.spliTag #>(<#= cbc.diagram.App.Culture #>)<#= String.IsNullOrEmpty(cbc.entity.PluralName		)? T4Help.SplitPascalCase(cbc.entity.Name) : cbc.entity.PluralName    #><#= ResxHelp.spliTag + ResxHelp.copyTag #>Plural name of the entity <#= cbc.secureEntityName #> in diagram.<#= ResxHelp.spliTag #>
+
+<#+
+    foreach (var property in cbc.propertyObjects)
+    {
+#>
+<#= cbc.secureEntityName + "_" + T4Help.SecureName(property.AtributteName)+"Alias" + ResxHelp.spliTag       #>(<#= cbc.diagram.App.Culture #>)<#= String.IsNullOrEmpty(property.AtributteAlias) ? T4Help.SplitPascalCase(property.AtributteName) : property.AtributteAlias                   #><#= ResxHelp.spliTag + ResxHelp.copyTag #> Alias of field "<#= property.AtributteName #>" of entity <#= cbc.secureEntityName #> in diagram.<#= ResxHelp.spliTag #>
+<#= cbc.secureEntityName + "_" + T4Help.SecureName(property.AtributteName)+"UserRemarks" + ResxHelp.spliTag #>(<#= cbc.diagram.App.Culture #>)<#= String.IsNullOrEmpty(property.UserRemarks)    ? T4Help.SplitPascalCase(property.AtributteName) : T4Help.StrCleanLfCR(property.UserRemarks) #><#= ResxHelp.spliTag + ResxHelp.copyTag #> Remarks of field "<#= property.AtributteName #>" of entity <#= cbc.secureEntityName #> in diagram.<#= ResxHelp.spliTag #>
+<#= cbc.secureEntityName + "_" + T4Help.SecureName(property.AtributteName)+"Tooltip" + ResxHelp.spliTag     #>(<#= cbc.diagram.App.Culture #>)<#= String.IsNullOrEmpty(property.Tooltip)        ? T4Help.SplitPascalCase(property.AtributteName) : T4Help.StrCleanLfCR(property.Tooltip)     #><#= ResxHelp.spliTag + ResxHelp.copyTag #> Tooltip of field "<#= property.AtributteName #>" of entity <#= cbc.secureEntityName #> in diagram.<#= ResxHelp.spliTag #>
+<#+ if (!property.AllowRepeatedValues){ #>
+<#= cbc.secureEntityName + "Duplicated" + T4Help.SecureName(property.AtributteName) + ResxHelp.spliTag #>(en)The entity '<#= cbc.secureEntityName #>' don't allow repeated values in the property '<#= T4Help.SecureName(property.AtributteName) #>'<#= ResxHelp.spliTag + ResxHelp.copyTag #>Error menssage of repeated value. <#= cbc.secureEntityName #>:<#= property.AtributteName #> in diagram.<#= ResxHelp.spliTag #>
+<#+ } // end if AllowRepeatedValues #>
+<#+ if ( property.AtributteType.ToLower().Equals("string") && (property.MinLength>0 && property.MaxLength>0)) { #>
+<#= cbc.secureEntityName + "_" + T4Help.SecureName(property.AtributteName) + ResxHelp.spliTag #>(en)The property'<#= property.AtributteName #>' of the entity '<#= cbc.secureEntityName #>' has a minimun lenght of <#= property.MinValue #> and a maximum lenght of <#= property.MaxValue #> '<#= ResxHelp.spliTag + ResxHelp.copyTag #>Error menssage of lenght value out of limits.	For <#= cbc.secureEntityName #>:<#= property.AtributteName #> in diagram.<#= ResxHelp.spliTag #>
+<#+ } // end if longitud de string fuera de rango #>
+<#+ if ( property.AtributteType.ToLower().Equals("string") && (property.MinLength>0 && !(property.MaxLength>0))) { #>
+<#= cbc.secureEntityName + "_" + T4Help.SecureName(property.AtributteName) + "MinStringLengthError" + ResxHelp.spliTag #>(en)The property''<#= property.AtributteName #>' of the entity '<#= cbc.secureEntityName #>' has a minimun lenght of <#= property.MinValue #>.<#= ResxHelp.spliTag + ResxHelp.copyTag #>Error menssage of minimum lenght value out of limits.	For <#= cbc.secureEntityName #>:<#= property.AtributteName #> in diagram.<#= ResxHelp.spliTag #>
+<#+ } // end if longitud de string inferior al mínimo #>
+<#+ if ( property.AtributteType.ToLower().Equals("string") && (!(property.MinLength>0) && property.MaxLength>0)) { #>
+<#= cbc.secureEntityName + "_" + T4Help.SecureName(property.AtributteName) + "MaxStringLengthError" + ResxHelp.spliTag #>(en)The property''<#= property.AtributteName #>' of the entity '<#= cbc.secureEntityName #>' has a maximun lenght of <#= property.MinValue #>.<#= ResxHelp.spliTag + ResxHelp.copyTag #>Error menssage of maximum lenght value out of limits.	For <#= cbc.secureEntityName #>:<#= property.AtributteName #> in diagram.<#= ResxHelp.spliTag #>
+<#+ } // end if longitud de string superior al máximo #>
+<#+
+    } // end foreach (var property in cbc.propertyObjects)
+#>
+<#+
+    foreach ( var invariant in cbc.ClassInvariants.OrderBy(c => c.SortOrder) )
+    {#>
+<#=		cbc.secureEntityName + "InvariantError" + invariant.SortOrder.ToString() + ResxHelp.spliTag #>(<#= cbc.diagram.App.Culture #>)<#= invariant.ExceptionMenssage + ResxHelp.spliTag + ResxHelp.copyTag #>	invariant.ProgramRemarks<#= ResxHelp.spliTag #>
+<#+ } // end foreach ( var invariant in cbc.ClassInvariants.OrderBy(c => c.SortOrder) )#>
+<#+
+    foreach (var property in cbc.propertyAssociationSources)
+    {
+#>
+<#= cbc.secureEntityName + "_" + T4Help.SecureName(property.TargetRolName) + "Alias_" + ResxHelp.spliTag #>(<#= cbc.diagram.App.Culture #>)<#= T4Help.SplitPascalCase(property.TargetRolName)   + ResxHelp.spliTag + ResxHelp.copyTag #>Navegation property name. Source Rol from relationship.<#= ResxHelp.spliTag #>
+<#+ } //end foreach (var property in cbc.propertyAssociationSources) #>
+<#+
+    foreach (var property in cbc.propertyAssociationTargets)
+    {
+#>
+<#= cbc.secureEntityName + "_" + T4Help.SecureName(property.SourceRolName)+"Alias__"  + ResxHelp.spliTag #>(<#= cbc.diagram.App.Culture #>)<#= T4Help.SplitPascalCase(property.SourceRolName) + ResxHelp.spliTag + ResxHelp.copyTag #>Navegation property name. Target Rol from relationship.<#= ResxHelp.spliTag #>
+<#+		if (!property.AllowTargetRepeatedValues){ #>
+<#= cbc.secureEntityName + "Duplicated" + T4Help.SecureName(property.SourceRolName) + ResxHelp.spliTag #>(en)The entity '<#= cbc.secureEntityName #>' don't allow repeated values in the property '<#=T4Help.SecureName(property.SourceRolName)#>'<#= ResxHelp.spliTag + ResxHelp.copyTag #> Error menssage of repeated value. <#= ResxHelp.spliTag #>
+<#+     } // end if#>
+<#+ } //end foreach#>
+
+<#+
+if (cbc.IsEnumeration)
+{
+	var enumeracion = (Enumeration)cbc.entity;
+    foreach (var enumerado in enumeracion.EnumValue)
+    {
+#>
+<#= T4Help.SecureName(enumerado.Value) + ResxHelp.spliTag #>(<#= cbc.diagram.App.Culture #>)<#= T4Help.SplitPascalCase(enumerado.Description.Trim()) + ResxHelp.spliTag + ResxHelp.copyTag #>Enum value from cbc.secureEntityName.<#= ResxHelp.spliTag #>
+<#+
+	} //end foreach
+}//end if
+ #>
+
+<#+
+                return this.GenerationEnvironment.ToString();
+            }
+        }
+#>

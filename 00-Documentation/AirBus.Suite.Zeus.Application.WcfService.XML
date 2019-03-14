@@ -1,0 +1,495 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AirBus.Suite.Zeus.Application.WcfService</name>
+    </assembly>
+    <members>
+        <member name="T:AirBus.Suite.Zeus.Application.WcfService.ProjectService">
+            <summary>
+            Clase pública del servicio Wcf encargada de realizar las tareas 
+            relacionadas con la entidad Project.
+            </summary>
+        </member>
+        <member name="F:AirBus.Suite.Zeus.Application.WcfService.ProjectService.service">
+            <summary>
+            Referencia a los servicios de administración de la entidad Project.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ProjectService.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ProjectService"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:ProjectService"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ProjectService.Create(AirBus.Suite.Zeus.Application.Dtos.ProjectDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo Project.
+            </summary>
+            <param name="projectDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ProjectDto"/> con los datos necesarios
+            para la creación de la entidad Project.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ProjectService.Update(AirBus.Suite.Zeus.Application.Dtos.ProjectDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo Project.
+            </summary>
+            <param name="projectDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ProjectDto"/> con los datos necesarios
+            para el borrado de la entidad Projectr.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ProjectService.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo Project.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="id">
+            Parámetro que indica el identificador único de la entidad a borrar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la eliminación ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ProjectService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades Project.
+            </summary>
+            <returns>
+            Devuelve listado de Dto´s de la entidad Project.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ProjectService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad Project de acuerdo a
+            su identificador.
+            </summary>
+            <param name="projectId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ProjectDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ProjectService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Project, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades Project, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.WcfService.SuiteZeusRepositoryLayer">
+            <summary>
+            Registra en el contenedor de Ioc de la capa de aplicacion las clases de acceso al repositorio
+            </summary>
+        </member>
+        <member name="F:AirBus.Suite.Zeus.Application.WcfService.SuiteZeusRepositoryLayer.CtxFactory">
+            <summary>
+            UoW instance
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.SuiteZeusRepositoryLayer.IocRegistry">
+            <summary>
+            Register in IoC container the repository
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.SuiteZeusRepositoryLayer.ConnectionString">
+            <summary>
+            Get the conection string from the app.config or web config file asociated to the project on execution.
+            </summary>
+            <returns>The database connection string </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.WcfService.TimeRecordService">
+            <summary>
+            Clase pública del servicio Wcf encargada de realizar las tareas 
+            relacionadas con la entidad TimeRecord.
+            </summary>
+        </member>
+        <member name="F:AirBus.Suite.Zeus.Application.WcfService.TimeRecordService.service">
+            <summary>
+            Referencia a los servicios de administración de la entidad TimeRecord.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.TimeRecordService.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:TimeRecordService"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:TimeRecordService"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.TimeRecordService.Create(AirBus.Suite.Zeus.Application.Dtos.TimeRecordDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo TimeRecord.
+            </summary>
+            <param name="timeRecordDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.TimeRecordDto"/> con los datos necesarios
+            para la creación de la entidad TimeRecord.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.TimeRecordService.Update(AirBus.Suite.Zeus.Application.Dtos.TimeRecordDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo TimeRecord.
+            </summary>
+            <param name="timeRecordDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.TimeRecordDto"/> con los datos necesarios
+            para el borrado de la entidad TimeRecordr.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.TimeRecordService.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo TimeRecord.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="id">
+            Parámetro que indica el identificador único de la entidad a borrar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la eliminación ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.TimeRecordService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades TimeRecord.
+            </summary>
+            <returns>
+            Devuelve listado de Dto´s de la entidad TimeRecord.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.TimeRecordService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad TimeRecord de acuerdo a
+            su identificador.
+            </summary>
+            <param name="timeRecordId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.TimeRecordDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.TimeRecordService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades TimeRecord, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades TimeRecord, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.WcfService.ZeusAppSettingService">
+            <summary>
+            Clase pública del servicio Wcf encargada de realizar las tareas 
+            relacionadas con la entidad ZeusAppSetting.
+            </summary>
+        </member>
+        <member name="F:AirBus.Suite.Zeus.Application.WcfService.ZeusAppSettingService.service">
+            <summary>
+            Referencia a los servicios de administración de la entidad ZeusAppSetting.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ZeusAppSettingService.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ZeusAppSettingService"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:ZeusAppSettingService"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ZeusAppSettingService.Create(AirBus.Suite.Zeus.Application.Dtos.ZeusAppSettingDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo ZeusAppSetting.
+            </summary>
+            <param name="zeusAppSettingDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusAppSettingDto"/> con los datos necesarios
+            para la creación de la entidad ZeusAppSetting.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ZeusAppSettingService.Update(AirBus.Suite.Zeus.Application.Dtos.ZeusAppSettingDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo ZeusAppSetting.
+            </summary>
+            <param name="zeusAppSettingDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusAppSettingDto"/> con los datos necesarios
+            para el borrado de la entidad ZeusAppSettingr.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ZeusAppSettingService.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo ZeusAppSetting.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="id">
+            Parámetro que indica el identificador único de la entidad a borrar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la eliminación ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ZeusAppSettingService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades ZeusAppSetting.
+            </summary>
+            <returns>
+            Devuelve listado de Dto´s de la entidad ZeusAppSetting.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ZeusAppSettingService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad ZeusAppSetting de acuerdo a
+            su identificador.
+            </summary>
+            <param name="zeusAppSettingId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusAppSettingDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ZeusAppSettingService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades ZeusAppSetting, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades ZeusAppSetting, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.WcfService.ZeusDepartmentService">
+            <summary>
+            Clase pública del servicio Wcf encargada de realizar las tareas 
+            relacionadas con la entidad ZeusDepartment.
+            </summary>
+        </member>
+        <member name="F:AirBus.Suite.Zeus.Application.WcfService.ZeusDepartmentService.service">
+            <summary>
+            Referencia a los servicios de administración de la entidad ZeusDepartment.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ZeusDepartmentService.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ZeusDepartmentService"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:ZeusDepartmentService"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ZeusDepartmentService.Create(AirBus.Suite.Zeus.Application.Dtos.ZeusDepartmentDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo ZeusDepartment.
+            </summary>
+            <param name="zeusDepartmentDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusDepartmentDto"/> con los datos necesarios
+            para la creación de la entidad ZeusDepartment.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ZeusDepartmentService.Update(AirBus.Suite.Zeus.Application.Dtos.ZeusDepartmentDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo ZeusDepartment.
+            </summary>
+            <param name="zeusDepartmentDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusDepartmentDto"/> con los datos necesarios
+            para el borrado de la entidad ZeusDepartmentr.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ZeusDepartmentService.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo ZeusDepartment.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="id">
+            Parámetro que indica el identificador único de la entidad a borrar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la eliminación ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ZeusDepartmentService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades ZeusDepartment.
+            </summary>
+            <returns>
+            Devuelve listado de Dto´s de la entidad ZeusDepartment.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ZeusDepartmentService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad ZeusDepartment de acuerdo a
+            su identificador.
+            </summary>
+            <param name="zeusDepartmentId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusDepartmentDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ZeusDepartmentService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades ZeusDepartment, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades ZeusDepartment, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.WcfService.ZeusUserService">
+            <summary>
+            Clase pública del servicio Wcf encargada de realizar las tareas 
+            relacionadas con la entidad ZeusUser.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ZeusUserService.Configure(System.ServiceModel.ServiceConfiguration)">
+            <summary>
+            https://msdn.microsoft.com/en-us/library/hh205277(v=vs.110).aspx
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="F:AirBus.Suite.Zeus.Application.WcfService.ZeusUserService.service">
+            <summary>
+            Referencia a los servicios de administración de la entidad ZeusUser.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ZeusUserService.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ZeusUserService"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:ZeusUserService"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ZeusUserService.Create(AirBus.Suite.Zeus.Application.Dtos.ZeusUserDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo ZeusUser.
+            </summary>
+            <param name="zeusUserDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusUserDto"/> con los datos necesarios
+            para la creación de la entidad ZeusUser.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ZeusUserService.Update(AirBus.Suite.Zeus.Application.Dtos.ZeusUserDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo ZeusUser.
+            </summary>
+            <param name="zeusUserDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusUserDto"/> con los datos necesarios
+            para el borrado de la entidad ZeusUserr.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ZeusUserService.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo ZeusUser.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="id">
+            Parámetro que indica el identificador único de la entidad a borrar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la eliminación ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ZeusUserService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades ZeusUser.
+            </summary>
+            <returns>
+            Devuelve listado de Dto´s de la entidad ZeusUser.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ZeusUserService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad ZeusUser de acuerdo a
+            su identificador.
+            </summary>
+            <param name="zeusUserId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusUserDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.WcfService.ZeusUserService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades ZeusUser, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades ZeusUser, según la especificación indicada.
+            </returns>
+        </member>
+    </members>
+</doc>

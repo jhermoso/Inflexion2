@@ -1,0 +1,1046 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Needel.Common.FrontEnd.WpfModule</name>
+    </assembly>
+    <members>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.CommonModule">
+            <summary>
+            .en class module implementation. 
+            This implementation become the compiled dll of this project on a module dynamically loaded by the 
+            main programm.
+            .es implementación de la clases "module". Esta implementación convierte la ddl de la compilación 
+            de este proyecto en un modulo que puede ser cargado por el programa principal de forma dinamica. 
+            (en tiempo de ejecución)
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.CommonModule.Initialize">
+            <summary>
+            .en module initialization.
+            .es Inicializa el módulo.
+            </summary>
+            <remarks>
+            .en Register the controls whose has to be always available
+            with iregionmanager of Prism and the controls whose has to available on demand
+            with the inyection unity container. The controls on-demand will be loaded when
+            the method IregionManager.RequestNavigate() would be executed.
+            
+            .es Registramos los controles que han de estar siempre disponibles
+            con el gestor de regiones Prism (IRegionManager), y los controles que
+            han de solicitarse (bajo demanda) con el contenedor de inyección de
+            dependencias Unity.  Los controles bajo demanda serán cargados cuando
+            se invoque el método "IregionManager.RequestNavigate()".
+            </remarks>
+        </member>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.AddressQueryView">
+            <summary>
+            .en Interaction logic for AddressQueryView.xaml
+            .es Logica de interación para la vista AddressQueryView.xaml
+            </summary>
+            <summary>
+            AddressQueryView
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AddressQueryView.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:AddressQueryView"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:AddressQueryView"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AddressQueryView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.AddressView">
+            <summary>
+            .en Interaction logic for AddressView.xaml
+            .es Logica de interación para la vista AddressView.xaml
+            </summary>
+            <remarks>
+            .en No coment
+            .es Sin comentarios adicionales.
+            </remarks>
+            <summary>
+            AddressView
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AddressView.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:AddressView"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:AddressView"/>.
+            </summary>
+            <remarks>
+            .en No coment
+            .es Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AddressView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.AppSettingQueryView">
+            <summary>
+            .en Interaction logic for AppSettingQueryView.xaml
+            .es Logica de interación para la vista AppSettingQueryView.xaml
+            </summary>
+            <summary>
+            AppSettingQueryView
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AppSettingQueryView.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:AppSettingQueryView"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:AppSettingQueryView"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AppSettingQueryView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.AppSettingView">
+            <summary>
+            .en Interaction logic for AppSettingView.xaml
+            .es Logica de interación para la vista AppSettingView.xaml
+            </summary>
+            <remarks>
+            .en No coment
+            .es Sin comentarios adicionales.
+            </remarks>
+            <summary>
+            AppSettingView
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AppSettingView.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:AppSettingView"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:AppSettingView"/>.
+            </summary>
+            <remarks>
+            .en No coment
+            .es Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AppSettingView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.DepartmentQueryView">
+            <summary>
+            .en Interaction logic for DepartmentQueryView.xaml
+            .es Logica de interación para la vista DepartmentQueryView.xaml
+            </summary>
+            <summary>
+            DepartmentQueryView
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.DepartmentQueryView.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:DepartmentQueryView"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:DepartmentQueryView"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.DepartmentQueryView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.DepartmentView">
+            <summary>
+            .en Interaction logic for DepartmentView.xaml
+            .es Logica de interación para la vista DepartmentView.xaml
+            </summary>
+            <remarks>
+            .en No coment
+            .es Sin comentarios adicionales.
+            </remarks>
+            <summary>
+            DepartmentView
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.DepartmentView.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:DepartmentView"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:DepartmentView"/>.
+            </summary>
+            <remarks>
+            .en No coment
+            .es Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.DepartmentView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.UserQueryView">
+            <summary>
+            .en Interaction logic for UserQueryView.xaml
+            .es Logica de interación para la vista UserQueryView.xaml
+            </summary>
+            <summary>
+            UserQueryView
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserQueryView.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:UserQueryView"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:UserQueryView"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserQueryView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.UserView">
+            <summary>
+            .en Interaction logic for UserView.xaml
+            .es Logica de interación para la vista UserView.xaml
+            </summary>
+            <remarks>
+            .en No coment
+            .es Sin comentarios adicionales.
+            </remarks>
+            <summary>
+            UserView
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserView.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:UserView"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:UserView"/>.
+            </summary>
+            <remarks>
+            .en No coment
+            .es Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.AddressQueryViewModel">
+            <summary>
+            .en Interaction logic for AddressQueryView.xaml
+            .es Logica de interación para la vista AddressQueryView.xaml
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AddressQueryViewModel.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:AddressQueryViewModel"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:AddressQueryViewModel"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AddressQueryViewModel.#ctor(Inflexion2.Application.SpecificationDto,System.String)">
+            <summary>
+            Constructor for nested view models in master detail from parent entities
+            </summary>
+            <param name="baseFilter"></param>
+            <param name="parentViewName"></param>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.AddressQueryViewModel.Title">
+            <summary>
+            .en Property to set the title of the window 
+            .es Propiedad para establecer el Titulo de la ventana
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.AddressQueryViewModel.ChangeActivateStatusCommand">
+            <summary>
+            .en Property to get the command of changing state.
+            .es Propiedad que obtiene el comando de cambio de estado.
+            </summary>
+            <value>
+            Valor utilizado para obtener el comando de cambio de estado.
+            </value>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AddressQueryViewModel.OnDeleteRecord(System.Object)">
+            <summary>
+            Método público encargado del borrado de una entidad .
+            </summary>
+            <param name="parameter">
+            Parámetro con información adicional.
+            </param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AddressQueryViewModel.OnGetRecords(System.Object)">
+            <summary>
+            .en get records from Address.
+            .es Método encargado de obtener todos los registros de Address.
+            </summary>
+            <param name="parameter">
+            .en parameter with additional info
+            .es Parámetro con información adicional.
+            </param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AddressQueryViewModel.ResetAddress">
+            <summary>
+            .es Método privado para resetear el ViewModel.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AddressQueryViewModel.OnNavigatedTo(Microsoft.Practices.Prism.Regions.NavigationContext)">
+            <summary>
+            .en refresh the collection of items raising a property changed event
+            </summary>
+            <param name="navigationContext"></param>
+        </member>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.AddressViewModel">
+            <summary>
+            .en Interaction logic for AddressViewModel.xaml
+            .es Logica de interación para la vista AddressViewModel.xaml
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AddressViewModel.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:AddressViewModel"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:AddressViewModel"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AddressViewModel.#ctor(Needel.Common.Application.Dtos.AddressDto)">
+            <summary>
+            .es Inicializa una nueva instancia de la clase <see cref="T:UserViewModel"/>.
+            Este constructor es invocado por primera vez desde el QueryViewModel ya que para cada 
+            linea que se visualiza en la lista de Usuarios se crea el Viewmodel de dicho usuario.
+            Esta lista se almacena en una observable collection en el query view model con la que se hace el binding 
+            de la pantalla query.
+            Por esta razon las entidades relacionadas no se cargan si no se navega hasta esta entidad.
+            </summary>
+            <param name="element">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.AddressDto"/> que contiene la información necesaria.
+            </param>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.AddressViewModel.Title">
+            <summary>
+            .es Propiedad para establecer el Título de la ventana cuando este view model se utiliza 
+            en un control de usuario o ventana exclusivamente para el.
+            cuando este view model se utiliza solo en una lista esta propiedad no se utiliza.
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.AddressViewModel.StreetName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.AddressViewModel.BuildingNumber">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AddressViewModel.GetById(System.Int32)">
+            <summary>.es Obtener el dto de la entidad Address por su identificador.</summary>
+            <param name="identifier">.es Parámetro que indica el identificador de la entidad que se va a recuperar.</param>
+            <returns>.es Devuelve el objeto Dto <see cref="T:Needel.Common.Application.Dtos.AddressDto"/> correspondiente.</returns>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AddressViewModel.OnSaveRecord(System.Object)">
+            <summary>.es Crear o actualizar una entidad de tipo Address.</summary>
+            <param name="parameter">data to update.</param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AddressViewModel.OnNewRecord(System.Object)">
+            <summary>.en Create a new Address</summary>
+            <param name="parameter">.en Data to create the new Address</param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AddressViewModel.SetupValidation(MvvmValidation.ValidationHelper)">
+            <summary>
+            example to execute validation rules
+            </summary>
+            <param name="validation"></param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AddressViewModel.OnNavigatedTo(Microsoft.Practices.Prism.Regions.NavigationContext)">
+            <summary>
+            .en Here is possible to override the actions to execute when there is a navigation request
+            </summary>
+            <remarks>
+            .en Here is where to call to the methods to load the related entities (children and parents).
+            .es aqui es donde se invoca a los métodos de carga de las entidades adicionales.
+            </remarks>
+        </member>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.AppSettingQueryViewModel">
+            <summary>
+            .en Interaction logic for AppSettingQueryView.xaml
+            .es Logica de interación para la vista AppSettingQueryView.xaml
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AppSettingQueryViewModel.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:AppSettingQueryViewModel"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:AppSettingQueryViewModel"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AppSettingQueryViewModel.#ctor(Inflexion2.Application.SpecificationDto,System.String)">
+            <summary>
+            Constructor for nested view models in master detail from parent entities
+            </summary>
+            <param name="baseFilter"></param>
+            <param name="parentViewName"></param>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.AppSettingQueryViewModel.Title">
+            <summary>
+            .en Property to set the title of the window 
+            .es Propiedad para establecer el Titulo de la ventana
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.AppSettingQueryViewModel.ChangeActivateStatusCommand">
+            <summary>
+            .en Property to get the command of changing state.
+            .es Propiedad que obtiene el comando de cambio de estado.
+            </summary>
+            <value>
+            Valor utilizado para obtener el comando de cambio de estado.
+            </value>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AppSettingQueryViewModel.OnDeleteRecord(System.Object)">
+            <summary>
+            Método público encargado del borrado de una entidad .
+            </summary>
+            <param name="parameter">
+            Parámetro con información adicional.
+            </param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AppSettingQueryViewModel.OnGetRecords(System.Object)">
+            <summary>
+            .en get records from AppSetting.
+            .es Método encargado de obtener todos los registros de AppSetting.
+            </summary>
+            <param name="parameter">
+            .en parameter with additional info
+            .es Parámetro con información adicional.
+            </param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AppSettingQueryViewModel.ResetAppSetting">
+            <summary>
+            .es Método privado para resetear el ViewModel.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AppSettingQueryViewModel.OnNavigatedTo(Microsoft.Practices.Prism.Regions.NavigationContext)">
+            <summary>
+            .en refresh the collection of items raising a property changed event
+            </summary>
+            <param name="navigationContext"></param>
+        </member>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.AppSettingViewModel">
+            <summary>
+            .en Interaction logic for AppSettingViewModel.xaml
+            .es Logica de interación para la vista AppSettingViewModel.xaml
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AppSettingViewModel.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:AppSettingViewModel"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:AppSettingViewModel"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AppSettingViewModel.#ctor(Needel.Common.Application.Dtos.AppSettingDto)">
+            <summary>
+            .es Inicializa una nueva instancia de la clase <see cref="T:UserViewModel"/>.
+            Este constructor es invocado por primera vez desde el QueryViewModel ya que para cada 
+            linea que se visualiza en la lista de Usuarios se crea el Viewmodel de dicho usuario.
+            Esta lista se almacena en una observable collection en el query view model con la que se hace el binding 
+            de la pantalla query.
+            Por esta razon las entidades relacionadas no se cargan si no se navega hasta esta entidad.
+            </summary>
+            <param name="element">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.AppSettingDto"/> que contiene la información necesaria.
+            </param>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.AppSettingViewModel.Title">
+            <summary>
+            .es Propiedad para establecer el Título de la ventana cuando este view model se utiliza 
+            en un control de usuario o ventana exclusivamente para el.
+            cuando este view model se utiliza solo en una lista esta propiedad no se utiliza.
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.AppSettingViewModel.Key">
+            <summary>
+            App setting identity
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.AppSettingViewModel.Value">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.AppSettingViewModel.Remark">
+            <summary>
+            Explanation of the meaning or use of this  key value par.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AppSettingViewModel.GetById(System.Int32)">
+            <summary>.es Obtener el dto de la entidad AppSetting por su identificador.</summary>
+            <param name="identifier">.es Parámetro que indica el identificador de la entidad que se va a recuperar.</param>
+            <returns>.es Devuelve el objeto Dto <see cref="T:Needel.Common.Application.Dtos.AppSettingDto"/> correspondiente.</returns>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AppSettingViewModel.OnSaveRecord(System.Object)">
+            <summary>.es Crear o actualizar una entidad de tipo AppSetting.</summary>
+            <param name="parameter">data to update.</param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AppSettingViewModel.OnNewRecord(System.Object)">
+            <summary>.en Create a new AppSetting</summary>
+            <param name="parameter">.en Data to create the new AppSetting</param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AppSettingViewModel.SetupValidation(MvvmValidation.ValidationHelper)">
+            <summary>
+            example to execute validation rules
+            </summary>
+            <param name="validation"></param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.AppSettingViewModel.OnNavigatedTo(Microsoft.Practices.Prism.Regions.NavigationContext)">
+            <summary>
+            .en Here is possible to override the actions to execute when there is a navigation request
+            </summary>
+            <remarks>
+            .en Here is where to call to the methods to load the related entities (children and parents).
+            .es aqui es donde se invoca a los métodos de carga de las entidades adicionales.
+            </remarks>
+        </member>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.DepartmentQueryViewModel">
+            <summary>
+            .en Interaction logic for DepartmentQueryView.xaml
+            .es Logica de interación para la vista DepartmentQueryView.xaml
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.DepartmentQueryViewModel.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:DepartmentQueryViewModel"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:DepartmentQueryViewModel"/>.
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.DepartmentQueryViewModel.Title">
+            <summary>
+            .en Property to set the title of the window 
+            .es Propiedad para establecer el Titulo de la ventana
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.DepartmentQueryViewModel.ChangeActivateStatusCommand">
+            <summary>
+            .en Property to get the command of changing state.
+            .es Propiedad que obtiene el comando de cambio de estado.
+            </summary>
+            <value>
+            Valor utilizado para obtener el comando de cambio de estado.
+            </value>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.DepartmentQueryViewModel.OnDeleteRecord(System.Object)">
+            <summary>
+            Método público encargado del borrado de una entidad .
+            </summary>
+            <param name="parameter">
+            Parámetro con información adicional.
+            </param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.DepartmentQueryViewModel.OnGetRecords(System.Object)">
+            <summary>
+            .en get records from Department.
+            .es Método encargado de obtener todos los registros de Department.
+            </summary>
+            <param name="parameter">
+            .en parameter with additional info
+            .es Parámetro con información adicional.
+            </param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.DepartmentQueryViewModel.OnGetFirstPageRecords(System.Object)">
+            <summary>
+            .en Get First Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la primera página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.DepartmentQueryViewModel.OnGetNextPageRecords(System.Object)">
+            <summary>
+            .en Get Next Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la siguiente página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.DepartmentQueryViewModel.OnGetPreviousPageRecords(System.Object)">
+            <summary>
+            .en Get Previus Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la página anterior de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.DepartmentQueryViewModel.OnGetLastPageRecords(System.Object)">
+            <summary>
+            .en Get Last Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la ultima página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.DepartmentQueryViewModel.ResetDepartment">
+            <summary>
+            .es Método privado para resetear el ViewModel.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.DepartmentQueryViewModel.OnNavigatedTo(Microsoft.Practices.Prism.Regions.NavigationContext)">
+            <summary>
+            .en refresh the collection of items raising a property changed event
+            </summary>
+            <param name="navigationContext"></param>
+        </member>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.DepartmentViewModel">
+            <summary>
+            .en Interaction logic for DepartmentViewModel.xaml
+            .es Logica de interación para la vista DepartmentViewModel.xaml
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.DepartmentViewModel.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:DepartmentViewModel"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:DepartmentViewModel"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.DepartmentViewModel.#ctor(Needel.Common.Application.Dtos.DepartmentDto,Needel.Common.Application.Dtos.DepartmentDto,Needel.Common.Application.Dtos.DepartmentDto,Needel.Common.Application.Dtos.DepartmentDto,Needel.Common.Application.Dtos.DepartmentDto)">
+            <summary>
+            .en Child composed constructor <see cref="T:DepartmentViewModel"/>.
+            This constructor is used to be the viewmodel of a nested viemodel in a hierchahy.
+            </summary>
+            <param name="element">
+            .en Parameter of type <see cref="T:Needel.Common.Application.Dtos.DepartmentDto"/> with all the related data.</param>
+            <param name="first">first element in the current paged collection</param>
+            <param name="previous">last element in the current paged collection</param>
+            <param name="next">next element in the current paged collection</param>
+            <param name="last">last element in the current paged collection</param>
+            <remarks>
+            .en these intialization are to allow navigation betwen pages and not only next record. TODO: test this.
+            </remarks>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.DepartmentViewModel.Title">
+            <summary>
+            .es Propiedad para establecer el Título de la ventana cuando este view model se utiliza 
+            en un control de usuario o ventana exclusivamente para el.
+            cuando este view model se utiliza solo en una lista esta propiedad no se utiliza.
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.DepartmentViewModel.Name">
+            <summary>
+            Name of the department.
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.DepartmentViewModel.Visible">
+            <summary>
+            visibility mark
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.DepartmentViewModel.Description">
+            <summary>
+            Allow to the user to explain what is the responsabilities or functions of the department.
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.DepartmentViewModel.CreationTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.DepartmentViewModel.UpdateTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.DepartmentViewModel.UsersQueryVM">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.DepartmentViewModel.DeactivateChildrenCollections">
+            <summary>
+            Deactivate all the children ViewModels the collections of related aggregates.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.DepartmentViewModel.GetById(System.Int32)">
+            <summary>.es Obtener el dto de la entidad Department por su identificador.</summary>
+            <param name="identifier">.es Parámetro que indica el identificador de la entidad que se va a recuperar.</param>
+            <returns>.es Devuelve el objeto Dto <see cref="T:Needel.Common.Application.Dtos.DepartmentDto"/> correspondiente.</returns>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.DepartmentViewModel.OnSaveRecord(System.Object)">
+            <summary>.es Crear o actualizar una entidad de tipo Department.</summary>
+            <param name="parameter">data to update.</param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.DepartmentViewModel.OnNewRecord(System.Object)">
+            <summary>.en Create a new Department</summary>
+            <param name="parameter">.en Data to create the new Department</param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.DepartmentViewModel.SetupValidation(MvvmValidation.ValidationHelper)">
+            <summary>
+            example to execute validation rules
+            </summary>
+            <param name="validation"></param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.DepartmentViewModel.OnNavigatedTo(Microsoft.Practices.Prism.Regions.NavigationContext)">
+            <summary>
+            .en Here is possible to override the actions to execute when there is a navigation request
+            </summary>
+            <remarks>
+            .en Here is where to call to the methods to load the related entities (children and parents).
+            .es aqui es donde se invoca a los métodos de carga de las entidades adicionales.
+            </remarks>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.DepartmentViewModel.OnReceiveCompositeViewUpdateEvent(System.String)">
+            <summary>. en Action to execute when there is a call to update the view.</summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.UserQueryViewModel">
+            <summary>
+            .en Interaction logic for UserQueryView.xaml
+            .es Logica de interación para la vista UserQueryView.xaml
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserQueryViewModel.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:UserQueryViewModel"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:UserQueryViewModel"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserQueryViewModel.#ctor(Inflexion2.Application.SpecificationDto,System.String)">
+            <summary>
+            Constructor for nested view models in master detail from parent entities
+            </summary>
+            <param name="baseFilter"></param>
+            <param name="parentViewName"></param>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.UserQueryViewModel.Title">
+            <summary>
+            .en Property to set the title of the window 
+            .es Propiedad para establecer el Titulo de la ventana
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.UserQueryViewModel.ChangeActivateStatusCommand">
+            <summary>
+            .en Property to get the command of changing state.
+            .es Propiedad que obtiene el comando de cambio de estado.
+            </summary>
+            <value>
+            Valor utilizado para obtener el comando de cambio de estado.
+            </value>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserQueryViewModel.OnDeleteRecord(System.Object)">
+            <summary>
+            Método público encargado del borrado de una entidad .
+            </summary>
+            <param name="parameter">
+            Parámetro con información adicional.
+            </param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserQueryViewModel.OnGetRecords(System.Object)">
+            <summary>
+            .en get records from User.
+            .es Método encargado de obtener todos los registros de User.
+            </summary>
+            <param name="parameter">
+            .en parameter with additional info
+            .es Parámetro con información adicional.
+            </param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserQueryViewModel.OnGetFirstPageRecords(System.Object)">
+            <summary>
+            .en Get First Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la primera página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserQueryViewModel.OnGetNextPageRecords(System.Object)">
+            <summary>
+            .en Get Next Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la siguiente página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserQueryViewModel.OnGetPreviousPageRecords(System.Object)">
+            <summary>
+            .en Get Previus Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la página anterior de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserQueryViewModel.OnGetLastPageRecords(System.Object)">
+            <summary>
+            .en Get Last Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la ultima página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserQueryViewModel.ResetUser">
+            <summary>
+            .es Método privado para resetear el ViewModel.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserQueryViewModel.OnNavigatedTo(Microsoft.Practices.Prism.Regions.NavigationContext)">
+            <summary>
+            .en refresh the collection of items raising a property changed event
+            </summary>
+            <param name="navigationContext"></param>
+        </member>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.UserViewModel">
+            <summary>
+            .en Interaction logic for UserViewModel.xaml
+            .es Logica de interación para la vista UserViewModel.xaml
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserViewModel.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:UserViewModel"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:UserViewModel"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserViewModel.#ctor(Needel.Common.Application.Dtos.UserDto,Needel.Common.Application.Dtos.UserDto,Needel.Common.Application.Dtos.UserDto,Needel.Common.Application.Dtos.UserDto,Needel.Common.Application.Dtos.UserDto)">
+            <summary>
+            .en Child composed constructor <see cref="T:UserViewModel"/>.
+            This constructor is used to be the viewmodel of a nested viemodel in a hierchahy.
+            </summary>
+            <param name="element">
+            .en Parameter of type <see cref="T:Needel.Common.Application.Dtos.UserDto"/> with all the related data.</param>
+            <param name="first">first element in the current paged collection</param>
+            <param name="previous">last element in the current paged collection</param>
+            <param name="next">next element in the current paged collection</param>
+            <param name="last">last element in the current paged collection</param>
+            <remarks>
+            .en these intialization are to allow navigation betwen pages and not only next record. TODO: test this.
+            </remarks>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.UserViewModel.Title">
+            <summary>
+            .es Propiedad para establecer el Título de la ventana cuando este view model se utiliza 
+            en un control de usuario o ventana exclusivamente para el.
+            cuando este view model se utiliza solo en una lista esta propiedad no se utiliza.
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.UserViewModel.Name">
+            <summary>
+            Field to explain the meaning of this key
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.UserViewModel.Department">
+            <summary>
+            ***
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.UserViewModel.Departments">
+            <summary>
+            .en Collection where to chose one parent
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.UserViewModel.SelectedDepartment">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.UserViewModel.AddressesQueryVM">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.UserViewModel.Address1VM">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserViewModel.DeactivateChildrenCollections">
+            <summary>
+            Deactivate all the children ViewModels the collections of related aggregates.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserViewModel.GetById(System.Int32)">
+            <summary>.es Obtener el dto de la entidad User por su identificador.</summary>
+            <param name="identifier">.es Parámetro que indica el identificador de la entidad que se va a recuperar.</param>
+            <returns>.es Devuelve el objeto Dto <see cref="T:Needel.Common.Application.Dtos.UserDto"/> correspondiente.</returns>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserViewModel.OnSaveRecord(System.Object)">
+            <summary>.es Crear o actualizar una entidad de tipo User.</summary>
+            <param name="parameter">data to update.</param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserViewModel.OnNewRecord(System.Object)">
+            <summary>.en Create a new User</summary>
+            <param name="parameter">.en Data to create the new User</param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserViewModel.SetupValidation(MvvmValidation.ValidationHelper)">
+            <summary>
+            example to execute validation rules
+            </summary>
+            <param name="validation"></param>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserViewModel.OnNavigatedTo(Microsoft.Practices.Prism.Regions.NavigationContext)">
+            <summary>
+            .en Here is possible to override the actions to execute when there is a navigation request
+            </summary>
+            <remarks>
+            .en Here is where to call to the methods to load the related entities (children and parents).
+            .es aqui es donde se invoca a los métodos de carga de las entidades adicionales.
+            </remarks>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.UserViewModel.OnReceiveCompositeViewUpdateEvent(System.String)">
+            <summary>. en Action to execute when there is a call to update the view.</summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.CommonModuleNavigationView">
+            <summary>
+            .es Lógica de interacción para <see cref="T:CommonModuleNavigationView.xaml"/>.
+            .en Interaction logic for <see cref="T:CommonModuleNavigationView.xaml"/>.
+            </summary>
+            <summary>
+            CommonModuleNavigationView
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.CommonModuleNavigationView.#ctor(Needel.Common.FrontEnd.WpfModule.CommonModuleNavigationViewModel)">
+            <summary>
+            .es constructor <see cref="T:CommonModuleNavigationView"/>.
+            .en constructor <see cref="T:CommonModuleNavigationView"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.CommonModuleNavigationView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.CommonModuleRibbonTab">
+            <summary>
+            .en Interaction logic for CommonModuleRibbonTab.xaml
+            .es logica de interacción para CommonModuleRibbonTab.xaml
+            </summary>
+            <summary>
+            CommonModuleRibbonTab
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.CommonModuleRibbonTab.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:CommonModuleRibbonTab"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:CommonModuleRibbonTab"/>.
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.CommonModuleRibbonTab.KeepAlive">
+            <summary>
+            IRegionMemberLifetime implementation
+            Gets a value indicating whether this instance should be kept-alive upon deactivation.
+            http://stackoverflow.com/questions/5115484/how-to-create-a-new-view-every-time-navigation-occurs-in-prism
+            http://codefinders.blogspot.de/2013/11/disposing-views-in-prism.html
+            Returning a false value everytime that there is a request of a view creates a new view
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.CommonModuleRibbonTab.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.CommonModuleTaskBarView">
+            <summary>CommonModuleTaskBarView.xaml
+            .es logica de interacción para CommonTaskBarView.xaml
+            </summary>
+            <summary>
+            CommonModuleTaskBarView
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.CommonModuleTaskBarView.#ctor(Needel.Common.FrontEnd.WpfModule.CommonModuleTaskBarViewModel)">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:CommonTaskBarView"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:CommonTaskBarView"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.CommonModuleTaskBarView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.CommonModuleNavigationViewModel">
+            <summary>
+            navigation viewmodel for the bounded context Common .
+            </summary>
+            <summary>
+            navigation viewmodel for the bounded context Common .
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.CommonModuleNavigationViewModel.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:CommonModuleNavigationViewModel"/>.
+            </summary>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.CommonModuleNavigationViewModel.ShowAppSettingView">
+            <summary>
+            .en Gets or Sets the command to load the view of the entity AppSetting.
+            .es Obtiene o establece el comando de carga de la vista de AppSetting.
+            </summary>
+            <value>
+            .en Tells to load the view of the entity AppSetting.
+            .es Indica el comando de carga de la vista AppSetting.
+            </value>
+        </member>
+        <member name="P:Needel.Common.FrontEnd.WpfModule.CommonModuleNavigationViewModel.ShowDepartmentView">
+            <summary>
+            .en Gets or Sets the command to load the view of the entity Department.
+            .es Obtiene o establece el comando de carga de la vista de Department.
+            </summary>
+            <value>
+            .en Tells to load the view of the entity Department.
+            .es Indica el comando de carga de la vista Department.
+            </value>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.CommonModuleNavigationViewModel.Initialize">
+            <summary>
+            Inicializa el modelo de vista.
+            </summary>
+        </member>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.CommonModuleRibbonViewModel">
+            <summary>
+            ViewModel del tool bar ribbon for Common/>.
+            </summary>
+        </member>
+        <member name="T:Needel.Common.FrontEnd.WpfModule.CommonModuleTaskBarViewModel">
+            <summary>
+            ViewModel para el boton del bounded context Common.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.FrontEnd.WpfModule.CommonModuleTaskBarViewModel.#ctor">
+             <summary>
+             Inicializa una nueva instancia de la clase <see cref="T:CommonModuleTaskBarViewModel"/>.
+             </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:CommonModuleTaskBarViewModel"/>.
+            </remarks>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>

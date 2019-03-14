@@ -46,8 +46,16 @@ public class RegionProperties : Template
     // solo las propiedades que provienen de atributos que son de tipo valor pueden ser nullables.
     // igualmente todas las propiedades que se basan en estructs pueden ser get o set 
     // mientras que aquellas que no son structs no pueden tener un set público.
+    bool isenum;    
     foreach (var property in cbc.propertyObjects)
     {
+        isenum = false;
+        bool propertyIsOwnType = cbc.AccessibleClassBaseTree.All.Nodes.Where(c => property.AtributteType == T4Help.SecureName(c.Data.Name) ).Any();
+        if (propertyIsOwnType)
+        {
+            var cbcProperty = cbc.AccessibleClassBaseTree.All.Nodes.First(c => property.AtributteType == T4Help.SecureName(c.Data.Name) );
+            isenum = (((kayak.MoneyGen.Enumeration) cbcProperty.Data).EnumValue.Count() > 0); /* es enum*/
+        }
 #>
 <#+     if(property.LiveCycleAtributte.Equals(LiveCycleAtributte.Variable) || property.LiveCycleAtributte.Equals(LiveCycleAtributte.Derivado)) {#>
 
@@ -61,12 +69,12 @@ public class RegionProperties : Template
         /// Valor que es utilizado para establecer y obtener <#= T4Help.SecureName(property.AtributteName) #>.
         /// </value>
 <#+ if (cbc.diagram.ValidationContracts.Equals("DataAnotations")  )    {#>
-<#+     if (property.RequestUponCreation==RequestUponCreation.yes || !property.IsNullable) /*(property.IsMandatory) */        {#>
+<#+     if ((property.RequestUponCreation==RequestUponCreation.yes || !property.IsNullable) && !property.AtributteName.EndsWith("?")) /*(property.IsMandatory) */        {#>
         [Required(ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource), 
                   ErrorMessageResourceName = "FieldIsMandatory" )]
 <#+        }/*end if (property.IsMandatory) */#>
 <#+        if (!string.IsNullOrEmpty(property.MinValue) || !string.IsNullOrEmpty(property.MaxValue)) /*(property.IsMandatory) */        {#>
-        [Range(<#= (!string.IsNullOrEmpty(property.MinValue))? property.MinValue: property.AtributteType+".MinValue" #>, <#= (!string.IsNullOrEmpty(property.MaxValue))?property.MaxValue: property.AtributteType+".MaxValue" #>, ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource), 
+        [Range(<#= (!string.IsNullOrEmpty(property.MinValue))? property.MinValue : property.AtributteType + ".MinValue" #>, <#= (!string.IsNullOrEmpty(property.MaxValue))?property.MaxValue: property.AtributteType + ".MaxValue" #>, ErrorMessageResourceType = typeof(Inflexion2.Resources.FrameworkResource), 
                <#=T4Help.Indent(property.MinValue.Length + property.MaxValue.Length + 4) #>ErrorMessageResourceName = "ValueOutOfRange" )]
 <#+        }/*end if (range min max) */#>
 <#+        if ( property.AtributteType.ToLower().Equals("string") && (property.MinLength>0 && property.MaxLength>0)) /*(property.is string and have a range length) */        {#>
@@ -84,7 +92,7 @@ public class RegionProperties : Template
         [<#= invariant.LogicExpresion #><#=(string.IsNullOrEmpty(invariant.ExceptionMenssage.Trim()))?"(ErrorMessageResourceType = typeof("+ResxFileName+",ErrorMessageResourceName = "+cbc.pascalSecureEntityName +"InvariantError"+invariant.SortOrder.ToString()+" )":"" #>] /* <#= invariant.ExceptionMenssage #> */
 <#+             } // if AttributedExpresion#> 
 <#+         } #>
-        <#= property.AccesKeywords.ToString().ToLower() #> <#=(cbc.diagram.ORM.Length >0 && property.AccesKeywords.Equals(AccessKeywords.Public))?"virtual":"" #> <#= property.AtributteType #><#= ( property.IsNullable )?"?":"" #> <#= T4Help.SecureName(property.AtributteName) #> 
+        <#= property.AccesKeywords.ToString().ToLower() #> <#=(cbc.diagram.ORM.Length >0 && property.AccesKeywords.Equals(AccessKeywords.Public))?"virtual":"" #> <#= property.AtributteType #><#= ( property.IsNullable && T4Help.IsValueType(property.AtributteType) ) ? "?" : "" #> <#= T4Help.SecureName(property.AtributteName) #> 
 <#+ if (!property.AutoProperty && property.OnlyGetProperty || property.LiveCycleAtributte.Equals(LiveCycleAtributte.Derivado))                 { #>
             {
              get // !property.AutoProperty && property.OnlyGetProperty
@@ -153,7 +161,7 @@ if (property.AutoProperty && !property.OnlyGetProperty && !property.LiveCycleAtr
 <#+ } /* (property.AutoProperty && !property.OnlyGetProperty)*/ #>
 <#+    if (!property.AutoProperty && !property.OnlyGetProperty)     { #>
             {
-                get  /* (!property.AutoProperty && !property.OnlyGetProperty)*/
+                get  
                 {
 <#+                 if( property.LiveCycleAtributte.Equals(LiveCycleAtributte.Variable) ) { #>
                     return this.<#= T4Help.ToCamelCase(property.AtributteName) #>;

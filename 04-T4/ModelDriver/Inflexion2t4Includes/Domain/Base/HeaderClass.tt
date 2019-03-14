@@ -17,19 +17,55 @@ public class HeaderClass : Template
         // uso de interfaces en las propiedades y por tanto en metodos
         //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
         string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+		IList<string> sharedKernelUsings =  GetSharedKernelReferencesByProject(projectNamespace, Skt, cbc.diagram);
 
         // conceptos propios del projecto en curso.
         ProjectConcepts prjCon = new ProjectConcepts( cbc, projectNamespace, Skt );
         string baseEntity = "";
         // ignoramos los valores de none y legacy
-        if (cbc.IsRoot || cbc.MainEntityStereotype.Contains("AggregateRoot") || cbc.MainEntityStereotype.Contains("Entity") )
+        if (cbc.IsRoot || cbc.MainEntityStereotype.Contains("AggregateRoot"))
         {
             baseEntity = String.Format("Inflexion2.Domain.{0}<{1}, {2}>{3}", cbc.MainEntityStereotype, cbc.pascalSecureEntityName, cbc.idtype, (cbc.isDerivedFromOneEntity)?",":"");  
         }
+		else if (cbc.MainEntityStereotype.Contains("Entity"))
+		{
+			baseEntity = String.Format("Inflexion2.Domain.Entity<{0}, {1}>{2}",  cbc.pascalSecureEntityName, cbc.idtype, (cbc.isDerivedFromOneEntity)?",":"");
+		}
+		else if (cbc.IsObjectValue)
+		{
+			baseEntity = String.Format("Inflexion2.Domain.ValueObject<{0}>{1}",  cbc.pascalSecureEntityName, (cbc.isDerivedFromOneEntity)?",":"");
+		}
+
+
+		  string refBoundedContextSecureName = null;
+		  if (cbc.entity.ReferencedRootEntity != null)
+		  {
+
+			var refEntity = GetClassBaseFromReferencedClassBase(cbc.diagram.TreeApp, cbc.entity.ReferencedRootEntity);
+			var refBoundedContext = GetBoundeContextFromClassBase(cbc.diagram.TreeApp, refEntity);
+
+			if( sharedKernelUsings.Count() == 1)
+			{
+				refBoundedContextSecureName = sharedKernelUsings.ToList().First();
+			}
+			else
+			{
+				var partialname = refBoundedContext.Data.Context.Key.ToString().Replace('\\','.') + "Domain"; // use domain becouse this template is for domain layer.
+				refBoundedContextSecureName = sharedKernelUsings.First(c => c.EndsWith(partialname));
+			}
+
+		//	var refBoundedContextName = GetBoundedContextName(cbc.diagram, refBoundedContext);
+		//	var refBoundedContextSecureName = refBoundedContextName.Replace('\\','.');
+			var refCBC = new ClassBaseContext(cbc.diagram, cbc.solutionInfo, refEntity, refBoundedContextSecureName);
+
+		//	baseEntity = refBoundedContextSecureName + "." + refEntity.Name /*+ ((baseEntity != null)? "I" + cbc.pascalSecureEntityName : "")*/;
+		}
+
 #>
     /// <summary>
     /// <see cref="<#= I #><#= cbc.pascalSecureEntityName #>"/>
     /// </summary>
+	[System.Runtime.InteropServices.Guid("<#= cbc.entity.Id.ToString() #>")]
     [Serializable]
     <#= cbc.accesModifier #>class <#= cbc.pascalSecureEntityName #> : <#= (cbc.isDerivedFromOneEntity)? cbc.parentEntityName : baseEntity /*cbc.entityBase*/ #>, I<#= cbc.pascalSecureEntityName #>
     {

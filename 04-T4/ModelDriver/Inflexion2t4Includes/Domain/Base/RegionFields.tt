@@ -44,7 +44,7 @@ public class RegionFields : Template
         /// <remarks>
         /// <#= T4Help.StrCleanLfCR(property.UserRemarks) #>
         /// </remarks>
-        <#= property.AccesKeywords.ToString().ToLower() #> const <#= property.AtributteType #><#= (property.IsNullable & cbc.propertyIsValueType )?"?":"" #> <#= T4Help.ToCamelCase(property.AtributteName) #> = <#= property.DefaultValue #>; 
+        <#= property.AccesKeywords.ToString().ToLower() #> const <#= property.AtributteType #><#= (property.IsNullable & T4Help.IsValueType(property.AtributteType) )?"?":"" #> <#= T4Help.ToCamelCase(property.AtributteName) #> = <#= property.DefaultValue #>; 
 
 <#+    }// end if live cycle is variable or derived #>
 <#+    }// end for each #>
@@ -62,7 +62,7 @@ if (!property.AutoProperty || property.LiveCycleAtributte.Equals(LiveCycleAtribu
         /// <remarks>
         /// <#= T4Help.StrCleanLfCR(property.UserRemarks) #>
         /// </remarks>
-        private <#= property.AtributteType #><#= (property.IsNullable & cbc.propertyIsValueType )?"?":"" #> <#= T4Help.ToCamelCase(property.AtributteName) #>; 
+        private <#= property.AtributteType #><#= (property.IsNullable & T4Help.IsValueType(property.AtributteType) )?"?":"" #> <#= T4Help.ToCamelCase(property.AtributteName) #>; 
 
 <#+    }// end if live cycle is variable or derived #>
 <#+
@@ -81,10 +81,10 @@ if (!property.AutoProperty || property.LiveCycleAtributte.Equals(LiveCycleAtribu
         /// La relación es de tipo <#= (property is Aggregation)?"Agregación":"" #><#= (property is Composition)?"Composición":"" #> y <#= (property is Association)?"Asociación":"" #>
         /// </remarks>
 <#+ if(IsMaxMultiplicityOne(property.SourceMultiplicity)){#>
-        private <#= (property.Source is Enumeration)?"": I #><#= T4Help.SecureName(property.Source.Name) #> <#= T4Help.ToCamelCase(property.TargetRolName) #>;
+        private <#= (property.Source is Enumeration)?"": I #><#= T4Help.SecureName(property.Source.Name) #><#=((property.Source is Enumeration) && IsMinMultiplicityCero(property.SourceMultiplicity))? "?" : String.Empty  #> <#= T4Help.ToCamelCase(property.TargetRolName) #>;
 <#+            } #>
 <#+ if(IsMaxMultiplicityMany(property.SourceMultiplicity)){#>
-        private <#= GetTypeFromAssociationLink(property, (I=="I"), cbc.idtype, false, true) #> <#= T4Help.ToCamelCase(property.SourceRolName) #>; 
+        private <#= GetTypeFromAssociationLink(property, (I=="I"), cbc.idtype, false, true) #><#=((property.Source is Enumeration) && IsMinMultiplicityCero(property.SourceMultiplicity))? "?" : String.Empty  #> <#= T4Help.ToCamelCase(property.SourceRolName) #>; 
 <#+            } #>
 <#+ } #>
 <#+

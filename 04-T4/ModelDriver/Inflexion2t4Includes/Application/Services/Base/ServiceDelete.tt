@@ -17,7 +17,7 @@ public class ServiceDelete : Template
 
             // conceptos propios del projecto en curso
             ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
-            string ResxFileName = prjCon.boundedContextName.Replace(".","") + "Resources"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+            string ResxFileName = prjCon.boundedContextName.Replace(".","") + "Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
 #>
         #region Service Delete
         /// <summary>
@@ -52,15 +52,17 @@ public class ServiceDelete : Template
 
             // Ejecutar la acción de eliminar.
             return this.DeleteActivateWrapper(id<#=(Secured)?", UserContextDto userContextDto":"" #>);
+		}
 <#+ }else{#>
             I<#= cbc.pascalSecureEntityName #>Repository repo = ApplicationLayer.IocContainer.Resolve<I<#= cbc.pascalSecureEntityName #>Repository>();
             IEnumerable<<#= cbc.pascalSecureEntityName #>> results = repo.GetFilteredElements(u => u.Id == id);
             <#= cbc.pascalSecureEntityName #> <#= cbc.camelSecureEntityName #>2Delete = results.First();
-
+<#+ if (cbc.IsRoot){#>
             if (!<#= cbc.camelSecureEntityName #>2Delete.CanBeDeleted())
             {
                 return false;
             }
+<#+ }#>
             repo.Remove(<#= cbc.camelSecureEntityName #>2Delete);
             this.Commit();
 

@@ -1,0 +1,87 @@
+﻿<#+
+public class CreateGetById4MappingCollections : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public CreateGetById4MappingCollections(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+
+        string ResxFileName = prjCon.boundedContextName.Replace(".","") + "Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+#>
+<#+
+    if (cbc.propertyAssociationSources.Any() || cbc.propertyAssociationTargets.Any())
+    {
+#>
+        #region internal methods to help create service to map collections froms targets relationships
+
+<#+
+    foreach (var property in cbc.propertyAssociationSources )
+    {
+#>
+<#+     if (property.Source is Entity) { // opción preparada para el futuro
+#>
+<#+     } // end if entity#>
+<#+ } // end foreach#>
+
+<#+
+                int contador = 0;
+            foreach (var property in cbc.propertyAssociationTargets )
+            {
+#>
+<#+                    if (property.Target is Entity) { contador++;#>
+            /// <summary>
+            /// Método encargado de obtener una <see cref="<#= I #><#= T4Help.ToPascalCase(property.Target.Name) #>"/> a partir 
+            /// de su identificador.
+            /// </summary>
+            /// <remarks>
+            /// Sin comentarios adicionales.
+            /// </remarks>
+            /// <param name="<#= T4Help.ToCamelCase(property.Target.Name) #>Id">
+            /// Parámetro que indica el identificador único de la entidad a obtener.
+            /// </param>
+            /// <returns>
+            /// Devuelve la entidad <see cref="<#= I #><#= T4Help.ToPascalCase(property.Target.Name) #>"/> según el identificador.
+            /// </returns>
+            internal <#= I #><#= T4Help.ToPascalCase(property.Target.Name) #> Get<#= T4Help.ToPascalCase(property.Target.Name) #>ById(<#= cbc.idtype #> <#= T4Help.ToCamelCase(property.Target.Name) #>Id)
+            {
+// TODO, completar este metodo y cambiar los parametros añadiendo la entidad sobre la que se aplica.
+                //// Unidad de trabajo para el acceso a datos.
+                //using (IAdapter unitOfWork = Manager.DefaultController.CreateTransactional())
+                //{
+                    //// Buscamos la entidad por el Id.
+                    //<#= I #><#= T4Help.ToPascalCase(property.Target.Name) #>Repository <#= T4Help.ToCamelCase(property.Target.Name) #>Repository = this.<#= T4Help.SecureName(property.SourceRolName) #>RepositoryFactory.Create(unitOfWork);
+                    //<#= I #><#= T4Help.ToPascalCase(property.Target.Name) #> <#= T4Help.ToCamelCase(property.Target.Name) #> = <#= T4Help.ToCamelCase(property.Target.Name) #>Repository.GetById(<#= T4Help.ToCamelCase(property.Target.Name) #>Id);
+                    //// Validamos que exista la entidad.
+                    //Guard.ArgumentIsNotNull(
+                                            //<#= T4Help.ToCamelCase(property.Target.Name) #>,
+                                            //string.Format(
+                                                          //CoreResources.Neutral.NoHayDatosPorId,
+                                                          //<#= ResxFileName #>.<#= T4Help.ToPascalCase(property.Target.Name) #>Alias));
+//
+                    //// Confirmamos la transacción.
+                    //unitOfWork.CommitTransaction();
+                    //// Devolvemos la respuesta.
+                    //return <#= T4Help.ToCamelCase(property.Target.Name) #>;
+                //}
+                return null;
+            } // Get<#= T4Help.ToPascalCase(property.Target.Name) #>ById
+
+<#+     } // end if entity // solo los objetos valor tienen repositorios#>
+<#+ } #>
+        #endregion
+<#+ } #>
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

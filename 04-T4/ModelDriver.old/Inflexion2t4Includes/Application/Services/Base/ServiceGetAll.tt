@@ -1,0 +1,64 @@
+﻿<#+
+public class ServiceGetAll : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public ServiceGetAll(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+        bool Secured = cbc.MainEntityStereotype.Contains("Bussiness"); // si es una entidad de negocio entoces esta securizada es decir necesita identificación y autorización
+        bool Trazable = cbc.MainEntityStereotype.Contains("Bussiness") || cbc.MainEntityStereotype.Contains("Auditable"); // si es una entidad de negocio entoces esta securizada es decir necesita identificación y autorización
+
+#>
+        #region GetAll Method
+        /// <summary>
+        /// Recupera todas las entidades <#= cbc.pascalSecureEntityName #>.
+        /// </summary>
+<#+if (Secured){ #>        /// <param name="userContextDto"> Información de contexto del usuario. </param><#+ }#>
+        /// <returns>
+        /// Todas las entidades <#= cbc.pascalSecureEntityName #>.
+        /// </returns>
+        public IEnumerable<<#= cbc.pascalSecureEntityName #>Dto> GetAll(<#=(Secured)?"UserContextDto userContextDto":"" #>)
+        {
+            // .en answer variable
+            // .es Variable de respuesta.
+            // list new cosntructor (int32) initial size http://msdn.microsoft.com/en-us/library/dw8e0z9z(v=vs.110).aspx
+            var result = new List<<#= cbc.pascalSecureEntityName #>Dto>(0);
+
+            try
+            {
+                I<#= cbc.pascalSecureEntityName #>Repository repo = ApplicationLayer.IocContainer.Resolve<I<#= cbc.pascalSecureEntityName #>Repository>();
+                var entities = repo.GetAll();
+                // Mapeamos los datos.
+                entities.ToList()
+                        .ForEach(entity =>
+                        {
+                            var entityDto = this.<#= cbc.pascalSecureEntityName #>Mapper.EntityMapping(entity);
+                            result.Add(entityDto);
+                        });
+
+                // Confirmamos la transacción.
+                this.Commit();
+                
+            }
+            catch (Exception ex)
+            {
+<#+ if (Trazable){ #>                // Escribir en el Log.
+                logger.Error(ex.Message, ex);
+<#+ }#>                throw ex;
+            }
+
+            // Devolver resultado.
+            return result;
+        }
+        #endregion
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

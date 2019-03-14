@@ -44,7 +44,10 @@ namespace <#= projectNamespace #>
         public <#= cbc.pascalSecureEntityName #>QueryView()
         {
             InitializeComponent();
-            this.DataContext = new <#= cbc.pascalSecureEntityName #>QueryViewModel();
+            if (this.DataContext == null)
+            {
+                this.DataContext = new <#= cbc.pascalSecureEntityName #>QueryViewModel();
+            }
             // .en Here you can configure future filters.
             // .es Aquí se puede introducir la configuración de futuros filtros.
   

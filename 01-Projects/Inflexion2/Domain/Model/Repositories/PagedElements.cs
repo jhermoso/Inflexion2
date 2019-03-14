@@ -7,6 +7,7 @@ namespace Inflexion2.Domain
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Runtime.Serialization;
 
     /// <summary>
@@ -200,6 +201,36 @@ namespace Inflexion2.Domain
         public int TotalPages(int pageSize)
         {
             return (int)Math.Ceiling(Convert.ToDouble(this.TotalElements) / pageSize);
+        }
+
+        public TDto GetFirst()
+        {
+
+            return this.Elements.FirstOrDefault();
+        }
+
+        public TDto GetLast()
+        {
+            return this.Elements.LastOrDefault();
+        }
+
+        public TDto GetPrevious(TDto reference)
+        {
+            var i = this.Elements.FindIndex(c  => c == reference);
+            if (i <= 0)
+                return null;
+
+            return this.Elements[i - 1];
+
+        }
+
+        public TDto GetNext(TDto reference)
+        {
+            var i = this.Elements.FindIndex(c => c == reference);
+            if (i >= this.Elements.Count - 1)
+                return null;
+
+            return this.Elements[i + 1];
         }
 
         #endregion Methods

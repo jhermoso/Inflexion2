@@ -1,0 +1,26 @@
+﻿<#@ template  debug="true" hostSpecific="true" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core.dll" #>
+<#@ Assembly Name="System.Windows.Forms.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+
+<#@ include file="..\t4helpers\StringsFuntions\T4Helpers.ttinclude" #>
+
+<#
+// en esta plantilla comprobamos el funcionamiento del editor de plantillas t4 de tangible para arrastrar un ttinclude 
+// sobre una plantilla abierta. Esto no funciona en el editor de DEVART
+
+string s = this.MakeIntoValidIdentifier(" este _ es el ; cansino HistorIco");
+
+
+#>
+//s = "<#=s#>";

@@ -1,0 +1,402 @@
+﻿<#+
+        //// método que nos devuelve en un árbol la jerarquia de clases anidadas o derivadas
+        //// y de las que se obtienen tanto las taxonomias de herencia entre entidades objetos valor y servicios de dominio.
+        public static ITree<ClassBase> ReadClassesHierarchie(ClassBase classBase)
+        {
+        if (classBase == null)
+        {
+            throw new ArgumentNullException("La clase base no puede ser nula");
+        }
+            ITree<ClassBase> t = NodeTree<ClassBase>.NewTree();
+            //if (okDebug) Debug.WriteLine("creamos el arbol");
+            //// primero procesamos las entidades
+            //foreach (ClassBase classBase in diagrama.Elements) // .Where(p=> p is Entity )
+            //{
+                //if (okDebug) Debug.Write(classBase.Name);
+                //// añadimos la clase en el nodo actual.
+                // si en vez de añadir el nodo en el else añadimos aqui
+                // evitando tener que añadir el nodo que tiene anidados en el metodo recursivo nos saldra una lista linkada y no un arbol
+                var  NestedChildrenLinks = kayak.MoneyGen.ClassBaseHasNestedClassBases.GetLinksToTargetClassBases ( classBase  );
+//                if (classBase.TargetClassBases == null & classBase.SourceClassBase != null) // si tiene clases base anidadas y no esta a su vez aniadada recorremos su jerarquia.
+                if (NestedChildrenLinks.Count > 0)
+                {
+                //if (okDebug) Debug.Write(" TIENE clases anidadas");Debug.WriteLine("*");
+                    t.AddChild(GetNestedClasessBase(classBase));
+                }
+                else 
+                {
+                    //if (okDebug) Debug.Write("NO TIENE ANIDADAS");Debug.WriteLine("");
+                    // si no tiene clases base anidadas puede derivar de una o ser superclase de otras.
+                    // si tiene derivadas las recorremos de forma recursiva y las añadimos como hijas.
+                    if (!IsDerived( classBase) & HasChildren( classBase))// si deriva de otra clase no la añadimos. Esperamos a pasar por su clase base para crear el arbol desde la raiz.
+                    {
+                        // si no deriva de otra clase miramos si tiene hijos en cuyo caso tenemos que recorrer recursivamente su arbol 
+                        // de forma similar a como lo hacemos cuando esta anidada.
+                       //if (okDebug)  Debug.Write("TIENE HIJOS por derivación y no deriva de ninguna");Debug.WriteLine("");
+                        t.AddChild(GetDerivedClasessBase(classBase));
+                    }
+                    else
+                    {
+                        if (!IsDerived( classBase) & !HasChildren( classBase))// si deriva de otra clase no la añadimos. Esperamos a pasar por su clase base para crear el arbol desde la raiz.
+                        {
+                            //if (okDebug) Debug.Write("NO deriva de ninguna  y no tiene derivadas");Debug.WriteLine("");
+                            t.AddChild(classBase); 		// ni deriva de otra ni es base de otra
+                        }
+                    }
+                    
+                }
+            //}
+            return t;
+        }
+
+        //// método que nos devuelve en un arbol la jerarquia de clases anidadas o derivadas
+        //// y de las que se obtienen tanto las taxonomias de herencia entre entidades objetos valor y servicios de dominio.
+        public static ITree<ClassBase> ReadClassesHierarchie(kayak.MoneyGen.Application diagrama)
+        {
+        if (diagrama == null)
+        {
+            throw new ArgumentNullException("El diagrama no puede ser nulo");
+        }
+            ITree<ClassBase> t = NodeTree<ClassBase>.NewTree();
+            //if (okDebug) Debug.WriteLine("Llamada a ReadClassesHierarchie ");
+            //// primero procesamos las entidades
+            foreach (ClassBase classBase in diagrama.Elements) // .Where(p=> p is Entity )
+            {
+                //if (okDebug) Debug.Write(classBase.Name);
+                //// añadimos la clase en el nodo actual.
+                // si en vez de añadir el nodo en el else añadimos aqui
+                // evitando tener que añadir el nodo que tiene anidados en el metodo recursivo nos saldra una lista linkada y no un arbol
+                var  NestedChildrenLinks = kayak.MoneyGen.ClassBaseHasNestedClassBases.GetLinksToTargetClassBases ( classBase  );
+//                if (classBase.TargetClassBases == null & classBase.SourceClassBase != null) // si tiene clases base anidadas y no esta a su vez aniadada recorremos su jerarquia.
+                if (NestedChildrenLinks.Count > 0)
+                {
+                //if (okDebug) Debug.Write(" TIENE clases anidadas");Debug.WriteLine("*");
+                    t.AddChild(GetNestedClasessBase(classBase));
+                }
+                else 
+                {
+                    //if (okDebug) Debug.Write("NO TIENE ANIDADAS");Debug.WriteLine("");
+                    // si no tiene clases base anidadas puede derivar de una o ser superclase de otras.
+                    // si tiene derivadas las recorremos de forma recursiva y las añadimos como hijas.
+                    if (!IsDerived( classBase) & HasChildren( classBase))// si deriva de otra clase no la añadimos. Esperamos a pasar por su clase base para crear el arbol desde la raiz.
+                    {
+                        // si no deriva de otra clase miramos si tiene hijos en cuyo caso tenemos que recorrer recursivamente su arbol 
+                        // de forma similar a como lo hacemos cuando esta anidada.
+                        //if (okDebug) Debug.Write("TIENE HIJOS por derivación y no deriva de ninguna");Debug.WriteLine("");
+                        t.AddChild(GetDerivedClasessBase(classBase));
+                    }
+                    else
+                    {
+                        if (!IsDerived( classBase) & !HasChildren( classBase))// si deriva de otra clase no la añadimos. Esperamos a pasar por su clase base para crear el arbol desde la raiz.
+                        {
+                            //if (okDebug) Debug.Write("NO deriva de ninguna  y no tiene derivadas");Debug.WriteLine("");
+                            t.AddChild(classBase); 		// ni deriva de otra ni es base de otra
+                        }
+                    }
+                    
+                }
+            }
+        //if (okDebug) Debug.WriteLine("Salida de ReadClassesHierarchie ");
+            return t;
+        }
+//
+        //// metodo recursivo de recorrido de clases anidadas.
+        private  static ITree<ClassBase> GetNestedClasessBase(ClassBase classBase)
+        {
+            ITree<ClassBase> rootTree = NodeTree<ClassBase>.NewTree();
+            INode<ClassBase>  workingNode = (INode<ClassBase>) rootTree.AddChild(  classBase );
+            foreach( var item in classBase.TargetClassBases)
+            {
+                if (item.TargetClassBases.Count() > 0) // si tiene clases base anidadas las recorremos
+                {
+                    workingNode.AddChild(GetNestedClasessBase(item));
+                }
+                else
+                {
+                    workingNode.AddChild(item);
+                }
+            }
+            return rootTree;
+        }
+
+        //// metodo recursivo de recorrido de clases derivadas.
+        private  static ITree<ClassBase> GetDerivedClasessBase(ClassBase classBase)
+        {
+        //	System.Collections.ObjectModel.ReadOnlyCollection<kayak.MoneyGen.Inherintance> SubClasesLinksCollection	= Inherintance.GetLinksToSubClasses ( classBase ) ;
+
+            ITree<ClassBase> rootTree = NodeTree<ClassBase>.NewTree();
+            INode<ClassBase>  workingNode = (INode<ClassBase>) rootTree.AddChild(  classBase );
+            var children = Inherintance.GetSubClasses(classBase);
+            foreach( var item in children )
+            {
+                // si el link entre la clase y la subclase es del tipo por delegación y composición entonces no lo incluimos 
+                // en el arbol pues en ese caso aparece en el arbol dos veces con lo que renderizamos las plantillas dos veces.
+            var inherintancelink= Inherintance.GetLink( item, classBase );
+                if (inherintancelink.InherintanceType == InherintanceType.Language) // si queremos incluir en el arbol las hojas que derivan mediante delegación y composición tenemos que comentar este if.
+                {
+                    if ( Inherintance.GetSubClasses(item).Count() > 0) 
+                    {
+                        workingNode.AddChild(GetDerivedClasessBase(item));
+                    }
+                    else
+                    {
+                        workingNode.AddChild(item);
+                    }
+                }
+            }
+            return rootTree;
+        }
+
+    public static string GetStringInherintaceClassModifier(kayak.MoneyGen.InheritClassKeywords classModifier)
+    {
+        string modifier = "";
+
+        if ( ( classModifier & kayak.MoneyGen.InheritClassKeywords.Abstract)   == kayak.MoneyGen.InheritClassKeywords.Abstract )
+        {
+            modifier = modifier + "abstract ";
+        }
+
+        if ((classModifier & kayak.MoneyGen.InheritClassKeywords.Public ) == kayak.MoneyGen.InheritClassKeywords.Public )
+            {
+                modifier = modifier + "public ";
+            }
+            else if (( classModifier & kayak.MoneyGen.InheritClassKeywords.Private) == kayak.MoneyGen.InheritClassKeywords.Private)
+            {
+                modifier = modifier + "private ";
+            }
+            else if (( classModifier & kayak.MoneyGen.InheritClassKeywords.Internal) == kayak.MoneyGen.InheritClassKeywords.Internal)
+            {
+                modifier = modifier + "internal ";
+            }
+            else if (( classModifier & kayak.MoneyGen.InheritClassKeywords.Protected) == kayak.MoneyGen.InheritClassKeywords.Protected)
+            {
+                modifier = modifier + "protected ";
+            }
+
+        if (( classModifier & kayak.MoneyGen.InheritClassKeywords.Partial) == kayak.MoneyGen.InheritClassKeywords.Partial)
+            modifier = modifier + "partial ";
+
+        if (( classModifier & kayak.MoneyGen.InheritClassKeywords.Static) == kayak.MoneyGen.InheritClassKeywords.Static)
+            modifier = modifier + "static ";
+
+
+        if (( classModifier & kayak.MoneyGen.InheritClassKeywords.Const) == kayak.MoneyGen.InheritClassKeywords.Const)
+            modifier = modifier + "const ";
+        if (( classModifier & kayak.MoneyGen.InheritClassKeywords.Event) == kayak.MoneyGen.InheritClassKeywords.Event)
+            modifier = modifier + "event ";
+        if (( classModifier & kayak.MoneyGen.InheritClassKeywords.Extern) == kayak.MoneyGen.InheritClassKeywords.Extern)
+            modifier = modifier + "extern ";
+
+
+
+        //if (( classModifier& kayak.MoneyGen.InheritClassKeywords.New)
+            //modifier = modifier + "new ";
+        if (( classModifier & kayak.MoneyGen.InheritClassKeywords.Override) == kayak.MoneyGen.InheritClassKeywords.Override)
+            modifier = modifier + "override ";
+
+        if (( classModifier & kayak.MoneyGen.InheritClassKeywords.Readonly) == kayak.MoneyGen.InheritClassKeywords.Readonly)
+            modifier = modifier + "readonly ";
+        if (( classModifier & kayak.MoneyGen.InheritClassKeywords.Sealed) == kayak.MoneyGen.InheritClassKeywords.Sealed)
+            modifier = modifier + "sealed ";
+
+        if (( classModifier & kayak.MoneyGen.InheritClassKeywords.Unsafe) == kayak.MoneyGen.InheritClassKeywords.Unsafe)
+            modifier = modifier + "unsafe ";
+        if (( classModifier & kayak.MoneyGen.InheritClassKeywords.Virtual) == kayak.MoneyGen.InheritClassKeywords.Virtual)
+            modifier = modifier + "virtual ";
+        if (( classModifier & kayak.MoneyGen.InheritClassKeywords.Static) == kayak.MoneyGen.InheritClassKeywords.Static)
+            modifier = modifier + "volatile ";
+
+
+
+        return modifier;
+    }
+
+ public static string GetStringAccesModifier(kayak.MoneyGen.InheritClassKeywords classModifier)
+    {
+        string modifier = " ";
+
+            if ((classModifier & kayak.MoneyGen.InheritClassKeywords.Public ) == kayak.MoneyGen.InheritClassKeywords.Public )
+        {
+            modifier = "public";
+        }
+            else if (( classModifier & kayak.MoneyGen.InheritClassKeywords.Private) == kayak.MoneyGen.InheritClassKeywords.Private)
+        {
+            modifier = "private";
+        }
+            else if (( classModifier & kayak.MoneyGen.InheritClassKeywords.Internal) == kayak.MoneyGen.InheritClassKeywords.Internal)
+        {
+            modifier =  "internal";
+        }
+            else if (( classModifier & kayak.MoneyGen.InheritClassKeywords.Protected) == kayak.MoneyGen.InheritClassKeywords.Protected)
+        {
+            modifier = "protected";
+        }
+        return modifier;
+    }
+
+    /// obtiene el nombre de la superclase de la cual la entidad que se le pasa como parametro hereda si esta existe en caso contrario devuelve un null.
+    /// solo se buscan entidades de herencia simple que esten marcadas como que el tipo de herencia a implementar es la que proporciona el propio lenguaje.
+public static ClassBase GetSuperEntity(ClassBase entity)
+{
+    bool centinela  = IsDerived(entity) ;
+    ClassBase superEntity = null;
+    System.Collections.ObjectModel.ReadOnlyCollection<kayak.MoneyGen.Inherintance> SuperClasesLinksCollection = Inherintance.GetLinksToSuperClasses(entity);
+    var entityCollection  =  SuperClasesLinksCollection.Where( link => link.InherintanceType == InherintanceType.Language );
+    if (centinela & entity.SourceClassBase == null)
+    {
+        foreach(var e in entityCollection)
+        {
+            superEntity = e.SuperClass;
+        }       
+    }
+    else if (entity.SourceClassBase != null)
+    {
+        superEntity = entity.SourceClassBase;
+    }
+    return superEntity;
+}
+
+    /// obtiene la estructura de carpetas en las que hay que anidar las clases que heredan de otra clase.
+    /// solo se buscan entidades de herencia simple que esten marcadas como que el tipo de herencia a implementar es la que proporciona el propio lenguaje.
+///  NOTA : llamar a este método solo y exclusivamente si se ha comprobado previamente que es una clase derivada llamando a IsDerived(Entity entity)
+public static string GetSuperFolders(ClassBase entity)
+{
+    bool okDebug = false; //entity.Name.Equals("Fisica");
+    bool centinela  = IsDerived(entity) ; // Esta función nos dice si deriva de forma simple de alguna otra entidad con la flecha de especialización o derivación.
+    string superFolder = null;
+    ClassBase superEntity = null;
+    ClassBase lastSuperEntity = null;
+    System.Collections.ObjectModel.ReadOnlyCollection<kayak.MoneyGen.Inherintance> SuperClasesLinksCollection = Inherintance.GetLinksToSuperClasses(entity);
+    var entityCollection  =  SuperClasesLinksCollection.Where( link => link.InherintanceType == InherintanceType.Language & link.SuperClass is Entity );
+    if (centinela & entity.SourceClassBase == null)
+    {
+        if (okDebug) Debug.WriteLine(String.Format("La clase es derivada pero no anidada "));
+        foreach(var e in entityCollection)
+        {
+            superFolder = e.SuperClass.Name;
+            superEntity = e.SuperClass;
+            if (IsDerived(superEntity))
+            {
+                superFolder = GetSuperFolders(superEntity) + System.IO.Path.DirectorySeparatorChar+superFolder;
+            }
+            if(!string.IsNullOrEmpty( superEntity.FolderNameSpaceAggregatedName)) // si la entidad base de la que heredamos tiene un namespace incluimos previamente su carpeta.
+                {superFolder = superEntity.FolderNameSpaceAggregatedName + System.IO.Path.DirectorySeparatorChar+superFolder;}
+        }
+    }
+     if (centinela & entity.SourceClassBase != null) // si no deriva vamos a comprobar si la clase esta anidada para obtener la lista de entidades anidadas hasta la raiz.
+    {
+        if (okDebug) Debug.WriteLine(String.Format("La clase es derivada Y ANIDADA "));
+        superFolder = entity.SourceClassBase.Name;
+        superEntity = entity.SourceClassBase;
+            
+        while(superEntity != null)
+        {
+            if (superEntity.SourceClassBase != null)
+            {
+                superFolder = superEntity.SourceClassBase.Name + System.IO.Path.DirectorySeparatorChar+superFolder;
+            }
+            lastSuperEntity = superEntity;
+            superEntity = (Entity)superEntity.SourceClassBase;
+        }
+            if(!string.IsNullOrEmpty( lastSuperEntity.FolderNameSpaceAggregatedName)) // si la entidad base de la que heredamos tiene un namespace incluimos previamente su carpeta.
+                {superFolder = lastSuperEntity.FolderNameSpaceAggregatedName + System.IO.Path.DirectorySeparatorChar+superFolder;}
+    }
+    // postcondición
+    if (centinela & superFolder == null) 
+        {
+        // es un error de modelado. Es necesario hacer saltar una excepción
+        string mensaje = "La entidad de nombre '"+entity.Name+"' deriva de otra que no se ha encontrado";
+        throw new System.ApplicationException(mensaje);
+        }
+    return superFolder;
+}
+
+public static bool IsDerived(ClassBase entity)
+    {
+        bool okDebug = false;//entity.Name.Equals("Fisica");
+        bool centinela  = false ; // inicializamos el centinela a true con el objeto de poder hacer un and consigo mismo en cada atibuto.
+           // System.Collections.ObjectModel.ReadOnlyCollection<kayak.MoneyGen.Association> propertyAssociationTargets = Association.GetLinksToTargets(entity);
+        System.Collections.ObjectModel.ReadOnlyCollection<kayak.MoneyGen.Inherintance> SuperClasesLinksCollection = Inherintance.GetLinksToSuperClasses(entity);
+        System.Collections.ObjectModel.ReadOnlyCollection<kayak.MoneyGen.Inherintance> SubClasesLinksCollection = Inherintance.GetLinksToSubClasses ( entity ) ;
+
+        // a continuación contamos cuantas entidades son superclases y tienen  un tipo de herencia soportada por el lenguaje. el maximo permitido es uno.
+        int numSuperEntitys = SuperClasesLinksCollection.Where( link => link.InherintanceType == InherintanceType.Language ).Count();
+        // IMPORTANTE: PARA OBTENER LAS SUPERCLASES A APARTIR DE LOS LINKS ES NECESARIO UTILIZAR LAS PROPIEDADES DE LOS LINKS EN FUNCIÓN DE SI OBTENEMOS LOS LINKS TO SUPERCLASES 
+        // NO FUNCIONARA OBTENER LAS SUBCLASES DE LOS LOS LINKS A LAS SUPERCLASES
+        // ejemplo:
+        //if (okDebug) Debug.Write(" tiene superclases : ");
+        //if (okDebug) Debug.WriteLine(numSuperEntitys);
+        //foreach(var l in SuperClasesLinksCollection )
+        //{
+            //if (okDebug) Debug.Write(" SuperClass : ");
+            //if (okDebug) Debug.WriteLine(l.SuperClass.Name);
+        //}
+        //if (okDebug) Debug.WriteLine(" . . . . . . .. . . .. . .. . . .");
+        //foreach(var l in SubClasesLinksCollection )
+        //{
+                //if (okDebug) Debug.Write(" SubClass : ");
+                //if (okDebug) Debug.WriteLine(l.SubClass.Name);
+        //}
+
+
+        if (numSuperEntitys <= 0)
+        {
+            centinela = false;  
+        }
+        else if (numSuperEntitys ==1)
+        {
+            centinela = true;  
+        }
+        else if (numSuperEntitys > 1)
+        {
+             // es un error de modelado. Es necesario hacer saltar una excepción
+            string mensaje = "La entidad de nombre '"+entity.Name+"' Se ha modelado con herencia multiple, cambie la propiedad de algunas de sus herencias a tipo DelegationComposition";
+            throw new System.ApplicationException(mensaje);
+        }
+
+        if (okDebug) Debug.WriteLine(String.Format("centinela ='{0}'",centinela));
+        
+        // comprobamos que la entidad no esta anidada
+        if (centinela & entity.SourceClassBase != null)
+        {
+            string mensaje = "La entidad de nombre '"+entity.Name+"' Se ha modelado con herencia multiple, cambie la propiedad de algunas de sus herencias a tipo DelegationComposition";
+            throw new System.ApplicationException(mensaje);
+        }
+
+        if ((!centinela) & entity.SourceClassBase != null)
+        {
+
+            centinela = true;  
+            
+        }
+        if (okDebug) Debug.WriteLine(String.Format("centinela ='{0}'",centinela));
+        return centinela;
+    }
+
+
+
+
+#>
+
+<#+ 
+
+// https://mhusseini.wordpress.com/2013/06/06/write-to-visual-studios-output-window/
+
+//    public class VsOutput
+//    {
+//        public static void Output(string msg)
+//        {
+//            // Get the output window
+//            var outputWindow = Package.GetGlobalService(typeof(SVsOutputWindow)) as IVsOutputWindow;
+// 
+//            // Ensure that the desired pane is visible
+//            var paneGuid = Microsoft.VisualStudio.VSConstants.OutputWindowPaneGuid.GeneralPane_guid;
+//            IVsOutputWindowPane pane;
+//            outputWindow.CreatePane(paneGuid, "General", 1, 0);
+//            outputWindow.GetPane(paneGuid, out pane);
+// 
+//            // Output the message
+//            pane.OutputString(msg);
+//        }
+//    }
+ #>

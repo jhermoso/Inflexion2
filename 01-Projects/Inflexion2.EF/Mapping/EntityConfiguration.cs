@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------------------------------
-// <copyright file="EntityConfiguration.cs" company="HexaSystems Inc">
-// Copyright (c) HexaSystems Inc. Licensed under the Apache License, Version 2.0 (the "License")
+// <copyright file="EntityConfiguration.cs" company="Inflexion2 Inc">
+// Copyright (c) Inflexion2 Inc. Licensed under the Apache License, Version 2.0 (the "License")
 // </copyright>
 //-----------------------------------------------------------------------------------------------
 namespace Inflexion2.Domain
@@ -23,6 +23,7 @@ namespace Inflexion2.Domain
         /// </summary>
         public EntityConfiguration()
         {
+            
             this.HasKey(x => x.Id);
 
             this.Property(x => x.Id)

@@ -34,7 +34,13 @@ public class RegionPropertiesFromTargets : Template
         /// <value>
         /// Valor que es utilizado para establecer y obtener <#= T4Help.SecureName(property.SourceRolName) #>.
         /// </value>
+<#+
+    if( /*!IsTargetEntityAnAggregateRoot(property)*/ !IsMinMultiplicityCero(property.SourceMultiplicity))
+    { 
+#>
         [ChildrenRelationshipDeleteBehavior(Delete.<#=(property.CascadeDelete)?"Cascade":"Restrict" #>)]
+<#+ }
+#>
         public <#=(cbc.diagram.ORM.Length >0)?"virtual":"" #> <#= GetTypeFromAssociationLink(property, (I=="I"), cbc.idtype, false) #> <#= T4Help.SecureName(property.SourceRolName) #> 
         { 
             get

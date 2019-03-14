@@ -1,0 +1,1269 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AirBus.Suite.Zeus.Application</name>
+    </assembly>
+    <members>
+        <member name="T:AirBus.Suite.Zeus.Application.IProjectMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.Zeus.Application.ProjectMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ProjectDto"/> con una entidad <see cref="T:AirBus.Suite.Zeus.Application.ProjectMapper"/>.
+            </remarks>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.IProjectServices">
+            <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:AirBus.Suite.Zeus.Application.IProjectServices"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IProjectServices.Create(AirBus.Suite.Zeus.Application.Dtos.ProjectDto)">
+            <summary>
+            .en Create an entity of type IProject.
+            .es Función encargada de la creación de una entidad de tipo IProject.
+            </summary>
+            <param name="projectDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ProjectDto"/> con los datos necesarios
+            para la creación de la entidad Project.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve el identificador único de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IProjectServices.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo Project.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="ProjectId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve <b>True</b> si la eliminación ha sido correcta y
+            <b>False</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IProjectServices.GetAll">
+            <summary>
+            Función encargada de obtener todas las entidades de tipo Project.
+            </summary>
+            <remarks>
+            Devuelve la totalidad de las entidades.
+            </remarks>        /// <returns>
+            Devuelve listado de Dto´s de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ProjectDto"/>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IProjectServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Project, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>        /// <returns>
+            La lista paginada de entidades Project, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IProjectServices.GetById(System.Int32)">
+            <summary>
+            Función encargada de obtener una entidad Project de acuerdo a
+            su identificador.
+            </summary>
+            <param name="projectId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>
+            <returns>
+            Devuelve objeto Dto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ProjectDto"/> con la información requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IProjectServices.Update(AirBus.Suite.Zeus.Application.Dtos.ProjectDto)">
+            <summary>
+            Actualiza una determinada entidad Project.
+            </summary>
+            <param name="projectDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>        /// <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.ProjectMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.Zeus.Application.ProjectMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ProjectDto"/> con una entidad <see cref="T:AirBus.Suite.Zeus.Application.ProjectMapper"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ProjectMapper.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Zeus.Application.ProjectMapper"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ProjectMapper.EntityMapping(AirBus.Suite.Zeus.Domain.IProject)">
+            <summary>
+            Función pública que mapea las entidades para devolver el
+            correspondiente Dto.
+            </summary>
+            <remarks>
+            Se encarga de mapear objetos <see cref="T:AirBus.Suite.Zeus.Domain.Project"/> 
+            devolviendo un objeto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ProjectDto"/>.
+            </remarks>
+            <param name="entityProject">
+            Objeto de la entidad <see cref="T:AirBus.Suite.Zeus.Domain.Project"/>.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de <c>entityProject</c> es null.
+            </exception>
+            <returns>
+            Devuelve un objeto de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ProjectDto"/> 
+            con los datos mapeados.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.ProjectServices">
+            <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity Project.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad Project.
+            </summary>
+            <remarks>
+            .en Create an object of type <see cref="T:AirBus.Suite.Zeus.Domain.Project"/>.
+            .es Crea un objeto <see cref="T:AirBus.Suite.Zeus.Domain.Project"/>.
+             permanent guid = 
+            </remarks>
+        </member>
+        <member name="F:AirBus.Suite.Zeus.Application.ProjectServices.projectMapper">
+            <summary>
+            Referencia al mapeador de la entidad Project.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ProjectServices.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Project>Service"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:ProjectServices"/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Application.ProjectServices.ProjectMapper">
+            <summary>
+            Obtiene la referencia al mapeador de la entidad <see cref="T:IProject"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ProjectServices.Create(AirBus.Suite.Zeus.Application.Dtos.ProjectDto)">
+            <summary>
+            Crea una entidad Project.
+            </summary>
+            <param name="projectDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+            <returns>
+            El identificador de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ProjectServices.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad Project.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ProjectServices.GetAll">
+            <summary>
+            Recupera todas las entidades Project.
+            </summary>
+            <returns>
+            Todas las entidades Project.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ProjectServices.GetById(System.Int32)">
+            <summary>
+            Recupera una entidad Project mediante su identificador correspondiente.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a recuperar.
+            </param>
+            <returns>
+            La entidad Project recuperada o valor nulo si no se encuentra.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ProjectServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Project, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades 'Project', según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ProjectServices.Update(AirBus.Suite.Zeus.Application.Dtos.ProjectDto)">
+            <summary>
+            Actualiza una determinada entidad Project.
+            </summary>
+            <param name="projectDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+            <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ProjectServices.Commit">
+            <summary>
+            adapter of commit operation independent form the ORM
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.ITimeRecordMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.Zeus.Application.TimeRecordMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.TimeRecordDto"/> con una entidad <see cref="T:AirBus.Suite.Zeus.Application.TimeRecordMapper"/>.
+            </remarks>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.ITimeRecordServices">
+            <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:AirBus.Suite.Zeus.Application.ITimeRecordServices"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ITimeRecordServices.Create(AirBus.Suite.Zeus.Application.Dtos.TimeRecordDto)">
+            <summary>
+            .en Create an entity of type ITimeRecord.
+            .es Función encargada de la creación de una entidad de tipo ITimeRecord.
+            </summary>
+            <param name="timeRecordDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.TimeRecordDto"/> con los datos necesarios
+            para la creación de la entidad TimeRecord.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve el identificador único de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ITimeRecordServices.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo TimeRecord.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="TimeRecordId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve <b>True</b> si la eliminación ha sido correcta y
+            <b>False</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ITimeRecordServices.GetAll">
+            <summary>
+            Función encargada de obtener todas las entidades de tipo TimeRecord.
+            </summary>
+            <remarks>
+            Devuelve la totalidad de las entidades.
+            </remarks>        /// <returns>
+            Devuelve listado de Dto´s de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.TimeRecordDto"/>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ITimeRecordServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades TimeRecord, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>        /// <returns>
+            La lista paginada de entidades TimeRecord, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ITimeRecordServices.GetById(System.Int32)">
+            <summary>
+            Función encargada de obtener una entidad TimeRecord de acuerdo a
+            su identificador.
+            </summary>
+            <param name="timeRecordId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>
+            <returns>
+            Devuelve objeto Dto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.TimeRecordDto"/> con la información requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ITimeRecordServices.Update(AirBus.Suite.Zeus.Application.Dtos.TimeRecordDto)">
+            <summary>
+            Actualiza una determinada entidad TimeRecord.
+            </summary>
+            <param name="timeRecordDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>        /// <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.TimeRecordMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.Zeus.Application.TimeRecordMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.TimeRecordDto"/> con una entidad <see cref="T:AirBus.Suite.Zeus.Application.TimeRecordMapper"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.TimeRecordMapper.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Zeus.Application.TimeRecordMapper"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.TimeRecordMapper.EntityMapping(AirBus.Suite.Zeus.Domain.ITimeRecord)">
+            <summary>
+            Función pública que mapea las entidades para devolver el
+            correspondiente Dto.
+            </summary>
+            <remarks>
+            Se encarga de mapear objetos <see cref="T:AirBus.Suite.Zeus.Domain.TimeRecord"/> 
+            devolviendo un objeto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.TimeRecordDto"/>.
+            </remarks>
+            <param name="entityTimeRecord">
+            Objeto de la entidad <see cref="T:AirBus.Suite.Zeus.Domain.TimeRecord"/>.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de <c>entityTimeRecord</c> es null.
+            </exception>
+            <returns>
+            Devuelve un objeto de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.TimeRecordDto"/> 
+            con los datos mapeados.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.TimeRecordServices">
+            <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity TimeRecord.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad TimeRecord.
+            </summary>
+            <remarks>
+            .en Create an object of type <see cref="T:AirBus.Suite.Zeus.Domain.TimeRecord"/>.
+            .es Crea un objeto <see cref="T:AirBus.Suite.Zeus.Domain.TimeRecord"/>.
+             permanent guid = 
+            </remarks>
+        </member>
+        <member name="F:AirBus.Suite.Zeus.Application.TimeRecordServices.timeRecordMapper">
+            <summary>
+            Referencia al mapeador de la entidad TimeRecord.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.TimeRecordServices.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:TimeRecord>Service"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:TimeRecordServices"/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Application.TimeRecordServices.TimeRecordMapper">
+            <summary>
+            Obtiene la referencia al mapeador de la entidad <see cref="T:ITimeRecord"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.TimeRecordServices.Create(AirBus.Suite.Zeus.Application.Dtos.TimeRecordDto)">
+            <summary>
+            Crea una entidad TimeRecord.
+            </summary>
+            <param name="timeRecordDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+            <returns>
+            El identificador de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.TimeRecordServices.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad TimeRecord.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.TimeRecordServices.GetAll">
+            <summary>
+            Recupera todas las entidades TimeRecord.
+            </summary>
+            <returns>
+            Todas las entidades TimeRecord.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.TimeRecordServices.GetById(System.Int32)">
+            <summary>
+            Recupera una entidad TimeRecord mediante su identificador correspondiente.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a recuperar.
+            </param>
+            <returns>
+            La entidad TimeRecord recuperada o valor nulo si no se encuentra.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.TimeRecordServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades TimeRecord, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades 'TimeRecord', según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.TimeRecordServices.Update(AirBus.Suite.Zeus.Application.Dtos.TimeRecordDto)">
+            <summary>
+            Actualiza una determinada entidad TimeRecord.
+            </summary>
+            <param name="timeRecordDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+            <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.TimeRecordServices.Commit">
+            <summary>
+            adapter of commit operation independent form the ORM
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.IUserMessageServices">
+            <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:AirBus.Suite.Zeus.Application.IUserMessageServices"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IUserMessageServices.Create(AirBus.Suite.Zeus.Application.Dtos.UserMessageDto)">
+            <summary>
+            .en Create an entity of type IUserMessage.
+            .es Función encargada de la creación de una entidad de tipo IUserMessage.
+            </summary>
+            <param name="userMessageDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.UserMessageDto"/> con los datos necesarios
+            para la creación de la entidad UserMessage.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve el identificador único de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IUserMessageServices.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo UserMessage.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="UserMessageId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve <b>True</b> si la eliminación ha sido correcta y
+            <b>False</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IUserMessageServices.GetAll">
+            <summary>
+            Función encargada de obtener todas las entidades de tipo UserMessage.
+            </summary>
+            <remarks>
+            Devuelve la totalidad de las entidades.
+            </remarks>        /// <returns>
+            Devuelve listado de Dto´s de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.UserMessageDto"/>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IUserMessageServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades UserMessage, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>        /// <returns>
+            La lista paginada de entidades UserMessage, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IUserMessageServices.GetById(System.Int32)">
+            <summary>
+            Función encargada de obtener una entidad UserMessage de acuerdo a
+            su identificador.
+            </summary>
+            <param name="userMessageId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>
+            <returns>
+            Devuelve objeto Dto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.UserMessageDto"/> con la información requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IUserMessageServices.Update(AirBus.Suite.Zeus.Application.Dtos.UserMessageDto)">
+            <summary>
+            Actualiza una determinada entidad UserMessage.
+            </summary>
+            <param name="userMessageDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>        /// <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.IZeusAppSettingMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.Zeus.Application.ZeusAppSettingMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusAppSettingDto"/> con una entidad <see cref="T:AirBus.Suite.Zeus.Application.ZeusAppSettingMapper"/>.
+            </remarks>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.IZeusAppSettingServices">
+            <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:AirBus.Suite.Zeus.Application.IZeusAppSettingServices"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IZeusAppSettingServices.Create(AirBus.Suite.Zeus.Application.Dtos.ZeusAppSettingDto)">
+            <summary>
+            .en Create an entity of type IZeusAppSetting.
+            .es Función encargada de la creación de una entidad de tipo IZeusAppSetting.
+            </summary>
+            <param name="zeusAppSettingDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusAppSettingDto"/> con los datos necesarios
+            para la creación de la entidad ZeusAppSetting.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve el identificador único de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IZeusAppSettingServices.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo ZeusAppSetting.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="ZeusAppSettingId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve <b>True</b> si la eliminación ha sido correcta y
+            <b>False</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IZeusAppSettingServices.GetAll">
+            <summary>
+            Función encargada de obtener todas las entidades de tipo ZeusAppSetting.
+            </summary>
+            <remarks>
+            Devuelve la totalidad de las entidades.
+            </remarks>        /// <returns>
+            Devuelve listado de Dto´s de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusAppSettingDto"/>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IZeusAppSettingServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades ZeusAppSetting, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>        /// <returns>
+            La lista paginada de entidades ZeusAppSetting, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IZeusAppSettingServices.GetById(System.Int32)">
+            <summary>
+            Función encargada de obtener una entidad ZeusAppSetting de acuerdo a
+            su identificador.
+            </summary>
+            <param name="zeusAppSettingId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>
+            <returns>
+            Devuelve objeto Dto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusAppSettingDto"/> con la información requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IZeusAppSettingServices.Update(AirBus.Suite.Zeus.Application.Dtos.ZeusAppSettingDto)">
+            <summary>
+            Actualiza una determinada entidad ZeusAppSetting.
+            </summary>
+            <param name="zeusAppSettingDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>        /// <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.ZeusAppSettingMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.Zeus.Application.ZeusAppSettingMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusAppSettingDto"/> con una entidad <see cref="T:AirBus.Suite.Zeus.Application.ZeusAppSettingMapper"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusAppSettingMapper.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Zeus.Application.ZeusAppSettingMapper"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusAppSettingMapper.EntityMapping(AirBus.Suite.Zeus.Domain.IZeusAppSetting)">
+            <summary>
+            Función pública que mapea las entidades para devolver el
+            correspondiente Dto.
+            </summary>
+            <remarks>
+            Se encarga de mapear objetos <see cref="T:AirBus.Suite.Zeus.Domain.ZeusAppSetting"/> 
+            devolviendo un objeto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusAppSettingDto"/>.
+            </remarks>
+            <param name="entityZeusAppSetting">
+            Objeto de la entidad <see cref="T:AirBus.Suite.Zeus.Domain.ZeusAppSetting"/>.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de <c>entityZeusAppSetting</c> es null.
+            </exception>
+            <returns>
+            Devuelve un objeto de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusAppSettingDto"/> 
+            con los datos mapeados.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.ZeusAppSettingServices">
+            <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity ZeusAppSetting.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad ZeusAppSetting.
+            </summary>
+            <remarks>
+            .en Create an object of type <see cref="T:AirBus.Suite.Zeus.Domain.ZeusAppSetting"/>.
+            .es Crea un objeto <see cref="T:AirBus.Suite.Zeus.Domain.ZeusAppSetting"/>.
+             permanent guid = 
+            </remarks>
+        </member>
+        <member name="F:AirBus.Suite.Zeus.Application.ZeusAppSettingServices.zeusAppSettingMapper">
+            <summary>
+            Referencia al mapeador de la entidad ZeusAppSetting.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusAppSettingServices.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ZeusAppSetting>Service"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:ZeusAppSettingServices"/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Application.ZeusAppSettingServices.ZeusAppSettingMapper">
+            <summary>
+            Obtiene la referencia al mapeador de la entidad <see cref="T:IZeusAppSetting"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusAppSettingServices.Create(AirBus.Suite.Zeus.Application.Dtos.ZeusAppSettingDto)">
+            <summary>
+            Crea una entidad ZeusAppSetting.
+            </summary>
+            <param name="zeusAppSettingDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+            <returns>
+            El identificador de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusAppSettingServices.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad ZeusAppSetting.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusAppSettingServices.GetAll">
+            <summary>
+            Recupera todas las entidades ZeusAppSetting.
+            </summary>
+            <returns>
+            Todas las entidades ZeusAppSetting.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusAppSettingServices.GetById(System.Int32)">
+            <summary>
+            Recupera una entidad ZeusAppSetting mediante su identificador correspondiente.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a recuperar.
+            </param>
+            <returns>
+            La entidad ZeusAppSetting recuperada o valor nulo si no se encuentra.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusAppSettingServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades ZeusAppSetting, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades 'ZeusAppSetting', según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusAppSettingServices.Update(AirBus.Suite.Zeus.Application.Dtos.ZeusAppSettingDto)">
+            <summary>
+            Actualiza una determinada entidad ZeusAppSetting.
+            </summary>
+            <param name="zeusAppSettingDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+            <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusAppSettingServices.Commit">
+            <summary>
+            adapter of commit operation independent form the ORM
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.IZeusDepartmentMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.Zeus.Application.ZeusDepartmentMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusDepartmentDto"/> con una entidad <see cref="T:AirBus.Suite.Zeus.Application.ZeusDepartmentMapper"/>.
+            </remarks>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.IZeusDepartmentServices">
+            <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:AirBus.Suite.Zeus.Application.IZeusDepartmentServices"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IZeusDepartmentServices.Create(AirBus.Suite.Zeus.Application.Dtos.ZeusDepartmentDto)">
+            <summary>
+            .en Create an entity of type IZeusDepartment.
+            .es Función encargada de la creación de una entidad de tipo IZeusDepartment.
+            </summary>
+            <param name="zeusDepartmentDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusDepartmentDto"/> con los datos necesarios
+            para la creación de la entidad ZeusDepartment.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve el identificador único de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IZeusDepartmentServices.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo ZeusDepartment.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="ZeusDepartmentId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve <b>True</b> si la eliminación ha sido correcta y
+            <b>False</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IZeusDepartmentServices.GetAll">
+            <summary>
+            Función encargada de obtener todas las entidades de tipo ZeusDepartment.
+            </summary>
+            <remarks>
+            Devuelve la totalidad de las entidades.
+            </remarks>        /// <returns>
+            Devuelve listado de Dto´s de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusDepartmentDto"/>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IZeusDepartmentServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades ZeusDepartment, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>        /// <returns>
+            La lista paginada de entidades ZeusDepartment, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IZeusDepartmentServices.GetById(System.Int32)">
+            <summary>
+            Función encargada de obtener una entidad ZeusDepartment de acuerdo a
+            su identificador.
+            </summary>
+            <param name="zeusDepartmentId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>
+            <returns>
+            Devuelve objeto Dto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusDepartmentDto"/> con la información requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IZeusDepartmentServices.Update(AirBus.Suite.Zeus.Application.Dtos.ZeusDepartmentDto)">
+            <summary>
+            Actualiza una determinada entidad ZeusDepartment.
+            </summary>
+            <param name="zeusDepartmentDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>        /// <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IZeusDepartmentServices.AddUserMessages(AirBus.Suite.Zeus.Application.Dtos.UserMessageDto)">
+            <summary>
+            Función encargada de la añadir a la entidad ZeusDepartment una instancia de la propiedad UserMessages de tipo ZeusDepartment
+            </summary>
+            <param name="userMessagesDto"> de tipo UserMessage</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IZeusDepartmentServices.RemoveUserMessages(AirBus.Suite.Zeus.Application.Dtos.UserMessageDto)">
+            <summary>
+            Función encargada de borrar de la entidad ZeusDepartment una instancia de la colección UserMessages de tipo ZeusDepartment
+            </summary>
+            <param name="userMessagesDto"> de tipo ZeusDepartment</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IZeusDepartmentServices.UpdateUserMessages(AirBus.Suite.Zeus.Application.Dtos.UserMessageDto)">
+            <summary>
+            Función encargada de actualizar de la entidad ZeusDepartment una instancia de la colección UserMessages de tipo ZeusDepartment
+            </summary>
+            <param name="userMessagesDto"> de tipo ZeusDepartment</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.ZeusDepartmentMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.Zeus.Application.ZeusDepartmentMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusDepartmentDto"/> con una entidad <see cref="T:AirBus.Suite.Zeus.Application.ZeusDepartmentMapper"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusDepartmentMapper.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Zeus.Application.ZeusDepartmentMapper"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusDepartmentMapper.EntityMapping(AirBus.Suite.Zeus.Domain.IZeusDepartment)">
+            <summary>
+            Función pública que mapea las entidades para devolver el
+            correspondiente Dto.
+            </summary>
+            <remarks>
+            Se encarga de mapear objetos <see cref="T:AirBus.Suite.Zeus.Domain.ZeusDepartment"/> 
+            devolviendo un objeto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusDepartmentDto"/>.
+            </remarks>
+            <param name="entityZeusDepartment">
+            Objeto de la entidad <see cref="T:AirBus.Suite.Zeus.Domain.ZeusDepartment"/>.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de <c>entityZeusDepartment</c> es null.
+            </exception>
+            <returns>
+            Devuelve un objeto de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusDepartmentDto"/> 
+            con los datos mapeados.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.ZeusDepartmentServices">
+            <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity ZeusDepartment.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad ZeusDepartment.
+            </summary>
+            <remarks>
+            .en Create an object of type <see cref="T:AirBus.Suite.Zeus.Domain.ZeusDepartment"/>.
+            .es Crea un objeto <see cref="T:AirBus.Suite.Zeus.Domain.ZeusDepartment"/>.
+             permanent guid = 
+            </remarks>
+        </member>
+        <member name="F:AirBus.Suite.Zeus.Application.ZeusDepartmentServices.zeusDepartmentMapper">
+            <summary>
+            Referencia al mapeador de la entidad ZeusDepartment.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusDepartmentServices.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ZeusDepartment>Service"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:ZeusDepartmentServices"/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Application.ZeusDepartmentServices.ZeusDepartmentMapper">
+            <summary>
+            Obtiene la referencia al mapeador de la entidad <see cref="T:IZeusDepartment"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusDepartmentServices.Create(AirBus.Suite.Zeus.Application.Dtos.ZeusDepartmentDto)">
+            <summary>
+            Crea una entidad ZeusDepartment.
+            </summary>
+            <param name="zeusDepartmentDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+            <returns>
+            El identificador de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusDepartmentServices.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad ZeusDepartment.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusDepartmentServices.GetAll">
+            <summary>
+            Recupera todas las entidades ZeusDepartment.
+            </summary>
+            <returns>
+            Todas las entidades ZeusDepartment.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusDepartmentServices.GetById(System.Int32)">
+            <summary>
+            Recupera una entidad ZeusDepartment mediante su identificador correspondiente.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a recuperar.
+            </param>
+            <returns>
+            La entidad ZeusDepartment recuperada o valor nulo si no se encuentra.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusDepartmentServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades ZeusDepartment, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades 'ZeusDepartment', según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusDepartmentServices.GetUserMessageById(System.Int32)">
+            <summary>
+            Método encargado de obtener una <see cref="T:AirBus.Suite.Zeus.Domain.UserMessage"/> a partir 
+            de su identificador.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="userMessageId">
+            Parámetro que indica el identificador único de la entidad a obtener.
+            </param>
+            <returns>
+            Devuelve la entidad <see cref="T:AirBus.Suite.Zeus.Domain.UserMessage"/> según el identificador.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusDepartmentServices.Update(AirBus.Suite.Zeus.Application.Dtos.ZeusDepartmentDto)">
+            <summary>
+            Actualiza una determinada entidad ZeusDepartment.
+            </summary>
+            <param name="zeusDepartmentDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+            <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusDepartmentServices.AddUserMessages(AirBus.Suite.Zeus.Application.Dtos.UserMessageDto)">
+            <summary>
+            Función encargada de la añadir a la entidad ZeusDepartment una instancia de la propiedad UserMessages de tipo ZeusDepartment
+            </summary>
+            <param name="userMessagesDto"> de tipo UserMessage</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusDepartmentServices.RemoveUserMessages(AirBus.Suite.Zeus.Application.Dtos.UserMessageDto)">
+            <summary>
+            Función encargada de borrar de la entidad ZeusDepartment una instancia de la colección UserMessages de tipo ZeusDepartment
+            </summary>
+            <param name="userMessagesDto"> de tipo ZeusDepartment</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusDepartmentServices.UpdateUserMessages(AirBus.Suite.Zeus.Application.Dtos.UserMessageDto)">
+            <summary>
+            Función encargada de actualizar de la entidad ZeusDepartment una instancia de la colección UserMessages de tipo ZeusDepartment
+            </summary>
+            <param name="userMessagesDto"> de tipo ZeusDepartment</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusDepartmentServices.Commit">
+            <summary>
+            adapter of commit operation independent form the ORM
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.IZeusUserMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.Zeus.Application.ZeusUserMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusUserDto"/> con una entidad <see cref="T:AirBus.Suite.Zeus.Application.ZeusUserMapper"/>.
+            </remarks>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.IZeusUserServices">
+            <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:AirBus.Suite.Zeus.Application.IZeusUserServices"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IZeusUserServices.Create(AirBus.Suite.Zeus.Application.Dtos.ZeusUserDto)">
+            <summary>
+            .en Create an entity of type IZeusUser.
+            .es Función encargada de la creación de una entidad de tipo IZeusUser.
+            </summary>
+            <param name="zeusUserDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusUserDto"/> con los datos necesarios
+            para la creación de la entidad ZeusUser.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve el identificador único de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IZeusUserServices.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo ZeusUser.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="ZeusUserId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve <b>True</b> si la eliminación ha sido correcta y
+            <b>False</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IZeusUserServices.GetAll">
+            <summary>
+            Función encargada de obtener todas las entidades de tipo ZeusUser.
+            </summary>
+            <remarks>
+            Devuelve la totalidad de las entidades.
+            </remarks>        /// <returns>
+            Devuelve listado de Dto´s de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusUserDto"/>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IZeusUserServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades ZeusUser, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>        /// <returns>
+            La lista paginada de entidades ZeusUser, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IZeusUserServices.GetById(System.Int32)">
+            <summary>
+            Función encargada de obtener una entidad ZeusUser de acuerdo a
+            su identificador.
+            </summary>
+            <param name="zeusUserId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>
+            <returns>
+            Devuelve objeto Dto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusUserDto"/> con la información requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.IZeusUserServices.Update(AirBus.Suite.Zeus.Application.Dtos.ZeusUserDto)">
+            <summary>
+            Actualiza una determinada entidad ZeusUser.
+            </summary>
+            <param name="zeusUserDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>        /// <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.ZeusUserMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.Zeus.Application.ZeusUserMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusUserDto"/> con una entidad <see cref="T:AirBus.Suite.Zeus.Application.ZeusUserMapper"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusUserMapper.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Zeus.Application.ZeusUserMapper"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusUserMapper.EntityMapping(AirBus.Suite.Zeus.Domain.IZeusUser)">
+            <summary>
+            Función pública que mapea las entidades para devolver el
+            correspondiente Dto.
+            </summary>
+            <remarks>
+            Se encarga de mapear objetos <see cref="T:AirBus.Suite.Zeus.Domain.ZeusUser"/> 
+            devolviendo un objeto <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusUserDto"/>.
+            </remarks>
+            <param name="entityZeusUser">
+            Objeto de la entidad <see cref="T:AirBus.Suite.Zeus.Domain.ZeusUser"/>.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de <c>entityZeusUser</c> es null.
+            </exception>
+            <returns>
+            Devuelve un objeto de tipo <see cref="T:AirBus.Suite.Zeus.Application.Dtos.ZeusUserDto"/> 
+            con los datos mapeados.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.Zeus.Application.ZeusUserServices">
+            <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity ZeusUser.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad ZeusUser.
+            </summary>
+            <remarks>
+            .en Create an object of type <see cref="T:AirBus.Suite.Zeus.Domain.ZeusUser"/>.
+            .es Crea un objeto <see cref="T:AirBus.Suite.Zeus.Domain.ZeusUser"/>.
+             permanent guid = 
+            </remarks>
+        </member>
+        <member name="F:AirBus.Suite.Zeus.Application.ZeusUserServices.zeusUserMapper">
+            <summary>
+            Referencia al mapeador de la entidad ZeusUser.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusUserServices.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ZeusUser>Service"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:ZeusUserServices"/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.Zeus.Application.ZeusUserServices.ZeusUserMapper">
+            <summary>
+            Obtiene la referencia al mapeador de la entidad <see cref="T:IZeusUser"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusUserServices.Create(AirBus.Suite.Zeus.Application.Dtos.ZeusUserDto)">
+            <summary>
+            Crea una entidad ZeusUser.
+            </summary>
+            <param name="zeusUserDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+            <returns>
+            El identificador de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusUserServices.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad ZeusUser.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusUserServices.GetAll">
+            <summary>
+            Recupera todas las entidades ZeusUser.
+            </summary>
+            <returns>
+            Todas las entidades ZeusUser.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusUserServices.GetById(System.Int32)">
+            <summary>
+            Recupera una entidad ZeusUser mediante su identificador correspondiente.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a recuperar.
+            </param>
+            <returns>
+            La entidad ZeusUser recuperada o valor nulo si no se encuentra.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusUserServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades ZeusUser, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades 'ZeusUser', según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusUserServices.Update(AirBus.Suite.Zeus.Application.Dtos.ZeusUserDto)">
+            <summary>
+            Actualiza una determinada entidad ZeusUser.
+            </summary>
+            <param name="zeusUserDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+            <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.Zeus.Application.ZeusUserServices.Commit">
+            <summary>
+            adapter of commit operation independent form the ORM
+            </summary>
+        </member>
+    </members>
+</doc>

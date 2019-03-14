@@ -11,7 +11,7 @@ public class ServiceGetById : Template
     {
         // conceptos propios del projecto en curso
         ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
-        string ResxFileName = prjCon.boundedContextName.Replace(".","") + "Resources"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+        string ResxFileName = prjCon.boundedContextName.Replace(".","") + "Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
         bool Secured = cbc.MainEntityStereotype.Contains("Bussiness"); // si es una entidad de negocio entoces esta securizada es decir necesita identificación y autorización
         bool Trazable = cbc.MainEntityStereotype.Contains("Bussiness") || cbc.MainEntityStereotype.Contains("Auditable"); // si es una entidad de negocio entoces esta securizada es decir necesita identificación y autorización
 
@@ -19,10 +19,10 @@ public class ServiceGetById : Template
 
         #region service GetById
         /// <summary>
-        /// Recupera una entidad <#= cbc.pascalSecureEntityName #> mediante su identificador correspondiente.
+        /// .es Recupera una entidad <#= cbc.pascalSecureEntityName #> mediante su identificador correspondiente.
         /// </summary>
         /// <param name="id">
-        /// Identificador de la entidad que se va a recuperar.
+        /// .es Identificador de la entidad que se va a recuperar.
         /// </param>
 <#+ if (Secured){ #>        /// <param name="userContextDto"> Información de contexto del usuario. </param><#+ }#>
         /// <returns>
@@ -36,20 +36,8 @@ public class ServiceGetById : Template
             try
             {               
                 I<#= cbc.pascalSecureEntityName #>Repository repo = ApplicationLayer.IocContainer.Resolve<I<#= cbc.pascalSecureEntityName #>Repository>();
-
-                // Obtener y comprobar la entidad.
-                //ISpecification<<#= cbc.pascalSecureEntityName #>> spec = new DirectSpecification<<#= cbc.pascalSecureEntityName #>>(t => t.Id == entityBId);
-                var temp = repo.GetFilteredElements(t => t.Id == id);
-                //string s = string.Format(Inflexion2.Resources.NoDataById, "<#= cbc.entity.AliasFrontEnd #>", id);
-
-                //Guard.ArgumentIsNotNull( entity, s );
-
-                if (temp.Count() > 0)
-                {
-                    <#= cbc.pascalSecureEntityName #> entity = temp.Single();
-                    // Mapeamos los datos.
-                    entityDto = this.<#= cbc.pascalSecureEntityName #>Mapper.EntityMapping(entity);
-                }
+				var entity = repo.GetById(id); //TODO: call async
+                entityDto = this.<#= cbc.pascalSecureEntityName #>Mapper.EntityMapping(entity);
             }
             catch (Exception ex)
             {

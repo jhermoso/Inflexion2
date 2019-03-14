@@ -24,9 +24,11 @@ public class InfraestructureResourcesToTranslateCT : Template
                 sharedKernelUsings =  GetSharedKernelReferencesByProject(projectNamespace, Skt, cbc.diagram);
             }
 #>
-<#= cbc.secureEntityName + "Alias"   + ResxHelp.spliTag #>(<#= cbc.diagram.App.Culture #>)<#= String.IsNullOrEmpty(cbc.entity.AliasFrontEnd)? T4Help.SplitPascalCase(cbc.entity.Name) : cbc.entity.AliasFrontEnd #><#= ResxHelp.spliTag + ResxHelp.copyTag #>Alias of entity <#=   cbc.secureEntityName #> in diagram.<#= ResxHelp.spliTag #>
-<#= cbc.secureEntityName + "Remarks" + ResxHelp.spliTag #>(<#= cbc.diagram.App.Culture #>)<#= String.IsNullOrEmpty(cbc.entity.Remarks      )? T4Help.SplitPascalCase(cbc.entity.Name) : cbc.entity.Remarks       #><#= ResxHelp.spliTag + ResxHelp.copyTag #>Remarks of entity <#= cbc.secureEntityName #> in diagram.<#= ResxHelp.spliTag #>
-<#= cbc.secureEntityName + "Tooltip" + ResxHelp.spliTag #>(<#= cbc.diagram.App.Culture #>)<#= String.IsNullOrEmpty(cbc.entity.Tooltip      )? T4Help.SplitPascalCase(cbc.entity.Name) : cbc.entity.Tooltip       #><#= ResxHelp.spliTag + ResxHelp.copyTag #>Tooltip of entity <#= cbc.secureEntityName #> in diagram.<#= ResxHelp.spliTag #>
+<#= cbc.secureEntityName + "Alias"			+ ResxHelp.spliTag #>(<#= cbc.diagram.App.Culture #>)<#= String.IsNullOrEmpty(cbc.entity.AliasFrontEnd	)? T4Help.SplitPascalCase(cbc.entity.Name) : cbc.entity.AliasFrontEnd #><#= ResxHelp.spliTag + ResxHelp.copyTag #>Singular Alias of entity <#=   cbc.secureEntityName #> in diagram.<#= ResxHelp.spliTag #>
+<#= cbc.secureEntityName + "Remarks"		+ ResxHelp.spliTag #>(<#= cbc.diagram.App.Culture #>)<#= String.IsNullOrEmpty(cbc.entity.Remarks		)? T4Help.SplitPascalCase(cbc.entity.Name) : cbc.entity.Remarks       #><#= ResxHelp.spliTag + ResxHelp.copyTag #>Remarks of entity <#= cbc.secureEntityName #> in diagram.<#= ResxHelp.spliTag #>
+<#= cbc.secureEntityName + "Tooltip"		+ ResxHelp.spliTag #>(<#= cbc.diagram.App.Culture #>)<#= String.IsNullOrEmpty(cbc.entity.Tooltip		)? T4Help.SplitPascalCase(cbc.entity.Name) : cbc.entity.Tooltip       #><#= ResxHelp.spliTag + ResxHelp.copyTag #>Tooltip of entity <#= cbc.secureEntityName #> in diagram.<#= ResxHelp.spliTag #>
+<#= cbc.secureEntityName + "PluralEntity"	+ ResxHelp.spliTag #>(<#= cbc.diagram.App.Culture #>)<#= String.IsNullOrEmpty(cbc.entity.PluralName		)? T4Help.SplitPascalCase(cbc.entity.Name) : cbc.entity.PluralName    #><#= ResxHelp.spliTag + ResxHelp.copyTag #>Plural name of the entity <#= cbc.secureEntityName #> in diagram.<#= ResxHelp.spliTag #>
+
 <#+
     foreach (var property in cbc.propertyObjects)
     {
@@ -69,6 +71,20 @@ public class InfraestructureResourcesToTranslateCT : Template
 <#= cbc.secureEntityName + "Duplicated" + T4Help.SecureName(property.SourceRolName) + ResxHelp.spliTag #>(en)The entity '<#= cbc.secureEntityName #>' don't allow repeated values in the property '<#=T4Help.SecureName(property.SourceRolName)#>'<#= ResxHelp.spliTag + ResxHelp.copyTag #> Error menssage of repeated value. <#= ResxHelp.spliTag #>
 <#+     } // end if#>
 <#+ } //end foreach#>
+
+<#+
+if (cbc.IsEnumeration)
+{
+    var enumeracion = (Enumeration)cbc.entity;
+    foreach (var enumerado in enumeracion.EnumValue)
+    {
+#>
+<#= T4Help.SecureName(enumerado.Value) + ResxHelp.spliTag #>(<#= cbc.diagram.App.Culture #>)<#= T4Help.SplitPascalCase(enumerado.Description.Trim()) + ResxHelp.spliTag + ResxHelp.copyTag #>Enum value from cbc.secureEntityName.<#= ResxHelp.spliTag #>
+<#+
+    } //end foreach
+}//end if
+ #>
+
 <#+
                 return this.GenerationEnvironment.ToString();
             }

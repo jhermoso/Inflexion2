@@ -1,0 +1,291 @@
+﻿<#+
+
+public class InfraestructureResourcesCT : Template
+{
+    // parametros de la plantilla
+    public DslContextDefinitionDiagram  diagram ;
+    public ActiveSolution               solutionInfo ;
+    public ClassBase                       entity ;
+    public string                       projectNamespace;
+    public string                       secureBdName;
+    public string KindTimeCall ; /* Los valores posibles son inicio, desarrollo, fin */
+        
+    public InfraestructureResourcesCT(DslContextDefinitionDiagram  d, ActiveSolution s, ClassBase e, string bd, string kindTimeCall)
+    {
+        diagram = d;
+        solutionInfo = s;
+        entity = e;
+        secureBdName = bd;
+        KindTimeCall = kindTimeCall;
+    }
+        
+    public override string TransformText()
+    {
+        bool IsEntity = entity is Entity; // ClassBase
+        string company = T4Help.SecureName(this.diagram.Company.ToString());
+        string idtype = (diagram.IdKind.Equals("Autonumerical"))  ? "Int32" : "Guid";
+        string secureEntityName = T4Help.SecureName(entity.Name);
+        string parentEntityName = null;
+        string accesModifier = GetStringInherintaceClassModifier(entity.InheritanceClassModifier); //  GetStringAccesModifier
+        string pascalSecureEntityName = T4Help.ToPascalCase(secureEntityName);
+        string camelSecureEntityName = T4Help.ToCamelCase(secureEntityName);
+        bool isAbstract = ( entity.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Abstract ) == kayak.MoneyGen.InheritClassKeywords.Abstract;
+        bool entityHasChildren = HasChildren(entity);
+        ITree<ClassBase> entityChildren = null;
+
+        LinkedElementCollection<Atributte> propertyObjects = ClassBaseHasAtributtes.GetAtributtes(entity); // este metodo es definido en el dsl domainRealtionship public partial class ClassBaseHasAtributtes 
+        var mandatoryPropertyObjects = propertyObjects.Where(att => att.RequestUponCreation == RequestUponCreation.yes);
+        var nonMandatoryPropertyObjects = propertyObjects.Where(att => att.RequestUponCreation != RequestUponCreation.yes);
+        int numEntityFieldsMandatory= propertyObjects.Where(att => att.RequestUponCreation == RequestUponCreation.yes).Count();
+        int numEntityFields= propertyObjects.Count;
+
+        System.Collections.ObjectModel.ReadOnlyCollection<kayak.MoneyGen.Association> propertyAssociationTargets = Association.GetLinksToTargets(entity); // lista de propiedades obtenidas de las relaciones de destino
+        var mandatoryPropertyFromTargets = propertyAssociationTargets.Where( p=> p.TargetMultiplicity==kayak.MoneyGen.Multiplicity.OneOne | p.TargetMultiplicity==kayak.MoneyGen.Multiplicity.OneMany); // subconjunto de propiedades de tipo mandatory de las anteriores es decri cuya multiplicidad minima es uno
+        System.Collections.ObjectModel.ReadOnlyCollection<kayak.MoneyGen.Association> propertyAssociationSources = Association.GetLinksToSources(entity); // lista de propiedades provenientes de las relaciones de origen
+        var mandatoryPropertyFromSources = propertyAssociationSources.Where( p=> p.SourceMultiplicity==kayak.MoneyGen.Multiplicity.OneOne | p.SourceMultiplicity==kayak.MoneyGen.Multiplicity.OneMany);// subconjunto de propiedades de tipo mandatory de las anteriores es decri cuya multiplicidad minima es uno 
+
+        int sourceLinksCounter= propertyAssociationSources.Count();
+        int targetLinksCounter= propertyAssociationTargets.Count();
+        int mandatorySourceLinksCounter= mandatoryPropertyFromSources.Count();
+        int mandatoryTargetLinksCounter= mandatoryPropertyFromTargets.Count();
+
+        int spaceformatcounter= secureEntityName.ToString().Length;
+        int counter = 0;
+        System.Type t;
+        bool propertyIsValueType = false;
+
+        KindComponented kindComponent = WhatTypeComponented(entity);
+        string superfolder;
+        string MandatoryConstructorParamns = GetConstructorParametersString( entity, diagram.IdKind.Equals("Autonumerical"),SelectionCriteriaAttributes.Mandatory, 80, false, spaceformatcounter+23, true, false, true, true, true,camelSecureEntityName+"Dto.","");//le sumamos 21 por que son loscaracteres que hay hasta el comienzo del texto donde utilizamos esta variable. 
+        string MadatoryEntityBaseConstructorParamans = "";
+        string MadatoryEntityBaseConstructorParamansDefinition = "";
+
+        bool isDerivedFromOneEntity= IsDerived( entity); // consultamos si esta entidad hereda de alguna otra por herencia simple del lenguaje.
+        ClassBase entitySuperClass = null;
+        string entityCore =null;
+        if (isDerivedFromOneEntity)
+        {
+            entitySuperClass = GetSuperEntity(entity); 
+            superfolder = GetSuperFolders(entity);
+            MadatoryEntityBaseConstructorParamansDefinition = GetConstructorParametersString( entitySuperClass, diagram.IdKind.Equals("Autonumerical"),SelectionCriteriaAttributes.Mandatory, 80, true, spaceformatcounter+23, false, false, true, true );
+            MadatoryEntityBaseConstructorParamans = GetConstructorParametersString( entitySuperClass, diagram.IdKind.Equals("Autonumerical"),SelectionCriteriaAttributes.Mandatory, 80, false, spaceformatcounter+23, false, false, true, true );
+            parentEntityName = T4Help.ToPascalCase(entitySuperClass.Name);
+        }
+
+        if(entity.Auditable)
+        {
+            entityCore = "ReadWriteAuditableRepositoryBase<I"+secureEntityName+", "+idtype +">";
+        }
+        else
+        {
+            entityCore = "ReadWriteRepositoryBase< I"+secureEntityName+", "+idtype +">";
+        }
+
+        if ( entityHasChildren )
+        {
+            entityChildren = ReadClassesHierarchie((ClassBase)entity);
+        }
+
+
+
+        //var cpyrigth = new CopyrightHeader(diagram,solutionInfo,entity);
+// string cpyrigthText = cpyrigth.TransformText(); // en principio esta linea se comenta pues no tenemos un texto de copywrigth para los fichero
+// =proyecto = namespace = Company.Boundecontext1.BoundeDContex2....BoundeDContexN.Infraestructure.Maps.nHibernate31.Oracle
+// la estrategia de generación es de un fichero por clase debido a que podemos tener varias formas de mapear la herencia en una misma taxonomia 
+// y nhibernate nos exige que si en una misma taxonomia hay varias formas de herencia entonces se han de utilizar ficheros separados
+// 2ª las clases base son Class
+// Las clases que heredan de otra son 
+#>
+<#+
+            if(KindTimeCall =="inicio" | KindTimeCall == "soloUna" )
+            {
+#>
+<?xml version="1.0" ?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+<#+
+            }
+ if(KindTimeCall == "desarrollo" | KindTimeCall == "inicio" | KindTimeCall == "soloUna" )
+            {
+ #>
+  <data name="<#= secureEntityName+"Alias" #>" xml:space="preserve">
+    <value><#= entity.Alias.ToString() #></value>
+  </data>
+  <data name="<#= secureEntityName+"Remarks" #>" xml:space="preserve">
+    <value><#= entity.Remarks.ToString() #></value>
+  </data>
+  <data name="<#= secureEntityName+"Tooltip" #>" xml:space="preserve">
+    <value><#= entity.Tooltip.ToString() #></value>
+  </data>
+<#+
+    foreach (var property in propertyObjects)
+    {
+#>
+  <data name="<#= secureEntityName+"_"+ T4Help.SecureName(property.AtributteName)+"Alias" #>" xml:space="preserve">
+    <value><#= property.AtributteAlias.ToString() #></value>
+    <comment><#= T4Help.StrCleanLfCR(property.ProgramerRemarks).ToString() #></comment>
+  </data>
+  <data name="<#= secureEntityName+"_"+ T4Help.SecureName(property.AtributteName)+"Remarks" #>" xml:space="preserve">
+    <value><#= T4Help.StrCleanLfCR(property.UserRemarks).ToString() #></value>
+    <comment><#= "Programer Remarks. Comentarios para el programador." #></comment>
+  </data>
+  <data name="<#= secureEntityName+"_"+ T4Help.SecureName(property.AtributteName)+"Tooltip" #>" xml:space="preserve">
+    <value><#= T4Help.StrCleanLfCR(property.Tooltip).ToString() #></value>
+  </data>
+<#+
+    }
+#>
+<#+
+    foreach (var property in propertyAssociationSources)
+    {
+                // Debug.WriteLine("composition target link encontrado",property.ToString() );
+                // string propertyType= property.Target.Name;
+#>
+  <data name="<#= secureEntityName+"_"+ T4Help.SecureName(property.TargetRolName)+"Alias_" #>" xml:space="preserve">
+    <value><#= T4Help.SplitPascalCase(property.TargetRolName).ToString() #></value>
+    <comment><#= "Source Rol from relationship. Propiedad obtenida desde el rol origen de una relación." #></comment>
+  </data>
+<#+ 
+    }
+#>
+<#+
+    foreach (var property in propertyAssociationTargets)
+    {
+                // Debug.WriteLine("composition target link encontrado",property.ToString() );
+                // string propertyType= property.Target.Name;
+#>
+  <data name="<#= secureEntityName+"_"+ T4Help.SecureName(property.SourceRolName)+"Alias__" #>" xml:space="preserve">
+    <value><#= T4Help.SplitPascalCase(property.SourceRolName).ToString() #></value>
+    <comment><#= "Target Rol from relationship. Propiedad obtenida desde el rol destino de una relación." #></comment>
+  </data>
+<#+ 
+    }
+#>
+<#+          } 
+ if(KindTimeCall == "fin"  | KindTimeCall == "soloUna" )
+            {
+#>
+</root>
+<#+          } #>
+<#+
+                return this.GenerationEnvironment.ToString();
+            }
+        }
+#>

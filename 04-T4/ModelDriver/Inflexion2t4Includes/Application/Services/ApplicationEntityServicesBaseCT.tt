@@ -52,8 +52,13 @@ public class ApplicationEntityServicesBaseCT : Template
         var serviceActivateEntityPrivate           = new ServiceActivateEntityPrivate( cbc, projectNamespace, Skt);               string ServiceActivateEntityPrivateTxt         = serviceActivateEntityPrivate.TransformText();
         var serviceGetAll           = new ServiceGetAll( cbc, projectNamespace, Skt);               string ServiceGetAllTxt         = serviceGetAll.TransformText();
         var serviceGetById           = new ServiceGetById( cbc, projectNamespace, Skt);               string ServiceGetByIdTxt         = serviceGetById.TransformText();
-        var serviceGetEnabled           = new ServiceGetEnabled( cbc, projectNamespace, Skt);               string ServiceGetEnabledTxt         = serviceGetEnabled.TransformText();
-        var serviceGetPaged           = new ServiceGetPaged( cbc, projectNamespace, Skt);               string ServiceGetPagedTxt         = serviceGetPaged.TransformText();
+        
+
+			var serviceGetEnabled           = new ServiceGetEnabled( cbc, projectNamespace, Skt);               
+			string ServiceGetEnabledTxt         = serviceGetEnabled.TransformText();
+
+        
+		var serviceGetPaged           = new ServiceGetPaged( cbc, projectNamespace, Skt);               string ServiceGetPagedTxt         = serviceGetPaged.TransformText();
         var serviceDelete           = new ServiceDelete( cbc, projectNamespace, Skt);               string ServiceDeleteTxt         = serviceDelete.TransformText();
         var serviceAddRemoveUpdateTargets           = new ServiceAddRemoveUpdateTargets( cbc, projectNamespace, Skt);               string ServiceAddRemoveUpdateTargetsTxt         = serviceAddRemoveUpdateTargets.TransformText();
         var serviceUpdateMethod           = new ServiceUpdateMethod( cbc, projectNamespace, Skt);               string ServiceUpdateMethodTxt         = serviceUpdateMethod.TransformText();
@@ -61,8 +66,6 @@ public class ApplicationEntityServicesBaseCT : Template
 <#= cpyrigthText #>
 namespace <#= projectNamespace #>
 {
-
-<#= usingTxt #>
     #region usings 
 
     using System;
@@ -85,14 +88,14 @@ namespace <#= projectNamespace #>
     using Inflexion2.Data;
     using Inflexion2.Resources;
 
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Application.Dtos;
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Application;    
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain;
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Infrastructure;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Application.Dtos;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Application;    
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Infrastructure;
 <#+                if( !prjCon.boundedContextName.Contains(cbc.diagram.SolutionFolderCommon) ){#>
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Infrastructure.Resources;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Infrastructure.Resources;
 <#+                }else{#>
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Infrastructure.Resources;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Infrastructure.Resources;
 <#+                } #>
 // <#= cbc.diagram.SolutionFolderCommon #>
 

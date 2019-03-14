@@ -1,0 +1,1287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{03AB55C4-5F34-4DD3-86C9-24DCA4A4E6E3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ModelDriverNS</RootNamespace>
+    <AssemblyName>ModelDriver</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>True</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>True</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>False</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsInferRequires>False</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
+    <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
+    <CodeContractsSuggestRequires>True</CodeContractsSuggestRequires>
+    <CodeContractsSuggestEnsures>False</CodeContractsSuggestEnsures>
+    <CodeContractsSuggestObjectInvariants>False</CodeContractsSuggestObjectInvariants>
+    <CodeContractsDisjunctiveRequires>False</CodeContractsDisjunctiveRequires>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsBaseLineFile />
+    <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>True</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>True</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>False</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsInferRequires>False</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
+    <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>True</CodeContractsSuggestAssumptions>
+    <CodeContractsSuggestRequires>True</CodeContractsSuggestRequires>
+    <CodeContractsSuggestEnsures>True</CodeContractsSuggestEnsures>
+    <CodeContractsSuggestObjectInvariants>True</CodeContractsSuggestObjectInvariants>
+    <CodeContractsDisjunctiveRequires>False</CodeContractsDisjunctiveRequires>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsBaseLineFile />
+    <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="envdte100, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Common Files\Microsoft Shared\MSEnv\PublicAssemblies\envdte100.dll</HintPath>
+    </Reference>
+    <Reference Include="EnvDTE80, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="envdte90, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Common Files\Microsoft Shared\MSEnv\PublicAssemblies\envdte90.dll</HintPath>
+    </Reference>
+    <Reference Include="EnvDTE90a, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="kayak.MoneyGen.Dsl">
+      <HintPath>libraries\kayak.MoneyGen.Dsl.dll</HintPath>
+    </Reference>
+    <Reference Include="kayak.MoneyGen.T4ModelBusAdapter">
+      <HintPath>libraries\kayak.MoneyGen.T4ModelBusAdapter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Modeling.Sdk.14.0, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.14.0, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Modeling.Sdk.DslDefinition.14.0, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Modeling.SDK.Integration.14.0, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Modeling.SDK.Integration.Shell.14.0, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell.14.0, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\10-Solutions\packages\Microsoft.VisualStudio.TextTemplating.Interfaces.10.0.10.0.30319\lib\net40\Microsoft.VisualStudio.TextTemplating.Interfaces.10.0.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TextTemplating.Modeling.14.0, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.TextTemplating.VSHost.14.0, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="sysglobl" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\CreateDataBase\Resources\CreateProductDataBase.de-DE.Designer.cs">
+      <DependentUpon>CreateProductDataBase.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Assets\CreateDataBase\Resources\CreateProductDataBase.Designer.cs">
+      <DependentUpon>CreateProductDataBase.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Assets\CreateDataBase\Resources\CreateProductDataBase.en-Gb.Designer.cs">
+      <DependentUpon>CreateProductDataBase.en-Gb.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Assets\CreateDataBase\Resources\CreateProductDataBase.fr-FR.Designer.cs">
+      <DependentUpon>CreateProductDataBase.fr-FR.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Assets\CreateDataBase\Resources\CreateProductDataBase.he-IL.Designer.cs">
+      <DependentUpon>CreateProductDataBase.he-IL.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Assets\CreateDataBase\Resources\CreateProductDataBase.it-IT.Designer.cs">
+      <DependentUpon>CreateProductDataBase.it-IT.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Assets\CreateDataBase\Resources\CreateProductDataBase.pt-PT.Designer.cs">
+      <DependentUpon>CreateProductDataBase.pt-PT.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Projectconfigurations.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SolutionProjects.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AccesMBR.tt.log">
+      <DependentUpon>AccesMBR.tt</DependentUpon>
+    </None>
+    <None Include="Kernel.kyk">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Kernel.kyk.diagram">
+      <DependentUpon>Kernel.kyk</DependentUpon>
+    </None>
+    <None Include="Alfiler.kyk" />
+    <None Include="Alfiler.kyk.diagram">
+      <DependentUpon>Alfiler.kyk</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AccesMBR.tt" />
+    <None Include="Create05SourceCode.tt.log">
+      <DependentUpon>Create05SourceCode.tt</DependentUpon>
+    </None>
+    <None Include="Create06DataBase - Copy.tt.log">
+      <DependentUpon>Create06Resources.tt</DependentUpon>
+    </None>
+    <None Include="Inflexion2t4Includes\AllCommonLayers\usings.tt" />
+    <None Include="Inflexion2t4Includes\Application\ApplicationEntityAutoMapperCT.tt" />
+    <None Include="Inflexion2t4Includes\Application\ApplicationEntityCreateServicesBaseCT %28Copy%29.tt" />
+    <None Include="Inflexion2t4Includes\Application\ApplicationEntityCreateServicesBaseCT.tt" />
+    <None Include="Inflexion2t4Includes\Application\ApplicationEntityCreateServicesCoreCT.tt" />
+    <None Include="Inflexion2t4Includes\Application\ApplicationEntityDeleteServicesCoreCT.tt" />
+    <None Include="Inflexion2t4Includes\Application\ApplicationEntityDtoCT.tt" />
+    <None Include="Inflexion2t4Includes\Application\ApplicationEntityGetAllPagedServicesCoreCT.tt" />
+    <None Include="Inflexion2t4Includes\Application\ApplicationEntityGetAllServicesCoreCT.tt" />
+    <None Include="Inflexion2t4Includes\Application\ApplicationEntityGetByServicesCoreIdCT.tt" />
+    <None Include="Inflexion2t4Includes\Application\ApplicationEntityMapperCT.tt" />
+    <None Include="Inflexion2t4Includes\Application\ApplicationEntityMapperInterfaceCT.tt" />
+    <None Include="Inflexion2t4Includes\Application\ApplicationEntityUpdateServicesCoreCT.tt" />
+    <None Include="Inflexion2t4Includes\Application\ApplicationEnumerationDtoCT.tt" />
+    <None Include="Inflexion2t4Includes\Application\ApplicationRemoteBoundedContextUnityConfigCT.tt" />
+    <None Include="Inflexion2t4Includes\Application\ApplicationRemoteFacadeBaseSvcCsCT.tt" />
+    <None Include="Inflexion2t4Includes\Application\ApplicationRemoteFacadeBaseSvcCT.tt" />
+    <None Include="Inflexion2t4Includes\Application\ApplicationRemoteFacadeCoreServiceCT.tt" />
+    <None Include="Inflexion2t4Includes\Application\ApplicationRemoteFacadeHibernateConfigCT.tt" />
+    <None Include="Inflexion2t4Includes\Application\ApplicationRemoteFrameworkUnityConfigCT.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\ApplicationEntityServicesBaseCT.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\ApplicationEntityServicesCoreCT.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\Base\ServiceActivateEntity.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\Base\ServiceActivateEntityPrivate.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\Base\ServiceAddRemoveUpdateTargets.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\Base\ServiceDelete.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\Base\ServiceGetAll.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\Base\ServiceGetById.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\Base\ServiceGetEnabled.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\Base\ServiceGetPaged.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\I2ServiceRegionCreateMethod.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\CreateBase\ComposedDTOs.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\CreateBase\CreateDuplicatedDataPrecondition.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\CreateBase\CreateExecutePreconditions.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\CreateBase\CreateGetById4MappingCollections.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\CreateBase\CreateHeaderExecute.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\CreateBase\CreateHeaderFieldsAndConstructor.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\CreateBase\CreateRelatedCollections.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\ServiceBodyMethod.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\ServiceHeaderClass.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\ServiceRegionConstructors.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\ServiceRegionCreateMethod.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\ServiceRegionFields.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\ServiceRegionPrivateDuplicatedMethods.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\ServiceRegionProperties.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\ServiceRegionPropertiesFromSources.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\ServiceRegionPropertiesFromTargets.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\ServiceRegionSourcesSetMethods.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\ServiceRegionTargetAddRemove.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\ApplicationServiceBaseCT.tt" />
+    <None Include="Inflexion2t4Includes\Application\Services\UpdateBase\ServiceUpdateMethod.tt" />
+    <None Include="Inflexion2t4Includes\Application\WebConfigCT.ttinclude" />
+    <None Include="Inflexion2t4Includes\Copyright.ttinclude" />
+    <None Include="Inflexion2t4Includes\Domain\Base\BodyMethod.tt" />
+    <None Include="Inflexion2t4Includes\Domain\Base\DefinitionRegionTemplateItem.tt" />
+    <None Include="Inflexion2t4Includes\Domain\Base\HeaderClass.tt" />
+    <None Include="Inflexion2t4Includes\Domain\Base\RegionConstructors.tt" />
+    <None Include="Inflexion2t4Includes\Domain\Base\RegionFields.tt" />
+    <None Include="Inflexion2t4Includes\Domain\Base\RegionProperties.tt" />
+    <None Include="Inflexion2t4Includes\Domain\Base\RegionPropertiesFromSources.tt" />
+    <None Include="Inflexion2t4Includes\Domain\Base\RegionPropertiesFromTargets.tt" />
+    <None Include="Inflexion2t4Includes\Domain\Base\RegionSetMethods.tt" />
+    <None Include="Inflexion2t4Includes\Domain\Base\RegionSourcesSetMethods.tt" />
+    <None Include="Inflexion2t4Includes\Domain\Base\RegionTargetAddRemove.tt" />
+    <None Include="Inflexion2t4Includes\Domain\Base\TemplateRemarks\MandatoryParameters.tt" />
+    <None Include="Inflexion2t4Includes\Domain\Base\TemplateRemarks\RegionProperties.tt" />
+    <None Include="Inflexion2t4Includes\Domain\DomainBaseEntityCT.tt" />
+    <None Include="Inflexion2t4Includes\Domain\DomainBaseEntityFactoryCT.tt" />
+    <None Include="Inflexion2t4Includes\Domain\DomainBaseEntityPartialConstructorCT.tt" />
+    <None Include="Inflexion2t4Includes\Domain\DomainBaseEntityPartialDestructorCT.tt" />
+    <None Include="Inflexion2t4Includes\Domain\DomainBaseEntityPartialMethodsCT.tt" />
+    <None Include="Inflexion2t4Includes\Domain\DomainBaseEntityPartialUpdateCT.tt" />
+    <None Include="Inflexion2t4Includes\Domain\DomainBaseEntitySpecificationsCT.tt" />
+    <None Include="Inflexion2t4Includes\Domain\DomainCoreIEntityCT.tt" />
+    <None Include="Inflexion2t4Includes\Domain\DomainCoreIEntityValidatorCT.tt" />
+    <None Include="Inflexion2t4Includes\Domain\DomainCoreInterfaceFactoryCT.tt" />
+    <None Include="Inflexion2t4Includes\Domain\DomainCoreRepositoryCT.tt" />
+    <None Include="Inflexion2t4Includes\Domain\DomainCoreRepositoryFactoryCT.tt" />
+    <None Include="Inflexion2t4Includes\Domain\DomainEnumerationCT.tt" />
+    <None Include="Inflexion2t4Includes\Domain\PerLifeTimeManagerCT.tt" />
+    <None Include="Inflexion2t4Includes\Infra\Backup and old versions\Backup of InfraestructureEntityOracleHbmCT.tt" />
+    <None Include="Inflexion2t4Includes\Infra\Backup and old versions\Backup of InfraestructureEntityRepositoryCT.tt" />
+    <None Include="Inflexion2t4Includes\Infra\Backup and old versions\Backup of InfraestructureResourcesCT.tt" />
+    <None Include="Inflexion2t4Includes\Infra\Backup and old versions\InfraestructureEntityRepositoryFactoryCT.tt" />
+    <None Include="Inflexion2t4Includes\Infra\Backup and old versions\old of  InfraestructureEntityOracleHbmCT.tt" />
+    <None Include="Inflexion2t4Includes\Infra\InfrastructureAppConfigCT.tt" />
+    <None Include="Inflexion2t4Includes\Testing\Infrastructure\CreateSQLServerDataBaseTest.tt" />
+    <None Include="Inflexion2t4Includes\UX\BootstraperCT.tt" />
+    <None Include="Inflexion2t4Includes\UX\ModuleCT.tt" />
+    <None Include="Inflexion2t4Includes\UX\Module\Entities\Views\WpfEntityViewXamlCsCT.tt" />
+    <None Include="Inflexion2t4Includes\UX\Module\Entities\Views\WpfEntityViewXamlCT.tt" />
+    <None Include="Inflexion2t4Includes\UX\Module\Entities\Views\WpfEntityQueryViewXamlCsCT.tt" />
+    <None Include="Inflexion2t4Includes\UX\Module\Entities\Views\WpfEntityQueryViewXamlCT.tt" />
+    <None Include="Inflexion2t4Includes\UX\Module\Entities\VM\WpfEntityQueryViewModelCT.tt" />
+    <None Include="Inflexion2t4Includes\UX\Module\Entities\VM\WpfEntityViewModelCT.tt" />
+    <None Include="Inflexion2t4Includes\UX\NavRegion\Views\ModuleNavigationXamlCsCT.tt" />
+    <None Include="Inflexion2t4Includes\UX\NavRegion\Views\ModuleNavigationXamlCT.tt" />
+    <None Include="Inflexion2t4Includes\UX\NavRegion\Views\ModuleTaskBarXamlCsCT.tt" />
+    <None Include="Inflexion2t4Includes\UX\NavRegion\Views\ModuleTaskBarXamlCT.tt" />
+    <None Include="Inflexion2t4Includes\UX\NavRegion\Views\ModuleRibbonTabXamlCsCT.tt" />
+    <None Include="Inflexion2t4Includes\UX\NavRegion\Views\ModuleRibbonTabXamlCT.tt" />
+    <None Include="Inflexion2t4Includes\UX\NavRegion\VM\ModuleNavigationVMCT2.tt" />
+    <None Include="Inflexion2t4Includes\UX\NavRegion\VM\ModuleTaskBarVMCT.tt" />
+    <None Include="Inflexion2t4Includes\UX\NavRegion\VM\ModuleRibbonVMCT.tt" />
+    <None Include="Inflexion2t4Includes\UX\NavRegion\VM\ModuleNavigationVMCT.tt" />
+    <None Include="Inflexion2t4Includes\UX\PrismModuleCT.tt" />
+    <None Include="Inflexion2t4Includes\UX\UXAppConfigCT.tt" />
+    <None Include="Inflexion2t4Includes\UX\WpfStartUpAppXamlCsCT.tt" />
+    <None Include="Inflexion2t4Includes\UX\WpfStartUpAppXamlCT.tt" />
+    <None Include="LifeSeeker.kyk">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="LifeSeeker.kyk.diagram">
+      <DependentUpon>LifeSeeker.kyk</DependentUpon>
+    </None>
+    <None Include="Main4.kyk">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Main4.kyk.diagram">
+      <DependentUpon>Main4.kyk</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="new.kyk">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="new.kyk.diagram">
+      <DependentUpon>new.kyk</DependentUpon>
+    </None>
+    <None Include="Main2.kyk" />
+    <None Include="SyfiX.kyk">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SyfiX.kyk.diagram">
+      <DependentUpon>SyfiX.kyk</DependentUpon>
+    </None>
+    <None Include="Metas.kyk" />
+    <None Include="Metas.kyk.diagram">
+      <DependentUpon>Metas.kyk</DependentUpon>
+    </None>
+    <None Include="T4ItemsTemplates\T4Onefile4AllclassesTemplateCT.tt" />
+    <None Include="Inflexion2t4Includes\Infra\CreateBaseToolAppXamlCsCT.tt" />
+    <None Include="Inflexion2t4Includes\Infra\CreateBaseToolAppXamlCT.tt" />
+    <None Include="Inflexion2t4Includes\Infra\CreateSchema\Copy of CreateSchemaResourcesCT.tt" />
+    <None Include="Inflexion2t4Includes\Infra\CreateSchema\CreateSchemaResourcesCT.tt" />
+    <None Include="Inflexion2t4Includes\Infra\CreateSchema\CreateSchemaResXDef.tt" />
+    <None Include="Inflexion2t4Includes\Infra\CreateSchema\InfraestructureCreateSchemaXamlCT backup.tt" />
+    <None Include="Inflexion2t4Includes\Infra\CreateSchema\MyApplicationSettingsCT.tt" />
+    <None Include="Inflexion2t4Includes\Infra\InfraestructureCreateSchemaCbCT.tt" />
+    <None Include="Inflexion2t4Includes\Infra\InfraestructureCreateSchemaXamlCT.tt" />
+    <None Include="Inflexion2t4Includes\Infra\InfraestructureEntityFluentCT.tt" />
+    <None Include="Inflexion2t4Includes\Infra\InfraestructureEntityOracleHbmCT.tt" />
+    <None Include="Inflexion2t4Includes\Infra\InfraestructureEntityRepositoryCT.tt" />
+    <None Include="Inflexion2t4Includes\Infra\InfraestructureEntityRepositoryFactoryCT.tt" />
+    <None Include="Inflexion2t4Includes\Infra\InfraestructureResourcesCT.tt" />
+    <None Include="Create04Documentation.tt.log">
+      <DependentUpon>Create04Documentation.tt</DependentUpon>
+    </None>
+    <None Include="Create05SourceCode.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastOutputs>
+..\..\03-GeneratedProjects\AirBus.Suite.Application.Dtos\AppSetting\AppSettingDto.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Application.Dtos\Department\DepartmentDto.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Application.Dtos\User\UserDto.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Application.WcfService.Contracts\AppSetting\IAppSettingService.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Application.WcfService.Contracts\Department\IDepartmentService.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Application.WcfService.Contracts\User\IUserService.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Application.WcfService\App.config
+..\..\03-GeneratedProjects\AirBus.Suite.Application.WcfService\AppSetting\AppSettingService.svc
+..\..\03-GeneratedProjects\AirBus.Suite.Application.WcfService\AppSetting\AppSettingService.svc.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Application.WcfService\Department\DepartmentService.svc
+..\..\03-GeneratedProjects\AirBus.Suite.Application.WcfService\Department\DepartmentService.svc.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Application.WcfService\SuiteRepositoryLayer.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Application.WcfService\User\UserService.svc
+..\..\03-GeneratedProjects\AirBus.Suite.Application.WcfService\User\UserService.svc.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Application\App.config
+..\..\03-GeneratedProjects\AirBus.Suite.Application\AppSetting\AppSettingMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Application\AppSetting\AppSettingServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Application\AppSetting\IAppSettingMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Application\AppSetting\IAppSettingServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Application\Department\DepartmentMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Application\Department\DepartmentServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Application\Department\IDepartmentMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Application\Department\IDepartmentServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Application\User\IUserMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Application\User\IUserServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Application\User\UserMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Application\User\UserServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Domain.Data\Enums\Enumeracion.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Domain\AppSetting\AppSetting.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Domain\AppSetting\AppSettingFactory.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Domain\AppSetting\AppSettingSpecifications.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Domain\AppSetting\IAppSetting.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Domain\AppSetting\IAppSettingRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Domain\Department\Department.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Domain\Department\DepartmentFactory.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Domain\Department\DepartmentSpecifications.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Domain\Department\IDepartment.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Domain\Department\IDepartmentRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Domain\IoC\PerLifeTimeManager.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Domain\User\IUser.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Domain\User\IUserRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Domain\User\User.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Domain\User\UserFactory.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Domain\User\UserSpecifications.cs
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\Entities\Views\AppSettingQueryView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\Entities\Views\AppSettingQueryView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\Entities\Views\AppSettingView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\Entities\Views\AppSettingView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\Entities\Views\DepartmentQueryView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\Entities\Views\DepartmentQueryView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\Entities\Views\DepartmentView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\Entities\Views\DepartmentView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\Entities\Views\UserQueryView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\Entities\Views\UserQueryView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\Entities\Views\UserView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\Entities\Views\UserView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\Entities\VM\AppSettingQueryViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\Entities\VM\AppSettingViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\Entities\VM\DepartmentQueryViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\Entities\VM\DepartmentViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\Entities\VM\UserQueryViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\Entities\VM\UserViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\NavigationRegions\Views\SuiteModuleNavigation.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\NavigationRegions\Views\SuiteModuleNavigation.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\NavigationRegions\Views\SuiteModuleRibbonTab.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\NavigationRegions\Views\SuiteModuleRibbonTab.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\NavigationRegions\Views\SuiteModuleTaskBarView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\NavigationRegions\Views\SuiteModuleTaskBarView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\NavigationRegions\VM\SuiteModuleNavigationVM.cs
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\NavigationRegions\VM\SuiteModuleNavigationVM2.cs
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\NavigationRegions\VM\SuiteModuleRibbonVM.cs
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\NavigationRegions\VM\SuiteModuleTaskBarVM.cs
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfModule\SuiteModule.cs
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfStartUp\App.config
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfStartUp\App.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfStartUp\App.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.FrontEnd.WpfStartUp\Bootstrapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Infrastructure.Resources\SuiteNeutral.resx
+..\..\03-GeneratedProjects\AirBus.Suite.Infrastructure\App.config
+..\..\03-GeneratedProjects\AirBus.Suite.Infrastructure\AppSetting\AppSettingConfiguration.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Infrastructure\AppSetting\AppSettingRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Infrastructure\Department\DepartmentConfiguration.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Infrastructure\Department\DepartmentRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Infrastructure\SuiteUoW.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Infrastructure\User\UserConfiguration.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Infrastructure\User\UserRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application.Dtos\MetaClass\MetaClassDto.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application.Dtos\MetaProperty\MetaPropertyDto.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application.Dtos\MetaSAppSetting\MetaSAppSettingDto.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application.Dtos\MetaSUser\MetaSUserDto.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application.Dtos\MetaView\MetaViewDto.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application.WcfService.Contracts\MetaClass\IMetaClassService.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application.WcfService.Contracts\MetaProperty\IMetaPropertyService.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application.WcfService.Contracts\MetaSAppSetting\IMetaSAppSettingService.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application.WcfService.Contracts\MetaSUser\IMetaSUserService.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application.WcfService.Contracts\MetaView\IMetaViewService.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application.WcfService\App.config
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application.WcfService\MetaClass\MetaClassService.svc
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application.WcfService\MetaClass\MetaClassService.svc.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application.WcfService\MetaProperty\MetaPropertyService.svc
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application.WcfService\MetaProperty\MetaPropertyService.svc.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application.WcfService\MetaSAppSetting\MetaSAppSettingService.svc
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application.WcfService\MetaSAppSetting\MetaSAppSettingService.svc.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application.WcfService\MetaSUser\MetaSUserService.svc
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application.WcfService\MetaSUser\MetaSUserService.svc.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application.WcfService\MetaView\MetaViewService.svc
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application.WcfService\MetaView\MetaViewService.svc.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application.WcfService\SuiteMetaSRepositoryLayer.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application\App.config
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application\MetaClass\IMetaClassMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application\MetaClass\IMetaClassServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application\MetaClass\MetaClassMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application\MetaClass\MetaClassServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application\MetaProperty\IMetaPropertyMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application\MetaProperty\IMetaPropertyServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application\MetaProperty\MetaPropertyMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application\MetaProperty\MetaPropertyServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application\MetaSAppSetting\IMetaSAppSettingMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application\MetaSAppSetting\IMetaSAppSettingServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application\MetaSAppSetting\MetaSAppSettingMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application\MetaSAppSetting\MetaSAppSettingServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application\MetaSUser\IMetaSUserMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application\MetaSUser\IMetaSUserServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application\MetaSUser\MetaSUserMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application\MetaSUser\MetaSUserServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application\MetaView\IMetaViewMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application\MetaView\IMetaViewServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application\MetaView\MetaViewMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Application\MetaView\MetaViewServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain.Data\Enums\MetaType.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain.Data\Enums\Stereotype.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\IoC\PerLifeTimeManager.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaClass\IMetaClass.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaClass\IMetaClassRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaClass\MetaClass.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaClass\MetaClassFactory.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaClass\MetaClassSpecifications.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaProperty\IMetaProperty.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaProperty\IMetaPropertyRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaProperty\MetaProperty.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaProperty\MetaPropertyFactory.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaProperty\MetaPropertySpecifications.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaSAppSetting\IMetaSAppSetting.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaSAppSetting\IMetaSAppSettingRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaSAppSetting\MetaSAppSetting.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaSAppSetting\MetaSAppSettingFactory.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaSAppSetting\MetaSAppSettingSpecifications.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaSUser\IMetaSUser.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaSUser\IMetaSUserRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaSUser\MetaSUser.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaSUser\MetaSUserFactory.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaSUser\MetaSUserSpecifications.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaView\IMetaView.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaView\IMetaViewRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaView\MetaView.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaView\MetaViewFactory.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Domain\MetaView\MetaViewSpecifications.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\Views\MetaClassQueryView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\Views\MetaClassQueryView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\Views\MetaClassView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\Views\MetaClassView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\Views\MetaPropertyQueryView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\Views\MetaPropertyQueryView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\Views\MetaPropertyView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\Views\MetaPropertyView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\Views\MetaSAppSettingQueryView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\Views\MetaSAppSettingQueryView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\Views\MetaSAppSettingView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\Views\MetaSAppSettingView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\Views\MetaSUserQueryView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\Views\MetaSUserQueryView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\Views\MetaSUserView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\Views\MetaSUserView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\Views\MetaViewQueryView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\Views\MetaViewQueryView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\Views\MetaViewView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\Views\MetaViewView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\VM\MetaClassQueryViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\VM\MetaClassViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\VM\MetaPropertyQueryViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\VM\MetaPropertyViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\VM\MetaSAppSettingQueryViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\VM\MetaSAppSettingViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\VM\MetaSUserQueryViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\VM\MetaSUserViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\VM\MetaViewQueryViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\Entities\VM\MetaViewViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\NavigationRegions\Views\SuiteMetaSModuleNavigation.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\NavigationRegions\Views\SuiteMetaSModuleNavigation.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\NavigationRegions\Views\SuiteMetaSModuleRibbonTab.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\NavigationRegions\Views\SuiteMetaSModuleRibbonTab.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\NavigationRegions\Views\SuiteMetaSModuleTaskBarView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\NavigationRegions\Views\SuiteMetaSModuleTaskBarView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\NavigationRegions\VM\SuiteMetaSModuleNavigationVM.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\NavigationRegions\VM\SuiteMetaSModuleNavigationVM2.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\NavigationRegions\VM\SuiteMetaSModuleRibbonVM.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\NavigationRegions\VM\SuiteMetaSModuleTaskBarVM.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfModule\SuiteMetaSModule.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfStartUp\App.config
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfStartUp\App.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfStartUp\App.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.FrontEnd.WpfStartUp\Bootstrapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Infrastructure.Resources\SuiteMetaSNeutral.resx
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Infrastructure\App.config
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Infrastructure\MetaClass\MetaClassConfiguration.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Infrastructure\MetaClass\MetaClassRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Infrastructure\MetaProperty\MetaPropertyConfiguration.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Infrastructure\MetaProperty\MetaPropertyRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Infrastructure\MetaSAppSetting\MetaSAppSettingConfiguration.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Infrastructure\MetaSAppSetting\MetaSAppSettingRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Infrastructure\MetaSUser\MetaSUserConfiguration.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Infrastructure\MetaSUser\MetaSUserRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Infrastructure\MetaView\MetaViewConfiguration.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Infrastructure\MetaView\MetaViewRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Infrastructure\SuiteMetaSUoW.cs
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Test.InfrastructureLayer\App.config
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Test.InfrastructureLayer\CreateDatabaseTest001.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Application.Dtos\Document\DocumentDto.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Application.Dtos\Incident\IncidentDto.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Application.WcfService.Contracts\Document\IDocumentService.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Application.WcfService.Contracts\Incident\IIncidentService.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Application.WcfService\App.config
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Application.WcfService\Document\DocumentService.svc
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Application.WcfService\Document\DocumentService.svc.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Application.WcfService\Incident\IncidentService.svc
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Application.WcfService\Incident\IncidentService.svc.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Application.WcfService\SuiteSyfiXRepositoryLayer.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Application\App.config
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Application\Document\DocumentMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Application\Document\DocumentServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Application\Document\IDocumentMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Application\Document\IDocumentServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Application\Incident\IIncidentMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Application\Incident\IIncidentServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Application\Incident\IncidentMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Application\Incident\IncidentServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Domain.Data\Enums\Category.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Domain\Document\Document.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Domain\Document\DocumentFactory.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Domain\Document\DocumentSpecifications.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Domain\Document\IDocument.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Domain\Document\IDocumentRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Domain\Incident\IIncident.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Domain\Incident\IIncidentRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Domain\Incident\Incident.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Domain\Incident\IncidentFactory.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Domain\Incident\IncidentSpecifications.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Domain\IoC\PerLifeTimeManager.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\Entities\Views\DocumentQueryView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\Entities\Views\DocumentQueryView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\Entities\Views\DocumentView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\Entities\Views\DocumentView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\Entities\Views\IncidentQueryView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\Entities\Views\IncidentQueryView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\Entities\Views\IncidentView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\Entities\Views\IncidentView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\Entities\VM\DocumentQueryViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\Entities\VM\DocumentViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\Entities\VM\IncidentQueryViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\Entities\VM\IncidentViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\NavigationRegions\Views\SuiteSyfiXModuleNavigation.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\NavigationRegions\Views\SuiteSyfiXModuleNavigation.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\NavigationRegions\Views\SuiteSyfiXModuleRibbonTab.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\NavigationRegions\Views\SuiteSyfiXModuleRibbonTab.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\NavigationRegions\Views\SuiteSyfiXModuleTaskBarView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\NavigationRegions\Views\SuiteSyfiXModuleTaskBarView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\NavigationRegions\VM\SuiteSyfiXModuleNavigationVM.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\NavigationRegions\VM\SuiteSyfiXModuleNavigationVM2.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\NavigationRegions\VM\SuiteSyfiXModuleRibbonVM.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\NavigationRegions\VM\SuiteSyfiXModuleTaskBarVM.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfModule\SuiteSyfiXModule.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfStartUp\App.config
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfStartUp\App.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfStartUp\App.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.FrontEnd.WpfStartUp\Bootstrapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Infrastructure.Resources\SuiteSyfiXNeutral.resx
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Infrastructure\App.config
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Infrastructure\Document\DocumentConfiguration.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Infrastructure\Document\DocumentRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Infrastructure\Incident\IncidentConfiguration.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Infrastructure\Incident\IncidentRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Infrastructure\SuiteSyfiXUoW.cs
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Test.InfrastructureLayer\App.config
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Test.InfrastructureLayer\CreateDatabaseTest001.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Test.InfrastructureLayer\App.config
+..\..\03-GeneratedProjects\AirBus.Suite.Test.InfrastructureLayer\CreateDatabaseTest001.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application.Dtos\Project\ProjectDto.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application.Dtos\TimeRecord\TimeRecordDto.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application.Dtos\ZeusAppSetting\ZeusAppSettingDto.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application.Dtos\ZeusDepartment\ZeusDepartmentDto.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application.Dtos\ZeusUser\ZeusUserDto.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application.WcfService.Contracts\Project\IProjectService.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application.WcfService.Contracts\TimeRecord\ITimeRecordService.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application.WcfService.Contracts\ZeusAppSetting\IZeusAppSettingService.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application.WcfService.Contracts\ZeusDepartment\IZeusDepartmentService.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application.WcfService.Contracts\ZeusUser\IZeusUserService.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application.WcfService\App.config
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application.WcfService\Project\ProjectService.svc
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application.WcfService\Project\ProjectService.svc.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application.WcfService\SuiteZeusRepositoryLayer.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application.WcfService\TimeRecord\TimeRecordService.svc
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application.WcfService\TimeRecord\TimeRecordService.svc.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application.WcfService\ZeusAppSetting\ZeusAppSettingService.svc
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application.WcfService\ZeusAppSetting\ZeusAppSettingService.svc.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application.WcfService\ZeusDepartment\ZeusDepartmentService.svc
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application.WcfService\ZeusDepartment\ZeusDepartmentService.svc.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application.WcfService\ZeusUser\ZeusUserService.svc
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application.WcfService\ZeusUser\ZeusUserService.svc.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application\App.config
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application\Project\IProjectMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application\Project\IProjectServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application\Project\ProjectMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application\Project\ProjectServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application\TimeRecord\ITimeRecordMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application\TimeRecord\ITimeRecordServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application\TimeRecord\TimeRecordMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application\TimeRecord\TimeRecordServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application\ZeusAppSetting\IZeusAppSettingMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application\ZeusAppSetting\IZeusAppSettingServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application\ZeusAppSetting\ZeusAppSettingMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application\ZeusAppSetting\ZeusAppSettingServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application\ZeusDepartment\IZeusDepartmentMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application\ZeusDepartment\IZeusDepartmentServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application\ZeusDepartment\ZeusDepartmentMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application\ZeusDepartment\ZeusDepartmentServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application\ZeusUser\IZeusUserMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application\ZeusUser\IZeusUserServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application\ZeusUser\ZeusUserMapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Application\ZeusUser\ZeusUserServices.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain.Data\Enums\Stereotype.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\IoC\PerLifeTimeManager.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\Project\IProject.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\Project\IProjectRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\Project\Project.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\Project\ProjectFactory.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\Project\ProjectSpecifications.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\TimeRecord\ITimeRecord.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\TimeRecord\ITimeRecordRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\TimeRecord\TimeRecord.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\TimeRecord\TimeRecordFactory.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\TimeRecord\TimeRecordSpecifications.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\ZeusAppSetting\IZeusAppSetting.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\ZeusAppSetting\IZeusAppSettingRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\ZeusAppSetting\ZeusAppSetting.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\ZeusAppSetting\ZeusAppSettingFactory.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\ZeusAppSetting\ZeusAppSettingSpecifications.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\ZeusDepartment\IZeusDepartment.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\ZeusDepartment\IZeusDepartmentRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\ZeusDepartment\ZeusDepartment.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\ZeusDepartment\ZeusDepartmentFactory.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\ZeusDepartment\ZeusDepartmentSpecifications.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\ZeusUser\IZeusUser.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\ZeusUser\IZeusUserRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\ZeusUser\ZeusUser.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\ZeusUser\ZeusUserFactory.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Domain\ZeusUser\ZeusUserSpecifications.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\Views\ProjectQueryView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\Views\ProjectQueryView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\Views\ProjectView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\Views\ProjectView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\Views\TimeRecordQueryView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\Views\TimeRecordQueryView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\Views\TimeRecordView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\Views\TimeRecordView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\Views\ZeusAppSettingQueryView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\Views\ZeusAppSettingQueryView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\Views\ZeusAppSettingView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\Views\ZeusAppSettingView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\Views\ZeusDepartmentQueryView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\Views\ZeusDepartmentQueryView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\Views\ZeusDepartmentView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\Views\ZeusDepartmentView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\Views\ZeusUserQueryView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\Views\ZeusUserQueryView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\Views\ZeusUserView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\Views\ZeusUserView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\VM\ProjectQueryViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\VM\ProjectViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\VM\TimeRecordQueryViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\VM\TimeRecordViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\VM\ZeusAppSettingQueryViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\VM\ZeusAppSettingViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\VM\ZeusDepartmentQueryViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\VM\ZeusDepartmentViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\VM\ZeusUserQueryViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\Entities\VM\ZeusUserViewModel.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\NavigationRegions\Views\SuiteZeusModuleNavigation.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\NavigationRegions\Views\SuiteZeusModuleNavigation.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\NavigationRegions\Views\SuiteZeusModuleRibbonTab.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\NavigationRegions\Views\SuiteZeusModuleRibbonTab.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\NavigationRegions\Views\SuiteZeusModuleTaskBarView.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\NavigationRegions\Views\SuiteZeusModuleTaskBarView.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\NavigationRegions\VM\SuiteZeusModuleNavigationVM.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\NavigationRegions\VM\SuiteZeusModuleNavigationVM2.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\NavigationRegions\VM\SuiteZeusModuleRibbonVM.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\NavigationRegions\VM\SuiteZeusModuleTaskBarVM.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfModule\SuiteZeusModule.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfStartUp\App.config
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfStartUp\App.xaml
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfStartUp\App.xaml.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.FrontEnd.WpfStartUp\Bootstrapper.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Infrastructure.Resources\SuiteZeusNeutral.resx
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Infrastructure\App.config
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Infrastructure\Project\ProjectConfiguration.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Infrastructure\Project\ProjectRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Infrastructure\SuiteZeusUoW.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Infrastructure\TimeRecord\TimeRecordConfiguration.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Infrastructure\TimeRecord\TimeRecordRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Infrastructure\ZeusAppSetting\ZeusAppSettingConfiguration.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Infrastructure\ZeusAppSetting\ZeusAppSettingRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Infrastructure\ZeusDepartment\ZeusDepartmentConfiguration.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Infrastructure\ZeusDepartment\ZeusDepartmentRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Infrastructure\ZeusUser\ZeusUserConfiguration.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Infrastructure\ZeusUser\ZeusUserRepository.cs
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Test.InfrastructureLayer\App.config
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Test.InfrastructureLayer\CreateDatabaseTest001.cs
+</LastOutputs>
+      <LastGenOutput>Create05SourceCode.txt</LastGenOutput>
+    </None>
+    <None Include="Create02References.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Create02References.txt</LastGenOutput>
+    </None>
+    <None Include="Create06DataBase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Create06DataBase.txt</LastGenOutput>
+    </None>
+    <None Include="Create03ImageDocumentation.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Create03ImageDocumentation.txt</LastGenOutput>
+    </None>
+    <None Include="Create01Projects.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Create01Projects.txt</LastGenOutput>
+    </None>
+    <None Include="Create06DataBase.tt.log">
+      <DependentUpon>Create06DataBase.tt</DependentUpon>
+    </None>
+    <None Include="Inflexion2t4Includes\Infra\InfraestructureEntityFrameworkMappingCT.tt" />
+    <None Include="Inflexion2t4Includes\Infra\BootstrapUnitOfWorkCT.tt" />
+    <None Include="t4helpers\BingTranslatorAccess\Translators.tt" />
+    <None Include="t4helpers\Create\Inflexion2WPFControlCodeGeneration.ttinclude" />
+    <None Include="t4helpers\T4Application\Inflexion2T4SourceCode.ttinclude" />
+    <None Include="t4helpers\T4Application\HexacCoreIncludes.ttinclude" />
+    <None Include="t4helpers\T4Application\T4SourceCode.ttinclude" />
+    <None Include="t4helpers\T4Application\Imports.ttinclude" />
+    <None Include="Create04Documentation.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Create04Documentation.txt</LastGenOutput>
+      <LastOutputs>
+.\Documentacion\Architecture.html
+.\Documentacion\Intro.html
+.\Documentacion\SharedKernels.html
+.\Documentacion\Suite.AppSetting.html
+.\Documentacion\Suite.Department.html
+.\Documentacion\Suite.Enumeracion.html
+.\Documentacion\Suite.html
+.\Documentacion\Suite.MetaS.html
+.\Documentacion\Suite.MetaS.MetaClass.html
+.\Documentacion\Suite.MetaS.MetaProperty.html
+.\Documentacion\Suite.MetaS.MetaSAppSetting.html
+.\Documentacion\Suite.MetaS.MetaSUser.html
+.\Documentacion\Suite.MetaS.MetaType.html
+.\Documentacion\Suite.MetaS.MetaView.html
+.\Documentacion\Suite.MetaS.Stereotype.html
+.\Documentacion\Suite.SyfiX.Category.html
+.\Documentacion\Suite.SyfiX.Document.html
+.\Documentacion\Suite.SyfiX.html
+.\Documentacion\Suite.SyfiX.Incident.html
+.\Documentacion\Suite.User.html
+.\Documentacion\Suite.Zeus.html
+.\Documentacion\Suite.Zeus.Project.html
+.\Documentacion\Suite.Zeus.Stereotype.html
+.\Documentacion\Suite.Zeus.TimeRecord.html
+.\Documentacion\Suite.Zeus.ZeusAppSetting.html
+.\Documentacion\Suite.Zeus.ZeusDepartment.html
+.\Documentacion\Suite.Zeus.ZeusUser.html
+</LastOutputs>
+    </None>
+    <None Include="Documentation\GetGeneralDocumentation.tt" />
+    <None Include="Documentation\Sections\Intro\DocAboutClassBase.tt" />
+    <None Include="Documentation\Sections\Intro\DocAboutBoundedContext.tt" />
+    <None Include="Documentation\Sections\Intro\DocAboutSharedKernels.tt" />
+    <None Include="Documentation\Sections\Intro\DocAboutArchitecture.tt" />
+    <None Include="Documentation\Sections\Intro\DocAboutBoundedContextTree.tt" />
+    <None Include="HexaCore\ModelTemplate\OneContextHxModelCT.tt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="HexaCore\ModelTemplate\HxModelCT.tt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="nuget\PackageConfig.tt" />
+    <None Include="packages.config" />
+    <None Include="RTEC.kyk" />
+    <None Include="RTEC.kyk.diagram">
+      <DependentUpon>RTEC.kyk</DependentUpon>
+    </None>
+    <None Include="t4helpers\ExamplesAndTests4Main\Dummyt42.tt" />
+    <None Include="t4helpers\ExamplesAndTests4Main\DummyT4.tt" />
+    <None Include="Emisiones old.kyk">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Emisiones old.kyk.diagram">
+      <DependentUpon>Emisiones old.kyk</DependentUpon>
+    </None>
+    <None Include="Emisiones.kyk" />
+    <None Include="Emisiones.kyk.diagram">
+      <DependentUpon>Emisiones.kyk</DependentUpon>
+    </None>
+    <None Include="Main3.kyk">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Main3.kyk.diagram">
+      <DependentUpon>Main3.kyk</DependentUpon>
+    </None>
+    <None Include="t4helpers\ExamplesAndTests4Main\MainT4.tt.log">
+      <DependentUpon>MainT4.tt</DependentUpon>
+    </None>
+    <None Include="t4helpers\ExamplesAndTests4Main\MainT4.tt">
+      <TransformOnBuild>False</TransformOnBuild>
+    </None>
+    <None Include="Main.kyk">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Main.kyk.diagram">
+      <DependentUpon>Main.kyk</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Players old.kyk" />
+    <None Include="Players old.kyk.diagram">
+      <DependentUpon>Players old.kyk</DependentUpon>
+    </None>
+    <None Include="Programacion.kyk">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Programacion.kyk.diagram">
+      <DependentUpon>Programacion.kyk</DependentUpon>
+    </None>
+    <None Include="t4helpers\Create\ArchitectureDefinition.ttinclude" />
+    <None Include="t4helpers\Create\ControlCodeGeneration.ttinclude" />
+    <None Include="t4helpers\Create\CreateContexts.ttinclude" />
+    <None Include="t4helpers\Create\IOWindows.ttinclude" />
+    <None Include="t4helpers\ExamplesAndTests4Main\EjemploClaseParaNodo.ttinclude" />
+    <None Include="t4helpers\Create\Solution.ttinclude" />
+    <None Include="t4helpers\ExamplesAndTests4Main\AddsolutionFoldersExample.ttinclude" />
+    <None Include="t4helpers\ExamplesAndTests4Main\foreachExamples.ttinclude" />
+    <None Include="t4helpers\FeatureQuerys\Association.ttinclude" />
+    <None Include="t4helpers\FeatureQuerys\ClassBase.ttinclude" />
+    <None Include="t4helpers\FeatureQuerys\Entity.ttinclude" />
+    <None Include="t4helpers\Generation\ClassBaseContext.ttinclude" />
+    <None Include="t4helpers\Initialitation\Constants.ttinclude" />
+    <None Include="t4helpers\Initialitation\DSLContextDefinition.ttinclude" />
+    <None Include="t4helpers\Initialitation\SharedKernel.tt" />
+    <None Include="t4helpers\NameProjects\NamesProjects.tt" />
+    <None Include="t4helpers\NameProjects\LayersAndProjects.tt" />
+    <None Include="t4helpers\StringsFuntions\T4Helpers.ttinclude" />
+    <Content Include="Assets\TranslationsCache\AtentoSuiteXmlCache.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Create01Projects.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Create01Projects.tt</DependentUpon>
+    </Content>
+    <None Include="Inflexion2t4Includes\Application\Services\ApplicationRemoteFacadeBaseSvcPartialConfigurationCsCT.tt" />
+    <None Include="Inflexion2t4Includes\Application\ApplicationIocRepositoryLayer.tt" />
+    <None Include="Create06Resources.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Create06Resources.txt</LastGenOutput>
+      <LastOutputs>
+..\..\03-GeneratedProjects\AirBus.Suite.Infrastructure.Resources\SuiteResources.ar.resx
+..\..\03-GeneratedProjects\AirBus.Suite.Infrastructure.Resources\SuiteResources.de.resx
+..\..\03-GeneratedProjects\AirBus.Suite.Infrastructure.Resources\SuiteResources.es.resx
+..\..\03-GeneratedProjects\AirBus.Suite.Infrastructure.Resources\SuiteResources.fr.resx
+..\..\03-GeneratedProjects\AirBus.Suite.Infrastructure.Resources\SuiteResources.he.resx
+..\..\03-GeneratedProjects\AirBus.Suite.Infrastructure.Resources\SuiteResources.it.resx
+..\..\03-GeneratedProjects\AirBus.Suite.Infrastructure.Resources\SuiteResources.ja.resx
+..\..\03-GeneratedProjects\AirBus.Suite.Infrastructure.Resources\SuiteResources.pt.resx
+..\..\03-GeneratedProjects\AirBus.Suite.Infrastructure.Resources\SuiteResources.resx
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Infrastructure.Resources\SuiteMetaSResources.ar.resx
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Infrastructure.Resources\SuiteMetaSResources.de.resx
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Infrastructure.Resources\SuiteMetaSResources.es.resx
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Infrastructure.Resources\SuiteMetaSResources.fr.resx
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Infrastructure.Resources\SuiteMetaSResources.he.resx
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Infrastructure.Resources\SuiteMetaSResources.it.resx
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Infrastructure.Resources\SuiteMetaSResources.ja.resx
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Infrastructure.Resources\SuiteMetaSResources.pt.resx
+..\..\03-GeneratedProjects\AirBus.Suite.MetaS.Infrastructure.Resources\SuiteMetaSResources.resx
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Infrastructure.Resources\SuiteSyfiXResources.ar.resx
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Infrastructure.Resources\SuiteSyfiXResources.de.resx
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Infrastructure.Resources\SuiteSyfiXResources.es.resx
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Infrastructure.Resources\SuiteSyfiXResources.fr.resx
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Infrastructure.Resources\SuiteSyfiXResources.he.resx
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Infrastructure.Resources\SuiteSyfiXResources.it.resx
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Infrastructure.Resources\SuiteSyfiXResources.ja.resx
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Infrastructure.Resources\SuiteSyfiXResources.pt.resx
+..\..\03-GeneratedProjects\AirBus.Suite.SyfiX.Infrastructure.Resources\SuiteSyfiXResources.resx
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Infrastructure.Resources\SuiteZeusResources.ar.resx
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Infrastructure.Resources\SuiteZeusResources.de.resx
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Infrastructure.Resources\SuiteZeusResources.es.resx
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Infrastructure.Resources\SuiteZeusResources.fr.resx
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Infrastructure.Resources\SuiteZeusResources.he.resx
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Infrastructure.Resources\SuiteZeusResources.it.resx
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Infrastructure.Resources\SuiteZeusResources.ja.resx
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Infrastructure.Resources\SuiteZeusResources.pt.resx
+..\..\03-GeneratedProjects\AirBus.Suite.Zeus.Infrastructure.Resources\SuiteZeusResources.resx
+</LastOutputs>
+    </None>
+    <Content Include="Create05SourceCode.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Create05SourceCode.tt</DependentUpon>
+    </Content>
+    <Content Include="Create06Resources.txt">
+      <DependentUpon>Create06Resources.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Content>
+    <None Include="Inflexion2t4Includes\Application\WcfServiceIocConfiguratorCT.tt" />
+    <None Include="Inflexion2t4Includes\Infra\InfraestructureResourcesToTranslateCT.tt" />
+    <Content Include="Documentacion\Suite.AppSetting.html" />
+    <Content Include="Documentacion\Suite.Department.html" />
+    <Content Include="Documentacion\Suite.Enumeracion.html" />
+    <Content Include="Documentacion\Suite.html" />
+    <Content Include="Documentacion\Suite.MetaS.html" />
+    <Content Include="Documentacion\Suite.MetaS.MetaClass.html" />
+    <Content Include="Documentacion\Suite.MetaS.MetaProperty.html" />
+    <Content Include="Documentacion\Suite.MetaS.MetaSAppSetting.html" />
+    <Content Include="Documentacion\Suite.MetaS.MetaSUser.html" />
+    <Content Include="Documentacion\Suite.MetaS.MetaType.html" />
+    <Content Include="Documentacion\Suite.MetaS.MetaView.html" />
+    <Content Include="Documentacion\Suite.MetaS.Stereotype.html" />
+    <Content Include="Documentacion\Suite.SyfiX.Category.html" />
+    <Content Include="Documentacion\Suite.SyfiX.Document.html" />
+    <Content Include="Documentacion\Suite.SyfiX.html" />
+    <Content Include="Documentacion\Suite.SyfiX.Incident.html" />
+    <Content Include="Documentacion\Suite.User.html" />
+    <Content Include="Documentacion\Suite.Zeus.html" />
+    <Content Include="Documentacion\Suite.Zeus.Project.html" />
+    <Content Include="Documentacion\Suite.Zeus.Stereotype.html" />
+    <Content Include="Documentacion\Suite.Zeus.TimeRecord.html" />
+    <Content Include="Documentacion\Suite.Zeus.ZeusAppSetting.html" />
+    <Content Include="Documentacion\Suite.Zeus.ZeusDepartment.html" />
+    <Content Include="Documentacion\Suite.Zeus.ZeusUser.html" />
+    <Content Include="t4helpers\T4Application\Assemblys.tt" />
+    <None Include="t4Includes\Application\ApplicationEntityDeleteServicesCoreCT.tt" />
+    <None Include="t4Includes\Application\ApplicationEntityDtoCT.tt" />
+    <None Include="t4Includes\Application\ApplicationEntityGetAllPagedServicesCoreCT.tt" />
+    <None Include="t4Includes\Application\ApplicationEntityGetAllServicesCoreCT.tt" />
+    <None Include="t4Includes\Application\ApplicationEntityGetByServicesCoreIdCT.tt" />
+    <None Include="t4Includes\Application\ApplicationEntityMapperCT.tt" />
+    <None Include="t4Includes\Application\ApplicationEntityMapperInterfaceCT.tt" />
+    <None Include="t4Includes\Application\ApplicationEntityCreateServicesCoreCT.tt" />
+    <None Include="t4Includes\Application\ApplicationEntityUpdateServicesCoreCT.tt" />
+    <None Include="t4Includes\Application\ApplicationEntityCreateServicesBaseCT.tt" />
+    <None Include="t4Includes\Application\ApplicationEnumerationDtoCT.tt" />
+    <None Include="t4Includes\Application\ApplicationRemoteFrameworkUnityConfigCT.tt" />
+    <None Include="t4Includes\Application\ApplicationRemoteFacadeHibernateConfigCT.tt" />
+    <None Include="t4Includes\Application\ApplicationRemoteBoundedContextUnityConfigCT.tt" />
+    <None Include="t4Includes\Application\ApplicationRemoteFacadeCoreServiceCT.tt" />
+    <None Include="t4Includes\Application\ApplicationRemoteFacadeBaseSvcCT.tt" />
+    <None Include="t4Includes\Application\ApplicationRemoteFacadeBaseSvcCsCT.tt" />
+    <None Include="t4Includes\Application\ApplicationEntityCreateServicesBaseCT %28Copy%29.tt" />
+    <None Include="t4Includes\Application\ApplicationEntityAutoMapperCT.tt" />
+    <None Include="t4Includes\Application\WebConfigCT.tt" />
+    <None Include="t4Includes\Application\Services\Base\ServiceAddRemoveUpdateTargets.tt" />
+    <None Include="t4Includes\Application\Services\Base\ServiceDelete.tt" />
+    <None Include="t4Includes\Application\Services\Base\ServiceGetPaged.tt" />
+    <None Include="t4Includes\Application\Services\Base\ServiceActivateEntity.tt" />
+    <None Include="t4Includes\Application\Services\Base\ServiceActivateEntityPrivate.tt" />
+    <None Include="t4Includes\Application\Services\Base\ServiceGetAll.tt" />
+    <None Include="t4Includes\Application\Services\Base\ServiceGetById.tt" />
+    <None Include="t4Includes\Application\Services\Base\ServiceGetEnabled.tt" />
+    <None Include="t4Includes\Application\Services\CreateBase\CreateGetById4MappingCollections.tt" />
+    <None Include="t4Includes\Application\Services\CreateBase\CreateRelatedCollections.tt" />
+    <None Include="t4Includes\Application\Services\ServiceRegionPrivateDuplicatedMethods.tt" />
+    <None Include="t4Includes\Application\Services\CreateBase\ComposedDTOs.tt" />
+    <None Include="t4Includes\Application\Services\CreateBase\CreateDuplicatedDataPrecondition.tt" />
+    <None Include="t4Includes\Application\Services\CreateBase\CreateExecutePreconditions.tt" />
+    <None Include="t4Includes\Application\Services\CreateBase\CreateHeaderExecute.tt" />
+    <None Include="t4Includes\Application\Services\CreateBase\CreateHeaderFieldsAndConstructor.tt" />
+    <None Include="t4Includes\Application\Services\ApplicationEntityServicesCoreCT.tt" />
+    <None Include="t4Includes\Application\Services\ApplicationEntityServicesBaseCT.tt" />
+    <None Include="t4Includes\Application\Services\ServiceBodyMethod.tt" />
+    <None Include="t4Includes\Application\Services\ServiceHeaderClass.tt" />
+    <None Include="t4Includes\Application\Services\ServiceRegionConstructors.tt" />
+    <None Include="t4Includes\Application\Services\ServiceRegionFields.tt" />
+    <None Include="t4Includes\Application\Services\ServiceRegionProperties.tt" />
+    <None Include="t4Includes\Application\Services\ServiceRegionPropertiesFromSources.tt" />
+    <None Include="t4Includes\Application\Services\ServiceRegionPropertiesFromTargets.tt" />
+    <None Include="t4Includes\Application\Services\ServiceRegionCreateMethod.tt" />
+    <None Include="t4Includes\Application\Services\ServiceRegionSourcesSetMethods.tt" />
+    <None Include="t4Includes\Application\Services\ServiceRegionTargetAddRemove.tt" />
+    <None Include="t4Includes\Application\Services\UpdateBase\ServiceUpdateMethod.tt" />
+    <None Include="t4Includes\Copyright.ttinclude" />
+    <None Include="t4Includes\Domain\Base\BodyMethod.tt" />
+    <None Include="t4Includes\Domain\Base\Copy of RegionProperties.tt" />
+    <None Include="t4Includes\Domain\Base\DomainBaseEntityCT.tt" />
+    <None Include="t4Includes\Domain\Base\RegionPropertiesFromSources.tt" />
+    <None Include="t4Includes\Domain\Base\RegionTargetAddRemove.tt" />
+    <None Include="t4Includes\Domain\Base\RegionPropertiesFromTargets.tt" />
+    <None Include="t4Includes\Domain\Base\RegionSourcesSetMethods.tt" />
+    <None Include="t4Includes\Domain\Base\HeaderClass.tt" />
+    <None Include="t4Includes\Domain\Base\RegionConstructors.tt" />
+    <None Include="t4Includes\Domain\Base\RegionFields.tt" />
+    <None Include="t4Includes\Domain\Base\RegionProperties.tt" />
+    <None Include="t4Includes\Domain\Base\RegionSetMethods.tt" />
+    <None Include="t4Includes\Domain\Base\DefinitionRegionTemplateItem.tt" />
+    <None Include="t4Includes\Domain\Base\TemplateRemarks\MandatoryParameters.tt" />
+    <None Include="t4Includes\AllCommonLayers\usings.tt" />
+    <None Include="t4Includes\Domain\Base\TemplateRemarks\RegionProperties.tt" />
+    <None Include="t4Includes\Domain\DomainBaseEntityPartialUpdateCT.tt" />
+    <None Include="t4Includes\Domain\DomainBaseEntityPartialDestructorCT.tt" />
+    <None Include="t4Includes\Domain\DomainBaseEntityPartialConstructorCT.tt" />
+    <None Include="t4Includes\Domain\DomainBaseEntityPartialMethodsCT.tt" />
+    <None Include="t4Includes\Domain\DomainBaseEntityCT.tt" />
+    <None Include="t4Includes\Domain\DomainEnumerationCT.tt" />
+    <None Include="t4Includes\Domain\DomainCoreIEntityCT.tt" />
+    <None Include="t4Includes\Domain\DomainCoreInterfaceFactoryCT.tt" />
+    <None Include="t4Includes\Domain\DomainCoreRepositoryCT.tt" />
+    <None Include="t4Includes\Domain\DomainCoreRepositoryFactoryCT.tt" />
+    <None Include="t4helpers\ExamplesAndTests4Main\ModelBusAccess1.tt">
+      <TransformOnBuild>False</TransformOnBuild>
+    </None>
+    <None Include="t4Includes\Domain\DomainBaseEntityFactoryCT.tt" />
+    <None Include="t4Includes\Infra\Backup and old versions\Backup of InfraestructureEntityRepositoryCT.tt" />
+    <None Include="t4Includes\Infra\Backup and old versions\Backup of InfraestructureResourcesCT.tt" />
+    <None Include="t4Includes\Infra\Backup and old versions\Backup of InfraestructureEntityOracleHbmCT.tt" />
+    <None Include="t4Includes\Infra\Backup and old versions\InfraestructureEntityRepositoryFactoryCT.tt" />
+    <None Include="t4Includes\Infra\CreateBaseToolAppXamlCsCT.tt" />
+    <None Include="t4Includes\Infra\CreateBaseToolAppXamlCT.tt" />
+    <None Include="t4Includes\Infra\CreateSchema\Copy of CreateSchemaResourcesCT.tt" />
+    <None Include="t4Includes\Infra\CreateSchema\CreateSchemaResourcesCT.tt" />
+    <None Include="t4Includes\Infra\CreateSchema\CreateSchemaResXDef.tt" />
+    <None Include="t4Includes\Infra\CreateSchema\InfraestructureCreateSchemaXamlCT backup.tt" />
+    <None Include="t4Includes\Infra\CreateSchema\MyApplicationSettingsCT.tt" />
+    <None Include="t4Includes\Infra\InfraestructureCreateSchemaCbCT.tt" />
+    <None Include="t4Includes\Infra\InfraestructureCreateSchemaXamlCT.tt" />
+    <None Include="t4Includes\Infra\InfraestructureEntityFluentCT.tt" />
+    <None Include="t4Includes\Infra\InfraestructureResourcesCT.tt" />
+    <None Include="t4Includes\Infra\Backup and old versions\old of  InfraestructureEntityOracleHbmCT.tt" />
+    <None Include="t4Includes\Infra\InfraestructureEntityOracleHbmCT.tt" />
+    <None Include="t4Includes\Infra\InfraestructureEntityRepositoryFactoryCT.tt" />
+    <None Include="t4Includes\Infra\InfraestructureEntityRepositoryCT.tt" />
+    <None Include="constructores parametros.tt" />
+    <None Include="T4ItemsTemplates\T4ClassTemplateCT.tt" />
+    <None Include="t4LearningTests\AccesMBR.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AccesMBR.txt</LastGenOutput>
+    </None>
+    <None Include="t4LearningTests\AccesMBR.tt.log">
+      <DependentUpon>AccesMBR.tt</DependentUpon>
+    </None>
+    <None Include="GrammarSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <EmbeddedResource Include="MoneyGenSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Zeus.kyk">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Images\Logos\" />
+    <Folder Include="Assets\WpfThemes\" />
+    <Folder Include="Documentacion\Images\" />
+    <Folder Include="Inflexion2t4Includes\Domain\backup and old versions\" />
+    <Folder Include="t4helpers\resx\" />
+    <Folder Include="t4Includes\Domain\backup and old versions\" />
+    <Folder Include="t4Includes\UX\" />
+    <Folder Include="xsd\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Images\Flags\ad24.png" />
+    <Content Include="Assets\Images\Flags\de24.png" />
+    <Content Include="Assets\Images\Flags\es24.png" />
+    <Content Include="Assets\Images\Flags\fr24.png" />
+    <Content Include="Assets\Images\Flags\il24.png" />
+    <Content Include="Assets\Images\Flags\it24.png" />
+    <Content Include="Assets\Images\Flags\pt24.png" />
+    <Content Include="Assets\Images\Flags\uk24.png" />
+    <Content Include="Assets\Images\Icons\Engine.ico" />
+    <Content Include="Documentacion\Architecture.html" />
+    <Content Include="doc\Acerca del Testing.txt" />
+    <Content Include="Inflexion2t4Includes\Infra\notas\notas sobre el app.config de la fachada remota.txt" />
+    <Content Include="Create02References.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Create02References.tt</DependentUpon>
+    </Content>
+    <Content Include="Create04Documentation.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Create04Documentation.tt</DependentUpon>
+    </Content>
+    <Content Include="Create03ImageDocumentation.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Create03ImageDocumentation.tt</DependentUpon>
+    </Content>
+    <Content Include="Create06DataBase.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Create06DataBase.tt</DependentUpon>
+    </Content>
+    <Content Include="credits\CreditsAndThanks.txt" />
+    <Content Include="Documentacion\Arquitecture.html" />
+    <Content Include="Documentacion\Intro.html" />
+    <Content Include="Documentacion\SharedKernels.html" />
+    <Content Include="doc\instalación de templates.txt" />
+    <Content Include="t4helpers\helper pieces\PreconditionsNullOrEmpty.txt" />
+    <None Include="Inflexion2t4Includes\Application\WcfServiceAppConfigCT.tt" />
+    <Content Include="t4Includes\Infra\notas\notas sobre el app.config de la fachada remota.txt" />
+    <Content Include="T4ItemsTemplates\TextFile1.txt" />
+    <Content Include="t4LearningTests\AccesMBR.txt">
+      <DependentUpon>AccesMBR.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\CreateDataBase\Resources\CreateProductDataBase.ar.resx" />
+    <EmbeddedResource Include="Assets\CreateDataBase\Resources\CreateProductDataBase.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateProductDataBase.de-DE.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\CreateDataBase\Resources\CreateProductDataBase.en-Gb.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateProductDataBase.en-Gb.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\CreateDataBase\Resources\CreateProductDataBase.fr-FR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateProductDataBase.fr-FR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\CreateDataBase\Resources\CreateProductDataBase.he-IL.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateProductDataBase.he-IL.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\CreateDataBase\Resources\CreateProductDataBase.it-IT.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateProductDataBase.it-IT.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\CreateDataBase\Resources\CreateProductDataBase.ja.resx" />
+    <EmbeddedResource Include="Assets\CreateDataBase\Resources\CreateProductDataBase.pt-PT.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateProductDataBase.pt-PT.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\CreateDataBase\Resources\CreateProductDataBase.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateProductDataBase.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\CreateDataBase\Resources\CreateProductDataBase.zh.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

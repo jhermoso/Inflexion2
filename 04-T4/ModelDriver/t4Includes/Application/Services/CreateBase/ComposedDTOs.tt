@@ -122,7 +122,7 @@ public class ComposedDTOs : Template
                         var <#= property.TargetRolName.Trim() #>FromDto = <#= property.Source.Name #>Repo.GetById(<#= prefijo.ToString() #>Id);
                         Guard.ArgumentIsNotNull(<#= property.TargetRolName.Trim() #>FromDto, string.Format(
                                                                       CoreResources.Neutral.NoHayDatosPorId,
-                                                                      <#= EntityBoundedcontext #>Neutral.<#= property.Source.Name #>Alias));
+                                                                      <#= EntityBoundedcontext #>Resources.<#= property.Source.Name #>Alias));
 <#+ 
             }// end if is Entity
 

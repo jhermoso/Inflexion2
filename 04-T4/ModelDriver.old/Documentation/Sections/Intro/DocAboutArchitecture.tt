@@ -1,0 +1,116 @@
+﻿<#+
+
+    public class DocAboutArchitecture : Template
+    {
+        // parametros de la plantilla
+        public DslContextDefinitionDiagram MainDiagram;
+        public ActiveSolution SolutionInfo;
+        public ITree<LocalizedBounded> AppTree;
+        public ITree<BoundedContextMetadata> SharedKernelTree;
+        public ICollection<Architecture.ArqLayer> layersList= null;
+        
+        // constructor de la plantilla
+        public DocAboutArchitecture(DslContextDefinitionDiagram mainDiagram, ActiveSolution solutionInfo,  ITree<LocalizedBounded> appTree, ITree<BoundedContextMetadata> sharedKernelTree)
+        {
+            MainDiagram = mainDiagram;
+            SolutionInfo = solutionInfo;
+            AppTree = appTree;
+            SharedKernelTree = sharedKernelTree;
+
+            //TODO convertir estas lineas en un metodo e incluir layerlist en el diagrama
+                layersList= null;
+                if (MainDiagram.Architecture == ArchitectureOptions.Inflexion2)
+                    layersList = Architecture.Inflexion2WPFLayers;
+                else if (MainDiagram.Architecture == ArchitectureOptions.HexaCore)
+                    layersList = Architecture.HexaCoreMVCLayers;
+                else
+                    layersList = Architecture.ArqLayers;
+        }
+        
+        // metodo de generación de la plantilla
+        public override string TransformText()
+        {
+            if (AppTree != null)
+            {
+#>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title><#= MainDiagram.Product #> Documentation </title>
+</head>
+<body>
+    <h2>Arquitectura general de la solución</h2>
+    <h3>Por carpetas en la solución</h3>
+    <table>
+<#+
+    foreach (Architecture.ArqLayer layer in layersList)
+    {
+#>
+        <tr><td>&nbsp;Capa '<#= layer.LayerType.ToString() #>'</td><td> equivale a la carpeta </td><td>&nbsp;&nbsp;'<#= GetFolderLayerName(MainDiagram, layer.LayerType) #>' </td></tr>
+<#+
+    } // end foreach( INode<LocalizedBounded> context in TreeApp.All.Nodes )
+#>
+    </table>
+
+    <h3>Lista de proyectos por Carpeta</h3>
+    <table>
+<#+
+    foreach (Architecture.ArqLayer layer in layersList)
+    {
+#>
+    <tr><td colspan = "2">&nbsp;Capa '<strong><#= GetFolderLayerName(MainDiagram, layer.LayerType) #>'</strong> </td></tr>
+<#+ 
+        if (layer.LayerProyects != null)
+        foreach (Architecture.ArqLayer.ArqProject project in layer.LayerProyects)
+        {
+ #>
+    <tr><td>&nbsp; proyecto '<#= project.Name #>' </td><td> &nbsp; con project template </td><td>'<#= project.Template #>' </td></tr>
+<#+
+        } // end foreach (Architecture.ArqLayer.ArqProject project in layer.LayerProyects)
+#>
+<#+
+    } // end foreach (Architecture.ArqLayer layer in layersList)
+#>
+    </table>
+
+    <h3>Lista de referencias fijas por projecto</h3>
+    <table>
+<#+
+    foreach (Architecture.ArqLayer layer in layersList)
+    {
+#>
+    <tr><td colspan = "2">&nbsp;Capa <strong>'<#= GetFolderLayerName(MainDiagram, layer.LayerType) #>'</strong> </td></tr>
+<#+ 
+        if (layer.LayerProyects != null)
+        foreach (Architecture.ArqLayer.ArqProject project in layer.LayerProyects)
+        {
+ #>
+    <tr><td colspan = "2"><#= T4Help.HtmlIndent(1) #> proyecto <em>'<#= project.Name #>'</em> </td></tr>
+<#+
+            foreach (Architecture.ArqLayer.ArqProject.ArqReference reference in project.References)
+            { 
+#>
+    <tr><td><#= T4Help.HtmlIndent(2) #> Referencia '<#= reference.Name #>'</strong></td><td> tipo de referencia</td><td><#= reference.ReferenceType #> </td></tr>
+<#+
+            }
+#>
+<#+
+        } // end foreach (Architecture.ArqLayer.ArqProject project in layer.LayerProyects)
+#>
+<#+
+    } // end foreach (Architecture.ArqLayer layer in layersList)
+#>
+    </table>
+
+<table>
+<tr><td></td><td> <a href="Intro.html"> Intro </a>  </td></tr>
+<tr><td></td><td> <a href="SharedKernels.html"> SharedKernels </a>  </td></tr>
+</table>
+</body>
+</html>
+<#+
+            }// end if (AppTree != null)
+            return this.GenerationEnvironment.ToString();
+        }// end method TransformText()
+    }// end public class DocAboutBoundedContextTree
+#>

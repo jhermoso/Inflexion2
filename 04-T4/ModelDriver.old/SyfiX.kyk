@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.0" Id="b4664ba0-1ae8-4618-858f-ab4003c8ae09" sGDB="MsSql2008" iSO2Country="en" culture="en" rootNameSpace="AirBus.Suite" company="Airbus" product="Airbus MetaSchema" copyright="Airbus" branding="Airbus.Suite.MetaSchema" version="0.1" documentationPath="..\00-Documentation" asemblysPath="..\00-Assemblies" solutionFolderApplication="02. Application" solutionFolderDomain="03. Domain" solutionFolderInfraestructure="04. Infrastructure" solutionFolderCommon="MetaS" libraryPath="..\02-Library" proyectsPath="..\03-GeneratedProjects" solutionFolderUX="01. FrontEnd" isModule="false" architecture="Inflexion2" oRM="EntityFramewokCodeFirst" mapper="Manual" generateCode="Always" ifContracts="false" conectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SyfiX;Integrated Security=True" schemaName="SyfiX" dataBaseServer="(localdb)\MSSQLLocalDB" translationsSet1="French, German, Hebrew, Italian" translationsSet2="Portuguese, Spanish" xmlns="http://schemas.microsoft.com/dsltools/MoneyGen">
+  <classBases>
+    <applicationHasElements Id="06476201-0e27-431c-8383-3bfa88cf5c70">
+      <entity Id="22c0ab40-cd4d-4813-80b0-17f790909fcd" name="Incident" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Aplication" volumen="0" remarks="Aplication definition" tooltip="Meta-Schema definition" logicDelete="false" pluralName="Aplications" programRemarks="A metaschema corresponds to a metadefinition of one application. This Application is interpreted by the system and created executed on th fly in runtime" referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="Aplications" grammarCategory="Sustantive" mainEntityStereotype="AggregateRoot">
+        <atributtes>
+          <classBaseHasAtributtes Id="6116b0d5-791c-4c1b-9021-c0617787ddf4">
+            <atributte Id="b8427b57-77c1-4fb3-90f1-f7daaa937219" atributteName="Name" atributteAlias="Name" isGrouping="true" isIdentification="true" position="0" tooltip="identifier of the application" userRemarks="Name of the application" programerRemarks="Application name" requestUponCreation="yes" nameAndType="string Name" aliasDatabaseField="Name" plural="Names" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="87504b2c-0e8a-4d08-873b-050fb4ca5f18">
+      <entity Id="d0591bcd-7d6e-4903-bca4-16d1aff8937f" name="Document" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Meta-Class" stereotype="Entity" volumen="0" remarks="Involves cross definition of a class and and how to see and how save in the repository." tooltip="Class table definition" logicDelete="false" pluralName="Meta-Classes" programRemarks="Involves cross definition of a class and and how to see and how save in the repository." referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="Entities" grammarCategory="sustantive" mainEntityStereotype="AggregateRoot">
+        <atributtes>
+          <classBaseHasAtributtes Id="1b927907-0d81-44e8-ac21-f31116a2743b">
+            <atributte Id="6b604e56-8361-440e-a3e1-0e3216f29c67" atributteName="Name" atributteAlias="Name" isIdentification="false" position="0" tooltip="Name of the entity" userRemarks="Name to identify the entity." nameAndType="string Name" aliasDatabaseField="Name" plural="Entities" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="0cc8c802-f73e-41a5-9c96-1b89a771993f">
+      <enumeration Id="ab618db6-6589-4921-888f-515bd034547d" name="Category" inheritanceClassModifier="Public, Partial" stereotype="TipoCategoria" volumen="0" referencedRootEntity="" mainEntityStereotype="None" serializable="false">
+        <enumValue>
+          <enumerationHasEnumValue Id="d37a56f5-debc-4047-b84d-2303780bed3f">
+            <enumValues Id="f2e10bc1-8de3-480f-a021-2236d5171c1b" description="Low" sorting="0" value="Low" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="2d708a04-63cd-4bd7-83e2-2410c848aa0c">
+            <enumValues Id="4d1cdf49-19c3-4743-91ba-038d1d372836" description="High" sorting="1" value="High" />
+          </enumerationHasEnumValue>
+        </enumValue>
+      </enumeration>
+    </applicationHasElements>
+  </classBases>
+  <boundedContexts>
+    <applicationHasBoundedContexts Id="0704374e-b4ab-40d9-a6de-2d6489e1226a">
+      <boundedContext Id="0e860c0a-ed24-494e-8d3e-88483256938a" name="From Main2" mBR="modelbus://kayak.MoneyGen.MoneyGenAdapter/Main2//.\Main2.kyk" />
+    </applicationHasBoundedContexts>
+  </boundedContexts>
+</application>

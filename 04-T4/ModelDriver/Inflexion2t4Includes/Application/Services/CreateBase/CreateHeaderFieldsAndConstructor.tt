@@ -33,24 +33,24 @@ public class CreateHeaderFieldsAndConstructor : Template
     using Inflexion.Framework.Infrastructure.IoC;
     using Inflexion.Framework.Logging;
 
-   // using CoreResources /* Esta linea aparece comentada pues se utiliza el name espace en cada sitio para distinguirlo de los resources propios del contexto limitado ya que todos los ficheros de recursos generados desde la t4 tienen el nombre de neutral */
+   // using CoreResources /* Esta linea aparece comentada pues se utiliza el name espace en cada sitio para distinguirlo de los resources propios del contexto limitado ya que todos los ficheros de recursos generados desde la t4 tienen el nombre de "<Boundedcontext>Resources.Language" */
    // TODO: Esto significa que para una instalación es necesario generar los core resources en función del idioma neutral.
    // tambien podemo introducir el \<\#= T4Help.ToPascalCase(secureBdName) \#\>. como namespace corto del los ficheros de recursos
-   // using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Core;
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Data.Base;
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Services.Core;
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain.Core;
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain.Base;
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Infrastructure.Data.Repositories;
+ // using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Core;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Data.Base;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Services.Core;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain.Core;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain.Base;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Infrastructure.Data.Repositories;
 <#+ if (!prjCon.boundedContextName.Contains(cbc.diagram.SolutionFolderCommon))   { /* El contexto es un shared kernel entonces este using ya aparece en */#>
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain.Resources;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain.Resources;
 <#+         } #>
 
     #endregion
 
     /// <summary>
     /// Interfaz que permite definir las acciones del servicio de creación de 
-    /// una entidad de tipo <see cref="<#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.<#= I #><#= cbc.pascalSecureEntityName #>"/>.
+    /// una entidad de tipo <see cref="<#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.<#= I #><#= cbc.pascalSecureEntityName #>"/>.
     /// </summary>
     /// <remarks>
     /// Sin comentarios adicionales.

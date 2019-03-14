@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.0" Id="b4664ba0-1ae8-4618-858f-ab4003c8ae09" sGDB="MsSql2008" iSO2Country="en" culture="en" rootNameSpace="AirBus.Suite" company="Airbus" product="Airbus MetaSchema" copyright="Airbus" branding="Airbus.Suite.MetaSchema" version="0.1" documentationPath="..\00-Documentation" asemblysPath="..\00-Assemblies" solutionFolderApplication="02. Application" solutionFolderDomain="03. Domain" solutionFolderInfraestructure="04. Infrastructure" solutionFolderCommon="MetaS" libraryPath="..\02-Library" proyectsPath="..\03-GeneratedProjects" solutionFolderUX="01. FrontEnd" isModule="false" architecture="Inflexion2" oRM="EntityFramewokCodeFirst" mapper="Manual" generateCode="Always" ifContracts="false" conectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MetaSchema;Integrated Security=True" schemaName="MetaSchema" dataBaseServer="(localdb)\MSSQLLocalDB" translationsSet1="French, German, Hebrew, Italian" translationsSet2="Portuguese, Spanish" xmlns="http://schemas.microsoft.com/dsltools/MoneyGen">
+  <classBases>
+    <applicationHasElements Id="326ecb71-85d1-489d-848f-189805e6ac8b">
+      <entity Id="e0b99a0b-a5a8-4eea-bb2e-ac43d3fa8b98" name="MetaSUser" inheritanceClassModifier="Public, Partial" aliasFrontEnd="User" volumen="0" remarks="User information data" tooltip="User information" logicDelete="false" pluralName="Users" programRemarks="Data about user of the application." referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="Users" grammarCategory="sustantivo" mainEntityStereotype="AggregateRoot">
+        <atributtes>
+          <classBaseHasAtributtes Id="fafe5c50-b9d9-4ca6-9f39-5114f33923a4">
+            <atributte Id="8874d105-d2e5-4a28-a0d3-2b413f047dc1" atributteName="Name" atributteAlias="MetaUSer" isIdentification="false" position="0" tooltip="test tooltip" userRemarks="test remarks" programerRemarks="Test with auto property and public setter." requestUponCreation="yes" nameAndType="string Name" minLength="3" maxLength="80" aliasDatabaseField="Code" grammarCategories="Sustantive" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="25cc916e-6dcf-4246-abe5-cb5d602bda9c">
+      <enumeration Id="2d6c4b8e-79ce-459b-bd1e-9ea5e3d9e511" name="MetaType" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Type" stereotype="TipoCategoria" volumen="0" remarks="asign the type of simple attributtes" tooltip="MetaType" pluralName="Types" programRemarks="list of standar types for attributtes" referencedRootEntity="" mainEntityStereotype="TipoCategoria" serializable="true">
+        <enumValue>
+          <enumerationHasEnumValue Id="71494a97-ec92-4e8c-ac5d-6a500bb49af8">
+            <enumValues Id="34da8421-034a-4d72-a458-62a551ca77f7" description="bool" sorting="1" value="bool" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="08e22dc4-8d32-444c-be1d-a718df4e53b7">
+            <enumValues Id="bcd9e7e6-7803-4196-90bf-c338e5cabd64" description="byte" sorting="2" value="byte" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="79e12c26-32f9-4165-aa91-8e21b1aac72c">
+            <enumValues Id="f5fef040-9adb-4e52-85d1-b96eb1a2444f" description="char" sorting="3" value="char" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="3564733c-a517-4339-9b86-b67601df75cc">
+            <enumValues Id="77ff3af0-6b26-486e-be9e-d7d668c3fe05" description="string" sorting="4" value="string" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="cbc71589-0305-4b95-bf22-ab7d29d8c38a">
+            <enumValues Id="31c520c0-e32b-4bef-9936-67034241a15c" description="DateTime" sorting="5" value="DateTime" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="ac9cb242-55da-4a4f-ab5d-a5bd690e4fa6">
+            <enumValues Id="ea357a12-faef-46d7-b3a5-13e5a284a158" description="decimal" sorting="6" value="decimal" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="727c0c30-72bb-4ccc-a7d0-f8dbf49d0922">
+            <enumValues Id="ca923217-53a5-4ff1-bfc9-6ea5b0430b08" description="double" sorting="7" value="double" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="bf3ae059-4180-4895-aed2-efd24727cb92">
+            <enumValues Id="a20b897f-cd9f-4318-990e-3ba2610233df" description="float" sorting="8" value="float" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="055994ef-8490-4eee-8f70-c7b5ba2bb0f9">
+            <enumValues Id="f26e9444-8728-4dce-b0e9-fdc292655d98" description="int" sorting="9" value="int" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="eb4851c2-5e9c-4806-907d-c219ae833b28">
+            <enumValues Id="c13218cd-5a85-41c2-859e-deb5951ad575" description="long" sorting="10" value="long" />
+          </enumerationHasEnumValue>
+        </enumValue>
+      </enumeration>
+    </applicationHasElements>
+    <applicationHasElements Id="c3b0532b-3515-40a5-9b6e-0e2b43c95655">
+      <enumeration Id="91aa4bea-ab0d-492c-a776-56a52add21c4" name="Stereotype" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Stereotype" stereotype="TipoCategoria" volumen="0" remarks="Assign the main sterotype to a class or entity." tooltip="Main Stereotype" pluralName="Stereotypes" programRemarks="the sterotypes set a main behavieor of the entity or class " referencedRootEntity="" mainEntityStereotype="None" serializable="true">
+        <enumValue>
+          <enumerationHasEnumValue Id="fe4fe3d2-0f4a-4a11-abe6-b6dca20db064">
+            <enumValues Id="7a82f326-7934-43f2-a9b4-823aab468391" description="Root Aggregate" sorting="1" value="MetaRootAggregate" programRemarks="DDD Root stereotype for entities" userRemarks="DDD Root stereotype for entities" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="bea7caa2-85bf-4558-91e2-04c33c9198ea">
+            <enumValues Id="fb6d08a0-476e-44ab-8215-91a7fd03285b" description="Entity" sorting="2" value="MetaEntity" programRemarks="DDD Sterotype entity " userRemarks="DDD Sterotype entity " />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="c3c75a86-49cb-4e0d-835b-a83e8f3bb73d">
+            <enumValues Id="11281bca-783b-46ff-b17e-f7326ec1a666" description="Value Object" sorting="3" value="MetaValueObject" programRemarks="DDD object value" userRemarks="DDD object value" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="b6c2f788-b709-4d4f-81d4-2c17b16d3a14">
+            <enumValues Id="906fb6a5-c0b0-4295-8e43-23008132c689" description="Enum" sorting="4" value="MetaEnum" programRemarks="mark enumeration" userRemarks="mark enumeration" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="9041912d-d2f6-46b3-91af-b2b07e42dff5">
+            <enumValues Id="5ef48ea6-7a43-4e82-9814-3ee5df50291a" description="Class" sorting="5" value="MetaClass" programRemarks="Class " userRemarks="Class " />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="b1e5d639-9410-424f-9b96-a54e888f397b">
+            <enumValues Id="27600c90-a510-42c1-84ef-a2e9dabeaf9c" description="Metadata" sorting="6" value="MetaData" />
+          </enumerationHasEnumValue>
+        </enumValue>
+      </enumeration>
+    </applicationHasElements>
+    <applicationHasElements Id="5c67e01c-2eb8-43d1-961b-8e55615f0378">
+      <entity Id="f7179aa2-ecee-48fc-84de-4359cbda6d56" name="MetaSAppSetting" inheritanceClassModifier="Public, Partial" aliasFrontEnd="App Setting" volumen="0" remarks="Clasificador" tooltip="Application Settings" logicDelete="false" pluralName="App Settings" programRemarks="Clasificador de uso futuro" referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="AppSettings" grammarCategory="Sustantivo" mainEntityStereotype="AggregateRoot">
+        <atributtes>
+          <classBaseHasAtributtes Id="ef1a1f7a-ae2b-4b7a-9fcd-8ce0f3f65676">
+            <atributte Id="4cb016d2-ff94-440f-ac22-17b6ea9186f2" atributteName="Key" atributteAlias="Key" editPropertyControl="Key" editCollectionPropertyControl="Keys" isIdentification="false" position="0" tooltip="App setting key" userRemarks="App setting key" programerRemarks="App setting identity" nameAndType="string Key" plural="Keys" grammarCategories="sustantive" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="90b32764-a92c-4206-afc4-205ea9f1c817">
+            <atributte Id="da333e1e-5ff9-43f0-9d10-b703abb6aa95" atributteName="Value" isIdentification="false" position="0" nameAndType="string Value" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="b003f1da-0325-480d-b6d5-9b93a8160055">
+      <entity Id="f2547e89-0451-4952-a328-0d106e9fde73" name="MetaClass" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Meta-Class" stereotype="Entity" volumen="0" remarks="Involves cross definition of a class and and how to see and how save in the repository." tooltip="Class table definition" logicDelete="false" pluralName="Meta-Classes" programRemarks="Involves cross definition of a class and and how to see and how save in the repository." referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="Classes" grammarCategory="sustantive" mainEntityStereotype="AggregateRoot">
+        <atributtes>
+          <classBaseHasAtributtes Id="25c8c67f-0d7f-42b9-9766-f4719f248cc6">
+            <atributte Id="c1dbb5cc-47c2-459a-a145-1cb261066f18" atributteName="Name" atributteAlias="Name" isIdentification="false" position="0" tooltip="Name of the entity" userRemarks="Name to identify the entity." nameAndType="string Name" aliasDatabaseField="Name" plural="Entities" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="5b8fdae7-4626-4218-89e0-9312dd2bc869">
+            <atributte Id="2bc2e1df-5d7e-47ba-b161-f5f0ddb3dc11" atributteName="ClassSterotype" atributteAlias="Sterotype" atributteType="Stereotype" isIdentification="false" position="0" tooltip="Main sterotype" userRemarks="Choose the sterreotype of the class." programerRemarks="an sterotype assigns a base expected behavieor" nameAndType="Stereotype ClassSterotype" plural="Streotypes" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="2f61468b-e71b-4613-92bc-6ef1e38ee54d">
+      <entity Id="f8137a05-ba08-4dd2-9502-c74314818224" name="MetaView" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Meta-Screen" stereotype="Entity" volumen="0" tooltip="View definition. " logicDelete="false" pluralName="Meta-Screens" referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="Views" grammarCategory="sustantive" mainEntityStereotype="AggregateRoot">
+        <atributtes>
+          <classBaseHasAtributtes Id="780344eb-5c85-4241-9ed4-1f5081f8f271">
+            <atributte Id="3ef6df45-cf7a-49f8-b1e9-ca7ff2a961e2" atributteName="Name" atributteAlias="Name" isIdentification="false" position="0" tooltip="Name of the view" userRemarks="Name to identify the view of one application." nameAndType="string Name" aliasDatabaseField="Name" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="e3f46320-af80-4d42-b95d-6f855ff69282">
+      <entity Id="2f223c09-9327-4905-a4df-5dd57e126d9e" name="MetaProperty" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Meta-Property" stereotype="Entity" volumen="0" remarks="definition of a property class and how to see in the screen or to save in the DB." tooltip="Property definition." logicDelete="false" pluralName="Meta-Properties" programRemarks="Defines a property of a class and his mapping  to the database and how to render in the screen." referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="Properties" mainEntityStereotype="AggregateRoot">
+        <atributtes>
+          <classBaseHasAtributtes Id="ba4db483-38a8-4e2f-8aef-24632f8e56fa">
+            <atributte Id="2d8b1e12-8498-4ef0-8460-b399a6747ffb" atributteName="Name" atributteAlias="Name" isIdentification="false" position="0" tooltip="Name of attributte" userRemarks="Name to identify the attributte t" nameAndType="string Name" aliasDatabaseField="Name" plural="Entities" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="633ab3bb-2c16-4f5b-a21d-0ff9aa5853d4">
+            <atributte Id="c6508c45-6e5c-4f2c-8c22-f31936c59a8a" atributteName="PropertyType" atributteAlias="MetaType" atributteType="MetaType" isIdentification="false" position="0" nameAndType="MetaType PropertyType" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+  </classBases>
+  <boundedContexts>
+    <applicationHasBoundedContexts Id="0704374e-b4ab-40d9-a6de-2d6489e1226a">
+      <boundedContext Id="0e860c0a-ed24-494e-8d3e-88483256938a" name="From Main2" mBR="modelbus://kayak.MoneyGen.MoneyGenAdapter/Main2//.\Main2.kyk" />
+    </applicationHasBoundedContexts>
+  </boundedContexts>
+</application>

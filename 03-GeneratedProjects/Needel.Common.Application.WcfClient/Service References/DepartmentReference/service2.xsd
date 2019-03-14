@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="FaultObject">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" type="FaultObject.FaultCode" />
+      <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FaultObject" nillable="true" type="FaultObject" />
+  <xs:simpleType name="FaultObject.FaultCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Sever" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FaultObject.FaultCode" nillable="true" type="FaultObject.FaultCode" />
+  <xs:complexType name="InternalException">
+    <xs:complexContent mixed="false">
+      <xs:extension base="FaultObject">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InternalException" nillable="true" type="InternalException" />
+  <xs:complexType name="ValidationException">
+    <xs:complexContent mixed="false">
+      <xs:extension base="InternalException">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ValidationErrors" nillable="true" type="q1:ArrayOfstring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ValidationException" nillable="true" type="ValidationException" />
+</xs:schema>

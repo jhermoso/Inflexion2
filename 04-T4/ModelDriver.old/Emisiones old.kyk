@@ -1,0 +1,595 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.0" Id="1f29b29c-b486-42cf-b769-8e667626df58" sGBD="Oracle" culture="es" rootNameSpace="Inflexion.Suite" company="Inflexion" product="Emisiones" copyright="I3 Televisión" branding="I3 Televisión" version="0.1" solutionFolderCommon="SPE\Emisiones" libraryPath="..\Librarys" solutionFolderUX="Windows" xmlns="http://schemas.microsoft.com/dsltools/MoneyGen">
+  <classBases>
+    <applicationHasElements Id="dbd77450-e564-4cf4-8616-e2166190a0f8">
+      <entity Id="10cd6998-8425-4903-a3ca-0e539c59cfaf" name="CambiosUltimaHora" inheritanceClassModifier="Public" alias="Cambios Ultima Hora" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="15bdc1f7-2589-43fd-90fe-bb176677b9bc">
+            <atributte Id="4f0908d9-9487-4e90-9d02-60e05aa01348" atributteName="CdCambio" atributteAlias="Cambio" atributteType="Int32" isID="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="Int32 CdCambio" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="026cb81b-5792-4006-8800-bd56cb63a6ee">
+            <atributte Id="5dac1988-7842-4685-899a-e11864fe39b5" atributteName="CdEmisor" atributteAlias="Emisor" atributteType="Int32" isID="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="Int32 CdEmisor" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="5b8649a4-7c51-48f4-8e98-f8785f9f925e">
+            <atributte Id="2c709e47-f1ee-450f-8d29-1fd047cc3926" atributteName="CdPauta" atributteAlias="Pauta" atributteType="Int32" isID="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="Int32 CdPauta" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="8f5bbe3b-9ac6-4e45-9dd0-18d13b21cfc0">
+            <atributte Id="6ae07044-40cd-4b81-a2ea-c0cb8de2fa1c" atributteName="CdTipCambio" atributteAlias="Tip Cambio" atributteType="Int32" isID="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="Int32 CdTipCambio" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="e6486d21-1c6e-43df-b684-e6c338186bc2">
+      <entity Id="ec7c017e-3874-4f08-baff-b3f0f1e01484" name="Inserccion" inheritanceClassModifier="Public" alias="Insercción" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="d801c289-dcc2-48e4-aae4-b5c72690d904">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/CambiosUltimaHora" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="61925d5d-d1e3-4c62-a916-abc08b233918">
+      <entity Id="5e8268b5-cc43-46ff-bbc6-492a01a1f86f" name="Modificacion" inheritanceClassModifier="Public" alias="Modificación" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="5f516715-3943-4cc7-96e8-354e789dc62d">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/CambiosUltimaHora" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="efe93acd-d5e8-46b4-bdb6-a8c17b10d66e">
+      <entity Id="83dcbc59-cc1c-4ea4-a584-a98720365576" name="Borrado" inheritanceClassModifier="Public" alias="Borrado" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="410e1a81-26ea-4e5b-a0f6-619f42b3c5a4">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/CambiosUltimaHora" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="d922ad90-cbc4-4012-ada3-41e49d605a4c">
+      <entity Id="9f9372fa-efff-42db-9095-be9b836e849d" name="PautaEmision" inheritanceClassModifier="Public" alias="Pauta Emisión" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <targets>
+          <composition Id="daa236df-9edc-4658-ae0e-93017357a036" sourceMultiplicity="OneOne" sourceRoleName="EventoPautas" targetRolName="PautaEmision">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/EventoPauta" />
+          </composition>
+          <aggregation Id="b294c354-cf7f-4739-8dd0-717d223b4787" sourceRoleName="PlayListCollection" targetRolName="PautaEmision">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/PlayList" />
+          </aggregation>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="ada7c5ca-503f-4263-8be2-2760941c58e1">
+            <atributte Id="8f9b6475-fe69-43b2-9afb-58eeaf0a0352" atributteName="Color" atributteAlias="Color" atributteType="Int32" isID="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="Int32 Color" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="5baa372e-fc5a-4019-b4c9-6ef873d50aa4">
+            <atributte Id="59e31d59-dc98-4f82-8b53-2121467c2d46" atributteName="Copia" atributteAlias="Copia" atributteType="Int32" isID="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="Int32 Copia" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="66ff76b9-707e-4d33-814f-cd86f087edf0">
+            <atributte Id="42989855-5d70-49b3-80d8-91e3666b4770" atributteName="CortePublicidad" atributteAlias="Corte Publicidad" atributteType="Int32" isID="false" position="0" isNullable="false" allowRepedValues="false" nameAndType="Int32 CortePublicidad" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="9a06224a-2d6d-43a6-964d-c4a25490fb8f">
+            <atributte Id="781ba23a-37ff-4a5c-899c-d36c7063b6df" atributteName="Duracion" atributteAlias="Duracion" atributteType="DateTime" isID="false" position="0" tooltip="Duración del contenido" userRemarks="Duración del contenido" programerRemarks="Duración del contenido" isNullable="false" allowRepedValues="false" nameAndType="DateTime Duracion" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="ae3f429c-9549-44df-9ca7-46d3ac99e282">
+            <atributte Id="c8e06bb3-2c96-417b-89dd-78eea2dc62d6" atributteName="DuracionTotal" atributteAlias="Duracion Total" isID="false" position="0" programerRemarks="Duracion Total (publi + programa)" isNullable="false" allowRepedValues="false" nameAndType="String DuracionTotal" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="4205fdf5-273d-4c95-b590-eb9b4756bad0">
+            <atributte Id="29c4e22b-680f-4c2d-a786-a2b9a402bf3a" atributteName="Fecha" atributteAlias="Fecha" atributteType="DateTime" isID="false" position="0" tooltip="Fecha de Pauta" userRemarks="Fecha de Pauta" programerRemarks="Fecha de Pauta" isNullable="false" allowRepedValues="false" nameAndType="DateTime Fecha" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="909cd918-a93c-417d-a630-eff3628c7c89">
+            <atributte Id="f3fa7f9a-d63e-4ec0-a322-155de2a27183" atributteName="Hora" atributteAlias="Hora de inicio" atributteType="DateTime" isID="false" position="0" tooltip="Hora de inicio" userRemarks="Hora de inicio" programerRemarks="Hora de inicio" isNullable="false" allowRepedValues="false" nameAndType="DateTime Hora" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="22a0e155-aeb6-4e06-8d49-c8c9dada88af">
+            <atributte Id="3a795ac1-aa89-40e3-a43d-4b22961196c3" atributteName="Hueco" atributteAlias="Hueco" isID="false" position="0" tooltip="Hueco en la pauta de emisión se da cuando se da de alta un punto fijo" userRemarks="Hueco en la pauta de emisión se da cuando se da de alta un punto fijo" programerRemarks="Hueco en la pauta de emisión se da cuando se da de alta un punto fijo" isNullable="false" allowRepedValues="false" nameAndType="String Hueco" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="1bc25bcc-807a-41da-ab24-21744d478c22">
+            <atributte Id="f1fb6ba3-e18f-424c-a5e2-ba3f99468474" atributteName="Linea" atributteAlias="Línea" isID="false" position="0" tooltip="Número de línea que ocupa el evento" userRemarks="Número de línea que ocupa el evento" programerRemarks="Número de línea que ocupa el evento" isNullable="false" allowRepedValues="false" nameAndType="String Linea" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="30576cff-3aa8-430c-a134-13e23504ad60">
+            <atributte Id="f4c45d6d-1d40-4582-a8f2-bea1fc58307f" atributteName="LogoCadena" atributteAlias="Logo Cadena" atributteType="Int32" isID="false" position="0" tooltip="Logo Cadena" userRemarks="Logo Cadena" programerRemarks="Logo Cadena" isNullable="false" allowRepedValues="false" nameAndType="Int32 LogoCadena" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="43f85448-2cf0-4703-b202-3267f4dea4b5">
+            <atributte Id="3da19f4c-6652-4304-b19a-d8a1c5b6350c" atributteName="Master" atributteAlias="Master" isID="false" position="0" tooltip="Master" userRemarks="Master" programerRemarks="Master" isNullable="false" allowRepedValues="false" nameAndType="String Master" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="7849bd2d-6c7c-4318-a919-e8b4cebf71a8">
+            <atributte Id="1d662d74-4c84-4411-b6c0-d36c2e3f4066" atributteName="Negrita" atributteAlias="Negrita" isID="false" position="0" tooltip="esto es un a prueba &#xD;&#xA;" userRemarks="esto es un a prueba &#xD;&#xA;" programerRemarks="esto es un a prueba &#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Negrita" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="e8e30933-52e1-4682-975a-7de09b11a681">
+            <atributte Id="8959d6df-a173-4532-9cff-40c9d68361da" atributteName="NetoPublicidad" atributteAlias="Neto Publicidad" isID="false" position="0" tooltip="Duración publicidad&#xD;&#xA;" userRemarks="Duración publicidad&#xD;&#xA;" programerRemarks="Duración publicidad&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String NetoPublicidad" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="5d1ad468-ca60-49ef-97d0-acc17ec0aec4">
+            <atributte Id="22d978b6-dd6d-4aec-984a-ad9513b81450" atributteName="Nota" atributteAlias="Nota" isID="false" position="0" tooltip="Código de la nota asociada" userRemarks="Código de la nota asociada" programerRemarks="Código de la nota asociada" isNullable="false" allowRepedValues="false" nameAndType="String Nota" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="fdbd4522-cd01-497f-ae61-8af5c1e96051">
+            <atributte Id="fd35eed2-b339-4108-ab2b-cbcfe2ac50f1" atributteName="Pathfinder" atributteAlias="Pathfinder" atributteType="Int32" isID="false" position="0" tooltip="Pathfinder" userRemarks="Pathfinder " programerRemarks="Pathfinder" isNullable="false" allowRepedValues="false" nameAndType="Int32 Pathfinder" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="3f1e5e3e-0176-4d6b-acab-31e25d520c5e">
+            <atributte Id="9b453d7d-2057-47de-82b3-f2ad482b58cf" atributteName="Programa" atributteAlias="Programa" isID="false" position="0" tooltip="Código Programa y Capítulo&#xD;&#xA;" userRemarks="Código Programa y Capítulo&#xD;&#xA;" programerRemarks="Código Programa y Capítulo&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Programa" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="6699eca5-e2ee-4dba-8da5-536b5d28908a">
+            <atributte Id="ad3385e2-5ba3-4202-bdf7-be2f3110076b" atributteName="PuntoFijo" atributteAlias="PuntoFijo" atributteType="Boolean" isID="false" position="0" tooltip="Evento que no puede moverse de sitio en la pauta de emsión&#xD;&#xA;" userRemarks="Evento que no puede moverse de sitio en la pauta de emsión&#xD;&#xA;" programerRemarks="Evento que no puede moverse de sitio en la pauta de emsión&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Boolean PuntoFijo" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="5935cb07-0555-4902-967b-1969ec51d46a">
+            <atributte Id="63b75774-6521-4eb9-851f-53f091b58b2c" atributteName="ReconcileKey" atributteAlias="ReconcileKey" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String ReconcileKey" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="15e15c82-88b8-492b-9192-d1c7c4704987">
+            <atributte Id="7bc73379-84a7-4679-951d-cd4b3029145e" atributteName="RetardoPath" atributteAlias="RetardoPath" atributteType="Int32" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 RetardoPath" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="6cfbb7bd-208a-49a0-be28-0766d33e4e5f">
+            <atributte Id="c4bba395-bce2-411e-9798-8a0494a9dc52" atributteName="Segmento" atributteAlias="Segmento" isID="false" position="0" tooltip="Número de Segmento dentro del contenido &#xD;&#xA;" userRemarks="Número de Segmento dentro del contenido &#xD;&#xA;" programerRemarks="Número de Segmento dentro del contenido &#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Segmento" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="4e0c8ddb-2fd3-4f45-965a-257a9610351f">
+            <atributte Id="b0617e5a-df3f-4325-b821-04abd17c004c" atributteName="Seguridad" atributteAlias="Seguridad" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Seguridad" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="cc472310-ebe3-47b2-b49a-29f7ed7436ad">
+            <atributte Id="850ce9f0-fbb0-47f8-b799-64a1a6fc82c1" atributteName="Subrayado" atributteAlias="Subrayado" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Subrayado" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="1d435fb3-96df-44b7-af69-d5d228faefd1">
+            <atributte Id="8f69995c-795e-4187-9cc7-7086271f2e2e" atributteName="TCInt" atributteAlias="TCInt" atributteType="Int32" isID="false" position="0" tooltip="Tc de entrada&#xD;&#xA;" userRemarks="Tc de entrada&#xD;&#xA;" programerRemarks="Tc de entrada&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 TCInt" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="542071ed-361e-456c-94ac-1f2e780e5468">
+            <atributte Id="366c70ad-6642-421e-9f69-1ffa25c9019c" atributteName="TCOut" atributteAlias="TCOut" atributteType="Int32" isID="false" position="0" tooltip="TC de Salida&#xD;&#xA;" userRemarks="TC de Salida&#xD;&#xA;" programerRemarks="TC de Salida&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 TCOut" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="4cb22efa-8199-4326-82b6-d44c32c2467f">
+            <atributte Id="ebc240b7-3c9d-4449-ae6e-a620d24ad0dd" atributteName="TextoPath" atributteAlias="TextoPath" atributteType="Int32" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 TextoPath" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="97500385-82b4-41b7-b2b3-1eb26cd40687">
+            <atributte Id="36238f1d-1fb4-46e6-b9fd-9c2e43476501" atributteName="Titulo" atributteAlias="Titulo" isID="false" position="0" tooltip="Titulo del evento&#xD;&#xA;" userRemarks="Titulo del evento&#xD;&#xA;" programerRemarks="Titulo del evento&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Titulo" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="3b5bf13f-9356-42a9-9e2d-0bfafe4df913">
+      <entity Id="f7b72d48-f488-43cf-b51c-e927496f7dac" name="PlayList" inheritanceClassModifier="Public" alias="PlayList" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="8af67ca7-14d3-4a7d-9254-696304c30d02">
+            <atributte Id="e7a36edd-d1fa-4ef7-9363-b92685b90d0c" atributteName="Color" atributteAlias="Color" atributteType="Int32" isID="false" position="0" tooltip="Color de la fuente&#xD;&#xA;" userRemarks="Color de la fuente&#xD;&#xA;" programerRemarks="Color de la fuente&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 Color" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="c8c4a7f2-a9e8-4e08-a25d-3945c215980a">
+            <atributte Id="5dd0ac6b-aad3-4752-9a7d-94a34c9aa97d" atributteName="Copia" atributteAlias="Copia" isID="false" position="0" tooltip="Id del copia de emision&#xD;&#xA;" userRemarks="Id del copia de emision&#xD;&#xA;" programerRemarks="Id del copia de emision&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Copia" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="30c3cd45-8fbd-4451-a2f7-635eeda17a29">
+            <atributte Id="9d705cc9-fec7-4c14-95d6-8b9b2ef132c6" atributteName="CortePublicidad" atributteAlias="CortePublicidad" atributteType="Int32" isID="false" position="0" tooltip="Código del corte de publicidad&#xD;&#xA;" userRemarks="Código del corte de publicidad&#xD;&#xA;" programerRemarks="Código del corte de publicidad&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 CortePublicidad" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="71de6cc8-5a56-42ca-8891-7c36ce060ba0">
+            <atributte Id="01fdba52-7527-491e-91cc-900f3e49101c" atributteName="Duracion" atributteAlias="Duracion" isID="false" position="0" tooltip="Duración del contenido&#xD;&#xA;" userRemarks="Duración del contenido&#xD;&#xA;" programerRemarks="Duración del contenido&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Duracion" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="2852dba8-e88b-44c5-8f13-fef6c6b80ecd">
+            <atributte Id="3dc31a2b-a18a-4a0d-8d8f-9d3a50db1e2d" atributteName="DuracionTotal" atributteAlias="Duracion Total" isID="false" position="0" tooltip="Duracion Total (publi + programa)&#xD;&#xA;" userRemarks="Duracion Total (publi + programa)&#xD;&#xA;" programerRemarks="Duracion Total (publi + programa)&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String DuracionTotal" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="e5c1a1e1-58c4-4322-a008-a348398fddba">
+            <atributte Id="8d176060-e318-42b0-91be-e9e552e274fa" atributteName="Master" atributteAlias="Master" isID="false" position="0" tooltip="Id del soporte master&#xD;&#xA;" userRemarks="Id del soporte master&#xD;&#xA;" programerRemarks="Id del soporte master&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Master" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="138e234c-5f05-4ac2-8e63-eebc4445ef13">
+            <atributte Id="390d1251-5835-4d50-a743-899a131859e5" atributteName="Fecha" atributteAlias="Fecha" atributteType="DateTime" isID="false" position="0" tooltip="Fecha de Pauta&#xD;&#xA;" userRemarks="Fecha de Pauta&#xD;&#xA;" programerRemarks="Fecha de Pauta&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="DateTime Fecha" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="dbe8081b-fcc8-423c-9a12-48c8b1e092ac">
+            <atributte Id="12bb8cd3-dbe4-41d7-bf17-102f10d9dfcf" atributteName="Hora " atributteAlias="Hora " atributteType="DateTime" isID="false" position="0" tooltip="Hora de inicio&#xD;&#xA;" userRemarks="Hora de inicio&#xD;&#xA;" programerRemarks="Hora de inicio&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="DateTime Hora" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="8521992c-eec5-4b15-ab18-f6e305ba0d72">
+            <atributte Id="fc698975-f8f4-4aca-bd7a-a5a99a9a8db3" atributteName="Hueco" atributteAlias="Hueco" atributteType="Boolean" isID="false" position="0" tooltip="Hueco en la pauta de emisión se da cuando se da de alta un punto fijo&#xD;&#xA;" userRemarks="Hueco en la pauta de emisión se da cuando se da de alta un punto fijo&#xD;&#xA;" programerRemarks="Hueco en la pauta de emisión se da cuando se da de alta un punto fijo&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Boolean Hueco" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="1ec2f50c-8b98-4ae0-8fe2-747bb2b01257">
+            <atributte Id="dffad26b-2231-485c-a593-de26ababa00e" atributteName="Linea" atributteAlias="Linea" atributteType="Int32" isID="false" position="0" tooltip="Número de línea que ocupa el evento&#xD;&#xA;" userRemarks="Número de línea que ocupa el evento&#xD;&#xA;" programerRemarks="Número de línea que ocupa el evento&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 Linea" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="1b49d0a0-ea06-4ace-94c9-bc67304c40c1">
+            <atributte Id="35d596e2-c00d-4e97-956b-38367eadbc20" atributteName="Negrita" atributteAlias="Negrita" atributteType="Int32" isID="false" position="0" tooltip="Fuente negrita&#xD;&#xA;" userRemarks="Fuente negrita&#xD;&#xA;" programerRemarks="Fuente negrita&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 Negrita" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="4618252f-a5c6-45ac-b716-220193d22c7e">
+            <atributte Id="545aca05-f27b-47c6-9af9-63b2fd049c1b" atributteName="NetoPublicidad" atributteAlias="NetoPublicidad" isID="false" position="0" tooltip="Duración publicidad&#xD;&#xA;" userRemarks="Duración publicidad&#xD;&#xA;" programerRemarks="Duración publicidad&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String NetoPublicidad" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="54fbbe37-361f-4064-a418-8a6b688bc412">
+            <atributte Id="c06102a3-afab-4a9a-8e78-a2dd7268d365" atributteName="Nota" atributteAlias="Nota" isID="false" position="0" tooltip="Código de la nota asociada&#xD;&#xA;" userRemarks="Código de la nota asociada&#xD;&#xA;" programerRemarks="Código de la nota asociada&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Nota" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="5dec37eb-d973-48ab-aecd-2875e96f0fc8">
+            <atributte Id="d8cd4a6c-32e5-427e-af5e-cd696e53aeb1" atributteName="Programa" atributteAlias="Programa" atributteType="Int32" isID="false" position="0" tooltip="Código Programa y Capítulo&#xD;&#xA;" userRemarks="Código Programa y Capítulo&#xD;&#xA;" programerRemarks="Código Programa y Capítulo&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 Programa" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="2e22e854-cccb-437c-b659-f6501fbcdd35">
+            <atributte Id="b22f66bb-f0cb-40b4-ab82-aca5e6778a9f" atributteName="Segmento" atributteAlias="Segmento" atributteType="Int32" isID="false" position="0" tooltip="Número de Segmento dentro del contenido &#xD;&#xA;" userRemarks="Número de Segmento dentro del contenido &#xD;&#xA;" programerRemarks="Número de Segmento dentro del contenido &#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 Segmento" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="9cf66ee8-b430-424a-81f6-455591f6b071">
+            <atributte Id="a62e999b-8da5-4613-a111-b64dfa983862" atributteName="Seguridad" atributteAlias="Seguridad" isID="false" position="0" tooltip="Id copia de seguridad&#xD;&#xA;&#xD;&#xA;" userRemarks="Id copia de seguridad&#xD;&#xA;&#xD;&#xA;" programerRemarks="Id copia de seguridad&#xD;&#xA;&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Seguridad" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="dbcbc9cc-67ed-4254-8c26-869a9d663556">
+            <atributte Id="a65e1369-c379-4334-b520-60f68246754a" atributteName="Subrayado" atributteAlias="Subrayado" atributteType="Int32" isID="false" position="0" tooltip="fuente subrayado&#xD;&#xA;" userRemarks="fuente subrayado&#xD;&#xA;" programerRemarks="fuente subrayado&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 Subrayado" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="b6874a4c-3e2a-4cee-b883-2054d90728ab">
+            <atributte Id="25ede755-c680-4b39-ac82-b6c1617fa862" atributteName="TCInt" atributteAlias="TCInt" atributteType="Int32" isID="false" position="0" tooltip="Tc de entrada&#xD;&#xA;" userRemarks="Tc de entrada&#xD;&#xA;" programerRemarks="Tc de entrada&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 TCInt" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="8564eae1-8b71-4808-9430-6c8ee700dd30">
+            <atributte Id="f9fda7c4-945a-4e8c-a621-9a1b193f7831" atributteName="TCOut" atributteAlias="TCOut" atributteType="Int32" isID="false" position="0" tooltip="TC de Salida&#xD;&#xA;" userRemarks="TC de Salida&#xD;&#xA;" programerRemarks="TC de Salida&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 TCOut" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="81b61734-516a-4367-842e-02b6e260cc64">
+            <atributte Id="6eabf73b-55c3-4a51-a20d-42b5575ef54a" atributteName="TipoEvento" atributteAlias="TipoEvento" atributteType="Int32" isID="false" position="0" tooltip="Tipo de Evento de cada contenido&#xD;&#xA;" userRemarks="Tipo de Evento de cada contenido&#xD;&#xA;" programerRemarks="Tipo de Evento de cada contenido&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 TipoEvento" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="59a0246b-992e-4722-90ed-73cb1ff63d52">
+            <atributte Id="3b1b5460-db1d-486f-9dec-2940a08bdc5f" atributteName="Titulo" atributteAlias="Titulo" isID="false" position="0" tooltip="Titulo del evento&#xD;&#xA;" userRemarks="Titulo del evento&#xD;&#xA;" programerRemarks="Titulo del evento&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Titulo" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="3467443a-fcd6-4ddd-aec9-714c21c703e7">
+      <entity Id="eee026e9-b86a-4353-a638-d3bfee0b740d" name="EventoPauta" inheritanceClassModifier="Public" alias="Evento Pauta" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="67bc6c24-c5fb-438c-9e16-2043553d9a01">
+            <atributte Id="037e1b23-71ee-4845-9a0a-09bcde68a611" atributteName="CodEvento" atributteAlias="CodEvento" atributteType="Int32" isID="false" position="0" tooltip="Codigo autonumérico del evento&#xD;&#xA;" userRemarks="Codigo autonumérico del evento&#xD;&#xA;" programerRemarks="Codigo autonumérico del evento&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 CodEvento" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="855e62ab-c05c-4ae0-b3b8-04e55e6730bf">
+            <atributte Id="d0abd69c-c429-4a56-b3e2-d2048f51f296" atributteName="Color" atributteAlias="Color" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Color" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="66a75d26-221e-453f-b8ef-5b99d448b25b">
+            <atributte Id="c467afca-3323-46fa-a76f-5e24adf1b509" atributteName="Cursiva" atributteAlias="Cursiva" atributteType="Boolean" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Boolean Cursiva" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="834326c1-66b6-4274-b3dd-148ccd26bdaf">
+            <atributte Id="025a8297-a55f-4bf1-b324-c7d56a1ddf91" atributteName="Duracion" atributteAlias="Duracion" atributteType="Int32" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 Duracion" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="d7116158-f768-4de8-bb0b-763be55683b8">
+            <atributte Id="bd86e076-af6f-4de0-ba9f-54d7ec74ef75" atributteName="FecBaja" atributteAlias="FecBaja" atributteType="DateTime" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="DateTime FecBaja" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="7ddcfdc4-4a6c-4487-9370-d841894d1009">
+            <atributte Id="59bbaaae-caaa-4fee-8bbf-3c97d9a916f9" atributteName="Fuente" atributteAlias="Fuente" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Fuente" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="f1e6b4c8-6a3d-4c48-aa5f-c6762d530621">
+            <atributte Id="e2e35a96-fef2-431d-8044-06e3742f8fac" atributteName="Negrita" atributteAlias="Negrita" atributteType="Boolean" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Boolean Negrita" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="ddaddfde-1c64-4a5a-bd3b-58b5fefbfba0">
+            <atributte Id="fa413823-8655-49d2-9bc6-030029f14118" atributteName="Programa" atributteAlias="Programa" isID="false" position="0" tooltip="Datos de programa asociado&#xD;&#xA;" userRemarks="Datos de programa asociado&#xD;&#xA;" programerRemarks="Datos de programa asociado&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Programa" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="4e9e5af1-c834-4ad8-8bc8-7ce6cf5e7084">
+            <atributte Id="849e9a88-cd96-4767-b3e7-071dcc419bf5" atributteName="Simultaneo" atributteAlias="Simultaneo" atributteType="Boolean" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Boolean Simultaneo" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="0a97242b-d386-4837-b967-824c6e7ac4bf">
+            <atributte Id="48b88f91-a2f5-4c6a-8cdc-c01917ecbb8c" atributteName="Subrayaado" atributteAlias="Subrayaado" atributteType="Boolean" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Boolean Subrayaado" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="8b893bf2-c0bc-4610-93f4-07bba4416d9d">
+            <atributte Id="dfed0ef7-fb96-4ac0-b8dd-2b2d41e93059" atributteName="Teclas" atributteAlias="Teclas" atributteType="Int32" isID="false" position="0" tooltip="Teclas rápidas para introducir&#xD;&#xA;" userRemarks="Teclas rápidas para introducir&#xD;&#xA;" programerRemarks="Teclas rápidas para introducir&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 Teclas" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="8d4f4099-429c-434e-b503-72893ed629e3">
+            <atributte Id="ed2df970-e94d-41e2-a560-39dfd62f7893" atributteName="Tipo" atributteAlias="Tipo" atributteType="Int32" isID="false" position="0" tooltip="Tipo de Evento (programa, administrador....)&#xD;&#xA;" userRemarks="Tipo de Evento (programa, administrador....)&#xD;&#xA;" programerRemarks="Tipo de Evento (programa, administrador....)&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 Tipo" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="a8267842-6562-4c2b-beb6-464804b6b4c0">
+            <atributte Id="4ad045e6-8337-4b11-9b1b-e11323e7db40" atributteName="Titulo" atributteAlias="Titulo" isID="false" position="0" tooltip="Nombre Largo del Evento&#xD;&#xA;" userRemarks="Nombre Largo del Evento&#xD;&#xA;" programerRemarks="Nombre Largo del Evento&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Titulo" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="077cd669-b1ee-43cb-aab2-dd6006eb8c7a">
+            <atributte Id="cb06ccbf-6951-4ed3-9d58-72814cd9685b" atributteName="Titulo Abreviado" atributteAlias="Titulo Abreviado" isID="false" position="0" tooltip="Nombre Abreviado del Evento &#xD;&#xA;" userRemarks="Nombre Abreviado del Evento &#xD;&#xA;" programerRemarks="Nombre Abreviado del Evento &#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Titulo Abreviado" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="0f0c5071-654d-4dc1-b124-809e314a828e">
+      <entity Id="18a40407-ef9f-4289-b739-d324224e8d1a" name="Emisora" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <targets>
+          <composition Id="d570cd6c-d7da-444b-a214-b104a5efd2da" sourceMultiplicity="OneOne" sourceRoleName="PlayLists" targetRolName="Emisora">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/PlayList" />
+          </composition>
+          <composition Id="357b8b67-ddca-40c9-b16d-6ee9f21ae091" sourceMultiplicity="OneOne" sourceRoleName="PautaEmisions" targetRolName="Emisora2">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/PautaEmision" />
+          </composition>
+          <aggregation Id="070f162e-79b4-4829-87b5-69c1a15a3207" sourceRoleName="PromocionesCollection" targetRolName="Emisora">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/CatalogoPromociones" />
+          </aggregation>
+          <composition Id="d0119627-8745-40a6-83ff-2c89d1594e1a" sourceMultiplicity="OneOne" sourceRoleName="PautaPublicidads" targetRolName="Emisora3">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/PautaPublicidad" />
+          </composition>
+          <aggregation Id="41c38f2c-2c25-48c8-aa0d-81b6df1d9dc5" sourceRoleName="PathfindersCollection" targetRolName="Emisora3">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/CatalogoPathfinder" />
+          </aggregation>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="a7a28c35-0bee-4331-b351-6cbfd720af73">
+            <atributte Id="c3634443-1c2c-407c-9113-5bf92997f040" atributteName="CaracterIdent" atributteAlias=" CaracterIdent" isID="false" position="0" tooltip="Caracter que identifica el a la emisora (X,V,A)&#xD;&#xA;" userRemarks="Caracter que identifica el a la emisora (X,V,A)&#xD;&#xA;" programerRemarks="Caracter que identifica el a la emisora (X,V,A)&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String CaracterIdent" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="f242e8f2-424a-4b1c-8a70-4d44a912038e">
+            <atributte Id="c04b3881-008c-48a7-b3d2-cfed561fd131" atributteName="Asrunlog" atributteAlias="Asrunlog" atributteType="Boolean" isID="false" position="0" tooltip="Identifica si gestionamos el Asrunlog de la Emisora&#xD;&#xA;" userRemarks="Identifica si gestionamos el Asrunlog de la Emisora&#xD;&#xA;" programerRemarks="Identifica si gestionamos el Asrunlog de la Emisora&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Boolean Asrunlog" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="0e2c29e8-d367-42a1-af08-c33c00893191">
+            <atributte Id="28398f4c-9704-4a8c-b248-e7745820a0dd" atributteName="Descripcion" atributteAlias="Descripcion" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Descripcion" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="77d5c5d7-d95a-429f-995a-75af28dd66c8">
+            <atributte Id="bac44278-a476-4204-b71b-cf4f83607d09" atributteName="EmiRelac" atributteAlias="EmiRelac" isID="false" position="0" tooltip="Indica las emisoras relacionadas&#xD;&#xA;" userRemarks="Indica las emisoras relacionadas&#xD;&#xA;" programerRemarks="Indica las emisoras relacionadas&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String EmiRelac" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="5c53320a-c788-4619-93fc-e8b7abbfacf9">
+            <atributte Id="ca6b9b0d-226a-420b-b3c9-2e41f14fe910" atributteName="EmisoraPadre" atributteAlias="EmisoraPadre" atributteType="Int32" isID="false" position="0" tooltip="ID de la emisora Padre&#xD;&#xA;" userRemarks="ID de la emisora Padre&#xD;&#xA;" programerRemarks="ID de la emisora Padre&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 EmisoraPadre" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="00f0a2f0-772f-46e9-ab48-bc36932e2ecd">
+            <atributte Id="1dddaed7-64af-49fa-a994-fdb44b49dce2" atributteName="FecBaja" atributteAlias="FecBaja" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String FecBaja" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="3560d5c5-97b7-4461-baac-2c5ff71ce8be">
+            <atributte Id="6201849b-1757-43f0-b7c6-ec96d8a30a94" atributteName="HoraInicio" atributteAlias="HoraInicio" isID="false" position="0" tooltip="Hora de Inicio&#xD;&#xA;" userRemarks="Hora de Inicio&#xD;&#xA;" programerRemarks="Hora de Inicio&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String HoraInicio" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="0e5cacf8-492b-477e-b07a-81dc9def760c">
+            <atributte Id="3b680de8-874a-4531-af8a-643681980ac0" atributteName="Rotuladora" atributteAlias="Rotuladora" isID="false" position="0" tooltip="Indica el diselador grafico con el que se gestionan los pathfinder&#xD;&#xA;" userRemarks="Indica el diselador grafico con el que se gestionan los pathfinder&#xD;&#xA;" programerRemarks="Indica el diselador grafico con el que se gestionan los pathfinder&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Rotuladora" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="3da35e7a-851a-4daa-8a8c-435b7b07dfb2">
+            <atributte Id="f55983f3-664c-4097-ab04-9a68aee8c76c" atributteName="TipoEmision" atributteAlias="TipoEmision" isID="false" position="0" tooltip="Indica si la emisión es digital o analógica&#xD;&#xA;" userRemarks="Indica si la emisión es digital o analógica&#xD;&#xA;" programerRemarks="Indica si la emisión es digital o analógica&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String TipoEmision" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="7a36406a-f887-4d90-8c35-220300c9cd06">
+      <entity Id="7592f15c-44fc-4bae-ae10-77b94b5b116e" name="EventoCorteDePublicidad" inheritanceClassModifier="Public" alias="Corte de publicidad" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="a337194c-6883-4c71-974a-dd682247d651">
+            <atributte Id="9a813c06-1957-40e2-9b8e-c13fb5ac30d5" atributteName="Duracion" atributteAlias="Duracion" atributteType="Int32" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 Duracion" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="90ef8002-8590-4636-9d74-59a2c852e705">
+            <atributte Id="ae79ce30-6e0d-4b97-8dfc-ce042a300d10" atributteName="DurLey" atributteAlias="DurLey" atributteType="Int32" isID="false" position="0" tooltip="Duración incluida dentro de los límites legales.&#xD;&#xA;" userRemarks="Duración incluida dentro de los límites legales.&#xD;&#xA;" programerRemarks="Duración incluida dentro de los límites legales.&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 DurLey" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="bac2c4a0-95b0-4ab7-9f71-300a3e71f41c">
+            <atributte Id="c641241a-3472-42bf-a6c3-102402faf10b" atributteName="EnPauta" atributteAlias="EnPauta" atributteType="Boolean" isID="false" position="0" tooltip="Indica si el pase está o no en pauta&#xD;&#xA;" userRemarks="Indica si el pase está o no en pauta&#xD;&#xA;" programerRemarks="Indica si el pase está o no en pauta&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Boolean EnPauta" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="1feb50ea-e990-413b-b6d7-1abac40e2a62">
+            <atributte Id="5d22009f-dba4-47bb-a6aa-d695d50e9c06" atributteName="Franja" atributteAlias="Franja" atributteType="Int32" isID="false" position="0" tooltip="Número de la fanja&#xD;&#xA;" userRemarks="Número de la fanja&#xD;&#xA;" programerRemarks="Número de la fanja&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 Franja" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="3448d22b-15bc-4cce-8ae4-b4198f9e2b6a">
+            <atributte Id="00de19a8-539d-4ee4-869e-60023e854591" atributteName="NumSecue" atributteAlias="NumSecue" atributteType="Int32" isID="false" position="0" tooltip="Número de la secuencia&#xD;&#xA;" userRemarks="Número de la secuencia&#xD;&#xA;" programerRemarks="Número de la secuencia&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 NumSecue" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="eafef6dc-35e4-4c6b-b360-635422d64705">
+            <atributte Id="8d030fe8-c4c3-4c81-900b-2264d47c6df2" atributteName="TipoCorte" atributteAlias="TipoCorte" isID="false" position="0" tooltip="Indica si el tipo de corte  es o no local&#xD;&#xA;" userRemarks="Indica si el tipo de corte  es o no local&#xD;&#xA;" programerRemarks="Indica si el tipo de corte  es o no local&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String TipoCorte" />
+          </classBaseHasAtributtes>
+        </atributtes>
+        <superClasses>
+          <inherintance Id="2ab24a48-0dae-468f-8a90-b60b4879d7b2">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/EventoPauta" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="6a83a67a-3073-47ea-82af-0d5923d78e2b">
+      <entity Id="ee138caf-2609-4243-a025-faa4deab2528" name="CatalogoPathfinder" inheritanceClassModifier="Public" alias="Catalogo Pathfinder" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="e46252ed-96c9-45a8-b42e-f182ed343e78">
+            <atributte Id="3892e1f5-e1c3-4544-b7dd-c5360d328e2b" atributteName="ElementoActivo" atributteAlias="Activo" atributteType="Byte" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Byte ElementoActivo" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="1f0c7bb6-1d76-4910-a6d6-5763740ed550">
+            <atributte Id="40d42df5-8843-4fcc-b316-509ab97597ac" atributteName="Lineas" atributteAlias="Lineas" atributteType="Int32" isID="false" position="0" tooltip="Número de líneas de la caja de texto&#xD;&#xA;" userRemarks="Número de líneas de la caja de texto&#xD;&#xA;" programerRemarks="Número de líneas de la caja de texto&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 Lineas" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="cf1bfa93-9ebc-465d-9fc6-45e623309f2b">
+            <atributte Id="722014f1-591a-463a-83f2-1b56f4426f4c" atributteName="Nombre" atributteAlias="Nombre" isID="false" position="0" tooltip="Nombre del texto&#xD;&#xA;" userRemarks="Nombre del texto&#xD;&#xA;" programerRemarks="Nombre del texto&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Nombre" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="a10904b2-03f6-4fda-b385-fef714fab132">
+            <atributte Id="63e0e3cf-4075-430c-9ad0-75c46f69f054" atributteName="Texto" atributteAlias="Texto" isID="false" position="0" tooltip="Descripción del pathfinder&#xD;&#xA;" userRemarks="Descripción del pathfinder&#xD;&#xA;" programerRemarks="Descripción del pathfinder&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Texto" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="e001b7ed-647d-4fb4-a535-7f7668a371fb">
+            <atributte Id="c28937be-b0e6-423b-957d-22e749669372" atributteName="TipoPantalla" atributteAlias="TipoPantalla" isID="false" position="0" tooltip="Tipo de Pantalla&#xD;&#xA;" userRemarks="Tipo de Pantalla&#xD;&#xA;" programerRemarks="Tipo de Pantalla&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String TipoPantalla" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="f1e0e161-ca5d-4849-ae86-f9744f0da2b8">
+      <entity Id="ea1a3d28-a464-46eb-afcb-39f236dc47fc" name="PautaPublicidad" inheritanceClassModifier="Public" alias="Pauta de Publicidad" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <targets>
+          <aggregation Id="f186a083-8aa9-4a3f-8f0c-32f9fb2904b6" sourceRoleName="CambiosUltimaHoraCollection" targetRolName="PautaPublicidad">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/CambiosUltimaHora" />
+          </aggregation>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="e1bc22aa-8254-444d-88ec-eeddcdff431a">
+            <atributte Id="f2b41da1-84a9-420b-8e39-1147a13733f5" atributteName="cdemisor" atributteAlias="cdemisor" atributteType="Int32" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 cdemisor" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="d6074833-f752-4588-b5f4-8b3116ecd2ee">
+            <atributte Id="bf0b0ef2-db5c-47e5-bd27-214334aaaa09" atributteName="cdPauta" atributteAlias="cdPauta" atributteType="DateTime" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="DateTime cdPauta" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="124afc1a-e251-4d04-93b5-16393ada7737">
+      <entity Id="56c3edd1-1bb5-46b5-80fb-b71242ef13c7" name="PasePublicidad" inheritanceClassModifier="Public" alias="Pase de Publicidad" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <targets>
+          <composition Id="6b5d204e-b5a3-4256-b054-4e5614a5b65e" sourceMultiplicity="OneOne" sourceRoleName="EventoCorteDePublicidads" targetRolName="PasePublicidad">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/EventoCorteDePublicidad" />
+          </composition>
+          <composition Id="80db6f8e-27d5-4b55-b030-e923421eeb7c" sourceMultiplicity="OneOne" sourceRoleName="EventoPaseFueraCortes" targetRolName="PasePublicidad2">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/EventoPaseFueraCorte" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="d269f3a5-6eb3-47ce-bbfd-223978fbbd03">
+            <atributte Id="7c82a912-5629-4208-b441-3c0dee87ecde" atributteName="Anunciante" atributteAlias="Anunciante" isID="false" position="0" tooltip="Descripción del anunciante" userRemarks="Descripción del anunciante" programerRemarks="Descripción del anunciante" isNullable="false" allowRepedValues="false" nameAndType="String Anunciante" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="4a566776-f9c0-4549-8521-c14198410bbd">
+            <atributte Id="fd02947c-2d98-4a8c-82ea-61d4120dd362" atributteName="CodReckey" atributteAlias="CodReckey" atributteType="Int32" isID="false" position="0" tooltip="Código conciliación&#xD;&#xA;" userRemarks="Código conciliación&#xD;&#xA;" programerRemarks="Código conciliación&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 CodReckey" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="9754a96b-f03a-4c2c-a6c0-9f72a48d6798">
+            <atributte Id="f24de866-85ca-4112-9358-d51e509aff86" atributteName="Duracion" atributteAlias="Duracion" isID="false" position="0" tooltip="Duración del pase&#xD;&#xA;" userRemarks="Duración del pase&#xD;&#xA;" programerRemarks="Duración del pase&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Duracion" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="8fef28ae-be60-4d8b-802e-26a71f8887df">
+            <atributte Id="6949c447-3e3e-4d6e-954c-03d4b18bea5a" atributteName="IndPauta" atributteAlias="IndPauta" atributteType="Boolean" isID="false" position="0" tooltip="Indica si está incluido en pauta&#xD;&#xA;" userRemarks="Indica si está incluido en pauta&#xD;&#xA;" programerRemarks="Indica si está incluido en pauta&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Boolean IndPauta" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="31ac5c43-76c7-46af-b447-c1a830acc6c1">
+            <atributte Id="e3283e14-462d-4077-9d00-ada98c887a25" atributteName="Posicion" atributteAlias="Posicion" isID="false" position="0" tooltip="Posición comprada&#xD;&#xA;" userRemarks="Posición comprada&#xD;&#xA;" programerRemarks="Posición comprada&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Posicion" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="d552a774-d736-45ef-819d-db905adc33f2">
+            <atributte Id="a35182d0-a4a3-418e-8826-5f731933e41e" atributteName="Producto" atributteAlias="Producto" isID="false" position="0" tooltip="Descripción del producto&#xD;&#xA;" userRemarks="Descripción del producto&#xD;&#xA;" programerRemarks="Descripción del producto&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Producto" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="c1f9424f-2cf1-4ec1-908a-0a52b3b3c5ef">
+            <atributte Id="0276bab7-c223-48fe-9fca-f2aa1644657a" atributteName="TipoPase" atributteAlias="TipoPase" isID="false" position="0" tooltip="Abreviatura del tipo de pase&#xD;&#xA;" userRemarks="Abreviatura del tipo de pase&#xD;&#xA;" programerRemarks="Abreviatura del tipo de pase&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String TipoPase" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="f2b31152-7922-4290-bd18-785523e80b92">
+      <entity Id="63748bef-0814-4049-9e81-2ad9d7aca4db" name="CatalogoPromociones" inheritanceClassModifier="Public" alias="Catalogo de Promociones" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <targets>
+          <composition Id="c276ca62-a7ba-4929-b284-ae47c8236e2f" sourceMultiplicity="OneOne" sourceRoleName="Promociones" targetRolName="CatalogoPromociones">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/Promocion" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="9c2797b2-360e-46e4-b398-e255bb2a4413">
+            <atributte Id="a0c7ea65-ee4a-4063-bbc2-eff2dcb0daef" atributteName="Calificacion" atributteAlias="Calificacion" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Calificacion" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="cd9ac067-59fc-4053-a8f9-727a1fdd9065">
+            <atributte Id="f79b316d-6afe-4924-9608-2e1e93abe341" atributteName="Color" atributteAlias="Color" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Color" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="7bd254a1-1948-4aa2-b634-9270b1e62650">
+            <atributte Id="90516c64-ca3c-4723-95b9-dfc4217cc972" atributteName="Devuelta" atributteAlias="Devuelta" atributteType="Boolean" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Boolean Devuelta" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="bb4c1d67-ec00-4a16-a55a-f74a6d154db5">
+            <atributte Id="43166525-7cc7-4b48-9724-553180a9d13e" atributteName="Dia" atributteAlias="Dia" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Dia" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="7aff4834-0988-4f64-832d-8441090ad524">
+            <atributte Id="537b5ad4-ffd6-4546-96a4-4957e2424936" atributteName="Dur12M" atributteAlias="Dur12M" atributteType="DateTime" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="DateTime Dur12M" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="43a17310-350c-4f4f-adad-4f1244ce835d">
+            <atributte Id="bcc3c182-d0aa-45a3-8573-58153f1ab7cd" atributteName="Dur17M" atributteAlias="Dur17M" atributteType="DateTime" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="DateTime Dur17M" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="3da3e278-effa-418e-883c-04b83db2143a">
+            <atributte Id="45104979-b5de-47fa-b828-640edf818a92" atributteName="Dur3Min" atributteAlias="Dur3Min" atributteType="DateTime" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="DateTime Dur3Min" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="e2a42cdf-b994-4f9e-907d-f6c53c1f1940">
+            <atributte Id="cc79f01e-64df-4d3a-a73b-28a3d94c0b6a" atributteName="Duracion" atributteAlias="Duracion" atributteType="DateTime" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="DateTime Duracion" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="34929f22-d9a2-42dc-9175-ba657fe4ddba">
+            <atributte Id="2b4f58c1-b1f0-43fd-92c0-628afd4b36ad" atributteName="DurNoCuenta" atributteAlias="DurNoCuenta" atributteType="DateTime" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="DateTime DurNoCuenta" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="1ad1ece2-0856-4a02-aae5-e6e8d64f33ec">
+            <atributte Id="9c053c7d-7739-4171-9737-f2d49efd9e54" atributteName="Entregada" atributteAlias="Entregada" atributteType="Boolean" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Boolean Entregada" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="cf389388-8bef-454c-bca4-59eb10ef033f">
+            <atributte Id="031ad9a7-373b-49e8-98a3-f06e90073c5b" atributteName="Excel" atributteAlias="Excel" atributteType="Boolean" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Boolean Excel" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="09647869-9b21-49bc-aeb4-6339d1608469">
+            <atributte Id="f5e39f36-a5a4-43a0-9867-23a0daf83f90" atributteName="FechaEmision" atributteAlias="FechaEmision" atributteType="DateTime" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="DateTime FechaEmision" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="9ad33a5b-be0b-4f3f-8c71-ba8931a6c051">
+            <atributte Id="c2ce7def-26d0-4472-b65e-2050695bc19d" atributteName="Hora" atributteAlias="Hora" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Hora" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="0961e963-9966-452e-a4a5-4a9a19351c8f">
+            <atributte Id="0ead9b72-2d18-4a38-b99b-22509f95fd71" atributteName="LimiteLegal" atributteAlias="LimiteLegal" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String LimiteLegal" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="567a4f5c-ef6f-4289-b499-a0e1a3962742">
+            <atributte Id="38d9e34b-2923-4ac5-bb00-cc9e67f25525" atributteName="Master" atributteAlias="Master" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Master" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="8c2c0a36-f937-489b-87b9-582a818028c4">
+            <atributte Id="9eb9c45f-3d16-4f93-93ef-eff2a081a09f" atributteName="Observaciones" atributteAlias="Observaciones" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Observaciones" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="58bfffc8-1ed1-48d5-9675-85fc82d31d19">
+            <atributte Id="767fe334-3a59-4424-ab7a-d24884bb3221" atributteName="Som" atributteAlias="Som" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Som" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="9a2d2eaf-8a34-4356-af9f-87413373e141">
+      <entity Id="fd5ded81-3e4a-4f0e-839f-dc15333f43bb" name="Promocion" inheritanceClassModifier="Public" alias="Promoción" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <atributtes>
+          <classBaseHasAtributtes Id="63c6c1da-1f63-4312-85cc-48127cb80a06">
+            <atributte Id="78f0679c-201a-40b4-ad15-5d8abeb3795c" atributteName="Nombre" atributteAlias="Nombre" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Nombre" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="336553e0-9a54-4b62-881b-8ba51c366687">
+            <atributte Id="5db1bd95-d3be-4b93-9aac-c19a22964e13" atributteName="NombreCorto" atributteAlias="Nombre Corto" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String NombreCorto" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="f994b6ac-f9d0-4eb2-8c5d-fdb62c58cbdd">
+      <entity Id="5ce19c67-30cb-43e1-9c98-c364b923f3e9" name="PautaPromocionesMK" inheritanceClassModifier="Public" alias="Pauta Promociones MK" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <targets>
+          <aggregation Id="bb6446cb-f92b-4606-bc35-4d7ea1fa10fa" sourceRoleName="PathFindersCollection" targetRolName="PautaPromociones">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/CatalogoPathfinder" />
+          </aggregation>
+          <aggregation Id="9804aedc-6ae4-4cfc-a489-6edc7cf64f29" sourceRoleName="EventosPathfiderCollection" targetRolName="PautaPromocionesMK">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/EventoPathfinder" />
+          </aggregation>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="1d3eef84-9115-42af-a271-e32bb68a74f1">
+            <atributte Id="0f08fbab-4328-4b96-a1e3-80665ad861d4" atributteName="Color" atributteAlias="Color" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Color" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="6ac79ddb-a4a0-4898-966b-406b7a73d97b">
+            <atributte Id="1a14007a-791a-4e1d-ba18-92b6da2b6da9" atributteName="Cursiva" atributteAlias="Cursiva" atributteType="Boolean" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Boolean Cursiva" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="dc1a02ce-cb23-4388-a0c8-f46d2ea4979c">
+            <atributte Id="4d09675d-6d4f-4dcf-9a25-fa269e34dfbe" atributteName="Enviado" atributteAlias="Enviado" atributteType="Boolean" isID="false" position="0" tooltip="Si se ha enviado o no el pathfinder&#xD;&#xA;" userRemarks="Si se ha enviado o no el pathfinder&#xD;&#xA;" programerRemarks="Si se ha enviado o no el pathfinder&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Boolean Enviado" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="81838232-e216-4267-b2bb-118f0cd85851">
+            <atributte Id="9b9b0362-333e-428e-b5ad-c3a2e8235c8d" atributteName="Fuente" atributteAlias="Fuente" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Fuente" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="530bdba0-cd59-42f0-bab7-94a703aa2205">
+            <atributte Id="09d21762-60cb-4bb4-b76b-fc9ecccfc7fb" atributteName="IdEmisor" atributteAlias="IdEmisor" atributteType="Int32" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 IdEmisor" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="383c3515-361d-4f29-81f0-8406f7bbed62">
+            <atributte Id="fc7a5a8a-5aeb-4849-880a-26f90b012e12" atributteName="IdImagen" atributteAlias="IdImagen" atributteType="Int32" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 IdImagen" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="a44d96f4-5738-4030-8e2f-e06568dba6ea">
+            <atributte Id="d548c090-3c48-4a74-956c-9d3798b088aa" atributteName="IdTexto" atributteAlias="IdTexto" atributteType="Int32" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Int32 IdTexto" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="5e44aada-7d6a-4762-b0c3-23823e7903c5">
+            <atributte Id="10d263b5-33b5-4bfb-bdba-9927cce1342b" atributteName="Negrita" atributteAlias="Negrita" atributteType="Boolean" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Boolean Negrita" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="37e4a9b7-cbab-42a3-8ea4-ec40d2bb164c">
+            <atributte Id="85a8eb21-e7eb-4ca5-9e91-21b139e28db9" atributteName="Pauta" atributteAlias="Pauta" isID="false" position="0" tooltip="Fecha de la pauta&#xD;&#xA;" userRemarks="Fecha de la pauta&#xD;&#xA;" programerRemarks="Fecha de la pauta&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Pauta" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="7887e149-d63b-4295-aef6-2b18a560581e">
+            <atributte Id="f282b379-5d3c-4b2a-86c9-ff4d9ffadc08" atributteName="Subrayado" atributteAlias="Subrayado" atributteType="Boolean" isID="false" position="0" tooltip="&#xD;&#xA;" userRemarks="&#xD;&#xA;" programerRemarks="&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="Boolean Subrayado" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="530b0692-3e5c-42b0-b377-35eb3583c9fe">
+            <atributte Id="a5c59039-6b3d-46cb-be1b-7f1530fb6161" atributteName="Version" atributteAlias="Version" isID="false" position="0" tooltip="Versión de la pauta&#xD;&#xA;" userRemarks="Versión de la pauta&#xD;&#xA;" programerRemarks="Versión de la pauta&#xD;&#xA;" isNullable="false" allowRepedValues="false" nameAndType="String Version" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="e4429a9d-0379-4aad-b108-e1d8f4a1f9ea">
+      <entity Id="50dae97c-ca56-4c6c-a6b0-6f9a2856e6d8" name="EventoPaseFueraCorte" inheritanceClassModifier="Public" alias="Pase Fuera de Corte" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="8b3d331d-ef3e-45aa-b4a7-7458bd265898">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/EventoPauta" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="a4a3fefc-d4d1-4602-8d6f-e86840b70fad">
+      <entity Id="dde4e139-01f2-417c-9aac-e44a43f6e5a0" name="EventoMusica" inheritanceClassModifier="Public" alias="Música" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="fd911628-953f-493c-92b4-35c6dda3123c">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/EventoPauta" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="fb24727f-da2d-4140-97eb-0f2eae4d87a1">
+      <entity Id="6882ee58-c88b-4ade-8be5-86b08e4f6324" name="EventoDefinidoPorUsuario" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="3b8f7e2e-1d50-4b1e-baf3-04e5512b2abd">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/EventoPauta" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="dabdbe40-1937-4697-86da-55f6f814f215">
+      <entity Id="21b6fc06-d516-457e-b41f-cfaf9c59e813" name="EventoPromocion" inheritanceClassModifier="Public" alias="Evento Promoción" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="a9476a90-20d8-4122-a798-dfdb2988b002">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/EventoPauta" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="0f7a1e65-c38c-4c32-b0b3-0b9ab02ea355">
+      <entity Id="867932a3-a905-49f3-a1b4-06f911b9bf92" name="EventoAdministracion" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="ace0054c-1ad1-4852-9401-ce5b6b9d7fac">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/EventoPauta" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="d08c416a-0b4d-4d15-951f-927473058bc9">
+      <entity Id="f5802379-beca-4ce2-9636-f8db67d99321" name="EventoPathfinder" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <superClasses>
+          <inherintance Id="0a13a065-992c-45e5-ac33-aca9d7a7ce79">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/EventoPauta" />
+          </inherintance>
+        </superClasses>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="49f5c4cf-094e-41b3-b88a-ae49d1640596">
+      <entity Id="f4b0ff76-a05b-4683-83c9-9b8657ae60f7" name="CortePublicidad" inheritanceClassModifier="Public" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="">
+        <targets>
+          <aggregation Id="5ebd01c8-684f-4c30-8a0e-25bcb8549a19" sourceRoleName="EventosCortesPublicidad" targetRolName="CortePublicidad">
+            <entityMoniker name="/1f29b29c-b486-42cf-b769-8e667626df58/EventoCorteDePublicidad" />
+          </aggregation>
+        </targets>
+      </entity>
+    </applicationHasElements>
+  </classBases>
+</application>

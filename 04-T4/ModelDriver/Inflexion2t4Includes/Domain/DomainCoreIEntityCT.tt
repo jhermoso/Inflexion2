@@ -10,9 +10,9 @@
         // constructor de la plantilla
         public DomainCoreIEntityCT(ClassBaseContext  classBaseContext, string nombreProjecto , ITree<BoundedContextMetadata> skt)
         {
-  cbc = classBaseContext;   // contexto de la clase base a interpretar
-  projectNamespace = nombreProjecto;  // nombre del proyecto para el que estamos interpretando
-  Skt = skt;                // shared kernel tree
+			cbc = classBaseContext;   // contexto de la clase base a interpretar
+			projectNamespace = nombreProjecto;  // nombre del proyecto para el que estamos interpretando
+			Skt = skt;                // shared kernel tree
         }
         
         // metodo de generación de la plantilla
@@ -39,11 +39,43 @@
   // si es root agregate establecemos de cual proviene
 
   // ignoramos los valores de none y legacy
-  if (cbc.IsRoot || cbc.MainEntityStereotype.Contains("AggregateRoot") || cbc.MainEntityStereotype.Contains("Entity") )
+  if (cbc.IsRoot || cbc.MainEntityStereotype.Contains("AggregateRoot") )
   {
-      baseEntity = String.Format("Inflexion2.Domain.I{0}<I{1}, {2}>{3}", cbc.MainEntityStereotype,cbc.pascalSecureEntityName,cbc.idtype, (cbc.isDerivedFromOneEntity)?",":"");  
+      baseEntity = String.Format("Inflexion2.Domain.I{0}<I{1}, {2}>{3}", cbc.MainEntityStereotype, cbc.pascalSecureEntityName, cbc.idtype, (cbc.isDerivedFromOneEntity)?",":"");  
+  }
+  else if (cbc.MainEntityStereotype.Contains("Entity") )
+  {
+	baseEntity = String.Format("Inflexion2.Domain.IEntity<{0}>{1}", cbc.idtype, (cbc.isDerivedFromOneEntity)?",":"");
+  }
+    else if (cbc.IsObjectValue )
+  {
+	baseEntity = String.Format("Inflexion2.Domain.IValueObject{0}", (cbc.isDerivedFromOneEntity)?",":"");
   }
 
+
+  string refBoundedContextSecureName = null;
+  if (cbc.entity.ReferencedRootEntity != null)
+  {
+
+	var refEntity = GetClassBaseFromReferencedClassBase(cbc.diagram.TreeApp, cbc.entity.ReferencedRootEntity);
+	var refBoundedContext = GetBoundeContextFromClassBase(cbc.diagram.TreeApp, refEntity);
+
+	if( sharedKernelUsings.Count() == 1)
+	{
+		refBoundedContextSecureName = sharedKernelUsings.ToList().First();
+	}
+	else
+	{
+	 var partialname = refBoundedContext.Data.Context.Key.ToString().Replace('\\','.') + "Domain"; // use domain becouse this template is for domain layer.
+		refBoundedContextSecureName = sharedKernelUsings.First(c => c.EndsWith(partialname));
+	}
+
+//	var refBoundedContextName = GetBoundedContextName(cbc.diagram, refBoundedContext);
+//	var refBoundedContextSecureName = refBoundedContextName.Replace('\\','.');
+	var refCBC = new ClassBaseContext(cbc.diagram, cbc.solutionInfo, refEntity, refBoundedContextSecureName);
+
+	// baseEntity = refBoundedContextSecureName + "." + "I" + refEntity.Name + ((baseEntity != null)? ", " + baseEntity: "");
+  }
 
   
 #>
@@ -55,7 +87,7 @@ namespace <#=  projectNamespace #>
     #region Usings
     using System;
 <#+  if (cbc.OwnBoundedContextHasEnums) {#>
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain.Data;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain.Data;
 <#+  } #>
     using Inflexion2.Domain;
     using Inflexion2;
@@ -71,24 +103,20 @@ namespace <#=  projectNamespace #>
     /// .en Interfaz for<#=  (cbc.IsEntity)?" an Entity":"a value object" #> implemented by <#=  cbc.pascalSecureEntityName #>/>.
     /// .es Interfaz que representa <#=  (cbc.IsEntity)?" una entidad":"un objeto valor" #> implementado en<#=  cbc.pascalSecureEntityName #>/>.
     /// </remarks>
-    public interface I<#= cbc.pascalSecureEntityName #> : 	<#= baseEntity??"" #> 	<#= (cbc.isDerivedFromOneEntity)? "I"+cbc.parentEntityName:"" #>
+    public interface I<#= cbc.pascalSecureEntityName #> : <#= baseEntity??"" #> <#= (cbc.isDerivedFromOneEntity)? "I"+cbc.parentEntityName:"" #>
     {
 
         #region Properties
 <#+ if (cbc.IsEntity && cbc.LogicDelete){/*si la entidad es de borrado logico añadimos una propiedad de nombre IsActive*/#>
         /// <summary>
-        /// .en Property to indicate if this entity is activated. 
-        /// .es Propiedad que indica si esta entidad esta activa o borrada. 
+        /// Property to indicate if this entity is activated. 
         /// </summary>
         /// <remarks>
-        /// .en This entity has logical delete.
-        /// .es Esta entidad tiene borrado logico.
+        /// This entity has logical delete.
         /// </remarks>
         /// <value>
-        /// .en Value used to indicate if the entity is deleted or activated.
+        /// Value used to indicate if the entity is deleted or activated.
         /// it has not setter becouse his value is setted to true in the constructor an in the destructor of the class.
-        /// .es Valor usado para indicar si la entidad esta borrada o activada.
-        /// no tiene setter por que su valor se establece a true en el constructor y a false en el destructor.
         /// </value>
         bool IsActive{ get; }
 <#+ } #>
@@ -112,7 +140,8 @@ namespace <#=  projectNamespace #>
         /// .en Value used to <#= (property.OnlyGetProperty)?"get":"get and set" #> <#= T4Help.SecureName(property.AtributteName) #>.
         /// .es Valor que es utilizado para <#= (property.OnlyGetProperty)?"obtener":"obtener y establecer" #> <#= T4Help.SecureName(property.AtributteName) #>.
         /// </value>
-        <#= property.AtributteType #><#= (property.IsNullable & cbc.propertyIsValueType )?"?":"" #> <#= T4Help.ToPascalCase(property.AtributteName) #> { <#= (property.OnlyGetProperty)?"get;":"get; set;" #> }
+        <#= property.AtributteType #><#= (property.IsNullable & T4Help.IsValueType(property.AtributteType) )?"?":"" #> <#= T4Help.ToPascalCase(property.AtributteName) #> { <#= (property.OnlyGetProperty)?"get;":"get; set;" #> }
+
 <#+  }#>
 <#+ }#>
 <#+
@@ -126,16 +155,18 @@ namespace <#=  projectNamespace #>
       }
 #>
         /// <summary>
-        /// .es Propiedad pública que permite establecer y obtener <#= T4Help.SecureName(property.TargetRolName) #>.
+		/// .en Public property <#= T4Help.SecureName(property.TargetRolName) #>.
+        /// .es Propiedad pública  <#= T4Help.SecureName(property.TargetRolName) #>.
         /// </summary>
         /// <remarks>
+        /// .en (SOURCE) This property comes from a relationship <#= (property is Aggregation)?"Agregación":"" #><#= (property is Composition)?"Composición":"" #> y <#= (property is Association)?"Asociación":"" #>
         /// .es (SOURCE)Esta propiedad proviene de una relación de tipo <#= (property is Aggregation)?"Agregación":"" #><#= (property is Composition)?"Composición":"" #> y <#= (property is Association)?"Asociación":"" #>
         /// Nos permite establecer y obtener <#= T4Help.SecureName(property.TargetRolName) #>.
         /// </remarks>
         /// <value>
         /// .es Valor que es utilizado para establecer y obtener <#= T4Help.SecureName(property.TargetRolName) #>.
         /// </value>
-        <#= (property.Source is Enumeration )?"": I #><#= T4Help.SecureName(property.Source.Name) #> <#= T4Help.SecureName(property.TargetRolName) #> { get; }
+        <#= (property.Source is Enumeration )?"": I #><#= T4Help.SecureName(property.Source.Name) #><#=((property.Source is Enumeration ) && IsMinMultiplicityCero(property.SourceMultiplicity))? "?" : String.Empty  #> <#= T4Help.SecureName(property.TargetRolName) #> { get; }
 
 <#+
   }
@@ -162,13 +193,28 @@ namespace <#=  projectNamespace #>
         /// <value>
         /// .es Valor que es utilizado para establecer y obtener <#= T4Help.SecureName(property.SourceRolName) #>.
         /// </value>
-<#+         if(true || !IsTargetEntityAnAggregateRoot(property)){ /*TODO Pensar en esta condición en caso de que entre roots agregates se desee tener solo una referencia de id*/#>
+<#+
+		if( /*!IsTargetEntityAnAggregateRoot(property)*/ !IsMinMultiplicityCero(property.SourceMultiplicity))
+		{ 
+			/*TODO Pensar en esta condición en caso de que entre roots agregates se desee tener solo una referencia de id*/#>
         [ChildrenRelationshipDeleteBehavior(Delete.<#=(property.CascadeDelete)?"Cascade":"Restrict" #>)]
+<#+ 
+		}
+
+		if(  !IsMaxMultiplicityOne(property.TargetMultiplicity))
+		{
+#>
         <#= GetTypeFromAssociationLink(property, (I=="I"), cbc.idtype, false) #> <#= T4Help.SecureName(property.SourceRolName) #> { get; }
-<#+         }else{#>
+<#+
+		}
+		else
+		{
+#>
         <#= cbc.idtype #> <#= T4Help.SecureName(property.SourceRolName) #> { get; }
-<#+              } //end else#>
-<#+ }#>
+<#+              
+		}
+	}
+#>   
         #endregion
 
         #region Methods
@@ -194,7 +240,7 @@ namespace <#=  projectNamespace #>
         /// <value>
         /// .es Parametro con el que establecemos el nuevo valor de <#= T4Help.SecureName(property.AtributteName) #>.
         /// </value>
-        I<#= cbc.secureEntityName #> Set<#= T4Help.SecureName(property.AtributteName) #> ( <#= property.AtributteType #><#= (property.IsNullable & cbc.propertyIsValueType )?"?":"" #> <#= T4Help.ToCamelCase(property.AtributteName) #> ); 
+        <#= I #><#= cbc.secureEntityName #> Set<#= T4Help.SecureName(property.AtributteName) #> ( <#= property.AtributteType #><#= (property.IsNullable & T4Help.IsValueType(property.AtributteType) )?"?":"" #> <#= T4Help.ToCamelCase(property.AtributteName) #> ); 
 
 <#+      } // end del  if (property.OnlyGetProperty)
   }// end del foreach (var property in propertyObjects)
@@ -222,7 +268,7 @@ namespace <#=  projectNamespace #>
         /// <value>
         /// .es Parametro con el que establecemos el nuevo valor de <#= T4Help.SecureName(property.TargetRolName) #>.
         /// </value>
-        I<#= cbc.pascalSecureEntityName #> Set<#= T4Help.SecureName(property.TargetRolName) #> ( <#= (property.Source is Enumeration)?"":I #><#= T4Help.SecureName(property.Source.Name) #> <#= T4Help.ToCamelCase(property.Source.Name) #> );
+        <#= I #><#= cbc.pascalSecureEntityName #> Set<#= T4Help.SecureName(property.TargetRolName) #> ( <#= (property.Source is Enumeration)?"":I #><#= T4Help.SecureName(property.Source.Name) #><#=((property.Source is Enumeration) && IsMinMultiplicityCero(property.SourceMultiplicity))? "?" : String.Empty  #> <#= T4Help.ToCamelCase(property.Source.Name) #> );
 
 <#+
       //}
@@ -257,7 +303,7 @@ namespace <#=  projectNamespace #>
         /// .es proviene de target con multiplicidad mínima 'Many' es colección y añadimos set, add y remove.
         /// </remarks>
         
-        I<#= cbc.pascalSecureEntityName #> Set<#= T4Help.SecureName(property.SourceRolName) #> ( <#= GetTypeFromAssociationLink(property, (I=="I"), cbc.idtype, false) #> <#= T4Help.ToCamelCase(property.Target.Name) #>Collection );
+        <#= I #><#= cbc.pascalSecureEntityName #> Set<#= T4Help.SecureName(property.SourceRolName) #> ( <#= GetTypeFromAssociationLink(property, (I=="I"), cbc.idtype, false) #> <#= T4Help.ToCamelCase(property.Target.Name) #>Collection );
 
 <#+      } // end if( IsMaxMultiplicityMany( property.TargetMultiplicity ) ) #>
 <#+ 
@@ -270,7 +316,7 @@ namespace <#=  projectNamespace #>
         /// El <#= T4Help.SecureName(property.Target.Name) #> ha de existir previamente.
         /// </summary>
         /// <value>
-        /// .esParametro con el que se proporciona la colección <#= T4Help.SecureName(property.Target.Name) #> a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+        /// .es Parametro con el que se proporciona la colección <#= T4Help.SecureName(property.Target.Name) #> a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
         /// </value>
         I<#= cbc.pascalSecureEntityName #> Add<#= T4Help.SecureName(property.Target.Name) #>To<#= T4Help.SecureName(property.SourceRolName) #> ( <#= I #><#= T4Help.SecureName(property.Target.Name) #> <#= T4Help.ToCamelCase(property.Target.Name) #> );
 

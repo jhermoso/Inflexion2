@@ -13,7 +13,8 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
     using Microsoft.Practices.Prism.Regions;
 
     /// <summary>
-    /// Clase base para las clases modelo de vista (MVVM) que utilizan la región TaskbarRegion.
+    /// .en base class for view models in the region "TaskbarRegion"
+    /// .es Clase base para las clases modelo de vista (MVVM) que utilizan la región "TaskbarRegion".
     /// </summary>
     public abstract class TaskbarViewModel : RegionViewModel
     {
@@ -56,10 +57,12 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
         #region Constructors
 
         /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="T:TaskbarViewModel"/>.
+        /// .en Init a new instance of class <see cref="T:TaskbarViewModel"/>.
+        /// .es Inicializa una nueva instancia de la clase <see cref="T:TaskbarViewModel"/>.
         /// </summary>
         /// <param name="moduleType">
-        /// Tipo de módulo al que pertenece este ViewModel.
+        /// .en type of module that belongs to the current instace of the viewmodel
+        /// .es Tipo de módulo al que pertenece este ViewModel.
         /// </param>
         /// <remarks>
         /// Constructor de la clase <see cref="T:TaskbarViewModel"/>.
@@ -68,7 +71,7 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
         {
             if (!this.IsDesignTime)
             {
-                // Inicialición.
+                // Initialitation.
                 this.moduleType = moduleType;
 
                 this.isChecked                  = false;
@@ -80,7 +83,7 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
                 this.taskButtonImage            = string.Empty;
                 this.taskButtonText             = string.Empty;
 
-                // Suscripción de eventos.
+                // event subcription.
                 var navigationCompletedEvent = this.EventAggregator.GetEvent<NavigationCompletedEvent>();
                 navigationCompletedEvent.Subscribe(this.OnNavigationCompleted, ThreadOption.UIThread);
             }

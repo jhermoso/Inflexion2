@@ -41,7 +41,7 @@ namespace <#= projectNamespace #>
 
     using System;
     using System.Linq;
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>;
     using Inflexion2.Domain;
     using Inflexion2;
     using Inflexion2.Domain.Specification;
@@ -67,7 +67,7 @@ namespace <#= projectNamespace #>
     public static class <#= cbc.pascalSecureEntityName #>Specifications
     {
         #region <#= cbc.pascalSecureEntityName #> Basic Specifications
-<#+ if (cbc.LogicDelete){#>
+<#+ if (cbc.LogicDelete && !cbc.IsObjectValue){#>
         /// <summary>
         /// Método que devuelve la especificación de objetos de tipo "<#= cbc.pascalSecureEntityName #>" con estado activo.
         /// </summary>
@@ -107,7 +107,7 @@ namespace <#= projectNamespace #>
         /// <returns>
         /// Especificación <see cref="Specification{<#= I #><#= cbc.pascalSecureEntityName #>}"/> asociada al criterio.
         /// </returns>
-        public static Specification<<#= I #><#= cbc.pascalSecureEntityName #>> FindEnabledBy<#= T4Help.SecureName(property.AtributteName) #>(<#= property.AtributteType #><#= (property.IsNullable & cbc.propertyIsValueType )?"?":"" #> <#= T4Help.ToCamelCase(property.AtributteName) #>)
+        public static Specification<<#= I #><#= cbc.pascalSecureEntityName #>> FindEnabledBy<#= T4Help.SecureName(property.AtributteName) #>(<#= property.AtributteType #><#= (property.IsNullable & T4Help.IsValueType(property.AtributteType) )?"?":"" #> <#= T4Help.ToCamelCase(property.AtributteName) #>)
         {
             // Especificación de entidaes activas.
             var enabledSpecification = Enabled();
@@ -130,7 +130,7 @@ namespace <#= projectNamespace #>
         /// <returns>
         /// Devuelve <see cref="Specification{<#= I #><#= cbc.pascalSecureEntityName #>}"/> asociado con este criterio.
         /// </returns>
-        public static Specification<<#= I #><#= cbc.pascalSecureEntityName #>> FindAllBy<#= T4Help.SecureName(property.AtributteName) #>(<#= property.AtributteType #><#= (property.IsNullable & cbc.propertyIsValueType )?"?":"" #> <#= T4Help.ToCamelCase(property.AtributteName) #>)
+        public static Specification<<#= I #><#= cbc.pascalSecureEntityName #>> FindAllBy<#= T4Help.SecureName(property.AtributteName) #>(<#= property.AtributteType #><#= (property.IsNullable & T4Help.IsValueType(property.AtributteType) )?"?":"" #> <#= T4Help.ToCamelCase(property.AtributteName) #>)
         {
             // Especificación para <#= cbc.pascalSecureEntityName #> por <#= T4Help.SecureName(property.AtributteName) #>
             Specification<<#= I #><#= cbc.pascalSecureEntityName #>> specification =

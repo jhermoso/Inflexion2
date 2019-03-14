@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.0" Id="8e098ed1-cff1-47b3-8d88-e446100457d6" sGDB="MsSql2008" iSO2Country="en" culture="en" rootNameSpace="AirBus" company="Airbus" product="Airbus Shared Kernel" copyright="Airbus" branding="Airbus.Suite" version="0.1" documentationPath="..\00-Documentation" asemblysPath="..\00-Assemblies" solutionFolderApplication="02. Application" solutionFolderDomain="03. Domain" solutionFolderInfraestructure="04. Infrastructure" solutionFolderCommon="Suite" libraryPath="..\02-Library" proyectsPath="..\03-GeneratedProjects" solutionFolderUX="01. FrontEnd" isModule="false" architecture="Inflexion2" oRM="EntityFramewokCodeFirst" mapper="Manual" generateCode="Always" ifContracts="false" conectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=AirBus;Integrated Security=True" schemaName="AirBus" dataBaseServer="(localdb)\MSSQLLocalDB" translationsSet1="French, German, Hebrew, Italian" translationsSet2="Portuguese, Spanish" xmlns="http://schemas.microsoft.com/dsltools/MoneyGen">
+  <classBases>
+    <applicationHasElements Id="1277f757-483a-4e08-896a-7e2f1c485aa1">
+      <entity Id="077131d2-5467-41ba-a6b7-b15270e47d11" name="User" inheritanceClassModifier="Public, Partial" aliasFrontEnd="User" volumen="0" remarks="datos User information" tooltip="User information" logicDelete="false" pluralName="Users" programRemarks="Data about user of the application." referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="Persona" grammarCategory="sustantivo" mainEntityStereotype="AggregateRoot">
+        <atributtes>
+          <classBaseHasAtributtes Id="4599c6f2-f55c-4705-a7eb-4077252facd2">
+            <atributte Id="d18593af-30fc-41c1-b24b-4870fd656982" atributteName="Nombre" isIdentification="false" position="0" programerRemarks="Test with auto property and public setter." requestUponCreation="yes" nameAndType="string Nombre" minLength="3" maxLength="80" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="cdf10070-0209-4ce5-8d69-71c9561fc68a">
+      <enumeration Id="12c29ffe-49bd-47fc-a1c5-a1447dda71d8" name="Enumeracion" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Enumeración" volumen="0" remarks="Enumeration user remarks" pluralName="enumeraciones" programRemarks="Enumeraction program remarks" referencedRootEntity="" aliasDataBase="Enumeracion" mainEntityStereotype="None" serializable="false">
+        <enumValue>
+          <enumerationHasEnumValue Id="d41643ac-12df-423c-80ab-3c23d771b785">
+            <enumValues Id="a258c273-70e7-4faf-9eba-5a02c61ea90f" description="Description" sorting="0" value="valor1" programRemarks="Program test remark" userRemarks="user test remark" />
+          </enumerationHasEnumValue>
+        </enumValue>
+      </enumeration>
+    </applicationHasElements>
+    <applicationHasElements Id="31a3c068-b66b-4d4a-95a7-cf51052d556f">
+      <entity Id="c997f491-fd94-45b9-a3c1-5081f8ca0a34" name="AppSettings" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Application Settings" volumen="0" remarks="Clasificador" tooltip="Application Settings" logicDelete="false" pluralName="Categorias" programRemarks="Clasificador de uso futuro" referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="APPSETTINGS" grammarCategory="Sustantivo" mainEntityStereotype="AggregateRoot">
+        <atributtes>
+          <classBaseHasAtributtes Id="498b9df0-55b6-4394-a3b4-5f32c6604307">
+            <atributte Id="1e49cff8-10f4-4a76-bf94-2a2cb041d45a" atributteName="Key" isIdentification="false" position="0" nameAndType="string Key" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="90dbca23-dac2-43ec-8800-d5a3306a574b">
+            <atributte Id="59264f9c-a95e-4b9a-8400-329cb77966bd" atributteName="Value" isIdentification="false" position="0" nameAndType="string Value" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+  </classBases>
+  <boundedContexts>
+    <applicationHasBoundedContexts Id="d62efcc8-306d-4c4c-919b-a6972d07ec6f">
+      <boundedContext Id="64b98025-6841-499b-af46-5368c38b3890" name="Zeus" mBR="modelbus://kayak.MoneyGen.MoneyGenAdapter/Zeus//.\Zeus.kyk" />
+    </applicationHasBoundedContexts>
+    <applicationHasBoundedContexts Id="2656c4ee-c620-4fe0-8132-736546a76670">
+      <boundedContext Id="65665ad9-0948-465e-b4fc-1b0e3f95298e" name="MetaS" mBR="modelbus://kayak.MoneyGen.MoneyGenAdapter/SyfiX//.\SyfiX.kyk" />
+    </applicationHasBoundedContexts>
+  </boundedContexts>
+</application>

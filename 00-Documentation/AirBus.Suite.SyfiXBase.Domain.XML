@@ -1,0 +1,2023 @@
+﻿<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>AirBus.Suite.SyfiXBase.Domain</name>
+  </assembly>
+  <members>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut">
+      <summary>
+        <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut" />
+      </summary>
+    </member>
+    <member name="F:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut.document">
+      <summary>
+            campo privado que almacena el valor de document.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación document.
+            La relación es de tipo Composición y Asociación
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut.#ctor(AirBus.Suite.SyfiXBase.Domain.Document)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut" />.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut" />.
+            </remarks>
+      <param name="documentCheckedOuts">
+            Parametro <see cref="!:DocumentCheckedOut.DocumentCheckedOuts" /> del constructor de campos mandatory de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut" />
+            Propiedad de unica instancia deducida del source rol source de una relación
+            </param>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut.DocumentContent">
+      <summary>
+            Propiedad pública que permite obtener DocumentContent.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener DocumentContent.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut.FileName">
+      <summary>
+            Propiedad pública que permite obtener FileName.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener FileName.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut.Document">
+      <summary>
+            Propiedad pública que permite establecer y obtener Document.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener Document.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener Document.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut.SetDocument(AirBus.Suite.SyfiXBase.Domain.Document)">
+      <summary>
+            Método encargado de establecer un nuevo valor para la propiedad Document.
+            </summary>
+      <param name="Document"> 
+            Parametro con el que establecemos el nuevo valor de <see cref="P:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut.Document" />. de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut" /></param>
+      <returns>
+            Devuelve el propio objeto para facilitar las interfaces 'fluent'/&gt;
+            </returns>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOutFactory">
+      <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOutFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOutFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOutFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase DocumentCheckedOutFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOutFactory.Create(AirBus.Suite.SyfiXBase.Domain.Document)">
+      <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut" /></remarks>
+      <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOutFactory" /></returns>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOutSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:DocumentCheckedOut" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.IDocumentCheckedOut">
+      <summary>
+            .en Interfaz to identify an entidad of type DocumentCheckedOut in the application.
+            .es Interfaz que identifica una entidad de tipo DocumentCheckedOut de la aplicación.
+            
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by DocumentCheckedOut/&gt;.
+            .es Interfaz que representa  una entidad implementado enDocumentCheckedOut/&gt;.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentCheckedOut.DocumentContent">
+      <summary>
+            .en Property to get and set DocumentContent.
+            .es Propiedad que permite obtener y establecer DocumentContent.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set DocumentContent.
+            .es Valor que es utilizado para obtener y establecer DocumentContent.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentCheckedOut.FileName">
+      <summary>
+            .en Property to get and set FileName.
+            .es Propiedad que permite obtener y establecer FileName.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set FileName.
+            .es Valor que es utilizado para obtener y establecer FileName.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentCheckedOut.Document">
+      <summary>
+            .en Public property Document.
+            .es Propiedad pública  Document.
+            </summary>
+      <remarks>
+            .en (SOURCE) This property comes from a relationship Composición y Asociación
+            .es (SOURCE)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener Document.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener Document.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocumentCheckedOut.SetDocument(AirBus.Suite.SyfiXBase.Domain.Document)">
+      <summary>
+            .es Método encargado de establecer un nuevo valor para la propiedad Document.
+            </summary>
+      <value>
+            .es Parametro con el que establecemos el nuevo valor de Document.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldName">
+      <summary>
+        <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldName" />
+      </summary>
+    </member>
+    <member name="F:AirBus.Suite.SyfiXBase.Domain.DocumentFieldName.documentType3">
+      <summary>
+            campo privado que almacena el valor de documentType3.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación documentType3.
+            La relación es de tipo Composición y Asociación
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentFieldName.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldName" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldName" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentFieldName.#ctor(AirBus.Suite.SyfiXBase.Domain.DocumentType)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldName" />.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldName" />.
+            </remarks>
+      <param name="documentFieldNames">
+            Parametro <see cref="!:DocumentFieldName.DocumentFieldNames" /> del constructor de campos mandatory de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldName" />
+            Propiedad de unica instancia deducida del source rol source de una relación
+            </param>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentFieldName.Name">
+      <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentFieldName.DocumentType3">
+      <summary>
+            Propiedad pública que permite establecer y obtener DocumentType3.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener DocumentType3.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener DocumentType3.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentFieldName.SetDocumentType3(AirBus.Suite.SyfiXBase.Domain.DocumentType)">
+      <summary>
+            Método encargado de establecer un nuevo valor para la propiedad DocumentType3.
+            </summary>
+      <param name="DocumentType3"> 
+            Parametro con el que establecemos el nuevo valor de <see cref="P:AirBus.Suite.SyfiXBase.Domain.DocumentFieldName.DocumentType3" />. de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldName" /></param>
+      <returns>
+            Devuelve el propio objeto para facilitar las interfaces 'fluent'/&gt;
+            </returns>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldNameFactory">
+      <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldName" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentFieldNameFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldNameFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldNameFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase DocumentFieldNameFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentFieldNameFactory.Create(AirBus.Suite.SyfiXBase.Domain.DocumentType)">
+      <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldName" /></remarks>
+      <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldNameFactory" /></returns>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldNameSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:DocumentFieldName" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.IDocumentFieldName">
+      <summary>
+            .en Interfaz to identify an entidad of type DocumentFieldName in the application.
+            .es Interfaz que identifica una entidad de tipo DocumentFieldName de la aplicación.
+            
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by DocumentFieldName/&gt;.
+            .es Interfaz que representa  una entidad implementado enDocumentFieldName/&gt;.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentFieldName.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentFieldName.DocumentType3">
+      <summary>
+            .en Public property DocumentType3.
+            .es Propiedad pública  DocumentType3.
+            </summary>
+      <remarks>
+            .en (SOURCE) This property comes from a relationship Composición y Asociación
+            .es (SOURCE)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener DocumentType3.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener DocumentType3.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocumentFieldName.SetDocumentType3(AirBus.Suite.SyfiXBase.Domain.DocumentType)">
+      <summary>
+            .es Método encargado de establecer un nuevo valor para la propiedad DocumentType3.
+            </summary>
+      <value>
+            .es Parametro con el que establecemos el nuevo valor de DocumentType3.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.IDocumentFieldNameRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.SyfiXBase.Domain.IDocumentFieldName" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue">
+      <summary>
+        <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue" />
+      </summary>
+    </member>
+    <member name="F:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue.documentField">
+      <summary>
+            campo privado que almacena el valor de documentField.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación documentField.
+            La relación es de tipo Composición y Asociación
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue.#ctor(System.String,System.String,AirBus.Suite.SyfiXBase.Domain.DocumentField)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue" />.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue" />.
+            </remarks>
+      <param name="key"> 
+            Parametro <see cref="P:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue.Key" /> del constructor de campos mandatory de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue" />
+            Propiedad deducida del rol source de una relación
+            </param>
+      <param name="value"> 
+            Parametro <see cref="P:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue.Value" /> del constructor de campos mandatory de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue" />
+            Propiedad deducida del rol source de una relación
+            </param>
+      <param name="documentFieldValues">
+            Parametro <see cref="!:DocumentFieldValue.DocumentFieldValues" /> del constructor de campos mandatory de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue" />
+            Propiedad de unica instancia deducida del source rol source de una relación
+            </param>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue.Key">
+      <summary>
+            Propiedad pública que permite obtener Key.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Key.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue.Value">
+      <summary>
+            Propiedad pública que permite obtener Value.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Value.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue.DocumentField">
+      <summary>
+            Propiedad pública que permite establecer y obtener DocumentField.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener DocumentField.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener DocumentField.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue.SetDocumentField(AirBus.Suite.SyfiXBase.Domain.DocumentField)">
+      <summary>
+            Método encargado de establecer un nuevo valor para la propiedad DocumentField.
+            </summary>
+      <param name="DocumentField"> 
+            Parametro con el que establecemos el nuevo valor de <see cref="P:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue.DocumentField" />. de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue" /></param>
+      <returns>
+            Devuelve el propio objeto para facilitar las interfaces 'fluent'/&gt;
+            </returns>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValueFactory">
+      <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValueFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValueFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValueFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase DocumentFieldValueFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValueFactory.Create(System.String,System.String,AirBus.Suite.SyfiXBase.Domain.DocumentField)">
+      <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue" /></remarks>
+      <param name="key" />
+      <param name="value" />
+      <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValueFactory" /></returns>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldValueSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:DocumentFieldValue" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.IDocumentFieldValue">
+      <summary>
+            .en Interfaz to identify an entidad of type DocumentFieldValue in the application.
+            .es Interfaz que identifica una entidad de tipo DocumentFieldValue de la aplicación.
+            
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by DocumentFieldValue/&gt;.
+            .es Interfaz que representa  una entidad implementado enDocumentFieldValue/&gt;.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentFieldValue.Key">
+      <summary>
+            .en Property to get and set Key.
+            .es Propiedad que permite obtener y establecer Key.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Key.
+            .es Valor que es utilizado para obtener y establecer Key.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentFieldValue.Value">
+      <summary>
+            .en Property to get and set Value.
+            .es Propiedad que permite obtener y establecer Value.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Value.
+            .es Valor que es utilizado para obtener y establecer Value.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentFieldValue.DocumentField">
+      <summary>
+            .en Public property DocumentField.
+            .es Propiedad pública  DocumentField.
+            </summary>
+      <remarks>
+            .en (SOURCE) This property comes from a relationship Composición y Asociación
+            .es (SOURCE)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener DocumentField.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener DocumentField.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocumentFieldValue.SetDocumentField(AirBus.Suite.SyfiXBase.Domain.DocumentField)">
+      <summary>
+            .es Método encargado de establecer un nuevo valor para la propiedad DocumentField.
+            </summary>
+      <value>
+            .es Parametro con el que establecemos el nuevo valor de DocumentField.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.IDocumentFieldValueRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.SyfiXBase.Domain.IDocumentFieldValue" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentField">
+      <summary>
+        <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentField" />
+      </summary>
+    </member>
+    <member name="F:AirBus.Suite.SyfiXBase.Domain.DocumentField.documentVersion">
+      <summary>
+            campo privado que almacena el valor de documentVersion.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación documentVersion.
+            La relación es de tipo Composición y Asociación
+            </remarks>
+    </member>
+    <member name="F:AirBus.Suite.SyfiXBase.Domain.DocumentField.documentFieldValues">
+      <summary>
+            Campo privado para almacenar la colección de  documentFieldValues.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación documentFieldValues.
+            La relación es una Asociación  de tipo Composición 
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentField.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentField" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentField" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentField.#ctor(AirBus.Suite.SyfiXBase.Domain.DocumentVersion)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentField" />.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentField" />.
+            </remarks>
+      <param name="documentFields">
+            Parametro <see cref="!:DocumentField.DocumentFields" /> del constructor de campos mandatory de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentField" />
+            Propiedad de unica instancia deducida del source rol source de una relación
+            </param>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentField.Name">
+      <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentField.Type">
+      <summary>
+            Propiedad pública que permite obtener Type.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Type.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentField.Position">
+      <summary>
+            Propiedad pública que permite obtener Position.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Position.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentField.DocumentVersion">
+      <summary>
+            Propiedad pública que permite establecer y obtener DocumentVersion.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener DocumentVersion.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener DocumentVersion.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentField.DocumentFieldValues">
+      <summary>
+            Propiedad pública que provine de una relación (Target) y permite establecer y obtener la coleción de valores DocumentFieldValues.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener DocumentFieldValues.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener DocumentFieldValues.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentField.SetDocumentVersion(AirBus.Suite.SyfiXBase.Domain.DocumentVersion)">
+      <summary>
+            Método encargado de establecer un nuevo valor para la propiedad DocumentVersion.
+            </summary>
+      <param name="DocumentVersion"> 
+            Parametro con el que establecemos el nuevo valor de <see cref="P:AirBus.Suite.SyfiXBase.Domain.DocumentField.DocumentVersion" />. de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentField" /></param>
+      <returns>
+            Devuelve el propio objeto para facilitar las interfaces 'fluent'/&gt;
+            </returns>
+    </member>
+    <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.Domain.DocumentField.SetDocumentFieldValues(System.Collections.Generic.List{AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue})" -->
+    <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.Domain.DocumentField.AddDocumentFieldValueToDocumentFieldValues(AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue)" -->
+    <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.Domain.DocumentField.RemoveDocumentFieldValueFromDocumentFieldValues(AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue)" -->
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldFactory">
+      <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentField" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentFieldFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase DocumentFieldFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentFieldFactory.Create(AirBus.Suite.SyfiXBase.Domain.DocumentVersion)">
+      <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentField" /></remarks>
+      <param name="documentFieldValues"> 
+            referencia al rol target de la relación.
+            </param>
+      <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldFactory" /></returns>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentFieldSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:DocumentField" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.IDocumentField">
+      <summary>
+            .en Interfaz to identify an entidad of type DocumentField in the application.
+            .es Interfaz que identifica una entidad de tipo DocumentField de la aplicación.
+            
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by DocumentField/&gt;.
+            .es Interfaz que representa  una entidad implementado enDocumentField/&gt;.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentField.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentField.Type">
+      <summary>
+            .en Property to get and set Type.
+            .es Propiedad que permite obtener y establecer Type.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Type.
+            .es Valor que es utilizado para obtener y establecer Type.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentField.Position">
+      <summary>
+            .en Property to get and set Position.
+            .es Propiedad que permite obtener y establecer Position.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Position.
+            .es Valor que es utilizado para obtener y establecer Position.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentField.DocumentVersion">
+      <summary>
+            .en Public property DocumentVersion.
+            .es Propiedad pública  DocumentVersion.
+            </summary>
+      <remarks>
+            .en (SOURCE) This property comes from a relationship Composición y Asociación
+            .es (SOURCE)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener DocumentVersion.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener DocumentVersion.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentField.DocumentFieldValues">
+      <summary>
+            .es Propiedad pública que permite establecer y obtener la colleción de valores DocumentFieldValues.
+            </summary>
+      <remarks>
+            .es (TARGET)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener DocumentFieldValues.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener DocumentFieldValues.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocumentField.SetDocumentVersion(AirBus.Suite.SyfiXBase.Domain.DocumentVersion)">
+      <summary>
+            .es Método encargado de establecer un nuevo valor para la propiedad DocumentVersion.
+            </summary>
+      <value>
+            .es Parametro con el que establecemos el nuevo valor de DocumentVersion.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocumentField.AddDocumentFieldValueToDocumentFieldValues(AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue)">
+      <summary>
+            .es Método encargado de añadir un elemento a la collección DocumentFieldValues en la entidad DocumentFieldValue.
+            El DocumentFieldValue ha de existir previamente.
+            </summary>
+      <value>
+            .es Parametro con el que se proporciona la colección DocumentFieldValue a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocumentField.RemoveDocumentFieldValueFromDocumentFieldValues(AirBus.Suite.SyfiXBase.Domain.DocumentFieldValue)">
+      <summary>
+            .es Método encargado de eliminar un elemento de la collección DocumentFieldValues en la entidad DocumentFieldValue.
+            El DocumentFieldValue ha de existir previamente.
+            </summary>
+      <value>
+            .es Identificador a borrar DocumentFieldValue a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.IDocumentFieldRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.SyfiXBase.Domain.IDocumentField" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentType">
+      <summary>
+        <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentType" />
+      </summary>
+    </member>
+    <member name="F:AirBus.Suite.SyfiXBase.Domain.DocumentType.documents">
+      <summary>
+            Campo privado para almacenar la colección de  documents.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación documents.
+            La relación es una Asociación  de tipo Composición 
+            </remarks>
+    </member>
+    <member name="F:AirBus.Suite.SyfiXBase.Domain.DocumentType.dcomentVersions">
+      <summary>
+            Campo privado para almacenar la colección de  dcomentVersions.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación dcomentVersions.
+            La relación es una Asociación  de tipo Composición 
+            </remarks>
+    </member>
+    <member name="F:AirBus.Suite.SyfiXBase.Domain.DocumentType.documentFieldNames">
+      <summary>
+            Campo privado para almacenar la colección de  documentFieldNames.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación documentFieldNames.
+            La relación es una Asociación  de tipo Composición 
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentType.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentType" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentType" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentType.Name">
+      <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentType.Documents">
+      <summary>
+            Propiedad pública que provine de una relación (Target) y permite establecer y obtener la coleción de valores Documents.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener Documents.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener Documents.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentType.DcomentVersions">
+      <summary>
+            Propiedad pública que provine de una relación (Target) y permite establecer y obtener la coleción de valores DcomentVersions.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener DcomentVersions.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener DcomentVersions.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentType.DocumentFieldNames">
+      <summary>
+            Propiedad pública que provine de una relación (Target) y permite establecer y obtener la coleción de valores DocumentFieldNames.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener DocumentFieldNames.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener DocumentFieldNames.
+            </value>
+    </member>
+    <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.Domain.DocumentType.SetDocuments(System.Collections.Generic.List{AirBus.Suite.SyfiXBase.Domain.Document})" -->
+    <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.Domain.DocumentType.AddDocumentToDocuments(AirBus.Suite.SyfiXBase.Domain.Document)" -->
+    <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.Domain.DocumentType.RemoveDocumentFromDocuments(AirBus.Suite.SyfiXBase.Domain.Document)" -->
+    <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.Domain.DocumentType.SetDcomentVersions(System.Collections.Generic.List{AirBus.Suite.SyfiXBase.Domain.DocumentVersion})" -->
+    <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.Domain.DocumentType.AddDocumentVersionToDcomentVersions(AirBus.Suite.SyfiXBase.Domain.DocumentVersion)" -->
+    <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.Domain.DocumentType.RemoveDocumentVersionFromDcomentVersions(AirBus.Suite.SyfiXBase.Domain.DocumentVersion)" -->
+    <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.Domain.DocumentType.SetDocumentFieldNames(System.Collections.Generic.List{AirBus.Suite.SyfiXBase.Domain.DocumentFieldName})" -->
+    <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.Domain.DocumentType.AddDocumentFieldNameToDocumentFieldNames(AirBus.Suite.SyfiXBase.Domain.DocumentFieldName)" -->
+    <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.Domain.DocumentType.RemoveDocumentFieldNameFromDocumentFieldNames(AirBus.Suite.SyfiXBase.Domain.DocumentFieldName)" -->
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentTypeFactory">
+      <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentType" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentTypeFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentTypeFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentTypeFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase DocumentTypeFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentTypeFactory.Create">
+      <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentType" /></remarks>
+      <param name="documents"> 
+            referencia al rol target de la relación.
+            </param>
+      <param name="dcomentVersions"> 
+            referencia al rol target de la relación.
+            </param>
+      <param name="documentFieldNames"> 
+            referencia al rol target de la relación.
+            </param>
+      <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentTypeFactory" /></returns>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentTypeSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:DocumentType" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.IDocumentType">
+      <summary>
+            .en Interfaz to identify an entidad of type DocumentType in the application.
+            .es Interfaz que identifica una entidad de tipo DocumentType de la aplicación.
+            
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by DocumentType/&gt;.
+            .es Interfaz que representa  una entidad implementado enDocumentType/&gt;.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentType.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentType.Documents">
+      <summary>
+            .es Propiedad pública que permite establecer y obtener la colleción de valores Documents.
+            </summary>
+      <remarks>
+            .es (TARGET)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener Documents.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener Documents.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentType.DcomentVersions">
+      <summary>
+            .es Propiedad pública que permite establecer y obtener la colleción de valores DcomentVersions.
+            </summary>
+      <remarks>
+            .es (TARGET)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener DcomentVersions.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener DcomentVersions.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentType.DocumentFieldNames">
+      <summary>
+            .es Propiedad pública que permite establecer y obtener la colleción de valores DocumentFieldNames.
+            </summary>
+      <remarks>
+            .es (TARGET)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener DocumentFieldNames.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener DocumentFieldNames.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocumentType.AddDocumentToDocuments(AirBus.Suite.SyfiXBase.Domain.Document)">
+      <summary>
+            .es Método encargado de añadir un elemento a la collección Documents en la entidad Document.
+            El Document ha de existir previamente.
+            </summary>
+      <value>
+            .es Parametro con el que se proporciona la colección Document a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocumentType.RemoveDocumentFromDocuments(AirBus.Suite.SyfiXBase.Domain.Document)">
+      <summary>
+            .es Método encargado de eliminar un elemento de la collección Documents en la entidad Document.
+            El Document ha de existir previamente.
+            </summary>
+      <value>
+            .es Identificador a borrar Document a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocumentType.AddDocumentVersionToDcomentVersions(AirBus.Suite.SyfiXBase.Domain.DocumentVersion)">
+      <summary>
+            .es Método encargado de añadir un elemento a la collección DcomentVersions en la entidad DocumentVersion.
+            El DocumentVersion ha de existir previamente.
+            </summary>
+      <value>
+            .es Parametro con el que se proporciona la colección DocumentVersion a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocumentType.RemoveDocumentVersionFromDcomentVersions(AirBus.Suite.SyfiXBase.Domain.DocumentVersion)">
+      <summary>
+            .es Método encargado de eliminar un elemento de la collección DcomentVersions en la entidad DocumentVersion.
+            El DocumentVersion ha de existir previamente.
+            </summary>
+      <value>
+            .es Identificador a borrar DocumentVersion a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocumentType.AddDocumentFieldNameToDocumentFieldNames(AirBus.Suite.SyfiXBase.Domain.DocumentFieldName)">
+      <summary>
+            .es Método encargado de añadir un elemento a la collección DocumentFieldNames en la entidad DocumentFieldName.
+            El DocumentFieldName ha de existir previamente.
+            </summary>
+      <value>
+            .es Parametro con el que se proporciona la colección DocumentFieldName a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocumentType.RemoveDocumentFieldNameFromDocumentFieldNames(AirBus.Suite.SyfiXBase.Domain.DocumentFieldName)">
+      <summary>
+            .es Método encargado de eliminar un elemento de la collección DocumentFieldNames en la entidad DocumentFieldName.
+            El DocumentFieldName ha de existir previamente.
+            </summary>
+      <value>
+            .es Identificador a borrar DocumentFieldName a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.IDocumentTypeRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.SyfiXBase.Domain.IDocumentType" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentValue">
+      <summary>
+        <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentValue" />
+      </summary>
+    </member>
+    <member name="F:AirBus.Suite.SyfiXBase.Domain.DocumentValue.document">
+      <summary>
+            campo privado que almacena el valor de document.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación document.
+            La relación es de tipo Agregación y Asociación
+            </remarks>
+    </member>
+    <member name="F:AirBus.Suite.SyfiXBase.Domain.DocumentValue.documentField">
+      <summary>
+            campo privado que almacena el valor de documentField.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación documentField.
+            La relación es de tipo Agregación y Asociación
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentValue.Value">
+      <summary>
+            Propiedad pública que permite obtener Value.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Value.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentValue.Document">
+      <summary>
+            Propiedad pública que permite establecer y obtener Document.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener Document.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener Document.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentValue.DocumentField">
+      <summary>
+            Propiedad pública que permite establecer y obtener DocumentField.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener DocumentField.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener DocumentField.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentValue.SetDocument(AirBus.Suite.SyfiXBase.Domain.Document)">
+      <summary>
+            Método encargado de establecer un nuevo valor para la propiedad Document.
+            </summary>
+      <param name="Document"> 
+            Parametro con el que establecemos el nuevo valor de <see cref="P:AirBus.Suite.SyfiXBase.Domain.DocumentValue.Document" />. de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentValue" /></param>
+      <returns>
+            Devuelve el propio objeto para facilitar las interfaces 'fluent'/&gt;
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentValue.SetDocumentField(AirBus.Suite.SyfiXBase.Domain.DocumentField)">
+      <summary>
+            Método encargado de establecer un nuevo valor para la propiedad DocumentField.
+            </summary>
+      <param name="DocumentField"> 
+            Parametro con el que establecemos el nuevo valor de <see cref="P:AirBus.Suite.SyfiXBase.Domain.DocumentValue.DocumentField" />. de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentValue" /></param>
+      <returns>
+            Devuelve el propio objeto para facilitar las interfaces 'fluent'/&gt;
+            </returns>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentValueFactory">
+      <summary>
+            Clase factoría para la creación de un objeto valor. de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentValue" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentValueFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentValueFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentValueFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase DocumentValueFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentValueFactory.Create">
+      <summary>
+            Función para crearun objeto valor. dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Creaun objeto valor. de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentValue" /></remarks>
+      <returns>
+            Devuelve un objeto valor. de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentValueFactory" /></returns>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentValueSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:DocumentValue" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.IDocumentValue">
+      <summary>
+            .en Interfaz to identify  objeto valor of type DocumentValue in the application.
+            .es Interfaz que identifica un objeto valor de tipo DocumentValue de la aplicación.
+            
+            </summary>
+      <remarks>
+            .en Interfaz fora value object implemented by DocumentValue/&gt;.
+            .es Interfaz que representa un objeto valor implementado enDocumentValue/&gt;.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentValue.Value">
+      <summary>
+            .en Property to get and set Value.
+            .es Propiedad que permite obtener y establecer Value.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Value.
+            .es Valor que es utilizado para obtener y establecer Value.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentValue.Document">
+      <summary>
+            .en Public property Document.
+            .es Propiedad pública  Document.
+            </summary>
+      <remarks>
+            .en (SOURCE) This property comes from a relationship Agregación y Asociación
+            .es (SOURCE)Esta propiedad proviene de una relación de tipo Agregación y Asociación
+            Nos permite establecer y obtener Document.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener Document.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentValue.DocumentField">
+      <summary>
+            .en Public property DocumentField.
+            .es Propiedad pública  DocumentField.
+            </summary>
+      <remarks>
+            .en (SOURCE) This property comes from a relationship Agregación y Asociación
+            .es (SOURCE)Esta propiedad proviene de una relación de tipo Agregación y Asociación
+            Nos permite establecer y obtener DocumentField.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener DocumentField.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocumentValue.SetDocument(AirBus.Suite.SyfiXBase.Domain.Document)">
+      <summary>
+            .es Método encargado de establecer un nuevo valor para la propiedad Document.
+            </summary>
+      <value>
+            .es Parametro con el que establecemos el nuevo valor de Document.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocumentValue.SetDocumentField(AirBus.Suite.SyfiXBase.Domain.DocumentField)">
+      <summary>
+            .es Método encargado de establecer un nuevo valor para la propiedad DocumentField.
+            </summary>
+      <value>
+            .es Parametro con el que establecemos el nuevo valor de DocumentField.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentVersion">
+      <summary>
+        <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentVersion" />
+      </summary>
+    </member>
+    <member name="F:AirBus.Suite.SyfiXBase.Domain.DocumentVersion.documentType">
+      <summary>
+            campo privado que almacena el valor de documentType.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación documentType.
+            La relación es de tipo Composición y Asociación
+            </remarks>
+    </member>
+    <member name="F:AirBus.Suite.SyfiXBase.Domain.DocumentVersion.documentFields">
+      <summary>
+            Campo privado para almacenar la colección de  documentFields.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación documentFields.
+            La relación es una Asociación  de tipo Composición 
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentVersion.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentVersion" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentVersion" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentVersion.#ctor(AirBus.Suite.SyfiXBase.Domain.DocumentType)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentVersion" />.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentVersion" />.
+            </remarks>
+      <param name="dcomentVersions">
+            Parametro <see cref="!:DocumentVersion.DcomentVersions" /> del constructor de campos mandatory de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentVersion" />
+            Propiedad de unica instancia deducida del source rol source de una relación
+            </param>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentVersion.HasFile">
+      <summary>
+            Propiedad pública que permite obtener HasFile.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener HasFile.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentVersion.Template">
+      <summary>
+            Propiedad pública que permite obtener Template.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Template.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentVersion.TemplateSize">
+      <summary>
+            Propiedad pública que permite obtener TemplateSize.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener TemplateSize.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentVersion.TemplateType">
+      <summary>
+            Propiedad pública que permite obtener TemplateType.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener TemplateType.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentVersion.Version">
+      <summary>
+            Propiedad pública que permite obtener Version.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Version.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentVersion.FiledId">
+      <summary>
+            Propiedad pública que permite obtener FiledId.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener FiledId.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentVersion.DocumentType">
+      <summary>
+            Propiedad pública que permite establecer y obtener DocumentType.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener DocumentType.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener DocumentType.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.DocumentVersion.DocumentFields">
+      <summary>
+            Propiedad pública que provine de una relación (Target) y permite establecer y obtener la coleción de valores DocumentFields.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener DocumentFields.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener DocumentFields.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentVersion.SetDocumentType(AirBus.Suite.SyfiXBase.Domain.DocumentType)">
+      <summary>
+            Método encargado de establecer un nuevo valor para la propiedad DocumentType.
+            </summary>
+      <param name="DocumentType"> 
+            Parametro con el que establecemos el nuevo valor de <see cref="P:AirBus.Suite.SyfiXBase.Domain.DocumentVersion.DocumentType" />. de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentVersion" /></param>
+      <returns>
+            Devuelve el propio objeto para facilitar las interfaces 'fluent'/&gt;
+            </returns>
+    </member>
+    <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.Domain.DocumentVersion.SetDocumentFields(System.Collections.Generic.List{AirBus.Suite.SyfiXBase.Domain.DocumentField})" -->
+    <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.Domain.DocumentVersion.AddDocumentFieldToDocumentFields(AirBus.Suite.SyfiXBase.Domain.DocumentField)" -->
+    <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.Domain.DocumentVersion.RemoveDocumentFieldFromDocumentFields(AirBus.Suite.SyfiXBase.Domain.DocumentField)" -->
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentVersionFactory">
+      <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentVersion" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentVersionFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentVersionFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentVersionFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase DocumentVersionFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentVersionFactory.Create(AirBus.Suite.SyfiXBase.Domain.DocumentType)">
+      <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentVersion" /></remarks>
+      <param name="documentFields"> 
+            referencia al rol target de la relación.
+            </param>
+      <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentVersionFactory" /></returns>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentVersionSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:DocumentVersion" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.IDocumentVersion">
+      <summary>
+            .en Interfaz to identify an entidad of type DocumentVersion in the application.
+            .es Interfaz que identifica una entidad de tipo DocumentVersion de la aplicación.
+            
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by DocumentVersion/&gt;.
+            .es Interfaz que representa  una entidad implementado enDocumentVersion/&gt;.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentVersion.HasFile">
+      <summary>
+            .en Property to get and set HasFile.
+            .es Propiedad que permite obtener y establecer HasFile.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set HasFile.
+            .es Valor que es utilizado para obtener y establecer HasFile.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentVersion.Template">
+      <summary>
+            .en Property to get and set Template.
+            .es Propiedad que permite obtener y establecer Template.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Template.
+            .es Valor que es utilizado para obtener y establecer Template.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentVersion.TemplateSize">
+      <summary>
+            .en Property to get and set TemplateSize.
+            .es Propiedad que permite obtener y establecer TemplateSize.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set TemplateSize.
+            .es Valor que es utilizado para obtener y establecer TemplateSize.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentVersion.TemplateType">
+      <summary>
+            .en Property to get and set TemplateType.
+            .es Propiedad que permite obtener y establecer TemplateType.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set TemplateType.
+            .es Valor que es utilizado para obtener y establecer TemplateType.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentVersion.Version">
+      <summary>
+            .en Property to get and set Version.
+            .es Propiedad que permite obtener y establecer Version.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Version.
+            .es Valor que es utilizado para obtener y establecer Version.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentVersion.FiledId">
+      <summary>
+            .en Property to get and set FiledId.
+            .es Propiedad que permite obtener y establecer FiledId.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set FiledId.
+            .es Valor que es utilizado para obtener y establecer FiledId.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentVersion.DocumentType">
+      <summary>
+            .en Public property DocumentType.
+            .es Propiedad pública  DocumentType.
+            </summary>
+      <remarks>
+            .en (SOURCE) This property comes from a relationship Composición y Asociación
+            .es (SOURCE)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener DocumentType.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener DocumentType.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocumentVersion.DocumentFields">
+      <summary>
+            .es Propiedad pública que permite establecer y obtener la colleción de valores DocumentFields.
+            </summary>
+      <remarks>
+            .es (TARGET)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener DocumentFields.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener DocumentFields.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocumentVersion.SetDocumentType(AirBus.Suite.SyfiXBase.Domain.DocumentType)">
+      <summary>
+            .es Método encargado de establecer un nuevo valor para la propiedad DocumentType.
+            </summary>
+      <value>
+            .es Parametro con el que establecemos el nuevo valor de DocumentType.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocumentVersion.AddDocumentFieldToDocumentFields(AirBus.Suite.SyfiXBase.Domain.DocumentField)">
+      <summary>
+            .es Método encargado de añadir un elemento a la collección DocumentFields en la entidad DocumentField.
+            El DocumentField ha de existir previamente.
+            </summary>
+      <value>
+            .es Parametro con el que se proporciona la colección DocumentField a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocumentVersion.RemoveDocumentFieldFromDocumentFields(AirBus.Suite.SyfiXBase.Domain.DocumentField)">
+      <summary>
+            .es Método encargado de eliminar un elemento de la collección DocumentFields en la entidad DocumentField.
+            El DocumentField ha de existir previamente.
+            </summary>
+      <value>
+            .es Identificador a borrar DocumentField a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.IDocumentVersionRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.SyfiXBase.Domain.IDocumentVersion" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.Document">
+      <summary>
+        <see cref="T:AirBus.Suite.SyfiXBase.Domain.Document" />
+      </summary>
+    </member>
+    <member name="F:AirBus.Suite.SyfiXBase.Domain.Document.parentDocument">
+      <summary>
+            campo privado que almacena el valor de parentDocument.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación parentDocument.
+            La relación es de tipo Agregación y Asociación
+            </remarks>
+    </member>
+    <member name="F:AirBus.Suite.SyfiXBase.Domain.Document.documentType">
+      <summary>
+            campo privado que almacena el valor de documentType.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación documentType.
+            La relación es de tipo Composición y Asociación
+            </remarks>
+    </member>
+    <member name="F:AirBus.Suite.SyfiXBase.Domain.Document.childrenDocuments">
+      <summary>
+            Campo privado para almacenar la colección de  childrenDocuments.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación childrenDocuments.
+            La relación es una Asociación  de tipo Agregación 
+            </remarks>
+    </member>
+    <member name="F:AirBus.Suite.SyfiXBase.Domain.Document.documentCheckedOuts">
+      <summary>
+            Campo privado para almacenar la colección de  documentCheckedOuts.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación documentCheckedOuts.
+            La relación es una Asociación  de tipo Composición 
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.Document.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.SyfiXBase.Domain.Document" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.Document" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.Document.#ctor(System.String,AirBus.Suite.SyfiXBase.Domain.DocumentType)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.Document" />.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.Document" />.
+            </remarks>
+      <param name="name"> 
+            Parametro <see cref="P:AirBus.Suite.SyfiXBase.Domain.Document.Name" /> del constructor de campos mandatory de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.Document" />
+            Propiedad deducida del rol source de una relación
+            </param>
+      <param name="documents">
+            Parametro <see cref="!:Document.Documents" /> del constructor de campos mandatory de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.Document" />
+            Propiedad de unica instancia deducida del source rol source de una relación
+            </param>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.Document.Name">
+      <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.Document.Creation">
+      <summary>
+            Propiedad pública que permite obtener Creation.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Creation.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.Document.CheckedOut">
+      <summary>
+            Propiedad pública que permite obtener CheckedOut.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener CheckedOut.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.Document.DocumentView">
+      <summary>
+            Propiedad pública que permite obtener DocumentView.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener DocumentView.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.Document.Master">
+      <summary>
+            Propiedad pública que permite obtener Master.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Master.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.Document.Original">
+      <summary>
+            Propiedad pública que permite obtener Original.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Original.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.Document.OriginalName">
+      <summary>
+            Propiedad pública que permite obtener OriginalName.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener OriginalName.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.Document.OriginalSize">
+      <summary>
+            Propiedad pública que permite obtener OriginalSize.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener OriginalSize.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.Document.OriginalType">
+      <summary>
+            Propiedad pública que permite obtener OriginalType.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener OriginalType.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.Document.Originator">
+      <summary>
+            Propiedad pública que permite obtener Originator.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Originator.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.Document.Remarks">
+      <summary>
+            Propiedad pública que permite obtener Remarks.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Remarks.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.Document.ParentDocument">
+      <summary>
+            Propiedad pública que permite establecer y obtener ParentDocument.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener ParentDocument.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener ParentDocument.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.Document.DocumentType">
+      <summary>
+            Propiedad pública que permite establecer y obtener DocumentType.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener DocumentType.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener DocumentType.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.Document.ChildrenDocuments">
+      <summary>
+            Propiedad pública que provine de una relación (Target) y permite establecer y obtener la coleción de valores ChildrenDocuments.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener ChildrenDocuments.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener ChildrenDocuments.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.Document.DocumentCheckedOuts">
+      <summary>
+            Propiedad pública que provine de una relación (Target) y permite establecer y obtener la coleción de valores DocumentCheckedOuts.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener DocumentCheckedOuts.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener DocumentCheckedOuts.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.Document.SetParentDocument(AirBus.Suite.SyfiXBase.Domain.Document)">
+      <summary>
+            Método encargado de establecer un nuevo valor para la propiedad ParentDocument.
+            </summary>
+      <param name="ParentDocument"> 
+            Parametro con el que establecemos el nuevo valor de <see cref="P:AirBus.Suite.SyfiXBase.Domain.Document.ParentDocument" />. de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.Document" /></param>
+      <returns>
+            Devuelve el propio objeto para facilitar las interfaces 'fluent'/&gt;
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.Document.SetDocumentType(AirBus.Suite.SyfiXBase.Domain.DocumentType)">
+      <summary>
+            Método encargado de establecer un nuevo valor para la propiedad DocumentType.
+            </summary>
+      <param name="DocumentType"> 
+            Parametro con el que establecemos el nuevo valor de <see cref="P:AirBus.Suite.SyfiXBase.Domain.Document.DocumentType" />. de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.Document" /></param>
+      <returns>
+            Devuelve el propio objeto para facilitar las interfaces 'fluent'/&gt;
+            </returns>
+    </member>
+    <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.Domain.Document.SetChildrenDocuments(System.Collections.Generic.List{AirBus.Suite.SyfiXBase.Domain.Document})" -->
+    <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.Domain.Document.AddDocumentToChildrenDocuments(AirBus.Suite.SyfiXBase.Domain.Document)" -->
+    <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.Domain.Document.RemoveDocumentFromChildrenDocuments(AirBus.Suite.SyfiXBase.Domain.Document)" -->
+    <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.Domain.Document.SetDocumentCheckedOuts(System.Collections.Generic.List{AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut})" -->
+    <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.Domain.Document.AddDocumentCheckedOutToDocumentCheckedOuts(AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut)" -->
+    <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.Domain.Document.RemoveDocumentCheckedOutFromDocumentCheckedOuts(AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut)" -->
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentFactory">
+      <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.Document" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase DocumentFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.DocumentFactory.Create(System.String,AirBus.Suite.SyfiXBase.Domain.DocumentType)">
+      <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.Document" /></remarks>
+      <param name="name" />
+      <param name="documentCheckedOuts"> 
+            referencia al rol target de la relación.
+            </param>
+      <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.Domain.DocumentFactory" /></returns>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.DocumentSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:Document" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.IDocument">
+      <summary>
+            .en Interfaz to identify an entidad of type Document in the application.
+            .es Interfaz que identifica una entidad de tipo Document de la aplicación.
+            Involves cross definition of a class and and how to see and how save in the repository.
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by Document/&gt;.
+            .es Interfaz que representa  una entidad implementado enDocument/&gt;.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocument.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocument.Creation">
+      <summary>
+            .en Property to get and set Creation.
+            .es Propiedad que permite obtener y establecer Creation.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Creation.
+            .es Valor que es utilizado para obtener y establecer Creation.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocument.CheckedOut">
+      <summary>
+            .en Property to get and set CheckedOut.
+            .es Propiedad que permite obtener y establecer CheckedOut.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set CheckedOut.
+            .es Valor que es utilizado para obtener y establecer CheckedOut.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocument.DocumentView">
+      <summary>
+            .en Property to get and set DocumentView.
+            .es Propiedad que permite obtener y establecer DocumentView.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set DocumentView.
+            .es Valor que es utilizado para obtener y establecer DocumentView.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocument.Master">
+      <summary>
+            .en Property to get and set Master.
+            .es Propiedad que permite obtener y establecer Master.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Master.
+            .es Valor que es utilizado para obtener y establecer Master.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocument.Original">
+      <summary>
+            .en Property to get and set Original.
+            .es Propiedad que permite obtener y establecer Original.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Original.
+            .es Valor que es utilizado para obtener y establecer Original.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocument.OriginalName">
+      <summary>
+            .en Property to get and set OriginalName.
+            .es Propiedad que permite obtener y establecer OriginalName.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set OriginalName.
+            .es Valor que es utilizado para obtener y establecer OriginalName.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocument.OriginalSize">
+      <summary>
+            .en Property to get and set OriginalSize.
+            .es Propiedad que permite obtener y establecer OriginalSize.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set OriginalSize.
+            .es Valor que es utilizado para obtener y establecer OriginalSize.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocument.OriginalType">
+      <summary>
+            .en Property to get and set OriginalType.
+            .es Propiedad que permite obtener y establecer OriginalType.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set OriginalType.
+            .es Valor que es utilizado para obtener y establecer OriginalType.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocument.Originator">
+      <summary>
+            .en Property to get and set Originator.
+            .es Propiedad que permite obtener y establecer Originator.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Originator.
+            .es Valor que es utilizado para obtener y establecer Originator.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocument.Remarks">
+      <summary>
+            .en Property to get and set Remarks.
+            .es Propiedad que permite obtener y establecer Remarks.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Remarks.
+            .es Valor que es utilizado para obtener y establecer Remarks.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocument.ParentDocument">
+      <summary>
+            .en Public property ParentDocument.
+            .es Propiedad pública  ParentDocument.
+            </summary>
+      <remarks>
+            .en (SOURCE) This property comes from a relationship Agregación y Asociación
+            .es (SOURCE)Esta propiedad proviene de una relación de tipo Agregación y Asociación
+            Nos permite establecer y obtener ParentDocument.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener ParentDocument.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocument.DocumentType">
+      <summary>
+            .en Public property DocumentType.
+            .es Propiedad pública  DocumentType.
+            </summary>
+      <remarks>
+            .en (SOURCE) This property comes from a relationship Composición y Asociación
+            .es (SOURCE)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener DocumentType.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener DocumentType.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocument.ChildrenDocuments">
+      <summary>
+            .es Propiedad pública que permite establecer y obtener la colleción de valores ChildrenDocuments.
+            </summary>
+      <remarks>
+            .es (TARGET)Esta propiedad proviene de una relación de tipo Agregación y Asociación
+            Nos permite establecer y obtener ChildrenDocuments.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener ChildrenDocuments.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.SyfiXBase.Domain.IDocument.DocumentCheckedOuts">
+      <summary>
+            .es Propiedad pública que permite establecer y obtener la colleción de valores DocumentCheckedOuts.
+            </summary>
+      <remarks>
+            .es (TARGET)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener DocumentCheckedOuts.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener DocumentCheckedOuts.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocument.SetParentDocument(AirBus.Suite.SyfiXBase.Domain.Document)">
+      <summary>
+            .es Método encargado de establecer un nuevo valor para la propiedad ParentDocument.
+            </summary>
+      <value>
+            .es Parametro con el que establecemos el nuevo valor de ParentDocument.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocument.SetDocumentType(AirBus.Suite.SyfiXBase.Domain.DocumentType)">
+      <summary>
+            .es Método encargado de establecer un nuevo valor para la propiedad DocumentType.
+            </summary>
+      <value>
+            .es Parametro con el que establecemos el nuevo valor de DocumentType.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocument.AddDocumentToChildrenDocuments(AirBus.Suite.SyfiXBase.Domain.Document)">
+      <summary>
+            .es Método encargado de añadir un elemento a la collección ChildrenDocuments en la entidad Document.
+            El Document ha de existir previamente.
+            </summary>
+      <value>
+            .es Parametro con el que se proporciona la colección Document a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocument.RemoveDocumentFromChildrenDocuments(AirBus.Suite.SyfiXBase.Domain.Document)">
+      <summary>
+            .es Método encargado de eliminar un elemento de la collección ChildrenDocuments en la entidad Document.
+            El Document ha de existir previamente.
+            </summary>
+      <value>
+            .es Identificador a borrar Document a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocument.AddDocumentCheckedOutToDocumentCheckedOuts(AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut)">
+      <summary>
+            .es Método encargado de añadir un elemento a la collección DocumentCheckedOuts en la entidad DocumentCheckedOut.
+            El DocumentCheckedOut ha de existir previamente.
+            </summary>
+      <value>
+            .es Parametro con el que se proporciona la colección DocumentCheckedOut a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.IDocument.RemoveDocumentCheckedOutFromDocumentCheckedOuts(AirBus.Suite.SyfiXBase.Domain.DocumentCheckedOut)">
+      <summary>
+            .es Método encargado de eliminar un elemento de la collección DocumentCheckedOuts en la entidad DocumentCheckedOut.
+            El DocumentCheckedOut ha de existir previamente.
+            </summary>
+      <value>
+            .es Identificador a borrar DocumentCheckedOut a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.IDocumentRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.SyfiXBase.Domain.IDocument" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.SyfiXBase.Domain.PerLifeTimeManager">
+      <summary>
+            LifetimeManager implementation
+            </summary>
+    </member>
+    <member name="F:AirBus.Suite.SyfiXBase.Domain.PerLifeTimeManager.value">
+      <summary />
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.PerLifeTimeManager.GetValue">
+      <summary />
+      <returns />
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.PerLifeTimeManager.RemoveValue">
+      <summary />
+    </member>
+    <member name="M:AirBus.Suite.SyfiXBase.Domain.PerLifeTimeManager.SetValue(System.Object)">
+      <summary />
+      <param name="newValue" />
+    </member>
+  </members>
+</doc>

@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Centum.Shared.Infrastructure</name>
+    </assembly>
+    <members>
+        <member name="T:Centum.Shared.Infrastructure.CategoriaConfiguration">
+            <summary>
+            inicializa una nueva instancia de  una entidad Categoria/>.
+            </summary>
+            <remarks>
+            Mapea un objeto <see cref="T:Centum.Shared.Domain.Categoria"/>
+            </remarks>
+        </member>
+        <member name="M:Centum.Shared.Infrastructure.CategoriaConfiguration.#ctor">
+            <summary>
+            inicializa una nueva instancia de <see cref="T:Centum.Shared.Infrastructure.CategoriaConfiguration"/>.
+            </summary>
+        </member>
+        <member name="T:Centum.Shared.Infrastructure.CategoriaRepository">
+            <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:Centum.Shared.Domain.Categoria"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:Centum.Shared.Infrastructure.CategoriaRepository.#ctor(System.Data.Entity.DbContext)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Centum.Shared.Infrastructure.CategoriaRepository"/>.
+            </summary>
+            <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+            <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext"/> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+        </member>
+        <member name="T:Centum.Shared.Infrastructure.PersonaConfiguration">
+            <summary>
+            inicializa una nueva instancia de  una entidad Persona/>.
+            </summary>
+            <remarks>
+            Mapea un objeto <see cref="T:Centum.Shared.Domain.Persona"/>
+            </remarks>
+        </member>
+        <member name="M:Centum.Shared.Infrastructure.PersonaConfiguration.#ctor">
+            <summary>
+            inicializa una nueva instancia de <see cref="T:Centum.Shared.Infrastructure.PersonaConfiguration"/>.
+            </summary>
+        </member>
+        <member name="T:Centum.Shared.Infrastructure.PersonaRepository">
+            <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:Centum.Shared.Domain.Persona"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:Centum.Shared.Infrastructure.PersonaRepository.#ctor(System.Data.Entity.DbContext)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Centum.Shared.Infrastructure.PersonaRepository"/>.
+            </summary>
+            <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+            <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext"/> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+        </member>
+        <member name="T:Centum.Shared.Infrastructure.BootstrapUnitOfWork">
+            <summary>
+            .en Class to implement unit of work and give the assemblys where are the configuration clases to Entity Framework
+            </summary>
+        </member>
+        <member name="M:Centum.Shared.Infrastructure.BootstrapUnitOfWork.#ctor(System.String)">
+            <summary>
+            constructor BootstrapUnitOfWork
+            </summary>
+            <param name="nameOrConnectionString"></param>
+        </member>
+        <member name="M:Centum.Shared.Infrastructure.BootstrapUnitOfWork.OnModelCreating(System.Data.Entity.DbModelBuilder)">
+            <summary>
+            .en add all configuration files from the assembly where is located the entity in the second parameter.
+            .es añadimos todos los ficheros de configuración del ensamblado de la entidad que pasamos.
+            </summary>
+            <param name="modelBuilder"></param>
+        </member>
+    </members>
+</doc>

@@ -56,7 +56,7 @@ namespace <#= projectNamespace #>
     using Inflexion2.Domain;
     using Inflexion2.Application;
     //using Inflexion.Framework.Application.Security.Data.Base;
-    using <#=prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Dtos;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Dtos;
     #endregion
 
     /// <summary>
@@ -145,6 +145,7 @@ namespace <#= projectNamespace #>
         [FaultContract(typeof(ValidationException))]
         [FaultContract(typeof(InternalException))]
         bool Delete(int id<#= (Secured)?", UserContextDto userContextDto":""#>);
+
 <#+ if (false){ #>
         /// <summary>
         /// Función encargada del borrado de una entidad de tipo <#= I #><#= cbc.pascalSecureEntityName #>.
@@ -165,6 +166,7 @@ namespace <#= projectNamespace #>
         [FaultContract(typeof(InternalException))]
         bool Delete( <#= cbc.pascalSecureEntityName #>Dto <#= cbc.camelSecureEntityName #>Dto<#= (Secured)?", UserContextDto userContextDto":""#>);
 <#+ } #>
+
         /// <summary>
         /// Método encargado de obtener todas las entidades <#= cbc.pascalSecureEntityName #>.
         /// </summary>
@@ -179,7 +181,6 @@ namespace <#= projectNamespace #>
         [FaultContract(typeof(ValidationException))]
         [FaultContract(typeof(InternalException))]
         IEnumerable<<#= cbc.pascalSecureEntityName #>Dto> GetAll(<#= (Secured)?", UserContextDto userContextDto":""#>);
-
 
         /// <summary>
         /// Método encargado de obtener una entidad <#= I #><#= cbc.secureEntityName #> de acuerdo a

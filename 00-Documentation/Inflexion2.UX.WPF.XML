@@ -642,6 +642,11 @@
             .en Global Command to get the last page of records
             </value>
         </member>
+        <member name="T:Inflexion2.UX.WPF.MVVM.UIMessageEvent">
+            <summary>
+            User Interface Message to update composite views  inside a module or between modules.
+            </summary>
+        </member>
         <member name="T:Inflexion2.UX.WPF.MVVM.Views.ShellWindow">
             <summary>
             Representa la ventana principal de aplicación.
@@ -1005,7 +1010,8 @@
         </member>
         <member name="M:Inflexion2.UX.WPF.MVVM.BaseViewModel.Rebind">
             <summary>
-            .en Raise the property change event with out a property to update the dependency properties.
+            .en Raise the property change event with out a property to update all the dependency properties.
+            in the current View Model.
             </summary>
         </member>
         <member name="M:Inflexion2.UX.WPF.MVVM.BaseViewModel.RaisePropertyChanged``1(System.Linq.Expressions.Expression{System.Func{``0}})">
@@ -1157,9 +1163,7 @@
         </member>
         <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.Specification">
             <summary>
-            propiedad de specification Dto este es un dto con el que se informa a la capa de aplicación que se 
-            ha solicitado la ejecución de una operación, generalmente aplicandose a uno o varias entidades y que puede afectar a
-            a la información almacenada sobre cada uno de ellos en el correspondiente repositorio.
+            This property is used to stablish a common base filtering over the collection of items asociated to the QueryViewModel
             </summary>
         </member>
         <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanActivateRecord(System.Object)">
@@ -1246,7 +1250,44 @@
         <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.NavigateToSelectedItem">
             <summary>
             open the selected record
+            this method is invoked from DataGridRowDoubleClickHandler
             </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.OnGetFirstPageRecords(System.Object)">
+            <summary>
+            .en Get First Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la primera página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.OnGetNextPageRecords(System.Object)">
+            <summary>
+            .en Get Next Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la siguiente página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.OnGetPreviousPageRecords(System.Object)">
+            <summary>
+            .en Get Previus Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la página anterior de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.OnGetLastPageRecords(System.Object)">
+            <summary>
+            .en Get Last Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la ultima página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
         </member>
         <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.RefreshCommands">
             <summary>
@@ -1339,6 +1380,16 @@
             Indica el campo Id de la entidad.
             </value>
         </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.IsTransient">
+            <summary>
+            true if the entity is transient
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.IsNotTransient">
+            <summary>
+            .en false if the entity is transient
+            </summary>
+        </member>
         <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.RaisePropertyChanged``1(System.Linq.Expressions.Expression{System.Func{``0}})">
             <summary>
             TODO: update summary
@@ -1348,12 +1399,12 @@
         </member>
         <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.ObjectElement">
             <summary>
-            .en self reference to the own entity to manage with the viemodel derived from this class.
+            .en self reference to the own entity dto to manage with the viemodel derived from this class.
             </summary>
         </member>
         <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.Title">
             <summary>
-            .en strore for the title of the derived vm. this property is binded in the view.
+            .en store for the title of the derived vm. this property is binded in the view.
             </summary>
         </member>
         <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.CanSaveRecord(System.Object)">
@@ -1375,14 +1426,6 @@
             .en addtional info to pass to the method
             </summary>
             <param name="parameter"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.CanNewRecord(System.Object)">
-            <summary>
-            .en method to calculate if is possible to add a new record ata thi time.
-            ususally this method has to be overrided in the derived viemodel.
-            </summary>
-            <param name="parameter">.en Addtional info to pass to the method.</param>
             <returns></returns>
         </member>
         <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.CanActivateRecord(System.Object)">
@@ -1522,9 +1565,15 @@
             presentation view model
             </summary>
         </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.ViewModels.PresentationViewModel.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.PresentationViewModel.Title">
             <summary>
-            Obtiene el título de la ventana.
+            .es Obtiene el título del user control.
+            .en Gets the window's user control.
             </summary>
         </member>
         <member name="T:Inflexion2.UX.WPF.MVVM.ViewModels.Regions.IWorkspaceViewModel">
@@ -1549,7 +1598,8 @@
         </member>
         <member name="T:Inflexion2.UX.WPF.MVVM.ViewModels.TaskbarViewModel">
             <summary>
-            Clase base para las clases modelo de vista (MVVM) que utilizan la región TaskbarRegion.
+            .en base class for view models in the region "TaskbarRegion"
+            .es Clase base para las clases modelo de vista (MVVM) que utilizan la región "TaskbarRegion".
             </summary>
         </member>
         <member name="F:Inflexion2.UX.WPF.MVVM.ViewModels.TaskbarViewModel.moduleType">
@@ -1584,10 +1634,12 @@
         </member>
         <member name="M:Inflexion2.UX.WPF.MVVM.ViewModels.TaskbarViewModel.#ctor(System.Type)">
             <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:TaskbarViewModel"/>.
+            .en Init a new instance of class <see cref="T:TaskbarViewModel"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:TaskbarViewModel"/>.
             </summary>
             <param name="moduleType">
-            Tipo de módulo al que pertenece este ViewModel.
+            .en type of module that belongs to the current instace of the viewmodel
+            .es Tipo de módulo al que pertenece este ViewModel.
             </param>
             <remarks>
             Constructor de la clase <see cref="T:TaskbarViewModel"/>.
@@ -1735,32 +1787,33 @@
         </member>
         <member name="F:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.activateRecordCommand">
             <summary>
-            Referencia al comando global activar registro.
+            .es Referencia al comando global activar registro.
+            .en
             </summary>
         </member>
         <member name="F:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.deleteRecordCommand">
             <summary>
-            Referencia al comando global eliminar registro.
+            .es Referencia al comando global eliminar registro.
             </summary>
         </member>
         <member name="F:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.editRecordCommand">
             <summary>
-            Referencia al comando global editar registro.
+            .es Referencia al comando global editar registro.
             </summary>
         </member>
         <member name="F:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.getRecordsCommand">
             <summary>
-            Referencia al comando global obtener registros.
+            .es Referencia al comando global obtener registros.
             </summary>
         </member>
         <member name="F:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.newRecordCommand">
             <summary>
-            Referencia al comando global nuevo registro.
+            .es Referencia al comando global nuevo registro.
             </summary>
         </member>
         <member name="F:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.saveRecordCommand">
             <summary>
-            Referencia al comando global guardar registro.
+            .es Referencia al comando global guardar registro.
             </summary>
         </member>
         <member name="F:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.getFirstPageRecordsCommand">
@@ -1785,12 +1838,17 @@
         </member>
         <member name="F:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.isBusy">
             <summary>
-            Indica si el view model esta o no ejecutando un proceso.
+            .en is the viewmodel executing a process?
+            </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.booleanInvisibleFieldsUI">
+            <summary>
+            .en list of invisible fields in the view
             </summary>
         </member>
         <member name="M:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.#ctor">
             <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:WorkspaceViewModel"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:WorkspaceViewModel"/>.
             </summary>
             <remarks>
             Constructor de la clase <see cref="T:WorkspaceViewModel"/>.
@@ -1798,28 +1856,28 @@
         </member>
         <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.ActivateRecordCommand">
             <summary>
-            Obtiene el comando eliminar registro.
+            .es Obtiene el comando eliminar registro.
             </summary>
             <value>
-            Comando eliminar registro.
+            .es Comando eliminar registro.
             </value>
         </member>
         <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.EditionCommandsProxy">
             <summary>
-            Obtiene el proxy para los comandos de edición.
+            .es Obtiene el proxy para los comandos de edición.
             </summary>
         </member>
         <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.EditRecordCommand">
             <summary>
-            Obtiene el comando editar registro.
+            .es Obtiene el comando editar registro.
             </summary>
             <value>
-            Comando editar registro.
+            .es Comando editar registro.
             </value>
         </member>
         <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.DeleteRecordCommand">
             <summary>
-            Obtiene el comando eliminar registro.
+            .es Obtiene el comando eliminar registro.
             </summary>
             <value>
             Comando eliminar registro.
@@ -1884,11 +1942,34 @@
         <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.Title">
             <summary>
             .es Obtiene el titulo a mostrar en la vista.
+            .en Gets the title to show in the view.
             </summary>
         </member>
         <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.IsBusy">
             <summary>
-            Propiedad que indica si el view model esta o no ejecutando un proceso.
+            .es Propiedad que indica si el view model esta o no ejecutando un proceso.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.BooleanInvisibleFieldsUI">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.CurrentViewName">
+            <summary>
+            Name of the current view instance associated to this viewmodel
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.ParentViewName">
+            <summary>
+            Name of the current parent view instance associated to this viewmodel.
+            This property is for those query/crud view/viewmodels that are embbeded inside other views.
+            The most common case is when a query view is inside other crud view.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.CompositeViewUpdateEvent">
+            <summary>
+            Property to send decoupled updating messages in user interface betwwen modules or inside them
             </summary>
         </member>
         <member name="M:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.CanActivateRecord(System.Object)">
@@ -2084,6 +2165,13 @@
             .es Parámetro con información adicional.
             </param>
         </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.OnReceiveCompositeViewUpdateEvent(System.String)">
+            <summary>
+            Action to execute when receiving a message to update a queryViewmodel who has a parent view.
+            Composited view update.
+            </summary>
+            <param name="message"></param>
+        </member>
         <member name="M:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.RaiseIsActiveChanged">
             <summary>
             Provoca el evento <see cref="M:IsActiveChanged"/> si es necesario.
@@ -2097,6 +2185,11 @@
         <member name="M:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.UnregisterCommands">
             <summary>
             Cancela el registro de los comandos globales.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.UpdateParentView">
+            <summary>
+            
             </summary>
         </member>
         <member name="T:Inflexion2.UX.WPF.MVVM.ViewModels.ShellWindowViewModel">
@@ -2254,7 +2347,8 @@
         </member>
         <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.RegionViewModel.IsActive">
             <summary>
-            Obtiene o establece un valor que indica si esta instancia está activa.
+            Obtiene o establece un valor que indica si esta instancia de la region en curso está activa.
+            Se utiliza tambien para viewmodels anidados activando y desactivando en funcion del focus.
             </summary>
             <value>
             Es true para indicar que la instancia está activa; en caso contrario, false.
@@ -2262,6 +2356,13 @@
             <remarks>
             Miembro de la interfaz <see cref="T:Microsoft.Practices.Prism.IActiveAware"/>.
             </remarks>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.ViewModels.RegionViewModel.DeactivateChildrenCollections">
+            <summary>
+            Deactivate all the children collections in the current viewmodel
+            This method works form the IsactiveProperty and his implementation is overrided
+            in every
+            </summary>
         </member>
         <member name="P:Inflexion2.UX.WPF.MVVM.ViewModels.RegionViewModel.KeepAlive">
             <summary>
@@ -2748,6 +2849,13 @@
         <member name="T:Inflexion2.UX.WPF.MVVM.IRegionViewModel">
             <summary>
             Interfaz para las clases modelo de vista (MVVM) que utilizan regiones Prism.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.IRegionViewModel.DeactivateChildrenCollections">
+            <summary>
+            Method to be overrided in viewmodels and deactivate all the nested viewmodels 
+            of usercontrols implemented to manage children realtionships that appears like 
+            
             </summary>
         </member>
         <member name="T:Inflexion2.UX.WPF.Helpers.RangeObservableCollection`1">
@@ -4125,12 +4233,21 @@
             <param name="view"></param>
             <param name="parameters"></param>
         </member>
-        <member name="M:Inflexion2.UX.WPF.Services.NavigationService.NavigateToWorkSpace(System.String,System.Object)">
+        <member name="M:Inflexion2.UX.WPF.Services.NavigationService.NavigateToWorkSpace``1(System.String,``0)">
             <summary>
-            <see cref="M:Inflexion2.UX.WPF.Services.INavigationService.NavigateToWorkSpace(System.String,System.Object)"/>
+            <see cref="!:INavigationService.NavigateToWorkSpace(string, dynamic)"/>
             </summary>
             <param name="view"></param>
             <param name="id"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.NavigationService.NavigateToWorkSpace``1(System.String,``0,Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <typeparam name="TIdentifier"></typeparam>
+            <param name="view"></param>
+            <param name="id"></param>
+            <param name="specification"></param>
         </member>
         <member name="M:Inflexion2.UX.WPF.Services.NavigationService.NavigateToWorkSpace(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
             <summary>
@@ -4152,7 +4269,7 @@
             <param name="view"></param>
             <param name="parameters"></param>
         </member>
-        <member name="M:Inflexion2.UX.WPF.Services.INavigationService.NavigateToWorkSpace(System.String,System.Object)">
+        <member name="M:Inflexion2.UX.WPF.Services.INavigationService.NavigateToWorkSpace``1(System.String,``0)">
             <summary>
             open a view with a dynamic id entity
             </summary>
@@ -4165,6 +4282,16 @@
             </summary>
             <param name="view"></param>
             <param name="parameters"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Services.INavigationService.NavigateToWorkSpace``1(System.String,``0,Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Open a view record with some specifications.
+            this used to restrict the values of the new record.
+            </summary>
+            <typeparam name="TIdentifier"></typeparam>
+            <param name="fullName"></param>
+            <param name="id"></param>
+            <param name="specification"></param>
         </member>
         <member name="T:Inflexion2.UX.WPF.Services.BaseKeyValueItem">
             <summary>

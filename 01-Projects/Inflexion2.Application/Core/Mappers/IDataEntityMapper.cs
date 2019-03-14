@@ -18,7 +18,7 @@ namespace Inflexion2.Application
     /// <typeparam name="TIdentifier">Representa un identificador unívoco de entidad.</typeparam>
     public interface IDataEntityMapper<TDto, TEntity, TIdentifier> //: IEntityMapper<TDataTransferObject, TEntity, TIdentifier> //,IDataMapper<TDataTransferObject, TEntity, TIdentifier>
         where TDto : IDataTransferObject
-        where TEntity : Inflexion2.Domain.IAggregateRoot<TEntity, TIdentifier>
+        where TEntity : class //, Inflexion2.Domain.IAggregateRoot<TEntity, TIdentifier>
         where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
     {
         /// <summary>

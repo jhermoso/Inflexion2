@@ -1,0 +1,170 @@
+﻿<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>Needel.Common.Infrastructure</name>
+  </assembly>
+  <members>
+    <member name="T:Needel.Common.Infrastructure.AddressConfiguration">
+      <summary>
+            inicializa una nueva instancia de  una entidad Address/&gt;.
+            </summary>
+      <remarks>
+            Mapea un objeto <see cref="T:Needel.Common.Domain.Address" /></remarks>
+    </member>
+    <member name="M:Needel.Common.Infrastructure.AddressConfiguration.#ctor">
+      <summary>
+            inicializa una nueva instancia de <see cref="T:Needel.Common.Infrastructure.AddressConfiguration" />.
+            </summary>
+    </member>
+    <member name="T:Needel.Common.Infrastructure.AddressRepository">
+      <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:Needel.Common.Domain.Address" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Infrastructure.AddressRepository.#ctor(System.Data.Entity.DbContext)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Infrastructure.AddressRepository" />.
+            </summary>
+      <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+      <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext" /> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+    </member>
+    <member name="T:Needel.Common.Infrastructure.AppSettingConfiguration">
+      <summary>
+            inicializa una nueva instancia de  una entidad AppSetting/&gt;.
+            </summary>
+      <remarks>
+            Mapea un objeto <see cref="T:Needel.Common.Domain.AppSetting" /></remarks>
+    </member>
+    <member name="M:Needel.Common.Infrastructure.AppSettingConfiguration.#ctor">
+      <summary>
+            inicializa una nueva instancia de <see cref="T:Needel.Common.Infrastructure.AppSettingConfiguration" />.
+            </summary>
+    </member>
+    <member name="T:Needel.Common.Infrastructure.AppSettingRepository">
+      <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:Needel.Common.Domain.AppSetting" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Infrastructure.AppSettingRepository.#ctor(System.Data.Entity.DbContext)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Infrastructure.AppSettingRepository" />.
+            </summary>
+      <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+      <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext" /> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+    </member>
+    <member name="T:Needel.Common.Infrastructure.BootstrapUnitOfWork">
+      <summary>
+            .en Class to implement unit of work and give the assemblys where are the configuration clases to Entity Framework
+            </summary>
+    </member>
+    <member name="M:Needel.Common.Infrastructure.BootstrapUnitOfWork.#ctor(System.String)">
+      <summary>
+            constructor BootstrapUnitOfWork
+            </summary>
+      <param name="nameOrConnectionString" />
+    </member>
+    <member name="M:Needel.Common.Infrastructure.BootstrapUnitOfWork.OnModelCreating(System.Data.Entity.DbModelBuilder)">
+      <summary>
+            .en add all configuration files from the assembly where is located the entity in the second parameter.
+            .es añadimos todos los ficheros de configuración del ensamblado de la entidad que pasamos.
+            </summary>
+      <param name="modelBuilder" />
+    </member>
+    <member name="T:Needel.Common.Infrastructure.DepartmentConfiguration">
+      <summary>
+            inicializa una nueva instancia de  una entidad Department/&gt;.
+            </summary>
+      <remarks>
+            Mapea un objeto <see cref="T:Needel.Common.Domain.Department" /></remarks>
+    </member>
+    <member name="M:Needel.Common.Infrastructure.DepartmentConfiguration.#ctor">
+      <summary>
+            inicializa una nueva instancia de <see cref="T:Needel.Common.Infrastructure.DepartmentConfiguration" />.
+            </summary>
+    </member>
+    <member name="T:Needel.Common.Infrastructure.DepartmentRepository">
+      <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:Needel.Common.Domain.Department" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Infrastructure.DepartmentRepository.#ctor(System.Data.Entity.DbContext)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Infrastructure.DepartmentRepository" />.
+            </summary>
+      <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+      <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext" /> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+    </member>
+    <member name="T:Needel.Common.Infrastructure.UserConfiguration">
+      <summary>
+            inicializa una nueva instancia de  una entidad User/&gt;.
+            </summary>
+      <remarks>
+            Mapea un objeto <see cref="T:Needel.Common.Domain.User" /></remarks>
+    </member>
+    <member name="M:Needel.Common.Infrastructure.UserConfiguration.#ctor">
+      <summary>
+            inicializa una nueva instancia de <see cref="T:Needel.Common.Infrastructure.UserConfiguration" />.
+            </summary>
+    </member>
+    <member name="T:Needel.Common.Infrastructure.UserRepository">
+      <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:Needel.Common.Domain.User" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Infrastructure.UserRepository.#ctor(System.Data.Entity.DbContext)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Infrastructure.UserRepository" />.
+            </summary>
+      <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+      <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext" /> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+    </member>
+  </members>
+</doc>

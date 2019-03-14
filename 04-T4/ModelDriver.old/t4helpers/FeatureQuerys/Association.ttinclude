@@ -1,0 +1,193 @@
+﻿<#+
+// introducimos metodos estáticos que a partir de un "LINK DE ASSOCIATION" nos devuelven información acerca de la estructura de la misma.
+// como número de atributos, cualidades etc. El objetivo de estos metodos es simplificar la escritura de las t4 de generación de código.
+// la utilidad de esta información en combinanción con el siguiente metodo AreAllMinMultiplicityEqual reside en el numero de constructores que tenemos que generar 
+// un primero vacio, un segundo con los mandatory y un tercero con todos. Si todos son mandatory y coinciden las multiplicidades entonces solo necesitamos dos constructores el vacio y el completo.
+// este caso ocurre siempre que tenemos un tipo o un discriminante.
+// el metodo 'AreAllMandatory' nos dice si la totalidad de los atributos de la entidad son mandatory o no
+// pasandole como parametro la entidad en questión.
+// si se desea utilizar la versión de interface solo es necesario poner el caracter 'I' delante de lo que devuelve el método. 
+//  TODO CAMBIAR LOS BOOLS POR PREFIJO Y SUFIJO
+// Cuando el tipo solicitado corresponde a un enumerado el tipo devuelto no puede ser de interface tiene que ser el tipo concreto.
+    public static string GetTypeFromAssociationLink(kayak.MoneyGen.Association association, bool versionInterface, string idtype, bool dtoversion = false, bool fieldversion = false)
+    {
+        string returnType = null;
+        bool isKeyValuePair = T4Help.IsKeyValuePair(association.TargetICollection);
+
+        if (association.Target is Enumeration)
+            versionInterface = false;
+        if (association.Source is Enumeration)
+            versionInterface = false;
+
+//
+        //// Controlamos si la multiplicidad del target es igual a uno 
+        //// en cuyo caso se trata de una propiedad simple y no una colección
+        if ( IsMaxMultiplicityOne(association.TargetMultiplicity) ) 
+        {   
+            if(dtoversion)
+            {
+                returnType = association.Target.Name +"Dto";
+            }
+             if (versionInterface)
+            {
+                returnType = "I"+association.Target.Name;
+            }
+            else
+            {
+                returnType = association.Target.Name;
+            }
+            
+        }
+        else // es una colección
+        {
+
+        returnType = String.Format(
+                                        "{0}<{1}{2}{3}>",
+                                        (isKeyValuePair)?association.TargetCollectionField:
+                                                    (fieldversion)?association.TargetCollectionField : association.TargetCollection,
+                                        (versionInterface)?"I":"",
+                                        association.Target.Name,
+                                        (dtoversion)?"Dto":""
+                                  );
+        }
+ //
+                //if (fieldversion)
+                //{
+                    //if (isKeyValuePair) // este if es para aquellos casos en los que se utiliza una colección diccionario que por definición no permite valores repetidos.
+                    //returnType = association.TargetCollectionField+"<"+idtype+", I" + association.Target.Name +">" ;
+                    //else
+                    //returnType = association.TargetCollectionField+"<I" + association.Target.Name +">" ;
+                //}
+                //else if (dtoversion)
+                //{
+                    //if (isKeyValuePair)
+                    //returnType  = association.TargetCollection+"<"+idtype+", " + association.Target.Name +"Dto >" ;
+                    //else
+                    //returnType  = association.TargetCollection+"<"+ association.Target.Name +"Dto >" ;
+                //}
+                //else if (versionInterface)
+                //{
+                    //if (isKeyValuePair)
+                    //returnType = association.TargetICollection+"<"+idtype+", I" + association.Target.Name +">" ;
+                    //else
+                    //returnType = association.TargetICollection+"<I" + association.Target.Name +">" ;
+                //}
+                //
+                //
+                //if (isKeyValuePair)
+                //{
+                    //returnType = association.TargetCollection+"<"+idtype+", I" + association.Target.Name +">" ;
+                //
+                //}
+                    //else
+                //{
+                    //returnType = association.TargetCollection+"<I"+ association.Target.Name +">" ;
+                //}
+        //}
+            //
+        //
+
+        return returnType;
+    }
+
+
+public static string kindOfCollectionMapping(kayak.MoneyGen.Association association)
+    {
+        string mappingType = null; // utilizaremos el map para las colecciones Dictionary o SortedDictionary que son las seleccionadas por defecto.
+        string collectionType= T4Help.StrCleanChar( T4Help.getLeftStringSlice(association.TargetICollection, '.', 1),@"[\.]" );
+        if (collectionType.Equals("IDictionary")  )
+        {
+            mappingType = "map";
+        }
+        else if (association.AllowTargetRepeatedValues )
+        {
+            mappingType = "bag";
+        }
+        else 
+        {
+            mappingType = "set";
+        }
+        return mappingType;
+    }// end public static string kindOfCollectionMapping()
+
+    public static bool IsMinMultiplicityCero(kayak.MoneyGen.Multiplicity multiplicity)
+    {
+    return multiplicity == kayak.MoneyGen.Multiplicity.CeroOne || 
+           multiplicity == kayak.MoneyGen.Multiplicity.CeroMany;
+    }
+
+    public static bool IsMinMultiplicityOne(kayak.MoneyGen.Multiplicity multiplicity)
+    {
+    return multiplicity == kayak.MoneyGen.Multiplicity.OneOne || 
+           multiplicity == kayak.MoneyGen.Multiplicity.OneMany;
+    }
+
+    public static bool IsMaxMultiplicityOne(kayak.MoneyGen.Multiplicity multiplicity)
+    {
+    return multiplicity == kayak.MoneyGen.Multiplicity.CeroOne | 
+           multiplicity == kayak.MoneyGen.Multiplicity.OneOne;
+    }
+
+    public static bool IsMaxMultiplicityMany(kayak.MoneyGen.Multiplicity multiplicity)
+    {
+    return multiplicity == kayak.MoneyGen.Multiplicity.CeroMany | 
+           multiplicity == kayak.MoneyGen.Multiplicity.OneMany;
+    }
+
+// esta función devuelve el formato de los parametros necesarios cuando 
+// se necesita generar el recorrido de una colección que proviene de una asociación target
+// que es la que puede generar colecciones. Es necesario tener en cuenta que solo devuelve algo
+// cuando la asociación que se pasa es target y many.
+// para aquellas asociaciones target que sean como máximo de una no se generan colecciones 
+// por tanto no se necesita recorrerlas con un foreach
+    public static string GetTargetAssociationParametersForEachFormat( kayak.MoneyGen.Association association , string itemName, string idName)
+    {
+        if ( IsMaxMultiplicityMany(association.TargetMultiplicity) )
+        {
+           if ( T4Help.IsKeyValuePair(association.TargetICollection) )
+            {
+                return itemName + ".Key, " + itemName + ".Value";
+            }
+            else
+            {
+                return itemName+"."+idName+", "+itemName;
+            }
+        }
+        return null;
+    }
+#>
+
+<#+
+    public static System.Collections.Generic.IEnumerable<kayak.MoneyGen.Association> GetMandatoryLinksFromsources(ClassBase classbase)
+    {
+        return Association.GetLinksToSources(classbase).Where( 
+                                                                p=>!(p.TargetRolName == null ||
+                                                                p.TargetRolName.Trim().Length == 0) &&
+                                                                IsMinMultiplicityOne(p.SourceMultiplicity)
+                                                             );
+    }
+
+#>
+
+<#+
+    ///<sumary>
+    /// nos devuelve una lista de relaciones de composición duras es decir que las dos entidades exigen la existencia mutua simultanea.
+    ///</sumary>
+    public static System.Collections.Generic.IEnumerable<kayak.MoneyGen.Association> GetHardCompositionsIn2Classes(ClassBase one, ClassBase two)
+    {
+        return Association.GetLinks(one, two).Where( 
+                                                                p=>!(p.TargetRolName == null && p.SourceRolName == null ||
+                                                                p.TargetRolName.Trim().Length == 0 && p.SourceRolName.Trim().Length == 0) &&
+                                                                IsMinMultiplicityOne(p.SourceMultiplicity) && IsMinMultiplicityOne(p.TargetMultiplicity)
+                                                             );
+    }
+    ///<sumary>
+    /// nos indica si la entidad de la asociación target es un aggregate root
+    ///</sumary>
+    public static bool IsTargetEntityAnAggregateRoot(kayak.MoneyGen.Association association )
+    {
+
+        return association.Target.MainEntityStereotype.ToString().Contains("AggregateRoot");
+           
+    }
+#>

@@ -1,0 +1,674 @@
+﻿<#@ template inherits="Microsoft.VisualStudio.TextTemplating.Modeling.ModelBusEnabledTextTransformation" language="C#" debug="true" hostspecific="True" #>
+<#@ output extension=".txt" #>
+<#@ MoneyGen processor="MoneyGenDirectiveProcessor"  requires="fileName='Main2.kyk'"  #>
+
+
+<#@ include file="T4Toolbox.tt" #>
+<#@ Assembly name    ="C:\Atento\02-Library\FluentNHibernate\FluentNHibernate.dll" #>
+<#@ Assembly name    ="C:\Atento\02-Library\nHibernate\v3.3.1\lib\Net35\NHibernate.dll" #>
+<#@ Assembly name    ="System.ServiceModel" #>
+
+<#@ import namespace = "FluentNHibernate.Cfg" #>
+<#@ import namespace = "FluentNHibernate.Cfg.Db" #>
+<#@ import namespace = "NHibernate" #>
+<#@ import namespace = "NHibernate.Cfg" #>
+<#@ import namespace = "NHibernate.Tool.hbm2ddl" #>
+<#@ import namespace = "System.ServiceModel" #>
+<#@ import namespace ="System.Globalization" #>
+
+<#@ include file="t4helpers\T4Application\Assemblys.tt" #>
+<#@ include file="t4helpers\T4Application\Imports.ttinclude" #>
+<#@ include file="t4Includes\Infra\InfraestructureCreateSchemaCbCT.tt" #>
+<#@ include file="t4Includes\Infra\InfraestructureCreateSchemaXamlCT.tt" #>
+<#@ include file="t4Includes\Infra\CreateBaseToolAppXamlCT.tt" #>
+<#@ include file="t4Includes\Infra\CreateBaseToolAppXamlCsCT.tt" #>
+<#@ include file="t4Includes\Infra\CreateSchema\MyApplicationSettingsCT.tt" #>
+<#@ include file="t4Includes\Infra\CreateSchema\CreateSchemaResourcesCT.tt" #>
+<#@ include file="t4Includes\Infra\CreateSchema\CreateSchemaResxDef.tt" #>
+<#@ include file="t4helpers\BingTranslatorAccess\Translators.tt" #>
+<#
+
+#if DEBUG
+bool okDebug = true;
+if (okDebug)
+    {    
+        Debug.WriteLine("");
+        Debug.WriteLine("Empezamos con la transformación de Create06CreateDataBase.tt");
+    }
+#endif
+// para traducir los recursos utilizamos la antigua configuración de los servicios de traducción de bing que necesita incluir el ensamblado de "System.ServiceModel"
+
+  kayak.MoneyGen.Application Source = this.Application; // Usual access to source model.
+  // In the source DSL Definition, the root element has a model reference:
+
+    // inicialización del arbol de contextos
+    //A partir de la raiz de un modelo obtenemos la jerarquia de constextos que cuelgan del mismo
+    ITree<LocalizedBounded> TreeApp = GetSolutionContextTree( Source );
+#if DEBUG
+    {
+        string mensajeDepuracion;
+        foreach( INode<LocalizedBounded> context in TreeApp.All.Nodes )
+        {
+            if (context.Data.Context.Value != null)
+                mensajeDepuracion = context.Data.Context.Value.Elements.Count().ToString();
+            else
+                mensajeDepuracion = null;
+            if (okDebug) Debug.WriteLine(String.Format( "{0} (key) es '{1}' Con {2} hijos directos. Y tiene '{3}' elementos",T4Help.Indent(context.Depth*4), context.Data.Context.Key, context.DirectChildCount, mensajeDepuracion, context.Depth ));
+        }
+    }
+#endif
+
+    // primera parte: recolectamos información acerca de la solucion los diagramas y las definiciones
+    // almacenandolas en estructuras de datos facilmente accesibles.
+    // 1º acerca del diagrama
+    DslContextDefinitionDiagram MainDiagram = new DslContextDefinitionDiagram(this.Application, TreeApp);
+    //Debug.WriteLine(MainDiagram.ToString());
+    // 2º acerca de la propia solución
+    ActiveSolution SolutionInfo = new ActiveSolution(this.Host);
+    //Debug.WriteLine(SolutionInfo.ToString());
+    // 3º obtenemos en la clase de maindiagram los path absolutos de las principales carpetas de la solución. 
+    MainDiagram.SetAbsolutePath(SolutionInfo.DirectoryName);
+
+    // 4º instanciamos la clases con la definición de la arquitectura
+    //Architecture Arq = new Architecture();
+
+//if (okDebug)
+    //{
+        //Debug.WriteLine(String.Format("El path de Proyects es '{0}'", MainDiagram.ProyectsPath));
+        //Debug.WriteLine(String.Format("El path de la solución es '{0}'", SolutionInfo.DirectoryName));
+        //Debug.WriteLine(String.Format("El path abs de projectos es '{0}'", MainDiagram.AbsProyectsPath));
+        //Debug.WriteLine("");
+        //Debug.WriteLine("          árbol de proyectos");
+        //foreach(var pr in  SolutionInfo.SolutionTree.All.Nodes )
+        //{
+            //Debug.WriteLine(String.Format("{0}{1}", T4Help.Indent( pr.Depth*5 ), pr.Data.Name));
+        //}
+        //Debug.WriteLine("");
+    //}
+
+    IList<Project> Projectos = SolutionProjects.ProjectsList(); // este es un método estático que nos permite acceder de forma rapida a la lista de proyectos para buscar uno concreto.
+        
+    // Segunda parte utilizamos la información recolectada para generar los proyectos de la solución.
+    
+    // Comprobamos y chequeamos la existencia de las carpetas de apoyo a la solución.
+    // primero con la carpeta de Documentación
+    //IOWindows.NewChequedFolder(SolutionInfo.DirectoryName+System.IO.Path.DirectorySeparatorChar+MainDiagram.DocumentationPath);
+    // Acontinuación con la carpeta de Documentación
+    //IOWindows.NewChequedFolder(SolutionInfo.DirectoryName+System.IO.Path.DirectorySeparatorChar+MainDiagram.AsemblysPath);
+    // Seguidamente con la carpeta de librerias de terceros
+    //IOWindows.NewChequedFolder(SolutionInfo.DirectoryName+System.IO.Path.DirectorySeparatorChar+MainDiagram.LibraryPath);
+    // Por último con la carpeta de projectos
+    //IOWindows.NewChequedFolder(SolutionInfo.DirectoryName+System.IO.Path.DirectorySeparatorChar+MainDiagram.ProyectsPath);
+    
+     //Comprobamos y chequemos la existencia de las carpetas de solución en la raiz
+     //obteniendo la referencia como projecto de cada una de ellas
+
+    // 1º con la carpeta de contextos limitados
+    MainDiagram.SFBoundedContextRef = SolutionInfo.AddSolutionFolderPath(MainDiagram.SolutionFolderBoundedContext);
+
+    if (MainDiagram.SFBoundedContextRef!=null )
+        Debug.WriteLine(String.Format("1 añadimos u obtenemos la carpeta '{0}' cuyo nombre es {1}",MainDiagram.SolutionFolderBoundedContext, MainDiagram.SFBoundedContextRef.Name));
+
+    // 3º con la carpeta de Framework 
+    MainDiagram.SFFrameworkRef = SolutionInfo.AddSolutionFolderPath(MainDiagram.SolutionFolderFramework);
+
+    ITree<BoundedContextMetadata> SharedKernelTree = GetSharedKernelProjects(  MainDiagram,  SolutionInfo,  TreeApp);
+
+    // creamos la carpeta de solución donde dejamos el proyecto wpf con la aplicación para crear o modificar la base de datos.
+    string SolutionFolderCreateDBName = MainDiagram.SolutionFolderBoundedContext + System.IO.Path.DirectorySeparatorChar + "CreateDataBaseApp";
+    Debug.WriteLine(String.Format("2 añadimos u obtenemos la carpeta '{0}' ",SolutionFolderCreateDBName));
+
+    Project SolutionFolderCreateDB  = SolutionInfo.AddSolutionFolderPath( SolutionFolderCreateDBName);
+
+    //string AssetsFolder         = "Assets" ;
+    //string ImagesFolder         = System.IO.Path.DirectorySeparatorChar + "Images" ;
+    //string NestedIconsFolder    = System.IO.Path.DirectorySeparatorChar + "Icons" ;
+    //string NestedFlagsFolder    = System.IO.Path.DirectorySeparatorChar + "Flags";
+    //string NestedLogosFolder    = System.IO.Path.DirectorySeparatorChar + "Logos";
+    //string ResourcesFolder      = System.IO.Path.DirectorySeparatorChar + "Resources";
+    //string WpfThemesFolder      = System.IO.Path.DirectorySeparatorChar + "WpfThemes";
+  
+
+    string nombreprojecto = "Create"+MainDiagram.Product+"DataBase";
+    string nombreprojecto2 = MainDiagram.RootNameSpace+"." + "Shared" +"."+ MainDiagram.SolutionFolderInfraestructure + "." + "Maps.nHibernate31."+ "MsSql";;
+    string SgbdTechnology= null;
+    if (MainDiagram.SGDB.ToString().Contains("Oracle"))
+    {
+        SgbdTechnology = "Oracle"; //  estas cadenas son las que hemos utilizado para los nombres de los proyectos en la arquitectura.
+    }
+    else if (MainDiagram.SGDB.ToString().Contains("MsSql"))
+        {
+            SgbdTechnology = "SqlServer";
+        }
+    else if (MainDiagram.SGDB.ToString().Contains("MySql"))
+        {
+            SgbdTechnology = "MySql";
+        }
+
+    string PathProjectsolution= SolutionFolderCreateDBName + System.IO.Path.DirectorySeparatorChar + nombreprojecto;
+    string temppath = MainDiagram.AbsProyectsPath +System.IO.Path.DirectorySeparatorChar+nombreprojecto ;
+    string nombreprojectoConExtension = nombreprojecto + ".csproj";
+    EnvDTE.Project AddedPrj = null;
+    EnvDTE.Project ReferencedProject = null;
+
+    IServiceProvider hostServiceProvider = (IServiceProvider)Host;
+    var dte = (EnvDTE.DTE)hostServiceProvider.GetService(typeof(SDTE)); // SDTE es una interfaz.
+
+    Solution2 soln = (Solution2)dte.Solution; // obtenemos la referencia a la solución abierta en la que nos encontramos.
+    //C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\ProjectTemplatesCache\CSharp\Windows\1033
+    string wpfProjectTemplate = "WpfApplicationCC.zip";
+    Debug.WriteLine(String.Format("buscamos la plantilla de projecto '{0}'",wpfProjectTemplate));
+    string ClassLibraryTemplatePath = soln.GetProjectTemplate("WpfApplicationCC.zip", "CSharp"); // obtenemos la localización de la plantilla de proyecto ClassLibrary
+Debug.WriteLine(String.Format("la plantilla se encuentra en '{0}'",ClassLibraryTemplatePath));
+
+    SolutionFolder folder = (SolutionFolder) SolutionFolderCreateDB.Object;
+
+    string templatePrj = SolutionInfo.TemplateProjects["WpfApplicationCC.zip"];//WpfApplicationFramework4CC
+    //if (!SolutionInfo.ExistSolutionFolderName(PathProjectsolution, SolutionInfo.SolutionTree))
+
+
+//if (okDebug) // PARA HACER DEBUG ELIMINAR LOS COMENTARIOS
+//    {
+//        Debug.WriteLine(String.Format("El path de Proyects es '{0}'", MainDiagram.ProyectsPath));
+//        Debug.WriteLine(String.Format("El path de la solución es '{0}'", SolutionInfo.DirectoryName));
+//        Debug.WriteLine(String.Format("El path abs de projectos es '{0}'", MainDiagram.AbsProyectsPath));
+//        Debug.WriteLine("");
+//        Debug.WriteLine("          árbol de proyectos");
+//        foreach(var pr in  SolutionInfo.SolutionTree.All.Nodes )
+//        {
+//            Debug.WriteLine(String.Format("{0}{1}", T4Help.Indent( pr.Depth*5 ), pr.Data.Name));
+//        }
+//        Debug.WriteLine("");
+//    }
+
+
+    if (!SolutionInfo.ExistSolutionFolderName(PathProjectsolution, SolutionInfo.SolutionTree))
+    {
+        Debug.WriteLine(String.Format("la carpeta '{0}' no existe",PathProjectsolution));
+
+        // despues comprobamos si el projecto existe fisicamente en la carpeta de projectos.
+        // si no existe en la solución pero si existe en la carpeta de projectos lo borramos y
+        // luego lo volvemos a añadir.
+        DirectoryInfo directoryInfoFolderPath = new DirectoryInfo(temppath);
+
+        Debug.WriteLine(String.Format("la carpeta de nombre'{0}' ",directoryInfoFolderPath.Name));
+        Debug.WriteLine(String.Format("la carpeta con path '{0}' ",directoryInfoFolderPath.FullName));
+        Debug.WriteLine(String.Format("existe '{0}' ",directoryInfoFolderPath.Exists.ToString()));
+
+        if(directoryInfoFolderPath.Exists ) // si el directorio existe 
+        {
+            try
+            {
+                directoryInfoFolderPath.Delete(true); // lo borramos 
+            }
+            catch (Exception e)
+            {
+                //System.Windows.Forms.MessageBox.Show(e.ToString());
+                Debug.WriteLine("Error tratando de borrar la carpeta");
+                Debug.WriteLine(temppath);
+                Debug.WriteLine("Excepción obtenida");
+                Debug.WriteLine(e);
+                    throw new Exception ("ArchitectureDefinition.ttinclude line 1322 borrando directorio", e);
+            }
+        }
+
+    // añadimos el proyecto
+    //if (okDebug) 
+    //{
+    //Debug.WriteLine("*-*-*-*-*-*-*-*-*-* añadimos el projecto sus caracterisiticas son:");
+    //Debug.WriteLine("");
+    //Debug.Write("       Nombre                          :");Debug.WriteLine(nombreprojectoConExtension);
+    //Debug.Write("       longitud con extensión          :");Debug.WriteLine(nombreprojectoConExtension.Length);
+    //Debug.Write("       path                            :");Debug.WriteLine(temppath);
+    //Debug.Write("       longitud del path               :");Debug.WriteLine(temppath.Length);
+    //Debug.Write("       project template                :");Debug.WriteLine(templatePrj);
+    //Debug.Write("       longitud del project template   :");Debug.WriteLine(templatePrj.Length);
+    //Debug.WriteLine("");
+    //Debug.WriteLine("*-*-*-*-*-*-*-*-*-*");
+    //}
+
+    folder.AddFromTemplate(templatePrj, temppath, nombreprojecto);        // este metodo tiene un bug por el cual no devuelve el projecto que acaba de añadir.
+                                                                                                    // asi que actualizamos nuestras referencias y lo buscamos. de nuevo para 
+                                                                                                    // poder borrar la clase que nos añade.
+    Debug.WriteLine("");     
+        Debug.WriteLine(String.Format("El projecto {0} se ha creado correctamente", nombreprojectoConExtension));       
+    SolutionInfo.SolutionTree        = SolutionProjects.ProjectsTree();
+    SolutionInfo.ProjectsList        = SolutionProjects.ProjectsList(); 
+                        
+    string projectAddedName = temppath + System.IO.Path.DirectorySeparatorChar+nombreprojecto;
+                        
+    // buscamos el projecto
+        Debug.WriteLine("buscamos el projecto que acabamos de añadir"); 
+    foreach(Project p in SolutionInfo.ProjectsList.Cast<Project>().Where(p=> p.CodeModel!=null && p.Name.Equals(nombreprojecto) ))
+    {
+              
+        AddedPrj =p;
+            if (AddedPrj != null)
+            {Debug.WriteLine("hemos encontrado el projecto que acabamos de añadir");}
+    }
+
+
+
+    // borramos la clase que añade la plantilla del proyecto
+    if (AddedPrj != null) //(false)//
+    {
+            ////Debug.WriteLine("borramos la clase que añade la plantilla del proyecto"); 
+        EnvDTE.ProjectItems ProjectListItems = AddedPrj.ProjectItems;
+////
+            ////
+            ////EnvDTE.ProjectItem PrjItem = ProjectListItems.Item;
+ ////Debug.WriteLine("obtenemos el array de los items del proyecto"); 
+        ////Array arrayPn = (Array)AddedPrj.ConfigurationManager.PlatformNames;
+////
+        //////if (project.Template != TemplateProject.WAPServiceCC) // dado que el template project de este proyecto no es WAPServiceCC hemos de ejecutar el foreach para asignar la carpeta de compilación adecuada
+        ////foreach (EnvDTE.Configuration item in AddedPrj.ConfigurationManager)
+        ////{
+            ////item.Properties.Item("OutputPath").Value = MainDiagram.AsemblysPath.TrimEnd(System.IO.Path.DirectorySeparatorChar)+System.IO.Path.DirectorySeparatorChar+item.ConfigurationName;
+            ////if (okDebug) Debug.WriteLine( String.Format( " ::configuration OutputPath set={0} ", MainDiagram.AsemblysPath.TrimEnd(System.IO.Path.DirectorySeparatorChar)+System.IO.Path.DirectorySeparatorChar+item.ConfigurationName ) ); //..\Ensamblados\
+            ////if (okDebug) Debug.WriteLine( String.Format( " ::configuration OutputPath get={0} ", item.Properties.Item("OutputPath").Value ) ); 
+        ////}
+////
+        ////if (PrjItem != null)
+        ////{
+            ////Debug.WriteLine("borramos el mainwindow.xaml"); 
+            ////PrjItem.Remove();
+        ////}
+
+        // añadimos las carpetas del proyecto
+        //if (okDebug) Debug.WriteLine("añadimos carpeta Assets");
+        var rootfolder = ProjectListItems.AddFolder( CDBcons.AssetsFolder, EnvDTE.Constants.vsProjectItemKindPhysicalFolder); // ProjectListItems.AddFolder
+
+        //if (okDebug) Debug.WriteLine("añadimos carpeta Resources");
+        rootfolder.ProjectItems.AddFolder(CDBcons.ResourcesFolder.Trim(System.IO.Path.DirectorySeparatorChar), EnvDTE.Constants.vsProjectItemKindPhysicalFolder);
+
+        //if (okDebug) Debug.WriteLine("añadimos carpeta WpfThemes");
+        rootfolder.ProjectItems.AddFolder(CDBcons.WpfThemesFolder.Trim(System.IO.Path.DirectorySeparatorChar), EnvDTE.Constants.vsProjectItemKindPhysicalFolder);
+
+        //if (okDebug) Debug.WriteLine("añadimos carpeta 3");
+        rootfolder = rootfolder.ProjectItems.AddFolder( CDBcons.ImagesFolder.Trim(System.IO.Path.DirectorySeparatorChar), EnvDTE.Constants.vsProjectItemKindPhysicalFolder);
+
+        //if (okDebug) Debug.WriteLine("añadimos carpeta 4");
+        rootfolder.ProjectItems.AddFolder( CDBcons.NestedIconsFolder.Trim(System.IO.Path.DirectorySeparatorChar), EnvDTE.Constants.vsProjectItemKindPhysicalFolder);
+
+        //if (okDebug) Debug.WriteLine("añadimos carpeta 5");
+        rootfolder.ProjectItems.AddFolder(  CDBcons.NestedFlagsFolder.Trim(System.IO.Path.DirectorySeparatorChar), EnvDTE.Constants.vsProjectItemKindPhysicalFolder);
+
+        //if (okDebug) Debug.WriteLine("añadimos carpeta 6");
+        rootfolder.ProjectItems.AddFolder(  CDBcons.NestedLogosFolder.Trim(System.IO.Path.DirectorySeparatorChar), EnvDTE.Constants.vsProjectItemKindPhysicalFolder);
+
+
+    }
+
+    // acontinuación añadimos las referencias de cada uno de los proyectos
+    // tenemos 3 tipos de referencias del clr que van solo con el nombre
+    // del framework que deben estar en la carpeta de framework
+    // y entre proyectos. que exige que todos los proyectos a los que se va a hacer referencia existan previamente.
+    // con el siguiente foreach recorremos la lista de referencias
+
+    // en primer lugar convertimos la referencia del projecto recien añadido
+    // al tipo de projecto de visual estudio que tiene los métodos para añadir las referencias
+    if (AddedPrj != null)
+    {
+
+        VSLangProj.VSProject vsproject = (VSLangProj.VSProject)AddedPrj.Object;
+
+    ITree<ClassBase> boundedContextElements = null;
+    foreach( INode<LocalizedBounded> context in TreeApp.All.Nodes )// recorremos el arbol de contextos y dentro del mismo recorremos sus projectos fluent para añadirlos.
+    {
+        kayak.MoneyGen.Application boundedContext = context.Data.Context.Value;
+        string bdName = GetBoundedContextNameFromTreeAppAndDeep( context.Depth,  context,  MainDiagram);
+        if (boundedContext != null && bdName != null  ) // si el contexto limitado tiene asociado un diagrama y un nombre lo procesamos.
+            {
+                boundedContextElements = ReadClassesHierarchie(boundedContext);
+                string secureBdName = bdName.Replace('\\','.');
+                //if (okDebug) Debug.WriteLine(String.Format("El nombre del proyecto es'{0}'",secureBdName));
+                //if (okDebug) Debug.WriteLine(String.Format("conection string del BC es '{0}'",boundedContext.ConectionString ));
+                //if (okDebug) Debug.WriteLine(String.Format("La base de datos es '{0}'",boundedContext.SchemaName ));
+                //if (okDebug) Debug.WriteLine(String.Format("el servidor de base de datos es '{0}'",boundedContext.DataBaseServer ));
+                // el contador de entidades no se puede usar para saber el comienzo pues las entidades de los shared kernel cuentan pero no se procesan.
+                var FirstOrDefaultEntity = boundedContextElements.All.Nodes.Where(p=> (p.Data is Entity) & p.Data.ReferencedRootEntity == null).FirstOrDefault().Data;
+                //int kindOfClass = 0; /* tipo de clase entidad, objeto valor , enumerado, servicio,  operación invariante etc.*/
+                //if (okDebug) Debug.WriteLine(String.Format("La primera entidad del Bc es  '{0}'",FirstOrDefaultEntity.Name ));
+
+// cada vez que añadimos una nueva arquitectura tenemos que añadir aqui su instanciación
+// también es necesario tener encuenta que hay que añadir 
+    ICollection<Architecture.ArqLayer> Layercollection = null;
+        if (MainDiagram.Architecture == ArchitectureOptions.PureDDD)
+        {
+            Layercollection = Architecture.ArqLayers;
+        }
+        if (MainDiagram.Architecture == ArchitectureOptions.HexaCore)
+        {
+            Layercollection = Architecture.HexaCoreMVCLayers;
+        }
+        if (MainDiagram.Architecture == ArchitectureOptions.SpringNet)
+        {
+            Layercollection = Architecture.SpringNetLayers;
+        }
+        if (MainDiagram.Architecture == ArchitectureOptions.Inflexion2)
+        {
+            Layercollection = Architecture.Inflexion2WPFLayers;
+        }
+
+                foreach (Architecture.ArqLayer layer in Layercollection) // .Where(l => l.LayerType == LayerKind.Infrastructure) // eliminamos esta restricción pues podemos desear añadir projectos de diversas capas
+                {
+                    string FolderLayerName = GetFolderLayerName(MainDiagram, layer.LayerType);
+                    if ( FolderLayerName!=null )
+                    {
+                        string secureBdName2 = null;
+                        string contextPath = null;
+                        // Acontinuación para cada carpeta recorremos cada uno de los proyectos que intervienen y que tenemos definido en nuestra clase de Architecture.
+                        // aqui es necesario añadir también la forma de construir las las carpetas para cada nuevo tipo de arquitectura que añadimos
+                        if (MainDiagram.Architecture == ArchitectureOptions.PureDDD || MainDiagram.Architecture == ArchitectureOptions.SpringNet)
+                        {
+                            contextPath = Architecture.GetBoundedContextLayerPath(MainDiagram.SolutionFolderBoundedContext, bdName, FolderLayerName); // concatenamos el nombre de la solución del contexto limitado con el del propio contexto limitado + el noobre de lacarpeta segun el layer a que corresponde.
+                            secureBdName2 = bdName.Replace(System.IO.Path.DirectorySeparatorChar,'.');
+                        }
+                        if (MainDiagram.Architecture == ArchitectureOptions.HexaCore)
+                        {
+                            contextPath = MainDiagram.SolutionFolderBoundedContext; // concatenamos el nombre de la solución del contexto limitado con el del propio contexto limitado + el noobre de lacarpeta segun el layer a que corresponde.
+                        }
+
+                        if (layer.LayerProyects != null)
+                        foreach (Architecture.ArqLayer.ArqProject project in layer.LayerProyects.Where(p => p.Name.Equals("Maps.nHibernate31."+ SgbdTechnology) || p.Name.Equals("Resources") )) // 
+                        {
+                            // Console.WriteLine("\n  {0},\t{1}",project.Name, project.Template );
+                            //if (okDebug) Debug.WriteLine(String.Format("                 projecto    '{0}',\t template {1}",project.Name, project.Template));
+
+                            nombreprojecto2 = GetProjectName( MainDiagram, layer.LayerType, project, secureBdName2);
+                            //if (okDebug) Debug.WriteLine(String.Format(" *nombreprojecto2    '{0}'",nombreprojecto2));
+
+
+                            foreach(Project p in SolutionInfo.ProjectsList.Cast<Project>().Where(p=> p.CodeModel!=null && p.Name.Equals(nombreprojecto2) )) //nombreprojecto2
+                            {
+                                ReferencedProject =p;
+                            }
+                            if (ReferencedProject != null)
+                            {   
+                                //if (okDebug) Debug.WriteLine("\t Añadimos, \t {0}",ReferencedProject.Name );
+                                vsproject.References.AddProject(ReferencedProject);
+                            }
+                        }
+
+                    }
+                }
+
+
+                            //reference.Name            = "NHibernate",
+                            //reference.dllPath         = "nHibernate\\v3.3.1"
+                            string path2Library= MainDiagram.AbsLibraryPath + System.IO.Path.DirectorySeparatorChar + "nHibernate\\v3.3.1" + System.IO.Path.DirectorySeparatorChar +"NHibernate"+".dll" ;
+                            //if (okDebug) Debug.WriteLine(String.Format("lo buscamos en '{0}'",path2Library ));
+                            vsproject.References.Add(path2Library);
+
+                            //reference.Name            = "FluentNHibernate",
+                            //reference.dllPath         = "FluentNHibernate"
+                            path2Library= MainDiagram.AbsLibraryPath + System.IO.Path.DirectorySeparatorChar + "FluentNHibernate" + System.IO.Path.DirectorySeparatorChar +"FluentNHibernate"+".dll" ;
+                            //if (okDebug) Debug.WriteLine(String.Format("lo buscamos en '{0}'",path2Library ));
+                            vsproject.References.Add(path2Library);
+
+                            // Inflexion.Framework.Infrastructure.DataAccess.UoW.NHibernate31
+                            path2Library= MainDiagram.AbsLibraryPath + System.IO.Path.DirectorySeparatorChar + MainDiagram.SolutionFolderFramework + System.IO.Path.DirectorySeparatorChar + "Inflexion.Framework.Infrastructure.DataAccess.UoW.NHibernate31" +".dll" ;
+                            if (true) Debug.WriteLine(String.Format("lo buscamos en: {0}",path2Library ));
+                            vsproject.References.Add(path2Library);
+
+                            // Inflexion.Framework.Domain.Core
+                            path2Library= MainDiagram.AbsLibraryPath + System.IO.Path.DirectorySeparatorChar + MainDiagram.SolutionFolderFramework + System.IO.Path.DirectorySeparatorChar + "Inflexion.Framework" +".dll" ;
+                            if (true) Debug.WriteLine(String.Format("lo buscamos en: {0}",path2Library ));
+                            vsproject.References.Add(path2Library);
+
+                            //reference.dllPath         = "WPFLocalizeExtension" 
+                            path2Library= MainDiagram.AbsLibraryPath + System.IO.Path.DirectorySeparatorChar + "WPFLocalizationExtension-BinWPF" + System.IO.Path.DirectorySeparatorChar +"WPFLocalizeExtension"+".dll" ;
+                            //if (okDebug) Debug.WriteLine(String.Format("lo buscamos en '{0}'",path2Library ));
+                            vsproject.References.Add(path2Library);
+
+                            path2Library= MainDiagram.AbsLibraryPath + System.IO.Path.DirectorySeparatorChar + "XAMLMarkupExtensions.1.1.6.1" + System.IO.Path.DirectorySeparatorChar + "lib"+System.IO.Path.DirectorySeparatorChar + "net40" + System.IO.Path.DirectorySeparatorChar + "XAMLMarkupExtensions"+".dll" ;
+                            //if (okDebug) Debug.WriteLine(String.Format("lo buscamos en '{0}'",path2Library ));
+                            vsproject.References.Add(path2Library);
+
+                            // añadimos las referencias existentes en la propia solución.
+                    path2Library= "Inflexion.Framework.UserInterface.Wpf.Utilities" ;
+                    //if (okDebug) Debug.WriteLine("{1},\t {0} ,\t {2}",reference.Name, reference.ReferenceType, path2Library);
+                    foreach(Project p in SolutionInfo.ProjectsList.Cast<Project>().Where(p=> p.CodeModel!=null && p.Name.Equals(path2Library) ))
+                    {
+                        ReferencedProject =p;
+                    }
+                    if (ReferencedProject != null)
+                    {   
+                        //if (okDebug) Debug.WriteLine("\t Añadimos, \t Inflexion.Framework.UserInterface.Wpf.Utilities" );
+                        vsproject.References.AddProject(ReferencedProject);
+                    }
+                    ReferencedProject = null;
+
+                    path2Library= "ConfigurationWindows2010" ;
+                    //if (okDebug) Debug.WriteLine("{1},\t {0} ,\t {2}",reference.Name, reference.ReferenceType, path2Library);
+                    foreach(Project p in SolutionInfo.ProjectsList.Cast<Project>().Where(p=> p.CodeModel!=null && p.Name.Equals(path2Library) ))
+                    {
+                        ReferencedProject =p;
+                    }
+                    if (ReferencedProject != null)
+                    {   
+                        //if (okDebug) Debug.WriteLine("\t Añadimos, \t ConfigurationWindows2010" );
+                        vsproject.References.AddProject(ReferencedProject);
+                    }
+                    ReferencedProject = null;
+
+                    path2Library= "Configuration2010" ;
+                    //if (okDebug) Debug.WriteLine("{1},\t {0} ,\t {2}",reference.Name, reference.ReferenceType, path2Library);
+                    foreach(Project p in SolutionInfo.ProjectsList.Cast<Project>().Where(p=> p.CodeModel!=null && p.Name.Equals(path2Library) ))
+                    {
+                        ReferencedProject =p;
+                    }
+                    if (ReferencedProject != null)
+                    {   
+                        //if (okDebug) Debug.WriteLine("\t Añadimos, \t Configuration2010" );
+                        vsproject.References.AddProject(ReferencedProject);
+                    }
+                    ReferencedProject = null;
+
+
+
+
+            }
+        }
+    } // end create project
+} // end if (!SolutionInfo.ExistSolutionFolderName(PathProjectsolution, SolutionInfo.SolutionTree))
+
+
+
+
+
+    // buscamos el projecto
+    foreach(Project p in SolutionInfo.ProjectsList.Cast<Project>().Where(p=> p.CodeModel!=null && p.Name.Equals(nombreprojecto) ))
+    {
+        AddedPrj =p;
+    }
+    if (AddedPrj != null) // añadimos los ficheros de assets
+    {
+        string TempOrigin;
+        string TempTarget;
+
+        // añadimos flags
+        EnvDTE.ProjectItems ProjectListItems = AddedPrj.ProjectItems;
+        TempOrigin = T4Help.AddRelPath2AbsPath(SolutionInfo.DirectoryName , "..\\04-T4\\ModelDriver" + System.IO.Path.DirectorySeparatorChar  + CDBcons.AssetsFolder + CDBcons.ImagesFolder + CDBcons.NestedFlagsFolder + System.IO.Path.DirectorySeparatorChar);
+        
+        TempTarget = MainDiagram.AbsProyectsPath + System.IO.Path.DirectorySeparatorChar +"Create"      + MainDiagram.Product + "DataBase" + System.IO.Path.DirectorySeparatorChar  + CDBcons.AssetsFolder + CDBcons.ImagesFolder + CDBcons.NestedFlagsFolder + System.IO.Path.DirectorySeparatorChar;
+        Debug.WriteLine("Copiamos las banderas desde");
+        Debug.WriteLine(TempOrigin);
+                Debug.WriteLine("   a");
+        Debug.WriteLine(TempTarget);
+        IOWindows.FilteredCopyFilesFromDirToDirAndAddProjectItems( ProjectListItems, TempOrigin, TempTarget, "??24.png" ); // Esta copia exige que el string del directorio de origen y de destino terminen con el caracter "System.IO.Path.DirectorySeparatorChar"
+
+        // añadimos iconos
+        TempOrigin = T4Help.AddRelPath2AbsPath(SolutionInfo.DirectoryName , "..\\04-T4\\ModelDriver" + System.IO.Path.DirectorySeparatorChar                                     + CDBcons.AssetsFolder + CDBcons.ImagesFolder + CDBcons.NestedIconsFolder + System.IO.Path.DirectorySeparatorChar);
+        TempTarget = MainDiagram.AbsProyectsPath + System.IO.Path.DirectorySeparatorChar  +"Create"     + MainDiagram.Product + "DataBase" + System.IO.Path.DirectorySeparatorChar  + CDBcons.AssetsFolder + CDBcons.ImagesFolder + CDBcons.NestedIconsFolder + System.IO.Path.DirectorySeparatorChar;
+
+        IOWindows.FilteredCopyFilesFromDirToDirAndAddProjectItems( ProjectListItems, TempOrigin, TempTarget, "*.ico" );
+
+        // añadimos logos
+        TempOrigin = T4Help.AddRelPath2AbsPath(SolutionInfo.DirectoryName , "..\\04-T4\\ModelDriver" + System.IO.Path.DirectorySeparatorChar                                     + CDBcons.AssetsFolder + CDBcons.ImagesFolder + CDBcons.NestedLogosFolder + System.IO.Path.DirectorySeparatorChar);
+        TempTarget = MainDiagram.AbsProyectsPath + System.IO.Path.DirectorySeparatorChar  +"Create"     + MainDiagram.Product + "DataBase" + System.IO.Path.DirectorySeparatorChar  + CDBcons.AssetsFolder + CDBcons.ImagesFolder + CDBcons.NestedLogosFolder + System.IO.Path.DirectorySeparatorChar;
+
+        IOWindows.FilteredCopyFilesFromDirToDirAndAddProjectItems( ProjectListItems, TempOrigin, TempTarget, "*.png" );
+
+        // añadimos wpf themes
+        TempOrigin = T4Help.AddRelPath2AbsPath(SolutionInfo.DirectoryName , "..\\04-T4\\ModelDriver" + System.IO.Path.DirectorySeparatorChar                                     + CDBcons.AssetsFolder + CDBcons.WpfThemesFolder + System.IO.Path.DirectorySeparatorChar);
+        TempTarget = MainDiagram.AbsProyectsPath + System.IO.Path.DirectorySeparatorChar  +"Create"     + MainDiagram.Product + "DataBase" + System.IO.Path.DirectorySeparatorChar  + CDBcons.AssetsFolder + CDBcons.WpfThemesFolder + System.IO.Path.DirectorySeparatorChar;
+
+        IOWindows.FilteredCopyFilesFromDirToDirAndAddProjectItems( ProjectListItems, TempOrigin, TempTarget, "*.xaml" );
+
+
+    }
+
+
+    ITree<ClassBase> selectedBoundedContextElements = null;
+    // recorremos los contextos limitados
+    int BoundedContextCounter = TreeApp.All.Nodes.Where( bc => bc.Data.Context.Value != null && bc.Data.Context.Key != null ).Count();
+    int TotalEntitiesCurrentBoundedContext = 0;
+    int contadorDeboundedContexts = 0;
+
+    Debug.WriteLine(String.Format("BoundedContextCounter='{0}'", BoundedContextCounter));
+    foreach( INode<LocalizedBounded> context in TreeApp.All.Nodes )
+    {
+        contadorDeboundedContexts++;
+        Debug.WriteLine(String.Format("contadorDeboundedContexts='{0}'", contadorDeboundedContexts));
+        kayak.MoneyGen.Application boundedContext = context.Data.Context.Value; //comentamos esta linea para cambiar el recorrido por los elementos del modelo por el recorrido del arbol de jerarquias.
+        string bdName = GetBoundedContextNameFromTreeAppAndDeep( context.Depth,  context,  MainDiagram);
+
+        if (boundedContext != null && bdName != null  ) // si el contexto limitado tiene asociado un diagrama y un nombre lo procesamos.
+        {
+            selectedBoundedContextElements = ReadClassesHierarchie(boundedContext);
+
+            string secureBdName = bdName.Replace('\\','.');
+           //if (okDebug) Debug.WriteLine(String.Format("El nombre del proyecto es'{0}'",secureBdName));
+           //if (okDebug) Debug.WriteLine(String.Format("Este proyecto tiene '{0}' hijos",context.DirectChildCount ));
+            int contadorDeEntidades = 0;
+            //bool ResxWriteInit = false; // el contador de entidades no se puede usar para saber el comienzo pues las entidades de los shared kernel cuentan pero no se procesan.
+            int totalDeEntidades = selectedBoundedContextElements.All.Nodes.Where(p=> (p.Data is Entity || p.Data is ObjectValue || p.Data is Enumeration) & p.Data.ReferencedRootEntity == null).Count();
+            //int kindOfClass = 0; /* tipo de clase entidad, objeto valor , enumerado, servicio,  operación invariante etc.*/
+            
+            INode<ClassBase> item = selectedBoundedContextElements.All.Nodes.Where(p=> p.Data is Entity ).FirstOrDefault();
+            ClassBase entity = item.Data;
+            ClassBaseContext CBC = new ClassBaseContext(MainDiagram, SolutionInfo, entity, secureBdName);
+            // La generación del fichero xaml es acumulativa por tanto es necesario controlar las tres fases del mismo.
+            // es decir en la primera fase inicializamos la cabecera y un bounded context con la primera entidad , en la segunda introducimos el resot de los bounded context  
+            // y en la tercera cerramos el fichero despues de meter la info de la ultima entidad recorrida.
+            // es necesario tener encuenta que cada diagrama puede tener una base de datos o no en cuyo caso se usa la de por defecto.
+
+            nombreprojecto2 = MainDiagram.RootNameSpace+"." + secureBdName +"."+ MainDiagram.SolutionFolderInfraestructure + "." + "Maps.nHibernate31."+ SgbdTechnology;
+            //if (okDebug) Debug.WriteLine(String.Format(" *nombreprojecto2    '{0}'",nombreprojecto2));
+
+            string estadoDeDesarrollo = "desarrollo"; // contamos entidades
+            if(contadorDeEntidades == 1) estadoDeDesarrollo = "inicio"; 
+            if(contadorDeEntidades == totalDeEntidades ) estadoDeDesarrollo = "fin";
+            if(contadorDeEntidades == 1 & totalDeEntidades == 1) estadoDeDesarrollo = "soloUna";
+
+            string estadoDeDesarrolloBC = "desarrollo";// contamos bounded context, es util para proyectos unicos en la solución
+            if(contadorDeboundedContexts == 1) estadoDeDesarrolloBC = "inicio"; 
+            if(contadorDeboundedContexts == BoundedContextCounter ) estadoDeDesarrolloBC = "fin";
+            if(contadorDeboundedContexts == 1 & BoundedContextCounter == 1) estadoDeDesarrolloBC = "soloUna";
+
+            string CreateSchemaResourcesTxt  = CreateSchemaResx.def();
+            //if (okDebug) Debug.WriteLine(string.Format("CreateSchemaResourcesTxt ='{0}'",CreateSchemaResourcesTxt));
+
+            List<string> TranslationList = Translator.GetSelectedLanguages( MainDiagram );
+            if (true)
+            {
+                foreach (var idioma in TranslationList)
+                {
+                    Debug.WriteLine(string.Format("Traducir a  ='{0}'",idioma));
+                }
+            }
+
+            string LanguagesResourcesTxt = ResxHelp.GetResxTxtFromLanguagesSelected( TranslationList );
+            string TempOrigin = T4Help.AddRelPath2AbsPath(SolutionInfo.DirectoryName , "..\\04-T4\\ModelDriver"  + System.IO.Path.DirectorySeparatorChar + CDBcons.AssetsFolder + CDBcons.WpfThemesFolder + System.IO.Path.DirectorySeparatorChar);
+
+            string WpfThemesREsourcesTxt = ResxHelp.GetResxTxtFromWpfThemesFiles(TempOrigin);
+
+            string AcumulateTxt = CreateSchemaResourcesTxt + LanguagesResourcesTxt + WpfThemesREsourcesTxt;
+            //if (okDebug) Debug.WriteLine(string.Format("AcumulateTxt ='{0}'",AcumulateTxt));
+            string TranslatedTxt = null; 
+
+            string DefaultLanguage = MainDiagram.App.Culture;
+            string languageIsoCode =null;
+            string languageIsoCodeDot = null;
+            string[] TargetArray;
+            //string NewLanguagesResourcesTxt = null;
+                foreach(string ResxKeyTranslation in TranslationList)
+                    {
+                        languageIsoCode= T4Help.GetCultureISOCode2FromEnglishLanguageName( ResxKeyTranslation.Trim() );
+
+               // if (okDebug) Debug.WriteLine(string.Format("entidad ='{0}', estadoBC = '{1}' idioma='{2}'",entity.Name, estadoDeDesarrolloBC, languageIsoCode));
+
+                        string XmlCacheFile = T4Help.AddRelPath2AbsPath(SolutionInfo.DirectoryName , "..\\04-T4\\ModelDriver"  + System.IO.Path.DirectorySeparatorChar + "Assets" + System.IO.Path.DirectorySeparatorChar + "TranslationsCache" + System.IO.Path.DirectorySeparatorChar + MainDiagram.Company+ MainDiagram.Product+"XmlCache.xml");
+
+                        languageIsoCodeDot = ((string.IsNullOrEmpty(languageIsoCode)|| DefaultLanguage.Equals(languageIsoCode))?"":languageIsoCode+".");
+                        TargetArray = ResxHelp.GetRexArray(AcumulateTxt);
+
+                        var tCreateDBresx   = new CreateSchemaResourcesCT(CBC, nombreprojecto, SharedKernelTree, estadoDeDesarrolloBC, languageIsoCode, TargetArray, XmlCacheFile);
+                        tCreateDBresx.Output.PreserveExistingFile = false;
+                        tCreateDBresx.Output.File = CDBcons.AssetsFolder + CDBcons.ResourcesFolder + System.IO.Path.DirectorySeparatorChar +"Create"+MainDiagram.Product+"DataBase."+languageIsoCodeDot+"resx";
+                       // if (okDebug) Debug.WriteLine(string.Format("el tCreateDBresx.Output.File  ='{0}'",tCreateDBresx.Output.File ));
+                        tCreateDBresx.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                        tCreateDBresx.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                        tCreateDBresx.Output.ItemType = ItemType.EmbeddedResource;
+                        tCreateDBresx.Output.CustomTool = ((string.IsNullOrEmpty(languageIsoCode) || DefaultLanguage.Equals(languageIsoCode))?"PublicResXFileCodeGenerator":"");
+                        //t20.Output.CustomToolNamespace = secureBdName;
+                        tCreateDBresx.Output.Encoding = Encoding.UTF8;
+                        tCreateDBresx.Render();
+                    }
+
+            //if (okDebug) Debug.WriteLine(string.Format("bdName ='{0}', estado = '{1}'",bdName, estadoDeDesarrollo));
+            var tCreateDBxaml   = new InfraestructureCreateSchemaXamlCT(CBC, nombreprojecto2, SharedKernelTree, estadoDeDesarrolloBC, selectedBoundedContextElements);
+            tCreateDBxaml.Output.File = "MainWindow.xaml";
+            tCreateDBxaml.Output.PreserveExistingFile = false;
+            tCreateDBxaml.projectNamespace = "CreateDataBaseApp"; // el namespace del proyecto coincide con el nombre del mismo.
+            tCreateDBxaml.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+            tCreateDBxaml.Output.Encoding = Encoding.UTF8;
+            tCreateDBxaml.Render();
+
+             //if (okDebug) Debug.WriteLine(string.Format("nombreprojecto2 ='{0}'",nombreprojecto2));
+            var tCreateDBcb   = new InfraestructureCreateSchemaCbCT(CBC, nombreprojecto2, SharedKernelTree, estadoDeDesarrolloBC, selectedBoundedContextElements);
+            tCreateDBcb.Output.File = "MainWindow.xaml.cs";
+            tCreateDBcb.Output.PreserveExistingFile = false;
+            tCreateDBcb.projectNamespace = "CreateDataBaseApp"; // el namespace del proyecto coincide con el nombre del mismo.
+            tCreateDBcb.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+            tCreateDBcb.Output.Encoding = Encoding.UTF8;
+            tCreateDBcb.Output.Metadata["DependentUpon"] = @"MainWindow.xaml";
+            tCreateDBcb.Output.Metadata["SubType"] = "Code";
+            tCreateDBcb.Render();
+
+            // app.xaml
+            var tAppxaml   = new CreateBaseToolAppXamlCT(CBC, nombreprojecto2, SharedKernelTree, estadoDeDesarrolloBC, selectedBoundedContextElements);
+            tAppxaml.Output.File = "App.xaml";
+            tAppxaml.Output.PreserveExistingFile = false;
+            tAppxaml.projectNamespace = "CreateDataBaseApp"; // el namespace del proyecto coincide con el nombre del mismo.
+            tAppxaml.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+            tAppxaml.Output.Encoding = Encoding.UTF8;
+            tAppxaml.Output.ItemType = ItemType.ApplicationDefinition;// Las t4toolbox no tienen previsto este valor, si no se asigan de esta manera se producira un error de compilación por el que no se encuentra el metodo main. 
+            tAppxaml.Output.CustomTool = "MSBuild:Compile";
+            tAppxaml.Render();
+
+            var tAppxamlcs   = new CreateBaseToolAppXamlCsCT(CBC, nombreprojecto2, SharedKernelTree, estadoDeDesarrolloBC, selectedBoundedContextElements);
+            tAppxamlcs.Output.File = "App.xaml.cs";
+            tAppxamlcs.Output.PreserveExistingFile = false;
+            tAppxamlcs.projectNamespace = "CreateDataBaseApp"; // el namespace del proyecto coincide con el nombre del mismo.
+            tAppxamlcs.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+            tAppxamlcs.Output.Encoding = Encoding.UTF8;
+            tAppxamlcs.Output.ItemType = ItemType.Compile;
+            tAppxamlcs.Output.Metadata["DependentUpon"] = @"App.xaml";
+            tAppxamlcs.Output.Metadata["SubType"] = "Code";
+            tAppxamlcs.Render();
+
+            var tMyApplicationSettings   = new MyApplicationSettings(CBC, nombreprojecto2, SharedKernelTree, estadoDeDesarrolloBC, selectedBoundedContextElements);
+            tMyApplicationSettings.Output.File = "MyApplicationSettings.cs";
+            tMyApplicationSettings.Output.PreserveExistingFile = true;
+            tMyApplicationSettings.projectNamespace = "CreateDataBaseApp"; // el namespace del proyecto coincide con el nombre del mismo.
+            tMyApplicationSettings.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+            tMyApplicationSettings.Output.Encoding = Encoding.UTF8;
+
+            tMyApplicationSettings.Render();
+
+        }
+    }
+
+#>

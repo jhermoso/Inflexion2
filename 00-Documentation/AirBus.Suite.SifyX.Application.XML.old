@@ -1,0 +1,450 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AirBus.Suite.SifyX.Application</name>
+    </assembly>
+    <members>
+        <member name="T:AirBus.Suite.SifyX.Application.IMetaClassMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.SifyX.Application.MetaClassMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.SifyX.Application.Dtos.MetaClassDto"/> con una entidad <see cref="T:AirBus.Suite.SifyX.Application.MetaClassMapper"/>.
+            </remarks>
+        </member>
+        <member name="T:AirBus.Suite.SifyX.Application.IMetaClassServices">
+            <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:AirBus.Suite.SifyX.Application.IMetaClassServices"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.IMetaClassServices.Create(AirBus.Suite.SifyX.Application.Dtos.MetaClassDto)">
+            <summary>
+            .en Create an entity of type IMetaClass.
+            .es Función encargada de la creación de una entidad de tipo IMetaClass.
+            </summary>
+            <param name="metaClassDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SifyX.Application.Dtos.MetaClassDto"/> con los datos necesarios
+            para la creación de la entidad MetaClass.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve el identificador único de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.IMetaClassServices.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo MetaClass.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="MetaClassId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve <b>True</b> si la eliminación ha sido correcta y
+            <b>False</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.IMetaClassServices.GetAll">
+            <summary>
+            Función encargada de obtener todas las entidades de tipo MetaClass.
+            </summary>
+            <remarks>
+            Devuelve la totalidad de las entidades.
+            </remarks>        /// <returns>
+            Devuelve listado de Dto´s de tipo <see cref="T:AirBus.Suite.SifyX.Application.Dtos.MetaClassDto"/>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.IMetaClassServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades MetaClass, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>        /// <returns>
+            La lista paginada de entidades MetaClass, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.IMetaClassServices.GetById(System.Int32)">
+            <summary>
+            Función encargada de obtener una entidad MetaClass de acuerdo a
+            su identificador.
+            </summary>
+            <param name="metaClassId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>
+            <returns>
+            Devuelve objeto Dto <see cref="T:AirBus.Suite.SifyX.Application.Dtos.MetaClassDto"/> con la información requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.IMetaClassServices.Update(AirBus.Suite.SifyX.Application.Dtos.MetaClassDto)">
+            <summary>
+            Actualiza una determinada entidad MetaClass.
+            </summary>
+            <param name="metaClassDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>        /// <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SifyX.Application.MetaClassMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.SifyX.Application.MetaClassMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.SifyX.Application.Dtos.MetaClassDto"/> con una entidad <see cref="T:AirBus.Suite.SifyX.Application.MetaClassMapper"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.MetaClassMapper.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SifyX.Application.MetaClassMapper"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.MetaClassMapper.EntityMapping(AirBus.Suite.SifyX.Domain.IMetaClass)">
+            <summary>
+            Función pública que mapea las entidades para devolver el
+            correspondiente Dto.
+            </summary>
+            <remarks>
+            Se encarga de mapear objetos <see cref="T:AirBus.Suite.SifyX.Domain.MetaClass"/> 
+            devolviendo un objeto <see cref="T:AirBus.Suite.SifyX.Application.Dtos.MetaClassDto"/>.
+            </remarks>
+            <param name="entityMetaClass">
+            Objeto de la entidad <see cref="T:AirBus.Suite.SifyX.Domain.MetaClass"/>.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de <c>entityMetaClass</c> es null.
+            </exception>
+            <returns>
+            Devuelve un objeto de tipo <see cref="T:AirBus.Suite.SifyX.Application.Dtos.MetaClassDto"/> 
+            con los datos mapeados.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SifyX.Application.MetaClassServices">
+            <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity MetaClass.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad MetaClass.
+            </summary>
+            <remarks>
+            .en Create an object of type <see cref="T:AirBus.Suite.SifyX.Domain.MetaClass"/>.
+            .es Crea un objeto <see cref="T:AirBus.Suite.SifyX.Domain.MetaClass"/>.
+             permanent guid = 
+            </remarks>
+        </member>
+        <member name="F:AirBus.Suite.SifyX.Application.MetaClassServices.metaClassMapper">
+            <summary>
+            Referencia al mapeador de la entidad MetaClass.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.MetaClassServices.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:MetaClass>Service"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:MetaClassServices"/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.SifyX.Application.MetaClassServices.MetaClassMapper">
+            <summary>
+            Obtiene la referencia al mapeador de la entidad <see cref="T:IMetaClass"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.MetaClassServices.Create(AirBus.Suite.SifyX.Application.Dtos.MetaClassDto)">
+            <summary>
+            Crea una entidad MetaClass.
+            </summary>
+            <param name="metaClassDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+            <returns>
+            El identificador de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.MetaClassServices.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad MetaClass.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.MetaClassServices.GetAll">
+            <summary>
+            Recupera todas las entidades MetaClass.
+            </summary>
+            <returns>
+            Todas las entidades MetaClass.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.MetaClassServices.GetById(System.Int32)">
+            <summary>
+            Recupera una entidad MetaClass mediante su identificador correspondiente.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a recuperar.
+            </param>
+            <returns>
+            La entidad MetaClass recuperada o valor nulo si no se encuentra.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.MetaClassServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades MetaClass, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades 'MetaClass', según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.MetaClassServices.Update(AirBus.Suite.SifyX.Application.Dtos.MetaClassDto)">
+            <summary>
+            Actualiza una determinada entidad MetaClass.
+            </summary>
+            <param name="metaClassDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+            <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.MetaClassServices.Commit">
+            <summary>
+            adapter of commit operation independent form the ORM
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.SifyX.Application.IMetaSchemaMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.SifyX.Application.MetaSchemaMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.SifyX.Application.Dtos.MetaSchemaDto"/> con una entidad <see cref="T:AirBus.Suite.SifyX.Application.MetaSchemaMapper"/>.
+            </remarks>
+        </member>
+        <member name="T:AirBus.Suite.SifyX.Application.IMetaSchemaServices">
+            <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:AirBus.Suite.SifyX.Application.IMetaSchemaServices"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.IMetaSchemaServices.Create(AirBus.Suite.SifyX.Application.Dtos.MetaSchemaDto)">
+            <summary>
+            .en Create an entity of type IMetaSchema.
+            .es Función encargada de la creación de una entidad de tipo IMetaSchema.
+            </summary>
+            <param name="metaSchemaDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SifyX.Application.Dtos.MetaSchemaDto"/> con los datos necesarios
+            para la creación de la entidad MetaSchema.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve el identificador único de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.IMetaSchemaServices.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo MetaSchema.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="MetaSchemaId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve <b>True</b> si la eliminación ha sido correcta y
+            <b>False</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.IMetaSchemaServices.GetAll">
+            <summary>
+            Función encargada de obtener todas las entidades de tipo MetaSchema.
+            </summary>
+            <remarks>
+            Devuelve la totalidad de las entidades.
+            </remarks>        /// <returns>
+            Devuelve listado de Dto´s de tipo <see cref="T:AirBus.Suite.SifyX.Application.Dtos.MetaSchemaDto"/>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.IMetaSchemaServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades MetaSchema, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>        /// <returns>
+            La lista paginada de entidades MetaSchema, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.IMetaSchemaServices.GetById(System.Int32)">
+            <summary>
+            Función encargada de obtener una entidad MetaSchema de acuerdo a
+            su identificador.
+            </summary>
+            <param name="metaSchemaId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>
+            <returns>
+            Devuelve objeto Dto <see cref="T:AirBus.Suite.SifyX.Application.Dtos.MetaSchemaDto"/> con la información requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.IMetaSchemaServices.Update(AirBus.Suite.SifyX.Application.Dtos.MetaSchemaDto)">
+            <summary>
+            Actualiza una determinada entidad MetaSchema.
+            </summary>
+            <param name="metaSchemaDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>        /// <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SifyX.Application.MetaSchemaMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.SifyX.Application.MetaSchemaMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.SifyX.Application.Dtos.MetaSchemaDto"/> con una entidad <see cref="T:AirBus.Suite.SifyX.Application.MetaSchemaMapper"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.MetaSchemaMapper.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SifyX.Application.MetaSchemaMapper"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.MetaSchemaMapper.EntityMapping(AirBus.Suite.SifyX.Domain.IMetaSchema)">
+            <summary>
+            Función pública que mapea las entidades para devolver el
+            correspondiente Dto.
+            </summary>
+            <remarks>
+            Se encarga de mapear objetos <see cref="T:AirBus.Suite.SifyX.Domain.MetaSchema"/> 
+            devolviendo un objeto <see cref="T:AirBus.Suite.SifyX.Application.Dtos.MetaSchemaDto"/>.
+            </remarks>
+            <param name="entityMetaSchema">
+            Objeto de la entidad <see cref="T:AirBus.Suite.SifyX.Domain.MetaSchema"/>.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de <c>entityMetaSchema</c> es null.
+            </exception>
+            <returns>
+            Devuelve un objeto de tipo <see cref="T:AirBus.Suite.SifyX.Application.Dtos.MetaSchemaDto"/> 
+            con los datos mapeados.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SifyX.Application.MetaSchemaServices">
+            <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity MetaSchema.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad MetaSchema.
+            </summary>
+            <remarks>
+            .en Create an object of type <see cref="T:AirBus.Suite.SifyX.Domain.MetaSchema"/>.
+            .es Crea un objeto <see cref="T:AirBus.Suite.SifyX.Domain.MetaSchema"/>.
+             permanent guid = 
+            </remarks>
+        </member>
+        <member name="F:AirBus.Suite.SifyX.Application.MetaSchemaServices.metaSchemaMapper">
+            <summary>
+            Referencia al mapeador de la entidad MetaSchema.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.MetaSchemaServices.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:MetaSchema>Service"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:MetaSchemaServices"/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.SifyX.Application.MetaSchemaServices.MetaSchemaMapper">
+            <summary>
+            Obtiene la referencia al mapeador de la entidad <see cref="T:IMetaSchema"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.MetaSchemaServices.Create(AirBus.Suite.SifyX.Application.Dtos.MetaSchemaDto)">
+            <summary>
+            Crea una entidad MetaSchema.
+            </summary>
+            <param name="metaSchemaDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+            <returns>
+            El identificador de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.MetaSchemaServices.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad MetaSchema.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.MetaSchemaServices.GetAll">
+            <summary>
+            Recupera todas las entidades MetaSchema.
+            </summary>
+            <returns>
+            Todas las entidades MetaSchema.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.MetaSchemaServices.GetById(System.Int32)">
+            <summary>
+            Recupera una entidad MetaSchema mediante su identificador correspondiente.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a recuperar.
+            </param>
+            <returns>
+            La entidad MetaSchema recuperada o valor nulo si no se encuentra.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.MetaSchemaServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades MetaSchema, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades 'MetaSchema', según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.MetaSchemaServices.Update(AirBus.Suite.SifyX.Application.Dtos.MetaSchemaDto)">
+            <summary>
+            Actualiza una determinada entidad MetaSchema.
+            </summary>
+            <param name="metaSchemaDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+            <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SifyX.Application.MetaSchemaServices.Commit">
+            <summary>
+            adapter of commit operation independent form the ORM
+            </summary>
+        </member>
+    </members>
+</doc>

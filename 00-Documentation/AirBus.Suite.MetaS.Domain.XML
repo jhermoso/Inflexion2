@@ -1,0 +1,545 @@
+﻿<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>AirBus.Suite.MetaS.Domain</name>
+  </assembly>
+  <members>
+    <member name="T:AirBus.Suite.MetaS.Domain.PerLifeTimeManager">
+      <summary>
+            LifetimeManager implementation
+            </summary>
+    </member>
+    <member name="F:AirBus.Suite.MetaS.Domain.PerLifeTimeManager.value">
+      <summary />
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Domain.PerLifeTimeManager.GetValue">
+      <summary />
+      <returns />
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Domain.PerLifeTimeManager.RemoveValue">
+      <summary />
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Domain.PerLifeTimeManager.SetValue(System.Object)">
+      <summary />
+      <param name="newValue" />
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.IMetaClass">
+      <summary>
+            .en Interfaz to identify an entidad of type MetaClass in the application.
+            .es Interfaz que identifica una entidad de tipo MetaClass de la aplicación.
+            Involves cross definition of a class and and how to see and how save in the repository.
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by MetaClass/&gt;.
+            .es Interfaz que representa  una entidad implementado enMetaClass/&gt;.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.MetaS.Domain.IMetaClass.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.MetaS.Domain.IMetaClass.ClassSterotype">
+      <summary>
+            .en Property to get and set ClassSterotype.
+            .es Propiedad que permite obtener y establecer ClassSterotype.
+            </summary>
+      <remarks>
+            an sterotype assigns a base expected behavieor
+            </remarks>
+      <value>
+            .en Value used to get and set ClassSterotype.
+            .es Valor que es utilizado para obtener y establecer ClassSterotype.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.IMetaClassRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.MetaS.Domain.IMetaClass" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.MetaClass">
+      <summary>
+        <see cref="T:AirBus.Suite.MetaS.Domain.MetaClass" />
+      </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Domain.MetaClass.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.MetaS.Domain.MetaClass" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.MetaS.Domain.MetaClass" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.MetaS.Domain.MetaClass.Name">
+      <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.MetaS.Domain.MetaClass.ClassSterotype">
+      <summary>
+            Propiedad pública que permite obtener ClassSterotype.
+            </summary>
+      <remarks>
+            an sterotype assigns a base expected behavieor
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener ClassSterotype.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.MetaClassFactory">
+      <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.MetaS.Domain.MetaClass" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Domain.MetaClassFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.MetaS.Domain.MetaClassFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.MetaS.Domain.MetaClassFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase MetaClassFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Domain.MetaClassFactory.Create">
+      <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.MetaS.Domain.MetaClass" /></remarks>
+      <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.MetaS.Domain.MetaClassFactory" /></returns>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.MetaClassSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:MetaClass" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.IMetaProperty">
+      <summary>
+            .en Interfaz to identify an entidad of type MetaProperty in the application.
+            .es Interfaz que identifica una entidad de tipo MetaProperty de la aplicación.
+            definition of a property class and how to see in the screen or to save in the DB.
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by MetaProperty/&gt;.
+            .es Interfaz que representa  una entidad implementado enMetaProperty/&gt;.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.MetaS.Domain.IMetaProperty.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.MetaS.Domain.IMetaProperty.PropertyType">
+      <summary>
+            .en Property to get and set PropertyType.
+            .es Propiedad que permite obtener y establecer PropertyType.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set PropertyType.
+            .es Valor que es utilizado para obtener y establecer PropertyType.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.IMetaPropertyRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.MetaS.Domain.IMetaProperty" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.MetaProperty">
+      <summary>
+        <see cref="T:AirBus.Suite.MetaS.Domain.MetaProperty" />
+      </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Domain.MetaProperty.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.MetaS.Domain.MetaProperty" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.MetaS.Domain.MetaProperty" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.MetaS.Domain.MetaProperty.Name">
+      <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.MetaS.Domain.MetaProperty.PropertyType">
+      <summary>
+            Propiedad pública que permite obtener PropertyType.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener PropertyType.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.MetaPropertyFactory">
+      <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.MetaS.Domain.MetaProperty" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Domain.MetaPropertyFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.MetaS.Domain.MetaPropertyFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.MetaS.Domain.MetaPropertyFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase MetaPropertyFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Domain.MetaPropertyFactory.Create">
+      <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.MetaS.Domain.MetaProperty" /></remarks>
+      <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.MetaS.Domain.MetaPropertyFactory" /></returns>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.MetaPropertySpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:MetaProperty" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.IMetaSAppSetting">
+      <summary>
+            .en Interfaz to identify an entidad of type MetaSAppSetting in the application.
+            .es Interfaz que identifica una entidad de tipo MetaSAppSetting de la aplicación.
+            Clasificador
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by MetaSAppSetting/&gt;.
+            .es Interfaz que representa  una entidad implementado enMetaSAppSetting/&gt;.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.MetaS.Domain.IMetaSAppSetting.Key">
+      <summary>
+            .en Property to get and set Key.
+            .es Propiedad que permite obtener y establecer Key.
+            </summary>
+      <remarks>
+            App setting identity
+            </remarks>
+      <value>
+            .en Value used to get and set Key.
+            .es Valor que es utilizado para obtener y establecer Key.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.MetaS.Domain.IMetaSAppSetting.Value">
+      <summary>
+            .en Property to get and set Value.
+            .es Propiedad que permite obtener y establecer Value.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Value.
+            .es Valor que es utilizado para obtener y establecer Value.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.IMetaSAppSettingRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.MetaS.Domain.IMetaSAppSetting" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.MetaSAppSetting">
+      <summary>
+        <see cref="T:AirBus.Suite.MetaS.Domain.MetaSAppSetting" />
+      </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Domain.MetaSAppSetting.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.MetaS.Domain.MetaSAppSetting" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.MetaS.Domain.MetaSAppSetting" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.MetaS.Domain.MetaSAppSetting.Key">
+      <summary>
+            Propiedad pública que permite obtener Key.
+            </summary>
+      <remarks>
+            App setting identity
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener Key.
+            </value>
+    </member>
+    <member name="P:AirBus.Suite.MetaS.Domain.MetaSAppSetting.Value">
+      <summary>
+            Propiedad pública que permite obtener Value.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Value.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.MetaSAppSettingFactory">
+      <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.MetaS.Domain.MetaSAppSetting" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Domain.MetaSAppSettingFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.MetaS.Domain.MetaSAppSettingFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.MetaS.Domain.MetaSAppSettingFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase MetaSAppSettingFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Domain.MetaSAppSettingFactory.Create">
+      <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.MetaS.Domain.MetaSAppSetting" /></remarks>
+      <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.MetaS.Domain.MetaSAppSettingFactory" /></returns>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.MetaSAppSettingSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:MetaSAppSetting" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.IMetaSUser">
+      <summary>
+            .en Interfaz to identify an entidad of type MetaSUser in the application.
+            .es Interfaz que identifica una entidad de tipo MetaSUser de la aplicación.
+            User information data
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by MetaSUser/&gt;.
+            .es Interfaz que representa  una entidad implementado enMetaSUser/&gt;.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.MetaS.Domain.IMetaSUser.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks>
+            Test with auto property and public setter.
+            </remarks>
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.IMetaSUserRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.MetaS.Domain.IMetaSUser" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.MetaSUser">
+      <summary>
+        <see cref="T:AirBus.Suite.MetaS.Domain.MetaSUser" />
+      </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Domain.MetaSUser.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.MetaS.Domain.MetaSUser" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.MetaS.Domain.MetaSUser" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Domain.MetaSUser.#ctor(System.String)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.MetaS.Domain.MetaSUser" />.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:AirBus.Suite.MetaS.Domain.MetaSUser" />.
+            </remarks>
+      <param name="name"> 
+            Parametro <see cref="P:AirBus.Suite.MetaS.Domain.MetaSUser.Name" /> del constructor de campos mandatory de la clase <see cref="T:AirBus.Suite.MetaS.Domain.MetaSUser" />
+            Propiedad deducida del rol source de una relación
+            </param>
+    </member>
+    <member name="P:AirBus.Suite.MetaS.Domain.MetaSUser.Name">
+      <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+      <remarks>
+            Test with auto property and public setter.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.MetaSUserFactory">
+      <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.MetaS.Domain.MetaSUser" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Domain.MetaSUserFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.MetaS.Domain.MetaSUserFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.MetaS.Domain.MetaSUserFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase MetaSUserFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Domain.MetaSUserFactory.Create(System.String)">
+      <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.MetaS.Domain.MetaSUser" /></remarks>
+      <param name="name"> 
+            Test with auto property and public setter.
+            </param>
+      <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.MetaS.Domain.MetaSUserFactory" /></returns>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.MetaSUserSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:MetaSUser" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.IMetaView">
+      <summary>
+            .en Interfaz to identify an entidad of type MetaView in the application.
+            .es Interfaz que identifica una entidad de tipo MetaView de la aplicación.
+            
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by MetaView/&gt;.
+            .es Interfaz que representa  una entidad implementado enMetaView/&gt;.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.MetaS.Domain.IMetaView.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.IMetaViewRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.MetaS.Domain.IMetaView" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.MetaView">
+      <summary>
+        <see cref="T:AirBus.Suite.MetaS.Domain.MetaView" />
+      </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Domain.MetaView.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.MetaS.Domain.MetaView" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.MetaS.Domain.MetaView" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="P:AirBus.Suite.MetaS.Domain.MetaView.Name">
+      <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.MetaViewFactory">
+      <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.MetaS.Domain.MetaView" />.
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Domain.MetaViewFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.MetaS.Domain.MetaViewFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.MetaS.Domain.MetaViewFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase MetaViewFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Domain.MetaViewFactory.Create">
+      <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.MetaS.Domain.MetaView" /></remarks>
+      <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.MetaS.Domain.MetaViewFactory" /></returns>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Domain.MetaViewSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:MetaView" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+  </members>
+</doc>

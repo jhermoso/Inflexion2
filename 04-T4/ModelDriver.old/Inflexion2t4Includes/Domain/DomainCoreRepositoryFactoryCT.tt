@@ -1,0 +1,91 @@
+﻿<#+
+// <copyright file="DomainCoreRepositoryFactoryCT.tt" company="">
+//  Copyright © . All Rights Reserved.
+// </copyright>
+
+public class DomainCoreRepositoryFactoryCT : Template
+{
+    // parametros de la plantilla
+    public ClassBaseContext  cbc ;
+    public string projectNamespace;
+    public ITree<BoundedContextMetadata> Skt;
+
+    // constructor de la plantilla
+    public DomainCoreRepositoryFactoryCT(ClassBaseContext  classBaseContext, string nombreProjecto,  ITree<BoundedContextMetadata> skt)
+    {
+        cbc = classBaseContext;             // contexto de la clase base a interpretar
+        projectNamespace = nombreProjecto;  // nombre del proyecto para el que estamos interpretando
+        Skt = skt;                          // shared kernel tree
+    }
+        
+    // metodo de generación de la plantilla
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        IList<string> sharedKernelUsings = null;
+        if (Skt != null)
+        {
+            sharedKernelUsings =  GetSharedKernelReferencesByProject(projectNamespace, Skt, cbc.diagram);
+        }
+
+
+        var cpyrigth = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity, T4Help.getLeftStringSlice(this.ToString(), '+', -1).Substring(1));
+        string cpyrigthText = cpyrigth.TransformText();
+#>
+<#=cpyrigthText #>
+namespace <#= projectNamespace #>
+{
+
+    #region Usings
+<#+
+if (sharedKernelUsings != null)
+foreach (var item in sharedKernelUsings)
+    {
+#>
+    using <#= item #>;
+<#+
+    }// end foreach para los using del shared kernel
+#>
+    using <#= cbc.company #>.Framework.Infrastructure.DataAccess.UoW;
+    #endregion
+
+    /// <summary>
+    /// Interfaz factoría para crear los objetos de tipo <see cref="<#= I #><#= cbc.pascalSecureEntityName #>Repository"/>.
+    /// </summary>
+    /// <remarks>
+    /// Sin comentarios adicionales.
+    /// </remarks>
+    public interface I<#= cbc.pascalSecureEntityName #>RepositoryFactory
+    {
+
+        #region Métodos
+
+        /// <summary>
+        /// Función para crear una entidad dentro de la factoría del repositorio
+        /// a partir de la unidad de trabajo como parámetro.
+        /// </summary>
+        /// <remarks>
+        /// Crea una factoría del repositorio <see cref="<#= I #><#= cbc.pascalSecureEntityName #>Repository"/>
+        /// </remarks>
+        /// <param name="workUnit">
+        /// Parámetro que indica la unidad de trabajo <see cref="IAdapter"/>.
+        /// </param>
+        /// <returns>
+        /// Devuelve el repositorio creado.
+        /// </returns>
+        <#= I #><#= cbc.pascalSecureEntityName #>Repository Create(IAdapter unitOfWork);
+
+        #endregion
+    
+    } // <#= I #><#= cbc.pascalSecureEntityName #>RepositoryFactory
+
+} //  <#= projectNamespace #>
+
+<#+
+        return this.GenerationEnvironment.ToString();
+    }
+}
+#>

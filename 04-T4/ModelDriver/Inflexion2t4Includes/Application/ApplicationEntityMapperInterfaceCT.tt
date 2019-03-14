@@ -29,6 +29,14 @@ public class ApplicationEntityMapperInterfaceCT : Template
 
         var cpyrigth = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity, T4Help.getLeftStringSlice(this.ToString(), '+', -1).Substring(1));
         string cpyrigthText = cpyrigth.TransformText();
+
+		string classBaseName = "IDataEntityMapper";
+	//	if (cbc.MainEntityStereotype.Contains("Entity") )
+	//	  {
+	//		classBaseName = "IDataBaseEntityMapper" ;
+	//	  }
+
+
 #>
 <#= cpyrigthText #>
 namespace <#= projectNamespace #>
@@ -36,18 +44,10 @@ namespace <#= projectNamespace #>
 
     using System;
     using System.Runtime.Serialization;
-<#+
-if (sharedKernelUsings != null)
-foreach (var item in sharedKernelUsings)
-    {
-#>
-    using <#= item #>;
-<#+
-    }// end foreach para los using del shared kernel
-#>
-    using Inflexion2.Application;//.Core;
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Dtos;
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain;
+
+    using Inflexion2.Application;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Dtos;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain;
 
 <#+ if (cbc.targetLinksCounter>0) 
     {
@@ -62,7 +62,7 @@ foreach (var item in sharedKernelUsings)
     /// <remarks>
     /// Mapea los datos del Dto <see cref="<#= cbc.secureEntityName #>Dto"/> con una entidad <see cref="<#= I #><#= cbc.secureEntityName #>Mapper"/>.
     /// </remarks>
-    public interface I<#= cbc.secureEntityName #>Mapper : IDataEntityMapper<<#= cbc.secureEntityName #>Dto, I<#= cbc.secureEntityName #>, <#= cbc.idtype #>>
+    public interface I<#= cbc.secureEntityName #>Mapper : <#= classBaseName #><<#= cbc.secureEntityName #>Dto, I<#= cbc.secureEntityName #>, <#= cbc.idtype #>>
     {
 
     } // end class <#= cbc.secureEntityName #>Mapper

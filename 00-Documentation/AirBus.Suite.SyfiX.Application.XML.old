@@ -1,0 +1,450 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AirBus.Suite.SyfiX.Application</name>
+    </assembly>
+    <members>
+        <member name="T:AirBus.Suite.SyfiX.Application.DocumentMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.SyfiX.Application.DocumentMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.DocumentDto"/> con una entidad <see cref="T:AirBus.Suite.SyfiX.Application.DocumentMapper"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.DocumentMapper.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiX.Application.DocumentMapper"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.DocumentMapper.EntityMapping(AirBus.Suite.SyfiX.Domain.IDocument)">
+            <summary>
+            Función pública que mapea las entidades para devolver el
+            correspondiente Dto.
+            </summary>
+            <remarks>
+            Se encarga de mapear objetos <see cref="T:AirBus.Suite.SyfiX.Domain.Document"/> 
+            devolviendo un objeto <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.DocumentDto"/>.
+            </remarks>
+            <param name="entityDocument">
+            Objeto de la entidad <see cref="T:AirBus.Suite.SyfiX.Domain.Document"/>.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de <c>entityDocument</c> es null.
+            </exception>
+            <returns>
+            Devuelve un objeto de tipo <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.DocumentDto"/> 
+            con los datos mapeados.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.Application.DocumentServices">
+            <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity Document.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad Document.
+            </summary>
+            <remarks>
+            .en Create an object of type <see cref="T:AirBus.Suite.SyfiX.Domain.Document"/>.
+            .es Crea un objeto <see cref="T:AirBus.Suite.SyfiX.Domain.Document"/>.
+             permanent guid = 
+            </remarks>
+        </member>
+        <member name="F:AirBus.Suite.SyfiX.Application.DocumentServices.documentMapper">
+            <summary>
+            Referencia al mapeador de la entidad Document.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.DocumentServices.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Document>Service"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:DocumentServices"/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.SyfiX.Application.DocumentServices.DocumentMapper">
+            <summary>
+            Obtiene la referencia al mapeador de la entidad <see cref="T:IDocument"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.DocumentServices.Create(AirBus.Suite.SyfiX.Application.Dtos.DocumentDto)">
+            <summary>
+            Crea una entidad Document.
+            </summary>
+            <param name="documentDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+            <returns>
+            El identificador de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.DocumentServices.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad Document.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.DocumentServices.GetAll">
+            <summary>
+            Recupera todas las entidades Document.
+            </summary>
+            <returns>
+            Todas las entidades Document.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.DocumentServices.GetById(System.Int32)">
+            <summary>
+            Recupera una entidad Document mediante su identificador correspondiente.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a recuperar.
+            </param>
+            <returns>
+            La entidad Document recuperada o valor nulo si no se encuentra.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.DocumentServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Document, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades 'Document', según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.DocumentServices.Update(AirBus.Suite.SyfiX.Application.Dtos.DocumentDto)">
+            <summary>
+            Actualiza una determinada entidad Document.
+            </summary>
+            <param name="documentDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+            <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.DocumentServices.Commit">
+            <summary>
+            adapter of commit operation independent form the ORM
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.Application.IDocumentMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.SyfiX.Application.DocumentMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.DocumentDto"/> con una entidad <see cref="T:AirBus.Suite.SyfiX.Application.DocumentMapper"/>.
+            </remarks>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.Application.IDocumentServices">
+            <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:AirBus.Suite.SyfiX.Application.IDocumentServices"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.IDocumentServices.Create(AirBus.Suite.SyfiX.Application.Dtos.DocumentDto)">
+            <summary>
+            .en Create an entity of type IDocument.
+            .es Función encargada de la creación de una entidad de tipo IDocument.
+            </summary>
+            <param name="documentDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.DocumentDto"/> con los datos necesarios
+            para la creación de la entidad Document.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve el identificador único de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.IDocumentServices.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo Document.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="DocumentId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve <b>True</b> si la eliminación ha sido correcta y
+            <b>False</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.IDocumentServices.GetAll">
+            <summary>
+            Función encargada de obtener todas las entidades de tipo Document.
+            </summary>
+            <remarks>
+            Devuelve la totalidad de las entidades.
+            </remarks>        /// <returns>
+            Devuelve listado de Dto´s de tipo <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.DocumentDto"/>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.IDocumentServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Document, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>        /// <returns>
+            La lista paginada de entidades Document, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.IDocumentServices.GetById(System.Int32)">
+            <summary>
+            Función encargada de obtener una entidad Document de acuerdo a
+            su identificador.
+            </summary>
+            <param name="documentId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>
+            <returns>
+            Devuelve objeto Dto <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.DocumentDto"/> con la información requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.IDocumentServices.Update(AirBus.Suite.SyfiX.Application.Dtos.DocumentDto)">
+            <summary>
+            Actualiza una determinada entidad Document.
+            </summary>
+            <param name="documentDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>        /// <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.Application.IIncidentMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.SyfiX.Application.IncidentMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.IncidentDto"/> con una entidad <see cref="T:AirBus.Suite.SyfiX.Application.IncidentMapper"/>.
+            </remarks>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.Application.IIncidentServices">
+            <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:AirBus.Suite.SyfiX.Application.IIncidentServices"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.IIncidentServices.Create(AirBus.Suite.SyfiX.Application.Dtos.IncidentDto)">
+            <summary>
+            .en Create an entity of type IIncident.
+            .es Función encargada de la creación de una entidad de tipo IIncident.
+            </summary>
+            <param name="incidentDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.IncidentDto"/> con los datos necesarios
+            para la creación de la entidad Incident.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve el identificador único de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.IIncidentServices.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo Incident.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="IncidentId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>        /// <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
+            </exception>
+            <returns>
+            Devuelve <b>True</b> si la eliminación ha sido correcta y
+            <b>False</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.IIncidentServices.GetAll">
+            <summary>
+            Función encargada de obtener todas las entidades de tipo Incident.
+            </summary>
+            <remarks>
+            Devuelve la totalidad de las entidades.
+            </remarks>        /// <returns>
+            Devuelve listado de Dto´s de tipo <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.IncidentDto"/>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.IIncidentServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Incident, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>        /// <returns>
+            La lista paginada de entidades Incident, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.IIncidentServices.GetById(System.Int32)">
+            <summary>
+            Función encargada de obtener una entidad Incident de acuerdo a
+            su identificador.
+            </summary>
+            <param name="incidentId">
+            Parámetro que indica el identificador único de la entidad.
+            </param>
+            <returns>
+            Devuelve objeto Dto <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.IncidentDto"/> con la información requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.IIncidentServices.Update(AirBus.Suite.SyfiX.Application.Dtos.IncidentDto)">
+            <summary>
+            Actualiza una determinada entidad Incident.
+            </summary>
+            <param name="incidentDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>        /// <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.Application.IncidentMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:AirBus.Suite.SyfiX.Application.IncidentMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.IncidentDto"/> con una entidad <see cref="T:AirBus.Suite.SyfiX.Application.IncidentMapper"/>.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.IncidentMapper.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiX.Application.IncidentMapper"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.IncidentMapper.EntityMapping(AirBus.Suite.SyfiX.Domain.IIncident)">
+            <summary>
+            Función pública que mapea las entidades para devolver el
+            correspondiente Dto.
+            </summary>
+            <remarks>
+            Se encarga de mapear objetos <see cref="T:AirBus.Suite.SyfiX.Domain.Incident"/> 
+            devolviendo un objeto <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.IncidentDto"/>.
+            </remarks>
+            <param name="entityIncident">
+            Objeto de la entidad <see cref="T:AirBus.Suite.SyfiX.Domain.Incident"/>.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor de <c>entityIncident</c> es null.
+            </exception>
+            <returns>
+            Devuelve un objeto de tipo <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.IncidentDto"/> 
+            con los datos mapeados.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.Application.IncidentServices">
+            <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity Incident.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad Incident.
+            </summary>
+            <remarks>
+            .en Create an object of type <see cref="T:AirBus.Suite.SyfiX.Domain.Incident"/>.
+            .es Crea un objeto <see cref="T:AirBus.Suite.SyfiX.Domain.Incident"/>.
+             permanent guid = 
+            </remarks>
+        </member>
+        <member name="F:AirBus.Suite.SyfiX.Application.IncidentServices.incidentMapper">
+            <summary>
+            Referencia al mapeador de la entidad Incident.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.IncidentServices.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Incident>Service"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:IncidentServices"/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.SyfiX.Application.IncidentServices.IncidentMapper">
+            <summary>
+            Obtiene la referencia al mapeador de la entidad <see cref="T:IIncident"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.IncidentServices.Create(AirBus.Suite.SyfiX.Application.Dtos.IncidentDto)">
+            <summary>
+            Crea una entidad Incident.
+            </summary>
+            <param name="incidentDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+            <returns>
+            El identificador de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.IncidentServices.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad Incident.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.IncidentServices.GetAll">
+            <summary>
+            Recupera todas las entidades Incident.
+            </summary>
+            <returns>
+            Todas las entidades Incident.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.IncidentServices.GetById(System.Int32)">
+            <summary>
+            Recupera una entidad Incident mediante su identificador correspondiente.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a recuperar.
+            </param>
+            <returns>
+            La entidad Incident recuperada o valor nulo si no se encuentra.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.IncidentServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Incident, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades 'Incident', según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.IncidentServices.Update(AirBus.Suite.SyfiX.Application.Dtos.IncidentDto)">
+            <summary>
+            Actualiza una determinada entidad Incident.
+            </summary>
+            <param name="incidentDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+            <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.IncidentServices.Commit">
+            <summary>
+            adapter of commit operation independent form the ORM
+            </summary>
+        </member>
+    </members>
+</doc>

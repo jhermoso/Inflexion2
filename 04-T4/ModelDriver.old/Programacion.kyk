@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="a6e4b2f7-1063-4ddb-ba33-93d1fa70725a" sGDB="Oracle" isModule="false" generateCode="Always" xmlns="http://schemas.microsoft.com/dsltools/MoneyGen">
+  <classBases>
+    <applicationHasElements Id="1fde0eb5-962d-4675-96a7-721bdca3ae4a">
+      <entity Id="72d7cf0a-c99c-4d0f-936f-d902471cfdd6" name="Emisora" inheritanceClassModifier="Public, Partial" alias="Emisora" Stereotype="ExternalContext" volumen="100" remarks="Jerarquia de emisoras" tooltip="Información acerca de la emisora y su posible jerarquia." programRemarks="Entidad proveniente del shared kernel." referencedRootEntity="modelbus://kayak.MoneyGen.MoneyGenAdapter/SPE/Emisora/.\SPE.kyk%2f35904815-2baa-4000-abe9-e0cd23e1d8b8">
+        <targets>
+          <composition Id="5612f460-c1f5-4af9-9d65-77fc3ac51996" sourceMultiplicity="OneOne" targetRolName="EmisoraRol" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List">
+            <entityMoniker name="/a6e4b2f7-1063-4ddb-ba33-93d1fa70725a/Parrilla" />
+          </composition>
+        </targets>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="268d3404-3708-4e08-8ef9-f14490be1f28">
+      <entity Id="5ffd4fd2-7dcc-44b0-a66f-ddf33e23011d" name="Parrilla" inheritanceClassModifier="Public, Partial" alias="Parrilla" Stereotype="Discriminant" volumen="0" remarks="Información acerca de las parrilla de programación. " tooltip="Parrilla de programación." programRemarks="La parrilla continua no esta limitada a ningun periodo de tiempo. y puede almacenar bloqeu continuos tan largos como sea necesario." referencedRootEntity="">
+        <targets>
+          <composition Id="b23459a6-fefe-4825-9fae-bfd919cea828" sourceMultiplicity="OneOne" targetRolName="Parrilla" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List">
+            <entityMoniker name="/a6e4b2f7-1063-4ddb-ba33-93d1fa70725a/DefinicionBloques" />
+          </composition>
+          <composition Id="aafbde4b-b442-48ad-8ee7-6035c783e128" sourceMultiplicity="OneOne" targetRolName="ParrillaRol" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List" targetRolAlias="Parrilla Rol">
+            <entityMoniker name="/a6e4b2f7-1063-4ddb-ba33-93d1fa70725a/Bloque" />
+          </composition>
+          <composition Id="40b732b4-140d-4a0d-ba9a-803c5bf4971e" sourceMultiplicity="OneOne" targetRolName="Parrilla">
+            <entityMoniker name="/a6e4b2f7-1063-4ddb-ba33-93d1fa70725a/DiaProgramado" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="1f734d64-4121-4b43-a57b-0cd598ff0915">
+            <atributte Id="aead3ae4-5c0b-44e3-ae46-b23c0f060ffb" atributteName="Title" atributteAlias="Titulo" isIdentification="false" position="0" tooltip="Identificación del periodo al que corresponde la parrilla" userRemarks="Por defecto aqui se puede identificar el periodo para el cual se desea crear la parrilla." programerRemarks="Este campo se puede utilizar para identificar desde otar entidades una parrilla concreta. Aunque sea un string deberia poder rellenarse por defecto a partir del numero de semana  u otro tipo de periodo por desfecto." nameAndType="string Title" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="deb4fc3c-0ba2-45c4-9001-96f5b67c3049">
+            <atributte Id="c95194a0-7c34-4c09-b2b5-dce848ab7ff7" atributteName="Version" atributteAlias="Versión" isIdentification="false" position="0" tooltip="Identificación de la versión." userRemarks="Esta idientificación se puede usar con dos objetivos: 1) ante la proximidad de un evento se tiene preparadas dos parrillas de programación diferentes para decidir en el ultimo momento cual se utiliza. 2) Para facilitar el historico o evolución de una parrilla." programerRemarks="Versión de la parrilla." nameAndType="string Version" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="5085232c-de9a-4613-a6e4-0acebad5df8a">
+            <atributte Id="b5511621-7a13-4648-87fb-e6a86c0300aa" atributteName="EsPlantilla" atributteAlias="Es Plantilla" atributteType="bool" isIdentification="false" isFilter="true" position="0" defaultValue="false" requestUponCreation="yes" nameAndType="bool EsPlantilla" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="aab497c2-3014-4836-adb6-d1be8c86afd1">
+      <entity Id="88e5a5bd-c117-415a-86e6-6e1d7a067692" name="DefinicionBloques" inheritanceClassModifier="Public, Partial" alias="Definicion de Bloques" Stereotype="Discriminant" volumen="1000000" remarks="Definimos y generamos bloques de programación para periodos de tiempo dados." tooltip="Definición de bloques de programación." programRemarks="Definición de bloques de la parrilla por comprensión" referencedRootEntity="">
+        <targets>
+          <aggregation Id="5c166b2d-c88c-493e-bb1a-8753fb0fb609" sourceRolAlias="Contenido">
+            <entityMoniker name="/a6e4b2f7-1063-4ddb-ba33-93d1fa70725a/Content" />
+          </aggregation>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="e149c910-f8a4-4b7e-8d96-6a4c25e0e099">
+            <atributte Id="6366974a-46fa-41f3-aa01-fbf8bedcc6e7" atributteName="Titulo" isIdentification="false" position="0" nameAndType="string Titulo" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="e463bf6c-5a03-4bda-8adb-c6060ee3ee74">
+            <atributte Id="87932cfb-c2cd-4546-8dcf-cd9e17643a66" atributteName="Lunes" atributteType="bool" isIdentification="false" position="0" nameAndType="bool Lunes" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="9bf22e2d-230b-4636-bde2-c750c781d97b">
+            <atributte Id="6c769cbb-6406-43f3-941f-5962a7e56955" atributteName="Martes" atributteType="bool" isIdentification="false" position="0" nameAndType="bool Martes" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="9826c31d-a261-4f9a-92c2-83c239448c05">
+            <atributte Id="e980864f-6944-4532-bd0c-7b853e63f197" atributteName="Miercoles" atributteType="bool" isIdentification="false" position="0" nameAndType="bool Miercoles" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="d016da65-1a7b-487f-a1ab-05f1099ca87f">
+            <atributte Id="4938472d-38ba-4daa-8ff9-fb11ffe9b8fb" atributteName="Jueves" atributteType="bool" isIdentification="false" position="0" nameAndType="bool Jueves" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="18a7e172-b347-4744-b4d0-0f547749a6b6">
+            <atributte Id="0d0f5cb5-51db-4ac1-a42b-fe106445f604" atributteName="Viernes" atributteType="bool" isIdentification="false" position="0" nameAndType="bool Viernes" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="f14c2763-65e9-43a4-987b-6123b8b8ac11">
+            <atributte Id="a5ee8add-34a3-44ba-aaf7-decf35c2bbcc" atributteName="Sabado" atributteType="bool" isIdentification="false" position="0" nameAndType="bool Sabado" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="6c30b05e-dfcf-44c7-88cd-da9044b6e549">
+            <atributte Id="7b93305a-f0ae-4092-b5af-ae7b154f2500" atributteName="Domingo" atributteType="bool" isIdentification="false" position="0" nameAndType="bool Domingo" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="9b16429d-87d8-445f-ad49-61ddb7f4f507">
+            <atributte Id="78aab21c-9d8d-498d-ad07-7cf75e1b3bd9" atributteName="HoraInicio" atributteType="DateTime" isIdentification="false" position="0" nameAndType="DateTime HoraInicio" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="a0f003d4-3d03-4569-9812-262f39d8840d">
+            <atributte Id="44663fac-17e8-4fbf-98b5-a2350c2b4858" atributteName="Notas" atributteType="String" isIdentification="false" position="0" nameAndType="String Notas" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="d0410f9e-4c6a-4bf9-b11e-892aab3db2ec">
+      <objectValue Id="bb6bc48b-bd01-4d10-ba87-c65374c430a2" name="Intervalo" inheritanceClassModifier="Public, Partial" alias="Intervalo" Stereotype="TipoCategoria" volumen="0" remarks="Rango de tiempo establecido por un inicio  y una duración." tooltip="Rango de tiempo de  inicio  y duración." programRemarks="Clase parcial incluida para obtener un segundo constructor. En este segundo constructor se inicializa el inicio y la duración." referencedRootEntity="modelbus://kayak.MoneyGen.MoneyGenAdapter/SPE/Intervalo/.\SPE.kyk%2f779c4772-c24d-4713-9585-73d6c15c0596">
+        <targets>
+          <composition Id="8b31ba4d-bb19-4def-af48-dcaeaf623262" sourceMultiplicity="OneOne" targetRolName="Alcance" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List">
+            <entityMoniker name="/a6e4b2f7-1063-4ddb-ba33-93d1fa70725a/DefinicionBloques" />
+          </composition>
+          <composition Id="dded2997-1ab4-45c8-81db-e0b2dd6d3edb" sourceMultiplicity="OneOne" targetRolName="Alcance" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List">
+            <entityMoniker name="/a6e4b2f7-1063-4ddb-ba33-93d1fa70725a/Parrilla" />
+          </composition>
+          <composition Id="bf29f2f6-5cf5-485c-8866-eecae498c191" sourceMultiplicity="OneOne" targetRolName="BloqueDia" targetRolAlias="Bloque Día">
+            <entityMoniker name="/a6e4b2f7-1063-4ddb-ba33-93d1fa70725a/DiaProgramado" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="9b7dbf7c-90aa-4298-bc10-d386f05d1cae">
+            <atributte Id="65139798-9eb2-4175-93cb-48418b1c03b6" atributteName="Inicio" atributteAlias="Inicio" atributteType="DateTime" isIdentification="false" position="0" tooltip="Rango de Tiempo." userRemarks="Rago de tiempo por inicio y finalización o por inicio y duración." programerRemarks="Permite gestionar ragos de tiempo estableciendo el inicio y la duración o bien el inicio y la finalización." requestUponCreation="yes" nameAndType="DateTime Inicio" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="01a091b3-d7e9-41e3-9f92-05f8b756c625">
+            <atributte Id="aef7561d-becd-43f0-9773-7837f79a4525" atributteName="Fin" atributteAlias="Fin" atributteType="DateTime" isIdentification="false" position="0" defaultValue="this.Start + this.Duration" nameAndType="DateTime Fin" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="3acc7244-7d67-4ef9-a3cf-dd9db978339a">
+            <atributte Id="8d7b64f1-b2c0-4184-b435-b58920e7c777" atributteName="Duracion" atributteType="TimeSpan" isIdentification="false" position="0" requestUponCreation="yes" nameAndType="TimeSpan Duracion" />
+          </classBaseHasAtributtes>
+        </atributtes>
+        <operations>
+          <classBaseHasOperations Id="f91aad5f-ccd3-4b84-8ae4-4aca79394784">
+            <operation Id="2b41e617-ceff-43c1-a157-f3fc4aa2f5e4" serviceType="Evento" liveCicleType="Create" name="Intervalo" serviceVisibility="Public" devolutionType="this" typeReturnNameAndParameters="this Intervalo(DateTime Inicio, timeSpan Duracion)">
+              <parameters>
+                <operationHasParameters Id="7ec3f8d8-b02d-4f97-ad44-3d7b4aca3afa">
+                  <parameter Id="942551ed-e578-4afe-8839-47300f58e492" name="Inicio" type="DateTime" typeAndName="DateTime Inicio" isNullable="false" isOptional="false" isNamed="false" />
+                </operationHasParameters>
+                <operationHasParameters Id="d8ab61ab-4bde-4566-b502-7270bef376b2">
+                  <parameter Id="eeb2f66c-0189-4365-9465-fe8d55757ab3" name="Duracion" type="timeSpan" typeAndName="timeSpan Duracion" isNullable="false" isOptional="false" isNamed="false" />
+                </operationHasParameters>
+              </parameters>
+              <preconditions>
+                <operationHasPreconditions Id="3c7886d5-35a3-4a4e-8bf9-c988ebf1f46a">
+                  <precondition Id="be225dd9-7be7-484c-85e0-edd5a06c930a" logicExpresion="Inicio !=null" exception="    System.ArgumentNullException" sortOrder="1" />
+                </operationHasPreconditions>
+                <operationHasPreconditions Id="2c9810a6-f163-4abf-991a-882e826e9cd5">
+                  <precondition Id="840a2c91-ccd6-498b-ae7a-d4125441349a" logicExpresion="Fin!= null" exception="    System.ArgumentNullException" sortOrder="2" />
+                </operationHasPreconditions>
+              </preconditions>
+            </operation>
+          </classBaseHasOperations>
+        </operations>
+      </objectValue>
+    </applicationHasElements>
+    <applicationHasElements Id="70a7ea48-38d5-466e-85a9-da193cdd68fb">
+      <entity Id="8bbd3382-3140-4e05-bd04-d1fe90dd3587" name="Bloque" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" referencedRootEntity="">
+        <targets>
+          <aggregation Id="47f2c261-b618-4937-b819-af2debb02340" targetMultiplicity="CeroOne">
+            <entityMoniker name="/a6e4b2f7-1063-4ddb-ba33-93d1fa70725a/Content" />
+          </aggregation>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="ed43d665-b508-4d9a-aeec-09bdf4d5188f">
+            <atributte Id="2092e7d8-ec20-4b68-a315-0ebf21605023" atributteName="DiaParrilla" atributteType="DateTime" isIdentification="false" position="0" nameAndType="DateTime DiaParrilla" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="422be618-a3c0-4ec3-920c-45ecd624a80a">
+            <atributte Id="2491fbe1-bebd-45dd-a733-0be8582581ba" atributteName="Titulo" isIdentification="false" position="0" nameAndType="string Titulo" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="4d8dd2ac-5f8f-4a75-a70b-71f9466d32fc">
+            <atributte Id="6b43a0b4-beb6-46f4-b03e-f3dfe3efc654" atributteName="Notas" isIdentification="false" position="0" nameAndType="string Notas" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="5e88ff46-7143-487d-9d46-32afff15e54f">
+            <atributte Id="0299093d-b7b7-45d5-af88-85d9120166f5" atributteName="Publico" atributteAlias="Público" atributteType="bool" isIdentification="false" position="0" nameAndType="bool Publico" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="ead025ae-f6bb-43f7-a5e6-8f6b04b6f6b5">
+      <entity Id="9dd056d5-2b45-464a-a86c-49154106947a" name="Subtitulos" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" referencedRootEntity="" />
+    </applicationHasElements>
+    <applicationHasElements Id="504eaee3-71f1-4af2-bbd4-d9af29eb1cf4">
+      <entity Id="1c63a083-f80a-48af-b0e8-1be25f77e71d" name="Content" inheritanceClassModifier="Abstract, Public, Partial" alias="Contenido" Stereotype="Discriminant" volumen="0" referencedRootEntity="">
+        <classBases>
+          <classBaseHasNestedClassBases Id="193b35d0-1ab9-4fe0-9b45-ddd5d1a60e67">
+            <entity Id="15033c76-7a34-4bae-b07e-baf8d726f023" name="Propio" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" referencedRootEntity="" />
+          </classBaseHasNestedClassBases>
+          <classBaseHasNestedClassBases Id="c0e0ca3b-933a-43ca-a99c-1cd20b54c82c">
+            <entity Id="d06cf9e9-4861-4942-b40f-60dc8d0772f5" name="Ajeno" inheritanceClassModifier="Public, Partial" Stereotype="Discriminant" volumen="0" referencedRootEntity="" />
+          </classBaseHasNestedClassBases>
+        </classBases>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="1b3891d6-11c4-45b7-a11c-7aa44d8704c3">
+      <entity Id="cacbb4b5-fe36-469e-b92a-6dcca47135db" name="DiaProgramado" inheritanceClassModifier="Public, Partial" Stereotype="TipoCategoria" volumen="0" referencedRootEntity="" />
+    </applicationHasElements>
+  </classBases>
+  <boundedContexts>
+    <applicationHasBoundedContexts Id="b041ec5b-302f-4b64-85f9-05dbec5d3a2a">
+      <boundedContext Id="6aba7328-3c7d-48fc-9234-43d987f21e5c" name="From SPE" mBR="modelbus://kayak.MoneyGen.MoneyGenAdapter/SPE//.\SPE.kyk" />
+    </applicationHasBoundedContexts>
+  </boundedContexts>
+</application>

@@ -26,6 +26,28 @@
             </summary>
             <param name="newValue"></param>
         </member>
+        <member name="T:Inflexion2.Application.IDataValueObjectMapper`2">
+            <summary>
+            Interfaz para los mapeadores entre entidades del dominio.
+            (<see cref="T:Inflexion2.Domain.IEntity`1"/>) y
+            objetos de transferencia de datos (<see cref="T:Inflexion2.Application.IDataTransferObject"/>).
+            </summary>
+            <remarks>
+            La interfaz <c>IMapper</c> permite mapear entre entidades del dominio.
+            </remarks>
+            <typeparam name="TDto">Representa la interfaz de los objetos de transferencia de datos.</typeparam>
+            <typeparam name="TValueObjec">Representa las entidades del negocio.</typeparam>
+        </member>
+        <member name="M:Inflexion2.Application.IDataValueObjectMapper`2.ValueObjecMapping(`1)">
+            <summary>
+            Función encargada de mapear una entidad con un Dto.
+            </summary>
+            <remarks>
+            Con esta función, mapeamos una entidad con un Dto.
+            </remarks>
+            <param name="entity">Representa las entidades de negocio.</param>
+            <returns>Devuelve un objeto de transferencia de datos.</returns>
+        </member>
         <member name="T:Inflexion2.Application.IDataEntityMapper`3">
             <summary>
             Interfaz para los mapeadores entre entidades del dominio.
@@ -108,6 +130,14 @@
             </summary>
             <param name="dto"></param>
             <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Application.BaseValueObjectDataTransferObject">
+            <summary>
+            Clase base para los objetos DTO que representan entidades persistidas.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
         </member>
         <member name="T:Inflexion2.Application.IDataTransferObject">
             <summary>
@@ -435,7 +465,8 @@
         </member>
         <member name="P:Inflexion2.Application.ApplicationLayer.IocContainer">
             <summary>
-            
+            singelton property to wrapper the ContainerInit()
+            the Ioc container only can be instanced once.
             </summary>
         </member>
         <member name="M:Inflexion2.Application.ApplicationLayer.ContainerInit">
@@ -477,50 +508,6 @@
             Lanzada cuando el valor de <c>userName</c> ó <c>password</c> es null ó vacío.
             </exception>
         </member>
-        <member name="T:Inflexion2.Application.BaseBussinesEntityDataTransferObject`1">
-            <summary>
-            Clase base para los objetos DTO que representan entidades persistidas.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-        </member>
-        <member name="P:Inflexion2.Application.BaseBussinesEntityDataTransferObject`1.Activo">
-            <summary>
-            Propiedad que indica si la entidad representada está activa.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <value>
-            Valor que es utilizado para indicar si la entidad representado está activa.
-            </value>
-        </member>
-        <member name="P:Inflexion2.Application.BaseBussinesEntityDataTransferObject`1.Id">
-            <summary>
-            Propiedad que obtiene o establece el identificador de la entidad representada por el DTO.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <value>
-            Valor que es utilizado para obtener o establecer el identificador de
-            la entidad representada por el DTO.
-            </value>
-        </member>
-        <member name="M:Inflexion2.Application.BaseBussinesEntityDataTransferObject`1.IsTransient">
-            <summary>
-            Propiedad que obtiene el valor que indica si la entidad representada
-            por el DTO ha sido persistida previamente o no.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <value>
-            Valor que es utilizado para obtenerel valor que indica si la entidad representada
-            por el DTO ha sido persistida previamente o no.
-            </value>
-        </member>
         <member name="T:Inflexion2.Application.BaseEntityDataTransferObject`1">
             <summary>
             Clase base para los objetos DTO que representan entidades persistidas.
@@ -540,6 +527,41 @@
             Valor que es utilizado para obtener o establecer el identificador de
             la entidad representada por el DTO.
             </value>
+        </member>
+        <member name="M:Inflexion2.Application.BaseEntityDataTransferObject`1.CompareTo(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Application.BaseEntityDataTransferObject`1.CompareTo(`0)">
+            <summary>
+            
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Application.BaseEntityDataTransferObject`1.CompareTo(Inflexion2.Application.IEntityDataTransferObject{`0})">
+            <summary>
+            
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Application.BaseEntityDataTransferObject`1.Equals(Inflexion2.Application.BaseEntityDataTransferObject{`0})">
+            <summary>
+            Use the id property like a criteria for default sorting
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Application.BaseEntityDataTransferObject`1.Equals(`0)">
+            <summary>
+            for the DTOs of entities we use the Id value like a criteria to compare and check the equality
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
         </member>
         <member name="M:Inflexion2.Application.BaseEntityDataTransferObject`1.IsTransient">
             <summary>
@@ -780,7 +802,8 @@
         </member>
         <member name="M:Inflexion2.Application.SpecificationDtoExtensions.ToSpecification``1(Inflexion2.Application.SpecificationDto)">
             <summary>
-            Convierte el dto de especification a una especification
+            .en converts an specification Dto into an specification
+            .es Convierte el dto de especification a una especification
             </summary>
             <typeparam name="TEntity"></typeparam>
             <param name="specificationDto"></param>
@@ -788,7 +811,8 @@
         </member>
         <member name="M:Inflexion2.Application.SpecificationDtoExtensions.ToSpecification``1(Inflexion2.Application.SpecificationDto,Inflexion2.Domain.Specification.ISpecification{``0})">
             <summary>
-            TODO: Update summary.
+            .es extensión de un Dto de especificacion para obtener la especificacion correspondiente 
+            .en Dto specification extension to get the specification.
             </summary>
         </member>
     </members>

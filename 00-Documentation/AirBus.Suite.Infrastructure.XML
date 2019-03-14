@@ -1,0 +1,314 @@
+﻿<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>AirBus.Suite.Infrastructure</name>
+  </assembly>
+  <members>
+    <member name="T:AirBus.Suite.Infrastructure.AppSettingConfiguration">
+      <summary>
+            inicializa una nueva instancia de  una entidad AppSetting/&gt;.
+            </summary>
+      <remarks>
+            Mapea un objeto <see cref="T:AirBus.Suite.Domain.AppSetting" /></remarks>
+    </member>
+    <member name="M:AirBus.Suite.Infrastructure.AppSettingConfiguration.#ctor">
+      <summary>
+            inicializa una nueva instancia de <see cref="T:AirBus.Suite.Infrastructure.AppSettingConfiguration" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.Infrastructure.AppSettingRepository">
+      <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:AirBus.Suite.Domain.AppSetting" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.Infrastructure.AppSettingRepository.#ctor(System.Data.Entity.DbContext)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Infrastructure.AppSettingRepository" />.
+            </summary>
+      <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+      <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext" /> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+    </member>
+    <member name="T:AirBus.Suite.Infrastructure.DepartmentConfiguration">
+      <summary>
+            inicializa una nueva instancia de  una entidad Department/&gt;.
+            </summary>
+      <remarks>
+            Mapea un objeto <see cref="T:AirBus.Suite.Domain.Department" /></remarks>
+    </member>
+    <member name="M:AirBus.Suite.Infrastructure.DepartmentConfiguration.#ctor">
+      <summary>
+            inicializa una nueva instancia de <see cref="T:AirBus.Suite.Infrastructure.DepartmentConfiguration" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.Infrastructure.DepartmentRepository">
+      <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:AirBus.Suite.Domain.Department" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.Infrastructure.DepartmentRepository.#ctor(System.Data.Entity.DbContext)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Infrastructure.DepartmentRepository" />.
+            </summary>
+      <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+      <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext" /> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+    </member>
+    <member name="T:AirBus.Suite.Infrastructure.HolidayConfiguration">
+      <summary>
+            inicializa una nueva instancia de  una entidad Holiday/&gt;.
+            </summary>
+      <remarks>
+            Mapea un objeto <see cref="T:AirBus.Suite.Domain.Holiday" /></remarks>
+    </member>
+    <member name="M:AirBus.Suite.Infrastructure.HolidayConfiguration.#ctor">
+      <summary>
+            inicializa una nueva instancia de <see cref="T:AirBus.Suite.Infrastructure.HolidayConfiguration" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.Infrastructure.HolidayRepository">
+      <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:AirBus.Suite.Domain.Holiday" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.Infrastructure.HolidayRepository.#ctor(System.Data.Entity.DbContext)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Infrastructure.HolidayRepository" />.
+            </summary>
+      <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+      <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext" /> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+    </member>
+    <member name="T:AirBus.Suite.Infrastructure.MailConfiguration">
+      <summary>
+            inicializa una nueva instancia de  una entidad Mail/&gt;.
+            </summary>
+      <remarks>
+            Mapea un objeto <see cref="T:AirBus.Suite.Domain.Mail" /></remarks>
+    </member>
+    <member name="M:AirBus.Suite.Infrastructure.MailConfiguration.#ctor">
+      <summary>
+            inicializa una nueva instancia de <see cref="T:AirBus.Suite.Infrastructure.MailConfiguration" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.Infrastructure.MailRepository">
+      <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:AirBus.Suite.Domain.Mail" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.Infrastructure.MailRepository.#ctor(System.Data.Entity.DbContext)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Infrastructure.MailRepository" />.
+            </summary>
+      <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+      <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext" /> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+    </member>
+    <member name="T:AirBus.Suite.Infrastructure.BootstrapUnitOfWork">
+      <summary>
+            .en Class to implement unit of work and give the assemblys where are the configuration clases to Entity Framework
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.Infrastructure.BootstrapUnitOfWork.#ctor(System.String)">
+      <summary>
+            constructor BootstrapUnitOfWork
+            </summary>
+      <param name="nameOrConnectionString" />
+    </member>
+    <member name="M:AirBus.Suite.Infrastructure.BootstrapUnitOfWork.OnModelCreating(System.Data.Entity.DbModelBuilder)">
+      <summary>
+            .en add all configuration files from the assembly where is located the entity in the second parameter.
+            .es añadimos todos los ficheros de configuración del ensamblado de la entidad que pasamos.
+            </summary>
+      <param name="modelBuilder" />
+    </member>
+    <member name="T:AirBus.Suite.Infrastructure.TaskConfiguration">
+      <summary>
+            inicializa una nueva instancia de  una entidad Task/&gt;.
+            </summary>
+      <remarks>
+            Mapea un objeto <see cref="T:AirBus.Suite.Domain.Task" /></remarks>
+    </member>
+    <member name="M:AirBus.Suite.Infrastructure.TaskConfiguration.#ctor">
+      <summary>
+            inicializa una nueva instancia de <see cref="T:AirBus.Suite.Infrastructure.TaskConfiguration" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.Infrastructure.TaskRepository">
+      <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:AirBus.Suite.Domain.Task" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.Infrastructure.TaskRepository.#ctor(System.Data.Entity.DbContext)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Infrastructure.TaskRepository" />.
+            </summary>
+      <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+      <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext" /> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+    </member>
+    <member name="T:AirBus.Suite.Infrastructure.UserRoleConfiguration">
+      <summary>
+            inicializa una nueva instancia de  una entidad UserRole/&gt;.
+            </summary>
+      <remarks>
+            Mapea un objeto <see cref="T:AirBus.Suite.Domain.UserRole" /></remarks>
+    </member>
+    <member name="M:AirBus.Suite.Infrastructure.UserRoleConfiguration.#ctor">
+      <summary>
+            inicializa una nueva instancia de <see cref="T:AirBus.Suite.Infrastructure.UserRoleConfiguration" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.Infrastructure.UserRoleRepository">
+      <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:AirBus.Suite.Domain.UserRole" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.Infrastructure.UserRoleRepository.#ctor(System.Data.Entity.DbContext)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Infrastructure.UserRoleRepository" />.
+            </summary>
+      <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+      <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext" /> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+    </member>
+    <member name="T:AirBus.Suite.Infrastructure.UsersGroupConfiguration">
+      <summary>
+            inicializa una nueva instancia de  una entidad UsersGroup/&gt;.
+            </summary>
+      <remarks>
+            Mapea un objeto <see cref="T:AirBus.Suite.Domain.UsersGroup" /></remarks>
+    </member>
+    <member name="M:AirBus.Suite.Infrastructure.UsersGroupConfiguration.#ctor">
+      <summary>
+            inicializa una nueva instancia de <see cref="T:AirBus.Suite.Infrastructure.UsersGroupConfiguration" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.Infrastructure.UsersGroupRepository">
+      <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:AirBus.Suite.Domain.UsersGroup" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.Infrastructure.UsersGroupRepository.#ctor(System.Data.Entity.DbContext)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Infrastructure.UsersGroupRepository" />.
+            </summary>
+      <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+      <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext" /> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+    </member>
+    <member name="T:AirBus.Suite.Infrastructure.UserConfiguration">
+      <summary>
+            inicializa una nueva instancia de  una entidad User/&gt;.
+            </summary>
+      <remarks>
+            Mapea un objeto <see cref="T:AirBus.Suite.Domain.User" /></remarks>
+    </member>
+    <member name="M:AirBus.Suite.Infrastructure.UserConfiguration.#ctor">
+      <summary>
+            inicializa una nueva instancia de <see cref="T:AirBus.Suite.Infrastructure.UserConfiguration" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.Infrastructure.UserRepository">
+      <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:AirBus.Suite.Domain.User" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.Infrastructure.UserRepository.#ctor(System.Data.Entity.DbContext)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.Infrastructure.UserRepository" />.
+            </summary>
+      <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+      <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext" /> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+    </member>
+  </members>
+</doc>

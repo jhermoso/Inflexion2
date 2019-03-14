@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AirBus.Suite.SyfiX.Application.WcfService.Contracts</name>
+    </assembly>
+    <members>
+        <member name="T:AirBus.Suite.SyfiX.Application.WcfService.Contracts.IDocumentService">
+            <summary>
+            Interfaz que permite definir el contrato de servicio para las acciones
+            relacionadas con la entidad Document.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.WcfService.Contracts.IDocumentService.Create(AirBus.Suite.SyfiX.Application.Dtos.DocumentDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo Document.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="documentDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.DocumentDto"/> con los datos necesarios
+            para la creación de la entidad Document.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.WcfService.Contracts.IDocumentService.Update(AirBus.Suite.SyfiX.Application.Dtos.DocumentDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo Document.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="documentDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.DocumentDto"/> con los datos necesarios
+            para el borrado de la entidad Documentr.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.WcfService.Contracts.IDocumentService.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad Document.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.WcfService.Contracts.IDocumentService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades Document.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <returns>
+            Devuelve listado de Dto´s de la entidad Document.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.WcfService.Contracts.IDocumentService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad Document de acuerdo a
+            su identificador.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="documentId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.DocumentDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.WcfService.Contracts.IDocumentService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Document, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades Document, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SyfiX.Application.WcfService.Contracts.IIncidentService">
+            <summary>
+            Interfaz que permite definir el contrato de servicio para las acciones
+            relacionadas con la entidad Incident.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.WcfService.Contracts.IIncidentService.Create(AirBus.Suite.SyfiX.Application.Dtos.IncidentDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo Incident.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="incidentDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.IncidentDto"/> con los datos necesarios
+            para la creación de la entidad Incident.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.WcfService.Contracts.IIncidentService.Update(AirBus.Suite.SyfiX.Application.Dtos.IncidentDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo Incident.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="incidentDto">
+            Parámetro de tipo <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.IncidentDto"/> con los datos necesarios
+            para el borrado de la entidad Incidentr.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.WcfService.Contracts.IIncidentService.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad Incident.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.WcfService.Contracts.IIncidentService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades Incident.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <returns>
+            Devuelve listado de Dto´s de la entidad Incident.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.WcfService.Contracts.IIncidentService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad Incident de acuerdo a
+            su identificador.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="incidentId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:AirBus.Suite.SyfiX.Application.Dtos.IncidentDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiX.Application.WcfService.Contracts.IIncidentService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Incident, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades Incident, según la especificación indicada.
+            </returns>
+        </member>
+    </members>
+</doc>

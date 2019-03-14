@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AirBus.Suite.FrontEnd.WpfModule</name>
+    </assembly>
+    <members>
+        <member name="T:AirBus.Suite.FrontEnd.WpfModule.SuiteModuleNavigationView">
+            <summary>
+            .es Lógica de interacción para <see cref="T:SuiteModuleNavigationView.xaml"/>.
+            .en Interaction logic for <see cref="T:SuiteModuleNavigationView.xaml"/>.
+            </summary>
+            <summary>
+            SuiteModuleNavigationView
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.FrontEnd.WpfModule.SuiteModuleNavigationView.#ctor(AirBus.Suite.FrontEnd.WpfModule.SuiteModuleNavigationViewModel)">
+            <summary>
+            .es constructor <see cref="T:SuiteModuleNavigationView"/>.
+            .en constructor <see cref="T:SuiteModuleNavigationView"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.FrontEnd.WpfModule.SuiteModuleNavigationView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.FrontEnd.WpfModule.SuiteModuleRibbonTab">
+            <summary>
+            .en Interaction logic for SuiteModuleRibbonTab.xaml
+            .es logica de interacción para SuiteModuleRibbonTab.xaml
+            </summary>
+            <summary>
+            SuiteModuleRibbonTab
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.FrontEnd.WpfModule.SuiteModuleRibbonTab.#ctor">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:SuiteModuleRibbonTab"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:SuiteModuleRibbonTab"/>.
+            </summary>
+        </member>
+        <member name="P:AirBus.Suite.FrontEnd.WpfModule.SuiteModuleRibbonTab.KeepAlive">
+            <summary>
+            IRegionMemberLifetime implementation
+            Gets a value indicating whether this instance should be kept-alive upon deactivation.
+            http://stackoverflow.com/questions/5115484/how-to-create-a-new-view-every-time-navigation-occurs-in-prism
+            http://codefinders.blogspot.de/2013/11/disposing-views-in-prism.html
+            Returning a false value everytime that there is a request of a view creates a new view
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.FrontEnd.WpfModule.SuiteModuleRibbonTab.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.FrontEnd.WpfModule.SuiteModuleTaskBarView">
+            <summary>SuiteModuleTaskBarView.xaml
+            .es logica de interacción para SuiteTaskBarView.xaml
+            </summary>
+            <summary>
+            SuiteModuleTaskBarView
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.FrontEnd.WpfModule.SuiteModuleTaskBarView.#ctor(AirBus.Suite.FrontEnd.WpfModule.SuiteModuleTaskBarViewModel)">
+            <summary>
+            .en Initialize a new instace for the class <see cref="T:SuiteTaskBarView"/>.
+            .es Inicializa una nueva instancia de la clase <see cref="T:SuiteTaskBarView"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.FrontEnd.WpfModule.SuiteModuleTaskBarView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.FrontEnd.WpfModule.SuiteModuleNavigationViewModel">
+            <summary>
+            navigation viewmodel for the bounded context Suite .
+            </summary>
+            <summary>
+            navigation viewmodel for the bounded context Suite .
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.FrontEnd.WpfModule.SuiteModuleNavigationViewModel.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:SuiteModuleNavigationViewModel"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.FrontEnd.WpfModule.SuiteModuleNavigationViewModel.Initialize">
+            <summary>
+            Inicializa el modelo de vista.
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.FrontEnd.WpfModule.SuiteModuleRibbonViewModel">
+            <summary>
+            ViewModel del tool bar ribbon for Suite/>.
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.FrontEnd.WpfModule.SuiteModuleTaskBarViewModel">
+            <summary>
+            ViewModel para el boton del bounded context Suite.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.FrontEnd.WpfModule.SuiteModuleTaskBarViewModel.#ctor">
+             <summary>
+             Inicializa una nueva instancia de la clase <see cref="T:SuiteModuleTaskBarViewModel"/>.
+             </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:SuiteModuleTaskBarViewModel"/>.
+            </remarks>
+        </member>
+        <member name="T:AirBus.Suite.FrontEnd.WpfModule.SuiteModule">
+            <summary>
+            .en class module implementation. 
+            This implementation become the compiled dll of this project on a module dynamically loaded by the 
+            main programm.
+            .es implementación de la clases "module". Esta implementación convierte la ddl de la compilación 
+            de este proyecto en un modulo que puede ser cargado por el programa principal de forma dinamica. 
+            (en tiempo de ejecución)
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.FrontEnd.WpfModule.SuiteModule.Initialize">
+            <summary>
+            .en module initialization.
+            .es Inicializa el módulo.
+            </summary>
+            <remarks>
+            .en Register the controls whose has to be always available
+            with iregionmanager of Prism and the controls whose has to available on demand
+            with the inyection unity container. The controls on-demand will be loaded when
+            the method IregionManager.RequestNavigate() would be executed.
+            
+            .es Registramos los controles que han de estar siempre disponibles
+            con el gestor de regiones Prism (IRegionManager), y los controles que
+            han de solicitarse (bajo demanda) con el contenedor de inyección de
+            dependencias Unity.  Los controles bajo demanda serán cargados cuando
+            se invoque el método "IregionManager.RequestNavigate()".
+            </remarks>
+        </member>
+    </members>
+</doc>

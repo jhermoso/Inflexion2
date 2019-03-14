@@ -31,6 +31,12 @@ public class DomainCoreRepositoryCT : Template
         }
         var cpyrigth = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity, T4Help.getLeftStringSlice(this.ToString(), '+', -1).Substring(1));
         string cpyrigthText = cpyrigth.TransformText();
+
+		string repositoryBase = "Repository";
+	//	if (cbc.MainEntityStereotype.Contains("Entity") )
+	//	  {
+	//		repositoryBase = "EntityRepository"; 
+	//	  }
 #>
 <#=cpyrigthText #>
 namespace <#= projectNamespace #>
@@ -59,7 +65,7 @@ foreach (var item in sharedKernelUsings)
     /// Interfaz repositorio para persistir y obtener información a partir
     /// de entidades <see cref="I<#= cbc.pascalSecureEntityName #>"/>.
     /// </summary>
-    public interface I<#= cbc.pascalSecureEntityName #>Repository : IRepository<<#= cbc.pascalSecureEntityName #>, <#=cbc.idtype #>>
+    public interface I<#= cbc.pascalSecureEntityName #>Repository : I<#= repositoryBase #><<#= cbc.pascalSecureEntityName #>, <#=cbc.idtype #>>
     {
 
     } // I<#= cbc.pascalSecureEntityName #>Repository

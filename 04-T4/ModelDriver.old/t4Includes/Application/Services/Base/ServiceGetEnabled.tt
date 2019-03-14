@@ -1,0 +1,67 @@
+﻿<#+
+public class ServiceGetEnabled : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public ServiceGetEnabled(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+#>
+        #region Method 
+        /// <summary>
+        /// Recupera todas las entidades <#= cbc.pascalSecureEntityName #> activas.
+        /// </summary>
+        /// <param name="userContextDto">
+        /// Información de contexto del usuario.
+        /// </param>
+        /// <returns>
+        /// Todas las entidades <#= cbc.pascalSecureEntityName #> activas.
+        /// </returns>
+        public IEnumerable<<#= cbc.pascalSecureEntityName #>Dto> GetEnabled(UserContextDto userContextDto)
+        {
+            // Variable de respuesta.
+            var result = new List<<#= cbc.pascalSecureEntityName #>Dto>(0);
+
+            try
+            {
+                // Comprobamos el contexto de usuario y obtenemos la conexión por defecto.
+                var serverContext = base.Execute(this.GetFullyQualifiedMethodName(MethodBase.GetCurrentMethod()), userContextDto);
+                using (IAdapter unitOfWork = Manager.DefaultController.CreateTransactional(serverContext.Connection.ProviderName, serverContext.ConnectionString))
+                {
+                    // Obtener las entidades.
+                    var entityRepository = this.<#=cbc.camelSecureEntityName #>RepositoryFactory.Create(unitOfWork);
+                    var entities = entityRepository.GetEnabled();
+
+                    // Mapeamos los datos.
+                    entities.ToList()
+                            .ForEach(entity =>
+                                {
+                                    var entityDto = this.<#=cbc.camelSecureEntityName #>Mapper.EntityMapping(entity);
+                                    result.Add(entityDto);
+                                });
+
+                    // Confirmamos la transacción.
+                    unitOfWork.CommitTransaction();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Escribir en el Log.
+                logger.Error(ex.Message, ex);
+                throw ex;
+            }
+
+            // Devolver resultado.
+            return result;
+        }
+        #endregion
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

@@ -1,0 +1,216 @@
+﻿<#+
+
+public class InfraestructureEntityOracleHbmCT : Template
+{
+    // parametros de la plantilla
+    public DslContextDefinitionDiagram  diagram ;
+    public ActiveSolution               solutionInfo ;
+    public ClassBase                       entity ;
+    public string                       projectNamespace;
+    public string                       secureBdName;
+        
+    public InfraestructureEntityOracleHbmCT(DslContextDefinitionDiagram  d, ActiveSolution s, ClassBase e, string bd)
+    {
+        diagram = d;
+        solutionInfo = s;
+        entity = e;
+        secureBdName = bd;
+    }
+        
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        bool IsEntity = entity is Entity; // ClassBase
+        string company = T4Help.SecureName(this.diagram.Company.ToString());
+        string idtype = (diagram.IdKind.Equals("Autonumerical"))  ? "Int32" : "Guid";
+        string secureEntityName = T4Help.SecureName(entity.Name);
+        string parentEntityName = null;
+        string accesModifier = GetStringInherintaceClassModifier(entity.InheritanceClassModifier); //  GetStringAccesModifier
+        string pascalSecureEntityName = T4Help.ToPascalCase(secureEntityName);
+        string camelSecureEntityName = T4Help.ToCamelCase(secureEntityName);
+        bool isAbstract = ( entity.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Abstract ) == kayak.MoneyGen.InheritClassKeywords.Abstract;
+        bool entityHasChildren = HasChildren(entity);
+        ITree<ClassBase> entityChildren = null;
+
+        LinkedElementCollection<Atributte> propertyObjects = ClassBaseHasAtributtes.GetAtributtes(entity); // este metodo es definido en el dsl domainRealtionship public partial class ClassBaseHasAtributtes 
+        var mandatoryPropertyObjects = propertyObjects.Where(att => att.RequestUponCreation == RequestUponCreation.yes);
+        var nonMandatoryPropertyObjects = propertyObjects.Where(att => att.RequestUponCreation != RequestUponCreation.yes);
+        int numEntityFieldsMandatory= propertyObjects.Where(att => att.RequestUponCreation == RequestUponCreation.yes).Count();
+        int numEntityFields= propertyObjects.Count;
+
+        System.Collections.ObjectModel.ReadOnlyCollection<kayak.MoneyGen.Association> propertyAssociationTargets = Association.GetLinksToTargets(entity); // lista de propiedades obtenidas de las relaciones de destino
+        var mandatoryPropertyFromTargets = propertyAssociationTargets.Where( p=> p.TargetMultiplicity==kayak.MoneyGen.Multiplicity.OneOne | p.TargetMultiplicity==kayak.MoneyGen.Multiplicity.OneMany); // subconjunto de propiedades de tipo mandatory de las anteriores es decri cuya multiplicidad minima es uno
+        System.Collections.ObjectModel.ReadOnlyCollection<kayak.MoneyGen.Association> propertyAssociationSources = Association.GetLinksToSources(entity); // lista de propiedades provenientes de las relaciones de origen
+        var mandatoryPropertyFromSources = propertyAssociationSources.Where( p=> p.SourceMultiplicity==kayak.MoneyGen.Multiplicity.OneOne | p.SourceMultiplicity==kayak.MoneyGen.Multiplicity.OneMany);// subconjunto de propiedades de tipo mandatory de las anteriores es decri cuya multiplicidad minima es uno 
+
+        int sourceLinksCounter= propertyAssociationSources.Count();
+        int targetLinksCounter= propertyAssociationTargets.Count();
+        int mandatorySourceLinksCounter= mandatoryPropertyFromSources.Count();
+        int mandatoryTargetLinksCounter= mandatoryPropertyFromTargets.Count();
+
+        int spaceformatcounter= secureEntityName.ToString().Length;
+        int counter = 0;
+        System.Type t;
+        bool propertyIsValueType = false;
+
+        KindComponented kindComponent = WhatTypeComponented(entity);
+        string superfolder;
+        string MandatoryConstructorParamns = GetConstructorParametersString( entity, diagram.IdKind.Equals("Autonumerical"),SelectionCriteriaAttributes.Mandatory, 80, false, spaceformatcounter+23, true, false, true, true, true,camelSecureEntityName+"Dto.","");//le sumamos 21 por que son loscaracteres que hay hasta el comienzo del texto donde utilizamos esta variable. 
+        string MadatoryEntityBaseConstructorParamans = "";
+        string MadatoryEntityBaseConstructorParamansDefinition = "";
+
+        bool isDerivedFromOneEntity= IsDerived( entity); // consultamos si esta entidad hereda de alguna otra por herencia simple del lenguaje.
+        ClassBase entitySuperClass = null;
+        string entityCore =null;
+        if (isDerivedFromOneEntity)
+        {
+            entitySuperClass = GetSuperEntity(entity); 
+            superfolder = GetSuperFolders(entity);
+            MadatoryEntityBaseConstructorParamansDefinition = GetConstructorParametersString( entitySuperClass, diagram.IdKind.Equals("Autonumerical"),SelectionCriteriaAttributes.Mandatory, 80, true, spaceformatcounter+23, false, false, true, true );
+            MadatoryEntityBaseConstructorParamans = GetConstructorParametersString( entitySuperClass, diagram.IdKind.Equals("Autonumerical"),SelectionCriteriaAttributes.Mandatory, 80, false, spaceformatcounter+23, false, false, true, true );
+            parentEntityName = T4Help.ToPascalCase(entitySuperClass.Name);
+        }
+
+        if(entity.Auditable)
+        {
+            entityCore = "ReadWriteAuditableRepositoryBase<I"+secureEntityName+", "+idtype +">";
+        }
+        else
+        {
+            entityCore = "ReadWriteRepositoryBase< I"+secureEntityName+", "+idtype +">";
+        }
+
+        if ( entityHasChildren )
+        {
+            entityChildren = ReadClassesHierarchie((ClassBase)entity);
+        }
+
+
+
+        var cpyrigth = new CopyrightHeader(diagram,solutionInfo,entity);
+// string cpyrigthText = cpyrigth.TransformText(); // en principio esta linea se comenta pues no tenemos un texto de cpoywrigth para los fichero
+// =proyecto = namespace = Company.Boundecontext1.BoundeDContex2....BoundeDContexN.Infraestructure.Maps.nHibernate31.Oracle
+// la estrategia de generación es de un fichero por clase debido a que podemos tener varias formas de mapear la herencia en una misma taxonomia 
+// y nhibernate nos exige que si en una misma taxonomia hay varias formas de herencia entonces se han de utilizar ficheros separados
+// 2ª las clases base son Class
+// Las clases que heredan de otra son 
+#>
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="false" >
+<#+
+    if (isDerivedFromOneEntity & !entityHasAttributesOrAssociations(entity))
+    { // si la entidad deriva de alguna otra y no tiene ninguna propiedad o asociación su tipo es subclass
+#>
+    <subclass name="<#= projectNamespace.Substring(0, projectNamespace.Length -41)/*le quitamos el 'Infraestructure.Data.Repositories' y lo sustituimos por '.Domain.Core'*/ #>.Domain.Base.<#= entity.Name #>, <#= projectNamespace.Substring(0, projectNamespace.Length -34)/*le quitamos el 'Infraestructure.Data.Repositories' y lo sustituimos por '.Domain.Core'*/ #>.Domain.Base"
+        proxi="<#= projectNamespace.Substring(0, projectNamespace.Length -41)/*le quitamos el 'Infraestructure.Data.Repositories' y lo sustituimos por '.Domain.Core'*/ #>.Domain.Core.<#= I #><#= entity.Name #>, <#= projectNamespace.Substring(0, projectNamespace.Length -34)/*le quitamos el 'Infraestructure.Data.Repositories' y lo sustituimos por '.Domain.Core'*/ #>.Domain.Core"
+        abstract="<#= (( entity.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Abstract ) == kayak.MoneyGen.InheritClassKeywords.Abstract)?"true":"false" #>"
+        extends="Id<#= parentEntityName #>"
+        discriminator-value="<#= entity.Alias #>">
+    </subclass> 
+<#+
+    }
+    else
+    {
+#>
+  <<#=(!isDerivedFromOneEntity)?"class":"joined-subclass" #> name="<#= projectNamespace.Substring(0, projectNamespace.Length -41)/*le quitamos el 'Infraestructure.Data.Repositories' y lo sustituimos por '.Domain.Core'*/ #>.Domain.Base.<#= pascalSecureEntityName#>, <#= projectNamespace.Substring(0, projectNamespace.Length -34)/*le quitamos el 'Infraestructure.Data.Repositories' y lo sustituimos por '.Domain.Core'*/ #>.Domain.Base"
+         proxy="<#= projectNamespace.Substring(0, projectNamespace.Length -41)/*le quitamos el 'Infraestructure.Data.Repositories' y lo sustituimos por '.Domain.Core'*/ #>.Domain.Core.<#= I #><#= pascalSecureEntityName#>, <#= projectNamespace.Substring(0, projectNamespace.Length -34)/*le quitamos el 'Infraestructure.Data.Repositories' y lo sustituimos por '.Domain.Core'*/ #>.Domain.Core"
+         table="<#= pascalSecureEntityName#>"
+         abstract="<#= (isAbstract)?"true":"false" #>">
+    <id name="Id" column="Id<#= pascalSecureEntityName#>" type="<#= idtype #>" unsaved-value="-1">
+<#+
+if(diagram.IdKind.Equals("Autonumerical")) // si el diagrama marca que es autonumérico le decimos a oracle como ha de generar la sequencia
+{
+#>
+      <generator class ="sequence">
+        <param name ="sequence">
+          SEQ_<#= entity.Name.ToUpper() #>
+        </param>
+      </generator>
+<#+
+} // TODO: falta por decir como hacerlo para los guid
+#>
+    </id>
+<#+
+    if(!isDerivedFromOneEntity & entityHasChildren)
+    {
+       // en este punto sabemos que no deriva de ninguna otra entidad y que tiene hijos. Nos falta determinar si alguno de esos hijos tiene propiedades.
+       // para ello recorremos el arbol.
+        bool AnySubentityHasNotProperties= false;
+        foreach (var subEntity in entityChildren.All.Nodes) // recorremos todos los hijos buscando alguno que tenga atributos o relaciones con otras entidades.
+            {
+            if (!entityHasAttributesOrAssociations(subEntity.Data) & subEntity.Depth > 0 ) // si no tiene atributos es candidato a incluir el mapeado en la clase
+                    {
+                        AnySubentityHasNotProperties = true;
+                        break;
+                    }
+            }
+        if(AnySubentityHasNotProperties)// no importa con que profundidad se tiene la subentidad que no tiene propiedades el discriminante se asocia a la cabecera.
+        {
+#>
+    <discriminator column="IdTipo<#= pascalSecureEntityName #>" type="string" not-null="true" />
+<#+
+        }
+    }
+#>
+<#+
+    // introducimos las propiedades basicas de la entidad.
+    foreach (var property in propertyObjects)
+    {
+
+#>
+    <property name="<#= property.AtributteName #>" column="<#= property.AtributteName #>" type="<#= property.AtributteType #>" not-null="<#= (property.RequestUponCreation == RequestUponCreation.yes || !(property.IsNullable/* no es necesario evaluar si el tipo es TypeValue */ ) )?"true":"false" #>" />
+<#+
+    } // fin de la introducción de propiedades basicas de la entidad
+#>
+<#+
+    // introducimos las propiedades derivadas de las asociaciones target
+    foreach(var property in propertyAssociationTargets)
+    {
+#>
+    <<#=kindOfCollectionMapping(property) #> name="<#= property.SourceRolName #>" table="<#= T4Help.ToPascalCase(property.Target.Name) #>" lazy="false">
+      <key column="Id<#= pascalSecureEntityName /*en una reflexiva este y el posterior son iguales TODO: corregir */#>"/>
+      <index column="Id<#= T4Help.ToPascalCase(property.Target.Name) #>" type="String" />
+      <one-to-many class=" <#= projectNamespace.Substring(0, projectNamespace.Length -41) #>.Domain.Base.<#= T4Help.ToPascalCase(property.Target.Name) #>, <#= projectNamespace.Substring(0, projectNamespace.Length -41) #>.Domain.Base" />
+    </<#=kindOfCollectionMapping(property) #>>
+<#+
+    }// Fin de la introducción de las propiedades derivadas de las asociaciones source
+#>
+<#+
+    foreach(var property in propertyAssociationSources)
+    {
+#>
+    <many-to-one name="<#= T4Help.ToPascalCase(property.Source.Name) #>"
+                 column="Id<#= T4Help.ToPascalCase(property.Source.Name) #>"
+                 not-null="<#= (property is Composition)?"true":"false" /* si la asociación es de composición entonces es true si no es false*/#>"
+                 class="<#= projectNamespace.Substring(0, projectNamespace.Length -41) #>.Domain.Base.<#= T4Help.ToPascalCase(property.Source.Name) #>, <#= projectNamespace.Substring(0, projectNamespace.Length -41) #>.Domain.Base">
+    </many-to-one>
+<#+ 
+    }// fin de la introducción de las propiedades derivadas de las asociaciones target 
+#>
+    <property name="IsActive" column="Activo" type="Boolean" not-null="true" />
+<#+ 
+    if(entity.Auditable)
+    {
+#>
+    <component name="AuditInfo" class="Inflexion.Framework.Domain.Base.ValueObjects.AuditInfo, Inflexion.Framework.Domain.Base">
+      <property name="CreatedBy" column="CreadoPor" not-null="true" />
+      <property name="CreatedTimestamp" column="FechaCreacion" not-null="true" />
+      <property name="UpdatedBy" column="ModificadoPor" />
+      <property name="UpdatedTimestamp" column="FechaModificacion" />
+    </component>
+<#+ 
+    }
+#>
+  </<#=(!isDerivedFromOneEntity)?"class":"joined-subclass" #>>
+<#+
+    }// end else 
+#>
+</hibernate-mapping>
+<#+
+                return this.GenerationEnvironment.ToString();
+            }
+        }
+#>

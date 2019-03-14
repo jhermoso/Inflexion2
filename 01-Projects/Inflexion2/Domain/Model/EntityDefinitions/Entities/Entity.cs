@@ -28,7 +28,7 @@ namespace Inflexion2.Domain
     /// </typeparam>
     /// <seealso cref="T:Inflexion2.Domain.IEntity{TIdentifier}" />
     [Serializable]
-    public abstract class Entity<TEntity, TIdentifier> : IEntity< TIdentifier>
+    public abstract class Entity<TEntity, TIdentifier> : IEntity<TIdentifier>
         where TEntity : IEntity<TIdentifier>
         where TIdentifier :  System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
     {
@@ -225,10 +225,9 @@ namespace Inflexion2.Domain
             }
             else
             {
+                // Use the id property like a criteria for default sorting
                 // Utilizamos el identificador único como criterio principal de ordenación.
-                int resultado = this.Id.CompareTo(entityIdentifier.Id);
-                // Devolvemos el resultado.
-                return resultado;
+                return this.Id.CompareTo(entityIdentifier.Id);
             }
         }
 

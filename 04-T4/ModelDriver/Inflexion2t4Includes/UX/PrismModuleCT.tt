@@ -59,9 +59,9 @@ namespace <#= projectNamespace #>
 
     using Inflexion2.Resources;
 <#+ if (cbc.OwnBoundedContextHasEnums) {#>
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain.Data;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain.Data;
 <#+ } #>
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Infrastructure.Resources;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Infrastructure.Resources;
     #endregion
 
     /// <summary>
@@ -72,7 +72,7 @@ namespace <#= projectNamespace #>
 	/// de este proyecto en un modulo que puede ser cargado por el programa principal de forma dinamica. 
 	/// (en tiempo de ejecución)
     /// </summary>
-    public sealed class <#= prjCon.boundedContextName #>Module : Inflexion2.UX.WPF.MVVM.BaseModule
+    public sealed class <#= T4Help.SecureName(prjCon.boundedContextName) #>Module : Inflexion2.UX.WPF.MVVM.BaseModule
     {
         #region Imodule & Basemodule Implementation
         /// <summary>
@@ -95,12 +95,12 @@ namespace <#= projectNamespace #>
         {  
             // .en registering of controls always available
             // .es Registro de controles que han de estar siempre disponibles.
-            this.RegionManager.RegisterViewWithRegion(RegionNames.TaskbarRegion, typeof(<#= prjCon.boundedContextName #>ModuleTaskBarView));
+            this.RegionManager.RegisterViewWithRegion(RegionNames.TaskbarRegion, typeof(<#= T4Help.SecureName(prjCon.boundedContextName) #>ModuleTaskBarView));
 
             // .en registering of controls available on-demand.
             // .es Registro de controles disponibles bajo demanda.
-            this.UnityContainer.RegisterType<object, <#= prjCon.boundedContextName #>ModuleNavigationView>(typeof(<#= prjCon.boundedContextName #>ModuleNavigationView).FullName);
-            this.UnityContainer.RegisterType<object, <#= prjCon.boundedContextName #>ModuleRibbonTab>(typeof(<#= prjCon.boundedContextName #>ModuleRibbonTab).FullName);
+            this.UnityContainer.RegisterType<object, <#= T4Help.SecureName(prjCon.boundedContextName) #>ModuleNavigationView>(typeof(<#= T4Help.SecureName(prjCon.boundedContextName) #>ModuleNavigationView).FullName);
+            this.UnityContainer.RegisterType<object, <#= T4Help.SecureName(prjCon.boundedContextName) #>ModuleRibbonTab>(typeof(<#= T4Help.SecureName(prjCon.boundedContextName) #>ModuleRibbonTab).FullName);
             
             // .en Registering by entities. 
             // .es Registro por entidades.
@@ -108,7 +108,7 @@ namespace <#= projectNamespace #>
             }
             // en el siguiente bloque viene le codigo que se repite para cada entidad
 #>
-<#+ if (cbc.IsRoot){#>
+<#+ if (!cbc.IsEnumeration && !cbc.isAbstract){#>
             this.UnityContainer.RegisterType<object, <#= cbc.pascalSecureEntityName #>View>(typeof(<#= cbc.pascalSecureEntityName #>View).FullName);
             this.UnityContainer.RegisterType<object, <#= cbc.pascalSecureEntityName #>QueryView>(typeof(<#= cbc.pascalSecureEntityName #>QueryView).FullName);         
 

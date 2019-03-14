@@ -16,7 +16,7 @@ public class RegionSourcesSetMethods : Template
         // conceptos propios del projecto en curso
         ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
 #>
-        #region Métodos Set de propiedades procedentes de los roles de tipo source en una asociación
+        #region  Set methods properties from source roles
 <#+
 
 
@@ -24,7 +24,7 @@ public class RegionSourcesSetMethods : Template
     // tambien devolvemos la propia entidad en cada metodo para permitir la utilización de interfaces fluidas.
     foreach (var property in cbc.propertyAssociationSources)
     {
-        // Establecemos que toda propiedar deducida de un relación o link tiene un set privado.
+        // Establecemos que toda propiedad deducida de una relación o link tiene un set privado.
         // si no es una relación reflexiva  generamos la misma pareja de metodos para los roles de target y source han de ser diferentes
         if(string.IsNullOrEmpty(property.TargetRolName)) // Validación: Comprobamos que si no existe el nombre del rol source (significa que es una relación unidireccional y por tanto solo genera propiedad en la clase destino (target) y no en la clase  origen (source) la multiplicidad minima del target ha de ser cero. 
             {
@@ -34,15 +34,17 @@ public class RegionSourcesSetMethods : Template
 #>
 
         /// <summary>
-        /// Método encargado de establecer un nuevo valor para la propiedad <#= T4Help.SecureName(property.TargetRolName) #>.
+        /// .en Set method for the property <#= T4Help.SecureName(property.TargetRolName) #>.
+        /// .es Método encargado de establecer un nuevo valor para la propiedad <#= T4Help.SecureName(property.TargetRolName) #>.
         /// </summary>
-        /// <param name="<#= T4Help.SecureName(property.TargetRolName) #>"> 
+        /// <param name="<#= T4Help.ToCamelCase(property.Source.Name) /* T4Help.SecureName(property.TargetRolName)*/ #>"> 
         /// Parametro con el que establecemos el nuevo valor de <see cref="<#= T4Help.SecureName(property.TargetRolName) #>"/>. de la clase <see cref="<#= cbc.entity.Name #>"/>
         /// </param>
         /// <returns>
-        /// Devuelve el propio objeto para facilitar las interfaces 'fluent'/>
+        /// .en return value: the own object to allow fluent calls
+        /// .es Devuelve el propio objeto para facilitar las interfaces 'fluent'/>
         /// </returns>
-        public <#=(cbc.diagram.ORM.Length >0)?"virtual":"" #> <#= I #><#= cbc.pascalSecureEntityName #> Set<#= T4Help.SecureName(property.TargetRolName) #> ( <#= (property.Source is Enumeration)?"": I #><#= T4Help.SecureName(property.Source.Name) #> <#= T4Help.ToCamelCase(property.Source.Name) #> )
+        public <#=(cbc.diagram.ORM.Length >0)?"virtual":"" #> <#= I #><#= cbc.pascalSecureEntityName #> Set<#= T4Help.SecureName(property.TargetRolName) #> ( <#= (property.Source is Enumeration)?"": I #><#= T4Help.SecureName(property.Source.Name) #><#=((property.Source is Enumeration) && IsMinMultiplicityCero(property.SourceMultiplicity))? "?" : String.Empty  #> <#= T4Help.ToCamelCase(property.Source.Name) #> )
         {
             Guard.ArgumentIsNotNull( <#= T4Help.ToCamelCase(property.Source.Name) #>, "El parametro <#= T4Help.ToCamelCase(property.Target.Name) #> es null");          // comprobamos que el parametro no es nulo. Resources
 

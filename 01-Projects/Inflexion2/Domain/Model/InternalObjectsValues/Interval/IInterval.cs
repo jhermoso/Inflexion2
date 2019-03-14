@@ -13,7 +13,7 @@ namespace Inflexion2.Domain
     /// <remarks>
     /// Sin comentarios especiales.
     /// </remarks>
-    public interface IInterval : IValueObject<IInterval>
+    public interface IInterval : IValueObject
     {
         #region Properties
 

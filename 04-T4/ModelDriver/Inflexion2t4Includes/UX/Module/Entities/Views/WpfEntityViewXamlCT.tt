@@ -12,53 +12,214 @@ public class WpfEntityViewXamlCT : Template
         // conceptos propios del projecto en curso
         ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
 #>
-<UserControl x:Class="<#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.FrontEnd.WpfModule.<#= cbc.pascalSecureEntityName #>View"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:controls="clr-namespace:Inflexion2.UX.WPF.Controls;assembly=Inflexion2.UX.WPF.Controls"
-             xmlns:converter="clr-namespace:Inflexion2.UX.WPF.ValueConverters;assembly=Inflexion2.UX.WPF"
+<UserControl x:Class="<#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.FrontEnd.WpfModule.<#= cbc.pascalSecureEntityName #>View"
+             xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i = "clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:<#= T4Help.SecureName(prjCon.boundedContextName) #>Reference="clr-namespace:<#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain.Data;assembly=<#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain.Data"
+             xmlns:lex = "http://wpflocalizeextension.codeplex.com"
+             xmlns:enums ="clr-namespace:<#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain.Data;assembly=<#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain.Data"
+             xmlns:controls = "clr-namespace:Inflexion2.UX.WPF.Controls;assembly=Inflexion2.UX.WPF.Controls"
+             xmlns:moduleControls ="clr-namespace:<#= cbc.diagram.RootNameSpace #>.Common.FrontEnd.WpfModule"
+             xmlns:converter = "clr-namespace:Inflexion2.UX.WPF.ValueConverters;assembly=Inflexion2.UX.WPF"
+             lex:LocalizeDictionary.DesignCulture="en"
+             lex:LocalizeDictionary.OutputMissingKeys="True"
+             lex:ResxLocalizationProvider.DefaultAssembly="<#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Infrastructure.Resources"
+             lex:ResxLocalizationProvider.DefaultDictionary="<#= T4Help.SecureName(prjCon.boundedContextName) #>Resources"
+             FlowDirection="{Binding lex:LocFlowDirection Inflexion2.Resources:FrameworkResource:flow}" 
+
              mc:Ignorable="d" 
-			 d:DesignHeight="300" d:DesignWidth="525" 
-             Padding="5">
-    <Grid Background="White">
+             d:DesignHeight="300" d:DesignWidth="525" 
+             Padding="5" <#+ if (cbc.targetLinksCounter + cbc.sourceLinksCounter > 0) {	#>Loaded="OnLoaded"<#+ }#>>
+    <Grid x:Name="MainGrid" Background="White">
         <Grid.RowDefinitions>
 <#+
-    foreach (var property in cbc.propertyObjects)
+ var columnCounter = 0;
+ var total = cbc.propertyObjects.Count() +  cbc.propertyAssociationSources.Count() +  cbc.propertyAssociationTargets.Count(); // TODO: descontar las realciones reflexivas
+    for(int j = 0; j < total ; j++)
     {
 #>
             <RowDefinition Height="Auto"/>
 <#+
     }
-#>  
+#>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-<#+
-	int i=0;
-    foreach (var property in cbc.propertyObjects)
+<#+ if (cbc.sourceLinksCounter > 0)
     {
 #>
-        <TextBlock Text="<#= T4Help.ToPascalCase(property.AtributteName) #>"                Grid.Row="<#= i#>" Grid.Column="0"/>
-
+        <!-- .en columns from parent relationships --> <!-- .es columnas de entidades padres -->
 <#+
-	i++;
-    }
-#> 
+    // continuamos con las propiedades de las clases padres en las asociaciones 
+    foreach (var property in cbc.propertyAssociationSources)
+    {
+        // si no es una relación reflexiva generamos la misma pareja de métodos para los roles de source y source han de ser diferentes
+      //  if(string.IsNullOrEmpty(property.SourceRolName)) // Validación: Comprobamos que si no existe el nombre del rol source (significa que es una relación unidireccional y por tanto solo genera propiedad en la clase destino (Target) y no en la clase  origen (Source) la multiplicidad minima del Source ha de ser cero. 
+      //      {
+      //          continue;
+      //      }
+        
+        string fieldIdentityName1 = "";
+        var propertiesList = ClassBaseHasAtributtes.GetAtributtes(property.Source);
+        var identityFields = propertiesList.Where(c => c.IsIdentification );
+        int identityFieldsCounter = identityFields.Count();
+        if  ( identityFieldsCounter >= 1 && !(property.Source is Enumeration))
+        {
+            fieldIdentityName1 = identityFields.First().AtributteName;
+        }
+    //	else if ( identityFieldsCounter == 0)
+    //	{
+    //		fieldIdentityName1 = propertiesList.First().AtributteName;
+    //	}
 
+
+        // TODO: check here the multiplicity
+                if (!(property.Source is Enumeration))
+        {
+#>
+        <!-- Column from <#= T4Help.ToPascalCase(property.TargetRolName) #> -->
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="{lex:Loc <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Infrastructure.Resources:CommonResources:<#= T4Help.ToPascalCase(property.Source.Name) #>Alias}"/>
+        <ComboBox x:Name="field<#= T4Help.ToPascalCase(property.TargetRolName) #>" Grid.Row="0" Grid.Column="1" ItemsSource="{Binding <#= T4Help.ToPascalCase(property.Source.PluralName) #>}" DisplayMemberPath="<#= fieldIdentityName1 #>" SelectedItem="{Binding Selected<#= T4Help.ToPascalCase(property.Source.Name) #>}" IsSynchronizedWithCurrentItem="True"/>
 <#+
-	i=0;
+        }
+        else
+        {
+#>
+        <TextBlock Grid.Row="<#= columnCounter #>" Grid.Column="0" Text="{lex:Loc <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Infrastructure.Resources:CommonResources:<#= T4Help.ToPascalCase(property.Source.Name) #>Alias}" />
+        <lex:EnumComboBox x:Name="<#= T4Help.SecureName(property.TargetRolName) #>" Grid.Row="<#= columnCounter #>" Grid.Column="1" Type="{x:Type enums:<#= T4Help.ToPascalCase(property.Source.Name) #>}"
+                          SelectedItem="{Binding Selected<#= T4Help.ToPascalCase(property.Source.Name) #>}" IsSynchronizedWithCurrentItem="True">
+            <lex:EnumComboBox.Style>
+                <Style TargetType="{x:Type lex:EnumComboBox}">
+                    <Setter Property="ItemTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <Grid>
+                                    <lex:LocProxy Source="{Binding}" x:Name="Proxy" PrependType="True" />
+                                    <TextBlock Text="{Binding Result, ElementName=Proxy}" Margin="2" FontWeight="Normal" />
+                                </Grid>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </lex:EnumComboBox.Style>
+        </lex:EnumComboBox>
+<#+
+        }
+        columnCounter++;
+    }// end del foreach (var property in cbc.propertyAssociationSources)
+#>
+<#+ } // end  if (sourceLinksCounter > 0) #>
+
+        <!-- .en columns from properties -->
+<#+
+    var sourceCounter = columnCounter;
+    int i=0;
     foreach (var property in cbc.propertyObjects)
     {
+        if ( property.AtributteType != "bool")
+        {
 #>
-        <TextBox x:Name="field<#= T4Help.ToPascalCase(property.AtributteName) #>" Grid.Row="<#= i#>" Grid.Column="1" Text="{Binding <#= T4Help.ToPascalCase(property.AtributteName) #>, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="<#= (property.Tooltip != null)? property.Tooltip :"" #>"/>
+        <TextBlock Grid.Row="<#= i + sourceCounter #>" Grid.Column="0" Text="{lex:Loc <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Infrastructure.Resources:<#= T4Help.SecureName(prjCon.boundedContextName) #>Resources:<#=cbc.pascalSecureEntityName + "_" + T4Help.ToPascalCase(property.AtributteName) #>Alias}" />
 <#+
-	i++;
+        }
+        i++;
     }
-#> 
+
+    i=0;
+    bool isenum = false;
+    foreach (var property in cbc.propertyObjects)
+    {
+        int size = 0;
+        if (property.AtributteType.Equals("string"))
+        {
+            int.TryParse(property.Size, out size);
+        }
+         bool propertyIsOwnType = cbc.AccessibleClassBaseTree.All.Nodes.Where(c => property.AtributteType == T4Help.SecureName(c.Data.Name) ).Any();
+         if (propertyIsOwnType)
+         {
+            var cbcProperty = cbc.AccessibleClassBaseTree.All.Nodes.First(c => property.AtributteType == T4Help.SecureName(c.Data.Name) );
+            if (((kayak.MoneyGen.Enumeration) cbcProperty.Data).EnumValue.Count() > 0) /* es enum*/
+            {
+                isenum = true;
+#>
+        <lex:EnumComboBox x:Name="<#=cbc.pascalSecureEntityName + "_" +  T4Help.ToPascalCase(property.AtributteName) #>" Grid.Row="<#= i #>" Grid.Column="1" PrependType="False" SelectedIndex="{Binding <#= T4Help.ToPascalCase(property.AtributteName) #>Index}" Type="{x:Type <#= T4Help.SecureName(prjCon.boundedContextName) #>Reference:<#= cbcProperty.Data.Name #>}"  ToolTip="<#= (property.Tooltip != null)? property.Tooltip :"" #>"/>
+<#+
+            }
+         }
+         if (!isenum)
+         {
+            if ( property.AtributteType.StartsWith("bool"))
+            {
+#>
+        <CheckBox x:Name="field<#= T4Help.ToPascalCase(property.AtributteName) #>" Grid.Row="<#= i + sourceCounter #>" Grid.Column="1" Content="{lex:Loc <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Infrastructure.Resources:CommonResources:<#= cbc.pascalSecureEntityName #>_<#= T4Help.ToPascalCase(property.AtributteName) #>Alias}" IsChecked="{Binding <#= T4Help.ToPascalCase(property.AtributteName) #>, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="<#= (property.Tooltip != null)? property.Tooltip :"" #>" HorizontalAlignment="Left"/>
+<#+
+            }
+            else if ( property.AtributteType.StartsWith("DateTime"))
+            {
+#>
+        <DatePicker  x:Name="field<#= T4Help.ToPascalCase(property.AtributteName) #>" Grid.Row="<#= i + sourceCounter #>" Grid.Column="1" Text="{Binding <#= T4Help.ToPascalCase(property.AtributteName) #>, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="<#= (property.Tooltip != null)? property.Tooltip :"" #>" HorizontalAlignment="Left"/>
+<#+
+            }
+            else
+            {
+                if (size > 100)
+                {
+#>
+        <TextBox x:Name="field<#= T4Help.ToPascalCase(property.AtributteName) #>" Grid.Row="<#= i + sourceCounter #>" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding <#= T4Help.ToPascalCase(property.AtributteName) #>, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="<#= (property.Tooltip != null)? property.Tooltip :"" #>" SpellCheck.IsEnabled="True" MaxLines="10"/>
+<#+
+                }
+                else
+                {
+#>
+        <TextBox  x:Name="field<#= T4Help.ToPascalCase(property.AtributteName) #>" Grid.Row="<#= i + sourceCounter #>" Grid.Column="1" Text="{Binding <#= T4Help.ToPascalCase(property.AtributteName) #>, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="<#= (property.Tooltip != null)? property.Tooltip :"" #>"/>
+<#+
+                }
+            }
+        }
+    i++;
+    }
+
+    if (cbc.targetLinksCounter > 0)
+    {
+     var counter = cbc.propertyObjects.Count();
+    #>
+        <!-- .en Show properties that comes from parent relationships --> 
+        <!-- .es Mostrar las propiedades que provienen the relaciones parentales. --> 
+<#+
+    // continuamos con el mapping de las propiedades de las clases padres en las asociaciones 
+    foreach (var property in cbc.propertyAssociationTargets)
+    {
+        // si no es una relación reflexiva generamos la misma pareja de métodos para los roles de target y source han de ser diferentes
+        if(string.IsNullOrEmpty(property.SourceRolName)) // Validación: Comprobamos que si no existe el nombre del rol source (significa que es una relación unidireccional y por tanto solo genera propiedad en la clase destino (target) y no en la clase  origen (source) la multiplicidad minima del target ha de ser cero. 
+            {
+                continue;
+            }
+            counter++;
+#>
+        <moduleControls:<#= T4Help.ToPascalCase(property.Target.Name) #>QueryView x:Name="<#= T4Help.ToPascalCase(property.Target.Name) #>QueryView" Grid.Row="<#=counter#>" Grid.Column="0" Grid.ColumnSpan="2" DataContext="{Binding <#= T4Help.ToPascalCase(property.SourceRolName) #>QueryVM}" Loaded="OnLoad<#= T4Help.ToPascalCase(property.Target.PluralName) #>QueryViewControl" GotFocus="OnGotFocus<#= T4Help.ToPascalCase(property.Target.Name) #>QueryViewControl" LostFocus="OnLostFocusQueryViewControl">
+            <!--<i:Interaction.Triggers>
+                <i:EventTrigger EventName="Loaded">
+                    <i:InvokeCommandAction Command="{Binding OnLoad<#= T4Help.ToPascalCase(property.Target.Name) #>QueryViewControlCommand, RelativeSource={RelativeSource AncestorType=<#= T4Help.ToPascalCase(property.Target.Name) #>Control}}" />
+                </i:EventTrigger>
+                <i:EventTrigger EventName="GotFocus">
+                    <i:InvokeCommandAction Command="{Binding OnGotFocus<#= T4Help.ToPascalCase(property.Target.Name) #>QueryViewControlCommand, RelativeSource={RelativeSource AncestorType=<#= T4Help.ToPascalCase(property.Target.Name) #>Control}}" />
+                </i:EventTrigger>
+                <i:EventTrigger EventName="LostFocus">
+                    <i:InvokeCommandAction Command="{Binding OnLostFocus<#= T4Help.ToPascalCase(property.Target.Name) #>QueryViewControlCommand, RelativeSource={RelativeSource AncestorType=<#= T4Help.ToPascalCase(property.Target.Name) #>Control}}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>-->
+        </moduleControls:<#= T4Help.ToPascalCase(property.Target.Name) #>QueryView>
+        <!-- DataContext="{Binding <#= T4Help.ToPascalCase(property.SourceRolName) #>QueryVm}"-->					
+<#+
+        counter++;
+    }// end del foreach (var property in cbc.propertyAssociationTargets)
+#>
+<#+ } // end  if (cbc.targetLinksCounter > 0) #>
     </Grid>
 </UserControl>
 <#+

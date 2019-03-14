@@ -175,6 +175,9 @@ public static string kindOfCollectionMapping(kayak.MoneyGen.Association associat
     ///</sumary>
     public static System.Collections.Generic.IEnumerable<kayak.MoneyGen.Association> GetHardCompositionsIn2Classes(ClassBase one, ClassBase two)
     {
+		if (one == null || two == null)
+			return null;
+
         return Association.GetLinks(one, two).Where( 
                                                                 p=>!(p.TargetRolName == null && p.SourceRolName == null ||
                                                                 p.TargetRolName.Trim().Length == 0 && p.SourceRolName.Trim().Length == 0) &&

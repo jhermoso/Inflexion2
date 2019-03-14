@@ -259,6 +259,15 @@ namespace Inflexion2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete record.
         /// </summary>
         public static string DeleteRecord {
@@ -408,6 +417,15 @@ namespace Inflexion2.Resources {
         public static string Get {
             get {
                 return ResourceManager.GetString("Get", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
             }
         }
         

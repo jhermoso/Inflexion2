@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.0" Id="760d8172-14ff-49ca-a1ef-024c819ae5ed" sGDB="Oracle" isModule="false" generateCode="Always" xmlns="http://schemas.microsoft.com/dsltools/MoneyGen">
+  <classBases>
+    <applicationHasElements Id="e601a341-e695-432a-a5a3-09af05e16a41">
+      <entity Id="b1d385d0-da81-4781-a218-85d819a951a4" name="Incident" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Incident" stereotype="Entity" volumen="0" remarks="Aplication definition" tooltip="Register Airplain Incident" logicDelete="false" pluralName="Incidents" programRemarks="This the main concept and entry point fro the program.  The user / department receive an incident and this means to start up the process adding some documents." referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="Aplications" grammarCategory="Sustantive" mainEntityStereotype="AggregateRoot">
+        <atributtes>
+          <classBaseHasAtributtes Id="f79a66fc-dc6a-4446-9547-c042770436ba">
+            <atributte Id="222abdd6-3c91-4935-9bd1-3e19fdc48ac8" atributteName="Tittle" atributteAlias="Aircraft Ground Equipment (AGE)" isGrouping="true" isIdentification="true" position="0" tooltip="identifier of the application" userRemarks="Name of the application" programerRemarks="Application name" requestUponCreation="yes" nameAndType="string Tittle" aliasDatabaseField="Name" plural="Names" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="f8195a00-1de9-45d3-945d-bf8f168c1c00">
+            <atributte Id="9137c4fa-1f14-4c1b-9255-d444c20bf66f" atributteName="Number" atributteAlias="Incident Number" isIdentification="false" position="0" nameAndType="string Number" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="7af0b442-ae4f-47ea-8d4e-f5bd9af24148">
+            <atributte Id="7a30ca54-ade2-4262-8e44-a83f45d6fec2" atributteName="Remarks" atributteAlias="Incident Industrie" isIdentification="false" position="0" nameAndType="string Remarks" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="c8f9b786-5c5c-4211-ab53-de4eb8815198">
+            <atributte Id="05f7903b-c991-4b08-8542-670435819f0f" atributteName="InternalRemarks" atributteAlias="Internal Remarks" isIdentification="false" position="0" nameAndType="string InternalRemarks" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="482d0ab7-847d-46e8-93ea-4f7fa10228d1">
+            <atributte Id="ee4a0ed3-818e-4817-b92a-4b12f50d6265" atributteName="PublicRemarks" atributteAlias="Public Remarks" isIdentification="false" position="0" nameAndType="string PublicRemarks" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="e203864d-9a74-4770-844f-a5177137d8ce">
+            <atributte Id="2d6ec48a-0cc2-40b7-84ea-29658df8d3f4" atributteName="IBM" atributteAlias="Industrie Incident" atributteType="bool" isIdentification="false" position="0" nameAndType="bool IBM" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="cf56c4c5-b97a-4691-b4a2-b8ab9a965a8c">
+            <atributte Id="fb3746de-06fa-49f2-9825-e7a04bf8caec" atributteName="AGE" atributteAlias="Aircraft Ground Equipment (AGE)" atributteType="bool" isIdentification="false" position="0" nameAndType="bool AGE" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="ed0f1d58-40f2-4317-ad0d-4f73c9bbe1cb">
+            <atributte Id="262c99bd-306d-4af7-a052-8af6d3c37da0" atributteName="WarrantyClaim" atributteAlias="WarrantyClaim" atributteType="bool" isIdentification="false" position="0" nameAndType="bool WarrantyClaim" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="c77524b7-b77e-42d2-8308-3efd08b5575e">
+      <enumeration Id="2cd317b0-3bec-4f28-9108-8507acd57ef4" name="SyfiXDataType" inheritanceClassModifier="Public, Partial" volumen="0" logicDelete="false" referencedRootEntity="" mainEntityStereotype="TipoCategoria" serializable="false">
+        <targets>
+          <composition Id="1b575bbc-f1b1-4426-a33a-0780603e7d10" sourceMultiplicity="OneOne" sourceRolName="Metadatas" targetRolName="SyfiXDataType" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List" cascadeDelete="false">
+            <entityMoniker name="/760d8172-14ff-49ca-a1ef-024c819ae5ed/Metadata" />
+          </composition>
+        </targets>
+        <enumValue>
+          <enumerationHasEnumValue Id="e1e509c3-654e-4c6c-8251-40dae392c33b">
+            <enumValues Id="aabb5c2e-874b-4d6f-a64b-1ac4c0c8457b" sorting="0" value="String" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="942c6264-f6a6-4314-9c1c-3e8ba3be8e7c">
+            <enumValues Id="4be46f66-39e9-4ae6-b5a2-e8ef045150f8" sorting="0" value="Integer" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="c95ba686-e17b-42cb-93a7-8b838f978d37">
+            <enumValues Id="e99bad7e-61f0-428c-82aa-f3e2cb0866d5" sorting="0" value="decimal" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="ff82b311-5d77-4034-8765-ec80e59a1855">
+            <enumValues Id="8c895e70-953b-4995-8e4a-b8de430dcc5b" sorting="0" value="bynary" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="18ab2944-8f6e-464b-be89-5104b787d2ed">
+            <enumValues Id="9417b398-ae1a-494f-8df8-b7d584449914" sorting="0" value="char" />
+          </enumerationHasEnumValue>
+        </enumValue>
+      </enumeration>
+    </applicationHasElements>
+    <applicationHasElements Id="5598fe72-21b6-4066-bd7b-b7406583e9ea">
+      <entity Id="5accd801-82ae-4f4e-b3c4-6bfdaa53f108" name="Metadata" inheritanceClassModifier="Public, Partial" volumen="0" logicDelete="false" referencedRootEntity="" mainEntityStereotype="AggregateRoot">
+        <targets>
+          <aggregation Id="e9337853-bd6e-486e-987b-cd8e2d4a1aee" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List" cascadeDelete="false">
+            <entityMoniker name="/760d8172-14ff-49ca-a1ef-024c819ae5ed/Metadata" />
+          </aggregation>
+          <composition Id="04815996-359c-414b-ac69-88e2db0e7015" sourceMultiplicity="OneOne" sourceRolName="MetadataValues" targetRolName="Metadata" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List" cascadeDelete="false">
+            <entityMoniker name="/760d8172-14ff-49ca-a1ef-024c819ae5ed/MetadataValue" />
+          </composition>
+          <composition Id="ee0eab84-e779-49e4-8fb4-d475c1a9e560" sourceMultiplicity="OneOne" sourceRolName="MetadataBynaryValues" targetRolName="Metadata" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List" cascadeDelete="false">
+            <entityMoniker name="/760d8172-14ff-49ca-a1ef-024c819ae5ed/MetadataBynaryValue" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="04a21f3c-157d-48dc-a180-4ae9b4baffc7">
+            <atributte Id="e236d982-0230-49ed-b4ba-8157231f98ba" atributteName="Name" isIdentification="false" position="0" nameAndType="string Name" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="fe972cbd-90e9-4e16-8cd2-a968455d5102">
+            <atributte Id="11ece382-6b43-460a-94c7-8f55bf16f1bc" atributteName="IsUnique" atributteType="bool" isIdentification="false" position="0" nameAndType="bool IsUnique" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="d3f09799-3f75-428d-a416-204bc7dd3c3e">
+            <atributte Id="9d8b8694-624e-417b-99f4-93a1386ac228" atributteName="IsVisible" atributteType="bool" isIdentification="false" position="0" nameAndType="bool IsVisible" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="01bdd167-e6b0-4c3a-be55-0723873f89f1">
+            <atributte Id="1e2cc101-79f0-4064-96ae-8bef56927366" atributteName="IsCalculated" atributteType="bool" isIdentification="false" position="0" nameAndType="bool IsCalculated" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="e90e7364-0bf1-4f47-99af-2ba703006b6e">
+            <atributte Id="d901a738-847f-4e7a-bbff-9f7688ca78af" atributteName="IsNew" atributteType="bool" isIdentification="false" position="0" nameAndType="bool IsNew" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="934b4a02-c162-43c8-9d2a-4763f2be6200">
+            <atributte Id="7e486cca-61d0-4d6c-a22c-7364a8994486" atributteName="Position" atributteType="int" isIdentification="false" position="0" nameAndType="int Position" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="35acbdd4-cf77-4ca6-91c1-1ef3f2efecb4">
+            <atributte Id="f0246cd1-b90b-470e-a676-c074c4145433" atributteName="Alias" isIdentification="false" position="0" nameAndType="string Alias" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="89e5ac59-db22-4f64-85ab-faff4b2c250f">
+            <atributte Id="cc86d38d-434a-44ce-9f13-7bbe8eb691cc" atributteName="IsRequired" atributteType="bool" isIdentification="false" position="0" nameAndType="bool IsRequired" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="093cd22c-7537-4846-8dd2-9ea613e42656">
+      <entity Id="b2d968f6-2ce2-4d97-9010-9963f76f2827" name="MetadataValue" inheritanceClassModifier="Public, Partial" volumen="0" logicDelete="false" referencedRootEntity="" mainEntityStereotype="Entity">
+        <atributtes>
+          <classBaseHasAtributtes Id="c7f939a9-9526-489b-bae4-c87a8bea53c8">
+            <atributte Id="0aaf7688-e785-4c5c-92eb-bd66c7e29b9c" atributteName="StringValue" isIdentification="false" position="0" nameAndType="string StringValue" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="068d87ed-9ee4-4ca3-b694-a0b80d690c72">
+            <atributte Id="60027ad2-5f0a-4ab8-825b-8c46b2e59531" atributteName="IntegerValue" atributteType="int" isIdentification="false" position="0" nameAndType="int IntegerValue" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="c24a6030-8089-4e23-b852-fe60ab6df487">
+            <atributte Id="3add5e74-598c-45f3-bf77-1df7b8b89ca3" atributteName="DecimalValue" atributteType="decimal" isIdentification="false" position="0" nameAndType="decimal DecimalValue" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="82cbbdfd-d94e-4490-89eb-b76ea4bb41dd">
+            <atributte Id="f689099d-2be5-44f0-bbfa-4e7e79332ea1" atributteName="FloatValue" atributteType="float" isIdentification="false" position="0" nameAndType="float FloatValue" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="64647ddc-7697-424b-b963-09d0d3d669c2">
+      <entity Id="da364e66-d223-4412-89ad-044a741dfaed" name="MetadataBynaryValue" inheritanceClassModifier="Public, Partial" volumen="0" logicDelete="false" referencedRootEntity="" mainEntityStereotype="Entity">
+        <atributtes>
+          <classBaseHasAtributtes Id="d2ebbcd7-058a-44b4-9989-5431f29fbf75">
+            <atributte Id="05e04d8e-58cb-4fec-afae-2ce8be369ca2" atributteName="BynaryValue" atributteType="object" isIdentification="false" position="0" nameAndType="object BynaryValue" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+  </classBases>
+  <boundedContexts>
+    <applicationHasBoundedContexts Id="d3f81d8e-8c72-40e7-af2b-9f29694f815b">
+      <boundedContext Id="631d2faf-0e05-4517-8a3b-6bb9e3b8f353" name="From SyfiXBase" mBR="modelbus://kayak.MoneyGen.MoneyGenAdapter/SyfiXBase//.\SyfiXBase.kyk" />
+    </applicationHasBoundedContexts>
+  </boundedContexts>
+</application>

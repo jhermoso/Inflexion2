@@ -13,6 +13,8 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
     using Microsoft.Practices.Unity;
     using Microsoft.Practices.Prism;
     using Microsoft.Practices.Prism.Regions;
+    using Microsoft.Practices.Prism.Events;
+    using System.Collections.Generic;
 
     /// <summary>
     /// .en Generic abstract Base class for the Query View Models.
@@ -42,6 +44,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         private int pageIndex = 0;
         private int pageSize;// = 10
 
+
         #endregion
 
         #region CONSTRUCTORS
@@ -60,6 +63,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
                 this.Specification = new SpecificationDto() { PageIndex = this.PageIndex, PageSize = this.PageSize };
             }
         }
+
 
         #endregion
 
@@ -112,7 +116,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         /// </summary>
         public override string Title
         {
-            get { return string.Empty; }
+            get; set;
         }
 
         /// <summary>
@@ -169,7 +173,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
                     if (value >= 0)
                     {
                         this.Specification.PageIndex = value;
-                        this.OnGetRecords(null);
+                        this.OnGetRecords("from QueryViewModel");
                         RaisePropertyChanged(() => this.PageIndex);
 
                         this.RefreshPagingCommands();
@@ -199,9 +203,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         } // PageSize
 
         /// <summary>
-        /// propiedad de specification Dto este es un dto con el que se informa a la capa de aplicación que se 
-        /// ha solicitado la ejecución de una operación, generalmente aplicandose a uno o varias entidades y que puede afectar a
-        /// a la información almacenada sobre cada uno de ellos en el correspondiente repositorio.
+        /// This property is used to stablish a common base filtering over the collection of items asociated to the QueryViewModel
         /// </summary>
         public Inflexion2.Application.SpecificationDto Specification
         {
@@ -337,10 +339,14 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         /// <param name="id"></param>
         protected virtual void NavigateToRecord(TIdentifier id)
         {
-            //if (this.IsActive)
-            //{
+            if (this.Specification == null)
+            {
                 this.NavigationService.NavigateToWorkSpace(typeof(TView).FullName, id);
-            //}
+            }
+            else
+            {
+                this.NavigationService.NavigateToWorkSpace(typeof(TView).FullName, id, this.Specification);
+            }
         }
 
         /// <summary>
@@ -363,10 +369,60 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
 
         /// <summary>
         /// open the selected record
+        /// this method is invoked from DataGridRowDoubleClickHandler
         /// </summary>
         public virtual void NavigateToSelectedItem()
         {
             NavigateToRecord(this.item.Id);
+        }
+
+
+        /// <summary>
+        /// .en Get First Page records method. 
+        ///     This command answer to a call from the ribbon region tab.
+        /// .es ejecutamos el servicio de ir a la primera página de la lista de registros. 
+        ///     responde al command invocado desde su comando en la region del ribbon.
+        /// </summary>
+        /// <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        public override void OnGetFirstPageRecords(object parameter)
+        {
+            this.PageIndex = 0;
+        }
+
+        /// <summary>
+        /// .en Get Next Page records method. 
+        ///     This command answer to a call from the ribbon region tab.
+        /// .es ejecutamos el servicio de ir a la siguiente página de la lista de registros. 
+        ///     responde al command invocado desde su comando en la region del ribbon.
+        /// </summary>
+        /// <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        public override void OnGetNextPageRecords(object parameter)
+        {
+            this.PageIndex++;
+        }
+
+        /// <summary>
+        /// .en Get Previus Page records method. 
+        ///     This command answer to a call from the ribbon region tab.
+        /// .es ejecutamos el servicio de ir a la página anterior de la lista de registros. 
+        ///     responde al command invocado desde su comando en la region del ribbon.
+        /// </summary>
+        /// <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        public override void OnGetPreviousPageRecords(object parameter)
+        {
+            this.PageIndex--;
+        }
+
+        /// <summary>
+        /// .en Get Last Page records method. 
+        ///     This command answer to a call from the ribbon region tab.
+        /// .es ejecutamos el servicio de ir a la ultima página de la lista de registros. 
+        ///     responde al command invocado desde su comando en la region del ribbon.
+        /// </summary>
+        /// <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        public override void OnGetLastPageRecords(object parameter)
+        {
+            this.PageIndex = this.TotalPagesCount;
         }
 
         /// <summary>
@@ -380,10 +436,16 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             cmd = this.editRecordCommand as Microsoft.Practices.Prism.Commands.DelegateCommand<object>;
             cmd.RaiseCanExecuteChanged();
 
-            //cmd = this.saveRecordCommand as Microsoft.Practices.Prism.Commands.DelegateCommand<object>;
-            //cmd.RaiseCanExecuteChanged();
+            cmd = this.saveRecordCommand as Microsoft.Practices.Prism.Commands.DelegateCommand<object>;
+            cmd.RaiseCanExecuteChanged();
 
             cmd = this.activateRecordCommand as Microsoft.Practices.Prism.Commands.DelegateCommand<object>;
+            cmd.RaiseCanExecuteChanged();
+
+            cmd = this.newRecordCommand as Microsoft.Practices.Prism.Commands.DelegateCommand<object>;
+            cmd.RaiseCanExecuteChanged();
+
+            cmd = this.getRecordsCommand as Microsoft.Practices.Prism.Commands.DelegateCommand<object>;
             cmd.RaiseCanExecuteChanged();
 
             this.RefreshPagingCommands();
@@ -407,6 +469,5 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             cmd     = this.getLastPageRecordsCommand as Microsoft.Practices.Prism.Commands.DelegateCommand<object>;
             cmd.RaiseCanExecuteChanged();
         }
-
     }
 }

@@ -1,0 +1,1032 @@
+﻿<#+ 
+
+public void Inflexion2WPFControlCodeGeneration(DslContextDefinitionDiagram MainDiagram, ActiveSolution SolutionInfo,  ITree<LocalizedBounded> TreeApp, ITree<BoundedContextMetadata> SharedKernelTree)
+{
+    //bool okDebug = true;
+
+    string bdName = null; // este es el parametro que junto con diagrama, solución y arq pasamos como parametros a las clases de plantillas de generación.
+    string secureBdName = null; 
+
+            //TODO convertir estas lineas en un metodo e incluir layerlist en el diagrama
+                 ICollection<Architecture.ArqLayer> layersList= null;
+                if (MainDiagram.Architecture == ArchitectureOptions.Inflexion2)
+                    layersList = Architecture.Inflexion2WPFLayers;
+                else if (MainDiagram.Architecture == ArchitectureOptions.HexaCore)
+                    layersList = Architecture.HexaCoreMVCLayers;
+                else
+                    layersList = Architecture.ArqLayers;
+
+
+
+
+
+
+    // CUERPO DEL METODO
+    ITree<ClassBase> boundedContextElements = null;
+    // recorremos los contextos limitados
+    foreach( INode<LocalizedBounded> context in TreeApp.All.Nodes )
+        {
+         kayak.MoneyGen.Application boundedContext = context.Data.Context.Value; //comentamos esta linea para cambiar el recorrido por los elementos del modelo por el recorrido del arbol de jerarquias.
+            //bdName = GetBoundedContextName( MainDiagram,  context); // el código comentado acontinuaciónes es sustituido por esta llamada.
+            bdName = GetBoundedContextNameFromTreeAppAndDeep( context.Depth,  context,  MainDiagram);
+         //bdName = context.Data.Context.Key;
+            //if(context.HasChild ) // si es un contexto que alberga otros, los layer folders se anidan en un contexto comun y no quedan en la raiz de dicho contexto.
+            //{
+                //if (context.Data.Context.Value != null )
+                //if (context.Data.Context.Value.Elements.Count() > 0) // para añadir el nombre de carpeta que se usa para identificar los sharedkernel es necesario que el diagrama tenga algun elemento que no sea un contexto limitado
+                //{
+                    //bdName = context.Data.Context.Key+System.IO.Path.DirectorySeparatorChar+MainDiagram.SolutionFolderCommon;
+                    //if (context.Data.Context.Key.Equals(MainDiagram.Product)) bdName = MainDiagram.SolutionFolderCommon;
+                //}
+            //}
+                     int exceuteOnlyOne=0; //centinela para indicar que esta clase se incorpora solo una vez.
+
+                                                   // si añadimos esta condición no generara código pero ademas borra el existente && !context.Data.Context.Value.GenerateCode.Equals(GenerationPolicy.Never)
+         if (boundedContext != null && bdName != null  ) // si el contexto limitado tiene asociado un diagrama y un nombre lo procesamos.
+            {
+                boundedContextElements = ReadClassesHierarchie(boundedContext);
+                secureBdName = bdName.Replace('\\','.');
+                int contadorDeEntidades = 0;
+                int contadorDeEntidadesNoAbstractas = 0;
+                int totalDeEntidadesNoAbstractas = boundedContextElements.All.Nodes.Where(p=> (p.Data is Entity ) 
+                                                                            /* && p.Data.ReferencedRootEntity == null */
+                                                                            && (( p.Data.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Abstract) != kayak.MoneyGen.InheritClassKeywords.Abstract &
+                                                                            ( p.Data.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Public) == kayak.MoneyGen.InheritClassKeywords.Public     ))
+                                                                            .Count();
+
+                int totalDeEntidades =  boundedContextElements.All.Nodes.Where(p=> (p.Data is Entity || p.Data is ObjectValue || p.Data is Enumeration) /* && p.Data.ReferencedRootEntity == null*/).Count();
+                ClassBaseContext CBC;
+                 
+                //if (okDebug) Debug.WriteLine(String.Format("El nombre del proyecto es'{0}'",secureBdName));
+                //if (okDebug) Debug.WriteLine(String.Format("Este proyecto tiene '{0}' hijos",context.DirectChildCount ));
+                //bool ResxWriteInit = false; // el contador de entidades no se puede usar para saber el comienzo pues las entidades de los shared kernel cuentan pero no se procesan.
+                //int kindOfClass = 0; /* tipo de clase entidad, objeto valor , enumerado, servicio,  operación invariante etc.*/
+
+                foreach (INode<ClassBase> item in boundedContextElements.All.Nodes.Where(p=> p.Data is Entity || p.Data is ObjectValue || p.Data is Enumeration) )
+                {
+                    // if (item.Data.ReferencedRootEntity != null ) continue; // Si la entidad u objeto valor es una entidad de referencia o cuyo estereotipo es "ExternalContext" entonces la ignoramos.
+                    
+                    contadorDeEntidades++; // este contador se utiliza para generar de forma incremental los ficheros de recursos de un contexto dado por lo que tenemos que incluir todas las entidaes que aparezcan, incluso las referenciadas.
+ 
+                    ClassBase entity = item.Data;
+                    bool EntidadNoAbstracta = (( entity.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Abstract) != kayak.MoneyGen.InheritClassKeywords.Abstract &
+                                             ( entity.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Public) == kayak.MoneyGen.InheritClassKeywords.Public     ); // si la clase es abstracta no tiene factorias
+
+                    if (item.Data is Entity && EntidadNoAbstracta) contadorDeEntidadesNoAbstractas++;
+
+                    CBC = new ClassBaseContext(MainDiagram, SolutionInfo, entity, secureBdName);
+                    //if (okDebug) Debug.WriteLine("Para la entidad :{0}", item.Data.Name);
+                    //if (okDebug) CBC.DebugContext();
+
+                    //if (item.Data is Entity)
+                    //{  if (okDebug) Debug.WriteLine(" la entidad :{0} es ENTITY", item.Data.Name); }
+                    //else { if (okDebug) Debug.WriteLine(" la entidad :{0} es OBJETOVALOR", item.Data.Name); }
+                    //if (okDebug) Debug.WriteLine("Para la entidad :{0}", item.Data.Name);
+                    //if (okDebug) Debug.WriteLine("La consulta de si todos los atributos son mandatory tiene como resultado :{0}", AreAllMandatory( item.Data));
+                    //if (okDebug) Debug.WriteLine("La consulta de si todos las relaciones tienen la misma multiplicidad tiene como resultado :{0}", AreAllTargetMinMultiplicityEqual( item.Data));
+                    //if (okDebug) Debug.WriteLine("La consulta de si todos las relaciones tienen la misma multiplicidad tiene como resultado :{0}", AreAllSourceMinMultiplicityEqual( item.Data));
+
+                    // cada entidad tiene un reflejo en cada capa por lo tanto para cada entidad recorremos cada una de las capas y sus proyectos asociados.
+                    foreach (Architecture.ArqLayer layer in layersList) //Recorremos La arquitectura seleccionada
+                    {
+                        string FolderLayerName = GetFolderLayerName(MainDiagram, layer.LayerType);
+                        if (FolderLayerName != null)
+                        {
+                            //string contextPath = GetBoundedContextLayerPath(diagram.SolutionFolderBoundedContext, bdName, FolderLayerName);
+                            //if (okDebug) Debug.WriteLine(String.Format("El nombre del FolderLayerName es'{0}'",FolderLayerName));
+
+                            if (layer.LayerProyects != null)
+                                foreach (Architecture.ArqLayer.ArqProject project in layer.LayerProyects)
+                                {
+                                    //if (okDebug) Debug.WriteLine(string.Format("Nombre de projecto  {0}, plantilla de projecto{1}",project.Name, project.Template ));
+                                    string nombreprojecto = GetProjectName( MainDiagram, layer.LayerType, project, secureBdName);
+                    
+                                    //if (okDebug) Debug.WriteLine(string.Format("MainDiagram.RootNameSpace = '{0}', secureBdName = '{1}' project.Name = '{2}'",MainDiagram.RootNameSpace , secureBdName ,project.Name ));
+
+                                    string temppath = MainDiagram.AbsProyectsPath +System.IO.Path.DirectorySeparatorChar+nombreprojecto ;
+                                    string nombreprojectoConExtension = nombreprojecto + ".csproj";
+
+                                    string superfolder = null;
+                                    ClassBase entitySuperClass = null;
+                                    var kindComposition = WhatTypeComponented(item.Data);
+                          
+                                    if(!string.IsNullOrEmpty( item.Data.FolderNameSpaceAggregatedName))
+                                        {superfolder = item.Data.FolderNameSpaceAggregatedName + System.IO.Path.DirectorySeparatorChar;}
+                          
+                                    if (entity is Entity & (IsDerived( item.Data) || item.Data.SourceClassBase != null))// consultamos si esta entidad hereda de alguna otra por herencia simple del lenguaje.
+                                    {
+                                        if (item.Data.SourceClassBase != null)
+                                        {
+                                            entitySuperClass = GetSuperEntity(item.Data); 
+                                        }
+                                        else
+                                        {
+                                            entitySuperClass = entity.SourceClassBase; // Tambien puede obtenerse por (Entity)item.Parent.Data 
+                                        }
+                         
+                                        superfolder = superfolder + GetSuperFolders(entity); // en cuyo caso obtenemos su estructura de carpetas anidadas
+                         
+                                        superfolder = superfolder + System.IO.Path.DirectorySeparatorChar;
+                                    } 
+                                    else if (entity is  Entity & ( kindComposition.Equals(KindComponented.isOneChild) | kindComposition.Equals(KindComponented.allAreOneFather )))
+                                    {
+                                        string fatherCompouser = GetFatherCompouserFolder(entity);
+                                        if (!string.IsNullOrEmpty(fatherCompouser))
+                                            superfolder =  fatherCompouser + System.IO.Path.DirectorySeparatorChar ;
+                                    } // END if (IsDerived( entity))
+
+                                    if (!MainDiagram.GetCodeTree)
+                                    {
+                                        if(!string.IsNullOrEmpty( item.Data.FolderNameSpaceAggregatedName))
+                                        {
+                                            superfolder = item.Data.FolderNameSpaceAggregatedName + System.IO.Path.DirectorySeparatorChar;
+                                        }
+                                        else
+                                        {
+                                            superfolder = null;
+                                        }
+                                    }
+
+                          //if (okDebug) Debug.WriteLine(string.Format("4superfolder = '{0}' of entity '{1}' ",superfolder, entity.Name ));
+
+                                    switch (layer.LayerType)
+                                    {
+                    
+                                        case LayerKind.Domain:
+                                            switch (project.Name) // en este punto tenemos el projecto el nombre del projecto y la entidad
+                                            {
+                                                case "Data":
+                                                    
+                                                        if (CBC.IsEnumeration)
+                                                        {
+                                                            var tenum  = new DomainEnumerationCT(CBC, nombreprojecto, SharedKernelTree);
+                                                            tenum.Output.File = "Enums" + System.IO.Path.DirectorySeparatorChar+entity.Name+".cs";
+                                                            tenum.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            tenum.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            tenum.Render();
+                                                        }
+                                                    
+                                                    break;
+                                                case "Domain"://"Core": // si queremos tener un projecto con solo interfaces seria el de core.
+
+                                                    if (item.Data.Stereotype != EntityStereotypes.ExternalContext)
+                                                    {
+                                                        if (CBC.IsEntity || CBC.IsObjectValue)
+                                                        {
+                                                            var t  = new DomainCoreIEntityCT(CBC, nombreprojecto, SharedKernelTree);
+                                                            t.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+ "I"+entity.Name+".cs";
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t.Output.File  ='{0}'",t.Output.File ));
+                                                            //t.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el temppath ='{0}', el nombreprojectoConExtension = '{1}'",temppath, nombreprojectoConExtension));
+                                                            t.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            t.Render();
+
+                                                            if (CBC.MainEntityStereotype.Contains("Validetable")||CBC.MainEntityStereotype.Contains("Auditable")||CBC.MainEntityStereotype.Contains("Bussines"))
+                                                            {
+                                                                var tbis  = new DomainCoreIEntityValidatorCT(CBC, nombreprojecto, SharedKernelTree);
+                                                                tbis.Output.PreserveExistingFile = true;
+                                                                tbis.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+ "Validator"+System.IO.Path.DirectorySeparatorChar+"I"+entity.Name+"Validator.cs";
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el tbis.Output.File  ='{0}'",tbis.Output.File ));
+                                                                //t.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                                tbis.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                                tbis.Render();
+                                                            }
+                                                            // si queremos utilizar factorias  
+                                                            //if (( entity.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Abstract) != kayak.MoneyGen.InheritClassKeywords.Abstract ) // si la clase es abstracta no tiene factorias
+                                                            //{
+
+                                                            //var t2  = new DomainCoreInterfaceFactoryCT(CBC, nombreprojecto, SharedKernelTree);
+                                                            //t2.Output.File = superfolder +entity.Name+System.IO.Path.DirectorySeparatorChar+ "I"+entity.Name+"Factory"+".cs";
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t2.Output.File  ='{0}'",t2.Output.File ));
+                                                            //t2.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            //t2.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            //t2.Render();
+                                                            //if (CBC.IsEntity & CBC.mandatorySourceLinksCounter == 0) // Solo hacemos repositorios si es una entidad y si esta no es target de una origen de composición (su colección denbiera ser IList)
+                                                            //{
+                                                            if (CBC.IsEntity )
+                                                            {
+                                                                if(CBC.MainEntityStereotype.Contains("Root"))
+                                                                {
+                                                                    var t3  = new DomainCoreRepositoryCT(CBC, nombreprojecto, SharedKernelTree);
+                                                                    t3.Output.File = superfolder +entity.Name+System.IO.Path.DirectorySeparatorChar+ "I"+entity.Name+"Repository"+".cs";
+                                                                    //if (okDebug) Debug.WriteLine(string.Format("el t3.Output.File  ='{0}'",t3.Output.File ));
+                                                                    //t3.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                                    t3.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                                    t3.Render();
+                                                                }
+                                                                if (exceuteOnlyOne==0)
+                                                                {
+                                                                    var t4PLTM  = new PerLifeTimeManagerCT(CBC, nombreprojecto, SharedKernelTree);
+                                                                    t4PLTM.Output.File = "IoC" +System.IO.Path.DirectorySeparatorChar+ "PerLifeTimeManager.cs";
+                                                                    t4PLTM.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                                    t4PLTM.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                                    t4PLTM.Render();
+                                                                    exceuteOnlyOne++; // centinela para aquellas plantillas que se incorporan solo una vez por cada contexto limitado
+
+                                                                }
+                                                                //var t4  = new DomainCoreRepositoryFactoryCT(CBC, nombreprojecto, SharedKernelTree);
+                                                                //t4.Output.File = superfolder +entity.Name+System.IO.Path.DirectorySeparatorChar+ "I"+entity.Name+"RepositoryFactory"+".cs";
+                                                                //t4.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                                //t4.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                                //t4.Render();
+                                            
+
+                                                                var t5  = new DomainBaseEntityCT(CBC, nombreprojecto, SharedKernelTree);
+                                                                t5.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+ entity.Name+".cs";
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el t5.Output.File  ='{0}'",t5.Output.File ));
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el temppath ='{0}', el nombreprojectoConExtension = '{1}'",temppath, nombreprojectoConExtension));
+                                                                //t5.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                                t5.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                                t5.Render();
+
+                                                  
+                                                                var specification  = new DomainBaseEntitySpecificationsCT(CBC, nombreprojecto, SharedKernelTree);
+                                                                specification.Output.PreserveExistingFile = false;
+                                                                specification.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+ entity.Name+"Specifications.cs";
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el specification.Output.File  ='{0}'",specification.Output.File ));
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el temppath ='{0}', el nombreprojectoConExtension = '{1}'",temppath, nombreprojectoConExtension));
+                                                                //specification.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                                specification.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                                specification.Render();
+                                                               }
+                                                            if (( entity.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Abstract) != kayak.MoneyGen.InheritClassKeywords.Abstract ) // si la clase es abstracta no tiene factorias
+                                                            {
+                                                                var t6  = new DomainBaseEntityFactoryCT(CBC, nombreprojecto, SharedKernelTree);
+                                                                t6.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+ entity.Name+"Factory.cs";
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el t6.Output.File  ='{0}'",t6.Output.File ));
+                                                                t6.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                                t6.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                                t6.Render();
+                                                            }
+                                                            // foreach (var method in CBC.ClassMethods )
+                                                            foreach (var method in CBC.ClassMethods.Where(m => m.MethodStereotype.Equals(MethodStereotype.Any)) )
+                                                            {
+                                                                var PartialMethod  = new DomainBaseEntityPartialMethodsCT(CBC, nombreprojecto, SharedKernelTree, method);
+                                                                PartialMethod.Output.PreserveExistingFile = true;
+                                                                PartialMethod.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+method.Name+"Partial.cs";
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el PartialMethod.Output.File  ='{0}'",PartialMethod.Output.File ));
+                                                                // PartialMethod.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                                PartialMethod.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                                PartialMethod.Render();
+                                                            }
+                                                            foreach (var method in CBC.ClassMethods.Where(m => m.MethodStereotype.Equals(MethodStereotype.Constructor)) )
+                                                            {
+                                                                var PartialConstructor  = new DomainBaseEntityPartialConstructorCT(CBC, nombreprojecto, SharedKernelTree, method);
+                                                                PartialConstructor.Output.PreserveExistingFile = true;
+                                                                PartialConstructor.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"."+method.PartialFileName+"."+"Partial.cs";
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el PartialConstructor.Output.File  ='{0}'",PartialConstructor.Output.File ));
+                                                                // PartialConstructor.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                                PartialConstructor.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                                PartialConstructor.Render();
+                                                            }
+                                                            foreach (var method in CBC.ClassMethods.Where(m => m.MethodStereotype.Equals(MethodStereotype.Destructor)) )
+                                                            {
+                                                                var PartialDestructor  = new DomainBaseEntityPartialDestructorCT(CBC, nombreprojecto, SharedKernelTree, method);
+                                                                PartialDestructor.Output.PreserveExistingFile = true;
+                                                                PartialDestructor.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"."+method.PartialFileName+"."+"Partial.cs";
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el PartialConstructor.Output.File  ='{0}'",PartialDestructor.Output.File ));
+                                                                // PartialConstructor.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                                PartialDestructor.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                                PartialDestructor.Render();
+                                                            }
+                                                            foreach (var method in CBC.ClassMethods.Where(m => m.MethodStereotype.Equals(MethodStereotype.Update)) )
+                                                            {                           //DomainBaseEntityPartialUpdateCT
+                                                                var PartialUpdater  = new DomainBaseEntityPartialUpdateCT(CBC, nombreprojecto, SharedKernelTree, method);
+                                                                PartialUpdater.Output.PreserveExistingFile = true;
+                                                                PartialUpdater.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"."+method.PartialFileName+"."+"Partial.cs";
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el PartialConstructor.Output.File  ='{0}'",PartialUpdater.Output.File ));
+                                                                // PartialConstructor.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                                PartialUpdater.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                                PartialUpdater.Render();
+                                                            }
+                                                }
+                                            }
+                                            break;
+
+                                            } // END switch (project.Name) 
+                                            break;
+                                        case LayerKind.Infrastructure:
+                                            switch (project.Name) // en este punto tenemos el projecto el nombre del projecto y la entidad
+                                            {
+                                                case "Infrastructure":// "Data.Repositories":
+                                                    if (item.Data.Stereotype != EntityStereotypes.ExternalContext)
+                                                    {
+                                                        if ( entity is Entity & 
+                                                            /*( CBC.mandatorySourceLinksCounter == 0 ) &*/ // Solo hacemos repositorios si es una entidad y si esta no es target de un origen de composición (su colección denbiera ser IList)
+                                                            /*( entity.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Abstract) != kayak.MoneyGen.InheritClassKeywords.Abstract &*/
+                                                            ( entity.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Public) == kayak.MoneyGen.InheritClassKeywords.Public     ) // si la clase es abstracta no tiene factorias
+                                                        {
+                                                            var t17  = new InfraestructureEntityRepositoryCT(CBC, nombreprojecto, SharedKernelTree);
+                                                            t17.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Repository.cs";
+                                                            t17.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            t17.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            t17.Render();
+
+                                                            //var t18  = new InfraestructureEntityRepositoryFactoryCT(CBC, nombreprojecto, SharedKernelTree);
+                                                            //t18.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Repositoryfactory.cs";
+                                                            //t18.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            //t18.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            //t18.Render(); 
+                                                            
+                                                            if (MainDiagram.ORM.Equals("EntityFramewokCodeFirst"))
+                                                            {
+                                                                var t19  = new InfraestructureEntityFrameworkMappingCT(CBC, nombreprojecto, SharedKernelTree);
+                                                                t19.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Configuration.cs";
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el t19.Output.File  ='{0}'",t19.Output.File ));
+                                                                t19.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                                t19.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                                
+                                                                t19.Render();
+
+                                                               if(contadorDeEntidades == 1)
+                                                                {
+                                                                    var tUoW   = new BootstrapUnitOfWorkCT(CBC, nombreprojecto, SharedKernelTree);
+                                                                    tUoW.Output.File = T4Help.SecureName(secureBdName)+"UoW.cs";
+                                                                    //if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tUoW.Output.File ));
+                                                                    tUoW.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                                    tUoW.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                                    tUoW.Output.Encoding = Encoding.UTF8;
+                                                                    tUoW.Render();
+
+                                                                    
+                                                                    var tac   = new InfrastructureAppConfigCT(CBC, nombreprojecto, SharedKernelTree, boundedContext);
+                                                                    tac.Output.File = "App.config";
+                                                                    //if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tac.Output.File ));
+                                                                    tac.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                                    tac.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                                    tac.Output.Encoding = Encoding.UTF8;
+                                                                    tac.Render();
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    break;
+                                                case "Maps.nHibernate31.Oracle":
+                                                    if (item.Data.Stereotype != EntityStereotypes.ExternalContext && MainDiagram.SGDB.Contains("Oracle"))
+                                                    {
+                                                        if ( entity is Entity &
+                                                            /*( entity.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Abstract) != kayak.MoneyGen.InheritClassKeywords.Abstract &*/
+                                                            ( entity.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Public) == kayak.MoneyGen.InheritClassKeywords.Public     ) // si la clase es abstracta no tiene repositorios
+                                                        {
+                                                            if (MainDiagram.ORM.Equals("NHibernateXML"))
+                                                            {
+                                                                //var t19  = new InfraestructureEntityOracleHbmCT(MainDiagram, SolutionInfo, entity, secureBdName);
+                                                                var t19  = new InfraestructureEntityOracleHbmCT(CBC, nombreprojecto, SharedKernelTree);
+                                                                t19.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+".hbm.xml";
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el t19.Output.File  ='{0}'",t19.Output.File ));
+                                                                t19.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                                t19.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                                t19.Output.ItemType = ItemType.EmbeddedResource;
+                                                                t19.Render();
+                                                            }
+                                                            else if (MainDiagram.ORM.Equals("FluentNhibernate"))
+                                                            {
+                                                                var t19  = new InfraestructureEntityFluentCT(CBC, nombreprojecto, SharedKernelTree);
+                                                                t19.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Map.cs";
+                                                                //if (okDebug) Debug.WriteLine(string.Format("el t19.Output.File  ='{0}'",t19.Output.File ));
+                                                                t19.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                                t19.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                                
+                                                                t19.Render();
+                                                            }
+                                                        }
+                                                    }
+                                                    break;
+                                                case "Resources":
+                                                    
+                                                    // La generación del fichero de recursos es acumulativa por tanto es necesario controlar la tres fases del mismo.
+                                                    // es decir en la primera fase inicializamos la cabecera  y la primera entidad que recorremos, en la segunda introducimos el contenido 
+                                                    // y en la tercera cerramos el fichero despues de meter la info de la ultima entidad recorrida.
+
+                                                    // todo si existe es necesario borrarlo primero
+                                                    string estadoDeDesarrollo = "desarrollo";
+                                                    if(contadorDeEntidades == 1) estadoDeDesarrollo = "inicio"; 
+                                                    if(contadorDeEntidades == totalDeEntidades ) estadoDeDesarrollo = "fin";
+                                                    if(contadorDeEntidades == 1 & totalDeEntidades == 1) estadoDeDesarrollo = "soloUna";
+
+                                                    //if (okDebug) Debug.WriteLine(string.Format("entidad ='{0}', estado = '{1}'",entity.Name, estadoDeDesarrollo));
+                                                    var t20   = new InfraestructureResourcesCT(CBC, nombreprojecto, SharedKernelTree, estadoDeDesarrollo);
+                                                    t20.Output.File = T4Help.SecureName(secureBdName) + "Neutral.resx";
+                                                    t20.Output.PreserveExistingFile = false;
+
+                    
+
+                                                    //if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",t20.Output.File ));
+                                                    t20.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                    t20.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                    t20.Output.ItemType = ItemType.EmbeddedResource;
+                                                    t20.Output.CustomTool = "PublicResXFileCodeGenerator";
+                                                    //t20.Output.CustomToolNamespace = secureBdName;
+                                                    string f = temppath + System.IO.Path.DirectorySeparatorChar+T4Help.SecureName(secureBdName)+"Neutral.resx";
+                                                    if (contadorDeEntidades == 1 )
+                                                    {
+                                                        //Debug.WriteLine(" **+* borramos los recursos existentes");
+                                                        //Debug.WriteLine(T4Help.SecureName(secureBdName));
+                                                        //Debug.WriteLine(f);
+                                                        if( File.Exists(f) && false)
+                                                        {
+                                                            // si existe lo borramos para que al recrearlo recree tambien el resx.cs y de esta forma los recursos esten actualizados.
+                                                            
+                                                            //var projitems = SolutionInfo.ProjectsList.Cast<Project>().Where(p=> p.CodeModel!=null && p.Name.Equals(nombreprojecto) ).First().ProjectItems;
+                                                            //foreach (var pitem in projitems.ProjectItems)
+                                                            //{
+                                                                //var fitem = pitem.FileNames.Where(p => p.);
+                                                            //}
+                                                            File.Delete(f);
+                                                            f = temppath + System.IO.Path.DirectorySeparatorChar+T4Help.SecureName(secureBdName)+"Neutral.Designer.cs";
+                                                            Debug.WriteLine(f);
+                                                            if ( File.Exists(f))
+                                                            {// si existe lo borramos para que al recrearlo recree tambien el resx.cs y de esta forma los recursos esten actualizados.
+                                                                try
+                                                                {
+                                                                    File.Delete(f);
+                                                                }
+                                                                catch
+                                                                {
+                                                                    throw new Exception("Error: no se ha podido borrar el fichero :" + f+": borrar los recursos y regenerar");
+                                                                }
+                                                            }                                                            
+                                                        }
+
+                                                    }
+                                                    t20.Output.Encoding = Encoding.UTF8;
+                                                    t20.Render();
+                                                    break;
+                                                    
+                                                 case "Maps.nHibernate31.SqlServer":
+                                                            if (item.Data.Stereotype != EntityStereotypes.ExternalContext && MainDiagram.SGDB.Contains("MsSql"))
+                                                            {
+                                                                if ( entity is Entity &
+                                                                    /*( entity.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Abstract) != kayak.MoneyGen.InheritClassKeywords.Abstract &*/
+                                                                    ( entity.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Public) == kayak.MoneyGen.InheritClassKeywords.Public     ) // si la clase es abstracta no tiene repositorios
+                                                                {
+                                                                    if (MainDiagram.ORM.Equals("NHibernateXML"))
+                                                                    {
+                                                                    }
+                                                                    else if (MainDiagram.ORM.Equals("FluentNhibernate"))
+                                                                    {
+                                                                        var t19  = new InfraestructureEntityFluentCT(CBC, nombreprojecto, SharedKernelTree);
+                                                                        t19.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Map.cs";
+                                                                        //if (okDebug) Debug.WriteLine(string.Format("el t19.Output.File  ='{0}'",t19.Output.File ));
+                                                                        t19.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                                        t19.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                                        t19.Render();
+                                                                    }
+                                                                }
+                                                            }
+
+                                                    break;
+
+                                            }
+                                            break;
+                                        case LayerKind.Application:
+                                            if (item.Data.Stereotype != EntityStereotypes.ExternalContext)
+                                            {
+                                                switch (project.Name) // en este punto tenemos el projecto el nombre del projecto y la entidad
+                                                {
+                                                    case "Dtos":
+                                                    
+                                                        if (CBC.IsEntity || CBC.IsObjectValue)
+                                                        {
+                                                            var t9  = new ApplicationEntityDtoCT(CBC, nombreprojecto, SharedKernelTree);
+                                                            t9.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Dto.cs";
+                                                            //t9.Output.PreserveExistingFile = false;
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t9.Output.File  ='{0}'",t9.Output.File ));
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t9.Output.File  ='{0}'",t9.Output.File ));
+                                                            t9.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            t9.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            t9.Render();
+                                                        }
+                                                      //  if (CBC.IsEnumeration)
+                                                      //  {
+                                                      //      var tenumdto  = new ApplicationEnumerationDtoCT(CBC, nombreprojecto, SharedKernelTree);
+                                                      //      tenumdto.Output.File = "Enums" + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Dto.cs";
+                                                      //      //if (okDebug) Debug.WriteLine(string.Format("el tenumdto.Output.File  ='{0}'",tenumdto.Output.File ));
+                                                      //      //if (okDebug) Debug.WriteLine(string.Format("el tenumdto.Output.File  ='{0}'",tenumdto.Output.File ));
+                                                      //      tenumdto.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                      //      tenumdto.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                      //      tenumdto.Render();
+                                                      //  }
+                                                        break;
+
+                                                    case "Application":
+                                                        if(contadorDeEntidades == 1) // TODO:añadir la condición de que no sea abstracta 
+                                                        {                                                                                                                            
+                                                            var tac   = new InfrastructureAppConfigCT(CBC, nombreprojecto, SharedKernelTree, boundedContext);
+                                                            tac.Output.File = "App.config";
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tac.Output.File ));
+                                                            tac.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            tac.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            tac.Output.Encoding = Encoding.UTF8;
+                                                            tac.Render();
+                                                        } 
+
+                                                   
+                                                        if ( entity is Entity && EntidadNoAbstracta ) // && MainDiagram.Mapper.Equals(MapperTechnology.Manual)
+                                                        {
+                                                            //var t10  = new ApplicationEntityMapperInterfaceCT(MainDiagram, SolutionInfo, entity);
+                                                            var t10  = new ApplicationEntityMapperInterfaceCT(CBC, nombreprojecto, SharedKernelTree);
+                                                            t10.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+"I"+entity.Name+"Mapper.cs";
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t10.Output.File  ='{0}'",t10.Output.File ));
+                                                            t10.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            t10.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            t10.Render();
+
+
+                                                        }
+                                                        //break;
+
+                                                    //case "Mappers.Base":
+                                                    
+                                                        if ( entity is Entity && EntidadNoAbstracta && MainDiagram.Mapper.Equals(MapperTechnology.Manual))
+                                                        {
+                                                            var t11  = new ApplicationEntityMapperCT(CBC, nombreprojecto, SharedKernelTree);
+                                                            t11.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Mapper.cs";
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t11.Output.File  ='{0}'",t11.Output.File ));
+                                                            t11.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            t11.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            t11.Render();
+                                                        }
+
+                                                        if ( entity is Entity && EntidadNoAbstracta && MainDiagram.Mapper.Equals(MapperTechnology.AutoMapper))
+                                                        {
+                                                            var t11  = new ApplicationEntityAutoMapperCT(CBC, nombreprojecto, SharedKernelTree);
+                                                            t11.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Mapper.cs";
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t11.Output.File  ='{0}'",t11.Output.File ));
+                                                            t11.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            t11.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            t11.Render();
+                                                        }
+
+                                                        //break;
+
+                                                    //case "Services.Core":
+                                                    
+                                                        if ( 
+                                                            entity is Entity &
+                                                            /*CBC.mandatorySourceLinksCounter == 0 &*/
+                                                            EntidadNoAbstracta
+                                                            )
+                                                        {
+                                                            var ServicesCoreT  = new ApplicationEntityServicesCoreCT(CBC, nombreprojecto, SharedKernelTree);
+                                                            ServicesCoreT.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+"I"+entity.Name+"Services.cs";
+                                                            ServicesCoreT.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            ServicesCoreT.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            ServicesCoreT.Render();
+
+                                                            //var t11bis  = new ApplicationEntityCreateServicesCoreCT(CBC, nombreprojecto, SharedKernelTree);
+                                                            //t11bis.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+"ICreate"+entity.Name+".cs";
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t11bis.Output.File  ='{0}'",t11bis.Output.File ));
+                                                            //t11bis.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            //t11bis.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            //t11bis.Render();
+//
+                                                            //var t12  = new ApplicationEntityDeleteServicesCoreCT(CBC, nombreprojecto, SharedKernelTree);
+                                                            //t12.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+"IDelete"+entity.Name+".cs";
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t12.Output.File  ='{0}'",t12.Output.File ));
+                                                            //t12.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            //t12.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            //t12.Render();
+//
+                                                            //var t13  = new ApplicationEntityGetAllServicesCoreCT(CBC, nombreprojecto, SharedKernelTree);
+                                                            //t13.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+"IGetAll"+entity.Name+".cs";
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t13.Output.File  ='{0}'",t13.Output.File ));
+                                                            //t13.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            //t13.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            //t13.Render();
+//
+                                                            //var t14  = new ApplicationEntityGetAllPagedServicesCoreCT(CBC, nombreprojecto, SharedKernelTree);
+                                                            //t14.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+"IGetAllPaged"+entity.Name+".cs";
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t14.Output.File  ='{0}'",t14.Output.File ));
+                                                            //t14.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            //t14.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            //t14.Render();
+//
+                                                            //var t15  = new ApplicationEntityGetByServicesCoreIdCT(CBC, nombreprojecto, SharedKernelTree);
+                                                            //t15.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+"IGetBy"+entity.Name+"Id.cs";
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t15.Output.File  ='{0}'",t15.Output.File ));
+                                                            //t15.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            //t15.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+//
+                                                            //t15.Render();
+//
+                                                            //var t15bis  = new ApplicationEntityUpdateServicesCoreCT(CBC, nombreprojecto, SharedKernelTree);
+                                                            //t15bis.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+"IUpdate"+entity.Name+".cs";
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t15bis.Output.File  ='{0}'",t15bis.Output.File ));
+                                                            //t15bis.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            //t15bis.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            //t15bis.Render();
+                                                        }
+                                                        //break;
+
+                                                    //case "Services.Base":
+                                                    
+                                                        if ( 
+                                                            entity is Entity &
+                                                            /*CBC.mandatorySourceLinksCounter == 0 &*/
+                                                            EntidadNoAbstracta 
+                                                            )
+                                                        {
+                                                            var t16  = new ApplicationEntityServicesBaseCT(CBC, nombreprojecto, SharedKernelTree);
+                                                            t16.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Services.cs";
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el t16.Output.File  ='{0}'",t16.Output.File ));
+                                                            t16.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            t16.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            t16.Render();
+
+
+                                                        }
+                                                        break;
+
+                                                    case "WcfService.Contracts":
+                                                     //   string estadoDeDesarrollo = "desarrollo";
+                                                     //   if(contadorDeEntidades == 1) estadoDeDesarrollo = "inicio"; 
+                                                     //   if(contadorDeEntidades == totalDeEntidades ) estadoDeDesarrollo = "fin";
+                                                     //   if(contadorDeEntidades == 1 & totalDeEntidades == 1) estadoDeDesarrollo = "soloUna";
+                                                        if ( entity is Entity && EntidadNoAbstracta  )
+                                                        {
+                                                            var tCoreService  = new ApplicationRemoteFacadeCoreServiceCT(CBC, nombreprojecto, SharedKernelTree);
+                                                            tCoreService.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+"I"+entity.Name+"Service.cs";
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el tCoreService.Output.File  ='{0}'",tCoreService.Output.File ));
+                                                            tCoreService.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            tCoreService.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            tCoreService.Render();
+                                                        }
+                                                        break;
+                                                    case "WcfService":
+                                                        if ( entity is Entity && EntidadNoAbstracta  )
+                                                        {
+                                                         //System.Diagnostics.Debugger.Launch();
+
+                                                        string estadoDeDesarrollo = "desarrollo";
+                                                        if(contadorDeEntidadesNoAbstractas == 1) estadoDeDesarrollo = "inicio"; 
+                                                        if(contadorDeEntidadesNoAbstractas == totalDeEntidadesNoAbstractas ) estadoDeDesarrollo = "fin";
+                                                        if(contadorDeEntidadesNoAbstractas == 1 & totalDeEntidadesNoAbstractas == 1) estadoDeDesarrollo = "soloUna";
+
+                                                        if( contadorDeEntidadesNoAbstractas == 1 )
+                                                        {
+                                                            var tWcfAppConfig  = new WcfServiceAppConfigCT(CBC, nombreprojecto, SharedKernelTree, boundedContext);
+                                                            tWcfAppConfig.Output.File = "App.config";
+                                                            tWcfAppConfig.Output.ItemType = ItemType.Content;
+                                                            tWcfAppConfig.Output.Encoding = Encoding.UTF8;
+                                                            tWcfAppConfig.Output.PreserveExistingFile = false;
+                                                            tWcfAppConfig.Output.CopyToOutputDirectory = CopyToOutputDirectory.CopyAlways; 
+                                                            tWcfAppConfig.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            tWcfAppConfig.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            tWcfAppConfig.Render();
+            
+                                                        //	var tWcfServiceIocConfigurator  = new WcfServiceIocConfiguratorCT(CBC, nombreprojecto, SharedKernelTree, "soloUna");
+                                                        //	tWcfServiceIocConfigurator.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Service.Configurator.cs";
+                                                        //	tWcfServiceIocConfigurator.Output.ItemType = ItemType.Compile;
+                                                        //	tWcfServiceIocConfigurator.Output.Encoding = Encoding.UTF8;
+                                                        //	tWcfServiceIocConfigurator.Output.PreserveExistingFile = false;
+                                                        //	//tWcfServiceIocConfigurator.Output.CopyToOutputDirectory = CopyToOutputDirectory.CopyAlways; 
+                                                        //	tWcfServiceIocConfigurator.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                        //	tWcfServiceIocConfigurator.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                        //	tWcfServiceIocConfigurator.Render();
+                                                        }
+                                                        
+
+                                                        if ( entity is Entity && EntidadNoAbstracta  )
+                                                        {
+                                                          //  var tCoreService  = new ApplicationRemoteFacadeCoreServiceCT(CBC, nombreprojecto, SharedKernelTree);
+                                                          //  tCoreService.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+"I"+entity.Name+"Service.cs";
+                                                          //  if (okDebug) Debug.WriteLine(string.Format("el tCoreService.Output.File  ='{0}'",tCoreService.Output.File ));
+                                                          //  tCoreService.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                          //  tCoreService.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                          //  tCoreService.Render();
+
+                                                            var tBaseSvc  = new ApplicationRemoteFacadeBaseSvcCT(CBC, nombreprojecto, SharedKernelTree);
+                                                            tBaseSvc.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Service.svc";
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el tBaseSvc.Output.File  ='{0}'",tBaseSvc.Output.File ));
+                                                            tBaseSvc.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            tBaseSvc.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            tBaseSvc.Render();
+
+                                                            var tBaseSvcCs  = new ApplicationRemoteFacadeBaseSvcCsCT(CBC, nombreprojecto, SharedKernelTree, estadoDeDesarrollo);
+                                                            tBaseSvcCs.Output.File = superfolder + entity.Name+System.IO.Path.DirectorySeparatorChar+entity.Name+"Service.svc.cs";
+                                                            tBaseSvcCs.Output.Metadata["DependentUpon"] = entity.Name+"Service.svc";
+                                                            tBaseSvcCs.Output.Metadata["SubType"] = "Code";
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el tBaseSvcCs.Output.File  ='{0}'",tBaseSvcCs.Output.File ));
+                                                            tBaseSvcCs.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            tBaseSvcCs.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            tBaseSvcCs.Render();
+                                                        }
+
+                                                        //if (( entity is Entity && EntidadNoAbstracta  )
+                                                        //{
+                                                            var tRepositoryLayer  = new ApplicationIocRepositoryLayer(CBC, nombreprojecto, SharedKernelTree, estadoDeDesarrollo, boundedContext);
+                                                            //t20.Output.File = T4Help.SecureName(secureBdName)+"Neutral.resx";
+                                                            tRepositoryLayer.Output.File = T4Help.SecureName(secureBdName)+"RepositoryLayer.cs";
+                                                            //tRepositoryLayer.Output.Metadata["DependentUpon"] = entity.Name+"Service.svc";
+                                                            tRepositoryLayer.Output.Metadata["SubType"] = "Code";
+                                                            //if (okDebug) Debug.WriteLine(string.Format("el tBaseSvcCs.Output.File  ='{0}'",tBaseSvcCs.Output.File ));
+                                                            tRepositoryLayer.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                            tRepositoryLayer.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                            tRepositoryLayer.Render();
+                                                        //}
+                                                        
+                                                        // La generación del fichero de configuración de unity es acumulativa (Al igual que los recursos) por tanto es necesario controlar las tres fases del mismo.
+                                                        // es decir en la primera fase inicializamos la cabecera en la segunda introducimos el contenido 
+                                                        // y en la tercera cerramos el fichero
+                                                        //string estadoDeDesarrollo = "desarrollo";
+                                                        //if(contadorDeEntidades == 1) estadoDeDesarrollo = "inicio"; 
+                                                        //if(contadorDeEntidades == totalDeEntidades ) estadoDeDesarrollo = "fin";
+                                                        //if(contadorDeEntidades == 1 & totalDeEntidades == 1) estadoDeDesarrollo = "soloUna";
+//
+                                                        //if (okDebug) Debug.WriteLine(string.Format("entidad ='{0}', estado = '{1}'",entity.Name, estadoDeDesarrollo));
+                                                        //var tUnityConfig   = new ApplicationRemoteBoundedContextUnityConfigCT(CBC, nombreprojecto, SharedKernelTree, estadoDeDesarrollo);
+                                                        //tUnityConfig.Output.File = secureBdName+"Unity21.config";
+                                                        //if (okDebug) Debug.WriteLine(string.Format("el tUnityConfig.Output.File  ='{0}'",tUnityConfig.Output.File ));
+                                                        //tUnityConfig.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                        //tUnityConfig.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension; // + "DistributedServices"+ System.IO.Path.DirectorySeparatorChar
+                                                        //tUnityConfig.Output.ItemType = ItemType.Content;
+                                                        //tUnityConfig.Output.Encoding = Encoding.UTF8;
+                                                        //tUnityConfig.Output.CopyToOutputDirectory = CopyToOutputDirectory.CopyAlways; 
+                                                        //
+                                                        ////t20.Output.CustomToolNamespace = secureBdName;
+                                                        //tUnityConfig.Output.Encoding = Encoding.UTF8;
+                                                        //tUnityConfig.Render();
+
+                                                        } // end if not abstract
+
+                                                        break;
+
+                                                }
+                                            } // end if (item.Data.Stereotype != EntityStereotypes.ExternalContext)
+                                                    
+                                            break;
+                                        case LayerKind.UxWpf:
+                                            switch (project.Name) // en este punto tenemos el projecto el nombre del projecto y la entidad
+                                            {
+                                                case "WpfStartUp":
+                                                    string estadoDeDesarrollo = "desarrollo";
+                                                    if(contadorDeEntidades == 1) estadoDeDesarrollo = "inicio"; 
+                                                    if(contadorDeEntidades == totalDeEntidades ) estadoDeDesarrollo = "fin";
+                                                    if(contadorDeEntidades == 1 & totalDeEntidades == 1) estadoDeDesarrollo = "soloUna";
+                                                                if(contadorDeEntidades == 1)
+                                                                {
+                                                                    var tUoW   = new BootstraperCT(CBC, nombreprojecto, SharedKernelTree);
+                                                                    tUoW.Output.File = "Bootstrapper.cs";
+                                                                    //if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tUoW.Output.File ));
+                                                                    tUoW.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                                    tUoW.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                                    tUoW.Output.Encoding = Encoding.UTF8;
+                                                                    tUoW.Render();
+
+
+                                                                    var tAppxaml   = new WpfStartUpAppXamlCT(CBC, nombreprojecto, SharedKernelTree);
+                                                                    tAppxaml.Output.File = "App.xaml";
+                                                                    tAppxaml.Output.PreserveExistingFile = false;
+                                                                    tAppxaml.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                                    tAppxaml.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                                    tAppxaml.Output.Encoding = Encoding.UTF8;
+                                                                    tAppxaml.Output.ItemType = ItemType.ApplicationDefinition ;// Las t4toolbox no tienen previsto este valor, si no se asigan de esta manera se producira un error de compilación por el que no se encuentra el metodo main. 
+                                                                    tAppxaml.Output.CustomTool = "MSBuild:Compile";
+                                                                    tAppxaml.Render();
+
+                                                                    var tAppxamlcs   = new WpfStartUpAppXamlCsCT(CBC, nombreprojecto, SharedKernelTree);
+                                                                    tAppxamlcs.Output.File = "App.xaml.cs";
+                                                                    tAppxamlcs.Output.PreserveExistingFile = false;
+                                                                    tAppxamlcs.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                                    tAppxamlcs.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                                    tAppxamlcs.Output.Encoding = Encoding.UTF8;
+                                                                    tAppxamlcs.Output.ItemType = ItemType.Compile;
+                                                                    tAppxamlcs.Output.Metadata["DependentUpon"] = @"App.xaml";
+                                                                    tAppxamlcs.Output.Metadata["SubType"] = "Code";
+                                                                    tAppxamlcs.Render();
+
+                                                                    var tac   = new UXAppConfigCT(CBC, nombreprojecto, SharedKernelTree, "soloUna" , TreeApp, MainDiagram);
+                                                                    tac.Output.File = "App.config";
+                                                                    tac.Output.PreserveExistingFile = false;
+                                                                    //if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tac.Output.File ));
+                                                                    tac.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                                    tac.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                                    tac.Output.Encoding = Encoding.UTF8;
+                                                                    tac.Render();
+                                                                }
+
+                                                break;
+                                                case "WpfModule":
+                                                    estadoDeDesarrollo = "desarrollo";
+                                                    if(contadorDeEntidades == 1) estadoDeDesarrollo = "inicio"; 
+                                                    if(contadorDeEntidades == totalDeEntidades ) estadoDeDesarrollo = "fin";
+                                                    if(contadorDeEntidades == 1 && totalDeEntidades == 1) estadoDeDesarrollo = "soloUna";
+
+                                                    var tmodule   = new PrismModuleCT(CBC, nombreprojecto, SharedKernelTree, estadoDeDesarrollo);
+                                                    tmodule.Output.File = T4Help.SecureName(secureBdName) + "Module.cs";
+                                                    //if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tmodule.Output.File ));
+                                                    tmodule.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                    tmodule.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                    tmodule.Output.Encoding = Encoding.UTF8;
+                                                    tmodule.Render();
+
+                                                    var tnVM   = new ModuleNavigationVMCT(CBC, nombreprojecto, SharedKernelTree, estadoDeDesarrollo);
+                                                    tnVM.Output.File = "NavigationRegions\\VM"+System.IO.Path.DirectorySeparatorChar + T4Help.SecureName(secureBdName) + "ModuleNavigationVM.cs";
+                                                    //if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tnVM.Output.File ));
+                                                    tnVM.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                    tnVM.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                    tnVM.Output.Encoding = Encoding.UTF8;
+                                                    tnVM.Render();
+
+                                                    var tnVM2   = new ModuleNavigationVMCT2(CBC, nombreprojecto, SharedKernelTree, estadoDeDesarrollo);
+                                                    tnVM2.Output.File = "NavigationRegions\\VM"+System.IO.Path.DirectorySeparatorChar + T4Help.SecureName(secureBdName) + "ModuleNavigationVM2.cs";
+                                                    //if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tnVM2.Output.File ));
+                                                    tnVM2.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                    tnVM2.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                    tnVM2.Output.Encoding = Encoding.UTF8;
+                                                    tnVM2.Render();
+
+                                                    var tNavigationXaml   = new ModuleNavigationXamlCT(CBC, nombreprojecto, SharedKernelTree, estadoDeDesarrollo);
+                                                    tNavigationXaml.Output.File = "NavigationRegions\\Views"+System.IO.Path.DirectorySeparatorChar + T4Help.SecureName(secureBdName) + "ModuleNavigation.xaml";
+                                                    tNavigationXaml.Output.PreserveExistingFile = false;
+                                                    tNavigationXaml.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                    tNavigationXaml.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                    tNavigationXaml.Output.Encoding = Encoding.UTF8;
+                                                    tNavigationXaml.Output.ItemType = "Page";// Las t4toolbox no tienen previsto este valor, si no se asigan de esta manera se producira un error de compilación por el que no se encuentra el metodo main. 
+                                                    tNavigationXaml.Output.CustomTool = "MSBuild:Compile";
+                                                    tNavigationXaml.Render();
+
+
+                                                    if(contadorDeEntidades == 1)
+                                                    {
+                                                    var tMtbVM  = new ModuleTaskBarVMCT(CBC, nombreprojecto, SharedKernelTree);
+                                                    tMtbVM.Output.File = "NavigationRegions\\VM"+System.IO.Path.DirectorySeparatorChar + T4Help.SecureName(secureBdName) +"ModuleTaskBarVM.cs";
+                                                    //if (okDebug) Debug.WriteLine(string.Format("el tMtbVM.Output.File  ='{0}'",tMtbVM.Output.File ));
+                                                    tMtbVM.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                    tMtbVM.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                    tMtbVM.Render();
+
+                                                    var tMrVM  = new ModuleRibbonVMCT(CBC, nombreprojecto, SharedKernelTree);
+                                                    tMrVM.Output.File = "NavigationRegions\\VM"+System.IO.Path.DirectorySeparatorChar + T4Help.SecureName(secureBdName) + "ModuleRibbonVM.cs";
+                                                    //if (okDebug) Debug.WriteLine(string.Format("el tMtbVM.Output.File  ='{0}'",tMrVM.Output.File ));
+                                                    tMrVM.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                    tMrVM.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                    tMrVM.Render();
+
+                                                    var tRibbonXaml   = new ModuleRibbonTabXamlCT(CBC, nombreprojecto, SharedKernelTree);
+                                                    tRibbonXaml.Output.File = "NavigationRegions\\Views" + System.IO.Path.DirectorySeparatorChar + T4Help.SecureName(secureBdName) + "ModuleRibbonTab.xaml";
+                                                    tRibbonXaml.Output.PreserveExistingFile = false;
+                                                    tRibbonXaml.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                    tRibbonXaml.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                    tRibbonXaml.Output.Encoding = Encoding.UTF8;
+                                                    tRibbonXaml.Output.ItemType = "Page";// Las t4toolbox no tienen previsto este valor, si no se asigan de esta manera se producira un error de compilación por el que no se encuentra el metodo main. 
+                                                    tRibbonXaml.Output.CustomTool = "MSBuild:Compile";
+                                                    tRibbonXaml.Render();
+
+                                                    var tRibbonXamlcs   = new ModuleRibbonTabXamlCsCT (CBC, nombreprojecto, SharedKernelTree);
+                                                    tRibbonXamlcs.Output.File = "NavigationRegions\\Views" + System.IO.Path.DirectorySeparatorChar + T4Help.SecureName(secureBdName) + "ModuleRibbonTab.xaml.cs";
+                                                    tRibbonXamlcs.Output.PreserveExistingFile = false;
+                                                    tRibbonXamlcs.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                    tRibbonXamlcs.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                    tRibbonXamlcs.Output.Encoding = Encoding.UTF8;
+                                                    tRibbonXamlcs.Output.ItemType = ItemType.Compile;
+                                                    tRibbonXamlcs.Output.Metadata["DependentUpon"] = T4Help.SecureName(secureBdName) + "ModuleRibbonTab.xaml";
+                                                    tRibbonXamlcs.Output.Metadata["SubType"] = "Code";
+                                                    tRibbonXamlcs.Render();
+
+                                                    var tTaskBarXaml   = new ModuleTaskBarXamlCT(CBC, nombreprojecto, SharedKernelTree);
+                                                    tTaskBarXaml.Output.File = "NavigationRegions\\Views" + System.IO.Path.DirectorySeparatorChar + T4Help.SecureName(secureBdName) + "ModuleTaskBarView.xaml";
+                                                    tTaskBarXaml.Output.PreserveExistingFile = false;
+                                                    tTaskBarXaml.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                    tTaskBarXaml.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                    tTaskBarXaml.Output.Encoding = Encoding.UTF8;
+                                                    tTaskBarXaml.Output.ItemType = "Page";// Las t4toolbox no tienen previsto este valor, si no se asigan de esta manera se producira un error de compilación por el que no se encuentra el metodo main. 
+                                                    tTaskBarXaml.Output.CustomTool = "MSBuild:Compile";
+                                                    tTaskBarXaml.Render();
+
+                                                    var tTaskBarXamlcs   = new ModuleTaskBarXamlCsCT(CBC, nombreprojecto, SharedKernelTree);
+                                                    tTaskBarXamlcs.Output.File = "NavigationRegions\\Views" + System.IO.Path.DirectorySeparatorChar + T4Help.SecureName(secureBdName) + "ModuleTaskBarView.xaml.cs";
+                                                    tTaskBarXamlcs.Output.PreserveExistingFile = false;
+                                                    tTaskBarXamlcs.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                    tTaskBarXamlcs.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                    tTaskBarXamlcs.Output.Encoding = Encoding.UTF8;
+                                                    tTaskBarXamlcs.Output.ItemType = ItemType.Compile;
+                                                    tTaskBarXamlcs.Output.Metadata["DependentUpon"] = T4Help.SecureName(secureBdName) + "ModuleTaskBarView.xaml";
+                                                    tTaskBarXamlcs.Output.Metadata["SubType"] = "Code";
+                                                    tTaskBarXamlcs.Render();
+
+                                     
+
+                                                    var tNavigationXamlcs   = new ModuleNavigationXamlCsCT(CBC, nombreprojecto, SharedKernelTree);
+                                                    tNavigationXamlcs.Output.File = "NavigationRegions\\Views" + System.IO.Path.DirectorySeparatorChar + T4Help.SecureName(secureBdName) + "ModuleNavigation.xaml.cs";
+                                                    tNavigationXamlcs.Output.PreserveExistingFile = false;
+                                                    tNavigationXamlcs.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                    tNavigationXamlcs.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                    tNavigationXamlcs.Output.Encoding = Encoding.UTF8;
+                                                    tNavigationXamlcs.Output.ItemType = ItemType.Compile;
+                                                    tNavigationXamlcs.Output.Metadata["DependentUpon"] = T4Help.SecureName(secureBdName) + "ModuleNavigation.xaml";
+                                                    tNavigationXamlcs.Output.Metadata["SubType"] = "Code";
+                                                    tNavigationXamlcs.Render();
+                                                    }
+
+                                                    if(CBC.MainEntityStereotype.Contains("Root") && EntidadNoAbstracta){
+                                                        var tQueryXaml   = new WpfEntityQueryViewXamlCT(CBC, nombreprojecto, SharedKernelTree);
+                                                        tQueryXaml.Output.File = "Entities\\Views"+System.IO.Path.DirectorySeparatorChar+entity.Name+"QueryView.xaml";
+                                                        tQueryXaml.Output.PreserveExistingFile = false;
+                                                        tQueryXaml.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                        tQueryXaml.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                        tQueryXaml.Output.Encoding = Encoding.UTF8;
+                                                        tQueryXaml.Output.ItemType = "Page";// Las t4toolbox no tienen previsto este valor, si no se asigan de esta manera se producira un error de compilación por el que no se encuentra el metodo main. 
+                                                        tQueryXaml.Output.CustomTool = "MSBuild:Compile";
+                                                        tQueryXaml.Render();
+
+                                                        var tQueryXamlcs   = new WpfEntityQueryViewXamlCsCT(CBC, nombreprojecto, SharedKernelTree);
+                                                        tQueryXamlcs.Output.File = "Entities\\Views"+System.IO.Path.DirectorySeparatorChar+entity.Name+"QueryView.xaml.cs";
+                                                        tQueryXamlcs.Output.PreserveExistingFile = false;
+                                                        tQueryXamlcs.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                        tQueryXamlcs.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                        tQueryXamlcs.Output.Encoding = Encoding.UTF8;
+                                                        tQueryXamlcs.Output.ItemType = ItemType.Compile;
+                                                        tQueryXamlcs.Output.Metadata["DependentUpon"] = entity.Name+"QueryView.xaml";
+                                                        tQueryXamlcs.Output.Metadata["SubType"] = "Code";
+                                                        tQueryXamlcs.Render();
+
+                                                        var tViewXaml   = new WpfEntityViewXamlCT(CBC, nombreprojecto, SharedKernelTree);
+                                                        tViewXaml.Output.File = "Entities\\Views"+System.IO.Path.DirectorySeparatorChar+entity.Name+"View.xaml";
+                                                        tViewXaml.Output.PreserveExistingFile = false;
+                                                        tViewXaml.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                        tViewXaml.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                        tViewXaml.Output.Encoding = Encoding.UTF8;
+                                                        tViewXaml.Output.ItemType = "Page";// Las t4toolbox no tienen previsto este valor, si no se asigan de esta manera se producira un error de compilación por el que no se encuentra el metodo main. 
+                                                        tViewXaml.Output.CustomTool = "MSBuild:Compile";
+                                                        tViewXaml.Render();
+
+                                                        var tViewXamlcs   = new WpfEntityViewXamlCsCT(CBC, nombreprojecto, SharedKernelTree);
+                                                        tViewXamlcs.Output.File = "Entities\\Views"+System.IO.Path.DirectorySeparatorChar+entity.Name+"View.xaml.cs";
+                                                        tViewXamlcs.Output.PreserveExistingFile = false;
+                                                        tViewXamlcs.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                        tViewXamlcs.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                        tViewXamlcs.Output.Encoding = Encoding.UTF8;
+                                                        tViewXamlcs.Output.ItemType = ItemType.Compile;
+                                                        tViewXamlcs.Output.Metadata["DependentUpon"] = entity.Name+"View.xaml";
+                                                        tViewXamlcs.Output.Metadata["SubType"] = "Code";
+                                                        tViewXamlcs.Render();
+
+                                                        var tEQVM  = new WpfEntityQueryViewModelCT(CBC, nombreprojecto, SharedKernelTree);
+                                                        tEQVM.Output.File = "Entities\\VM"+System.IO.Path.DirectorySeparatorChar+entity.Name+"QueryViewModel.cs";
+                                                        //if (okDebug) Debug.WriteLine(string.Format("el tEQVM.Output.File  ='{0}'",tEQVM.Output.File ));
+                                                        tEQVM.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                        tEQVM.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                        tEQVM.Render();
+
+                                                        var tEVM  = new WpfEntityViewModelCT(CBC, nombreprojecto, SharedKernelTree);
+                                                        tEVM.Output.File = "Entities\\VM"+System.IO.Path.DirectorySeparatorChar+entity.Name+"ViewModel.cs";
+                                                        //if (okDebug) Debug.WriteLine(string.Format("el tEVM.Output.File  ='{0}'",tEVM.Output.File ));
+                                                        tEVM.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                        tEVM.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                        tEVM.Render();
+                                                    }
+                                                break;
+                                                default:
+                                                break;
+                                            }
+                                            break;
+                                        case LayerKind.Testing:
+                                            switch (project.Name) // en este punto tenemos el projecto el nombre del projecto y la entidad
+                                            {
+                                                case "DomainLayer":
+
+                                                break;
+                                                case "InfrastructureLayer":
+                                                    
+                                                    if(contadorDeEntidades == 1)
+                                                    {
+                                                        var tIL  = new CreateSQLServerDataBaseTest(CBC, nombreprojecto, SharedKernelTree, boundedContext);
+                                                        tIL.Output.File = "CreateDatabaseTest001.cs";
+                                                        //if (okDebug) Debug.WriteLine(string.Format("el t11.Output.File  ='{0}'",tIL.Output.File ));
+                                                        tIL.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                        tIL.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                        tIL.Render();
+
+                                                        var tac   = new InfrastructureAppConfigCT(CBC, nombreprojecto, SharedKernelTree, boundedContext);
+                                                        tac.Output.File = "App.config";
+                                                        //if (okDebug) Debug.WriteLine(string.Format("el t20.Output.File  ='{0}'",tac.Output.File ));
+                                                        tac.projectNamespace = nombreprojecto; // el namespace del proyecto coincide con el nombre del mismo.
+                                                        tac.Output.Project = temppath + System.IO.Path.DirectorySeparatorChar  + System.IO.Path.DirectorySeparatorChar + nombreprojectoConExtension;
+                                                        tac.Output.Encoding = Encoding.UTF8;
+                                                        tac.Render();
+                                                     }
+                                                break;
+                                                case "ApplicationLayer":
+
+                                                break;                                                                                              
+                                                case "UXwpfLayer":
+
+                                                break; 
+                                                break; default:
+                                                break;
+                                            }
+                                            break;
+                                        default:
+                                        break;
+                                    } // END switch (layer.LayerType)
+
+                                } // END  foreach (Architecture.ArqLayer.ArqProject project in layer )
+                        } //END  if (FolderLayerName!=null)
+                    }  // End foreach layer
+                }// End foreach( entity )
+            }
+        }// end foreach (context)
+}
+#>

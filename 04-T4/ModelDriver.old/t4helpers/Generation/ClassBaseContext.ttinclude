@@ -1,0 +1,1834 @@
+﻿
+
+<#+ 
+
+    /// <summary>
+    /// Recopilación del contexto de una clase base. con todas su descripciones desplegadas en propiedades.
+    /// Esta clase tiene un único método de lectura del contexto.
+    /// el contexto tiene como misión pasarse como parametro a las plantillas de generación de codigo, recursos etc.
+    /// para que cada una de ellas no tenga la necesidad de realizar la recopilación de metadatos del contexto.
+    /// </summary>
+    public class ClassBaseContext
+    {
+
+    // parametros de la plantilla
+        public DslContextDefinitionDiagram  diagram ;
+        public ActiveSolution               solutionInfo ;
+        public ClassBase                    entity ;
+        public string                       projectNamespace;
+        public string                       secureBdName;
+    // fin de parametros de la plantilla
+
+    /*#Region Context Properties Declaration  */
+
+		/// <sumary>identificador permanente de la clase</sumary>
+		//public ClassGuid {get; set;}
+
+        /// <sumary>indicamos si la clase realiza borrado lógico o fisico</sumary>
+        public bool LogicDelete{get; set;}
+
+        /// <sumary>indicamos tamaño de datos se prevee tener </sumary>
+        public Int64 Volumen{get; set;}
+
+        /// <sumary>tooltip </sumary>
+        public string Tooltip{get; set;}
+
+        /// <sumary>uri local del icono </sumary>
+        public string Icono{get; set;}
+
+        /// <sumary>genero del la </sumary>
+        public string Gender{get; set;}
+
+        /// <sumary>genero del la </sumary>
+        public string GrammarCategory{get; set;}
+
+        /// <sumary>genero del la </sumary>
+        public string PluralName{get; set;}
+
+        /// <sumary>Nodo del boundeContext al que pertenece la clase</sumary>
+        public INode<LocalizedBounded> OwnBoundedContext {get; set;}
+
+        /// <sumary>arbol de clases del bounde context al que pertenece la clase</sumary>
+        public ITree<ClassBase> OwnClassBaseTreeBoundedContext = NodeTree<ClassBase>.NewTree();
+
+        /// <sumary>almacenamos la lista de clases base accesibles a la entidad es decir, la lista de clases base a la que pertenece el contexto de la entidad y todos los sharedkernels que pueda tener por debajo. </sumary>
+        public ITree<ClassBase> AccessibleClassBaseTree {get; set;} //ITree<ClassBase> GetAccessibleClassBaseList
+
+        /// <sumary>Indica si la clase en cuestión es una entidad </sumary>
+        public bool IsEntity {get; set;}
+
+        /// <sumary>Indica si se desea forzar manualmente esta entidad como root entiy </sumary>
+        public bool IsRoot {get; set;}
+
+        /// <sumary>Indica si el contexto pertenece a una objeto valor </sumary>
+        public bool IsObjectValue {get; set;}
+
+        /// <sumary>Indica si el contexto pertenece a un enumerado </sumary>
+        public bool IsEnumeration {get; set;}
+
+        /// <sumary>Indica si el contexto tiene atributos o relaciones </sumary>
+        public bool HasAttributesOrRelationships {get; set;}
+
+        /// <sumary>Indica si la clase (entidad u objeto valor ) tiene definido algun constructor,
+        /// en cuyo caso no se genera los constructores por defecto. 
+        ///Incluyendo entonces las precondiciones que existan en dicho constructor</sumary>
+        public bool HasConstructorDefinition {get; set;}
+
+        /// <sumary>Indica si la clase (entidad u objeto valor ) tiene definido algun destructor,
+        /// en cuyo caso no se genera los destructores por defecto. 
+        ///Incluyendo entonces las precondiciones que existan en dicho destructor</sumary>
+        public bool HasDestructorDefinition {get; set;}
+
+        /// <sumary>Indica si la clase (entidad u objeto valor ) tiene definido algun actualizador,
+        /// en cuyo caso no se genera los actualizadores por defecto. 
+        ///Incluyendo entonces las precondiciones que existan en dicho actualizador</sumary>
+        public bool HasUpdaterDefinition {get; set;}
+
+        /// <sumary>Indicamos en que tipo de relaciones de composición participa la clase que estamos procesando </sumary>
+        public KindComponented TypeComponent {get; set;}
+
+        /// <sumary>Indicamos si el bounded context al que pertenece la clase tiene o no enumerados, de
+        /// de forma que podamos decidir si se incluye el using de dicho ensamblado en la defición de la clase afectada.
+        ///</sumary>
+        public bool OwnBoundedContextHasEnums  {get; set;}
+
+        /// <sumary>Indicamos si alguna de las clases accesibles  a esta clase es o no un enumerado, de
+        /// de forma que podamos decidir si se incluye el using de dicho ensamblado en la defición de la clase afectada.
+        ///</sumary>
+        public bool AccesibleBoundedContextHasEnums  {get; set;}
+
+        /// <sumary>En esta cadena guardamos el tipo de la claseBase que estamos procesando e indica si es una entidad un objeto valor o un enumerado. </sumary>
+        public string ClassBaseTypeName {get; set;}
+
+        /// <sumary>Proporciona el nombre de la empresa para la que se hace el programa, se utiliza para construir los namespace </sumary>
+        public string company {get; set;}
+
+        /// <sumary>Proporciona el Tipo(Type) utilizado en las propiedades de identificación, que pueden ser autonumericos o guid </sumary>
+        public string idtype{get; set;}
+
+        /// <sumary>valor nulo para un id</sumary>
+        public string nullidtype{get; set;}
+
+        /// <sumary>Proporciona el nombre seguro de la clase base </sumary>
+        public string secureEntityName {get; set;}
+
+        /// <sumary>Proporciona el nombre seguro de la clase base de la cual deriva si existe.</sumary>
+        public string parentEntityName {get; set;}
+
+        /// <sumary>Proporciona el texto de los modificadores de acceso de la clase a generar.</sumary>
+        public string accesModifier {get; set;} //  GetStringAccesModifier
+
+        /// <sumary>Proporciona la versión en notación Pascal del nombre la clase base.</sumary>
+        public string pascalSecureEntityName {get; set;}
+
+        /// <sumary>Proporciona la versión en notación CamelCase del nombre la clase base.</sumary>
+        public string camelSecureEntityName {get; set;}
+
+        /// <sumary>Indica si la clase es abstracta o no.</sumary>
+        public bool isAbstract {get; set;}
+
+        /// <sumary>Almacenamos la lista de padres en los que interviene esta clase por composición o por herencia de clases que tiene composición.</sumary>
+        public List<FatherNode> ParentsStack {get; set;}
+
+        /// <sumary>.</sumary>
+        public int MaxLevelParentsStack {get; set;}
+
+        /// <sumary>Es la misma lista que ParentStack pero en orden inverso.</sumary>
+        public IEnumerable<FatherNode> ReverseParentsStack {get; set;}
+
+        /// <sumary> de la lista de ParentsStack obtenemos la lista de elementos que intervienen en el agregado al que pertenece la clase en curso.</sumary>
+        public List<ClassBaseMetadata> AgregateList {get; set;}
+
+        ///<sumary> para la enterior lista AgregateList Obtenemos los caminos más cortos entre sus relaciones para llegar a la clase padre</sumary>
+        public List<ClassAndRoles> PathsFromFatherToClass {get; set;}
+
+        /// <sumary>Almacenamos la lista de padres por herencia simple de clases que tiene composición.</sumary>
+        public List<ClassBase> SimpleInherintaceParentsStack {get; set;}
+
+        /// <sumary>Indica si de esta clase derivan otras clases.</sumary>
+        public bool entityHasChildren {get; set;}
+
+        /// <sumary>Proporciona el árbol de hijos que derivan de la clase base</sumary>
+        public ITree<ClassBase> entityChildren {get; set;}
+
+        /// <sumary>Proporciona una lista linkada de las propiedades directas de la clase base</sumary>
+        public LinkedElementCollection<Atributte> propertyObjects {get; set;} // este metodo es definido en el dsl domainRealtionship public partial class ClassBaseHasAtributtes 
+
+        /// <sumary>Proporciona La selección de propiedades directas que son obligatorias para el constructor por defecto</sumary>
+        public System.Collections.Generic.IEnumerable<kayak.MoneyGen.Atributte> mandatoryPropertyObjects {get; set;}
+
+        /// <sumary>Proporciona La selección de propiedades directas que son obligatorias para el constructor por defecto</sumary>
+        public System.Collections.Generic.IEnumerable<kayak.MoneyGen.Atributte> nonMandatoryPropertyObjects {get; set;}
+
+        /// <sumary>Número de propiedades directas que son requeridas en el constructor por defecto</sumary>
+        public int numEntityFieldsMandatory {get; set;}
+
+        /// <sumary>Número total de propiedades que tiene la clase base</sumary>
+        public int numEntityFields {get; set;}
+
+        /// <sumary>Lista propiedades provenientes de las relaciones que apuntan a esta clase base</sumary>
+        public System.Collections.Generic.IEnumerable<kayak.MoneyGen.Association> propertyAssociationTargets {get; set;} // lista de propiedades obtenidas de las relaciones de destino
+
+        /// <sumary>Lista propiedades mandatory (con multiplicidad minima 1) provenientes de las relaciones que apuntan a esta clase base</sumary>
+        public System.Collections.Generic.IEnumerable<kayak.MoneyGen.Association> mandatoryPropertyFromTargets {get; set;} // subconjunto de propiedades de tipo mandatory de las anteriores es decri cuya multiplicidad minima es uno
+
+        /// <sumary>Lista propiedades mandatory (con multiplicidad minima 1) provenientes de las relaciones que apuntan a esta clase base</sumary>
+        public System.Collections.Generic.IEnumerable<kayak.MoneyGen.Association> nonMandatoryPropertyFromTargets {get; set;} // subconjunto de propiedades de tipo mandatory de las anteriores es decri cuya multiplicidad minima es uno
+
+        /// <sumary>Lista propiedades provenientes de las relaciones que tiene como origen la clase base</sumary>
+        public System.Collections.Generic.IEnumerable<kayak.MoneyGen.Association> propertyAssociationSources {get; set;} // lista de propiedades provenientes de las relaciones de origen
+
+        /// <sumary>Lista propiedades mandatory (con multiplicidad minima 1) provenientes de las relaciones en las esta clase base actua como origen</sumary>
+        public System.Collections.Generic.IEnumerable<kayak.MoneyGen.Association> mandatoryPropertyFromSources {get; set;}// subconjunto de propiedades de tipo mandatory de las anteriores es decri cuya multiplicidad minima es uno 
+
+        /// <sumary>Lista propiedades mandatory (con multiplicidad minima 1) provenientes de las relaciones en las esta clase base actua como origen</sumary>
+        public System.Collections.Generic.IEnumerable<kayak.MoneyGen.Association> nonMandatoryPropertyFromSources {get; set;}// subconjunto de propiedades de tipo mandatory de las anteriores es decri cuya multiplicidad minima es uno 
+
+        /// <sumary>Lista de invariantes de la clase</sumary>
+        //public System.Collections.ObjectModel.ReadOnlyCollection<global::kayak.MoneyGen.ClassBaseHasInvariants> ClassInvariants{get; set;}
+        public Microsoft.VisualStudio.Modeling.LinkedElementCollection<Invariants> ClassInvariants{get; set;}
+
+        /// <sumary>Lista de los métodos de la clase</sumary>
+        //public global::System.Collections.ObjectModel.ReadOnlyCollection<global::kayak.MoneyGen.ClassBaseHasOperations> ClassMethods{get; set;}
+        public Microsoft.VisualStudio.Modeling.LinkedElementCollection<Operation> ClassMethods{get; set;}
+
+        /// <sumary>Número de relaciones en las que esta clase base es origen, es decir forma un rol y se convierte en propiedad</sumary>
+        public int sourceLinksCounter {get; set;}
+
+        /// <sumary>Número de relaciones en las que esta clase base es destino, es decir forma un rol y se convierte en propiedad</sumary>
+        public int targetLinksCounter {get; set;}
+
+        public int TotalLinksTargets {get; set;} 
+        public int TotalLinksSources {get; set;}
+
+        /// <sumary>Número de relaciones mandatory en las que esta clase base es origen</sumary>
+        public int mandatorySourceLinksCounter {get; set;}
+
+        /// <sumary>Número de relaciones mandatory en las que esta clase base es destino</sumary>
+        public int mandatoryTargetLinksCounter {get; set;}
+
+        /// <sumary>Número total de campos mandatory que provienen tanto de relaciones como de relaciones sin contar con el id</sumary>
+        public int TotalMandatoryProperties {get; set;}
+
+        /// <sumary>Margen de indentación para alguna de las apariciones del nombre de la clase base probablemente constructores</sumary>
+        public int spaceformatcounter {get; set;}
+
+        /// <sumary>Contador</sumary>
+        public int counter {get; set;}
+
+        /// <sumary>tipo</sumary>
+        public System.Type t {get; set;}
+
+        /// <sumary>indicador interno para evaluar si una propiedad es un tipo valor o no, Esta variable se utiliza para establecer si una propiedad nullable necesita que se le añada el signo de interrogación para marcar que puede tener valores nulos.</sumary>
+        public bool propertyIsValueType {get; set;}
+
+        /// <sumary>Indicamos que tipo de componente es la clase base.</sumary>
+        public KindComponented kindComponent {get; set;}
+
+        /// <sumary>Proporciona el nombre de la carpeta superfolder.</sumary>
+        public string superfolder {get; set;}
+
+        /// <sumary>Cadena que contiene la lista de parametros mandatory del constructor sin id ni relaciones ni tipos.</sumary>
+        public string MandatoryConstructorParamnsSimple {get; set;}//le sumamos 21 por que son loscaracteres que hay hasta el comienzo del texto donde utilizamos esta variable. 
+
+        /// <sumary>Cadena que contiene la lista de parametros del constructor.</sumary>
+        public string MandatoryConstructorParamns {get; set;}//le sumamos 21 por que son loscaracteres que hay hasta el comienzo del texto donde utilizamos esta variable. 
+
+        /// <sumary>Cadena que contiene la lista de parametros del constructor.</sumary>
+        public string MandatoryConstructorParamnsWithAll {get; set;}//le sumamos 21 por que son loscaracteres que hay hasta el comienzo del texto donde utilizamos esta variable. 
+
+        /// <sumary>Cadena que contiene la lista de parametros del constructor.</sumary>
+        public string MandatoryConstructorParamnsWithAllnoId {get; set;}//le sumamos 21 por que son loscaracteres que hay hasta el comienzo del texto donde utilizamos esta variable. 
+
+        /// <sumary>Cadena que contiene la lista de parametros del constructor.</sumary>
+        public string MandatoryConstructorParamnsWithOutDefaultValues {get; set;}//le sumamos 21 por que son loscaracteres que hay hasta el comienzo del texto donde utilizamos esta variable. 
+
+        /// <sumary>Cadena que contiene la lista de parametros del constructor.</sumary>
+        public string MandatoryConstructorParamnsCall {get; set;}//le sumamos 21 por que son los caracteres que hay hasta el comienzo del texto donde utilizamos esta variable. 
+
+        /// <sumary>Cadena que contiene la lista de parametros del constructor.</sumary>
+        public string MandatoryConstructorParamnsCallnoID {get; set;}//le sumamos 21 por que son los caracteres que hay hasta el comienzo del texto donde utilizamos esta variable. 
+
+        /// <sumary>Cadena que contiene la lista de parametros del create a apartir de un dto que se le pasa.</sumary>
+        public string MandatoryConstructorParamnsCallnoIDForDto {get; set;}//le sumamos 21 por que son los caracteres que hay hasta el comienzo del texto donde utilizamos esta variable. 
+
+        /// <sumary>Cadena que contiene la lista de parametros del constructor.</sumary>
+        public string MandatoryConstructorParamnsDTO {get; set;}//le sumamos 21 por que son los caracteres que hay hasta el comienzo del texto donde utilizamos esta variable. 
+
+        /// <sumary>Cadena que contiene la lista de parametros del constructor. Esta cadena se utiliza en las llamadas de los constructores (factorias).</sumary>
+        public string MandatoryEntityBaseConstructorParamans  {get; set;}
+
+        /// <sumary>Cadena que contiene la lista de parametros del constructor incluidos sus tipos. Esta cadena se utiliza en la definción de los constructores.</sumary>
+        public string MandatoryEntityBaseConstructorParamansDefinition {get; set;}
+
+        /// <sumary>Cadena que contiene la lista de parametros del constructor incluidos sus tipos. Esta cadena se utiliza en la definción de los constructores.</sumary>
+        public string MandatoryEntityBaseConstructorParamansCall {get; set;}
+
+        /// <sumary>Cadena que contiene la lista de parametros del constructor. Esta cadena se utiliza en las llamadas de los constructores (factorias). Para los DTO y mmapers</sumary>
+        public string MandatoryEntityBaseConstructorParamansDTO  {get; set;}
+
+        /// <sumary>Cadena que contiene la lista de parametros del constructor incluidos sus tipos. Para los DTO y mmapers. Esta cadena se utiliza en la definción de los constructores.</sumary>
+        public string MandatoryEntityBaseConstructorParamansDefinitionDTO {get; set;}
+        /// <sumary>Indicamos si la clase base es derivada de alguna otra.</sumary>
+        public bool isDerivedFromOneEntity {get; set;} // consultamos si esta entidad hereda de alguna otra por herencia simple del lenguaje.
+
+        /// <sumary>Obtenemos el nobre de la calse base de la que hereda si esta es derivada.</sumary>
+        public ClassBase entitySuperClass {get; set;}
+
+        /// <sumary>Indica si la clase de la que se deriva es abstracta o no.</sumary>
+        public bool isSuperEntityAbstract {get; set;}
+
+        /// <sumary>Indicamos de que interfaces base del framework debemos heredar en función de si estamos haciendo factorias, clases o respositorios etc.</sumary>
+        public string entityCore {get; set;}
+        /// <sumary>Indicamos de que interfaces base del framewor debemos heredar en función de si estamos haciendo factorias, clasesm respositorios etc.</sumary>
+        public string entityCoreFactory {get; set;}
+        /// <sumary>Indicamos de que interfaces base del framewor debemos heredar en función de si estamos haciendo factorias, clasesm respositorios etc.</sumary>
+        public string entityCoreRepository {get; set;}
+        /// <sumary>Indicamos de que interfaces base del framewor debemos heredar en función de si estamos haciendo factorias, clasesm respositorios etc.</sumary>
+        public string entityBaseRepository {get; set;}
+        /// <sumary>Indicamos de que interfaces base del framewor debemos heredar en función de si estamos haciendo factorias, clasesm respositorios etc.</sumary>
+        public string entityBase {get; set;}
+       /// <sumary> proporcionmos el esterotipo o la lista en el futuro de sterotipos</sumary>
+        public string Stereotype{get; set;}
+        /// <sumary> proporcionmos el esterotipo principal de entidad o root aggregate del framework de inflexion 2</sumary>
+        public string MainEntityStereotype{get; set;}
+    /*#Endregion Properties*/
+
+    /*Region Constructor & context Properties Initialization*/
+
+    public ClassBaseContext(DslContextDefinitionDiagram  d, ActiveSolution s, ClassBase e, string bd)
+        {
+        //TODO comprobaciones del diagrama 
+// 1) cualquier propiedad de "tipo valor" debe ser obligatorio si no esta marcado como nullable
+// 2) no se pueden permitir composiciones circulares
+// 3) si una propiedad tien valor minimo tiene que tener igualmente un valor máximo
+
+
+            bool okDebug= false;
+
+            this.diagram = d;
+            this.solutionInfo = s;
+            this.entity = e;
+            this.secureBdName = bd;
+            /* Inicializamos las propiedades del contexto*/
+			//this.ClassGuid = e.Id;
+            this.AccessibleClassBaseTree = GetAccessibleClassBaseTree(this.diagram.TreeApp, this.entity); 
+
+            this.propertyAssociationTargets = Association.GetLinksToTargets(this.entity).Where(p=> !(p.SourceRolName == null || p.SourceRolName.Trim().Length == 0)); // lista de propiedades obtenidas de las relaciones de destino
+            //this.mandatoryPropertyFromTargets = this.propertyAssociationTargets.Where( p=> p.TargetMultiplicity==kayak.MoneyGen.Multiplicity.OneOne || p.TargetMultiplicity==kayak.MoneyGen.Multiplicity.OneMany); // subconjunto de propiedades de tipo mandatory de las anteriores, esdecir cuya multiplicidad minima es uno
+            this.mandatoryPropertyFromTargets = this.propertyAssociationTargets.Where( p=> IsMinMultiplicityOne(p.TargetMultiplicity) ); // subconjunto de propiedades de tipo mandatory de las anteriores, esdecir cuya multiplicidad minima es uno
+            this.nonMandatoryPropertyFromTargets = this.propertyAssociationTargets.Where( p=> IsMinMultiplicityCero( p.TargetMultiplicity ) ); 
+
+            this.propertyAssociationSources = Association.GetLinksToSources(this.entity).Where(p=> !(p.TargetRolName == null || p.TargetRolName.Trim().Length == 0)); // lista de propiedades provenientes de las relaciones de origen
+            //this.mandatoryPropertyFromSources = this.propertyAssociationSources.Where( p=> p.SourceMultiplicity==kayak.MoneyGen.Multiplicity.OneOne || p.SourceMultiplicity==kayak.MoneyGen.Multiplicity.OneMany);// subconjunto de propiedades de tipo mandatory de las anteriores, esdecir cuya multiplicidad minima es uno 
+            this.mandatoryPropertyFromSources = this.propertyAssociationSources.Where( p=> IsMinMultiplicityOne(p.SourceMultiplicity));// subconjunto de propiedades de tipo mandatory de las anteriores, esdecir cuya multiplicidad minima es uno 
+            this.nonMandatoryPropertyFromSources = this.propertyAssociationSources.Where( p=> IsMinMultiplicityCero(p.SourceMultiplicity));// subconjunto de propiedades de tipo mandatory de las anteriores, esdecir cuya multiplicidad minima es uno 
+
+            this.sourceLinksCounter= this.propertyAssociationSources.Count();
+            this.targetLinksCounter= this.propertyAssociationTargets.Count();
+
+            this.mandatorySourceLinksCounter= this.mandatoryPropertyFromSources.Count();
+            this.mandatoryTargetLinksCounter= this.mandatoryPropertyFromTargets.Count();
+
+            this.TotalLinksTargets = Association.GetLinksToTargets(this.entity).Count();
+            this.TotalLinksSources = Association.GetLinksToSources(this.entity).Count();
+
+            this.ParentsStack = GetMandatoryFatherTaxonomi(this.entity, this.diagram.TreeApp);
+            
+            this.ClassInvariants = kayak.MoneyGen.ClassBaseHasInvariants.GetInvariants(this.entity); // este metodo esta definido en el dsl domainRealtionship
+            this.ClassMethods    = kayak.MoneyGen.ClassBaseHasOperations.GetOperations(this.entity); // este metodo esta definido en el dsl domainRealtionship
+
+            if (this.ParentsStack.Any())
+            {
+                this.ReverseParentsStack = ParentsStack.Reverse<FatherNode>();
+                this.MaxLevelParentsStack = this.ReverseParentsStack.FirstOrDefault().FatherLevel; // como el reverse es deferedload  esto obligara a rellenarlo
+                this.PathsFromFatherToClass = GetFathersRoadMap(this.ParentsStack);           //GetElementListFromAgregate(this.ParentsStack);
+                // this.AgregateList = null;//GetPathsFromDtoToFather( AgregateList, this.ReverseParentsStack); // este metodo solo se puede llamar cuando se ha terminado de rellenar la lista.
+                // this.PathsFromFatherToClass = GetPathsFromFatherToClass( this.ParentsStack, this.AgregateList);
+                
+            }
+
+            // primero validamos que los roles de las propiedades son correctas.
+            foreach (var property in propertyAssociationSources)
+            {
+                /* VALIDATIONS*/
+                if(string.IsNullOrEmpty(property.SourceRolName) & string.IsNullOrEmpty(property.TargetRolName))// si existe una relación almenos es necesario que exista un rol.
+                    throw new ArgumentNullException(string.Format("La entidad '{0}' tiene una relación con la entidad '{1}' que no tiene ningún nombre de rol en la relación. ", entity.Name, property.Source.Name));
+
+                if( string.IsNullOrEmpty(property.TargetRolName) & (property.SourceMultiplicity == kayak.MoneyGen.Multiplicity.OneOne | property.SourceMultiplicity == kayak.MoneyGen.Multiplicity.OneMany ))
+                    throw new ArgumentNullException(string.Format("La entidad '{0}' tiene una relación de composición (multiplicidad minima 1) con la entidad '{1}' en la que falta el 'el TargetRolName'. ", entity.Name, property.Source.Name));
+
+                if(string.IsNullOrEmpty(property.TargetRolName)) // Validación: Comprobamos que si no existe el nombre del rol source (significa que es una relación unidireccional y por tanto solo genera propiedad en la clase destino (target) y no en la clase  origen (source) la multiplicidad minima del target ha de ser cero. 
+                    if(property.SourceMultiplicity == kayak.MoneyGen.Multiplicity.CeroMany | property.SourceMultiplicity == kayak.MoneyGen.Multiplicity.CeroOne )
+                    {
+                        continue;
+                    }
+                    else throw new ArgumentNullException(string.Format("La entidad '{0}' tiene una relación con la entidad '{1}' en la que falta el nombre del TargetRol. ", entity.Name, property.Source.Name));
+
+                /*END VALIDATIONS*/
+            }
+
+            foreach (var property in propertyAssociationSources)
+            {
+                /* VALIDATIONS*/
+
+                if(string.IsNullOrEmpty(property.TargetRolName)) // Validación: Comprobamos que si no existe el nombre del rol source (significa que es una relación unidireccional y por tanto solo genera propiedad en la clase destino (target) y no en la clase  origen (source) la multiplicidad minima del target ha de ser cero. 
+                    if(property.SourceMultiplicity == kayak.MoneyGen.Multiplicity.CeroMany | property.SourceMultiplicity == kayak.MoneyGen.Multiplicity.CeroOne )
+                    {
+                        continue;
+                    }
+                    else throw new ArgumentNullException(string.Format("La entidad '{0}' tiene una relación con la entidad '{1}' en la que falta el nombre del TargetRol. ", entity.Name, property.Source.Name));
+
+                /*END VALIDATIONS*/
+            }
+
+            this.IsEntity = this.entity is Entity; // ClassBase
+            this.IsObjectValue = this.entity is ObjectValue;
+            this.IsEnumeration = this.entity is Enumeration;
+
+            HasAttributesOrRelationships = entityHasAttributesOrAssociations(entity);
+
+            this.kindComponent = WhatTypeComponented(this.entity);
+
+            if (this.IsEntity)
+                this.ClassBaseTypeName = "Entidad";
+            else if (this.IsObjectValue)
+                this.ClassBaseTypeName = "Objeto Valor";
+            else if (this.IsEnumeration)
+                this.ClassBaseTypeName = "Enumerado";
+
+            this.company = T4Help.SecureName(this.diagram.Company.ToString());
+            this.idtype = (diagram.IdKind.Equals("Autonumerical"))  ? "Int32" : "Guid";
+            this.nullidtype = (diagram.IdKind.Equals("Autonumerical"))  ? "0" : "Guid.Empty";
+            this.secureEntityName = T4Help.SecureName(this.entity.Name);
+            this.parentEntityName = null;
+            this.accesModifier = GetStringInherintaceClassModifier(this.entity.InheritanceClassModifier); //  GetStringAccesModifier
+            this.pascalSecureEntityName = T4Help.ToPascalCase(this.secureEntityName);
+            this.camelSecureEntityName = T4Help.ToCamelCase(this.secureEntityName);
+            this.isAbstract = ( this.entity.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Abstract ) == kayak.MoneyGen.InheritClassKeywords.Abstract;
+
+            
+            if (this.ClassMethods != null && this.ClassMethods.Count() >0)
+            {
+                if (okDebug) Debug.WriteLine( string.Format(" La entidad '{0}' tiene {1} métodos",this.pascalSecureEntityName, this.ClassMethods.Count() ));
+                this.HasConstructorDefinition = this.ClassMethods.Where(p => p.Name.Equals(this.pascalSecureEntityName)).Any();
+                this.HasDestructorDefinition = this.ClassMethods.Where(p => p.Name.Equals("Remove"+this.pascalSecureEntityName)).Any();
+                this.HasDestructorDefinition = this.ClassMethods.Where(p => p.Name.Equals("Update"+this.pascalSecureEntityName)).Any();
+            }
+            else
+            {
+                this.HasConstructorDefinition = false;
+                this.HasDestructorDefinition = false;
+                this.HasDestructorDefinition = false;
+            }
+
+            this.entityHasChildren = HasChildren(this.entity);
+            this.entityChildren = null;
+
+            this.propertyObjects = ClassBaseHasAtributtes.GetAtributtes(this.entity); // este metodo es definido en el dsl domainRealtionship public partial class ClassBaseHasAtributtes 
+            this.mandatoryPropertyObjects = this.propertyObjects.Where(att => att.RequestUponCreation == RequestUponCreation.yes);
+            this.nonMandatoryPropertyObjects = this.propertyObjects.Where(att => att.RequestUponCreation != RequestUponCreation.yes);
+            this.numEntityFieldsMandatory = this.propertyObjects.Where(att => att.RequestUponCreation == RequestUponCreation.yes).Count();
+            this.numEntityFields = this.propertyObjects.Count;
+
+
+            this.AccesibleBoundedContextHasEnums = this.AccessibleClassBaseTree.All.Nodes.Where(c => c is Enumeration).Any();
+
+            // primero obtenemos la referencia del nodo al que pertenece.
+            this.OwnBoundedContext = GetBoundeContextFromClassBase(this.diagram.TreeApp, this.entity);
+            // acontinaución añadimos el arbol de clases del bounded context.
+            this.OwnClassBaseTreeBoundedContext.AddChild( ReadClassesHierarchie(OwnBoundedContext.Data.Context.Value) );
+            // ya podemos investigar sobre el contexto de clases 
+
+            this.OwnBoundedContextHasEnums = this.OwnClassBaseTreeBoundedContext.All.Nodes.Where(c => c.Data is Enumeration).Any(); 
+
+            this.TotalMandatoryProperties = numEntityFieldsMandatory + mandatoryTargetLinksCounter + mandatorySourceLinksCounter;
+
+            this.spaceformatcounter= this.secureEntityName.ToString().Length+3+8+18;// dos espacios y el parentesis 8 de dos tabuladores minimo +
+            this.counter = 0;
+
+            this.propertyIsValueType = false;
+
+            this.superfolder = null;
+
+            this.MandatoryConstructorParamnsSimple          = GetConstructorParametersString( 
+                                                                                                entity,                                 /* entidad */
+                                                                                                diagram.IdKind.Equals("Autonumerical"), /* tipo id */
+                                                                                                SelectionCriteriaAttributes.Mandatory,  /* Selección de criterios */
+                                                                                                80,                                     /* Longitud máxima para activar el salto de parametros */
+                                                                                                false,                                   /* Incluir el tipo del parametro. Por ejemplo:incluye string, int etc*/
+                                                                                                spaceformatcounter,                  /* Indentación de los parametros cuando se salta */
+                                                                                                true,                                   /* incluirDefaultValues */
+                                                                                                false,                                  /* incluirId */
+                                                                                                false,                                  /* incluirTargetAssociations */
+                                                                                                false                                   /* incluirSourceAssociations */
+
+                                                                                             );//le sumamos 21 por que son loscaracteres que hay hasta el comienzo del texto donde utilizamos esta variable. ;
+
+            this.MandatoryConstructorParamns                = GetConstructorParametersString( 
+                                                                                                entity,                                 /* entidad */
+                                                                                                diagram.IdKind.Equals("Autonumerical"), /* tipo id */
+                                                                                                SelectionCriteriaAttributes.Mandatory,  /* Selección de criterios */
+                                                                                                80,                                     /* Longitud máxima para activar el salto de parametros */
+                                                                                                true,                                   /* Incluir el tipo del parametro. Por ejemplo:incluye string, int etc*/
+                                                                                                spaceformatcounter,                     /* Indentación de los parametros cuando se salta */
+                                                                                                true,                                   /* incluirDefaultValues */
+                                                                                                false,                                  /* incluirId */
+                                                                                                true,                                   /* incluirTargetAssociations */
+                                                                                                true,                                    /* incluirSourceAssociations */
+                                                                                                false,                                          /* pascalCase */
+                                                                                                null,                                           /* prefijo null*/
+                                                                                                null,                                           /* sufijo null*/
+                                                                                                true,                                           /* ObjectValueSpreadOut = true */
+                                                                                                this.diagram.ORM.Contains("ibernate")           /* useInterface = true*/  
+                                                                                             );//le sumamos 21 por que son loscaracteres que hay hasta el comienzo del texto donde utilizamos esta variable. ;
+            this.MandatoryConstructorParamnsDTO             = GetConstructorParametersString( 
+                                                                                                this.entity,                                    /* entidad */
+                                                                                                this.diagram.IdKind.Equals("Autonumerical"),    /* tipo id */
+                                                                                                SelectionCriteriaAttributes.Mandatory,          /* Selección de criterios */
+                                                                                                80,                                             /* Longitud máxima para activar el salto de parametros */
+                                                                                                false,                                           /* Incluir el tipo del parametro. Por ejemplo:incluye string, int etc*/
+                                                                                                spaceformatcounter,                             /* Indentación de los parametros cuando se salta */
+                                                                                                true,                                           /* incluirDefaultValues */
+                                                                                                false,                                          /* incluirId */
+                                                                                                true,                                           /* incluirTargetAssociations */
+                                                                                                true,                                           /* incluirSourceAssociations */
+                                                                                                true,                                           /* pascalCase */
+                                                                                                this.camelSecureEntityName+"Dto.",
+                                                                                                ""
+                                                                                             );//le sumamos 21 por que son loscaracteres que hay hasta el comienzo del texto donde utilizamos esta variable. 
+
+
+
+            this.MandatoryConstructorParamnsWithAll         = GetConstructorParametersString( 
+                                                                                                entity,                                     /* entidad */
+                                                                                                diagram.IdKind.Equals("Autonumerical"),     /* tipo id */
+                                                                                                SelectionCriteriaAttributes.Mandatory,      /* Selección de criterios */
+                                                                                                80,                                         /* Longitud máxima para activar el salto de parametros */
+                                                                                                true,                                       /* Incluir el tipo del parametro. Por ejemplo:incluye string, int etc*/
+                                                                                                spaceformatcounter,                      /* Indentación de los parametros cuando se salta */
+                                                                                                true,                                       /* incluirDefaultValues */
+                                                                                                true,                                       /* incluirId */
+                                                                                                true,                                       /* incluirTargetAssociations */
+                                                                                                true                                        /* incluirSourceAssociations */
+                                                                                                );//le sumamos 21 por que son loscaracteres que hay hasta el comienzo del texto donde utilizamos esta variable. ;
+
+            this.MandatoryConstructorParamnsWithAllnoId         = GetConstructorParametersString( 
+                                                                                                entity,                                     /* entidad */
+                                                                                                diagram.IdKind.Equals("Autonumerical"),     /* tipo id */
+                                                                                                SelectionCriteriaAttributes.Mandatory,      /* Selección de criterios */
+                                                                                                80,                                         /* Longitud máxima para activar el salto de parametros */
+                                                                                                true,                                       /* Incluir el tipo del parametro. Por ejemplo:incluye string, int etc*/
+                                                                                                spaceformatcounter,                         /* Indentación de los parametros cuando se salta */
+                                                                                                false,                                      /* incluirDefaultValues */
+                                                                                                false,                                      /* incluirId */
+                                                                                                true,                                       /* incluirTargetAssociations */
+                                                                                                true,                                       /* incluirSourceAssociations */
+                                                                                                false,                                      /* pascalCase */
+                                                                                                null,                                       /* prefijo null*/
+                                                                                                null,                                       /* sufijo null*/
+                                                                                                true,                                       /* ObjectValueSpreadOut = true */
+                                                                                                this.diagram.ORM.Contains("ibernate")                           /* useInterface = true*/
+                                                                                                );//le sumamos 21 por que son loscaracteres que hay hasta el comienzo del texto donde utilizamos esta variable. ;
+
+
+            this.MandatoryConstructorParamnsWithOutDefaultValues   = GetConstructorParametersString( 
+                                                                                                        entity,                                 /* entidad */
+                                                                                                        diagram.IdKind.Equals("Autonumerical"), /* tipo id */
+                                                                                                        SelectionCriteriaAttributes.Mandatory,  /* Selección de criterios */
+                                                                                                        80,                                     /* Longitud máxima para activar el salto de parametros */
+                                                                                                        true,                                   /* Incluir el tipo del parametro. Por ejemplo:incluye string, int etc*/
+                                                                                                        spaceformatcounter,                  /* Indentación de los parametros cuando se salta */
+                                                                                                        false,                                  /* incluirDefaultValues */
+                                                                                                        false,                                  /* incluirId */
+                                                                                                        true,                                   /* incluirTargetAssociations */
+                                                                                                        true                                    /* incluirSourceAssociations */
+                                                                                                    ); // nonMandatoryPropertyObjects inclumos los valores por derecto
+                
+            this.MandatoryConstructorParamnsCall            = GetConstructorParametersString( entity, diagram.IdKind.Equals("Autonumerical"), SelectionCriteriaAttributes.Mandatory, 80, false, spaceformatcounter, false, true, true , true );// le sumamos 21 por que son loscaracteres que hay hasta el comienzo del texto donde utilizamos esta variable. 
+            this.MandatoryConstructorParamnsCallnoID        = GetConstructorParametersString( 
+                                                                                                entity, 
+                                                                                                diagram.IdKind.Equals("Autonumerical"), 
+                                                                                                SelectionCriteriaAttributes.Mandatory, 
+                                                                                                80, 
+                                                                                                false, 
+                                                                                                spaceformatcounter, 
+                                                                                                false, 
+                                                                                                false, 
+                                                                                                true , 
+                                                                                                true, 
+                                                                                                false,                                          /* pascalCase */
+                                                                                                null,                                           /* prefijo null*/
+                                                                                                null,                                           /* sufijo null*/
+                                                                                                true,                                           /* ObjectValueSpreadOut = true */
+                                                                                                this.diagram.ORM.Contains("ibernate")           /* useInterface = true*/  
+                                                                                            );// le sumamos 21 por que son loscaracteres que hay hasta el comienzo del texto donde utilizamos esta variable. 
+
+
+
+
+
+            this.MandatoryConstructorParamnsCallnoIDForDto  = GetConstructorParametersString( 
+                                                                                                entity,                                     /* entidad */
+                                                                                                diagram.IdKind.Equals("Autonumerical"),     /* tipo id */
+                                                                                                SelectionCriteriaAttributes.Mandatory,      /* Selección de criterios */
+                                                                                                80,                                         /* Longitud máxima para activar el salto de parametros */
+                                                                                                false,                                      /* Incluir el tipo del parametro. Por ejemplo:incluye string, int etc*/
+                                                                                                spaceformatcounter,                      /* Indentación de los parametros cuando se salta */
+                                                                                                false,                                      /* incluirDefaultValues */
+                                                                                                false,                                      /* incluirId */
+                                                                                                true,                                       /* incluirTargetAssociations */
+                                                                                                true,                                       /* incluirSourceAssociations */
+                                                                                                true,                                       /* pascalCase */
+                                                                                                this.camelSecureEntityName+"Dto.",          /* prefijo */
+                                                                                                ""                                          /* sufijo */
+                                                                                            );
+
+            this.MandatoryEntityBaseConstructorParamans = "";
+            this.MandatoryEntityBaseConstructorParamansDefinition = "";
+            this.MandatoryEntityBaseConstructorParamansCall = "";
+            //this.MandatoryConstructorParamnsDTO = "";
+            this.MandatoryEntityBaseConstructorParamansDTO = "";
+            this.MandatoryEntityBaseConstructorParamansDefinitionDTO = "";
+
+            string temporal = null;
+            string temporalDefinition = null;
+
+            this.isDerivedFromOneEntity= IsDerived( this.entity); // consultamos si esta entidad hereda de alguna otra por herencia simple del lenguaje.
+            this.entitySuperClass = null;
+            this.entityCore =null;
+            this.entityCoreFactory =null;
+            this.entityCoreRepository =null;
+            this.entityBaseRepository =null;
+
+            
+
+            if (this.isDerivedFromOneEntity & false)
+            {
+                this.entitySuperClass = GetSuperEntity(this.entity); 
+                this.superfolder = GetSuperFolders(this.entity);
+
+                this.MandatoryEntityBaseConstructorParamansDefinition =                             
+                                            GetConstructorParametersString(                         
+                                                    this.entitySuperClass,                          /* entidad */
+                                                    this.diagram.IdKind.Equals("Autonumerical"),    /* tipo id */
+                                                    SelectionCriteriaAttributes.Mandatory,          /* Selección de criterios */
+                                                    80,                                             /* Longitud máxima para activar el salto de parametros */
+                                                    true,                                           /* Incluir el tipo del parametro. Por ejemplo:incluye string, int etc*/
+                                                    spaceformatcounter,                             /* Indentación de los parametros cuando se salta */
+                                                    false,                                          /* incluirDefaultValues */
+                                                    false,                                          /* incluirId */
+                                                    true,                                           /* incluirTargetAssociations */
+                                                    true,                                           /* incluirSourceAssociations */
+                                                    false,                                          /* pascalCase */
+                                                    null,                                           /* prefijo null*/
+                                                    null,                                           /* sufijo null*/
+                                                    true,                                           /* ObjectValueSpreadOut = true */
+                                                    this.diagram.ORM.Contains("ibernate")           /* useInterface = true*/                                          
+                                                  );
+
+                this.MandatoryEntityBaseConstructorParamans = 
+                                                    GetConstructorParametersString( 
+                                                    this.entitySuperClass,                          /* entidad */
+                                                    this.diagram.IdKind.Equals("Autonumerical"),    /* tipo id */
+                                                    SelectionCriteriaAttributes.Mandatory,          /* Selección de criterios */
+                                                    80,                                             /* Longitud máxima para activar el salto de parametros */
+                                                    false,                                          /* Incluir el tipo del parametro. Por ejemplo:incluye string, int etc*/
+                                                    spaceformatcounter,                          /* Indentación de los parametros cuando se salta */
+                                                    false,                                          /* incluirDefaultValues */
+                                                    true,                                           /* incluirId */
+                                                    true,                                           /* incluirTargetAssociations */
+                                                    true                                            /* incluirSourceAssociations */
+                                                    );                                              /* pascalCase */
+                                                                                                    /* prefijo */
+                                                                                                    /* sufijo */
+
+            }
+            if (this.isDerivedFromOneEntity)
+            {
+                this.SimpleInherintaceParentsStack = GetSimpleInherintaceParentsStack(this.entity);
+                this.entitySuperClass = GetSuperEntity(this.entity);
+                if(this.entitySuperClass.ReferencedRootEntity != null)
+                    this.entitySuperClass = GetClassBaseFromReferencedClassBase(this.diagram.TreeApp, this.entitySuperClass.ReferencedRootEntity);
+                this.parentEntityName = T4Help.ToPascalCase(this.entitySuperClass.Name);
+                this.isSuperEntityAbstract = (this.entitySuperClass.InheritanceClassModifier & kayak.MoneyGen.InheritClassKeywords.Abstract ) == kayak.MoneyGen.InheritClassKeywords.Abstract;
+                this.superfolder = GetSuperFolders(this.entity);
+                this.MandatoryConstructorParamnsDTO = GetConstructorParametersString( this.entity, this.diagram.IdKind.Equals("Autonumerical"),SelectionCriteriaAttributes.Mandatory, 80, false, spaceformatcounter, true, false, true, true, true, this.camelSecureEntityName+"Dto.","");//le sumamos 21 por que son loscaracteres que hay hasta el comienzo del texto donde utilizamos esta variable. 
+                this.MandatoryEntityBaseConstructorParamansDTO = GetConstructorParametersStringTaxonomi(this.diagram.TreeApp, this.entity, this.diagram.IdKind.Equals("Autonumerical"),SelectionCriteriaAttributes.Mandatory, 80,    false,        spaceformatcounter, false,                true,      true,                      true).Trim();
+                this.MandatoryEntityBaseConstructorParamansDefinitionDTO = GetConstructorParametersStringTaxonomi(this.diagram.TreeApp, this.entity, this.diagram.IdKind.Equals("Autonumerical"),SelectionCriteriaAttributes.Mandatory, 80, true,           spaceformatcounter, false,                false,      true,                      true).Trim();
+
+                if(IsDerived(this.entitySuperClass ))
+                    this.MandatoryEntityBaseConstructorParamans =              GetConstructorParametersStringTaxonomi(this.diagram.TreeApp, this.entitySuperClass, this.diagram.IdKind.Equals("Autonumerical"),SelectionCriteriaAttributes.Mandatory, 80, false,           spaceformatcounter, false,                true,      true,                      true).Trim();
+                else
+                {
+                    // si es derivada necesitamos el id como parametro pero su valor ha de ser "NullId"
+                    this.MandatoryEntityBaseConstructorParamans =              
+                        GetConstructorParametersString( 
+                                                        this.entitySuperClass, 
+                                                        this.diagram.IdKind.Equals("Autonumerical"),
+                                                        SelectionCriteriaAttributes.Mandatory, 
+                                                        80, 
+                                                        false, 
+                                                        spaceformatcounter, 
+                                                        false, 
+                                                        false, 
+                                                        true, 
+                                                        true).Trim();
+                    
+                    this.MandatoryEntityBaseConstructorParamans = T4Help.joinParams("NullId", MandatoryEntityBaseConstructorParamans);
+                }
+
+                this.MandatoryEntityBaseConstructorParamansDefinition = GetConstructorParametersStringTaxonomi(
+                    this.diagram.TreeApp,                           
+                    this.entity,                                    /* entidad */
+                    this.diagram.IdKind.Equals("Autonumerical"),    /* tipo id */
+                    SelectionCriteriaAttributes.Mandatory,          /* Selección de criterios */
+                    80,                                             /* Longitud máxima para activar el salto de parametros */
+                    true,                                           /* Incluir el tipo del parametro. Por ejemplo:incluye string, int etc*/
+                    spaceformatcounter,                             /* Indentación de los parametros cuando se salta */
+                    false,                                          /* incluirDefaultValues */
+                    false,                                          /* incluirId */
+                    true,                                           /* incluirTargetAssociations */
+                    true,                                           /* incluirSourceAssociations */
+                     false,                              /* pascalCase */
+                     null,                                  /* prefijo null*/
+                     null/* ,                                   sufijo null*/
+                     /*true ,                   ObjectValueSpreadOut = true */
+                       /*false                          useInterface = true*/
+                    ).Trim();
+
+                this.MandatoryEntityBaseConstructorParamansCall = GetConstructorParametersStringTaxonomi(
+                    this.diagram.TreeApp,                           
+                    this.entity,                                    /* entidad */
+                    this.diagram.IdKind.Equals("Autonumerical"),    /* tipo id */
+                    SelectionCriteriaAttributes.Mandatory,          /* Selección de criterios */
+                    80,                                             /* Longitud máxima para activar el salto de parametros */
+                    false,                                           /* Incluir el tipo del parametro. Por ejemplo:incluye string, int etc*/
+                    spaceformatcounter,                          /* Indentación de los parametros cuando se salta */
+                    false,                                          /* incluirDefaultValues */
+                    false,                                          /* incluirId */
+                    true,                                           /* incluirTargetAssociations */
+                    true                                            /* incluirSourceAssociations */
+                    ).Trim();                                       /* pascalCase */
+                                                                    /* prefijo */
+                                                                    /* sufijo */
+
+                this.MandatoryConstructorParamnsWithOutDefaultValues = GetConstructorParametersStringTaxonomi(this.diagram.TreeApp, this.entity, this.diagram.IdKind.Equals("Autonumerical"),SelectionCriteriaAttributes.Mandatory, 80, false,           spaceformatcounter, false,                false,      true,                      true).Trim();
+            }
+
+            if (false)//(this.isDerivedFromOneEntity)
+            {
+                // cuando creamos los constructores de clases que derivan a de otras tenemos que incluir los parametros de la superclase los cuales colocamos despues de los propios.
+                //por esa razón nos vemos obligados a cosntruir la lista de parametors en dos tandas. en la primera la de los propios en la segunda los de la superclase.
+                this.MandatoryConstructorParamnsDTO = GetConstructorParametersString( this.entity, this.diagram.IdKind.Equals("Autonumerical"),SelectionCriteriaAttributes.Mandatory, 80, false, spaceformatcounter, true, false, true, true, true, this.camelSecureEntityName+"Dto.","");//le sumamos 21 por que son loscaracteres que hay hasta el comienzo del texto donde utilizamos esta variable. 
+                this.MandatoryEntityBaseConstructorParamansDTO        =         GetConstructorParametersString( this.entity, this.diagram.IdKind.Equals("Autonumerical"),SelectionCriteriaAttributes.Mandatory, 80,    false,        spaceformatcounter, false,                true,      true,                      true).Trim();
+                                                temporal          = GetConstructorParametersStringSuperClasess( this.entity, this.diagram.IdKind.Equals("Autonumerical"),SelectionCriteriaAttributes.Mandatory, 80,    false,        spaceformatcounter, false,                false,      true,                      true).Trim();
+                if (String.IsNullOrEmpty( this.MandatoryEntityBaseConstructorParamansDTO) & temporal.StartsWith(",") ) 
+                    temporal = temporal.Trim().Substring(1); // si no la entidad no tiene atributos mandatory entonces tenemos que quitar la coma con que empieza la lista de atributos mandatory heredados
+                else if (!String.IsNullOrEmpty( this.MandatoryEntityBaseConstructorParamansDTO) & MandatoryEntityBaseConstructorParamansDTO.EndsWith(",") & temporal.StartsWith(",") )
+                    temporal = temporal.Trim().Substring(1);
+                else if (!String.IsNullOrEmpty( this.MandatoryEntityBaseConstructorParamansDTO) & !String.IsNullOrEmpty(temporal) & !MandatoryEntityBaseConstructorParamansDTO.EndsWith(",") & !temporal.StartsWith(",") )
+                        temporal = ", " +temporal;
+
+                this.MandatoryEntityBaseConstructorParamansDTO             = MandatoryEntityBaseConstructorParamansDTO + temporal;
+                this.MandatoryEntityBaseConstructorParamansDefinitionDTO   =             GetConstructorParametersString( this.entity, this.diagram.IdKind.Equals("Autonumerical"),SelectionCriteriaAttributes.Mandatory, 80, true,           spaceformatcounter, false,                false,      true,                      true).Trim();
+                                              temporalDefinition        = GetConstructorParametersStringSuperClasess( this.entity, this.diagram.IdKind.Equals("Autonumerical"),SelectionCriteriaAttributes.Mandatory, 80, true,           spaceformatcounter, false,                false,      true,                      true).Trim();
+
+            if (String.IsNullOrEmpty( this.MandatoryEntityBaseConstructorParamansDefinitionDTO) & temporalDefinition.StartsWith(",") ) 
+                temporalDefinition = temporalDefinition.Trim().Substring(1); // si no la entidad no tiene atributos mandatory entonces tenemos que quitar la coma con que empieza la lista de atributos mandatory heredados
+            else if (!String.IsNullOrEmpty( this.MandatoryEntityBaseConstructorParamansDefinitionDTO) & MandatoryEntityBaseConstructorParamansDefinitionDTO.EndsWith(",") & temporalDefinition.StartsWith(",") )
+                temporalDefinition = temporalDefinition.Trim().Substring(1);
+            else if (!String.IsNullOrEmpty( this.MandatoryEntityBaseConstructorParamansDefinitionDTO) & !String.IsNullOrEmpty(temporalDefinition) & !this.MandatoryEntityBaseConstructorParamansDefinitionDTO.EndsWith(",") & !temporalDefinition.StartsWith(",") )
+                    temporalDefinition = ", " +temporalDefinition;
+
+                this.MandatoryEntityBaseConstructorParamansDefinitionDTO = this.MandatoryEntityBaseConstructorParamansDefinitionDTO + temporalDefinition;
+            }
+
+            if(this.entity.Auditable)
+            {
+                if (this.IsEntity)
+                {
+                    this.entityCore                     = this.company+".Framework.Domain.Core.IAuditableEntity<"+this.idtype +">";
+                    this.entityCoreFactory              = this.company+".Framework.Domain.Core.IEntityFactory<I"+this.secureEntityName+", "+this.idtype +">";
+                    this.entityCoreRepository           = this.company+".Framework.Domain.Core.IReadWriteAuditableRepository<I"+this.secureEntityName+", "+this.idtype +">";
+                    this.entityBaseRepository           = this.company+".Framework.Domain.Base.ReadWriteAuditableRepositoryBase<I"+this.secureEntityName+", "+this.idtype +">";
+
+                    this.entityBase                     = this.company+".Framework.Domain.Base.AuditableEntityBase<"+this.idtype +">";
+                }
+                else if (this.IsObjectValue)
+                {
+                    this.entityCore                     =  this.company+".Framework.Domain.Core.IValueObject<I"+this.secureEntityName+">";
+                    this.entityCoreFactory              =  "";/* un objeto valor no hereda de nada en su factoria*/
+                    this.entityCoreRepository           =  "";/* los objetos valor no tienen respositorios*/
+                    this.entityBaseRepository           =  "";/* los objetos valor no tienen respositorios*/
+                    this.entityBase                     = this.company+".Framework.Domain.Base.ValueObjects.ValueObjectBase<I"+this.secureEntityName +">";
+                }
+            }
+            else
+            {
+                if (this.IsEntity)
+                {
+                    this.entityCore                     = this.company+".Framework.Domain.Core.IEntity<I"+this.secureEntityName+", "+this.idtype +">/*this.entityCore */";
+                    this.entityCoreFactory              = this.company+".Framework.Domain.Core.IEntityFactory<I"+this.secureEntityName+", "+this.idtype +">/*this.entityCoreFactory  */";
+                    this.entityCoreRepository           = this.company+".Framework.Domain.Core.IReadWriteRepository<I"+this.secureEntityName+", "+this.idtype +">/*this.entityCoreRepository */";
+                    this.entityBaseRepository           = this.company+".Framework.Domain.Base.ReadWriteRepositoryBase<I"+this.secureEntityName+", "+this.idtype +">";
+                    this.entityBase                     = this.company+".Framework.Domain.Base.EntityBase<"+this.idtype +">";
+                }
+                else if (this.IsObjectValue)
+                {
+                    this.entityCore                     =  this.company+".Framework.Domain.Core.IValueObject<I"+this.secureEntityName+">/*this.entityCore                     =*/";
+                    this.entityCoreFactory              =  "";/* un objeto valor no hereda de nada en su factoria*/
+                    this.entityCoreRepository           =  "";/* los objetos valor no tienen respositorios*/
+                    this.entityBaseRepository           =  "";/* los objetos valor no tienen respositorios*/
+                    this.entityBase                     = this.company+".Framework.Domain.Base.ValueObjectBase<I"+this.secureEntityName +">";
+                }
+            }
+
+            if ( this.entityHasChildren )
+            {
+                this.entityChildren = ReadClassesHierarchie(this.entity);
+            }
+
+    this.IsRoot = entity.IsRoot; // por defecto marcamos el valor que tiene en el diagrama.
+    // ha continuación evaluamos si hay alguna condición que establezca a true este valor.
+
+    if (this.IsEntity && !this.isAbstract && this.entitySuperClass != null && !this.isDerivedFromOneEntity)
+    {
+        if (this.TotalLinksTargets == 0 && this.TotalLinksSources == 0)
+        {// si se trata de una entidad aislada debe ser raiz.
+            this.IsRoot = true;
+        }
+        // si es entidad y en todas las relaciones que participa ninguna relación introduce una propiedad, es raiz.
+        if (this.sourceLinksCounter == 0 && this.targetLinksCounter == 0)
+        {
+            this.IsRoot = true;
+        }
+    }
+
+            this.Stereotype = entity.Stereotype.ToString();
+            this.MainEntityStereotype = entity.MainEntityStereotype.ToString();
+            this.LogicDelete      =   entity.LogicDelete;   
+            
+            this.Volumen            =   entity.Volumen;         
+            this.Tooltip            =   entity.Tooltip.ToString();         
+            this.Icono              =   entity.Icono.ToString();           
+            this.Gender             =   entity.Gender.ToString();          
+            this.GrammarCategory    =   entity.GrammarCategory.ToString(); 
+            this.PluralName         =   entity.PluralName.ToString();      
+
+        }// finalización del constructor e inicialización del contexto
+
+    public void DebugContext()
+        {
+        Debug.WriteLine( string.Format(" IsEntity '{0}'",IsEntity));  
+
+        /// <sumary>Indica si el contexto pertenece a una objeto valor </sumary>
+        Debug.WriteLine( string.Format(" IsObjectValue '{0}'",IsObjectValue));
+
+        /// <sumary>Indica si el contexto pertenece a un enumerado </sumary>
+        Debug.WriteLine( string.Format(" IsEnumeration '{0}'",IsEnumeration));
+
+        /// <sumary>Proporciona el nombre de la empresa para la que se hace el programa, se utiliza para construir los namespace </sumary>
+        Debug.WriteLine( string.Format(" company '{0}'",company));
+
+        /// <sumary>Proporciona el Tipo(Type) utilizado en las propiedades de identificación, que pueden ser autonumericos o guid </sumary>
+        Debug.WriteLine( string.Format(" idtype '{0}'",idtype));
+
+        /// <sumary>Proporciona el nombre seguro de la clase base </sumary>
+        Debug.WriteLine( string.Format(" secureEntityName '{0}'",secureEntityName));
+
+        /// <sumary>Proporciona el nombre seguro de la clase base de la cual deriva si existe.</sumary>
+        Debug.WriteLine( string.Format(" parentEntityName '{0}'",parentEntityName));
+
+        /// <sumary>Proporciona el texto de los modificadores de acceso de la clase a generar.</sumary>
+        Debug.WriteLine( string.Format(" accesModifier '{0}'",accesModifier));
+
+        /// <sumary>Proporciona la versión en notación Pascal del nombre la clase base.</sumary>
+        Debug.WriteLine( string.Format(" pascalSecureEntityName '{0}'",pascalSecureEntityName));
+
+        /// <sumary>Proporciona la versión en notación CamelCase del nombre la clase base.</sumary>
+        Debug.WriteLine( string.Format(" camelSecureEntityName '{0}'",camelSecureEntityName));
+
+        /// <sumary>Indica si la clase es abstracta o no.</sumary>
+        Debug.WriteLine( string.Format(" isAbstract '{0}'",isAbstract));
+
+        /// <sumary>Indica si de esta clase derivan otras clases.</sumary>
+        Debug.WriteLine( string.Format(" entityHasChildren '{0}'",entityHasChildren));
+
+        if (entityHasChildren)
+            {
+                Debug.WriteLine("Los hijos de la entidad son:");
+                foreach (var child in this.entityChildren.All.Nodes)
+                {
+                    Debug.WriteLine( string.Format("    '{0}'",child.Data.Name));
+                }
+            }
+
+        Debug.WriteLine("Los Propiedades de la entidad son:");
+        foreach (var property in this.propertyObjects)
+        {
+            Debug.WriteLine( string.Format("    '{0}'",property.AtributteName));
+        }
+
+        }
+    }
+
+#>
+
+<#+
+    public class ClassBaseMetadata
+    {
+        public ClassBase Father         {get;set;}
+        public int FatherLevel          {get;set;} // el nivel hace referencia a la distancia que hay entre un padre mandatory y la clase en cuestion
+        public bool FromComposition     {get;set;} // si es true el padre proviene de composición en caso contrario proviene de herencia
+        public int NumXorComposition    {get;set;} // indica si la composición es condicional con otra
+        public int  HasHardComposition  {get;set;} // indica si la relación de composición es doble como en el caso entre empresa y socio en el que una empresa no puede existir sin un socio y un socio no puede exisitir sin una empresa
+        public int  FatherReflexions    {get;set;} // indica cuantas relaciones de reflexión tiene el padre. aunqeu sean con agrgación es neccesario tenerlas encuanta si tenemos que crear una nueva
+        public int  FatherTotalCounter  {get;set;} // indica cuantas veces aparece la clase padre como padre
+        public int  FatherPosition      {get;set;} // indica que prosición relativa tiene un padre con respecto al número de veces que aparece.
+        public bool FatherIsEntity      {get;set;}
+        public bool FatherIsObjectValue {get;set;}
+        public bool FatherIsEnumeration {get;set;}
+        public bool ChildIsLeaf         {get;set;}
+        public string DtoRoad           {get;set;}    // cadena de texto con el la lista de las clases necesarias para obtener. Este string se obtiene una vez que la lista de agregados esta rellena por completo, pues es ncesario recorrerla.
+                                                      // si hay una composicion xor entre los padres podemos encontrarnos con varios caminos para establecer un dto.
+                                                      // la situación más compleja es que las composiciones xor ademas intervengan en un diamante.
+        public ClassBaseMetadata()
+        {}
+
+        public ClassBaseMetadata( FatherNode fN, bool father) /* fN fatherNode si father es true procesamos el padre sino el hijo.*/
+        {
+            if (father)
+            {
+                this.Father                = fN.Father             ;
+                this.FatherLevel           = fN.FatherLevel        ;
+                this.FromComposition       = fN.FromComposition    ;
+                this.NumXorComposition     = fN.NumXorComposition   ;
+                this.HasHardComposition    = fN.HasHardComposition ;
+                this.FatherReflexions      = fN.FatherReflexions   ;
+                this.FatherTotalCounter    = fN.FatherTotalCounter ;
+                this.FatherPosition        = fN.FatherPosition     ;
+                this.FatherIsEntity        = fN.FatherIsEntity     ;
+                this.FatherIsObjectValue   = fN.FatherIsObjectValue;
+                this.FatherIsEnumeration   = fN.FatherIsEnumeration;
+                this.ChildIsLeaf           = false;
+            }
+            else
+            {
+                this.Father                = fN.Child             ;
+                this.FatherLevel           = fN.FatherLevel        ;
+                this.FromComposition       = fN.FromComposition   ;
+                this.NumXorComposition     = fN.NumXorComposition  ;
+                this.HasHardComposition    = fN.HasHardComposition;
+                this.FatherReflexions      = fN.ChildReflexions   ;
+                this.FatherTotalCounter    = 0 ;
+                this.FatherPosition        = 0     ;
+                this.FatherIsEntity        = fN.ChildIsEntity     ;
+                this.FatherIsObjectValue   = fN.ChildIsObjectValue;
+                this.FatherIsEnumeration   = fN.ChildIsEnumeration;
+                this.ChildIsLeaf           = fN.ChildIsLeaf;
+            }
+        }
+    }
+#>
+
+<#+
+///<sumary> esta clase se usa para hacer una lista de las clases padres con sus roles, y se utiliza para encontrar los parametros de los servicios create
+///<sumary/>
+    public class ClassAndRoles
+    {
+        public ClassBase Clase         {get;set;}
+        public string TargetRolName     {get;set;}
+        public string SourceRolName     {get;set;}
+        public ClassBase ClaseHija       {get;set;}
+
+        public ClassAndRoles()
+        {}
+
+        public ClassAndRoles(ClassBase clase, string sourceRol, string targetRol, ClassBase claseHija)
+        {
+            this.Clase  = clase;
+            this.SourceRolName = sourceRol;
+            this.TargetRolName = targetRol;
+            this.ClaseHija = claseHija;
+        }
+    }
+#>
+
+<#+
+    // esta clase se utiliza exclusivamente pra construir la colección de padres de una entidad 
+    public class FatherNode : IComparable<FatherNode>
+    {
+        public ClassBase Father         {get;set;}
+        public int FatherLevel          {get;set;} // el nivel hace referencia a la distancia que hay entre un padre mandatory y la clase en cuestion
+        public bool FromComposition     {get;set;} // si es true el padre proviene de composición en caso contrario proviene de herencia
+        public bool IsXorComposition    {get;set;} // indica si la composición es condicional con otra, y cuantas veces. Todas se deben encontrar en el mismo nivel.
+        public int  NumXorComposition   {get;set;} // una vez que hemos rellenado el stack contamos cuantas entidades tenemos en xor.
+        public int HasHardComposition   {get;set;} // indica si la relación de composición es doble como en el caso entre empresa y socio en el que una empresa no puede existir sin un socio y un socio no puede exisitir sin una empresa
+        public int  FatherReflexions    {get;set;} // indica cuantas relaciones de reflexión tiene el padre. aunqeu sean con agrgación es neccesario tenerlas encuanta si tenemos que crear una nueva
+        public int  FatherTotalCounter  {get;set;} // indica cuantas veces aparece la clase padre como padre
+        public int  FatherPosition      {get;set;} // indica que posición relativa tiene un padre con respecto al número de veces que aparece.
+        public bool FatherIsEntity      {get;set;}
+        public bool FatherIsObjectValue {get;set;}
+        public bool FatherIsEnumeration {get;set;}
+        public bool AllChildrenAreLeaves {get;set;} // indica si la totalidad de clases que tiene un padre son todos hojas, es decir ninguna es una entidad que asu vez sea padre de alguna otra. Esta proppiedad se utiliza para construir la jerarquia de dtos cuando una entidad se desea utilizar como rootagregate.
+        public string TargetRolName     {get;set;}
+
+        public ClassBase Child          {get;set;}
+        public bool ChildIsEntity       {get;set;}
+        public bool ChildIsObjectValue  {get;set;}
+        public bool ChildIsEnumeration  {get;set;}
+        public int  ChildReflexions     {get;set;} // indica cuantas relaciones de reflexión tiene el hijo.
+        public bool ChildIsLeaf         {get;set;} // indica si la clase hija que aparece en una relación de composición no tiene despues otros componentes.Este valor no se pued determinar hasta que no se tien la lista entera de padres.
+        public string SourceRolName     {get;set;}
+
+        public FatherNode()
+        {
+        }
+
+        public FatherNode(ClassBase father, bool fromComposition, ClassBase child, string sourceRol, string targetRol, bool isXorComposition = false)
+        {
+            this.Father                 = father;
+            this.FatherLevel            = 0;
+            this.FromComposition        = fromComposition; // si no proviene de una composición proviene de una herencia.
+            this.IsXorComposition       = isXorComposition;
+            this.FatherIsEntity         = this.Father is Entity;
+            this.FatherIsObjectValue    = this.Father is ObjectValue;
+            this.FatherIsEnumeration    = this.Father is Enumeration;
+            this.FatherReflexions       = HasReflexive(this.Father);
+            this.Child                  = child;
+            this.ChildIsEntity          = this.Child is Entity;
+            this.ChildIsObjectValue     = this.Child is ObjectValue;
+            this.ChildIsEnumeration     = this.Child is Enumeration;
+            this.ChildReflexions        = HasReflexive(this.Child);
+            this.SourceRolName          = sourceRol; 
+            this.TargetRolName          = targetRol;
+
+            this.HasHardComposition     = GetHardCompositionsIn2Classes(this.Father, this.Child).Count();
+        }
+
+        public FatherNode(ClassBase father, bool fromComposition, ClassBase child, bool isXorComposition = false)
+        {
+            this.Father                 = father;
+            this.FatherLevel            = 0;
+            this.FromComposition        = fromComposition; // si no proviene de una composición proviene de una herencia.
+            this.IsXorComposition       = isXorComposition;
+            this.FatherIsEntity         = this.Father is Entity;
+            this.FatherIsObjectValue    = this.Father is ObjectValue;
+            this.FatherIsEnumeration    = this.Father is Enumeration;
+            this.FatherReflexions       = HasReflexive(this.Father);
+            this.Child                  = child;
+            this.ChildIsEntity          = this.Child is Entity;
+            this.ChildIsObjectValue     = this.Child is ObjectValue;
+            this.ChildIsEnumeration     = this.Child is Enumeration;
+            this.ChildReflexions        = HasReflexive(this.Child);
+            this.SourceRolName          = null; // en las relaciones de herencia no hay sourceRol 
+            this.TargetRolName          = null; // en las relaciones de herencia no hay targeRol
+
+            this.HasHardComposition     = GetHardCompositionsIn2Classes(this.Father, this.Child).Count();
+        }
+
+        public int CompareTo(FatherNode other)
+        {
+            if (this.FatherLevel == other.FatherLevel)
+            {
+                if ((this.FromComposition & other.FromComposition) || (!this.FromComposition & !other.FromComposition))
+                    return 0;
+                if (!this.FromComposition & other.FromComposition)// tiene preferencia la herencia sobre la composición
+                    return 1;
+                if (this.FromComposition & !other.FromComposition)
+                    return -1;
+            }
+            
+                return this.FatherLevel.CompareTo(other.FatherLevel);
+            
+        }
+    }
+#>
+
+<#+
+    // Para obtener el árbol de clases padre provenientes de herencia y composición es necesario 
+    // recorrer ambos árboles con una pila de recursividad de forma que primero almacenamos en dicha pila los padres o 
+    // vamos creando un Stack (Opcionalmente que pueda distinguir en sus nodos de ambos elementos).</br>
+    static public List<FatherNode> GetMandatoryFatherTaxonomi(ClassBase claseOrigen, ITree<LocalizedBounded> treeApp)
+    {
+        bool okDebug = claseOrigen.Name.Equals("Bloque");
+        ClassBase centinelaH = null; // herencia
+        ClassBase anteriorH = null;  // herencia guardamos el anterior para saber de donde proviene
+        ClassBase centinelaC = null; // composición
+        bool centinelaDobleRelacion;
+
+        List<FatherNode> StackElements = new List<FatherNode>();
+        System.Collections.Generic.IEnumerable<kayak.MoneyGen.Association> mandatoryPropertyFromSources;
+        int numCompositions;
+        if (okDebug) Debug.WriteLine( string.Format(" 0 La clase origen es ='{0}'",claseOrigen.Name));
+        if (IsDerived(claseOrigen))
+        {
+            centinelaH = claseOrigen;
+            do
+            {
+                anteriorH = centinelaH;
+                centinelaH = GetSuperEntity(centinelaH);
+                if (okDebug) Debug.WriteLine( string.Format(" 2 Deriva de ='{0}'",centinelaH.Name));
+
+                FatherNode f = new FatherNode(centinelaH, false, anteriorH);
+                StackElements.Add(f);
+                CheckFatherStack(StackElements, "llamada 9");
+
+                /* buscamos las composiciones locales*/
+                mandatoryPropertyFromSources = GetMandatoryLinksFromsources(centinelaH);
+                numCompositions = mandatoryPropertyFromSources.Count();
+                if (okDebug) Debug.WriteLine( string.Format(" que tiene ='{0}' composiciones",numCompositions));
+                var item = mandatoryPropertyFromSources.GetEnumerator();
+                while (item.MoveNext())
+                {
+                    centinelaC = item.Current.Source;
+                    if (numCompositions == 1) 
+                    {
+                        if (okDebug) Debug.WriteLine( string.Format(" composición entre '{0}' y '{1}'", centinelaC.Name, centinelaH));
+
+                        // Las relaciones de composición entre dos clases referenciadas no se tienen en cuenta. Esto se ha cambiado si se tienen encuenta
+                        //if (centinelaC.ReferencedRootEntity == null && centinelaH.ReferencedRootEntity == null)
+                        //{
+                            f = new FatherNode( centinelaH ,true, centinelaC, !string.IsNullOrEmpty(item.Current.XorRelation));
+                            StackElements.Add(f);
+                        //};
+                        var fathers = GetMandatoryLinksFromsources(centinelaC);
+                        if( fathers.Count() >0 ) 
+                        {
+                            StackElements.AddRange(GetMandatoryFathersList(centinelaC));
+                        }
+                    }
+                    if (numCompositions > 1)
+                    {
+                        StackElements.AddRange(GetMandatoryFathersList(centinelaC));
+                    }
+                }
+                /*fin de las composiciones locales */
+
+                if ( centinelaH.ReferencedRootEntity != null)
+                { // este if es el responsable de que la lista de padres no sea en linea.
+                    
+                    if (okDebug) Debug.WriteLine( string.Format(" 3 Atención: La entidad  ='{0}'es una referencia.",centinelaH.Name));
+                    centinelaH = GetClassBaseFromReferencedClassBase(treeApp, centinelaH.ReferencedRootEntity);
+
+                    // antes de añadir una composición, es necesario comprobar si existen dobles composiciones es decir
+                    // si existe entre la clase en curso y otra la misma relación de composición Ejemplo Roles y realtionships.
+                    // si es asi  podemos añadir las dos pero no debemos recorrer recursivamente las dos hacia atras por que
+                    // repetiriamos cualquier otra relación que tenga la segunda clase.
+                    // vamos a comprobar que en el stack no esta repetido la composición que acabamos de añadir
+                    // y de esta forma evitar un doble recorrido recursivo de la segunda relación
+                    centinelaDobleRelacion = false;// este centinela nos indica si ya existe una relación de composición entre las mismas clases que vamos a añadir
+                    foreach (var composition in StackElements)
+                    {
+                        // en este if es conveniente tener encuenta que la comparación se tiene que hacer desde el padre al hijo de forma correcta.
+                        if (composition.Father.Name.Equals(centinelaH) && composition.FromComposition && composition.Child.Name.Equals(centinelaC.Name))
+                            centinelaDobleRelacion = true;
+                    }
+                    //HowManyIdenticalCompositions(StackElements, centinelaH, centinelaC);
+
+                    if(IsDerived( centinelaH ) )
+                    {
+                        StackElements.AddRange(GetMandatoryFatherTaxonomi(centinelaH, treeApp));
+                        CheckFatherStack(StackElements, "llamada 4");
+                    }
+                    else
+                    {
+                        if (!centinelaDobleRelacion)
+                        {
+                            // en este punto es posible que nos encontremos con que tenemos relaciones de composición repetidas 
+                            // entre 2 clases que pertenecen a un shared kernel
+                            // esto se hace para clarificar le diagrama pero estas relaciones no se deberian tener encuenta 
+                            // por que introducen relaciones dobles falsas.
+                            StackElements.AddRange(GetMandatoryFathersList(centinelaH));
+                        }
+                    }
+
+                }
+                
+            } while (IsDerived( centinelaH ));
+        }
+        else
+        {
+            centinelaC = claseOrigen;
+            //if ( centinelaH.ReferencedRootEntity != null)
+            //{
+                //centinelaH = GetClassBaseFromReferencedClassBase(treeApp, centinelaH.ReferencedRootEntity);
+            //}
+            mandatoryPropertyFromSources = GetMandatoryLinksFromsources(centinelaC);
+            if (okDebug) Debug.WriteLine( string.Format(" C: La clase tiene {0} composiciones",mandatoryPropertyFromSources.Count()));
+            if (mandatoryPropertyFromSources != null)
+            if (okDebug) Debug.WriteLine( string.Format(" 0 La clase origen es ='{0}'",claseOrigen.Name));
+            foreach (var item in mandatoryPropertyFromSources)
+            {
+                if (okDebug) Debug.WriteLine( string.Format(" y tiene una composición source con '{0}'",item.Source.Name));
+
+                // antes de añadir una composición, es necesario comprobar si existen dobles composiciones es decir
+                // si existe entre la clase en curso y otra la misma relación de composición Ejemplo Roles y realtionships.
+                // si es asi  podemos añadir las dos pero no debemos recorrer recursivamente las dos hacia atras por que
+                // repetiriamos cualquier otra relación que tenga la segunda clase.
+                     // vamos a comprobar que en el stack no esta repetido la composición que acabamos de añadir
+                    // y de esta forma evitar un doble recorrido recursivo de la segunda relación
+                centinelaDobleRelacion = false;
+                foreach (var composition in StackElements)
+                {
+                    if (composition.Father.Name.Equals(centinelaC.Name) && composition.FromComposition && composition.Child.Name.Equals(item.Source.Name))
+                        centinelaDobleRelacion = true;
+                }
+
+                if ( item.Source.ReferencedRootEntity == null) // si no es una clase referenciada la añadimos (que pertenece a otro contexto)
+                {
+                    if (okDebug) Debug.WriteLine( string.Format(" {0}' no es una clase referenciada por lo tanto la añadimos y vamos a mirar su taxonomia",item.Source.Name));
+                    
+                    
+                    StackElements.Add(new FatherNode(centinelaC, true, item.Source, item.SourceRolName, item.TargetRolName, !string.IsNullOrEmpty(item.XorRelation)));
+                    StackElements.AddRange(GetMandatoryFatherTaxonomi(item.Source, treeApp));
+                    //StackElements.AddRange(GetMandatoryFathersList(item.Source));
+                } 
+                else
+                { 
+                    if (okDebug) Debug.WriteLine( string.Format(" 1 La clase '{0}' es referenciada",item.Source.Name));
+                    ClassBase entidadReferenciada = GetClassBaseFromReferencedClassBase(treeApp, item.Source.ReferencedRootEntity );
+                    if (entidadReferenciada == null ) Debug.WriteLine( string.Format(" 1 La clase '{0}' proporciona una clase nula",item.Source.Name));
+                    StackElements.Add(new FatherNode(centinelaC, true, entidadReferenciada, item.SourceRolName, item.TargetRolName, !string.IsNullOrEmpty(item.XorRelation)));
+                    //StackElements.AddRange(GetMandatoryFatherTaxonomi(entidadReferenciada, treeApp));
+                    // StackElements.AddRange(GetMandatoryFathersList(entidadReferenciada));
+                    //StackElements.Add(new FatherNode(centinelaC, true, entidadReferenciada, !string.IsNullOrEmpty(item.XorRelation)));
+                }
+
+
+
+                if(IsDerived( item.Source ) )
+                {
+                    StackElements.AddRange(GetMandatoryFatherTaxonomi(item.Source, treeApp));
+                }
+                else
+                {
+                    if (!centinelaDobleRelacion)
+                        StackElements.AddRange(GetMandatoryFathersList(item.Source));
+                }
+            }
+        }
+
+       
+        SetWeigthToFatherStack(ref StackElements);
+        SetLeafMarkToFatherStack(ref StackElements);
+        StackElements.Sort();
+        FatherChildrenCounter(ref StackElements);
+        SetAreAllChildrenLeaves(ref StackElements);
+return StackElements;
+}
+#>
+
+<#+
+// lectura recursiva de los padres mandatory de una clase
+// se devuelve en una lista pues aunque pudiera haber varios padres 
+// estos se deben comportar en conjunto como si solo hubiera una lista.
+// el objeto de esto es obtener en el orden correcto los parametros de los constructores y de los servicios de create.
+ public static List<FatherNode> GetMandatoryFathersList(ClassBase classBase )
+{
+    List<FatherNode> ClassBaseList = new List<FatherNode>();
+    FatherNode f ;
+    System.Collections.Generic.IEnumerable<kayak.MoneyGen.Association> mandatoryPropertyFromSources = GetMandatoryLinksFromsources(classBase);
+
+    System.Collections.Generic.IEnumerable<kayak.MoneyGen.Association> Remainderlist;
+
+    foreach (var item in mandatoryPropertyFromSources)
+    {
+        if (item.Source.ReferencedRootEntity == null & classBase.ReferencedRootEntity== null)
+        {
+            f = new FatherNode( classBase,true, item.Source );
+            ClassBaseList.Add(f);
+        }
+        Remainderlist = GetMandatoryLinksFromsources(item.Source);
+        if (Remainderlist != null)
+        {
+            ClassBaseList.AddRange(GetMandatoryFathersList(item.Source));
+            CheckFatherStack(ClassBaseList, "llamada **");
+        }
+    }
+
+    return ClassBaseList;
+}
+#>
+
+<#+
+ public static List<ClassBase> GetSimpleInherintaceParentsStack(ClassBase entity)
+{
+    List<ClassBase> SuperClassStack = null;
+    ClassBase superclass = entity;
+    if (IsDerived(entity))
+    {
+        SuperClassStack = new List<ClassBase>();
+        bool centinela = true;
+        while (centinela)
+        {
+            superclass = GetSuperEntity(superclass);
+            SuperClassStack.Add(superclass);
+            centinela = IsDerived(superclass);
+        }
+    }
+    return SuperClassStack;
+}
+#>
+
+<#+
+    public static void CheckFatherStack(List<FatherNode> stackElements, string identityLabel)
+    {
+        int i =0;
+        int j = 0;
+        foreach (var item in stackElements)
+        {
+            i++;
+            foreach (var itemComparative in stackElements)
+            {
+                j++;
+                if (i == j) continue;
+                if (
+                    item.Father.Name.Equals(itemComparative.Father.Name) &
+                    item.Child.Name.Equals(itemComparative.Child.Name) &
+                    item.FromComposition == true &
+                    item.FromComposition == itemComparative.FromComposition
+                    )
+                {
+
+                    // aqui habria que comprobar que entre las clases que compramos no existe efectivamente dos composiciones
+                    // pero como solo se trata de encontrar el origen del problema esto es suficiente.
+                    Debug.WriteLine("");
+                    Debug.WriteLine( string.Format(" ERROR: Se ha añadido dos veces una composición entre '{0}' y '{1}' desde '{2}' posición {3}",item.Father.Name, itemComparative.Child.Name, identityLabel, j));
+                    Debug.WriteLine("");
+                    foreach (var f in stackElements)
+                    {
+                        Debug.WriteLine( string.Format("  '{0}' {1} '{2}'",f.Father.Name, (f.FromComposition)?"composición":"herencia" ,f.Child.Name));
+                    }
+                }
+            }
+            j = 0;
+        }
+    }
+#>
+
+<#+
+    /// <summary>
+    /// devolvemos el número de relaciones de composición que hay entre dos clases dadas
+    /// </summary>
+    public static int HowManyIdenticalCompositions(List<FatherNode> stackElements,ClassBase father, ClassBase child)
+    {
+        return 0;
+    }
+#>
+
+<#+
+    /// <summary>
+    /// Obtenemos una lista sin repetición de todas las clases que intervienen como padres de la clase.
+    /// </summary>
+    public static List<ClassBaseMetadata> GetElementListFromAgregate(List<FatherNode> stackElements)
+    {
+        if (stackElements == null || !stackElements.Any() ) return null;
+       
+        List<ClassBaseMetadata> listElements = new List<ClassBaseMetadata>();
+
+        int isPreviusAdded;
+        foreach (var item in stackElements)
+        {
+            isPreviusAdded = 0;
+            foreach (var itemAdded in listElements)
+            {
+                // si la clase ya se ha añadido o no es una entidad (objeto valor o enumerado) simplement no se añade.
+                //if ( item.Father.Name.Equals(itemAdded.Father.Name) || /*!(item.Father is Entity) )*/ isPreviusAdded = isPreviusAdded | 1);
+                //if ( item.Child.Name.Equals(itemAdded.Father.Name)  || /*!(item.Child is Entity) )*/ isPreviusAdded = isPreviusAdded | 2);
+                // si se quiere obtener un lista de todas las clases y no solo de entidades entonces solo hay que quitar la condición despues del 1er OR.
+                // finalmente hemos dejado tambien a los objetos valor por que incluso estos pueden participar de relaciones de herencia o composición
+            }
+
+            if (item.FromComposition) 
+            {
+             if( ( isPreviusAdded &(isPreviusAdded<<0)) == 0 ) listElements.Add(new ClassBaseMetadata(item, true)); // añadimos un padre
+             if( ( isPreviusAdded &(isPreviusAdded<<1)) == 0) listElements.Add(new ClassBaseMetadata(item, false)); // añadimos un hijo
+            }
+            else // si no es de composición cambiamos el orden.
+            {
+             if( ( isPreviusAdded &(isPreviusAdded<<1)) == 0) listElements.Add(new ClassBaseMetadata(item, false)); // añadimos un hijo
+             if( ( isPreviusAdded &(isPreviusAdded<<0)) == 0 ) listElements.Add(new ClassBaseMetadata(item, true)); // añadimos un padre
+            }
+        }
+        
+        return listElements;
+    }
+#>
+
+<#+
+    /// <summary>
+    /// Para cada una de las clases que intervienen como padres por herencia o composición creamos una lista de clases
+    /// en las que indicamos como se llega hasta la clase que nos interesa o que hemos 
+    /// calificado de root agregate.
+    /// solo tenemos que recorrer las clases que son entidades, los objetos valor no intervienen como "puentes"
+    /// es decir no pueden actuar como nexos.
+    /// Este Metodo tambien es un ejemplo de como recorrer la pila de padres para ir estrayendo información. Pero se deberia dividir en varios metodos más especificos e incrementar el numero de parametros.
+    /// </summary>
+    public static List<List<ClassBase>> GetPathsFromFatherToClass( List<FatherNode> parentsStack, List<ClassBaseMetadata> agregateList)
+    {
+        if ( parentsStack == null || agregateList == null) return null;
+
+        ClassBase CB = agregateList.FirstOrDefault().Father; // la clase que va a actuar como punto de referencia (root agregate) es la primera de la lista.
+        List<List<ClassBase>> PathList = new List<List<ClassBase>>(); // creamos la lista de listas de clases
+        bool StartToAdd =false;
+        foreach (var item in agregateList) // recorremos la lista de entidades y objetos valor del agregado.
+        {
+            List<ClassBase> NewPath = new List<ClassBase>(); // añadimos la lista de clases base sobre la que pondremos la lista más corta que llega desde la clase en cuestión hasta el root agregate
+            foreach (var item2 in parentsStack)
+            {
+                if (item2.FromComposition)// si proviene de una herencia pasamos al siguiente sin añadir ninguna clase
+                {
+                    if (item2.Father.Name.Equals(item.Father.Name) && item2.FatherPosition == 1)// cuando encontramos la clase de la cual queremos 
+                    {
+                        StartToAdd = true;
+                        //NewPath.Add(item2.Father);
+                    }
+
+                    if ( item2.Child.Name.Equals(item.Father.Name) && item2.ChildIsLeaf)// cuando encontramos la clase de la cual queremos 
+                    {
+                        NewPath.Add(item2.Child);
+                        break;
+                    }
+                    if (StartToAdd)
+                    {
+                            // antes de añadir comprobamos que la clase no esta añadida o simplemente miramos que su posición es 1
+                        if (item2.FatherPosition == 1) // solo añadimos el padre la primera vez que aparece
+                            NewPath.Add(item2.Father);
+                        if (item2.ChildIsLeaf)              // solo añadimos las hojas por que las clases que actuan como ramas aparecen despues como padres.
+                            NewPath.Add(item2.Child);
+                    }
+                    
+                }
+            }
+            PathList.Add(NewPath);
+            StartToAdd =  false; 
+        }
+        return PathList;
+    }
+#>
+
+
+<#+
+    /// <summary>
+    /// Obtenemos una lista que recorre los elementos que intervienen como padres de la clase en cuestion desde el root agregate.
+    /// para ello vamos almacenanado por orden en la lista las composiciones que necesitamos desde la clase hasta el root agregate.
+    ///
+    ///La lista de clases padre va almacenando por orden de creación la clase con el target rol name con el que es referenciada. ademas del rol name propio
+    /// esto significa que 
+    /// </summary>
+    public static List<ClassAndRoles> GetFathersRoadMap(List<FatherNode> stackElements )
+    {
+        bool okDebug = true;
+        if (okDebug) Debug.WriteLine( string.Format(" empezamos " ));
+
+        if (stackElements == null || stackElements.Count()== 0) return null;
+        List<ClassAndRoles> listElements = new List<ClassAndRoles>(); // guardamos la lista de clases para 
+        //List<string> EntityStackAdded = new List<string>();
+        List<string> EntidadesProcesadas = new List<string>();
+        System.Collections.ObjectModel.ReadOnlyCollection<global::kayak.MoneyGen.Association> LinksSourceTarget = null;
+        //GetLinks( global::kayak.MoneyGen.ClassBase source, global::kayak.MoneyGen.ClassBase target )
+       // ClassBase PadreDelPadre = null; // aqui vamos guardando el padre anterior si existe.
+       // string TargetRolNameReferencia = null; // es el target rol name con el que es referenciado en la clase padre que lo compone.
+
+        //int nivel = 0;
+        //ClassBase FinalClass = stackElements.FirstOrDefault().Father; // La primera clase de la lista de clases es la raiz. y corresponde al primer hijo de stackelements
+        foreach (var item in stackElements.Where(c => c.Child is Entity && c.Father is Entity && c.FromComposition))
+        {
+
+        if (okDebug) Debug.WriteLine( string.Format(" Para la clase '{0}' en composición con '{1}' ",item.Father.Name, item.Child.Name ));
+
+            LinksSourceTarget = AssociationBase.GetLinks(  item.Child, item.Father );
+            int NumAsociations = LinksSourceTarget.Count();
+
+            bool procesada = false; // Las entidades root solo pueden aparecer una vez
+            foreach (string entidadNombre in EntidadesProcesadas)
+            {
+                if (entidadNombre.Equals( item.Child.Name) ) procesada = true;
+            }
+
+            //if (!EntidadesProcesadas.Exist( c => c.Equals(item.Child.Name) ) ) //if ( !EntityStackAdded.Exist( element => element.Equals(item.Child.Name) ) ) 
+            if (!procesada ) 
+            {
+                // en este momento comprobamos si la entidad que vamos a añadir tiene varias relaciones de composición. lo que hacemos con un foreach 
+                // en cuyo caso tenemos que añadirlas todas juntas para que aparezcan correctamente ordenadas pra respetar el ciclo de vida de cada entidad.
+                EntidadesProcesadas.Add(item.Child.Name);
+                if (okDebug) Debug.WriteLine( string.Format(" procesamos el hijo '{0}' ", item.Child.Name ));
+
+                foreach (var property in stackElements.Where(c => c.Child is Entity && c.Father is Entity && c.FromComposition && c.Child.Name.Equals(item.Child.Name)))
+                {
+                if (okDebug) Debug.WriteLine( string.Format(" procesamos el hijo '{0}' con target rol name= '{1}' ", item.Child.Name, property.TargetRolName ));
+                    listElements.Add(new ClassAndRoles(property.Child, property.SourceRolName, property.TargetRolName, null));
+                }
+            }
+         }
+
+        var segmento = stackElements.Where(c => c.Child is Entity && c.Father is Entity && c.FromComposition);
+if (segmento.Any())
+        {
+            var lastfather =segmento.Last();
+                listElements.Add(new ClassAndRoles(lastfather.Father, lastfather.SourceRolName, null, null));
+        }
+        return listElements;
+    }
+#>
+
+<#+
+    // Este método recorre el stack de padres y coloca un peso en función de la profundidad del árbol que dibujaría su topología.
+    // Este método deberia ser sustituido por la asignación de nivel en el metodo que crea la lista de padres 
+    public static List<FatherNode> SetXorCounterToFatherStack( ref List<FatherNode> stackElements )
+    {
+        if (stackElements == null || stackElements.Count()== 0) return null;
+        int counter = 0;
+        foreach (var item in stackElements)
+        {
+            if (item.IsXorComposition)
+            {
+                counter = 0;
+                foreach (var item2 in stackElements)
+                {
+                    if (item.Father.Name.Equals(item2.Father.Name) && item.FatherLevel == item2.FatherLevel )
+                    {
+                        counter++;
+                    }
+                }
+                item.NumXorComposition = counter;
+            }
+        }
+
+        return stackElements;
+    }
+#>
+
+<#+
+    // Este método recorre el stack de padres y coloca un peso en función de la profundidad del árbol que dibujaría su topología.
+    // Este método deberia ser sustituido por la asignación de nivel en el metodo que crea la lista de padres 
+    public static List<FatherNode> SetWeigthToFatherStack( ref List<FatherNode> stackElements )
+    {
+        if (stackElements == null || stackElements.Count()== 0) return null;
+
+      //  bool repetir = false;
+        
+        int levelFather = 1;
+        int i = 0;
+        int j = 0;
+        bool  provieneDeherencia ;
+        ClassBase FinalClass= null;
+        ClassBase Superclass= null; // este campo
+        FatherNode fn =stackElements.FirstOrDefault();
+        bool okDebug = false;//fn.Father.Name.Equals("Contenido");
+
+        if ( fn.FromComposition) // si el par se refiere a una relación de herencia entonces la clase a procesar esta en el hijo
+        {
+            provieneDeherencia = false;
+            FinalClass = fn.Father; // La primera clase de la lista siempre es la clase en la que debemos terminar.
+            foreach (var item in stackElements.Where(p => p.Father.Name.Equals(FinalClass.Name)))
+            {
+                
+                item.FatherLevel = levelFather;
+                 if (okDebug) Debug.WriteLine( string.Format(" asignamos al par '{0}' composición {1} el peso 1",item.Father.Name, item.Child.Name ));
+            }
+        }
+        else
+        {
+            provieneDeherencia = true;
+            FinalClass = fn.Child;
+            Superclass = fn.Father;
+            foreach (var item in stackElements.Where(p => p.Child.Name.Equals(FinalClass.Name)))
+            {
+                item.FatherLevel = levelFather;
+                if (okDebug) Debug.WriteLine( string.Format(" asignamos al par '{0}' herencia {1} el peso 1",item.Father.Name, item.Child.Name ));
+            }
+            if (stackElements.Where(p => p.Father.Name.Equals(Superclass.Name) && p.FromComposition).Any()) levelFather++;
+            foreach (var item in stackElements.Where(p => p.Father.Name.Equals(Superclass.Name) && p.FromComposition))
+            {
+                item.FatherLevel = levelFather;
+                if (okDebug) Debug.WriteLine( string.Format(" asignamos al par '{0}' herencia {1} el peso 1",item.Father.Name, item.Child.Name ));
+            }
+
+        }
+        
+        if (okDebug) Debug.WriteLine( string.Format(" La clase a procesar es '{0}'",FinalClass.Name ));
+
+        foreach (var item in stackElements)
+        {
+            i++;
+            if (okDebug) Debug.WriteLine( string.Format(" El par es '{0}' y '{1}' con nivel {2}",item.Father.Name, item.Child.Name, item.FatherLevel));
+            if ( item.FromComposition )
+            {
+                j = 0;
+                if (item.FatherLevel == 0) 
+                {
+                    levelFather++;
+                    foreach (var item2 in stackElements)
+                    {
+                        j++;
+                        if (i<=j && item2.Father.Name.Equals(item.Father.Name) )
+                        {
+                            item2.FatherLevel = levelFather;
+                        }
+                    }
+                }
+                 Superclass = null; // con esto estamos marcando para la siguiente que la anterior es una relación de composición.
+                 provieneDeherencia = false;
+            }
+            else
+            {
+                if (Superclass == null ) Superclass = item.Father;
+
+                // tratamos los padres que provienen de una herencia.
+                foreach (var item2 in stackElements)
+                {
+                    if (item2.Child.Name.Equals(FinalClass.Name))
+                    {
+                        item2.FatherLevel =1;
+                    }
+
+                    if ( item2.Child.Name.Equals(Superclass.Name) ) // por defecto el valor de la clase final como padre es cero.
+                    {
+                        //Debug.WriteLine( string.Format("Herencia: El padre es la clase final hacemos el nivel de los hijos = 1"));
+                        
+                        item2.FatherLevel = item.FatherLevel + levelFather;
+                        Superclass = item2.Father;
+                        levelFather++;
+                    }
+
+                    if ( false && item2.Father.Name.Equals(item.Child.Name)  ) // por defecto el valor de la clase final como padre es cero.
+                    {
+                        //Debug.WriteLine( string.Format("Herencia: El padre es la clase final hacemos el nivel de los hijos = 1"));
+                        item2.FatherLevel = item.FatherLevel + 1;
+                    }
+                }
+            }
+        }
+        //if (repetir) SetWeigthToFatherStack(ref stackElements);
+        return stackElements;
+    }
+#>
+
+<#+
+    // Este método recorre el stack de padres y establece para cada clase hija de una composición si 
+    // dicha clase tien asu vez composiciones o es superclase de otra.
+    public static List<FatherNode> SetLeafMarkToFatherStack( ref List<FatherNode> stackElements )
+    {
+        if (stackElements == null || stackElements.Count()== 0) return null;
+        int i = 0; // contador del 1º foreach 
+        int j = 0; // contador del 2º foreach 
+        bool centinela = false;
+        // se determina si es hoja si una clase que solo aparece como hija y nunca como padre en una composición
+        foreach (var item in stackElements)
+        {
+            i++;
+            if (item.FromComposition)
+            {
+                centinela = true;
+                foreach (var item2 in stackElements)
+                {
+                    j++;
+                    if (j != i && item2.FromComposition && (item2.Father.Name.Equals(item.Child.Name)) )
+                    {
+                        centinela = false;
+                    }
+                }
+            }
+            else
+            {
+                centinela = false;
+                foreach (var item2 in stackElements)
+                {
+                    j++;
+                    if (j != i && !item2.FromComposition && (item2.Father.Name.Equals(item.Child.Name)) )
+                    {
+                        centinela = true;
+                    }
+                }
+            }
+            
+            j = 0;
+            item.ChildIsLeaf = centinela;
+            centinela = false;
+        }
+        return stackElements;
+    }
+#>
+
+<#+
+    // Este método recorre el stack de padres y establece para cada padre si es cierto que se cumple que 
+    // todos sus hijos son hojas. Es decir que ninguna de las clases que son hijas son a su vez padres de ninguna otra.
+    public static List<FatherNode> SetAreAllChildrenLeaves( ref List<FatherNode> stackElements )
+    {
+        if (stackElements == null || !stackElements.Any()) return null;
+
+        bool centinela = true;
+        foreach (var item in stackElements)
+        {
+            if (item.FromComposition)
+            {
+                foreach (var item2 in stackElements.Where(p=>p.FatherLevel == item.FatherLevel))
+                {
+                    if (!item2.ChildIsLeaf)
+                    {
+                        centinela = false;
+                    }
+                }
+                item.AllChildrenAreLeaves = centinela;
+                centinela = true;
+            }
+            else
+            {
+                item.AllChildrenAreLeaves = false;
+            }
+        }
+        return stackElements;
+    }
+#>
+
+<#+ 
+    // Este método recorre el stack de padres y establece para cada clase padre el contador
+    // de cuantas veces aparece. que coincide con el numero de veces que aparece un número de nivel.
+    // la ejecución de este metodo exige que el stack de padres se haya rellenado por completo.
+    public static List<FatherNode> FatherChildrenCounter( ref List<FatherNode> stackElements )
+    {
+        if (stackElements == null || stackElements.Count()== 0) return null;
+       
+        foreach (var item in stackElements)
+        {
+            item.FatherTotalCounter = 0;
+            item.FatherPosition = 0;
+            if (item.FromComposition)
+            {
+                foreach (var item2 in stackElements)
+                {
+                    if ( item.Father.Name.Equals(item2.Father.Name) && item2.FromComposition )
+                    {
+                        item.FatherTotalCounter++;
+                        item2.FatherPosition = item.FatherTotalCounter;
+                    }
+                }
+            }
+            else
+            {
+                foreach (var item2 in stackElements)
+                {
+                    if ( item.Child.Name.Equals(item2.Father.Name) && item2.FromComposition )
+                    {
+                        item.FatherTotalCounter++;
+                        item2.FatherPosition = item.FatherTotalCounter;
+                    }
+                }
+            }
+        }
+        return stackElements;
+    }
+ #>
+
+<#+
+    public static List<ClassBaseMetadata> GetPathsFromDtoToFather( List<ClassBaseMetadata> agregateList, IEnumerable<FatherNode> reverseParentsStack)
+    {
+        
+        string DtoClassName = agregateList.FirstOrDefault().Father.Name;
+        int j = 0;
+        if (agregateList != null && agregateList.Any()) 
+        {
+            bool centinela = false;
+            foreach (var item in agregateList)
+            {
+                item.DtoRoad = "";
+                if (  !item.Father.Name.Equals(DtoClassName)) // si es una entidad y no es la clase de referencia, miramos cual es su camino desde el dto hasta dicha entidad
+                {
+
+                   foreach (var item2 in reverseParentsStack)
+                   {
+                       j++;
+                           if (item.Father.Name.Equals(item2.Father.Name) || item.Father.Name.Equals(item2.Child.Name)) 
+                           {
+                               centinela = true;
+                           }
+
+                           if ( centinela && item.Father.Name.Equals(item2.Child.Name) && item.ChildIsLeaf)
+                           {
+                               item.DtoRoad =item2.Child.Name + "." + item.DtoRoad;
+                           }
+
+                            if ( !item2.Father.Name.Equals(DtoClassName)  && item2.FatherPosition == 1 && centinela)
+                           {
+                               item.DtoRoad =item2.Father.Name + "." + item.DtoRoad;
+                           }
+                   }
+                }
+                item.DtoRoad = item.DtoRoad.TrimEnd('.');
+                centinela = false;
+                j = 0;
+            }
+        }
+        return agregateList;
+    }
+#>
+
+<#+
+    // Este método devuelve la lista de parametros del método (que pasamos como parametro) separados por comas,
+    // el segundo parametro.
+    public static string GetMethodParametersString( kayak.MoneyGen.Operation operation, bool includeDefinition = false)
+    {
+        global::Microsoft.VisualStudio.Modeling.LinkedElementCollection<Parameter> ParametersList = kayak.MoneyGen.OperationHasParameters.GetParameters ( operation );
+        global::System.Collections.Generic.IEnumerable<Parameter> NoDefaultParametersList = ParametersList.Where(p => p.DefaultValue.Length==0);
+        global::System.Collections.Generic.IEnumerable<Parameter>   DefaultParametersList = ParametersList.Where(p => p.DefaultValue.Length>0);
+        string result ;
+
+        result = GEtSubSetParametersFromList(NoDefaultParametersList, includeDefinition) + GEtSubSetParametersFromList(DefaultParametersList, includeDefinition);
+
+        // eliminamos la ultima comma.
+        return result.TrimEnd().TrimEnd(',');
+    }
+
+// este es un metodo privado llamado exclusivamente por GetMethodParametersDefinition
+// si el parametro que se le pasa tiene un valor por defecto, este se incluye 
+    private static string GEtSubSetParametersFromList(global::System.Collections.Generic.IEnumerable<Parameter> parametersList, bool includeDefinition = false)
+    {
+        if (parametersList ==  null ) return null;
+        //if (namedParameters && includeDefinition) throw new ArgumentNullException("no se puede definir una lista de parametros named y con definición simultaneamente, el primero es para llamadas y el segundo para definiciones");
+        StringBuilder result = new StringBuilder();
+
+        foreach(var parameter in parametersList)
+        {
+            //if (namedParameters)
+            //{
+                //result.Append(parameter.Name); // añadimos el nombre del parametro
+                //result.Append(" = "); // añadimos el nombre del parametro
+            //}
+
+            if(parameter.PassingMechanism.Equals( PassingMechanism.Reference ) )
+            {
+                result.Append("ref "); // añadimos el modificador de paso por referencia
+            }
+
+            if( includeDefinition )
+            {
+                if (parameter.Type != null)
+                {
+                   // if (!parameter.Type.ToLower().Equals("void"))// TODO AÑADIR LA "I" DE FORMA AUTOMATICA EXCEPT EN VOID O CLR TYPES
+                   // {
+                   //     result.Append("I"); // añadimos la i de la interface del tipo si el tipo es diferente de void
+                   // }
+                    result.Append(parameter.Type); // añadimos el tipo
+                    result.Append(' ');// añadimos un espacio
+                }
+                else
+                {
+                    string m  = string.Format(" El parametro '{0}' le falta el tipo", parameter.Name);
+                    throw new ArgumentNullException(m);
+                }
+            }
+            result.Append(parameter.Name); // añadimos el nombre del parametro
+            if (parameter.DefaultValue.Length>0)
+            {
+                result.Append( " = " );
+                result.Append( parameter.DefaultValue ); // añadimos el valor por defecto si existe. lo que lo convierte en opcional. Todos lo parametros opcionales se colocan al final de la lista de parametros.
+            }
+            result.Append(", ");// añadimos un espacio y una coma.
+        }
+        return result.ToString().TrimEnd();
+    }
+
+ #>

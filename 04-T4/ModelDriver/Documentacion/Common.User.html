@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Needel Documentation </title>
+</head>
+<body>
+    <h2>Caracteristicas de la Entidad 'User'  </h2>
+    <img src="Images\User.png">
+    <table>
+
+        <tr><td> Contexto Limitado </td><td> Common </td></tr>
+        <tr><td> comentarios programador </td><td> Data about user of the application. </td></tr>
+        <tr><td> comentarios usuario </td><td> User information data </td></tr>
+        <tr><td> tooltip </td><td> User base information (internal, externals) </td></tr>
+        <tr><td> &nbsp; </td><td>  </td></tr>
+        <tr><td> tipo de composición en el que interviene </td><td>  any </td></tr>
+        <tr><td> superfolder </td><td>  </td></tr>
+        <tr><td> entityHasChildren </td><td> False </td></tr>
+        <tr><td> isAbstract </td><td> True </td></tr>
+        <tr><td> Modificadores de acceso </td><td> abstract public partial  </td></tr>
+        <tr><td> idtype </td><td> Int32 </td></tr>
+        <tr><td> Es auditable </td><td> True </td></tr>
+        <tr><td> Forzada a ser root </td><td> True </td></tr>
+
+        <tr><td> idtype </td><td> Int32 </td></tr>
+        <tr><td> valor nulo del id </td><td> 0 </td></tr>
+        <tr><td> secureEntityName </td><td> User </td></tr>
+        <tr><td> pascalSecureEntityName </td><td> User </td></tr>
+        <tr><td> camelSecureEntityName </td><td> user </td></tr>
+
+        <tr><td> entityHasChildren </td><td> False </td></tr>
+        <tr><td> numEntityFields </td><td> 1 </td></tr>
+        <tr><td> numEntityFieldsMandatory </td><td> 1 </td></tr>
+
+        <tr><td> isDerivedFromOneEntity </td><td> False </td></tr>
+        <tr><td> entitySuperClass </td><td>  </td></tr>
+        <tr><td> entityCore </td><td> Company.Framework.Domain.Core.IAuditableEntity<Int32> </td></tr>
+        <tr><td> entityCoreFactory </td><td> Company.Framework.Domain.Core.IEntityFactory<IUser, Int32> </td></tr>
+        <tr><td> entityCoreRepository </td><td> Company.Framework.Domain.Core.IReadWriteAuditableRepository<IUser, Int32> </td></tr>
+        <tr><td> entityBaseRepository </td><td> Company.Framework.Domain.Base.ReadWriteAuditableRepositoryBase<IUser, Int32> </td></tr>
+
+
+
+        <tr><td> MandatoryConstructorParamnsSimple </td><td> name </td></tr>
+        <tr><td> MandatoryConstructorParamns </td><td> string name </td></tr>
+        <tr><td> MandatoryConstructorParamnsWithAll </td><td> int idUser, string name </td></tr>
+        <tr><td> MandatoryConstructorParamnsWithAllnoId </td><td> string name </td></tr>
+        <tr><td> MandatoryConstructorParamnsWithOutDefaultValues </td><td> string name </td></tr>
+        <tr><td> MandatoryConstructorParamnsCall </td><td> idUser, name </td></tr>
+        <tr><td> MandatoryConstructorParamnsCallnoID </td><td> name </td></tr>
+        <tr><td> MandatoryConstructorParamnsCallnoIDForDto </td><td> userDto.Name </td></tr>
+
+        <tr><td> MandatoryEntityBaseConstructorParamans </td><td>  </td></tr>
+        <tr><td> MandatoryEntityBaseConstructorParamansDefinition </td><td>  </td></tr>
+        <tr><td> MandatoryEntityBaseConstructorParamansCall </td><td>  </td></tr>
+        <tr><td> MandatoryConstructorParamnsDTO </td><td> userDto.Name </td></tr>
+        <tr><td> MandatoryEntityBaseConstructorParamansDTO </td><td>  </td></tr>
+        <tr><td> MandatoryEntityBaseConstructorParamansDefinitionDTO </td><td>  </td></tr>
+
+    </table>
+
+    <h3>Lista de atributos mandatory</h3>
+    <table>
+        <tr><td> Public </td><td> string </td><td> <strong>Name</strong>   (Estereotipo='None')</td></tr>
+        <tr><td> Permite valor nulo </td><td> Get set automático </td><td> alias = '' </td></tr>
+        <tr><td> No es filtro </td><td> No es agrupador </td><td>  el valor por defecto es:  </td></tr>
+        <tr><td colspan = 2> Test with auto property and public setter. </td><tr> 
+        <tr><td colspan = 2>  </td><tr> 
+    </table>
+
+    <h3>Lista de atributos no mandatory</h3>
+    <table>
+    </table>
+
+    <h3>Lista de atributos mandatory from sources (composición)</h3>
+    <table>
+    </table>
+
+    <h3>Lista de atributos non mandatory from sources(agregación)</h3>
+    <table>
+        <tr><td> (Multiplicidad=CeroOne) </td><td> kayak.MoneyGen.Entity </td><td> <strong>Department</strong>   (XorRelation='')</td></tr>
+        <tr><td colspan = 2>  </td><tr> 
+        <tr><td colspan = 2> Agreggation Example </td><tr> 
+    </table>
+    total de asociaciones source = 1
+
+    <h3>Lista de atributos mandatory from Targets (composición)</h3>
+    <table>
+    </table>
+
+    <h3>Lista de atributos non mandatory from targets (agregación)</h3>
+    <table>
+    </table>
+    <h3>árbol de superclasesclases </h3>
+    <h3>Lista de clases del agregado </h3>
+
+     <h3>Lista de clases padre </h3>
+
+     <h3>Instrucciones de construcción desde el root agregate </h3>
+
+     <h3>Lista de clases accesibles </h3>
+User </br>
+Enumeracion </br>
+AppSetting </br>
+Department </br>
+
+ </br>
+ </br>
+ YumlDefinition =/[User{bg:blue}],[Department]<>->[User]/
+<table>
+<tr><td></td><td> <a href="Intro.html"> Intro </a>  </td></tr>
+
+<tr><td></td><td> <a href="Architecture.html"> Architecture </a>  </td></tr>
+</table>
+</body>
+</html>

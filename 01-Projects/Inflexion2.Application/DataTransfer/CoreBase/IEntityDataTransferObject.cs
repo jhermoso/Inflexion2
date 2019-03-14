@@ -17,7 +17,10 @@ namespace Inflexion2.Application
     /// los objetos de transferencia de datos para una entidad.
     /// </para>
     /// </remarks>
-    public interface IEntityDataTransferObject<TIdentifier> : IDataTransferObject
+    public interface IEntityDataTransferObject<TIdentifier> : IDataTransferObject,
+                                            System.IComparable,
+                                            System.IEquatable<TIdentifier>,
+                                            System.IComparable<TIdentifier>
     where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
     {
         #region Properties

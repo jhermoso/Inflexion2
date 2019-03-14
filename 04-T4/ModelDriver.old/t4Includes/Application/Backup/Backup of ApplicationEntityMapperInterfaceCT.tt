@@ -1,0 +1,107 @@
+﻿<#+
+
+public class ApplicationEntityMapperInterfaceCT : Template
+{
+    // parametros de la plantilla
+    public DslContextDefinitionDiagram  diagram ;
+    public ActiveSolution               solutionInfo ;
+    public ClassBase                       entity ;
+    public string                       projectNamespace;
+        
+    public ApplicationEntityMapperInterfaceCT(DslContextDefinitionDiagram  d, ActiveSolution s, ClassBase e)
+    {
+        diagram = d;
+        solutionInfo = s;
+        entity = e;
+    }
+        
+    public override string TransformText()
+    {
+            bool IsEntity = entity is Entity; // ClassBase
+        string company = SecureName(this.diagram.Company.ToString());
+        string idtype = (diagram.IdKind.Equals("Autonumerical"))  ? "int" : "Guid";
+        string secureEntityName = SecureName(entity.Name);
+        
+        LinkedElementCollection<Atributte> propertyObjects = ClassBaseHasAtributtes.GetAtributtes(entity); // este metodo es definido en el dsl domainRealtionship public partial class ClassBaseHasAtributtes 
+        var mandatoryPropertyObjects = propertyObjects.Where(att => att.RequestUponCreation == RequestUponCreation.yes);
+        int numEntityFieldsMandatory= propertyObjects.Where(att => att.RequestUponCreation == RequestUponCreation.yes).Count();
+        int numEntityFields= propertyObjects.Count;
+
+        System.Collections.ObjectModel.ReadOnlyCollection<kayak.MoneyGen.Association> propertyAssociationTargets = Association.GetLinksToTargets(entity); // lista de propiedades obtenidas de las relaciones de destino
+        var mandatoryPropertyFromTargets = propertyAssociationTargets.Where( p=> p.TargetMultiplicity==kayak.MoneyGen.Multiplicity.OneOne | p.TargetMultiplicity==kayak.MoneyGen.Multiplicity.OneMany); // subconjunto de propiedades de tipo mandatory de las anteriores es decri cuya multiplicidad minima es uno
+        System.Collections.ObjectModel.ReadOnlyCollection<kayak.MoneyGen.Association> propertyAssociationSources = Association.GetLinksToSources(entity); // lista de propiedades provenientes de las relaciones de origen
+        var mandatoryPropertyFromSources = propertyAssociationSources.Where( p=> p.SourceMultiplicity==kayak.MoneyGen.Multiplicity.OneOne | p.SourceMultiplicity==kayak.MoneyGen.Multiplicity.OneMany);// subconjunto de propiedades de tipo mandatory de las anteriores es decri cuya multiplicidad minima es uno 
+
+        int sourceLinksCounter= propertyAssociationSources.Count();
+        int targetLinksCounter= propertyAssociationTargets.Count();
+        int mandatorySourceLinksCounter= mandatoryPropertyFromSources.Count();
+        int mandatoryTargetLinksCounter= mandatoryPropertyFromTargets.Count();
+
+        int spaceformatcounter= secureEntityName.ToString().Length;
+        int counter = 0;
+        System.Type t;
+        bool propertyIsValueType = false;
+
+        KindComponented kindComponent = WhatTypeComponented(entity);
+        string superfolder;
+        string MandatoryConstructorParamns = GetConstructorParametersString( entity, diagram.IdKind.Equals("Autonumerical"),SelectionCriteriaAttributes.Mandatory, 80, true, spaceformatcounter+23, true, true, true, true );//le sumamos 21 por que son loscaracteres que hay hasta el comienzo del texto donde utilizamos esta variable. 
+        string MadatoryEntityBaseConstructorParamans = "";
+        string MadatoryEntityBaseConstructorParamansDefinition = "";
+
+        bool isDerivedFromOneEntity= IsDerived( entity); // consultamos si esta entidad hereda de alguna otra por herencia simple del lenguaje.
+        ClassBase entitySuperClass = null;
+        string entityCore =null;
+        if (isDerivedFromOneEntity)
+        {
+            entitySuperClass = GetSuperEntity(entity); 
+            superfolder = GetSuperFolders(entity);
+            MadatoryEntityBaseConstructorParamansDefinition = GetConstructorParametersString( entitySuperClass, diagram.IdKind.Equals("Autonumerical"),SelectionCriteriaAttributes.Mandatory, 80, true, spaceformatcounter+23, false, true, true, true );
+            MadatoryEntityBaseConstructorParamans = GetConstructorParametersString( entitySuperClass, diagram.IdKind.Equals("Autonumerical"),SelectionCriteriaAttributes.Mandatory, 80, false, spaceformatcounter+23, false, true, true, true );
+        }
+        if(entity.Auditable)
+        {
+            entityCore = "AuditableEntityBase<"+idtype +">";
+        }
+        else
+        {
+            entityCore = "EntityBase<"+idtype +">";
+        }
+
+
+        var cpyrigth = new CopyrightHeader(diagram,solutionInfo,entity);
+        string cpyrigthText = cpyrigth.TransformText();
+#>
+<#= cpyrigthText #>
+namespace <#= projectNamespace #>
+{
+    using I3TV.Framework.Application.Core;                              
+
+    using <#= projectNamespace.Substring(0, projectNamespace.Length - 13)/*le quitamos el '.Mapper.Core' y lo sustituimos por '.Data.Base' */ #>.Data.Base;
+    using <#= projectNamespace.Substring(0, projectNamespace.Length - 25)/*le quitamos el '.Application.Mapper.Core' y lo sustituimos por '.Domain.Core' */ #>.Domain.Core;
+
+    using System;
+    using System.Runtime.Serialization;
+<#+ if (propertyAssociationTargets.Count()>0) 
+    {
+#>
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+<#+ }
+#>
+    /// <summary>
+    /// Clase pública encargada de mapear los datos de una entidad <see cref="I<#= secureEntityName #>Mapper"/>.
+    /// </summary>
+    /// <remarks>
+    /// Mapea los datos del Dto <see cref="<#= secureEntityName #>Dto"/> con una entidad <see cref="I<#= secureEntityName #>Mapper"/>.
+    /// </remarks>
+    public interface I<#= secureEntityName #>Mapper : IEntityMapper<<#= secureEntityName #>Dto, I<#= secureEntityName #>, <#= idtype #>>
+    {
+
+    } // end class <#= secureEntityName #>Mapper
+} //  <#= projectNamespace #>
+
+<#+
+        return this.GenerationEnvironment.ToString();
+    } //end method override TransformText method
+} // end class ApplicationEntityMapperInterfaceCT
+#>

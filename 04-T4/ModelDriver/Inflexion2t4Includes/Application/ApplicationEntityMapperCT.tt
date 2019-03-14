@@ -38,30 +38,21 @@ namespace <#= projectNamespace #>
     using System.Linq;
     using System.Text;
 	using Inflexion2;
-<#+
-if (sharedKernelUsings != null)
-foreach (var item in sharedKernelUsings)
-    {
-#>
-    using <#= item #>;
-<#+
-    }// end foreach para los using del shared kernel
-#>
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Dtos;
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain;
+
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.<#= prjCon.layer #>.Dtos;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain;
 	#endregion
 
     /// <summary>
-    /// Clase pública encargada de mapear los datos de una entidad <see cref="<#= I #><#= cbc.secureEntityName #>Mapper"/>.
+	/// .en mapping class from entity to dto <see cref="<#= I #><#= cbc.secureEntityName #>Mapper"/>
+    /// .es Clase pública encargada de mapear los datos de una entidad <see cref="<#= I #><#= cbc.secureEntityName #>Mapper"/>.
     /// </summary>
-    /// <remarks>
-    /// Mapea los datos del Dto <see cref="<#= cbc.secureEntityName #>Dto"/> con una entidad <see cref="<#= I #><#= cbc.secureEntityName #>Mapper"/>.
-    /// </remarks>
     public class <#= cbc.secureEntityName #>Mapper : I<#= cbc.secureEntityName #>Mapper
     {
         #region CONSTRUCTORS
         /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="<#= cbc.secureEntityName #>Mapper"/>.
+		/// .en Get an instance of <see cref="<#= cbc.secureEntityName #>Mapper"/>
+        /// .es Inicializa una nueva instancia de la clase <see cref="<#= cbc.secureEntityName #>Mapper"/>.
         /// </summary>
         public <#= cbc.secureEntityName #>Mapper()
         {
@@ -71,36 +62,39 @@ foreach (var item in sharedKernelUsings)
         #region FUNCTIONS
 
           /// <summary>
-          /// Función pública que mapea las entidades para devolver el
+		  /// .en public function mapping from entity to dto
+          /// .es Función pública que mapea las entidades para devolver el
           /// correspondiente Dto.
           /// </summary>
-          /// <remarks>
-          /// Se encarga de mapear objetos <see cref="<#= I #><#= cbc.secureEntityName #>"/> 
-          /// devolviendo un objeto <see cref="<#= cbc.secureEntityName #>Dto"/>.
-          /// </remarks>
           /// <param name="entity<#= cbc.secureEntityName #>">
-          /// Objeto de la entidad <see cref="<#= I #><#= cbc.secureEntityName #>"/>.
+          /// .es Objeto de la entidad <see cref="<#= I #><#= cbc.secureEntityName #>"/>.
           /// </param>
           /// <exception cref="System.ArgumentNullException">
-          /// Lanzada cuando el valor de <c>entity<#= cbc.secureEntityName #></c> es null.
+		  /// .en exception when there is a null value in the parameter.
+          /// .es Lanzada cuando el valor de <c>entity<#= cbc.secureEntityName #></c> es null.
           /// </exception>
           /// <returns>
-          /// Devuelve un objeto de tipo <see cref="<#= cbc.secureEntityName #>Dto"/> 
+		  /// .en returns an object of type <see cref="<#= cbc.secureEntityName #>Dto"/>
+          /// .es Devuelve un objeto de tipo <see cref="<#= cbc.secureEntityName #>Dto"/> 
           /// con los datos mapeados.
           /// </returns>
           public <#= cbc.secureEntityName #>Dto EntityMapping(I<#= cbc.secureEntityName #> entity<#= cbc.secureEntityName #>)
           {
-            // Comprobamos el valor del argumento de entrada.
+		    // .en checking parameters
+            // .es Comprobamos el valor del argumento de entrada.
             if (entity<#= cbc.secureEntityName #> == null)
             {
-                // Error, lanzamos la excepción.
+				// .en Error, throwing exception.
+                // .es Error, lanzamos la excepción.
                 throw new System.ArgumentNullException("entity<#= cbc.secureEntityName #>");
             }
             else
             {
-                // Objeto de respuesta.
+				// .en Answer object
+                // .es Objeto de respuesta.
                 <#= cbc.secureEntityName #>Dto dto<#= cbc.secureEntityName #> = new <#= cbc.secureEntityName #>Dto();
-                // Mapeamos cada propiedad.
+				// .en Mapping simple/main properties
+                // .es Mapeamos cada propiedad.
 <#+
     if(cbc.IsEntity)
     {
@@ -120,7 +114,37 @@ foreach (var item in sharedKernelUsings)
 <#+
     }
 #>
-                // Devolvemos el resultado.
+<#+ if (cbc.sourceLinksCounter>0)    {#>
+				// .en Properties Mapping that comes from parent relationships
+				// .es Mapeado de propiedades que provienen the relaciones parentales.
+<#+
+    // continuamos con el mapping de las propiedades de las clases padres en las asociaciones 
+    foreach (var property in cbc.propertyAssociationSources)
+    {
+        // si no es una relación reflexiva  generamos la misma pareja de métodos para los roles de target y source han de ser diferentes
+        if(string.IsNullOrEmpty(property.TargetRolName)) // Validación: Comprobamos que si no existe el nombre del rol source (significa que es una relación unidireccional y por tanto solo genera propiedad en la clase destino (target) y no en la clase  origen (source) la multiplicidad minima del target ha de ser cero. 
+        {
+            continue;
+        }
+		if (!(property.Source is Enumeration))
+		{
+#>
+				var <#= T4Help.ToCamelCase(property.Source.Name) #>Mapper = new <#= T4Help.ToPascalCase(property.Source.Name) /*T4Help.SecureName(property.TargetRolName)*/ #>Mapper();
+				dto<#= cbc.secureEntityName #>.<#= T4Help.ToPascalCase(property.Source.Name) #> = <#= T4Help.ToCamelCase(property.Source.Name) #>Mapper.EntityMapping(entity<#= cbc.secureEntityName #>.<#= T4Help.ToPascalCase(property.Source.Name) #>);
+<#+
+		}
+		else
+		{
+#>
+				dto<#= cbc.secureEntityName #>.<#= T4Help.ToPascalCase(property.TargetRolName) #> = entity<#= cbc.secureEntityName #>.<#= T4Help.ToPascalCase(property.TargetRolName) #>;
+<#+
+		}
+    }// end del foreach (var property in cbc.propertyAssociationSources)
+#>
+<#+ } #>
+
+				// .en return mapped object
+                // .es Devolvemos el resultado.
                 return dto<#= cbc.secureEntityName #>;
             }
           } // EntityMapping

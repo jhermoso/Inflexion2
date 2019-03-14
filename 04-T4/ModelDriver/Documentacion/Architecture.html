@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-    <title>Suite Documentation </title>
+    <title>Needel Documentation </title>
 </head>
 <body>
     <h2>Arquitectura general de la solución</h2>
@@ -62,6 +62,9 @@
     <tr><td colspan = "2">&nbsp;Capa <strong>'04. Infrastructure'</strong> </td></tr>
     <tr><td colspan = "2">&nbsp;&nbsp;&nbsp;&nbsp; proyecto <em>'Resources'</em> </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'PresentationCore'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'PresentationFramework'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'WindowsBase'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
     <tr><td colspan = "2">&nbsp;&nbsp;&nbsp;&nbsp; proyecto <em>'Infrastructure'</em> </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Microsoft.CSharp'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
@@ -113,6 +116,7 @@
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Inflexion2.Application'</strong></td><td> tipo de referencia</td><td>OwnSolution </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Inflexion2.EF'</strong></td><td> tipo de referencia</td><td>OwnSolution </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Inflexion2.Resources'</strong></td><td> tipo de referencia</td><td>OwnSolution </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Inflexion2.Logging'</strong></td><td> tipo de referencia</td><td>OwnSolution </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'NHibernate'</strong></td><td> tipo de referencia</td><td>Nuget </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'FluentNHibernate'</strong></td><td> tipo de referencia</td><td>Nuget </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Iesi.Collections'</strong></td><td> tipo de referencia</td><td>Nuget </td></tr>
@@ -157,7 +161,6 @@
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System.ServiceModel'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Application'</strong></td><td> tipo de referencia</td><td>OwnContext </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Application.Dtos'</strong></td><td> tipo de referencia</td><td>OwnContext </td></tr>
-    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'WcfService.Contracts'</strong></td><td> tipo de referencia</td><td>OwnContext </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Inflexion2'</strong></td><td> tipo de referencia</td><td>OwnSolution </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Inflexion2.Application'</strong></td><td> tipo de referencia</td><td>OwnSolution </td></tr>
     <tr><td colspan = "2">&nbsp;&nbsp;&nbsp;&nbsp; proyecto <em>'WcfService'</em> </td></tr>
@@ -188,10 +191,10 @@
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Application'</strong></td><td> tipo de referencia</td><td>OwnContext </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Application.Dtos'</strong></td><td> tipo de referencia</td><td>OwnContext </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'WcfService.Contracts'</strong></td><td> tipo de referencia</td><td>OwnContext </td></tr>
-    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Microsoft.Practices.Unity'</strong></td><td> tipo de referencia</td><td>ThirdParty </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Inflexion2'</strong></td><td> tipo de referencia</td><td>OwnSolution </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Inflexion2.EF'</strong></td><td> tipo de referencia</td><td>OwnSolution </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Inflexion2.Application'</strong></td><td> tipo de referencia</td><td>OwnSolution </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Microsoft.Practices.Unity'</strong></td><td> tipo de referencia</td><td>ThirdParty </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'NHibernate'</strong></td><td> tipo de referencia</td><td>Nuget </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'FluentNHibernate'</strong></td><td> tipo de referencia</td><td>Nuget </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Iesi.Collections'</strong></td><td> tipo de referencia</td><td>Nuget </td></tr>
@@ -222,6 +225,8 @@
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Microsoft.Practices.Prism'</strong></td><td> tipo de referencia</td><td>ThirdParty </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Microsoft.Practices.Prism.Interactivity'</strong></td><td> tipo de referencia</td><td>ThirdParty </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Microsoft.Practices.Prism.UnityExtensions'</strong></td><td> tipo de referencia</td><td>ThirdParty </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'WPFLocalizeExtension.dll'</strong></td><td> tipo de referencia</td><td>ThirdParty </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'XAMLMarkupExtensions.dll'</strong></td><td> tipo de referencia</td><td>ThirdParty </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'System.Xaml'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'WindowsBase'</strong></td><td> tipo de referencia</td><td>CLR </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Inflexion2.UX.WPF'</strong></td><td> tipo de referencia</td><td>OwnSolution </td></tr>
@@ -256,6 +261,8 @@
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Microsoft.Practices.Prism'</strong></td><td> tipo de referencia</td><td>ThirdParty </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Microsoft.Practices.Prism.Interactivity'</strong></td><td> tipo de referencia</td><td>ThirdParty </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Microsoft.Practices.Prism.UnityExtensions'</strong></td><td> tipo de referencia</td><td>ThirdParty </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'WPFLocalizeExtension.dll'</strong></td><td> tipo de referencia</td><td>ThirdParty </td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'XAMLMarkupExtensions.dll'</strong></td><td> tipo de referencia</td><td>ThirdParty </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Inflexion2.UX.WPF'</strong></td><td> tipo de referencia</td><td>OwnSolution </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Inflexion2.UX.WPF.Controls'</strong></td><td> tipo de referencia</td><td>OwnSolution </td></tr>
     <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia 'Inflexion2.Application'</strong></td><td> tipo de referencia</td><td>OwnSolution </td></tr>

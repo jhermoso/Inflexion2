@@ -25,6 +25,11 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
     {
         private T entity;
 
+        protected TIdentifier firstEntityId;
+        protected TIdentifier lastEntityId;
+        protected TIdentifier nextEntityId;
+        protected TIdentifier previousEntityId;
+
         #region Constructors
 
         /// <summary>
@@ -85,6 +90,28 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             }
         } // Id
 
+        /// <summary>
+        /// true if the entity is transient
+        /// </summary>
+        public bool IsTransient
+        {
+            get
+            {
+                return this.ObjectElement.IsTransient();
+            }
+        }
+
+        /// <summary>
+        /// .en false if the entity is transient
+        /// </summary>
+        public bool IsNotTransient
+        {
+            get
+            {
+                return !this.ObjectElement.IsTransient();
+            }
+        }
+
         ///// <summary>
         ///// Propiedad pública encargada de obtener y establecer si
         ///// la entidad esta Activa o no
@@ -111,7 +138,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         //    }
         //} // Activo
 
-        #pragma warning disable CS0693 // Type parameter has the same name as the type parameter from outer type
+#pragma warning disable CS0693 // Type parameter has the same name as the type parameter from outer type
         /// <summary>
         /// TODO: update summary
         /// </summary>
@@ -128,15 +155,19 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             cmd = this.editRecordCommand as Microsoft.Practices.Prism.Commands.DelegateCommandBase;
             cmd.RaiseCanExecuteChanged();
 
+            cmd = this.newRecordCommand as Microsoft.Practices.Prism.Commands.DelegateCommand<object>;
+            cmd.RaiseCanExecuteChanged();
+
             cmd = this.deleteRecordCommand as Microsoft.Practices.Prism.Commands.DelegateCommandBase;
             cmd.RaiseCanExecuteChanged();
 
             cmd = this.saveRecordCommand as Microsoft.Practices.Prism.Commands.DelegateCommandBase;
             cmd.RaiseCanExecuteChanged();
+
         }
 
         /// <summary>
-        /// .en self reference to the own entity to manage with the viemodel derived from this class.
+        /// .en self reference to the own entity dto to manage with the viemodel derived from this class.
         /// </summary>
         public T ObjectElement
         {
@@ -152,11 +183,11 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         }
 
         /// <summary>
-        /// .en strore for the title of the derived vm. this property is binded in the view.
+        /// .en store for the title of the derived vm. this property is binded in the view.
         /// </summary>
         public override string Title
         {
-            get { return string.Empty; }
+            get; set;
         }
 
         #endregion
@@ -192,16 +223,16 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             return false;
         }
 
-        /// <summary>
-        /// .en method to calculate if is possible to add a new record ata thi time.
-        /// ususally this method has to be overrided in the derived viemodel.
-        /// </summary>
-        /// <param name="parameter">.en Addtional info to pass to the method.</param>
-        /// <returns></returns>
-        public override bool CanNewRecord(object parameter)
-        {
-            return true;
-        }
+        ///// <summary>
+        ///// .en method to calculate if is possible to add a new record at this time.
+        ///// usually this method has to be overrided in the derived viemodel.
+        ///// </summary>
+        ///// <param name="parameter">.en Addtional info to pass to the method.</param>
+        ///// <returns></returns>
+        //public override bool CanNewRecord(object parameter)
+        //{
+        //    return true;
+        //}
 
         /// <summary>
         /// 
@@ -212,6 +243,32 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         {
             return false;
         }
+
+
+        public override void OnGetFirstPageRecords(object parameter)
+        {
+            
+        }
+        public override bool CanGetFirstPageRecords(object parameter)
+        {
+            return !firstEntityId.Equals(default(TIdentifier));
+        }
+
+        public override bool CanGetNextPageRecords(object parameter)
+        {
+            return !nextEntityId.Equals(default(TIdentifier));
+        }
+
+        public override bool CanGetPreviousPageRecords(object parameter)
+        {
+            return !previousEntityId.Equals(default(TIdentifier));
+        }
+
+        public override bool CanGetLastPageRecords(object parameter)
+        {
+            return !lastEntityId.Equals(default(TIdentifier));
+        }
+
         #endregion
 
         /// <summary>
@@ -243,6 +300,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             string id = navigationContext.Parameters["Id"];
             if (string.IsNullOrWhiteSpace(id) || id == default(TIdentifier).ToString())
             {
+                this.ObjectElement = Activator.CreateInstance<T>();
                 return;
             }
 

@@ -233,7 +233,7 @@ public class DocAboutClassBase : Template
  #>
 <#= T4Help.HtmlIndent(item.FatherLevel) #>(<#= item.FatherLevel #>)(num hijos=<#= item.FatherPosition #>/<#= item.FatherTotalCounter #>)(<#= (item.AllChildrenAreLeaves)?"TODOS SON HOJAS":"ALGUNA ES BRIDGE" #>)[<#= item.Father.Name #>(<#= (item.FatherIsEntity)?"entity": (item.FatherIsObjectValue)?"VO":"Enum"#><#= (item.FatherReflexions>0)?", reflexivas "+item.FatherReflexions.ToString():"" #><#= (item.IsXorComposition)?", Es XOR":"" #>)] "se compone de " [<#= item.Child.Name #>(<#= (item.ChildIsEntity)?"entity": (item.ChildIsObjectValue)?"Value Object":"Enum"#><#= (item.ChildReflexions>0)?", reflexivas "+item.ChildReflexions.ToString():"" #><#= (item.IsXorComposition)?", Es XOR":"" #><#= (item.ChildIsLeaf)?", Es hoja":" Es rama" #>)]</br>
  <#+
-            } 
+            }
             else
             {
  #>

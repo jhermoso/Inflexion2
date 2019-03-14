@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.0" Id="09372cc7-da39-42fa-83cb-79e4a66a69c2" sGDB="Oracle" isModule="false" generateCode="Always" xmlns="http://schemas.microsoft.com/dsltools/MoneyGen">
+  <classBases>
+    <applicationHasElements Id="40751e9c-4053-4a06-9b27-e72ba6d5a167">
+      <entity Id="d5650954-763e-4b54-a592-c3309649fd62" name="ZeusUser" inheritanceClassModifier="Public, Partial" aliasFrontEnd="User" volumen="0" remarks="User information data" tooltip="User information" logicDelete="false" pluralName="Users" programRemarks="Data about user of the application." referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="User" grammarCategory="sustantivo" mainEntityStereotype="AggregateRoot">
+        <atributtes>
+          <classBaseHasAtributtes Id="5b801aaf-ca45-4bda-975d-eacc21adf7e1">
+            <atributte Id="6552fa44-8556-442e-81b5-b990f1e8a419" atributteName="Name" isIdentification="false" position="0" programerRemarks="Test with auto property and public setter." requestUponCreation="yes" nameAndType="string Name" minLength="3" maxLength="80" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="3849e1f5-2d7b-493d-a1bf-4c9e64efa161">
+      <entity Id="ca5b47d6-0189-4e81-8ef9-4865bcdc8ff7" name="ZeusAppSetting" inheritanceClassModifier="Public, Partial" aliasFrontEnd="App Setting" volumen="0" remarks="Clasificador" tooltip="Application Settings" logicDelete="false" pluralName="App Settings" programRemarks="Clasificador de uso futuro" referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="AppSettings" grammarCategory="Sustantivo" mainEntityStereotype="AggregateRoot">
+        <atributtes>
+          <classBaseHasAtributtes Id="d1bc25ae-1a22-4c51-8a2c-fca835280302">
+            <atributte Id="1ac0f983-ad9c-4b2e-b008-51754acf005e" atributteName="Key" atributteAlias="Key" editPropertyControl="Key" editCollectionPropertyControl="Keys" isIdentification="false" position="0" tooltip="App setting key" userRemarks="App setting key" programerRemarks="App setting identity" nameAndType="string Key" plural="Keys" grammarCategories="sustantive" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="68f233f8-8317-4adf-a269-0833f605962f">
+            <atributte Id="65a24bcc-a377-4b34-bc1d-e68a39f24c1c" atributteName="Value" isIdentification="false" position="0" nameAndType="string Value" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="638376f5-2428-43b9-a701-7ef7a40794f4">
+      <enumeration Id="76e1f21a-3d04-4e6b-8863-ccc40f844c34" name="EnumerationTest" inheritanceClassModifier="Public, Partial" volumen="0" referencedRootEntity="" aliasDataBase="EnumerationTest" mainEntityStereotype="None" serializable="false">
+        <enumValue>
+          <enumerationHasEnumValue Id="8b481ed4-3797-42b0-801c-a9318d3f7ca3">
+            <enumValues Id="5fdd83ab-abd2-4d5a-a07d-e484252fb1c4" description="description" sorting="1" value="Valor1" programRemarks="remark" userRemarks="test" />
+          </enumerationHasEnumValue>
+        </enumValue>
+      </enumeration>
+    </applicationHasElements>
+  </classBases>
+  <boundedContexts>
+    <applicationHasBoundedContexts Id="fabd8042-83da-4a43-89c0-1edd60b00b6b">
+      <boundedContext Id="b04a9bc7-ef0e-4239-a5e2-e941d8c49e22" name="From Main2" mBR="modelbus://kayak.MoneyGen.MoneyGenAdapter/Main2//.\Main2.kyk" />
+    </applicationHasBoundedContexts>
+  </boundedContexts>
+</application>

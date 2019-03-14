@@ -17,7 +17,7 @@ public class CreateDuplicatedDataPrecondition : Template
         {
 #>
 <#+    #>
-        #region Preconditions avoid duplicated data 
+        #region Preconditions to avoid duplicated data 
 <#+   foreach(var property in cbc.mandatoryPropertyObjects)            {#>
 
         if (this.Exists<#=property.AtributteName #>(<#= cbc.camelSecureEntityName #>Dto.<#=property.AtributteName #>.Trim(), serverContext))

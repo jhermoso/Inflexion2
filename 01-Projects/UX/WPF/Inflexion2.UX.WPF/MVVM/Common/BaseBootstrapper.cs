@@ -194,8 +194,8 @@ namespace Inflexion2.UX.WPF.MVVM
             //Windows8Colors.PaletteInstance.MarkerColor = (Color)ColorConverter.ConvertFromString("#5C5C5C");
             //Windows8Colors.PaletteInstance.ValidationColor = Colors.Red;
 
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("es");
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo("es");
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en");
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
 
             base.InitializeShell();
 

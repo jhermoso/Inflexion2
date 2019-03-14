@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.0" Id="043cd4e3-9812-4afa-b751-c349be56ede6" sGDB="Oracle" isModule="false" generateCode="Always" xmlns="http://schemas.microsoft.com/dsltools/MoneyGen">
+  <classBases>
+    <applicationHasElements Id="fff13173-eb30-4433-9e1b-cf18d2441022">
+      <entity Id="f86720d0-41b9-41b5-a30c-aca403190295" name="Document" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Document" stereotype="Entity" volumen="0" remarks="Involves cross definition of a class and and how to see and how save in the repository." tooltip="Incident tracking documentation" logicDelete="false" pluralName="Documents" programRemarks="Involves cross definition of a class and and how to see and how save in the repository." referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="Entities" grammarCategory="Sustantive" mainEntityStereotype="AggregateRoot">
+        <targets>
+          <aggregation Id="4a92e8b4-a54a-4ecd-8c1d-7164f16e84f8" sourceRolName="ChildrenDocuments" targetRolName="ParentDocument" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List" cascadeDelete="false">
+            <entityMoniker name="/043cd4e3-9812-4afa-b751-c349be56ede6/Document" />
+          </aggregation>
+          <composition Id="e9bb9fa9-1e52-4dba-9341-1a647718f19a" sourceMultiplicity="OneOne" sourceRolName="DocumentCheckedOuts" targetRolName="Document" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List" cascadeDelete="false">
+            <entityMoniker name="/043cd4e3-9812-4afa-b751-c349be56ede6/DocumentCheckedOut" />
+          </composition>
+          <aggregation Id="6d82ec53-4b07-4133-b2a9-a3253940bf37" targetRolName="Document" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List" cascadeDelete="false">
+            <objectValueMoniker name="/043cd4e3-9812-4afa-b751-c349be56ede6/DocumentValue" />
+          </aggregation>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="c31fca53-7626-4906-9303-141ebacd4ea1">
+            <atributte Id="87093910-5d1b-47a6-8a8d-c0410ea53a91" atributteName="Name" atributteAlias="Name" isIdentification="false" position="0" tooltip="Name of the entity" userRemarks="Name to identify the entity." requestUponCreation="yes" nameAndType="string Name" aliasDatabaseField="Name" plural="Entities" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="55af8cdf-63e0-48b3-b9cc-94cfc515cace">
+            <atributte Id="e936b88f-e8e8-472d-8844-04bd13de3c87" atributteName="Creation" atributteType="DateTime" isIdentification="false" position="0" nameAndType="DateTime Creation" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="d9e24406-480b-4944-80ac-44abb91c92fc">
+            <atributte Id="d9bc7256-adc9-414c-9a94-1a30b1d1d6e8" atributteName="CheckedOut" atributteType="bool" isIdentification="false" position="0" nameAndType="bool CheckedOut" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="e7bceada-1c8f-4dfd-9565-cbbcdb9fbbb4">
+            <atributte Id="e7c01391-bd23-450a-9d36-08aaefec1291" atributteName="DocumentView" atributteType="bool" isIdentification="false" position="0" nameAndType="bool DocumentView" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="c785ad89-b4b8-4778-b724-8ae665c5a83e">
+            <atributte Id="0690bf60-dfb0-42d7-9840-b1e565d6f6af" atributteName="Master" atributteType="bool" isIdentification="false" position="0" nameAndType="bool Master" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="e30228d4-a1ad-427a-b702-61c84c6f5b35">
+            <atributte Id="6c0e36ae-839e-40de-a09d-30a4132ff0a4" atributteName="original" atributteType="byte[]" isIdentification="false" position="0" isNullable="true" nameAndType="byte[] original" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="a6ee119a-716c-4d73-8bfb-84c4970ce4c0">
+            <atributte Id="c66b6cc5-f1c2-4820-83f3-30f149a7b387" atributteName="OriginalName" isIdentification="false" position="0" nameAndType="string OriginalName" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="705b0b10-11fd-47f5-9773-bbb5ec03624b">
+            <atributte Id="5b7bc8fd-1874-4ada-a693-e80569e5427d" atributteName="OriginalSize" atributteType="int" isIdentification="false" position="0" nameAndType="int OriginalSize" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="eade66a4-7ed0-4535-a2e5-af0bf34433d2">
+            <atributte Id="6a5a764c-f151-44d5-aeec-a0e5a19706a0" atributteName="OriginalType" isIdentification="false" position="0" nameAndType="string OriginalType" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="eb47e3d4-f522-469e-b1ec-2126fb290d9c">
+            <atributte Id="5994b76e-526f-4fcf-aadc-58315417eb0d" atributteName="Originator" isIdentification="false" position="0" nameAndType="string Originator" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="0c9e12f2-d6fc-4682-bffe-bb69ce7d0850">
+            <atributte Id="31eee342-e80c-4b7b-8dc1-d9b6d9e57ed1" atributteName="Remarks" isIdentification="false" position="0" nameAndType="string Remarks" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="fe19a4a5-84e5-446e-804e-a05ef4300a2f">
+      <entity Id="aaf33047-8425-4e41-9f95-c3a9eaef85ff" name="DocumentType" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Document Type" volumen="0" tooltip="Document format options" logicDelete="false" pluralName="Document Types" referencedRootEntity="" grammarCategory="Sustantive" mainEntityStereotype="AggregateRoot">
+        <targets>
+          <composition Id="07105031-e1a8-44f4-bbf1-3080c42193ca" sourceMultiplicity="OneOne" sourceRolName="Documents" targetRolName="DocumentType" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List" cascadeDelete="false">
+            <entityMoniker name="/043cd4e3-9812-4afa-b751-c349be56ede6/Document" />
+          </composition>
+          <composition Id="b9c642b1-841f-4854-a112-825ff6100772" sourceMultiplicity="OneOne" sourceRolName="DcomentVersions" targetRolName="DocumentType" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List" cascadeDelete="false">
+            <entityMoniker name="/043cd4e3-9812-4afa-b751-c349be56ede6/DocumentVersion" />
+          </composition>
+          <composition Id="b5b0f766-9927-4e64-bca4-18cb26c32131" sourceMultiplicity="OneOne" sourceRolName="DocumentFieldNames" targetRolName="DocumentType3" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List" cascadeDelete="false">
+            <entityMoniker name="/043cd4e3-9812-4afa-b751-c349be56ede6/DocumentFieldName" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="d2dc49f8-d8ab-4471-b6c2-6f31dfc25d5a">
+            <atributte Id="f72279be-1e04-4fbb-a167-deba2709c0ca" atributteName="Name" isIdentification="false" position="0" nameAndType="string Name" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="6ab430f1-8ffd-42c4-87a4-fb0be135a29a">
+      <entity Id="1793e5c7-ba39-4c7e-a6cf-82ca1f73b30d" name="DocumentVersion" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Document Version" volumen="0" tooltip="Document version tracking" logicDelete="false" pluralName="Document Versions" referencedRootEntity="" grammarCategory="Sustantive" mainEntityStereotype="AggregateRoot">
+        <targets>
+          <composition Id="bf8e44f9-50e8-471c-a8da-eb9956653b5f" sourceMultiplicity="OneOne" sourceRolName="DocumentFields" targetRolName="DocumentVersion" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List" cascadeDelete="false">
+            <entityMoniker name="/043cd4e3-9812-4afa-b751-c349be56ede6/DocumentField" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="449f2932-a021-4403-b809-a192c1d760ff">
+            <atributte Id="73577b33-0bcb-450c-a2e2-eeb12c0dbdbd" atributteName="HasFile" isIdentification="false" position="0" nameAndType="string HasFile" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="131b7bc5-eaec-482e-b391-04d1f056a56c">
+            <atributte Id="c1657b7a-0956-4825-9cfa-3e8faa10373e" atributteName="Template" atributteType="byte[]" isIdentification="false" position="0" isNullable="true" nameAndType="byte[] Template" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="d1ce4169-bfae-4441-8578-fbf6a855e5e2">
+            <atributte Id="f8aad92f-2482-41e0-99cf-43442420248a" atributteName="TemplateSize" atributteType="int" isIdentification="false" position="0" nameAndType="int TemplateSize" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="ea80bcd5-6010-4a9e-b709-eb1ccabf1a42">
+            <atributte Id="5146cdb7-e324-43f5-b5d0-007b0c9f8985" atributteName="TemplateType" isIdentification="false" position="0" nameAndType="string TemplateType" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="653788a6-b768-4723-8d6f-4ccf7f182fcf">
+            <atributte Id="b8eeb986-a3fe-4045-9b10-3d580985ebac" atributteName="Version" isIdentification="false" position="0" nameAndType="string Version" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="68c7b764-b808-4ee6-a4bd-486c5f9befa8">
+            <atributte Id="1f4d77b7-00fd-41ee-99bf-7af05db3ed24" atributteName="FiledId" isIdentification="false" position="0" nameAndType="string FiledId" />
+          </classBaseHasAtributtes>
+        </atributtes>
+        <invariants>
+          <classBaseHasInvariants Id="96123dc0-7622-4854-bb80-6b2a538714fb">
+            <invariants Id="f9e0fcf2-3e74-4a7b-bbec-b982f42124bd" sortOrder="0" />
+          </classBaseHasInvariants>
+        </invariants>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="431e7362-4cb2-498a-ac73-0c02c8db3a69">
+      <entity Id="8117a8fb-5bd2-4768-9051-3868aaa8d372" name="DocumentField" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Document Field" volumen="0" tooltip="New added dynamic document fields for metadata." logicDelete="false" pluralName="Document Fields" referencedRootEntity="" grammarCategory="Sustantive" mainEntityStereotype="AggregateRoot">
+        <targets>
+          <aggregation Id="675b4f79-dce4-40d7-a4f3-359ee95be26e" targetRolName="DocumentField" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List" cascadeDelete="false">
+            <objectValueMoniker name="/043cd4e3-9812-4afa-b751-c349be56ede6/DocumentValue" />
+          </aggregation>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="a2ff1306-9206-4f1a-a35e-d279d8e4ac02">
+            <atributte Id="b62edd46-c65a-454c-a3d8-0b334b4f2f22" atributteName="Name" isIdentification="false" position="0" nameAndType="string Name" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="9bc44e50-9b8b-452b-b23b-416c3d262a50">
+            <atributte Id="92a8d8ee-340b-46db-aef2-bb615907ba50" atributteName="Type" isIdentification="false" position="0" nameAndType="string Type" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="1bc64b1f-7c82-41e3-bef1-b0a964b1b1b9">
+            <atributte Id="ee683950-1537-47f7-a844-3b03e676a68f" atributteName="Position" isIdentification="false" position="0" nameAndType="string Position" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="111ca619-a69f-42db-a63e-1637403b3cc9">
+      <entity Id="6fd74874-d191-4c82-9fa9-b8c66a77e1f0" name="DocumentFieldName" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Document Field Name" volumen="0" logicDelete="false" pluralName="Document Fields Names" referencedRootEntity="" grammarCategory="Sustantive" mainEntityStereotype="AggregateRoot">
+        <atributtes>
+          <classBaseHasAtributtes Id="cfe1ea24-5917-489e-b57c-bf07f4704fc7">
+            <atributte Id="6d861947-4cc0-4c20-9de6-f784034766e5" atributteName="Name" isIdentification="false" position="0" nameAndType="string Name" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="41d1b777-3541-4dea-9ec8-e9252604b781">
+      <entity Id="3e03232b-bc92-4765-9e58-91507bf271d6" name="DocumentCheckedOut" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Document Checked-Out" volumen="0" logicDelete="false" referencedRootEntity="" mainEntityStereotype="Entity">
+        <atributtes>
+          <classBaseHasAtributtes Id="7c00e603-4f5b-43d5-bc85-e67b3555256a">
+            <atributte Id="e18d1624-6846-41fc-8fb1-127d84682672" atributteName="DocumentContent" atributteType="byte[]" isIdentification="false" position="0" isNullable="true" nameAndType="byte[] DocumentContent" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="b6bae352-74be-4841-8c5f-2167d577f5ab">
+            <atributte Id="74597583-ca49-490e-84c2-818194b82f28" atributteName="FileName" isIdentification="false" position="0" nameAndType="string FileName" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="8f616dcc-5af0-402d-94df-ce8ca15237e6">
+      <objectValue Id="72a3cdec-1145-4c4c-9684-55b33703483a" name="DocumentValue" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Document Value" volumen="0" logicDelete="false" pluralName="Document Values" referencedRootEntity="" grammarCategory="Sustantive" mainEntityStereotype="None">
+        <atributtes>
+          <classBaseHasAtributtes Id="c1d036fd-1a68-46f6-835a-31b427ae2ae7">
+            <atributte Id="fe0743a6-7b75-470f-9702-6497d7f495fd" atributteName="Value" isIdentification="false" position="0" nameAndType="string Value" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </objectValue>
+    </applicationHasElements>
+  </classBases>
+  <boundedContexts>
+    <applicationHasBoundedContexts Id="624cde3a-a5ac-4ad4-ac89-c7c305c0d859">
+      <boundedContext Id="9e6df46a-690b-4bba-bf17-38815b38e4ad" name="From SyfiXBase" mBR="modelbus://kayak.MoneyGen.MoneyGenAdapter/SyfiXBase//.\SyfiXBase.kyk" />
+    </applicationHasBoundedContexts>
+  </boundedContexts>
+</application>

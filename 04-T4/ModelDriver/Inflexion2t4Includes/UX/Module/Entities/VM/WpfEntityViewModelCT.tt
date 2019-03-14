@@ -5,7 +5,11 @@ public class WpfEntityViewModelCT : Template
     public ClassBaseContext cbc; public string projectNamespace; public ITree<BoundedContextMetadata> Skt;
     // constructor de la plantilla con parametros
     public WpfEntityViewModelCT(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
-        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+        {
+            this.cbc= cbc; 
+            this.projectNamespace = projectNamespace;  
+            this.Skt = Skt;
+        }
 
     public override string TransformText()
     {
@@ -29,14 +33,50 @@ namespace <#= projectNamespace #>
     #region usings   
     using System;
     using System.Collections.ObjectModel;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.ServiceModel;
     using System.Windows.Input;
 
     using MvvmValidation;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain.Data;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Application;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Application.Dtos;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Infrastructure.Resources;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Application.WcfClient.<#= cbc.secureEntityName #>Reference;
+<#+
+    // continuamos con el mapping de las propiedades de las clases padres en las asociaciones 
+    foreach (var property in cbc.propertyAssociationSources)
+    {
+        // si no es una relación reflexiva generamos la misma pareja de métodos para los roles de target y source han de ser diferentes
+        if(string.IsNullOrEmpty(property.SourceRolName)) // Validación: Comprobamos que si no existe el nombre del rol source (significa que es una relación unidireccional y por tanto solo genera propiedad en la clase destino (target) y no en la clase  origen (source) la multiplicidad minima del target ha de ser cero. 
+            {
+                continue;
+            }
+#>
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Application.WcfClient.<#= T4Help.ToPascalCase(property.Source.Name) #>Reference;
+<#+
+    }// end del foreach (var property in cbc.propertyAssociationSources)
+#>
+<#+
+    // continuamos con el mapping de las propiedades de las clases padres en las asociaciones 
+    foreach (var property in cbc.propertyAssociationTargets)
+    {
+        // si no es una relación reflexiva generamos la misma pareja de métodos para los roles de target y source han de ser diferentes
+        if(string.IsNullOrEmpty(property.TargetRolName)) // Validación: Comprobamos que si no existe el nombre del rol source (significa que es una relación unidireccional y por tanto solo genera propiedad en la clase destino (target) y no en la clase  origen (source) la multiplicidad minima del target ha de ser cero. 
+            {
+                continue;
+            }
+#>
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Application.WcfClient.<#= T4Help.ToPascalCase(property.Target.Name) #>Reference;
+<#+
+    }// end del foreach (var property in cbc.propertyAssociationSources)
+#>
 
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Application;
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Application.Dtos;
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Infrastructure.Resources;
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Application.WcfClient.<#= cbc.secureEntityName #>Reference;
+    using Inflexion2.Application;
+    using Inflexion2.UX.WPF.MVVM.Commands;
+    using Microsoft.Practices.Prism.Commands;
+    using Microsoft.Practices.Prism.Events;
     #endregion
 
     /// <summary>
@@ -45,47 +85,210 @@ namespace <#= projectNamespace #>
     /// </summary>
     public partial class <#= cbc.pascalSecureEntityName #>ViewModel : Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel<<#= cbc.pascalSecureEntityName #>Dto, <#= cbc.idtype #>>
     {
-        #region CONSTRUCTORS
+        #region Fields
+
+<#+ if (cbc.targetLinksCounter > 0)
+    {
+     var counter = cbc.propertyObjects.Count();
+#>
+        #region query viewmodels for children entities *
+        // .en Nested view models for the controls of children properties.
+        // .es View models anidados para los controles de colecciones de propiedades correspondientes a los hijos.
+<#+
+    // continuamos con el mapping de las propiedades de las clases padres en las asociaciones 
+    foreach (var property in cbc.propertyAssociationTargets)
+    {
+        // si no es una relación reflexiva generamos la misma pareja de métodos para los roles de target y source han de ser diferentes
+        if(string.IsNullOrEmpty(property.SourceRolName)) // Validación: Comprobamos que si no existe el nombre del rol source (significa que es una relación unidireccional y por tanto solo genera propiedad en la clase destino (target) y no en la clase  origen (source) la multiplicidad minima del target ha de ser cero. 
+        {
+            continue;
+        }
+#>
+        private <#= T4Help.ToPascalCase(property.Target.Name) #>QueryViewModel <#= T4Help.ToCamelCase(property.Target.PluralName) #>QueryVM; 		
+<#+
+        counter++;
+    }// end del foreach (var property in cbc.propertyAssociationTargets)
+#>
+        #endregion
+<#+ } // end  if (cbc.targetLinksCounter>0) #>
+<#+ if (cbc.sourceLinksCounter > 0)
+    {
+#>
+        #region query viewmodels for parent entities
+        // .en collections to select parent properties.
+        // .es colecciones para seleccionar propiedades parentales.
+<#+
+    // continuamos con el mapping de las propiedades de las clases padres en las asociaciones 
+    foreach (var property in cbc.propertyAssociationSources)
+    {
+        // si no es una relación reflexiva generamos la misma pareja de métodos para los roles de target y source han de ser diferentes
+        if(string.IsNullOrEmpty(property.TargetRolName)) // Validación: Comprobamos que si no existe el nombre del rol source (significa que es una relación unidireccional y por tanto solo genera propiedad en la clase destino (target) y no en la clase  origen (source) la multiplicidad minima del target ha de ser cero. 
+        {
+            continue;
+        }
+        if (!(property.Source is Enumeration))
+        {
+#>
+        private ObservableCollection<<#= T4Help.ToPascalCase(property.Source.Name) #>Dto> <#= T4Help.ToCamelCase(property.Source.PluralName) #>;
+<#+
+        }
+    }// end del foreach (var property in cbc.propertyAssociationSources)
+#>
+
+        #endregion
+<#+ } // end  if (cbc.sourceLinksCounter > 0) #>
+
+        #endregion
+
+        #region Constructors
         /// <summary>
         /// .en Initialize a new instace for the class <see cref="T:<#= cbc.pascalSecureEntityName #>ViewModel"/>.
         /// .es Inicializa una nueva instancia de la clase <see cref="T:<#= cbc.pascalSecureEntityName #>ViewModel"/>.
         /// </summary>
         public <#= cbc.pascalSecureEntityName #>ViewModel() : base()
         {
+            Initialization();
         } // <#= cbc.pascalSecureEntityName #>ViewModel Constructor
 
+        private void Initialization()
+        {
+            // .en https://github.com/SeriousM/WPFLocalizationExtension/issues/87#issuecomment-174510689
+            // bind the property title of the VM to a dependecy property for the view. To allow the localization of the property tittle.
+            // becouse this property don´t belong the class <#= cbc.pascalSecureEntityName #>Control what is the base for the view
+            // but avalon dock uses this property to set the title of the dockable elements
+            // if we wont tha this can be updated when the selected culture is changed we need this work arround.
+            var targetProperty = this.GetType().GetProperty(nameof(<#= cbc.pascalSecureEntityName #>QueryViewModel.Title));
+            var locBinding = new WPFLocalizeExtension.Extensions.LocTextExtension("<#= cbc.pascalSecureEntityName #>Alias");
+            locBinding.SetBinding(this, targetProperty);
+
+            // .en after to bind the property with the depdendecy property watch if theres is a change of the 
+            // the culture to raise an event to warning that the title property has changed
+            WPFLocalizeExtension.Engine.LocalizeDictionary.Instance.PropertyChanged += (sender, e) =>
+            {
+                if (e.PropertyName == "Culture")
+                {
+                    this.RaisePropertyChanged(() => Title);
+                }
+            };
+        } // <#= cbc.pascalSecureEntityName #>ViewModel intialization
+<#+ if (cbc.targetLinksCounter > 0)
+    {
+#>
         /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="T:<#= cbc.pascalSecureEntityName #>ViewModel"/>.
+        /// .en Child composed constructor <see cref="T:<#= cbc.pascalSecureEntityName #>ViewModel"/>.
+        /// This constructor is used to be the viewmodel of a nested viemodel in a hierchahy.
+        /// </summary>
+        /// <param name="element">
+        /// .en Parameter of type <see cref="<#= cbc.pascalSecureEntityName #>Dto"/> with all the related data.</param>
+        /// <param name="first">first element in the current paged collection</param>
+        /// <param name="previous">last element in the current paged collection</param>
+        /// <param name="next">next element in the current paged collection</param>
+        /// <param name="last">last element in the current paged collection</param>
+        /// <remarks>
+        /// .en these intialization are to allow navigation betwen pages and not only next record. TODO: test this.
+        /// </remarks>
+        public <#= cbc.pascalSecureEntityName #>ViewModel(<#= cbc.pascalSecureEntityName #>Dto element, <#= cbc.pascalSecureEntityName #>Dto first, <#= cbc.pascalSecureEntityName #>Dto previous, <#= cbc.pascalSecureEntityName #>Dto next, <#= cbc.pascalSecureEntityName #>Dto last)
+            : base(element)
+        {
+            this.firstEntityId = first != null ? first.Id: default(<#= cbc.idtype #>);
+            this.nextEntityId = next != null ? next.Id : default(<#= cbc.idtype #>);
+            this.lastEntityId = last != null ? last.Id : default(<#= cbc.idtype #>);
+            this.previousEntityId = previous != null ? previous.Id : default(<#= cbc.idtype #>);
+            
+            Initialization();
+
+        } // <#= cbc.pascalSecureEntityName #>ViewModel Parametrized Constructor
+
+<#+ } // end  if (cbc.targetLinksCounter>0) #>
+
+<#+ if (cbc.targetLinksCounter == 0)
+    {
+#>
+        /// <summary>
+        /// .es Inicializa una nueva instancia de la clase <see cref="T:UserViewModel"/>.
+        /// Este constructor es invocado por primera vez desde el QueryViewModel ya que para cada 
+        /// linea que se visualiza en la lista de Usuarios se crea el Viewmodel de dicho usuario.
+        /// Esta lista se almacena en una observable collection en el query view model con la que se hace el binding 
+        /// de la pantalla query.
+        /// Por esta razon las entidades relacionadas no se cargan si no se navega hasta esta entidad.
         /// </summary>
         /// <param name="element">
         /// Parámetro de tipo <see cref="<#= cbc.pascalSecureEntityName #>Dto"/> que contiene la información necesaria.
         /// </param>
         public <#= cbc.pascalSecureEntityName #>ViewModel(<#= cbc.pascalSecureEntityName #>Dto element)
-            : base(element)
+            :  base(element)
         {
+            Initialization();
         } // <#= cbc.pascalSecureEntityName #>ViewModel Parametrized Constructor
+<#+ } // end  if (cbc.sourceLinksCounter == 0) #>
+
         #endregion
 
-        #region PROPERTIES
+        #region Properties
 
         /// <summary>
-        /// Propiedad para establecer el Título de la ventana cuando este view model se utiliza 
+        /// .es Propiedad para establecer el Título de la ventana cuando este view model se utiliza 
         /// en un control de usuario o ventana exclusivamente para el.
         /// cuando este view model se utiliza solo en una lista esta propiedad no se utiliza.
         /// </summary>
-        public override string Title
-        {
-            get
-            {
-                return <#= prjCon.boundedContextName #>Resources.<#= cbc.secureEntityName #>Alias; 
-            }
-        }
+        public override string Title{ get; set; }
 
 <#+    foreach (var property in cbc.propertyObjects) {#>
         /// <summary>
         /// <#= property.ProgramerRemarks #>
         /// </summary>
-        public <#= property.AtributteType #> <#= T4Help.SecureName(property.AtributteName) #>
+<#+ 
+ bool propertyIsOwnType = cbc.AccessibleClassBaseTree.All.Nodes.Where(c => property.AtributteType == T4Help.SecureName(c.Data.Name) ).Any();
+ if (propertyIsOwnType)
+ {
+    var cbcProperty = cbc.AccessibleClassBaseTree.All.Nodes.First(c => property.AtributteType == T4Help.SecureName(c.Data.Name) );
+#>
+        public Application.WcfClient.<#= cbc.secureEntityName #>Reference.<#= property.AtributteType #> <#= T4Help.SecureName(property.AtributteName) #>
+        {
+            get
+            {
+                return (Application.WcfClient.<#= cbc.secureEntityName #>Reference.<#= property.AtributteType #>) this.ObjectElement.<#= T4Help.SecureName(property.AtributteName) #>;
+            }
+            set
+            {
+                if (this.ObjectElement.<#= T4Help.SecureName(property.AtributteName) #> != (Domain.Data.<#= property.AtributteType #>) value)
+                {
+                    this.ObjectElement.<#= T4Help.SecureName(property.AtributteName) #>  = (Domain.Data.<#= property.AtributteType #>) value;
+                    this.RaisePropertyChanged(() => this.<#= T4Help.SecureName(property.AtributteName) #>);
+                }
+            }
+        } // <#= T4Help.SecureName(property.AtributteName) #>
+<#+	
+    if (((kayak.MoneyGen.Enumeration) cbcProperty.Data).EnumValue.Count() > 0) /* es enum*/
+    {
+    // System.Diagnostics.Debugger.Launch(); 
+#>
+        public int <#= T4Help.SecureName(property.AtributteName) #>Index
+        {
+            get
+            {
+                var i = Array.IndexOf(Enum.GetValues(<#= T4Help.SecureName(property.AtributteName) #>.GetType()), <#= T4Help.SecureName(property.AtributteName) #>);//  this.ObjectElement.<#= T4Help.SecureName(property.AtributteName) #>; //
+                return i;
+            }
+
+            set
+            {
+                var selectedEnum = (Domain.Data.<#= cbcProperty.Data.Name #>)(Enum.GetValues(<#= T4Help.SecureName(property.AtributteName) #>.GetType())).GetValue(value);
+                if (this.ObjectElement.<#= T4Help.SecureName(property.AtributteName) #> != selectedEnum)
+                {
+                    this.ObjectElement.<#= T4Help.SecureName(property.AtributteName) #> = selectedEnum;
+                    this.RaisePropertyChanged(() => this.<#= T4Help.SecureName(property.AtributteName) #>);
+                }
+            }
+        }
+
+<#+
+    }
+}
+else // if the property is not enum
+{
+#>
+        public <#= property.AtributteType #><#= (property.IsNullable & T4Help.IsValueType(property.AtributteType) )?"?":string.Empty #> <#= T4Help.SecureName(property.AtributteName) #>
         {
             get
             {
@@ -95,41 +298,206 @@ namespace <#= projectNamespace #>
             {
                 if (this.ObjectElement.<#= T4Help.SecureName(property.AtributteName) #> != value)
                 {
-                    this.ObjectElement.<#= T4Help.SecureName(property.AtributteName) #> = value;
+                    this.ObjectElement.<#= T4Help.SecureName(property.AtributteName) #>  = value;
                     this.RaisePropertyChanged(() => this.<#= T4Help.SecureName(property.AtributteName) #>);
                 }
             }
         } // <#= T4Help.SecureName(property.AtributteName) #>
+<#+	
+    }
+  }
+#>
 
-<#+  }#>
         #endregion
-        
-        #region Methods
+<#+ if (cbc.TotalLinksSources > 0)
+    {
+#>
+
+        #region Properties from Parents
+        // .en collections to select parent properties.
+        // .es colecciones para seleccionar propiedades parentales.
+<#+
+    // continuamos con el mapping de las propiedades de las clases padres en las asociaciones 
+    foreach (var property in cbc.propertyAssociationSources)
+    {
+        if (property.Source.GetType().Name == "Enumeration") 
+        {#>
+        public Domain.Data.<#= T4Help.ToPascalCase(property.Source.Name) #><#= (IsMinMultiplicityOne(property.SourceMultiplicity))?string.Empty : "?" #> Selected<#= T4Help.ToPascalCase(property.Source.Name) #>
+        {
+            get
+            {
+                return this.ObjectElement.<#= T4Help.ToPascalCase(property.TargetRolName) #>;
+            }
+            set
+            {
+                if (this.ObjectElement.<#= T4Help.ToPascalCase(property.TargetRolName) #> != value)
+                {
+                    this.ObjectElement.<#= T4Help.ToPascalCase(property.TargetRolName) #> = value;
+                    this.RaisePropertyChanged(() => this.Selected<#= T4Help.ToPascalCase(property.Source.Name) #>);
+                }
+            }
+        } // <#= T4Help.ToPascalCase(property.Source.Name) #>
+<#+     }
+        else
+        {
+       //System.Diagnostics.Debugger.Break(); 
+        var propiedadIdentidad = property.Source.Atributtes.FirstOrDefault(p => p.IsIdentification);
+        if (propiedadIdentidad == null) propiedadIdentidad = property.Source.Atributtes.FirstOrDefault();
+
+
+        // si no es una relación reflexiva generamos la misma pareja de métodos para los roles de target y source han de ser diferentes
+        if(string.IsNullOrEmpty(property.TargetRolName)) // Validación: Comprobamos que si no existe el nombre del rol source (significa que es una relación unidireccional y por tanto solo genera propiedad en la clase destino (target) y no en la clase  origen (source) la multiplicidad minima del target ha de ser cero. 
+        {
+            continue;
+        }
+
+#>
+        //private ObservableCollection<<#= T4Help.ToPascalCase(property.Source.Name) #>Dto> <#= T4Help.ToCamelCase(property.Source.PluralName) #>; 		
+
         /// <summary>
-        /// Método encargado de recuperar los datos de una entidad mediante su identificador.
+        /// ***
         /// </summary>
-        /// <param name="identifier">
-        /// Parámetro que indica el identificador de la entidad que se va a recuperar.
-        /// </param>
-        /// <returns>
-        /// Devuelve el objeto Dto <see cref="<#= cbc.pascalSecureEntityName #>Dto"/> correspondiente.
-        /// </returns>
+        public <#= propiedadIdentidad.AtributteType #> <#= T4Help.ToPascalCase(property.Source.Name) #>
+        {
+            get
+            {
+                return this.ObjectElement.<#= T4Help.ToPascalCase(property.Source.Name) #>.<#= propiedadIdentidad.AtributteName #>;
+            }
+            set
+            {
+                if (this.ObjectElement.<#= T4Help.ToPascalCase(property.Source.Name) #>.<#= propiedadIdentidad.AtributteName #> != value)
+                {
+                    this.ObjectElement.<#= T4Help.ToPascalCase(property.Source.Name) #>.<#= propiedadIdentidad.AtributteName #> = value;
+                    this.RaisePropertyChanged(() => this.<#= T4Help.ToPascalCase(property.Source.Name) #>);
+                }
+            }
+        } // <#= T4Help.ToPascalCase(property.Source.Name) #>
+
+        /// <summary>
+        /// .en Collection where to chose one parent
+        /// </summary>
+        public ObservableCollection<<#= T4Help.ToPascalCase(property.Source.Name) #>Dto> <#= T4Help.ToPascalCase(property.Source.PluralName) #>
+        {
+            get
+            {
+                return this.<#= T4Help.ToCamelCase(property.Source.PluralName) #>;
+            }
+            set
+            {
+                if (this.<#= T4Help.ToCamelCase(property.Source.PluralName) #> != value)
+                {
+                    this.<#= T4Help.ToCamelCase(property.Source.PluralName) #> = value;
+                    this.Selected<#= T4Help.ToPascalCase(property.Source.Name) #> = this.<#= T4Help.ToCamelCase(property.Source.PluralName) #>.First();
+                }
+            }
+        } // <#= T4Help.ToPascalCase(property.Source.PluralName) #>
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public <#= T4Help.ToPascalCase(property.Source.Name) #>Dto Selected<#= T4Help.ToPascalCase(property.Source.Name) #>
+        {
+            get
+            {
+                return this.ObjectElement.<#= T4Help.ToPascalCase(property.Source.Name) #>;
+            }
+            set
+            {
+                if (this.ObjectElement.<#= T4Help.ToPascalCase(property.Source.Name) #> != value)
+                {
+                    this.ObjectElement.<#= T4Help.ToPascalCase(property.Source.Name) #> = value;
+                    this.RaisePropertyChanged(() => this.Selected<#= T4Help.ToPascalCase(property.Source.Name) #>);
+                }
+            }
+        } // Selected<#= T4Help.ToPascalCase(property.Source.Name) #>
+<#+
+        }
+    }// end del foreach (var property in cbc.propertyAssociationSources)
+#>
+
+        #endregion
+<#+ } // end  if (cbc.sourceLinksCounter > 0) #>
+
+<#+
+  foreach (var property in cbc.propertyAssociationTargets)
+  {
+      //if (okDebug)  Debug.WriteLine("camposition target link encontrado",property.ToString() );
+      // string propertyType= property.Target.Name;
+      // para que sea una colección es necesario que la multiplicidad sea many
+      if(string.IsNullOrEmpty(property.SourceRolName)) // Validación: Comprobamos que si no existe el nombre del rol source (significa que es una relación unidireccional y por tanto solo genera propiedad en la clase destino (target) y no en la clase  origen (source) la multiplicidad minima del target ha de ser cero. 
+      {
+          continue;
+      }
+#>
+
+        /// <summary>
+        /// <#= property.ProgramRemarks #>
+        /// </summary>
+        public <#= T4Help.ToPascalCase(property.Target.Name) #>QueryViewModel <#= T4Help.SecureName(property.Target.PluralName) #>QueryVM
+        {
+            get
+            {
+                return <#= T4Help.ToCamelCase(property.Target.PluralName) #>QueryVM;
+            }
+            set
+            {
+                if (this.<#= T4Help.ToCamelCase(property.Target.PluralName) #>QueryVM != value)
+                {
+                    this.<#= T4Help.ToCamelCase(property.Target.PluralName) #>QueryVM = value;
+                    this.RaisePropertyChanged(() => this.<#= T4Help.SecureName(property.Target.PluralName) #>QueryVM);
+                }
+            }
+        } // <#= T4Help.SecureName(property.SourceRolName) #>
+<#+} //end  foreach (var property in cbc.propertyAssociationTargets)#>
+
+        #region Methods
+<#+ if (cbc.targetLinksCounter > 0)
+    {
+     var counter = cbc.propertyObjects.Count();
+#>
+        /// <summary>
+        /// Deactivate all the children ViewModels the collections of related aggregates.
+        /// </summary>
+        public override void DeactivateChildrenCollections()
+        {
+<#+
+    // continuamos con el mapping de las propiedades de las clases padres en las asociaciones 
+    foreach (var property in cbc.propertyAssociationTargets)
+    {
+        // si no es una relación reflexiva generamos la misma pareja de métodos para los roles de target y source han de ser diferentes
+        if(property.Target == null) // Validación: Comprobamos que si no existe el nombre del rol source (significa que es una relación unidireccional y por tanto solo genera propiedad en la clase destino (target) y no en la clase  origen (source) la multiplicidad minima del target ha de ser cero. 
+            {
+                continue;
+            }
+#>
+            if ( this.<#= T4Help.ToPascalCase(property.Target.PluralName) #>QueryVM != null)
+            {
+                this.<#= T4Help.ToPascalCase(property.Target.PluralName) #>QueryVM.IsActive = false;
+            }
+
+<#+
+        counter++;
+    }// end del foreach (var property in cbc.propertyAssociationSources)
+#>
+        }
+
+<#+ } // end  if (cbc.propertyAssociationSources > 0) #>
+
+        /// <summary>.es Obtener el dto de la entidad <#= cbc.pascalSecureEntityName #> por su identificador.</summary>
+        /// <param name="identifier">.es Parámetro que indica el identificador de la entidad que se va a recuperar.</param>
+        /// <returns>.es Devuelve el objeto Dto <see cref="<#= cbc.pascalSecureEntityName #>Dto"/> correspondiente.</returns>
         public override <#= cbc.pascalSecureEntityName #>Dto GetById(<#= cbc.idtype #> identifier)
         {
 <#+ if (Secured){#>            UserContextDto userContext = ApplicationContext.UserContext;<#+} #>
             <#= cbc.pascalSecureEntityName #>ServiceClient serviceClient = new <#= cbc.pascalSecureEntityName #>ServiceClient();
-           // Consumimos el servicio y obtenemos los datos.
+            // .en consume the service and get the data // .es Consumimos el servicio y obtenemos los datos.
             var <#= cbc.camelSecureEntityName #>Dto = serviceClient.GetById(identifier <#=(Secured)?", userContext":"" #>);
-            // Devolvemos la respuesta.
+
             return <#= cbc.camelSecureEntityName #>Dto;
         } // GetById
 
-        /// <summary>
-        /// Método encargado de crear o actualizar una entidad de tipo <#= cbc.pascalSecureEntityName #>.
-        /// </summary>
-        /// <param name="parameter">
-        /// Parámetro con información adicional.
-        /// </param>
+        /// <summary>.es Crear o actualizar una entidad de tipo <#= cbc.pascalSecureEntityName #>.</summary>
+        /// <param name="parameter">data to update.</param>
         public override void OnSaveRecord(object parameter)
         {
             if (this.IsActive &&
@@ -148,17 +516,141 @@ namespace <#= projectNamespace #>
                     bool response = serviceClient.Update(this.ObjectElement<#=(Secured)?", userContext":"" #>);
                     this.MessageBoxService.Show("Entidad actualizada");
                 }
+
+                UpdateParentView();
             }
         } // OnSaveRecord
 
-        // si esta entidad necesita cargar otras entidades o colecciones es aqui donde se implementan los metodos de carga.
+        /// <summary>.en Create a new <#= cbc.pascalSecureEntityName #></summary>
+        /// <param name="parameter">.en Data to create the new <#= cbc.pascalSecureEntityName #></param>
+        public override void OnNewRecord(object parameter)
+        {
+            var views = this.RegionManager.Regions[Inflexion2.UX.WPF.MVVM.RegionNames.WorkspaceRegion].ActiveViews;
+            base.OnNewRecord(parameter);
+            this.Initialization();
+            <#= cbc.pascalSecureEntityName #>View currentView = (<#= cbc.pascalSecureEntityName #>View)views.FirstOrDefault();
+
+<#+ if (cbc.targetLinksCounter > 0)
+    {
+     var counter = cbc.propertyObjects.Count();
+    #>
+            // .en Nested Query view models for the controls of children properties.
+            // .es View models anidados para los controles de colecciones de propiedades correspondientes a los hijos.
+<#+
+    // continuamos con el mapping de las propiedades de las clases padres en las asociaciones 
+    foreach (var property in cbc.propertyAssociationTargets)
+    {
+        // si no es una relación reflexiva generamos la misma pareja de métodos para los roles de target y source han de ser diferentes
+        if(string.IsNullOrEmpty(property.TargetRolName)) // Validación: Comprobamos que si no existe el nombre del rol source (significa que es una relación unidireccional y por tanto solo genera propiedad en la clase destino (target) y no en la clase  origen (source) la multiplicidad minima del target ha de ser cero. 
+            {
+                continue;
+            }
+#>
+            (currentView.<#= T4Help.ToPascalCase(property.Target.Name) #>QueryView).DataContext = new <#= T4Help.ToPascalCase(property.Target.Name) #>QueryViewModel();
+            ((<#= T4Help.ToPascalCase(property.Target.Name) #>QueryViewModel)(currentView.<#= T4Help.ToPascalCase(property.Target.Name) #>QueryView).DataContext).RefreshItems();	
+
+<#+
+        counter++;
+    }// end del foreach (var property in cbc.propertyAssociationSources)
+#>
+<#+ } // end  if (cbc.targetLinksCounter>0) #>
+        }
 
         #endregion
 
         #region Protected Methods
 
+<#+ if (cbc.sourceLinksCounter > 0)
+    {
+     var counter = cbc.propertyObjects.Count();
+    #>
+        // .en implement here the loading of related entities or value objects.
+        // .es implementar aqui los metodos de carga  de entidades u objetos valor relacionadas al root aggregate.
+<#+
+    // continuamos con el mapping de las propiedades de las clases padres en las asociaciones 
+    foreach (var property in cbc.propertyAssociationSources)
+    {
+        // si no es una relación reflexiva generamos la misma pareja de métodos para los roles de target y source han de ser diferentes
+        if(property.Source is Enumeration) 
+        {
+            continue;
+        }
+#>
+
+        private void Populate<#= T4Help.ToPascalCase(property.Source.PluralName) #>(<#= cbc.idtype #> filterId)
+        {
+            <#= T4Help.ToPascalCase(property.Source.Name) #>ServiceClient serviceClient = new <#= T4Help.ToPascalCase(property.Source.Name) #>ServiceClient();
+            if (filterId ==  default(<#= cbc.idtype #>))
+            {
+                this.<#= T4Help.ToPascalCase(property.Source.PluralName) #> = serviceClient.GetAll();
+            }
+            else
+            {
+                this.<#= T4Help.ToPascalCase(property.Source.PluralName) #> = new ObservableCollection<<#= T4Help.ToPascalCase(property.Source.Name) #>Dto>() { serviceClient.GetById(filterId) };
+            }
+
+            //try
+            //{
+            //    serviceClient.BeginGetAll( (asyncResult) =>
+            //    {
+            //        try
+            //        {
+            //            this.<#= T4Help.ToPascalCase(property.Source.PluralName) #> = serviceClient.EndGetAll(asyncResult);
+
+            //        }
+            //        catch (TimeoutException e)
+            //        {
+            //            this.MessageBoxService.Show("The service operation timed out. " + e.Message);
+            //            serviceClient.Abort();
+            //        }
+            //        catch (FaultException<Inflexion2.Application.ValidationException> e)
+            //        {
+            //            this.MessageBoxService.Show("Validation Exception. Message: {0}", e.Message);
+            //            serviceClient.Abort();
+            //        }
+            //        catch (FaultException<Inflexion2.Application.InternalException> e)
+            //        {
+            //            this.MessageBoxService.Show("Internal Exception. Message: {0}", e.Message);
+            //            serviceClient.Abort();
+            //        }
+            //        // Catch unrecognized faults.This handler receives exceptions thrown by WCF
+            //        //services when ServiceDebugBehavior.IncludeExceptionDetailInFaults
+            //        //is set to true or when un - typed FaultExceptions raised.
+            //        catch (FaultException fe)
+            //        {
+            //            this.MessageBoxService.Show("Unhalded fault exception. Message:" + fe.Message);
+            //            serviceClient.Abort();
+            //        }
+            //        catch (Exception e)
+            //        {
+            //            this.MessageBoxService.Show("Unexpected exception" + e.Message);
+            //            serviceClient.Abort();
+            //            throw;
+            //        }
+            //        //finally
+            //        //{
+
+            //        //}
+            //    },
+            //    null);
+            //}
+            //catch (Exception e)
+            //{
+            //    this.MessageBoxService.Show("error on <#= cbc.pascalSecureEntityName #>ViewModel.<#= T4Help.ToPascalCase(property.Source.PluralName) #> collection." + e.Message);
+            //    serviceClient.Abort();
+            //    throw;
+            //}
+
+        }
+
+<#+
+        counter++;
+    }// end del foreach (var property in cbc.propertyAssociationSources)
+#>
+<#+ } // end  if (cbc.propertyAssociationSources > 0) #>
+
         /// <summary>
-        /// execute the validation rules
+        /// example to execute validation rules
         /// </summary>
         /// <param name="validation"></param>
         protected override void SetupValidation(MvvmValidation.ValidationHelper validation)
@@ -166,25 +658,164 @@ namespace <#= projectNamespace #>
             //ejemplo de validacion
             //// Validación de hora de Inicio
             //validation.AddRule(
-            //                   () => this.HoraInicio,
+            //                   () => this.propiedad,
             //                   () => RuleResult.Assert(
-            //                                           this.HoraInicio != null,
-            //                                           "La hora de inicio de emisión es requerida"));
+            //                                           this.propiedad != null,
+            //                                           "mensaje"));
 
         }
 
-		/// <summary>
-        /// int his method is possible to override to add the previus action to execute when there is a navigation request
+        /// <summary>
+        /// .en Here is possible to override the actions to execute when there is a navigation request
         /// </summary>
+        /// <remarks>
+        /// .en Here is where to call to the methods to load the related entities (children and parents).
+        /// .es aqui es donde se invoca a los métodos de carga de las entidades adicionales.
+        /// </remarks>
         public override void OnNavigatedTo(Microsoft.Practices.Prism.Regions.NavigationContext navigationContext)
         {
-            //es aqui donde se invoca a los metodos de carga de las entidades adicionales.
-
             base.OnNavigatedTo(navigationContext);
+<#+ if (cbc.sourceLinksCounter > 0)
+    {
+     var counter = cbc.propertyObjects.Count();
+    #>
+            //.en load parent entities
+            //.es cargar aqui las entidades padre
+
+            // this logic applys when you came from the collection of users through double click
+            // load parent entities and populate the related combobox with unique value
+
+            // el parametro navigationContext se utiliza para filtrar la información que cargamos
+            KeyValuePair<string, string> filterKeyValue = default(KeyValuePair<string, string>);
+            string[] filterOperation;
+<#+
+    // continuamos con el mapping de las propiedades de las clases padres en las asociaciones 
+    foreach (var property in cbc.propertyAssociationSources)
+    {
+        // si no es una relación reflexiva generamos la misma pareja de métodos para los roles de target y source han de ser diferentes
+        if(property.Source is Enumeration)
+        {
+            continue;
         }
+#>
+
+            filterKeyValue = navigationContext.Parameters.FirstOrDefault(c => c.Key.StartsWith("filter;Department"));
+            if (!filterKeyValue.Equals(default(KeyValuePair<string, string>)) && filterKeyValue.Key.EndsWith("Id"))
+            {
+                filterOperation = filterKeyValue.Value.Split(';');
+                //var specification = Inflexion2.Extensions.SpecificationsLinqExtensions.CreateSpecification<DepartmentDto>(filterProperty, filterOperation.First(), filterOperation.Last());
+                <#= cbc.idtype #> id = <#= cbc.idtype #>.Parse(filterOperation.Last());
+
+                // populate the combobox with only one value
+                Populate<#= T4Help.ToPascalCase(property.Source.PluralName) #>(id);
+            }
+            else
+            {
+                // populate the combobox with all values
+                Populate<#= T4Help.ToPascalCase(property.Source.PluralName) #>(default(<#= cbc.idtype #>));
+            }
+<#+
+        counter++;
+    }// end del foreach (var property in cbc.propertyAssociationSources)
+#>
+<#+ } // end  if (cbc.sourceLinksCounter>0) #>
+
+<#+ if (cbc.targetLinksCounter > 0)
+    {
+     var counter = cbc.propertyObjects.Count();
+    #>
+            //.en load children entities
+            //.es cargar aqui los agregados relacionados
+
+<#+
+    foreach (var property in cbc.propertyAssociationTargets)
+    {
+        // si no es una relación reflexiva generamos la misma pareja de métodos para los roles de target y source han de ser diferentes
+        if(string.IsNullOrEmpty(property.TargetRolName)) // Validación: Comprobamos que si no existe el nombre del rol source (significa que es una relación unidireccional y por tanto solo genera propiedad en la clase destino (target) y no en la clase  origen (source) la multiplicidad minima del target ha de ser cero. 
+        {
+            continue;
+        }
+#>
+            if (navigationContext.Parameters["Id"] != default(<#= cbc.idtype #>).ToString())
+            {
+                // only in this case there is a need of subscription to update a parent view
+                if (!CompositeViewUpdateEvent.Contains(this.OnReceiveCompositeViewUpdateEvent))
+                {
+                    CompositeViewUpdateEvent.Subscribe(this.OnReceiveCompositeViewUpdateEvent, ThreadOption.UIThread);
+                }
+            }
+
+            //<#= T4Help.ToPascalCase(property.Target.Name) #>ServiceClient <#= T4Help.ToCamelCase(property.Target.Name) #>ServiceClient = new <#= T4Help.ToPascalCase(property.Target.Name) #>ServiceClient();
+            var specDto = new SpecificationDto() { PageIndex = 0, PageSize = 5 };
+            specDto.CompositeFilter.Filters.Add(new Filter() { Property = "<#= cbc.pascalSecureEntityName #>.Id", Operator = "IsEqualTo", Value = navigationContext.Parameters["Id"] });//this.ObjectElement.Id.ToString()
+            <#= T4Help.SecureName(property.Target.PluralName) #>QueryVM = new <#= T4Help.ToPascalCase(property.Target.Name) #>QueryViewModel(specDto, typeof(<#= cbc.pascalSecureEntityName #>View).FullName);
+<#+
+        counter++;
+    }// end del foreach (var property in cbc.propertyAssociationTargets)
+#>
+<#+ } // end  if (cbc.targetLinksCounter>0) #>
+
+            this.Rebind();
+        }
+
+<#+ if (cbc.targetLinksCounter > 0)
+    {
+     var counter = cbc.propertyObjects.Count();
+    #>
+        /// <summary>. en Action to execute when there is a call to update the view.</summary>
+        /// <param name="message"></param>
+        public override void OnReceiveCompositeViewUpdateEvent(string message)
+        {
+<#+
+    foreach (var property in cbc.propertyAssociationTargets)
+    {
+        // si no es una relación reflexiva generamos la misma pareja de métodos para los roles de target y source han de ser diferentes
+        if(property.Target == null) // Validación: Comprobamos que si no existe el nombre del rol source (significa que es una relación unidireccional y por tanto solo genera propiedad en la clase destino (target) y no en la clase  origen (source) la multiplicidad minima del target ha de ser cero. 
+            {
+                continue;
+            }
+#>
+            this.<#= T4Help.SecureName(property.Target.PluralName) #>QueryVM.OnGetRecords("from <#= cbc.pascalSecureEntityName #>ViewModel");			
+<#+
+        counter++;
+    }// end del foreach (var property in cbc.propertyAssociationSources)
+#>
+        }
+<#+ } // end  if (cbc.targetLinksCounter>0) #>
+
+<#+ if (cbc.targetLinksCounter + cbc.sourceLinksCounter > 0)
+    {
+
+    #>
+        internal void RefreshRelatedEntities()
+        {
+<#+
+    // continuamos con el mapping de las propiedades de las clases padres en las asociaciones 
+    foreach (var property in cbc.propertyAssociationSources)
+    {
+        // si no es una relación reflexiva generamos la misma pareja de métodos para los roles de target y source han de ser diferentes
+        if(string.IsNullOrEmpty(property.TargetRolName)) // Validación: Comprobamos que si no existe el nombre del rol source (significa que es una relación unidireccional y por tanto solo genera propiedad en la clase destino (target) y no en la clase  origen (source) la multiplicidad minima del target ha de ser cero. 
+        {
+            continue;
+        }
+
+        if (!(property.Source is Enumeration))
+        {
+#>
+            this.RaisePropertyChanged(() => this.<#= T4Help.ToPascalCase(property.Source.PluralName) #>);
+<#+
+        }
+#>
+            this.RaisePropertyChanged(() => this.Selected<#= T4Help.ToPascalCase(property.Source.Name) #>);
+<#+
+
+    }// end del foreach (var property in cbc.propertyAssociationSources)
+#>
+        }
+
+<#+ } // end  if (cbc.propertyAssociationSources > 0) #>
         #endregion
     }
-
 } //  <#= projectNamespace #>
 <#+
         return this.GenerationEnvironment.ToString();

@@ -1,0 +1,424 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AirBus.Shared.SyfIX.Application.WcfService.Contracts</name>
+    </assembly>
+    <members>
+        <member name="T:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IAplicationService">
+            <summary>
+            Interfaz que permite definir el contrato de servicio para las acciones
+            relacionadas con la entidad Aplication.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IAplicationService.Activate(System.Int32)">
+            <summary>
+            Activa una determinada entidad Aplication.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a activar.
+            </param>
+            <returns>
+            Es <b>true</b> si la activación ha sido correcta, en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IAplicationService.Create(AirBus.Shared.SyfiX.Application.Dtos.AplicationDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo Aplication.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="aplicationDto">
+            Parámetro de tipo <see cref="T:AirBus.Shared.SyfiX.Application.Dtos.AplicationDto"/> con los datos necesarios
+            para la creación de la entidad Aplication.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IAplicationService.Update(AirBus.Shared.SyfiX.Application.Dtos.AplicationDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo Aplication.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="aplicationDto">
+            Parámetro de tipo <see cref="T:AirBus.Shared.SyfiX.Application.Dtos.AplicationDto"/> con los datos necesarios
+            para el borrado de la entidad Aplicationr.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IAplicationService.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad Aplication.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IAplicationService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades Aplication.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <returns>
+            Devuelve listado de Dto´s de la entidad Aplication.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IAplicationService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad Aplication de acuerdo a
+            su identificador.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="aplicationId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:AirBus.Shared.SyfiX.Application.Dtos.AplicationDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IAplicationService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Aplication, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades Aplication, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="T:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IAttributteService">
+            <summary>
+            Interfaz que permite definir el contrato de servicio para las acciones
+            relacionadas con la entidad Attributte.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IAttributteService.Activate(System.Int32)">
+            <summary>
+            Activa una determinada entidad Attributte.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a activar.
+            </param>
+            <returns>
+            Es <b>true</b> si la activación ha sido correcta, en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IAttributteService.Create(AirBus.Shared.SyfiX.Application.Dtos.AttributteDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo Attributte.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="attributteDto">
+            Parámetro de tipo <see cref="T:AirBus.Shared.SyfiX.Application.Dtos.AttributteDto"/> con los datos necesarios
+            para la creación de la entidad Attributte.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IAttributteService.Update(AirBus.Shared.SyfiX.Application.Dtos.AttributteDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo Attributte.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="attributteDto">
+            Parámetro de tipo <see cref="T:AirBus.Shared.SyfiX.Application.Dtos.AttributteDto"/> con los datos necesarios
+            para el borrado de la entidad Attributter.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IAttributteService.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad Attributte.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IAttributteService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades Attributte.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <returns>
+            Devuelve listado de Dto´s de la entidad Attributte.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IAttributteService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad Attributte de acuerdo a
+            su identificador.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="attributteId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:AirBus.Shared.SyfiX.Application.Dtos.AttributteDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IAttributteService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Attributte, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades Attributte, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="T:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IEntityService">
+            <summary>
+            Interfaz que permite definir el contrato de servicio para las acciones
+            relacionadas con la entidad Entity.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IEntityService.Activate(System.Int32)">
+            <summary>
+            Activa una determinada entidad Entity.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a activar.
+            </param>
+            <returns>
+            Es <b>true</b> si la activación ha sido correcta, en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IEntityService.Create(AirBus.Shared.SyfiX.Application.Dtos.EntityDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo Entity.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="entityDto">
+            Parámetro de tipo <see cref="T:AirBus.Shared.SyfiX.Application.Dtos.EntityDto"/> con los datos necesarios
+            para la creación de la entidad Entity.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IEntityService.Update(AirBus.Shared.SyfiX.Application.Dtos.EntityDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo Entity.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="entityDto">
+            Parámetro de tipo <see cref="T:AirBus.Shared.SyfiX.Application.Dtos.EntityDto"/> con los datos necesarios
+            para el borrado de la entidad Entityr.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IEntityService.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad Entity.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IEntityService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades Entity.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <returns>
+            Devuelve listado de Dto´s de la entidad Entity.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IEntityService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad Entity de acuerdo a
+            su identificador.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="entityId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:AirBus.Shared.SyfiX.Application.Dtos.EntityDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IEntityService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Entity, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades Entity, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="T:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IViewsService">
+            <summary>
+            Interfaz que permite definir el contrato de servicio para las acciones
+            relacionadas con la entidad Views.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IViewsService.Activate(System.Int32)">
+            <summary>
+            Activa una determinada entidad Views.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a activar.
+            </param>
+            <returns>
+            Es <b>true</b> si la activación ha sido correcta, en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IViewsService.Create(AirBus.Shared.SyfiX.Application.Dtos.ViewsDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo Views.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="viewsDto">
+            Parámetro de tipo <see cref="T:AirBus.Shared.SyfiX.Application.Dtos.ViewsDto"/> con los datos necesarios
+            para la creación de la entidad Views.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IViewsService.Update(AirBus.Shared.SyfiX.Application.Dtos.ViewsDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo Views.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="viewsDto">
+            Parámetro de tipo <see cref="T:AirBus.Shared.SyfiX.Application.Dtos.ViewsDto"/> con los datos necesarios
+            para el borrado de la entidad Viewsr.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IViewsService.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad Views.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IViewsService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades Views.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <returns>
+            Devuelve listado de Dto´s de la entidad Views.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IViewsService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad Views de acuerdo a
+            su identificador.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="viewsId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:AirBus.Shared.SyfiX.Application.Dtos.ViewsDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:AirBus.Shared.SyfiX.Application.WcfService.Contracts.IViewsService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Views, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades Views, según la especificación indicada.
+            </returns>
+        </member>
+    </members>
+</doc>

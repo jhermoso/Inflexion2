@@ -1,0 +1,100 @@
+﻿<#+ 
+
+public class InfraestructureEntityRepositoryCT : Template
+{
+    // parametros de la plantilla
+    public ClassBaseContext  cbc ;
+    public string projectNamespace;
+    public ITree<BoundedContextMetadata> Skt;
+
+        // constructor de la plantilla
+    public InfraestructureEntityRepositoryCT(ClassBaseContext  classBaseContext, string nombreProjecto,  ITree<BoundedContextMetadata> skt)
+    {
+            cbc = classBaseContext;             // contexto de la clase base a interpretar
+            projectNamespace = nombreProjecto;  // nombre del proyecto para el que estamos interpretando
+            Skt = skt;                          // shared kernel tree
+
+    }
+        
+    public override string TransformText()
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+        IList<string> sharedKernelUsings =  GetSharedKernelReferencesByProject(projectNamespace, Skt, cbc.diagram);
+        IList<string> NameSpaceSection = SplitNamesProjects(projectNamespace, cbc.diagram);
+        string company              = NameSpaceSection[0];
+        string product              = NameSpaceSection[1];
+        string boundedContextName   = NameSpaceSection[2];
+        string layer                = NameSpaceSection[3];
+        string kindProject          = NameSpaceSection[4];
+
+        var cpyrigth = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity, T4Help.getLeftStringSlice(this.ToString(), '+', -1).Substring(1));
+        string cpyrigthText = cpyrigth.TransformText();
+#>
+<#= cpyrigthText #>
+namespace <#= projectNamespace #>
+{
+
+<#+
+if (sharedKernelUsings != null)
+foreach (var item in sharedKernelUsings)
+    {
+#>
+    using <#= item #>;
+<#+
+    }// end foreach para los using del shared kernel
+#>
+    using System;
+<#+ if (cbc.targetLinksCounter>0) 
+    {
+#>
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+<#+ }
+#>
+    using Inflexion2;
+    using Inflexion2.Domain;
+    using <#= cbc.diagram.RootNameSpace #>.<#= boundedContextName #>.Domain;
+    using <#= cbc.diagram.RootNameSpace #>.<#= boundedContextName #>.Domain.Data;
+    <#= (cbc.diagram.ORM.Contains("nh"))?"":"using System.Data.Entity;" #>
+  
+    /// <summary>
+    /// Clase pública repositorio para persistir y 
+    /// obtener información a partir de entidades <see cref="<#= I #><#= cbc.secureEntityName #>"/>.
+    /// </summary>
+    /// <remarks>
+    /// Sin comentarios adicionales.
+    /// </remarks>
+    public partial class <#= cbc.secureEntityName #>Repository : <#=(cbc.diagram.ORM.Contains("nh"))?"NHRepository<I":"EFRepository<" #><#= cbc.secureEntityName #>, <#= cbc.idtype #>>, I<#= cbc.secureEntityName #>Repository
+    {
+
+        #region constructors
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="<#= cbc.secureEntityName #>Repository"/>.
+        /// </summary>
+        /// <remarks>
+        /// el constructor ha de ser publico para poder ser resuelto por unity.
+        /// </remarks>
+        /// <param name="<#= (cbc.diagram.ORM.Contains("ibernate"))?"session":"dbContext" #>">
+        /// Parámetro de tipo <see cref="<#= (cbc.diagram.ORM.Contains("ibernate"))?"ISession":"DbContext" #>"/> que hace referencia 
+        /// a la unidad de trabajo para el acceso a datos.
+        /// </param>
+        /// <exception cref="System.ArgumentNullException">
+        /// Lanzada cuando el valor del parámetro <c><#= (cbc.diagram.ORM.Contains("ibernate"))?"session":"dbContext" #></c> es null.
+        /// </exception>
+        public <#= cbc.secureEntityName #>Repository(<#= (cbc.diagram.ORM.Contains("ibernate"))?"(ISession session) : base(session)":"DbContext dbContext) : base(dbContext) " #>
+        {
+        } // <#= cbc.secureEntityName #>Repository Constructor
+
+        #endregion
+
+    } // <#= cbc.secureEntityName #>
+
+} // <#= projectNamespace #>
+<#+
+                return this.GenerationEnvironment.ToString();
+            }
+        }
+#>

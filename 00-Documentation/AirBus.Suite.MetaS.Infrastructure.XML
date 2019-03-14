@@ -1,0 +1,206 @@
+﻿<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>AirBus.Suite.MetaS.Infrastructure</name>
+  </assembly>
+  <members>
+    <member name="T:AirBus.Suite.MetaS.Infrastructure.MetaClassConfiguration">
+      <summary>
+            inicializa una nueva instancia de  una entidad MetaClass/&gt;.
+            </summary>
+      <remarks>
+            Mapea un objeto <see cref="T:AirBus.Suite.MetaS.Domain.MetaClass" /></remarks>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Infrastructure.MetaClassConfiguration.#ctor">
+      <summary>
+            inicializa una nueva instancia de <see cref="T:AirBus.Suite.MetaS.Infrastructure.MetaClassConfiguration" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Infrastructure.MetaClassRepository">
+      <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:AirBus.Suite.MetaS.Domain.MetaClass" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Infrastructure.MetaClassRepository.#ctor(System.Data.Entity.DbContext)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.MetaS.Infrastructure.MetaClassRepository" />.
+            </summary>
+      <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+      <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext" /> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Infrastructure.MetaPropertyConfiguration">
+      <summary>
+            inicializa una nueva instancia de  una entidad MetaProperty/&gt;.
+            </summary>
+      <remarks>
+            Mapea un objeto <see cref="T:AirBus.Suite.MetaS.Domain.MetaProperty" /></remarks>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Infrastructure.MetaPropertyConfiguration.#ctor">
+      <summary>
+            inicializa una nueva instancia de <see cref="T:AirBus.Suite.MetaS.Infrastructure.MetaPropertyConfiguration" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Infrastructure.MetaPropertyRepository">
+      <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:AirBus.Suite.MetaS.Domain.MetaProperty" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Infrastructure.MetaPropertyRepository.#ctor(System.Data.Entity.DbContext)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.MetaS.Infrastructure.MetaPropertyRepository" />.
+            </summary>
+      <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+      <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext" /> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Infrastructure.MetaSAppSettingConfiguration">
+      <summary>
+            inicializa una nueva instancia de  una entidad MetaSAppSetting/&gt;.
+            </summary>
+      <remarks>
+            Mapea un objeto <see cref="T:AirBus.Suite.MetaS.Domain.MetaSAppSetting" /></remarks>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Infrastructure.MetaSAppSettingConfiguration.#ctor">
+      <summary>
+            inicializa una nueva instancia de <see cref="T:AirBus.Suite.MetaS.Infrastructure.MetaSAppSettingConfiguration" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Infrastructure.MetaSAppSettingRepository">
+      <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:AirBus.Suite.MetaS.Domain.MetaSAppSetting" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Infrastructure.MetaSAppSettingRepository.#ctor(System.Data.Entity.DbContext)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.MetaS.Infrastructure.MetaSAppSettingRepository" />.
+            </summary>
+      <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+      <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext" /> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Infrastructure.MetaSUserConfiguration">
+      <summary>
+            inicializa una nueva instancia de  una entidad MetaSUser/&gt;.
+            </summary>
+      <remarks>
+            Mapea un objeto <see cref="T:AirBus.Suite.MetaS.Domain.MetaSUser" /></remarks>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Infrastructure.MetaSUserConfiguration.#ctor">
+      <summary>
+            inicializa una nueva instancia de <see cref="T:AirBus.Suite.MetaS.Infrastructure.MetaSUserConfiguration" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Infrastructure.MetaSUserRepository">
+      <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:AirBus.Suite.MetaS.Domain.MetaSUser" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Infrastructure.MetaSUserRepository.#ctor(System.Data.Entity.DbContext)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.MetaS.Infrastructure.MetaSUserRepository" />.
+            </summary>
+      <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+      <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext" /> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Infrastructure.MetaViewConfiguration">
+      <summary>
+            inicializa una nueva instancia de  una entidad MetaView/&gt;.
+            </summary>
+      <remarks>
+            Mapea un objeto <see cref="T:AirBus.Suite.MetaS.Domain.MetaView" /></remarks>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Infrastructure.MetaViewConfiguration.#ctor">
+      <summary>
+            inicializa una nueva instancia de <see cref="T:AirBus.Suite.MetaS.Infrastructure.MetaViewConfiguration" />.
+            </summary>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Infrastructure.MetaViewRepository">
+      <summary>
+            Clase pública repositorio para persistir y 
+            obtener información a partir de entidades <see cref="T:AirBus.Suite.MetaS.Domain.MetaView" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Infrastructure.MetaViewRepository.#ctor(System.Data.Entity.DbContext)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.MetaS.Infrastructure.MetaViewRepository" />.
+            </summary>
+      <remarks>
+            el constructor ha de ser publico para poder ser resuelto por unity.
+            </remarks>
+      <param name="dbContext">
+            Parámetro de tipo <see cref="T:System.Data.Entity.DbContext" /> que hace referencia 
+            a la unidad de trabajo para el acceso a datos.
+            </param>
+      <exception cref="T:System.ArgumentNullException">
+            Lanzada cuando el valor del parámetro <c>dbContext</c> es null.
+            </exception>
+    </member>
+    <member name="T:AirBus.Suite.MetaS.Infrastructure.BootstrapUnitOfWork">
+      <summary>
+            .en Class to implement unit of work and give the assemblys where are the configuration clases to Entity Framework
+            </summary>
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Infrastructure.BootstrapUnitOfWork.#ctor(System.String)">
+      <summary>
+            constructor BootstrapUnitOfWork
+            </summary>
+      <param name="nameOrConnectionString" />
+    </member>
+    <member name="M:AirBus.Suite.MetaS.Infrastructure.BootstrapUnitOfWork.OnModelCreating(System.Data.Entity.DbModelBuilder)">
+      <summary>
+            .en add all configuration files from the assembly where is located the entity in the second parameter.
+            .es añadimos todos los ficheros de configuración del ensamblado de la entidad que pasamos.
+            </summary>
+      <param name="modelBuilder" />
+    </member>
+  </members>
+</doc>

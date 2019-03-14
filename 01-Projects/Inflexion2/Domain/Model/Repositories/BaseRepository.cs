@@ -1,6 +1,6 @@
 ﻿//----------------------------------------------------------------------------------------------
-// <copyright file="BaseRepository.cs" company="HexaSystems Inc">
-// Copyright (c) HexaSystems Inc. Licensed under the Apache License, Version 2.0 (the "License")
+// <copyright file="BaseRepository.cs" company="Inflexion2 Inc">
+// Copyright (c) Inflexion2 Inc. Licensed under the Apache License, Version 2.0 (the "License")
 // </copyright>
 //-----------------------------------------------------------------------------------------------
 namespace Inflexion2.Domain
@@ -9,6 +9,7 @@ namespace Inflexion2.Domain
     using Specification;
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.Contracts;
     using System.Globalization;
     using System.Linq;
     using System.Linq.Expressions;
@@ -22,8 +23,9 @@ namespace Inflexion2.Domain
     /// </summary>
     /// <typeparam name="TEntity">Type of elements in repostory</typeparam>
     /// <typeparam name="TIdentifier">identifier</typeparam>
+
     public abstract class BaseRepository<TEntity, TIdentifier> : IRepository<TEntity, TIdentifier>
-        where TEntity : AggregateRoot<TEntity, TIdentifier>, IAggregateRoot<TEntity, TIdentifier>, IEntity<TIdentifier>
+        where TEntity : class /* AggregateRoot<TEntity, TIdentifier>, IAggregateRoot<TEntity, TIdentifier>*/, IEntity<TIdentifier>
         where TIdentifier : IComparable<TIdentifier>, IEquatable<TIdentifier>
     {
         private readonly ILogger logger;
@@ -74,7 +76,7 @@ namespace Inflexion2.Domain
             //Contract.Requires<ArgumentNullException>(entity != null, "entity");
             this.InternalAttach(entity);
 
-            this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Attached {0} to context", typeof(TEntity).Name));
+            this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Attached {0} to context.", typeof(TEntity).Name));
         }
 
         /// <summary>
@@ -83,7 +85,19 @@ namespace Inflexion2.Domain
         /// <returns><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></returns>
         public IEnumerable<TEntity> GetAll()
         {
+            this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Get all from entity {0}.", typeof(TEntity).Name));
             return this.Query().ToList();
+        }
+
+        /// <summary>
+        /// <see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/>
+        /// </summary>
+        /// <returns><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></returns>
+        public TEntity GetById(TIdentifier id)
+        {
+            this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Get record by Id from entity {0}.", typeof(TEntity).Name));
+
+            return this.Query().First(c => c.Id.Equals(id));
         }
 
         /// <summary>

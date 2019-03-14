@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.0" Id="b4664ba0-1ae8-4618-858f-ab4003c8ae09" sGDB="MsSql2008" iSO2Country="en" culture="en" rootNameSpace="AirBus.Suite" company="Airbus" product="Airbus MetaSchema" copyright="Airbus" branding="Airbus.Suite.SyfiXBase" version="0.1" documentationPath="..\00-Documentation" asemblysPath="..\00-Assemblies" solutionFolderApplication="02. Application" solutionFolderDomain="03. Domain" solutionFolderInfraestructure="04. Infrastructure" solutionFolderCommon="MetaS" libraryPath="..\02-Library" proyectsPath="..\03-GeneratedProjects" solutionFolderUX="01. FrontEnd" isModule="false" architecture="Inflexion2" oRM="EntityFramewokCodeFirst" mapper="Manual" generateCode="Always" ifContracts="false" conectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Zeus;Integrated Security=True" schemaName="Zeus" dataBaseServer="(localdb)\MSSQLLocalDB" translationsSet1="French, German, Hebrew, Italian" translationsSet2="Portuguese, Spanish" xmlns="http://schemas.microsoft.com/dsltools/MoneyGen">
+  <classBases>
+    <applicationHasElements Id="326ecb71-85d1-489d-848f-189805e6ac8b">
+      <entity Id="e0b99a0b-a5a8-4eea-bb2e-ac43d3fa8b98" name="ZeusUser" inheritanceClassModifier="Public, Partial" aliasFrontEnd="User" volumen="0" remarks="User information data" tooltip="User information" logicDelete="false" pluralName="Users" programRemarks="Data about user of the application." referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="User" grammarCategory="sustantive" mainEntityStereotype="AggregateRoot">
+        <atributtes>
+          <classBaseHasAtributtes Id="fafe5c50-b9d9-4ca6-9f39-5114f33923a4">
+            <atributte Id="8874d105-d2e5-4a28-a0d3-2b413f047dc1" atributteName="Name" atributteAlias="MetaUSer" isIdentification="true" position="0" tooltip="test tooltip" userRemarks="test remarks" programerRemarks="Test with auto property and public setter." requestUponCreation="yes" nameAndType="string Name" minLength="3" maxLength="80" aliasDatabaseField="Code" grammarCategories="Sustantive" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="c3b0532b-3515-40a5-9b6e-0e2b43c95655">
+      <enumeration Id="91aa4bea-ab0d-492c-a776-56a52add21c4" name="Stereotype" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Stereotype" stereotype="TipoCategoria" volumen="0" remarks="Assign the main sterotype to a class or entity." tooltip="Main Stereotype" pluralName="Stereotypes" programRemarks="the sterotypes set a main behavieor of the entity or class " referencedRootEntity="" mainEntityStereotype="None" serializable="true">
+        <enumValue>
+          <enumerationHasEnumValue Id="fe4fe3d2-0f4a-4a11-abe6-b6dca20db064">
+            <enumValues Id="7a82f326-7934-43f2-a9b4-823aab468391" description="Root Aggregate" sorting="1" value="MetaRootAggregate" programRemarks="DDD Root stereotype for entities" userRemarks="DDD Root stereotype for entities" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="bea7caa2-85bf-4558-91e2-04c33c9198ea">
+            <enumValues Id="fb6d08a0-476e-44ab-8215-91a7fd03285b" description="Entity" sorting="2" value="MetaEntity" programRemarks="DDD Sterotype entity " userRemarks="DDD Sterotype entity " />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="c3c75a86-49cb-4e0d-835b-a83e8f3bb73d">
+            <enumValues Id="11281bca-783b-46ff-b17e-f7326ec1a666" description="Value Object" sorting="3" value="MetaValueObject" programRemarks="DDD object value" userRemarks="DDD object value" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="b6c2f788-b709-4d4f-81d4-2c17b16d3a14">
+            <enumValues Id="906fb6a5-c0b0-4295-8e43-23008132c689" description="Enum" sorting="4" value="MetaEnum" programRemarks="mark enumeration" userRemarks="mark enumeration" />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="9041912d-d2f6-46b3-91af-b2b07e42dff5">
+            <enumValues Id="5ef48ea6-7a43-4e82-9814-3ee5df50291a" description="Class" sorting="5" value="MetaClass" programRemarks="Class " userRemarks="Class " />
+          </enumerationHasEnumValue>
+          <enumerationHasEnumValue Id="b1e5d639-9410-424f-9b96-a54e888f397b">
+            <enumValues Id="27600c90-a510-42c1-84ef-a2e9dabeaf9c" description="Metadata" sorting="6" value="MetaData" />
+          </enumerationHasEnumValue>
+        </enumValue>
+      </enumeration>
+    </applicationHasElements>
+    <applicationHasElements Id="5c67e01c-2eb8-43d1-961b-8e55615f0378">
+      <entity Id="f7179aa2-ecee-48fc-84de-4359cbda6d56" name="ZeusAppSetting" inheritanceClassModifier="Public, Partial" aliasFrontEnd="App Setting" volumen="0" remarks="Clasificador" tooltip="Application Settings" logicDelete="false" pluralName="App Settings" programRemarks="Clasificador de uso futuro" referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="AppSetting" grammarCategory="Sustantive" mainEntityStereotype="AggregateRoot">
+        <atributtes>
+          <classBaseHasAtributtes Id="ef1a1f7a-ae2b-4b7a-9fcd-8ce0f3f65676">
+            <atributte Id="4cb016d2-ff94-440f-ac22-17b6ea9186f2" atributteName="Key" atributteAlias="Key" editPropertyControl="Key" editCollectionPropertyControl="Keys" isIdentification="true" position="0" tooltip="App setting key" userRemarks="App setting key" programerRemarks="App setting identity" nameAndType="string Key" plural="Keys" grammarCategories="sustantive" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="90b32764-a92c-4206-afc4-205ea9f1c817">
+            <atributte Id="da333e1e-5ff9-43f0-9d10-b703abb6aa95" atributteName="Value" isIdentification="false" position="0" nameAndType="string Value" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="9899b4f8-252e-43ab-8096-5f6f793a1fbb">
+      <entity Id="d0b2d66b-eb59-4185-82f6-8148d7ebe2c4" name="Project" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Project" volumen="0" remarks="Main concept for accounting planned resources for projects imported from ASP system." tooltip="Internal Project" logicDelete="false" pluralName="Projects" programRemarks="Main concept for accounting planned resources for projects. The information of this concept is imported every week from ASP systems." referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="Project" grammarCategory="Sustantive" mainEntityStereotype="AggregateRoot">
+        <atributtes>
+          <classBaseHasAtributtes Id="b89b8108-98bb-44f3-ab95-998f9335cbf6">
+            <atributte Id="3f4c2f99-decc-43c9-9403-ac648722d51c" atributteName="Num" atributteAlias="NUM" isIdentification="false" position="0" requestUponCreation="yes" nameAndType="string Num" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="c6b0aca1-43b4-4281-8395-0faf5ef66ab3">
+            <atributte Id="5921c158-3d54-47d8-9a94-c0155c5a7d1f" atributteName="Name" atributteAlias="Name" isIdentification="true" position="0" tooltip="Name of the project" userRemarks="Name of the project" programerRemarks="Name of the project" size="20" requestUponCreation="yes" nameAndType="string Name" aliasDatabaseField="Name" plural="Names" grammarCategories="sustantive" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="7b772149-41ea-4540-9c23-8fd5f9550b00">
+            <atributte Id="5ed0339e-a098-4c43-819b-d7e2cb662d1f" atributteName="ProgramName" atributteAlias="Program" isIdentification="false" isFilter="true" position="0" tooltip="Program Name" userRemarks="Program wich belonging" programerRemarks="Program Name wich belongs" nameAndType="string ProgramName" aliasDatabaseField="ProgramName" plural="Programs" grammarCategories="sustantive" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="1ff0cea4-a870-40b5-9c8e-94851930e36c">
+            <atributte Id="d53030a1-4a99-420f-a136-995cb4333e47" atributteName="Locked" atributteAlias="Locked" atributteType="bool" isIdentification="false" isFilter="true" position="0" nameAndType="bool Locked" aliasDatabaseField="Locked" plural="Locked" grammarCategories="adjetive" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="c41d0779-506b-48e5-ba70-64bc18cfa792">
+            <atributte Id="93a90729-5727-47b2-a4e9-aa74201f33bd" atributteName="MH_V3" atributteAlias="MH V3" atributteType="decimal" isIdentification="false" position="0" tooltip="Man hours" userRemarks="Man hours" programerRemarks="Man hours" nameAndType="decimal MH_V3" plural="MH V3" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="35637440-de08-4afd-abef-421428a4c479">
+            <atributte Id="d1b3c312-1dac-4a8b-9c57-a48c21dd2174" atributteName="MH_V1" atributteAlias="MH V1" atributteType="decimal" isIdentification="false" position="0" nameAndType="decimal MH_V1" plural="MH V1" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="e6130609-e8a8-4ca8-bb60-0ed726077017">
+            <atributte Id="52ef889e-1eff-4fd2-86e1-c73df08d6504" atributteName="MH_PreviousYears" atributteAlias="MH Previous Years" atributteType="decimal" isIdentification="false" position="0" nameAndType="decimal MH_PreviousYears" plural="MH Previous Years" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="df86ca72-002f-4fed-954c-b1d5f471e79d">
+            <atributte Id="95ad07ea-00b2-49c8-9884-0cb928e40faf" atributteName="MH_ExternalService" atributteAlias="MH External Service" atributteType="decimal" isIdentification="false" position="0" nameAndType="decimal MH_ExternalService" plural="MH External Service" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="d7553c4a-8b45-4452-925e-b99c49783abb">
+            <atributte Id="2276743e-d3cc-4394-8f55-4384eab287bf" atributteName="MH_Actual" atributteAlias="MH Actual" atributteType="decimal" isIdentification="false" position="0" programerRemarks="MH Actual" nameAndType="decimal MH_Actual" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="cbfaaa75-6c47-458b-a497-446a6dbcfb6e">
+            <atributte Id="a0cbe317-cb6b-4b4c-a598-9d4f485e4027" atributteName="MH_Rest" atributteAlias="MH Rest" atributteType="decimal" isIdentification="false" position="0" programerRemarks="MH Rest" nameAndType="decimal MH_Rest" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="ed48b067-e425-482c-87e1-220bdd4ea05f">
+            <atributte Id="fcc383c4-7e74-4547-aade-513821c6dbb2" atributteName="Date" atributteAlias="Date" atributteType="DateTime" isIdentification="false" position="0" nameAndType="DateTime Date" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="e4063c91-4bc3-4573-82dc-98efc323504e">
+            <atributte Id="44f11b2d-fe99-4e79-90c3-c616cf738492" atributteName="MC_V3" atributteAlias="MC V3" atributteType="decimal" isIdentification="false" position="0" tooltip="Material Cost" nameAndType="decimal MC_V3" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="58dda718-f355-4621-93da-f388d5d39f55">
+            <atributte Id="1842e83a-8c03-4416-b217-14d1320ddb7a" atributteName="MC_PreviousYears" atributteAlias="MC Previous Years" atributteType="decimal" isIdentification="false" position="0" nameAndType="decimal MC_PreviousYears" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="df7ece42-8d2a-432a-90fd-372b2a4c2f59">
+            <atributte Id="4a02d2b8-9812-4506-9311-ae3cf978db20" atributteName="MC_ExternalService" atributteAlias="MC External Service" atributteType="decimal" isIdentification="false" position="0" nameAndType="decimal MC_ExternalService" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="50b15230-c10c-4dca-a48a-cc931c6b92e3">
+            <atributte Id="69c0ae4a-74db-48f8-9034-4bfb81e3396a" atributteName="MC_Actual" atributteAlias="MC Actual" atributteType="decimal" isIdentification="false" position="0" nameAndType="decimal MC_Actual" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="d88d3ff8-f035-40e2-9a7e-ef0ca4d78839">
+            <atributte Id="d74c9f8a-ddf6-43c0-b062-b1c5e38b0376" atributteName="MC_Rest" atributteAlias="MC Rest" atributteType="decimal" isIdentification="false" position="0" nameAndType="decimal MC_Rest" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="f7a6cf3a-fc03-4da8-ae27-dc63470ff052">
+            <atributte Id="af552a9b-53fc-438c-beaa-2c316635eb86" atributteName="MC_V1" atributteAlias="MC V1" atributteType="decimal" isIdentification="false" position="0" nameAndType="decimal MC_V1" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="14266f94-0be0-445d-83de-dd864b1195a4">
+      <entity Id="8ae79f16-55e4-436e-8b8d-cc44f808bd71" name="ZeusDepartment" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Department" stereotype="AggregateRoot" volumen="0" remarks="Airbus Depatment organigram" tooltip="Department Structure" logicDelete="false" pluralName="Departments" programRemarks="Airbus Depatment organigram" referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="Department" grammarCategory="Sustantive" mainEntityStereotype="AggregateRoot">
+        <targets>
+          <composition Id="262aa98d-2ce3-4151-ac93-eaa24df3e8da" sourceMultiplicity="OneOne" sourceRolName="UserMessages" targetRolName="ZeusDepartment" targetICollection="System.Collections.Generic.IList" targetCollection="System.Collections.Generic.List" cascadeDelete="false">
+            <entityMoniker name="/b4664ba0-1ae8-4618-858f-ab4003c8ae09/UserMessage" />
+          </composition>
+        </targets>
+        <atributtes>
+          <classBaseHasAtributtes Id="1c128e7f-51de-4e7b-ab76-0fc0ab9faebc">
+            <atributte Id="a4ad8c80-fce2-4d89-84ee-56f0e9823aaa" atributteName="Name" isIdentification="true" position="0" nameAndType="string Name" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="68dfd4c0-1a94-4c26-8ce5-92ca750c2a2c">
+            <atributte Id="ec47e2fa-d981-4a09-ace3-fd0b58e4e729" atributteName="Visible" atributteType="bool" isIdentification="false" position="0" nameAndType="bool Visible" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="0db5f271-a338-4134-a6c3-aed8bcd9f02f">
+      <entity Id="4132f6bb-da76-4d9d-9078-4bb22179bfe2" name="TimeRecord" inheritanceClassModifier="Public, Partial" aliasFrontEnd="Time Record" stereotype="AggregateRoot" volumen="0" tooltip="Record reason and times of users absences" logicDelete="false" pluralName="Time Records" referencedRootEntity="" isRoot="true" implementDomainInterface="true" aliasDataBase="TimeRecord" grammarCategory="sustantive" mainEntityStereotype="AggregateRoot">
+        <atributtes>
+          <classBaseHasAtributtes Id="f2439b7b-9cc7-48d6-b824-02a8d3a824ce">
+            <atributte Id="179cbf23-8bd9-42ac-a14f-33a54e4c7ec2" atributteName="Active" atributteType="bool" isIdentification="false" position="0" nameAndType="bool Active" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="c74899c1-755b-40a0-9e47-ef021445df3c">
+            <atributte Id="bab122e1-cdaf-457d-bc02-46a5cbaf7222" atributteName="FromDate" atributteType="DateTime" isIdentification="false" position="0" nameAndType="DateTime FromDate" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="870b8901-a68d-41b6-bb32-9ac26e0d4e4e">
+            <atributte Id="e06f96b4-c678-46af-b849-3f880eb013c6" atributteName="ToDate" atributteType="DateTime" isIdentification="false" position="0" nameAndType="DateTime ToDate" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="99cb7e4a-3f36-4566-a934-89634cfb3302">
+            <atributte Id="865cde49-6256-4499-b865-c3079e1a57fb" atributteName="Approved" atributteType="bool" isIdentification="false" position="0" nameAndType="bool Approved" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="cfc72e22-84a0-4525-80df-b40c8e41fd59">
+            <atributte Id="f4e91d62-ac0b-4bb8-a7bf-8b89acafb592" atributteName="Processed" atributteType="bool" isIdentification="false" position="0" nameAndType="bool Processed" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="e9564c06-b48e-473e-a9e7-6c23ce5086e0">
+            <atributte Id="e0d4ebe6-fb04-42e7-aaf4-0ff424b8c57f" atributteName="Planned" atributteType="bool" isIdentification="false" position="0" nameAndType="bool Planned" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="dd7651a4-f520-4334-a46f-aa53d2c01010">
+            <atributte Id="3e55d41d-e42b-44a9-b4be-9c18f167995e" atributteName="PrivateCard" atributteType="bool" isIdentification="false" position="0" nameAndType="bool PrivateCard" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+    <applicationHasElements Id="6dc60805-b574-40c1-82d1-36f9bb6251c6">
+      <entity Id="e7344ac1-1259-44a0-99dc-20ce07da1662" name="UserMessage" inheritanceClassModifier="Public, Partial" aliasFrontEnd="User Message" stereotype="Entity" volumen="0" tooltip="User Message" logicDelete="false" pluralName="User Messages" referencedRootEntity="" implementDomainInterface="true" grammarCategory="Sustantive" mainEntityStereotype="Entity">
+        <atributtes>
+          <classBaseHasAtributtes Id="9f0e9981-8621-4c74-9687-d5a9b5de5769">
+            <atributte Id="78f1b103-6068-429e-a69a-67af19276bab" atributteName="CreationDate" atributteType="DateTime" isIdentification="true" position="0" nameAndType="DateTime CreationDate" />
+          </classBaseHasAtributtes>
+          <classBaseHasAtributtes Id="0aee1f29-b66d-446d-8393-fc245c669944">
+            <atributte Id="40f651fa-9ca3-4465-b225-132995a40670" atributteName="Text" isIdentification="false" position="0" nameAndType="string Text" />
+          </classBaseHasAtributtes>
+        </atributtes>
+      </entity>
+    </applicationHasElements>
+  </classBases>
+  <boundedContexts>
+    <applicationHasBoundedContexts Id="0704374e-b4ab-40d9-a6de-2d6489e1226a">
+      <boundedContext Id="0e860c0a-ed24-494e-8d3e-88483256938a" name="From Main Kernel" mBR="modelbus://kayak.MoneyGen.MoneyGenAdapter/Main2//.\Main2.kyk" />
+    </applicationHasBoundedContexts>
+  </boundedContexts>
+</application>

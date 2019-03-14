@@ -1,0 +1,130 @@
+﻿<#+
+
+public class PrismModuleCT : Template
+{
+    // parametros de la plantilla
+    public ClassBaseContext  cbc ;
+    public string projectNamespace;
+    public ITree<BoundedContextMetadata> Skt;
+    public string KindTimeCall ; /* Los valores posibles son "inicio", "desarrollo", "fin" y "soloUna" */
+        
+    public PrismModuleCT(ClassBaseContext  classBaseContext, string nombreProjecto, ITree<BoundedContextMetadata> skt, string kindTimeCall)
+    {
+        cbc = classBaseContext;             // contexto de la clase base a interpretar
+        projectNamespace = nombreProjecto;  // nombre del proyecto para el que estamos interpretando
+        Skt = skt;                          // shared kernel tree
+        KindTimeCall = kindTimeCall;
+    }
+        
+    public override string TransformText()
+    {
+            // uso de interfaces en las propiedades y por tanto en metodos
+            //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+            string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+  // conceptos propios de la clase
+  // string baseEntity= null;
+  // conceptos propios del projecto en curso
+  ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+
+  IList<string> sharedKernelUsings = null;
+  if (Skt != null)
+  {
+      sharedKernelUsings =  GetSharedKernelReferencesByProject(projectNamespace, Skt, cbc.diagram);
+  }
+  var cpyrigth = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity, T4Help.getLeftStringSlice(this.ToString(), '+', -1).Substring(1) );
+  var usingTemplate  = new usings( cbc, projectNamespace, Skt);   string usingTxt = usingTemplate.TransformText(); //solo los shared kernel
+
+        string cpyrigthText = cpyrigth.TransformText(); 
+#>
+<#+
+            if(KindTimeCall.Equals("inicio") | KindTimeCall.Equals("soloUna") )
+            {
+#>
+<#= cpyrigthText #>
+namespace <#= projectNamespace #>
+{
+<#= usingTxt #>
+    #region usings
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
+    using Microsoft.Practices.Prism.Regions;
+    using Microsoft.Practices.Unity;
+
+    using Inflexion2.UX.WPF.MVVM;
+    using Inflexion2.UX.WPF.Services;
+
+    using Inflexion2.Resources;
+<#+ if (cbc.OwnBoundedContextHasEnums) {#>
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain.Data;
+<#+ } #>
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Infrastructure.Resources;
+    #endregion
+
+    /// <summary>
+    /// .en class module implementation. 
+	/// This implementation become the compiled dll of this project on a module dynamically loaded by the 
+	/// main programm.
+    /// .es implementación de la clases "module". Esta implementación convierte la ddl de la compilación 
+	/// de este proyecto en un modulo que puede ser cargado por el programa principal de forma dinamica. 
+	/// (en tiempo de ejecución)
+    /// </summary>
+    public sealed class <#= T4Help.SecureName(prjCon.boundedContextName) #>Module : Inflexion2.UX.WPF.MVVM.BaseModule
+    {
+        #region Imodule & Basemodule Implementation
+        /// <summary>
+        /// .en module initialization.
+        /// .es Inicializa el módulo.
+        /// </summary>
+        /// <remarks>
+        /// .en Register the controls whose has to be always available
+        /// with iregionmanager of Prism and the controls whose has to available on demand
+        /// with the inyection unity container. The controls on-demand will be loaded when
+        /// the method IregionManager.RequestNavigate() would be executed.
+        /// 
+        /// .es Registramos los controles que han de estar siempre disponibles
+        /// con el gestor de regiones Prism (IRegionManager), y los controles que
+        /// han de solicitarse (bajo demanda) con el contenedor de inyección de
+        /// dependencias Unity.  Los controles bajo demanda serán cargados cuando
+        /// se invoque el método "IregionManager.RequestNavigate()".
+        /// </remarks>
+        public override void Initialize()
+        {  
+            // .en registering of controls always available
+            // .es Registro de controles que han de estar siempre disponibles.
+            this.RegionManager.RegisterViewWithRegion(RegionNames.TaskbarRegion, typeof(<#= T4Help.SecureName(prjCon.boundedContextName) #>ModuleTaskBarView));
+
+            // .en registering of controls available on-demand.
+            // .es Registro de controles disponibles bajo demanda.
+            this.UnityContainer.RegisterType<object, <#= T4Help.SecureName(prjCon.boundedContextName) #>ModuleNavigationView>(typeof(<#= T4Help.SecureName(prjCon.boundedContextName) #>ModuleNavigationView).FullName);
+            this.UnityContainer.RegisterType<object, <#= T4Help.SecureName(prjCon.boundedContextName) #>ModuleRibbonTab>(typeof(<#= T4Help.SecureName(prjCon.boundedContextName) #>ModuleRibbonTab).FullName);
+            
+            // .en Registering by entities. 
+            // .es Registro por entidades.
+<#+
+            }
+            // en el siguiente bloque viene le codigo que se repite para cada entidad
+#>
+<#+ if (cbc.IsRoot && !cbc.isAbstract){#>
+            this.UnityContainer.RegisterType<object, <#= cbc.pascalSecureEntityName #>View>(typeof(<#= cbc.pascalSecureEntityName #>View).FullName);
+            this.UnityContainer.RegisterType<object, <#= cbc.pascalSecureEntityName #>QueryView>(typeof(<#= cbc.pascalSecureEntityName #>QueryView).FullName);         
+
+<#+ }#>
+<#+
+    // bloque de cierre
+    if(KindTimeCall.Equals("fin")  | KindTimeCall.Equals("soloUna") )
+            {
+#>
+        }
+        #endregion
+    } // end class 
+} // end namespace
+<#+         } #>
+<#+
+        return this.GenerationEnvironment.ToString();
+    }
+}
+#>

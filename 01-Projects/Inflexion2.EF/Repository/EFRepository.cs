@@ -1,6 +1,6 @@
 ﻿//----------------------------------------------------------------------------------------------
-// <copyright file="EFRepository.cs" company="HexaSystems Inc">
-// Copyright (c) HexaSystems Inc. Licensed under the Apache License, Version 2.0 (the "License")
+// <copyright file="EFRepository.cs" company="Inflexion2 Inc">
+// Copyright (c) Inflexion2 Inc. Licensed under the Apache License, Version 2.0 (the "License")
 // </copyright>
 //-----------------------------------------------------------------------------------------------
 namespace Inflexion2.Domain
@@ -20,7 +20,7 @@ namespace Inflexion2.Domain
     /// <typeparam name="TEntity"></typeparam>
     /// <typeparam name="TIdentifier"></typeparam>
     public class EFRepository<TEntity, TIdentifier> : BaseRepository<TEntity, TIdentifier>
-        where TEntity : AggregateRoot<TEntity, TIdentifier>, IAggregateRoot<TEntity, TIdentifier>, IEntity<TIdentifier>
+        where TEntity : class, IEntity<TIdentifier>
         where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
     {
         private readonly ILogger logger;

@@ -1,0 +1,93 @@
+﻿<#+
+public class WpfEntityViewXamlCT : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    public ClassBaseContext cbc; public string projectNamespace; public ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public WpfEntityViewXamlCT(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+    {
+        // conceptos propios del projecto en curso
+        ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+#>
+<UserControl x:Class="<#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.FrontEnd.WpfModule.<#= cbc.pascalSecureEntityName #>View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:<#= T4Help.SecureName(prjCon.boundedContextName) #>Reference="clr-namespace:<#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain.Data;assembly=<#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain.Data"
+             xmlns:lex ="http://wpflocalizeextension.codeplex.com"
+             xmlns:controls="clr-namespace:Inflexion2.UX.WPF.Controls;assembly=Inflexion2.UX.WPF.Controls"
+             xmlns:converter="clr-namespace:Inflexion2.UX.WPF.ValueConverters;assembly=Inflexion2.UX.WPF"
+             lex:LocalizeDictionary.DesignCulture="en"
+             lex:LocalizeDictionary.OutputMissingKeys="True"
+             lex:ResxLocalizationProvider.DefaultAssembly="<#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Infrastructure.Resources"
+             lex:ResxLocalizationProvider.DefaultDictionary="<#= T4Help.SecureName(prjCon.boundedContextName) #>Resources"
+			 FlowDirection="{Binding lex:LocFlowDirection Inflexion2.Resources:FrameworkResource:flow}" 
+
+             mc:Ignorable="d" 
+			 d:DesignHeight="300" d:DesignWidth="525" 
+             Padding="5">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+<#+
+    foreach (var property in cbc.propertyObjects)
+    {
+#>
+            <RowDefinition Height="Auto"/>
+<#+
+    }
+#>  
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+<#+
+	int i=0;
+    foreach (var property in cbc.propertyObjects)
+    {
+#>
+        <TextBlock Text="{lex:Loc <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Infrastructure.Resources:<#= T4Help.SecureName(prjCon.boundedContextName) #>Resources:<#=cbc.pascalSecureEntityName + "_" + T4Help.ToPascalCase(property.AtributteName) #>Alias}"                Grid.Row="<#= i#>" Grid.Column="0"/>
+
+<#+
+	i++;
+    }
+#> 
+
+<#+
+	i=0;
+	bool isenum = false;
+    foreach (var property in cbc.propertyObjects)
+    {
+		 bool propertyIsOwnType = cbc.AccessibleClassBaseTree.All.Nodes.Where(c => property.AtributteType == T4Help.SecureName(c.Data.Name) ).Any();
+		 if (propertyIsOwnType)
+		 {
+			var cbcProperty = cbc.AccessibleClassBaseTree.All.Nodes.First(c => property.AtributteType == T4Help.SecureName(c.Data.Name) );
+			if (((kayak.MoneyGen.Enumeration) cbcProperty.Data).EnumValue.Count() > 0) /* es enum*/
+			{
+				isenum = true;
+#>
+        <lex:EnumComboBox x:Name="<#=cbc.pascalSecureEntityName + "_" +  T4Help.ToPascalCase(property.AtributteName) #>" PrependType="False" Grid.Row="<#= i #>" Grid.Column="1" SelectedIndex="{Binding <#= T4Help.ToPascalCase(property.AtributteName) #>Index}" Type="{x:Type <#= T4Help.SecureName(prjCon.boundedContextName) #>Reference:<#= cbcProperty.Data.Name #>}"  ToolTip="<#= (property.Tooltip != null)? property.Tooltip :"" #>"/>
+
+<#+
+			}
+		 }
+		 if (!isenum)
+		 {
+#>
+        <TextBox x:Name="field<#= T4Help.ToPascalCase(property.AtributteName) #>" Grid.Row="<#= i#>" Grid.Column="1" Text="{Binding <#= T4Help.ToPascalCase(property.AtributteName) #>, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="<#= (property.Tooltip != null)? property.Tooltip :"" #>"/>
+<#+
+		 }
+	i++;
+    }
+#> 
+    </Grid>
+</UserControl>
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

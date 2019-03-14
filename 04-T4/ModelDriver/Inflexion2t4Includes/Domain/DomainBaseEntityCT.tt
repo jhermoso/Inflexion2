@@ -19,10 +19,36 @@ public class DomainBaseEntityCT : Template
 
     // metodo de ClassBaseContext cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt de la plantilla
     public override string TransformText()
-        {
-            // uso de interfaces en las propiedades y por tanto en metodos
-            //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
-            string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+    {
+        // uso de interfaces en las propiedades y por tanto en metodos
+        //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+        string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+
+		IList<string> sharedKernelUsings =  GetSharedKernelReferencesByProject(projectNamespace, Skt, cbc.diagram);
+
+		string baseEntity = null;
+		string refBoundedContextSecureName = null;
+		if (cbc.entity.ReferencedRootEntity != null)
+		{
+
+		var refEntity = GetClassBaseFromReferencedClassBase(cbc.diagram.TreeApp, cbc.entity.ReferencedRootEntity);
+		var refBoundedContext = GetBoundeContextFromClassBase(cbc.diagram.TreeApp, refEntity);
+		if( sharedKernelUsings.Count() == 1)
+		{
+			refBoundedContextSecureName = sharedKernelUsings.ToList().First();
+		}
+		else
+		{
+			var partialname = refBoundedContext.Data.Context.Key.ToString().Replace('\\','.') + "Domain"; // use domain becouse this template is for domain layer.
+			refBoundedContextSecureName = sharedKernelUsings.First(c => c.EndsWith(partialname));
+		}
+
+			var refCBC = new ClassBaseContext(cbc.diagram, cbc.solutionInfo, refEntity, refBoundedContextSecureName);
+			//baseEntity = refBoundedContextSecureName + "." + refEntity.Name + ((baseEntity != null)? "I" + cbc.pascalSecureEntityName : "");
+		}
+
+
+
 
             // conceptos propios del projecto en curso
             ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
@@ -47,12 +73,21 @@ namespace <#= projectNamespace #>
 <#= usingTxt #>
     #region usings
     using System;
+	using System.Collections.Generic;
     using System.Linq;
-
+<#+
+if (sharedKernelUsings != null)
+foreach (var item in sharedKernelUsings)
+    {
+#>
+    using <#= item #>;
+<#+
+    }// end foreach para los using del shared kernel
+#>
 <#+ if (cbc.OwnBoundedContextHasEnums) {#>
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain.Data;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain.Data;
 <#+            } #>
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Infrastructure.Resources;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Infrastructure.Resources;
     using Inflexion2;
     using Inflexion2.Domain;
 

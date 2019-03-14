@@ -1,6 +1,6 @@
 ﻿//----------------------------------------------------------------------------------------------
-// <copyright file="ReflectionExtensions.cs" company="HexaSystems Inc">
-// Copyright (c) HexaSystems Inc. Licensed under the Apache License, Version 2.0 (the "License")
+// <copyright file="ReflectionExtensions.cs" company="Inflexion2 Inc">
+// Copyright (c) Inflexion2 Inc. Licensed under the Apache License, Version 2.0 (the "License")
 // </copyright>
 //-----------------------------------------------------------------------------------------------
 
@@ -17,7 +17,7 @@ namespace Inflexion2
     public static class ReflectionExtensions
     {
         /// <summary>
-        /// nos inidica si el tipo que pasamos deriva de un tipo generico que pasamos como segundo parametro
+        /// nos indica si el tipo que pasamos deriva de un tipo generico que pasamos como segundo parametro
         /// </summary>
         /// <param name="source">type to evaluate</param>
         /// <param name="generic">the generic type</param>

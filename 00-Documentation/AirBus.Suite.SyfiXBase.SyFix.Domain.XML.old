@@ -1,0 +1,1137 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AirBus.Suite.SyfiXBase.SyFix.Domain</name>
+    </assembly>
+    <members>
+        <member name="T:AirBus.Suite.SyfiXBase.SyFix.Domain.IIncident">
+            <summary>
+            .en Interfaz to identify an entidad of type Incident in the application.
+            .es Interfaz que identifica una entidad de tipo Incident de la aplicación.
+            Aplication definition
+            </summary>
+            <remarks>
+            .en Interfaz for an Entity implemented by Incident/>.
+            .es Interfaz que representa  una entidad implementado enIncident/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IIncident.Tittle">
+            <summary>
+            .en Property to get and set Tittle.
+            .es Propiedad que permite obtener y establecer Tittle.
+            </summary>
+            <remarks>
+            Application name
+            </remarks>
+            <value>
+            .en Value used to get and set Tittle.
+            .es Valor que es utilizado para obtener y establecer Tittle.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IIncident.Number">
+            <summary>
+            .en Property to get and set Number.
+            .es Propiedad que permite obtener y establecer Number.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set Number.
+            .es Valor que es utilizado para obtener y establecer Number.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IIncident.Remarks">
+            <summary>
+            .en Property to get and set Remarks.
+            .es Propiedad que permite obtener y establecer Remarks.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set Remarks.
+            .es Valor que es utilizado para obtener y establecer Remarks.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IIncident.InternalRemarks">
+            <summary>
+            .en Property to get and set InternalRemarks.
+            .es Propiedad que permite obtener y establecer InternalRemarks.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set InternalRemarks.
+            .es Valor que es utilizado para obtener y establecer InternalRemarks.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IIncident.PublicRemarks">
+            <summary>
+            .en Property to get and set PublicRemarks.
+            .es Propiedad que permite obtener y establecer PublicRemarks.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set PublicRemarks.
+            .es Valor que es utilizado para obtener y establecer PublicRemarks.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IIncident.IBM">
+            <summary>
+            .en Property to get and set IBM.
+            .es Propiedad que permite obtener y establecer IBM.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set IBM.
+            .es Valor que es utilizado para obtener y establecer IBM.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IIncident.AGE">
+            <summary>
+            .en Property to get and set AGE.
+            .es Propiedad que permite obtener y establecer AGE.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set AGE.
+            .es Valor que es utilizado para obtener y establecer AGE.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IIncident.WarrantyClaim">
+            <summary>
+            .en Property to get and set WarrantyClaim.
+            .es Propiedad que permite obtener y establecer WarrantyClaim.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set WarrantyClaim.
+            .es Valor que es utilizado para obtener y establecer WarrantyClaim.
+            </value>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.SyFix.Domain.IIncidentRepository">
+            <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.IIncident"/>.
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.SyFix.Domain.Incident">
+            <summary>
+            <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.Incident"/>
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.Incident.#ctor">
+            <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.Incident"/> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.Incident"/> exigido por nHibernate o EntityFramework.
+            </summary>
+            <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.Incident.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.Incident"/>.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.Incident"/>.
+            </remarks>
+            <param name="tittle"> 
+            Parametro <see cref="P:AirBus.Suite.SyfiXBase.SyFix.Domain.Incident.Tittle"/> del constructor de campos mandatory de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.Incident"/>
+            Propiedad deducida del rol source de una relación
+            </param>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.Incident.Tittle">
+            <summary>
+            Propiedad pública que permite obtener Tittle.
+            </summary>
+            <remarks>
+            Application name
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Tittle.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.Incident.Number">
+            <summary>
+            Propiedad pública que permite obtener Number.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Number.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.Incident.Remarks">
+            <summary>
+            Propiedad pública que permite obtener Remarks.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Remarks.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.Incident.InternalRemarks">
+            <summary>
+            Propiedad pública que permite obtener InternalRemarks.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener InternalRemarks.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.Incident.PublicRemarks">
+            <summary>
+            Propiedad pública que permite obtener PublicRemarks.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener PublicRemarks.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.Incident.IBM">
+            <summary>
+            Propiedad pública que permite obtener IBM.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener IBM.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.Incident.AGE">
+            <summary>
+            Propiedad pública que permite obtener AGE.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener AGE.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.Incident.WarrantyClaim">
+            <summary>
+            Propiedad pública que permite obtener WarrantyClaim.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener WarrantyClaim.
+            </value>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.SyFix.Domain.IncidentFactory">
+            <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.Incident"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.IncidentFactory.#cctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.IncidentFactory"/>.
+            </summary>
+            <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.IncidentFactory"/>.
+            </remarks>
+            <returns>
+            Devuelve una instancia de dela clase IncidentFactory />
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.IncidentFactory.Create(System.String)">
+            <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+            <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.Incident"/>
+            </remarks>
+            <param name="tittle"> 
+            Application name
+            </param>
+            <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.IncidentFactory"/>
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.SyFix.Domain.IncidentSpecifications">
+            <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:Incident"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.IncidentSpecifications.FindAllByTittle(System.String)">
+            <summary>
+            Método que devuelve especificación de aquellos objetos de tipo Incident  
+            seleccionados por el valor del campo Tittle.
+            </summary>
+            <param name="tittleId">
+            Parámetro que indica el valor del campo Tittle.
+            </param>
+            <returns>
+            Devuelve <see cref="T:Inflexion2.Domain.Specification.Specification`1"/> asociado con este criterio.
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.SyFix.Domain.PerLifeTimeManager">
+            <summary>
+            LifetimeManager implementation
+            </summary>
+        </member>
+        <member name="F:AirBus.Suite.SyfiXBase.SyFix.Domain.PerLifeTimeManager.value">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.PerLifeTimeManager.GetValue">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.PerLifeTimeManager.RemoveValue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.PerLifeTimeManager.SetValue(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="newValue"></param>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadataBynaryValue">
+            <summary>
+            .en Interfaz to identify an entidad of type MetadataBynaryValue in the application.
+            .es Interfaz que identifica una entidad de tipo MetadataBynaryValue de la aplicación.
+            
+            </summary>
+            <remarks>
+            .en Interfaz for an Entity implemented by MetadataBynaryValue/>.
+            .es Interfaz que representa  una entidad implementado enMetadataBynaryValue/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadataBynaryValue.BynaryValue">
+            <summary>
+            .en Property to get and set BynaryValue.
+            .es Propiedad que permite obtener y establecer BynaryValue.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set BynaryValue.
+            .es Valor que es utilizado para obtener y establecer BynaryValue.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadataBynaryValue.Metadata">
+            <summary>
+            .en Public property Metadata.
+            .es Propiedad pública  Metadata.
+            </summary>
+            <remarks>
+            .en (SOURCE) This property comes from a relationship Composición y Asociación
+            .es (SOURCE)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener Metadata.
+            </remarks>
+            <value>
+            .es Valor que es utilizado para establecer y obtener Metadata.
+            </value>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadataBynaryValue.SetMetadata(AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata)">
+            <summary>
+            .es Método encargado de establecer un nuevo valor para la propiedad Metadata.
+            </summary>
+            <value>
+            .es Parametro con el que establecemos el nuevo valor de Metadata.
+            </value>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValue">
+            <summary>
+            <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValue"/>
+            </summary>
+        </member>
+        <member name="F:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValue.metadata">
+            <summary>
+            campo privado que almacena el valor de metadata.
+            </summary>
+            <remarks>
+            campo privado proveniente de una relación metadata.
+            La relación es de tipo Composición y Asociación
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValue.#ctor">
+            <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValue"/> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValue"/> exigido por nHibernate o EntityFramework.
+            </summary>
+            <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValue.#ctor(AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValue"/>.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValue"/>.
+            </remarks>
+            <param name="metadataBynaryValues">
+            Parametro <see cref="!:MetadataBynaryValue.MetadataBynaryValues"/> del constructor de campos mandatory de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValue"/>
+            Propiedad de unica instancia deducida del source rol source de una relación
+            </param>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValue.BynaryValue">
+            <summary>
+            Propiedad pública que permite obtener BynaryValue.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener BynaryValue.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValue.Metadata">
+            <summary>
+            Propiedad pública que permite establecer y obtener Metadata.
+            </summary>
+            <remarks>
+            Nos permite establecer y obtener Metadata.
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Metadata.
+            </value>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValue.SetMetadata(AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata)">
+            <summary>
+            Método encargado de establecer un nuevo valor para la propiedad Metadata.
+            </summary>
+            <param name="Metadata"> 
+            Parametro con el que establecemos el nuevo valor de <see cref="P:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValue.Metadata"/>. de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValue"/>
+            </param>
+            <returns>
+            Devuelve el propio objeto para facilitar las interfaces 'fluent'/>
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValueFactory">
+            <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValue"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValueFactory.#cctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValueFactory"/>.
+            </summary>
+            <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValueFactory"/>.
+            </remarks>
+            <returns>
+            Devuelve una instancia de dela clase MetadataBynaryValueFactory />
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValueFactory.Create(AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata)">
+            <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+            <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValue"/>
+            </remarks>
+            <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValueFactory"/>
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValueSpecifications">
+            <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:MetadataBynaryValue"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadataValue">
+            <summary>
+            .en Interfaz to identify an entidad of type MetadataValue in the application.
+            .es Interfaz que identifica una entidad de tipo MetadataValue de la aplicación.
+            
+            </summary>
+            <remarks>
+            .en Interfaz for an Entity implemented by MetadataValue/>.
+            .es Interfaz que representa  una entidad implementado enMetadataValue/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadataValue.StringValue">
+            <summary>
+            .en Property to get and set StringValue.
+            .es Propiedad que permite obtener y establecer StringValue.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set StringValue.
+            .es Valor que es utilizado para obtener y establecer StringValue.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadataValue.IntegerValue">
+            <summary>
+            .en Property to get and set IntegerValue.
+            .es Propiedad que permite obtener y establecer IntegerValue.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set IntegerValue.
+            .es Valor que es utilizado para obtener y establecer IntegerValue.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadataValue.DecimalValue">
+            <summary>
+            .en Property to get and set DecimalValue.
+            .es Propiedad que permite obtener y establecer DecimalValue.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set DecimalValue.
+            .es Valor que es utilizado para obtener y establecer DecimalValue.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadataValue.FloatValue">
+            <summary>
+            .en Property to get and set FloatValue.
+            .es Propiedad que permite obtener y establecer FloatValue.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set FloatValue.
+            .es Valor que es utilizado para obtener y establecer FloatValue.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadataValue.Metadata">
+            <summary>
+            .en Public property Metadata.
+            .es Propiedad pública  Metadata.
+            </summary>
+            <remarks>
+            .en (SOURCE) This property comes from a relationship Composición y Asociación
+            .es (SOURCE)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener Metadata.
+            </remarks>
+            <value>
+            .es Valor que es utilizado para establecer y obtener Metadata.
+            </value>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadataValue.SetMetadata(AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata)">
+            <summary>
+            .es Método encargado de establecer un nuevo valor para la propiedad Metadata.
+            </summary>
+            <value>
+            .es Parametro con el que establecemos el nuevo valor de Metadata.
+            </value>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue">
+            <summary>
+            <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue"/>
+            </summary>
+        </member>
+        <member name="F:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue.metadata">
+            <summary>
+            campo privado que almacena el valor de metadata.
+            </summary>
+            <remarks>
+            campo privado proveniente de una relación metadata.
+            La relación es de tipo Composición y Asociación
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue.#ctor">
+            <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue"/> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue"/> exigido por nHibernate o EntityFramework.
+            </summary>
+            <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue.#ctor(AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue"/>.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue"/>.
+            </remarks>
+            <param name="metadataValues">
+            Parametro <see cref="!:MetadataValue.MetadataValues"/> del constructor de campos mandatory de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue"/>
+            Propiedad de unica instancia deducida del source rol source de una relación
+            </param>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue.StringValue">
+            <summary>
+            Propiedad pública que permite obtener StringValue.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener StringValue.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue.IntegerValue">
+            <summary>
+            Propiedad pública que permite obtener IntegerValue.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener IntegerValue.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue.DecimalValue">
+            <summary>
+            Propiedad pública que permite obtener DecimalValue.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener DecimalValue.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue.FloatValue">
+            <summary>
+            Propiedad pública que permite obtener FloatValue.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener FloatValue.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue.Metadata">
+            <summary>
+            Propiedad pública que permite establecer y obtener Metadata.
+            </summary>
+            <remarks>
+            Nos permite establecer y obtener Metadata.
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Metadata.
+            </value>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue.SetMetadata(AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata)">
+            <summary>
+            Método encargado de establecer un nuevo valor para la propiedad Metadata.
+            </summary>
+            <param name="Metadata"> 
+            Parametro con el que establecemos el nuevo valor de <see cref="P:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue.Metadata"/>. de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue"/>
+            </param>
+            <returns>
+            Devuelve el propio objeto para facilitar las interfaces 'fluent'/>
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValueFactory">
+            <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValueFactory.#cctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValueFactory"/>.
+            </summary>
+            <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValueFactory"/>.
+            </remarks>
+            <returns>
+            Devuelve una instancia de dela clase MetadataValueFactory />
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValueFactory.Create(AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata)">
+            <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+            <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue"/>
+            </remarks>
+            <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValueFactory"/>
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValueSpecifications">
+            <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:MetadataValue"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadata">
+            <summary>
+            .en Interfaz to identify an entidad of type Metadata in the application.
+            .es Interfaz que identifica una entidad de tipo Metadata de la aplicación.
+            
+            </summary>
+            <remarks>
+            .en Interfaz for an Entity implemented by Metadata/>.
+            .es Interfaz que representa  una entidad implementado enMetadata/>.
+            </remarks>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadata.Name">
+            <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadata.IsUnique">
+            <summary>
+            .en Property to get and set IsUnique.
+            .es Propiedad que permite obtener y establecer IsUnique.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set IsUnique.
+            .es Valor que es utilizado para obtener y establecer IsUnique.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadata.IsVisible">
+            <summary>
+            .en Property to get and set IsVisible.
+            .es Propiedad que permite obtener y establecer IsVisible.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set IsVisible.
+            .es Valor que es utilizado para obtener y establecer IsVisible.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadata.IsCalculated">
+            <summary>
+            .en Property to get and set IsCalculated.
+            .es Propiedad que permite obtener y establecer IsCalculated.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set IsCalculated.
+            .es Valor que es utilizado para obtener y establecer IsCalculated.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadata.IsNew">
+            <summary>
+            .en Property to get and set IsNew.
+            .es Propiedad que permite obtener y establecer IsNew.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set IsNew.
+            .es Valor que es utilizado para obtener y establecer IsNew.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadata.Position">
+            <summary>
+            .en Property to get and set Position.
+            .es Propiedad que permite obtener y establecer Position.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set Position.
+            .es Valor que es utilizado para obtener y establecer Position.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadata.Alias">
+            <summary>
+            .en Property to get and set Alias.
+            .es Propiedad que permite obtener y establecer Alias.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set Alias.
+            .es Valor que es utilizado para obtener y establecer Alias.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadata.IsRequired">
+            <summary>
+            .en Property to get and set IsRequired.
+            .es Propiedad que permite obtener y establecer IsRequired.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            .en Value used to get and set IsRequired.
+            .es Valor que es utilizado para obtener y establecer IsRequired.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadata.SyfiXDataType">
+            <summary>
+            .en Public property SyfiXDataType.
+            .es Propiedad pública  SyfiXDataType.
+            </summary>
+            <remarks>
+            .en (SOURCE) This property comes from a relationship Composición y Asociación
+            .es (SOURCE)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener SyfiXDataType.
+            </remarks>
+            <value>
+            .es Valor que es utilizado para establecer y obtener SyfiXDataType.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadata.MetadataValues">
+            <summary>
+            .es Propiedad pública que permite establecer y obtener la colleción de valores MetadataValues.
+            </summary>
+            <remarks>
+            .es (TARGET)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener MetadataValues.
+            </remarks>
+            <value>
+            .es Valor que es utilizado para establecer y obtener MetadataValues.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadata.MetadataBynaryValues">
+            <summary>
+            .es Propiedad pública que permite establecer y obtener la colleción de valores MetadataBynaryValues.
+            </summary>
+            <remarks>
+            .es (TARGET)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener MetadataBynaryValues.
+            </remarks>
+            <value>
+            .es Valor que es utilizado para establecer y obtener MetadataBynaryValues.
+            </value>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadata.SetSyfiXDataType(AirBus.Suite.SyfiXBase.SyFix.Domain.Data.SyfiXDataType)">
+            <summary>
+            .es Método encargado de establecer un nuevo valor para la propiedad SyfiXDataType.
+            </summary>
+            <value>
+            .es Parametro con el que establecemos el nuevo valor de SyfiXDataType.
+            </value>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadata.AddMetadataValueToMetadataValues(AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue)">
+            <summary>
+            .es Método encargado de añadir un elemento a la collección MetadataValues en la entidad MetadataValue.
+            El MetadataValue ha de existir previamente.
+            </summary>
+            <value>
+            .es Parametro con el que se proporciona la colección MetadataValue a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadata.RemoveMetadataValueFromMetadataValues(AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue)">
+            <summary>
+            .es Método encargado de eliminar un elemento de la collección MetadataValues en la entidad MetadataValue.
+            El MetadataValue ha de existir previamente.
+            </summary>
+            <value>
+            .es Identificador a borrar MetadataValue a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadata.AddMetadataBynaryValueToMetadataBynaryValues(AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValue)">
+            <summary>
+            .es Método encargado de añadir un elemento a la collección MetadataBynaryValues en la entidad MetadataBynaryValue.
+            El MetadataBynaryValue ha de existir previamente.
+            </summary>
+            <value>
+            .es Parametro con el que se proporciona la colección MetadataBynaryValue a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadata.RemoveMetadataBynaryValueFromMetadataBynaryValues(AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValue)">
+            <summary>
+            .es Método encargado de eliminar un elemento de la collección MetadataBynaryValues en la entidad MetadataBynaryValue.
+            El MetadataBynaryValue ha de existir previamente.
+            </summary>
+            <value>
+            .es Identificador a borrar MetadataBynaryValue a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadataRepository">
+            <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.IMetadata"/>.
+            </summary>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata">
+            <summary>
+            <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata"/>
+            </summary>
+        </member>
+        <member name="F:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.syfiXDataType">
+            <summary>
+            campo privado que almacena el valor de syfiXDataType.
+            </summary>
+            <remarks>
+            campo privado proveniente de una relación syfiXDataType.
+            La relación es de tipo Composición y Asociación
+            </remarks>
+        </member>
+        <member name="F:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.metadataValues">
+            <summary>
+            Campo privado para almacenar la colección de  metadataValues.
+            </summary>
+            <remarks>
+            campo privado proveniente de una relación metadataValues.
+            La relación es una Asociación  de tipo Composición 
+            </remarks>
+        </member>
+        <member name="F:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.metadataBynaryValues">
+            <summary>
+            Campo privado para almacenar la colección de  metadataBynaryValues.
+            </summary>
+            <remarks>
+            campo privado proveniente de una relación metadataBynaryValues.
+            La relación es una Asociación  de tipo Composición 
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.#ctor">
+            <summary>
+            .en Empty Constructor for the class <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata"/> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata"/> exigido por nHibernate o EntityFramework.
+            </summary>
+            <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.#ctor(AirBus.Suite.SyfiXBase.SyFix.Domain.Data.SyfiXDataType)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata"/>.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata"/>.
+            </remarks>
+            <param name="metadatas">
+            Parametro <see cref="!:Metadata.Metadatas"/> del constructor de campos mandatory de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata"/>
+            Propiedad de unica instancia deducida del source rol source de una relación
+            </param>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.Name">
+            <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.IsUnique">
+            <summary>
+            Propiedad pública que permite obtener IsUnique.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener IsUnique.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.IsVisible">
+            <summary>
+            Propiedad pública que permite obtener IsVisible.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener IsVisible.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.IsCalculated">
+            <summary>
+            Propiedad pública que permite obtener IsCalculated.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener IsCalculated.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.IsNew">
+            <summary>
+            Propiedad pública que permite obtener IsNew.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener IsNew.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.Position">
+            <summary>
+            Propiedad pública que permite obtener Position.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Position.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.Alias">
+            <summary>
+            Propiedad pública que permite obtener Alias.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener Alias.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.IsRequired">
+            <summary>
+            Propiedad pública que permite obtener IsRequired.
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener IsRequired.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.SyfiXDataType">
+            <summary>
+            Propiedad pública que permite establecer y obtener SyfiXDataType.
+            </summary>
+            <remarks>
+            Nos permite establecer y obtener SyfiXDataType.
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener SyfiXDataType.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.MetadataValues">
+            <summary>
+            Propiedad pública que provine de una relación (Target) y permite establecer y obtener la coleción de valores MetadataValues.
+            </summary>
+            <remarks>
+            Nos permite establecer y obtener MetadataValues.
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener MetadataValues.
+            </value>
+        </member>
+        <member name="P:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.MetadataBynaryValues">
+            <summary>
+            Propiedad pública que provine de una relación (Target) y permite establecer y obtener la coleción de valores MetadataBynaryValues.
+            </summary>
+            <remarks>
+            Nos permite establecer y obtener MetadataBynaryValues.
+            </remarks>
+            <value>
+            Valor que es utilizado para establecer y obtener MetadataBynaryValues.
+            </value>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.SetSyfiXDataType(AirBus.Suite.SyfiXBase.SyFix.Domain.Data.SyfiXDataType)">
+            <summary>
+            Método encargado de establecer un nuevo valor para la propiedad SyfiXDataType.
+            </summary>
+            <param name="SyfiXDataType"> 
+            Parametro con el que establecemos el nuevo valor de <see cref="P:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.SyfiXDataType"/>. de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata"/>
+            </param>
+            <returns>
+            Devuelve el propio objeto para facilitar las interfaces 'fluent'/>
+            </returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.SetMetadataValues(System.Collections.Generic.List{AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue})" -->
+        <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.AddMetadataValueToMetadataValues(AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue)" -->
+        <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.RemoveMetadataValueFromMetadataValues(AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataValue)" -->
+        <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.SetMetadataBynaryValues(System.Collections.Generic.List{AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValue})" -->
+        <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.AddMetadataBynaryValueToMetadataBynaryValues(AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValue)" -->
+        <!-- Badly formed XML comment ignored for member "M:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata.RemoveMetadataBynaryValueFromMetadataBynaryValues(AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataBynaryValue)" -->
+        <member name="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataFactory">
+            <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata"/>.
+            </summary>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataFactory.#cctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataFactory"/>.
+            </summary>
+            <remarks>
+            Constructor vacío de la clase <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataFactory"/>.
+            </remarks>
+            <returns>
+            Devuelve una instancia de dela clase MetadataFactory />
+            </returns>
+        </member>
+        <member name="M:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataFactory.Create(AirBus.Suite.SyfiXBase.SyFix.Domain.Data.SyfiXDataType)">
+            <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+            <remarks>
+            Crea una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.Metadata"/>
+            </remarks>
+            <param name="metadataValues"> 
+            referencia al rol target de la relación.
+            </param>
+            <param name="metadataBynaryValues"> 
+            referencia al rol target de la relación.
+            </param>
+            <returns>
+            Devuelve  una entidad de tipo <see cref="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataFactory"/>
+            </returns>
+        </member>
+        <member name="T:AirBus.Suite.SyfiXBase.SyFix.Domain.MetadataSpecifications">
+            <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:Metadata"/>.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+    </members>
+</doc>

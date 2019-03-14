@@ -111,7 +111,7 @@ namespace Inflexion2.Domain.Extensions
 
         /// <summary>
         /// Alternative implementation
-        /// .es obtenemos el valor de correspondiente al enumerado
+        /// .es obtenemos el valor correspondiente al enumerado
         /// .en get the value of enum member
         /// </summary>
         /// <param name="value"></param>

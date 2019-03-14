@@ -1,0 +1,101 @@
+﻿<#+ 
+
+    ///<sumary>
+    ///agrupación de metodos estaticos para ayudar en el manejo de carpetas y ficheros.
+    ///</sumary>
+    static public class IOWindows
+    {
+
+    ///<sumary>
+    /// crea un carpeta con la ruta que se le pasa como parametro, comprobando previamente si existe
+    ///</sumary>
+    ///<parameter>
+    /// ruta de la carpeta a crear
+    ///</parameter>
+        public static int NewChequedFolder( string folderPath)
+        {
+            int OperacionRealizada= 0; // 0 = creamos nueva carpeta; 1 = la carpeta ya existe y no se crea
+            DirectoryInfo directoryInfoFolderPath = new DirectoryInfo(folderPath);
+            if(!directoryInfoFolderPath.Exists ) // si el directorio no existe 
+                {
+                    directoryInfoFolderPath.Create(); // lo creamos
+                }
+            else
+                {
+                    OperacionRealizada = 1;
+                }
+
+            return OperacionRealizada;
+        }
+#>
+<#+ 
+
+    ///<sumary>
+    /// copia los ficheros de un directorio a otro seleccionando mediante un patron de busqueda con los tags * y ?
+        /// y los añade despues al projecto que se le pasa como primer parametro
+    ///</sumary>
+    ///<parameter>
+    /// 
+    ///</parameter>
+    ///<parameter>
+    /// 
+    ///</parameter>
+    ///<parameter>
+    /// 
+    ///</parameter>
+        public static void FilteredCopyFilesFromDirToDirAndAddProjectItems( EnvDTE.ProjectItems projectListItems, string tempOrigin, string tempTarget, string searchPattern )
+        {
+            // Put all txt files in root directory into array.
+            string[] ListFiles = Directory.GetFiles(tempOrigin, searchPattern); // <-- Case-insensitive
+            Debug.WriteLine( String.Format( "origing full path file = '{0}'  conteins {1} files with pattern {2}", tempOrigin, ListFiles.Length, searchPattern ));
+            string fileName = null;
+            for(int i=0; i<ListFiles.Length ; i++)
+            {
+                fileName = Path.GetFileName(ListFiles[i]);
+                Debug.WriteLine( String.Format( "origing full path file = '{0}' ", ListFiles[i] ));
+                Debug.WriteLine( String.Format( " target full path file = '{0}' ", tempTarget + fileName ));
+
+                bool oringinFileExist= File.Exists(ListFiles[i]);
+                if (oringinFileExist)
+                {
+                    Debug.WriteLine( String.Format( "El fichero origen'{0}' existe y lo copiamos",  ListFiles[i] ));
+                    bool targetFileDontExist= !File.Exists(tempTarget + fileName);
+                    if (targetFileDontExist)
+                    {
+                        Debug.WriteLine( String.Format( "El fichero Destino'{0}' no existe y lo copiamos", tempTarget + fileName ));
+                        if ( !Directory.Exists(tempTarget))
+                        {
+                            try { Directory.CreateDirectory(tempTarget); } catch( Exception e) {Debug.WriteLine(e.Message);}
+                            if ( !Directory.Exists(tempTarget))
+                            {
+                                Debug.WriteLine("acabamos de comprobar que el directorio que hemos creado no existe");
+                                throw (new Exception("acabamos de comprobar que el directorio que hemos creado no existe"));
+                            }
+                        }
+                            try
+                            {
+                                File.Copy( ListFiles[i], tempTarget + fileName, true);
+                            }
+                            catch (DirectoryNotFoundException dirNotFound)
+                            {
+                                Debug.WriteLine(dirNotFound.Message);
+                            }
+                        
+                        Debug.WriteLine( String.Format( "añadimos el fichero '{0}' como elemento del proyecto", tempTarget + fileName ));
+                        projectListItems.AddFromFile( tempTarget + fileName );
+
+                    }
+                    else 
+                    {
+                        Debug.WriteLine( String.Format( "El fichero Destino'{0}' existe previamente y No lo copiamos", tempTarget + fileName ));
+                    }
+                }
+
+            }
+        }
+#>
+
+<#+ 
+    }// end class
+
+#>

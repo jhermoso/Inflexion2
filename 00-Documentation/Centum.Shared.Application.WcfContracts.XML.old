@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Centum.Shared.Application.WcfContracts</name>
+    </assembly>
+    <members>
+        <member name="T:Centum.Shared.Application.WcfService.Contracts.ICategoriaService">
+            <summary>
+            Interfaz que permite definir el contrato de servicio para las acciones
+            relacionadas con la entidad Categoria.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:Centum.Shared.Application.WcfService.Contracts.ICategoriaService.Create(Centum.Shared.Application.Dtos.CategoriaDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo Categoria.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="categoriaDto">
+            Parámetro de tipo <see cref="T:Centum.Shared.Application.Dtos.CategoriaDto"/> con los datos necesarios
+            para la creación de la entidad Categoria.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:Centum.Shared.Application.WcfService.Contracts.ICategoriaService.Update(Centum.Shared.Application.Dtos.CategoriaDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo Categoria.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="categoriaDto">
+            Parámetro de tipo <see cref="T:Centum.Shared.Application.Dtos.CategoriaDto"/> con los datos necesarios
+            para el borrado de la entidad Categoriar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Centum.Shared.Application.WcfService.Contracts.ICategoriaService.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad Categoria.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:Centum.Shared.Application.WcfService.Contracts.ICategoriaService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades Categoria.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <returns>
+            Devuelve listado de Dto´s de la entidad Categoria.
+            </returns>
+        </member>
+        <member name="M:Centum.Shared.Application.WcfService.Contracts.ICategoriaService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad Categoria de acuerdo a
+            su identificador.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="categoriaId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:Centum.Shared.Application.Dtos.CategoriaDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:Centum.Shared.Application.WcfService.Contracts.ICategoriaService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Categoria, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades Categoria, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="T:Centum.Shared.Application.WcfService.Contracts.IPersonaService">
+            <summary>
+            Interfaz que permite definir el contrato de servicio para las acciones
+            relacionadas con la entidad Persona.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="M:Centum.Shared.Application.WcfService.Contracts.IPersonaService.Create(Centum.Shared.Application.Dtos.PersonaDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo Persona.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="personaDto">
+            Parámetro de tipo <see cref="T:Centum.Shared.Application.Dtos.PersonaDto"/> con los datos necesarios
+            para la creación de la entidad Persona.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:Centum.Shared.Application.WcfService.Contracts.IPersonaService.Update(Centum.Shared.Application.Dtos.PersonaDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo Persona.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="personaDto">
+            Parámetro de tipo <see cref="T:Centum.Shared.Application.Dtos.PersonaDto"/> con los datos necesarios
+            para el borrado de la entidad Personar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Centum.Shared.Application.WcfService.Contracts.IPersonaService.Delete(System.Int32)">
+            <summary>
+            Elimina una determinada entidad Persona.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:Centum.Shared.Application.WcfService.Contracts.IPersonaService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades Persona.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <returns>
+            Devuelve listado de Dto´s de la entidad Persona.
+            </returns>
+        </member>
+        <member name="M:Centum.Shared.Application.WcfService.Contracts.IPersonaService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad Persona de acuerdo a
+            su identificador.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="personaId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:Centum.Shared.Application.Dtos.PersonaDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:Centum.Shared.Application.WcfService.Contracts.IPersonaService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Persona, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades Persona, según la especificación indicada.
+            </returns>
+        </member>
+    </members>
+</doc>

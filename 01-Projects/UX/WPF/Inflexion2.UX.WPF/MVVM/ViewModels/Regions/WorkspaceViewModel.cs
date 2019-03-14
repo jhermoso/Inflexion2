@@ -6,11 +6,14 @@
 
 namespace Inflexion2.UX.WPF.MVVM.ViewModels
 {
-    using System.Windows.Input;
-
     using Inflexion2.UX.WPF.MVVM.Commands;
-
     using Microsoft.Practices.Prism.Commands;
+    using Microsoft.Practices.Prism.Events;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Input;
 
     /// <summary>
     /// .es Clase base para las clases modelo de vista (MVVM) que utilizan la región WorkspaceRegion.
@@ -28,32 +31,33 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
         private readonly EditionCommandsProxy editionCommandsProxy;
 
         /// <summary>
-        /// Referencia al comando global activar registro.
+        /// .es Referencia al comando global activar registro.
+        /// .en
         /// </summary>
         protected readonly ICommand activateRecordCommand;
 
         /// <summary>
-        /// Referencia al comando global eliminar registro.
+        /// .es Referencia al comando global eliminar registro.
         /// </summary>
         protected readonly ICommand deleteRecordCommand;
 
         /// <summary>
-        /// Referencia al comando global editar registro.
+        /// .es Referencia al comando global editar registro.
         /// </summary>
         protected readonly ICommand editRecordCommand;
 
         /// <summary>
-        /// Referencia al comando global obtener registros.
+        /// .es Referencia al comando global obtener registros.
         /// </summary>
         protected readonly ICommand getRecordsCommand;
 
         /// <summary>
-        /// Referencia al comando global nuevo registro.
+        /// .es Referencia al comando global nuevo registro.
         /// </summary>
         protected readonly ICommand newRecordCommand;
 
         /// <summary>
-        /// Referencia al comando global guardar registro.
+        /// .es Referencia al comando global guardar registro.
         /// </summary>
         protected readonly ICommand saveRecordCommand;
 
@@ -78,16 +82,27 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
         protected readonly ICommand getLastPageRecordsCommand;
 
         /// <summary>
-        /// Indica si el view model esta o no ejecutando un proceso.
+        /// .en is the viewmodel executing a process?
         /// </summary>
         private bool isBusy;
+
+        /// <summary>
+        /// .en list of invisible fields in the view
+        /// </summary>
+        private Dictionary<string, bool> booleanInvisibleFieldsUI = new Dictionary<string, bool>();
+
+        private string currentViewName;
+
+        private string parentViewName;
+
+        private UIMessageEvent compositeViewUpdateEvent;
 
         #endregion
 
         #region Constructors
 
         /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="T:WorkspaceViewModel"/>.
+        /// .es Inicializa una nueva instancia de la clase <see cref="T:WorkspaceViewModel"/>.
         /// </summary>
         /// <remarks>
         /// Constructor de la clase <see cref="T:WorkspaceViewModel"/>.
@@ -111,6 +126,9 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
                 this.getNextPageRecordsCommand      = new DelegateCommand<object>(this.OnGetNextPageRecords, this.CanGetNextPageRecords);
                 this.getPreviousPageRecordsCommand  = new DelegateCommand<object>(this.OnGetPreviousPageRecords, this.CanGetPreviousPageRecords);
                 this.getLastPageRecordsCommand      = new DelegateCommand<object>(this.OnGetLastPageRecords, this.CanGetLastPageRecords);
+
+                this.compositeViewUpdateEvent = this.EventAggregator.GetEvent<UIMessageEvent>();
+
             }
         }
 
@@ -119,10 +137,10 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
         #region Properties
 
         /// <summary>
-        /// Obtiene el comando eliminar registro.
+        /// .es Obtiene el comando eliminar registro.
         /// </summary>
         /// <value>
-        /// Comando eliminar registro.
+        /// .es Comando eliminar registro.
         /// </value>
         private ICommand ActivateRecordCommand
         {
@@ -130,7 +148,7 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
         }
 
         /// <summary>
-        /// Obtiene el proxy para los comandos de edición.
+        /// .es Obtiene el proxy para los comandos de edición.
         /// </summary>
         private EditionCommandsProxy EditionCommandsProxy
         {
@@ -138,10 +156,10 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
         }
 
         /// <summary>
-        /// Obtiene el comando editar registro.
+        /// .es Obtiene el comando editar registro.
         /// </summary>
         /// <value>
-        /// Comando editar registro.
+        /// .es Comando editar registro.
         /// </value>
         private ICommand EditRecordCommand
         {
@@ -149,7 +167,7 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
         }
 
         /// <summary>
-        /// Obtiene el comando eliminar registro.
+        /// .es Obtiene el comando eliminar registro.
         /// </summary>
         /// <value>
         /// Comando eliminar registro.
@@ -238,11 +256,12 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
 
         /// <summary>
         /// .es Obtiene el titulo a mostrar en la vista.
+        /// .en Gets the title to show in the view.
         /// </summary>
-        public abstract string Title { get; }
+        public abstract string Title { get; set; }
 
         /// <summary>
-        /// Propiedad que indica si el view model esta o no ejecutando un proceso.
+        /// .es Propiedad que indica si el view model esta o no ejecutando un proceso.
         /// </summary>
         public bool IsBusy
         {
@@ -257,6 +276,75 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
                     this.isBusy = value;
                     RaisePropertyChanged(() => this.IsBusy);
                 }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Dictionary<string, bool> BooleanInvisibleFieldsUI
+        {
+            get
+            {
+                return booleanInvisibleFieldsUI;
+            }
+            set
+            {
+                if (booleanInvisibleFieldsUI != value)
+                {
+                    booleanInvisibleFieldsUI = value;
+                    RaisePropertyChanged(() => this.BooleanInvisibleFieldsUI);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Name of the current view instance associated to this viewmodel
+        /// </summary>
+        public string CurrentViewName
+        {
+            get
+            {
+                return currentViewName;
+            }
+
+            set
+            {
+                currentViewName = value;
+            }
+        }
+
+        /// <summary>
+        /// Name of the current parent view instance associated to this viewmodel.
+        /// This property is for those query/crud view/viewmodels that are embbeded inside other views.
+        /// The most common case is when a query view is inside other crud view.
+        /// </summary>
+        public string ParentViewName
+        {
+            get
+            {
+                return parentViewName;
+            }
+
+            set
+            {
+                parentViewName = value;
+            }
+        }
+
+        /// <summary>
+        /// Property to send decoupled updating messages in user interface betwwen modules or inside them
+        /// </summary>
+        public UIMessageEvent CompositeViewUpdateEvent
+        {
+            get
+            {
+                return compositeViewUpdateEvent;
+            }
+
+            set
+            {
+                compositeViewUpdateEvent = value;
             }
         }
 
@@ -336,7 +424,7 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
         /// </returns>
         public virtual bool CanNewRecord(object parameter)
         {
-            return false;
+            return true;
         }
 
         /// <summary>
@@ -523,6 +611,19 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
 
         }
 
+
+        /// <summary>
+        /// Action to execute when receiving a message to update a queryViewmodel who has a parent view.
+        /// Composited view update.
+        /// </summary>
+        /// <param name="message"></param>
+        public virtual void OnReceiveCompositeViewUpdateEvent(string message)
+        {
+            OnGetRecords("from WorkspaceViewModel " + message);
+            //this.Rebind();
+        }
+
+
         #endregion ExecuteCommand
 
         #endregion
@@ -587,5 +688,17 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
         }
 
         #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void UpdateParentView()
+        {
+            if (this.ParentViewName != null)
+            {
+                this.CompositeViewUpdateEvent.Publish(this.ParentViewName);
+            }
+        }
+
     }
 }

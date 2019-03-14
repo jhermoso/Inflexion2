@@ -1,0 +1,75 @@
+﻿<#+
+public class ServiceDelete : Template
+{
+    // varibles de la plantilla (coinciden con los parametros)
+    ClassBaseContext cbc; string projectNamespace; ITree<BoundedContextMetadata> Skt;
+    // constructor de la plantilla con parametros
+    public ServiceDelete(ClassBaseContext  cbc, string projectNamespace, ITree<BoundedContextMetadata> Skt)
+        {this.cbc= cbc; this.projectNamespace = projectNamespace;  this.Skt = Skt; }
+
+    public override string TransformText()
+        {
+            // uso de interfaces en las propiedades y por tanto en metodos
+            //por defecto se usan interfaces con nhibernate en cualquiera e sus modalidades y no se usan con entityFramework
+            string I = (cbc.diagram.ORM.Contains("ibernate"))?"I":"";
+            bool Secured = cbc.MainEntityStereotype.Contains("Bussiness"); // si es una entidad de negocio entoces esta securizada es decir necesita identificación y autorización
+            bool Trazable = cbc.MainEntityStereotype.Contains("Bussiness") || cbc.MainEntityStereotype.Contains("Auditable"); // si es una entidad de negocio entoces esta securizada es decir necesita identificación y autorización
+
+            // conceptos propios del projecto en curso
+            ProjectConcepts prjCon = new ProjectConcepts(  cbc, projectNamespace, Skt);
+            string ResxFileName = prjCon.boundedContextName.Replace(".","") + "Neutral"; // este el nombre del fichero que contiene los recursos del contexto limitado en el que nos encontramos.
+#>
+        #region Service Delete
+        /// <summary>
+        /// Elimina una determinada entidad <#=            cbc.pascalSecureEntityName #>.
+        /// </summary>
+        /// <param name="id">
+        /// Identificador de la entidad que se va a eliminar.
+        /// </param>
+<#+ if(Secured){#>        /// <param name="userContextDto"> Información de contexto del usuario. </param><#+ } #>
+        /// <returns>
+        /// Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+        /// </returns>
+        public bool Delete(int id<#=(Secured)?", UserContextDto userContextDto":"" #>)
+        {
+<#+if (!T4Help.IsValueType(cbc.idtype)){//si el id es de tipo nullable entonces comprobamos que no lo sea #>
+<#+     if (cbc.diagram.ValidationContracts.Equals("CodeContracts")){#>
+        // Comprobamos que el id no es nulo.
+        Contract.Requires<System.ArgumentNullException>(id != null, "el parametro '<#= cbc.pascalSecureEntityName #>Dto' de la función 'Execute' en la clase 'Create<#= cbc.pascalSecureEntityName #>' no puede ser nulo");
+<#+ }#>
+<#+     if (cbc.diagram.ValidationContracts.Equals("DataAnotations")){#>
+        // Comprobamos que el id no es nulo.
+        Guard.ArgumentIsNotNull(
+                                id,
+                                string.Format(
+                                                FrameworkResource.DataTransferObjectIsNull,
+                                                <#= ResxFileName #>.<#= cbc.pascalSecureEntityName #>Alias));
+<#+ }#>
+<#+ }#>
+<#+if(cbc.LogicDelete){ #>
+            // Crear la acción de eliminar.
+            Action<<#= I #><#= cbc.pascalSecureEntityName #>> deleteEntity = (entity) => entity.Disable();
+
+            // Ejecutar la acción de eliminar.
+            return this.DeleteActivateWrapper(id<#=(Secured)?", UserContextDto userContextDto":"" #>);
+<#+ }else{#>
+            I<#= cbc.pascalSecureEntityName #>Repository repo = ApplicationLayer.IocContainer.Resolve<I<#= cbc.pascalSecureEntityName #>Repository>();
+            IEnumerable<<#= cbc.pascalSecureEntityName #>> results = repo.GetFilteredElements(u => u.Id == id);
+            <#= cbc.pascalSecureEntityName #> <#= cbc.camelSecureEntityName #>2Delete = results.First();
+
+            if (!<#= cbc.camelSecureEntityName #>2Delete.CanBeDeleted())
+            {
+                return false;
+            }
+            repo.Remove(<#= cbc.camelSecureEntityName #>2Delete);
+            this.Commit();
+
+            return true;
+        }
+<#+} //end else logicdelete#>
+        #endregion
+<#+
+        return this.GenerationEnvironment.ToString();
+    } // end de TransformText
+}// end template
+#>

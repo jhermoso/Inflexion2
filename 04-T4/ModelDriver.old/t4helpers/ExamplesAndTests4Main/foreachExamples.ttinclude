@@ -1,0 +1,39 @@
+﻿<#
+    WriteLine("------------------------");
+    foreach(Project p in SolutionInfo.OwnSolution.Projects )
+    {
+        WriteLine("El proyecto es :{0}",p.Name);
+    }
+
+    WriteLine("------------------------");
+    foreach(Project p in SolutionInfo.ProjectsList )
+    {
+        WriteLine("El proyecto es :{0}",p.Name);
+    }
+    WriteLine("------------------------");
+    foreach(KeyValuePair<string , string> t in SolutionInfo.TemplateProjects )
+    {
+        WriteLine("La plantilla {0} de proyecto es \"{1}\":",t.Key, t.Value);
+    }
+     WriteLine("------------------------");
+    
+    foreach(Project p in SolutionInfo.SolutionTree.All.Values )
+    {
+        WriteLine("El proyecto de solución es  :{0}",p.Name);
+    }
+    
+     WriteLine("------------------------");
+    
+    foreach(NodeTree<Project> node in SolutionInfo.SolutionTree.All.Nodes )
+    {
+        WriteLine( T4Help.Indent(node.Depth*4)+node.Data.Name);
+    }
+    
+    WriteLine("------------------------");
+    
+    foreach(Project p in Projectos.Cast<Project>().Where(p=> p.CodeModel==null && p.Name.Equals("NewFolder1") ))
+    {
+        WriteLine("El proyecto es :{0}",p.Name);
+    }
+
+#>

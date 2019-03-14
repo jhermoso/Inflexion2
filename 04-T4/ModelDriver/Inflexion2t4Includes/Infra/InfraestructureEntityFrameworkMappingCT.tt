@@ -19,6 +19,12 @@ public class InfraestructureEntityFrameworkMappingCT : Template
         var cpyrigthTemplate    = new CopyrightHeader(cbc.diagram, cbc.solutionInfo, cbc.entity, T4Help.getLeftStringSlice(this.ToString(), '+', -1).Substring(1));  string cpyrigthText = cpyrigthTemplate.TransformText();
         // subplantillas epsecificas
         var usingTemplate       = new usings( cbc, projectNamespace, Skt);                         string usingTxt     = usingTemplate.TransformText(); //solo los shared kernel
+
+		string classBaseName = "EntityConfiguration";
+	//	if (cbc.MainEntityStereotype.Contains("Entity") )
+	//	  {
+	//		classBaseName = "BaseEntityConfiguration"; 
+	//	  }
 #>
 
 <#= cpyrigthText #>
@@ -34,9 +40,9 @@ namespace <#= projectNamespace #>
     using Inflexion2.Domain;
 
 <#+ if (cbc.OwnBoundedContextHasEnums) {#>
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain.Data;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain.Data;
 <#+            } #>
-    using <#= prjCon.company #>.<#= prjCon.product #>.<#= prjCon.boundedContextName #>.Domain;
+    using <#= cbc.diagram.RootNameSpace #>.<#= prjCon.boundedContextName #>.Domain;
 
     #endregion
 
@@ -46,7 +52,7 @@ namespace <#= projectNamespace #>
     /// <remarks>
     /// Mapea un objeto <see cref="<#= I #><#= cbc.pascalSecureEntityName #>"/>
     /// </remarks>
-     public class <#= cbc.pascalSecureEntityName #>Configuration : EntityConfiguration<<#= cbc.pascalSecureEntityName #>, <#= cbc.idtype #>>
+     public class <#= cbc.pascalSecureEntityName #>Configuration : <#= classBaseName #><<#= cbc.pascalSecureEntityName #>, <#= cbc.idtype #>>
     {
         #region Constructors
 
@@ -56,7 +62,7 @@ namespace <#= projectNamespace #>
         public <#= cbc.pascalSecureEntityName #>Configuration()
         {
             // remember the "Id" property is mapped in the base class. with a default name for the database table.
-            <#+if(!String.IsNullOrEmpty(cbc.entity.AliasDataBase.Trim())){ #>this.ToTable("<#= cbc.pascalSecureEntityName #>");<#+}else{ #> this.ToTable(Inflector.Underscore(typeof(<#= cbc.pascalSecureEntityName #>).Name).ToUpper(), string.Empty); <#+} #>
+            <#+if(String.IsNullOrEmpty(cbc.entity.AliasDataBase.Trim())){ #>this.ToTable("<#= cbc.pascalSecureEntityName #>");<#+}else{ #> this.ToTable("<#=cbc.entity.AliasDataBase.Trim()#>"); <#+} #>//Inflector.Underscore(typeof(<#= cbc.pascalSecureEntityName #>).Name
 
 <#+
     // solo las propiedades que provienen de atributos que son de tipo valor pueden ser nullables.
@@ -67,7 +73,7 @@ namespace <#= projectNamespace #>
 #>
 <#+     if(property.LiveCycleAtributte.Equals(LiveCycleAtributte.Variable) || property.LiveCycleAtributte.Equals(LiveCycleAtributte.Derivado)) {#>
 
-            this.Property(e => e.<#= T4Help.SecureName(property.AtributteName) #>)<#= (property.AtributteType !="DateTime" && (property.RequestUponCreation==RequestUponCreation.yes || !property.IsNullable ))?".IsRequired()":(property.IsNullable)?".Nullable()":""#><#= (!property.AtributteType.ToLower().Equals("string")? "":(string.IsNullOrEmpty(property.Size))?"":".HasMaxLength("+ property.Size.ToString()+")" ) #>;
+            this.Property(e => e.<#= T4Help.SecureName(property.AtributteName) #>)<#= (property.AtributteType !="DateTime" && (property.RequestUponCreation==RequestUponCreation.yes || !property.IsNullable ))?".IsRequired()":(property.IsNullable)?".IsOptional()":""#><#= (!property.AtributteType.ToLower().Equals("string")? "":(string.IsNullOrEmpty(property.Size))?"":".HasMaxLength("+ property.Size.ToString()+")" ) #>;
 <#+ } // end LiveCycleAtributte #>
 <#+ } // end foreach propertyObjects #>
 <#+
@@ -113,8 +119,16 @@ namespace <#= projectNamespace #>
 #>
 
             this.HasMany<<#= T4Help.ToPascalCase(property.Target.Name) #>>(x => x.<#= T4Help.ToPascalCase(property.SourceRolName) #>)
-                .WithRequired(y =>y.<#= T4Help.ToPascalCase(property.Source.Name) #>)
-                .WillCascadeOnDelete(<#= T4Help.ToCamelCase(property.CascadeDelete.ToString()) #>);
+<#+ 
+		if(  IsMinMultiplicityOne(property.TargetMultiplicity))
+		{
+#>
+				.WithRequired(y =>y.<#= T4Help.ToPascalCase(property.TargetRolName) #>)
+				.WillCascadeOnDelete(<#= T4Help.ToCamelCase(property.CascadeDelete.ToString()) #>)
+<#+
+		}
+#>
+                ;
 <#+ } // end foreach propertyAssociationTargets #>
 <#+ } // end foreach propertyAssociationTargets #>
         }
