@@ -6,7 +6,9 @@
 
 namespace Inflexion2.UX.WPF.Services
 {
+    using System;
     using System.Collections.Generic;
+    using Application;
 
     /// <summary>
     /// navigation services with regions and views
@@ -27,7 +29,7 @@ namespace Inflexion2.UX.WPF.Services
         /// </summary>
         /// <param name="view"></param>
         /// <param name="id"></param>
-        void NavigateToWorkSpace(string view, dynamic id);
+        void NavigateToWorkSpace<TIdentifier>(string view, TIdentifier id);
 
         /// <summary>
         /// open a view with parameters
@@ -35,5 +37,15 @@ namespace Inflexion2.UX.WPF.Services
         /// <param name="view"></param>
         /// <param name="parameters"></param>
         void NavigateToWorkSpace(string view, IDictionary<string, string> parameters);
+
+        /// <summary>
+        /// Open a view record with some specifications.
+        /// this used to restrict the values of the new record.
+        /// </summary>
+        /// <typeparam name="TIdentifier"></typeparam>
+        /// <param name="fullName"></param>
+        /// <param name="id"></param>
+        /// <param name="specification"></param>
+        void NavigateToWorkSpace<TIdentifier>(string fullName, TIdentifier id, SpecificationDto specification) where TIdentifier : IEquatable<TIdentifier>, IComparable<TIdentifier>;
     }
 }

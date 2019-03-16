@@ -9,7 +9,7 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels.Regions
         /// <summary>
         /// title of the work space
         /// </summary>
-        string Title { get; }
+        string Title { get; set; }
 
         /// <summary>
         /// has focus

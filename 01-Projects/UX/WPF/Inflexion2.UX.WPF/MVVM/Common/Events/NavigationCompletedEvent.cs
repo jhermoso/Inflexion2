@@ -1,7 +1,8 @@
-﻿using Microsoft.Practices.Prism.Events;
+﻿
 
 namespace Inflexion2.UX.WPF.MVVM
 {
+    using Microsoft.Practices.Prism.Events;
     /// <summary>
     /// Evento CompositePresentationevent 
     /// </summary>

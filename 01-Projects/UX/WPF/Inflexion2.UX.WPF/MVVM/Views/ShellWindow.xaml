@@ -15,7 +15,6 @@
         xmlns:fi="clr-namespace:Inflexion2.UX.WPF.MVVM.Dialogs"
         xmlns:fview="clr-namespace:Inflexion2.UX.WPF.MVVM.Views.Dialogs"
         xmlns:vm="clr-namespace:Inflexion2.UX.WPF.MVVM.ViewModels"
-        xmlns:Ias="http://Itenso.AppliedSettings.com"
     
         lex:LocalizeDictionary.DesignCulture="en"
         lex:ResxLocalizationProvider.DefaultAssembly="Inflexion2.Resources"
@@ -41,9 +40,9 @@
         <BitmapImage UriSource="./Images/LoginIcon.png" DecodePixelHeight="24" DecodePixelWidth="24" CreateOptions="PreservePixelFormat"/>
     </metro:MetroWindow.Icon>-->
     
-    <metro:MetroWindow.DataContext>
+    <!--<metro:MetroWindow.DataContext>
         <vm:ShellWindowViewModel />
-    </metro:MetroWindow.DataContext>
+    </metro:MetroWindow.DataContext>-->
 
     <!-- Recursos de la ventana -->
     <metro:MetroWindow.Resources>
@@ -92,6 +91,7 @@
                                           LargeImageSource="Images\Document-Check.64.png"
                                           
                                           Label="{lex:Loc Save}" 
+                                         
                                           ToolTip="{lex:Loc SaveRecord}" 
                                           />
                 </ribbon:RibbonGroup>
@@ -158,9 +158,9 @@
                                          />
                     <ribbon:RibbonButton x:Name="LastPageButton" 
                                          Command="{x:Static commands:EditionCommands.GetLastPageRecordsCommand}"
-                                         Label="Ultima"
+                                         Label="{lex:Loc Last}"
                                          LargeImageSource="Images\Navigation right - 01.64.png"
-                                         ToolTip="ultima página"
+                                         ToolTip="{lex:Loc LastPage}"
                                          />
                 </ribbon:RibbonGroup >
 
@@ -230,9 +230,9 @@
                             <Style TargetType="{x:Type avalonDock:LayoutItem}">
                                 <Setter Property="Title" Value="{Binding Model.DataContext.Title}" />
                                 <Setter Property="ToolTip" Value="{Binding Model.DataContext.Title}" />
-                              </Style>
+                            </Style>
                         </local:AvalonPanesStyleSelector.DocumentStyle>
-                        </local:AvalonPanesStyleSelector>
+                    </local:AvalonPanesStyleSelector>
                 </avalonDock:DockingManager.LayoutItemContainerStyleSelector>
 
                     <avalonDock:LayoutRoot>

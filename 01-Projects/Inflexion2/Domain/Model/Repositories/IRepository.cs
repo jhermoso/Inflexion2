@@ -1,6 +1,6 @@
 ﻿//----------------------------------------------------------------------------------------------
-// <copyright file="IRepository.cs" company="HexaSystems Inc">
-// Copyright (c) HexaSystems Inc. Licensed under the Apache License, Version 2.0 (the "License")
+// <copyright file="IRepository.cs" company="Inflexion2 Inc">
+// Copyright (c) Inflexion2 Inc. Licensed under the Apache License, Version 2.0 (the "License")
 // </copyright>
 //-----------------------------------------------------------------------------------------------
 namespace Inflexion2.Domain
@@ -25,7 +25,7 @@ namespace Inflexion2.Domain
     /// <typeparam name="TIdentifier">Type of identity for this repository </typeparam>
     [ContractClass(typeof(IRepositoryContract<,>))]
     public interface IRepository<TEntity, TIdentifier>
-    where TEntity : class, IAggregateRoot<TEntity, TIdentifier>, IEntity<TIdentifier>
+    where TEntity : class /*, IAggregateRoot<TEntity, TIdentifier>*/, IEntity<TIdentifier>
     where TIdentifier: IComparable<TIdentifier>, IEquatable<TIdentifier>
     {
         /// <summary>
@@ -48,6 +48,14 @@ namespace Inflexion2.Domain
         /// </summary>
         /// <returns>List of selected elements</returns>
         IEnumerable<TEntity> GetAll();
+
+
+        /// <summary>
+        /// Get one element of type {T} in repository by his Id
+        /// </summary>
+        /// <returns> the selected element</returns>
+        TEntity GetById(TIdentifier id);
+
 
         /// <summary>
         /// Get all elements of type {T} that matching a

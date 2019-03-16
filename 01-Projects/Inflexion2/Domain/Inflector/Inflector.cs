@@ -1,6 +1,6 @@
 ﻿//----------------------------------------------------------------------------------------------
-// <copyright file="Inflector.cs" company="HexaSystems Inc">
-// Copyright (c) HexaSystems Inc.  All rights reserved.
+// <copyright file="Inflector.cs" company="Inflexion2 Inc">
+// Copyright (c) Inflexion2 Inc.  All rights reserved.
 // </copyright>
 //-------------------------------------------------------------------------------------------------
 // Copyright 2010 Ritesh Rao

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Needel.Common.Application.Dtos" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Needel.Common.Application.Dtos" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/Inflexion2.Application" />
+  <xs:complexType name="AddressDto">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Inflexion2.Application" base="q1:BaseEntityDataTransferObjectOfint">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BuildingNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StreetName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddressDto" nillable="true" type="tns:AddressDto" />
+  <xs:complexType name="ArrayOfAddressDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AddressDto" nillable="true" type="tns:AddressDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAddressDto" nillable="true" type="tns:ArrayOfAddressDto" />
+</xs:schema>

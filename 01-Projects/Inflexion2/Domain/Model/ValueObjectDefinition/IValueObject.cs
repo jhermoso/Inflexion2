@@ -18,8 +18,7 @@ namespace Inflexion2.Domain
     /// <remarks>
     /// Sin comentartios especiales.
     /// </remarks>
-    public interface IValueObject<TValueObject> : IEquatable<TValueObject>
-        where TValueObject :  IValueObject<TValueObject>
+    public interface IValueObject 
     {
         #region Methods
 

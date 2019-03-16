@@ -24,7 +24,8 @@ namespace Inflexion2.Application
         private static IUnityContainer iocContainer;
         #endregion
         /// <summary>
-        /// 
+        /// singelton property to wrapper the ContainerInit()
+        /// the Ioc container only can be instanced once.
         /// </summary>
         public static IUnityContainer IocContainer
         {
@@ -38,7 +39,7 @@ namespace Inflexion2.Application
         /// <summary>
         /// Initialize the IoC container to allow the registering of types and objects.
         /// </summary>
-        public static void ContainerInit()
+        internal static void ContainerInit()
         {
             Inflexion2.ServiceLocator.Initialize(
                 (x, y) => IocContainer.RegisterType(x, y),

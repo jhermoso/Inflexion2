@@ -15,7 +15,7 @@ namespace Inflexion2.Domain
     /// <remarks>
     /// Sin comentarios adicionales.
     /// </remarks>
-    public class Interval : ValueObject<IInterval>, IInterval
+    public class Interval : ValueObject<Interval>, IInterval
     {
         #region Fields
 

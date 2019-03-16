@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="DataGridRowDoubleClickHandler.cs" company="I+3 Televisión">
+// <copyright file="DataGridRowDoubleClickHandler.cs" company="Inflexion2">
 //     Copyright (c) 2014. Inflexion Software. All Rights Reserved.
 // </copyright>
 // -----------------------------------------------------------------------

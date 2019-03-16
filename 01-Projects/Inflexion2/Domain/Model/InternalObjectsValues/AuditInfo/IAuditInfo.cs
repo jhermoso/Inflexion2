@@ -14,7 +14,7 @@ namespace Inflexion2.Domain
     /// <remarks>
     /// Representa los datos de tipo auditoría.
     /// </remarks>
-    public interface IAuditInfo : IValueObject<IAuditInfo>
+    public interface IAuditInfo : IValueObject
     {
         #region Properties
 

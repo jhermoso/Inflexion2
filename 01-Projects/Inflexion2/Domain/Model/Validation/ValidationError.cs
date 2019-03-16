@@ -1,6 +1,6 @@
 ﻿//----------------------------------------------------------------------------------------------
-// <copyright file="ValidationError.cs" company="HexaSystems Inc">
-// Copyright (c) HexaSystems Inc.  All rights reserved.
+// <copyright file="ValidationError.cs" company="Inflexion2 Inc">
+// Copyright (c) Inflexion2 Inc.  All rights reserved.
 // </copyright>
 //-------------------------------------------------------------------------------------------------
 namespace Inflexion2.Domain.Validation

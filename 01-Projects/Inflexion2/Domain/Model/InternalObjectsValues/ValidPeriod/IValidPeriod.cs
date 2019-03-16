@@ -14,7 +14,7 @@ namespace Inflexion2.Domain
     /// <remarks>
     /// Sin comentarios adicionales.
     /// </remarks>
-    public interface IValidPeriod : IValueObject<IValidPeriod>
+    public interface IValidPeriod : IValueObject
     {
         #region Properties
 

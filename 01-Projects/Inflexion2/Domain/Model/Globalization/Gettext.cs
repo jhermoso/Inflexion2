@@ -1,6 +1,6 @@
 ﻿//----------------------------------------------------------------------------------------------
-// <copyright file="Gettext.cs" company="HexaSystems Inc">
-// Copyright (c) HexaSystems Inc.  All rights reserved.
+// <copyright file="Gettext.cs" company="Inflexion2 Inc">
+// Copyright (c) Inflexion2 Inc.  All rights reserved.
 // </copyright>
 //-------------------------------------------------------------------------------------------------
 /* GNU gettext for C#

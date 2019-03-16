@@ -19,7 +19,8 @@ namespace Inflexion2.Application
     {
         #region Methods
         /// <summary>
-        /// Convierte el dto de especification a una especification
+        /// .en converts an specification Dto into an specification
+        /// .es Convierte el dto de especification a una especification
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="specificationDto"></param>
@@ -31,7 +32,8 @@ namespace Inflexion2.Application
         }
 
         /// <summary>
-        /// TODO: Update summary.
+        /// .es extensión de un Dto de especificacion para obtener la especificacion correspondiente 
+        /// .en Dto specification extension to get the specification.
         /// </summary>
         public static ISpecification<TEntity> ToSpecification<TEntity>(this SpecificationDto specificationDto, Inflexion2.Domain.Specification.ISpecification<TEntity> specification)
         where TEntity : class

@@ -12,6 +12,7 @@ namespace Inflexion2.UX.WPF.Services
     using Microsoft.Practices.ServiceLocation;
     using System;
     using System.Collections.Generic;
+    using Application;
 
     /// <summary>
     /// <see cref="INavigationService"/> implementation
@@ -44,10 +45,33 @@ namespace Inflexion2.UX.WPF.Services
         /// </summary>
         /// <param name="view"></param>
         /// <param name="id"></param>
-        public void NavigateToWorkSpace(string view, dynamic id)
+        public void NavigateToWorkSpace<TIdentifier>(string view, TIdentifier id)
         {
             IDictionary<string, string> parameters = new Dictionary<string, string>();
             parameters.Add("Id", id.ToString());
+            this.NavigateTo(RegionNames.WorkspaceRegion, view, parameters);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TIdentifier"></typeparam>
+        /// <param name="view"></param>
+        /// <param name="id"></param>
+        /// <param name="specification"></param>
+        public void NavigateToWorkSpace<TIdentifier>(string view, TIdentifier id, SpecificationDto specification) where TIdentifier : IEquatable<TIdentifier>, IComparable<TIdentifier>
+        {
+            IDictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters.Add("Id", id.ToString());
+
+            if (specification.CompositeFilter != null)
+            {
+               foreach (var filter in specification.CompositeFilter.Filters)
+                {
+                    parameters.Add(string.Format("filter;{0}", filter.Property), string.Format("{0};{1}", filter.Operator, filter.Value));
+                }
+            }
+ 
             this.NavigateTo(RegionNames.WorkspaceRegion, view, parameters);
         }
 
@@ -60,5 +84,7 @@ namespace Inflexion2.UX.WPF.Services
         {
             this.NavigateTo(RegionNames.WorkspaceRegion, view, parameters);
         }
+
+
     }
 }

@@ -156,10 +156,6 @@
     <Reference Include="AvalonDock">
       <HintPath>..\..\..\..\02-Library\AvalonDock\AvalonDock.dll</HintPath>
     </Reference>
-    <Reference Include="Itenso.Configuration, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\02-Library\UserSettingsApplied_v1.2.0 modified\ReleaseLib\Itenso.Configuration.dll</HintPath>
-    </Reference>
     <Reference Include="MahApps.Metro, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\10-Solutions\packages\MahApps.Metro.0.13.1.0\lib\net40\MahApps.Metro.dll</HintPath>
@@ -230,6 +226,7 @@
     <Compile Include="MVVM\Common\BaseModule.cs" />
     <Compile Include="MVVM\Common\Binding\BindingListener.cs" />
     <Compile Include="MVVM\Common\Commands\MultipleViewsNavigationCommand.cs" />
+    <Compile Include="MVVM\Common\Events\UIMessageEvent.cs" />
     <Compile Include="MVVM\Views\ShellWindow.xaml.cs">
       <DependentUpon>ShellWindow.xaml</DependentUpon>
     </Compile>
@@ -618,6 +615,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ItensoSettings\" />
+    <Folder Include="MVVM\Common\Events\Messages\" />
     <Folder Include="MVVM\Views\Regions\" />
   </ItemGroup>
   <ItemGroup>

@@ -10,6 +10,7 @@ namespace Inflexion2.UX.WPF.MVVM
     using System.Collections.Specialized;
     using System.Linq;
     using System.Windows;
+    using System.Windows.Controls;
     using System.Windows.Data;
 
     /// <summary>
@@ -152,12 +153,24 @@ namespace Inflexion2.UX.WPF.MVVM
                     foreach (var item in this.Region.ActiveViews.Where(it => it != activeContent))
                     {
                         this.Region.Deactivate(item);
+                        var vm = (IRegionViewModel)((UserControl)item).DataContext;
+                        if (vm != null)
+                        {
+                            vm.IsActive = false;
+                            vm.DeactivateChildrenCollections();
+                        }
                     }
-
 
                     if (this.Region.Views.Contains(activeContent) && !this.Region.ActiveViews.Contains(activeContent))
                     {
+                        // activate the view
                         this.Region.Activate(activeContent);
+                        //activate his viewmodel
+                        var vm = (IRegionViewModel)((UserControl)activeContent).DataContext;
+                        if (vm != null)
+                        {
+                            vm.IsActive = true;
+                        }
                     }
                 }
             }

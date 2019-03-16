@@ -12,7 +12,7 @@ namespace Inflexion2.Domain
     /// Este objeto valor consta de un valor inicial y valor final,
     /// de tipo Int32, que determinan dicho rango.
     /// </remarks>
-    public interface IRange : IValueObject<IRange>
+    public interface IRange : IValueObject
     {
         #region Properties
 
