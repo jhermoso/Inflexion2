@@ -1,7 +1,0 @@
-﻿<#+ if (cbc.diagram.ValidationContracts.Equals("DataAnotations")) {#>
-                Guard.ArgumentIsNotNull(<#=                    T4Help.ToCamelCase(property.Target.Name) #>Collection, "El parametro <#=                    T4Help.ToCamelCase(property.Target.Name) #> es null");          // comprobamos que el parametro no es nulo. Resources
-<#+  } /* end if DataAnotations*/#>
-<#+ if (cbc.diagram.ValidationContracts.Equals("CodeContracts")) {#>
-                Contract.Requires<ArgumentNullException>(<#= T4Help.ToCamelCase(property.Target.Name) #>Collection != null, "Argument cannot be null, Parameter Name: <#= T4Help.ToCamelCase(property.Target.Name) #>Collection");
-                Contract.Requires<ArgumentException>(<#= T4Help.ToCamelCase(property.Target.Name) #>Collection.Trim().Length > 0, "Argument can't be empty");
-<#+  } /* end if DataAnotations*/#>
