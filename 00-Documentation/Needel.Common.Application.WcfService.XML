@@ -1,0 +1,403 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Needel.Common.Application.WcfService</name>
+    </assembly>
+    <members>
+        <member name="T:Needel.Common.Application.WcfService.AddressService">
+            <summary>
+            Clase pública del servicio Wcf encargada de realizar las tareas 
+            relacionadas con la entidad Address.
+            </summary>
+        </member>
+        <member name="F:Needel.Common.Application.WcfService.AddressService.service">
+            <summary>
+            Referencia a los servicios de administración de la entidad Address.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.AddressService.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AddressService"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:AddressService"/>.
+            </remarks>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.AddressService.Create(Needel.Common.Application.Dtos.AddressDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo Address.
+            </summary>
+            <param name="addressDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.AddressDto"/> con los datos necesarios
+            para la creación de la entidad Address.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.AddressService.Update(Needel.Common.Application.Dtos.AddressDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo Address.
+            </summary>
+            <param name="addressDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.AddressDto"/> con los datos necesarios
+            para el borrado de la entidad Addressr.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.AddressService.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo Address.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="id">
+            Parámetro que indica el identificador único de la entidad a borrar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la eliminación ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.AddressService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades Address.
+            </summary>
+            <returns>
+            Devuelve listado de Dto´s de la entidad Address.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.AddressService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad Address de acuerdo a
+            su identificador.
+            </summary>
+            <param name="addressId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.AddressDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.AddressService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Address, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades Address, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="T:Needel.Common.Application.WcfService.AppSettingService">
+            <summary>
+            Clase pública del servicio Wcf encargada de realizar las tareas 
+            relacionadas con la entidad AppSetting.
+            </summary>
+        </member>
+        <member name="F:Needel.Common.Application.WcfService.AppSettingService.service">
+            <summary>
+            Referencia a los servicios de administración de la entidad AppSetting.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.AppSettingService.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:AppSettingService"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:AppSettingService"/>.
+            </remarks>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.AppSettingService.Create(Needel.Common.Application.Dtos.AppSettingDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo AppSetting.
+            </summary>
+            <param name="appSettingDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.AppSettingDto"/> con los datos necesarios
+            para la creación de la entidad AppSetting.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.AppSettingService.Update(Needel.Common.Application.Dtos.AppSettingDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo AppSetting.
+            </summary>
+            <param name="appSettingDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.AppSettingDto"/> con los datos necesarios
+            para el borrado de la entidad AppSettingr.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.AppSettingService.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo AppSetting.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="id">
+            Parámetro que indica el identificador único de la entidad a borrar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la eliminación ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.AppSettingService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades AppSetting.
+            </summary>
+            <returns>
+            Devuelve listado de Dto´s de la entidad AppSetting.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.AppSettingService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad AppSetting de acuerdo a
+            su identificador.
+            </summary>
+            <param name="appSettingId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.AppSettingDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.AppSettingService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades AppSetting, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades AppSetting, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="T:Needel.Common.Application.WcfService.CommonRepositoryLayer">
+            <summary>
+            Registra en el contenedor de Ioc de la capa de aplicacion las clases de acceso al repositorio
+            </summary>
+        </member>
+        <member name="F:Needel.Common.Application.WcfService.CommonRepositoryLayer.CtxFactory">
+            <summary>
+            UoW instance
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.CommonRepositoryLayer.IocRegistry">
+            <summary>
+            Register in IoC container the repository
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.CommonRepositoryLayer.ConnectionString">
+            <summary>
+            Get the conection string from the app.config or web config file asociated to the project on execution.
+            </summary>
+            <returns>The database connection string </returns>
+        </member>
+        <member name="T:Needel.Common.Application.WcfService.DepartmentService">
+            <summary>
+            Clase pública del servicio Wcf encargada de realizar las tareas 
+            relacionadas con la entidad Department.
+            </summary>
+        </member>
+        <member name="F:Needel.Common.Application.WcfService.DepartmentService.service">
+            <summary>
+            Referencia a los servicios de administración de la entidad Department.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.DepartmentService.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:DepartmentService"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:DepartmentService"/>.
+            </remarks>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.DepartmentService.Create(Needel.Common.Application.Dtos.DepartmentDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo Department.
+            </summary>
+            <param name="departmentDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.DepartmentDto"/> con los datos necesarios
+            para la creación de la entidad Department.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.DepartmentService.Update(Needel.Common.Application.Dtos.DepartmentDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo Department.
+            </summary>
+            <param name="departmentDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.DepartmentDto"/> con los datos necesarios
+            para el borrado de la entidad Departmentr.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.DepartmentService.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo Department.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="id">
+            Parámetro que indica el identificador único de la entidad a borrar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la eliminación ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.DepartmentService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades Department.
+            </summary>
+            <returns>
+            Devuelve listado de Dto´s de la entidad Department.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.DepartmentService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad Department de acuerdo a
+            su identificador.
+            </summary>
+            <param name="departmentId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.DepartmentDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.DepartmentService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Department, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades Department, según la especificación indicada.
+            </returns>
+        </member>
+        <member name="T:Needel.Common.Application.WcfService.UserService">
+            <summary>
+            Clase pública del servicio Wcf encargada de realizar las tareas 
+            relacionadas con la entidad User.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.UserService.Configure(System.ServiceModel.ServiceConfiguration)">
+            <summary>
+            https://msdn.microsoft.com/en-us/library/hh205277(v=vs.110).aspx
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="F:Needel.Common.Application.WcfService.UserService.service">
+            <summary>
+            Referencia a los servicios de administración de la entidad User.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.UserService.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:UserService"/>.
+            </summary>
+            <remarks>
+            Constructor de la clase <see cref="T:UserService"/>.
+            </remarks>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.UserService.Create(Needel.Common.Application.Dtos.UserDto)">
+            <summary>
+            Función encargada de la creación de una entidad de tipo User.
+            </summary>
+            <param name="userDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.UserDto"/> con los datos necesarios
+            para la creación de la entidad User.
+            </param>
+            <return>
+            Devuelve el identificador único de la entidad creada.
+            </return>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.UserService.Update(Needel.Common.Application.Dtos.UserDto)">
+            <summary>
+            Función encargada de la actualziación de una entidad de tipo User.
+            </summary>
+            <param name="userDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.UserDto"/> con los datos necesarios
+            para el borrado de la entidad Userr.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la actualización ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.UserService.Delete(System.Int32)">
+            <summary>
+            Función encargada del borrado de una entidad de tipo User.
+            </summary>
+            <remarks>
+            Se trata de un borrado lógico.
+            </remarks>
+            <param name="id">
+            Parámetro que indica el identificador único de la entidad a borrar.
+            </param>
+            <returns>
+            Devuelve <b>true</b> si la eliminación ha sido correcta y
+            <b>false</b> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.UserService.GetAll">
+            <summary>
+            Método encargado de obtener todas las entidades User.
+            </summary>
+            <returns>
+            Devuelve listado de Dto´s de la entidad User.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.UserService.GetById(System.Int32)">
+            <summary>
+            Método encargado de obtener una entidad User de acuerdo a
+            su identificador.
+            </summary>
+            <param name="userId">
+            Parámetro que indica el identificador único de la entidad cuya
+            información se desea obtener.
+            </param>
+            <returns>
+            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.UserDto"/> con la información
+            requerida.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.UserService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades User, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades User, según la especificación indicada.
+            </returns>
+        </member>
+    </members>
+</doc>

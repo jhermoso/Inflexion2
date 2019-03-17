@@ -319,7 +319,7 @@
                 Facilitates indicating which Classes are logical deleteable
             </summary>
             <remarks>
-                This is intended for use with <see cref="T:Inflexion2.Domain.IEntity`1" />.  It may NOT be used on a <see cref="T:Inflexion2.Domain.ValueObject" />.
+                This is intended for use with <see cref="T:Inflexion2.Domain.IEntity`1" />.  It may NOT be used on a <see cref="!:ValueObject" />.
             </remarks>
         </member>
         <member name="T:Inflexion2.Domain.EntityForbiddenDeleteAttribute">
@@ -327,7 +327,7 @@
                 Facilitates indicating which Classes are logical deleteable
             </summary>
             <remarks>
-                This is intended for use with <see cref="T:Inflexion2.Domain.IEntity`1" />.  It may NOT be used on a <see cref="T:Inflexion2.Domain.ValueObject" />.
+                This is intended for use with <see cref="T:Inflexion2.Domain.IEntity`1" />.  It may NOT be used on a <see cref="!:ValueObject" />.
             </remarks>
         </member>
         <member name="T:Inflexion2.Domain.ChildrenRelationshipDeleteBehaviorAttribute">
@@ -335,7 +335,7 @@
                 Facilitates indicating which Classes are forbidden deleteable
             </summary>
             <remarks>
-                This is intended for use with <see cref="T:Inflexion2.Domain.IEntity`1" />.  It may NOT be used on a <see cref="T:Inflexion2.Domain.ValueObject" />.
+                This is intended for use with <see cref="T:Inflexion2.Domain.IEntity`1" />.  It may NOT be used on a <see cref="!:ValueObject" />.
             </remarks>
         </member>
         <member name="F:Inflexion2.Domain.ChildrenRelationshipDeleteBehaviorAttribute.Behavior">
@@ -431,7 +431,7 @@
                 entity.  See Entity.GetTypeSpecificSignatureProperties() for when this is leveraged.
             </summary>
             <remarks>
-                This is intended for use with <see cref="T:Inflexion2.Domain.IEntity`1" />.  It may NOT be used on a <see cref="T:Inflexion2.Domain.ValueObject" />.
+                This is intended for use with <see cref="T:Inflexion2.Domain.IEntity`1" />.  It may NOT be used on a <see cref="!:ValueObject" />.
             </remarks>
         </member>
         <member name="T:Inflexion2.Domain.GreaterOrEqualThanCurrentDateAttribute">
@@ -563,7 +563,7 @@
         </member>
         <member name="T:Inflexion2.Domain.Validation.DataAnnotationHelper">
             <summary>
-            Static class capable of readinng de DataAnnotations of a type and return a list of corresponding IValidationInfos.
+            Static class capable of readinng the DataAnnotations of a type and return a list of corresponding IValidationInfos.
             </summary>
         </member>
         <member name="T:Inflexion2.Domain.Validation.DataAnnotationsValidator`1">
@@ -3050,7 +3050,7 @@
         <member name="M:Inflexion2.Domain.Extensions.EnumExtension.GetEnumMemberValue(System.Enum)">
             <summary>
             Alternative implementation
-            .es obtenemos el valor de correspondiente al enumerado
+            .es obtenemos el valor correspondiente al enumerado
             .en get the value of enum member
             </summary>
             <param name="value"></param>
@@ -3867,6 +3867,12 @@
             </summary>
             <returns><see cref="T:Inflexion2.Domain.IRepository`2"/></returns>
         </member>
+        <member name="M:Inflexion2.Domain.BaseRepository`2.GetById(`1)">
+            <summary>
+            <see cref="T:Inflexion2.Domain.IRepository`2"/>
+            </summary>
+            <returns><see cref="T:Inflexion2.Domain.IRepository`2"/></returns>
+        </member>
         <member name="M:Inflexion2.Domain.BaseRepository`2.GetBySpec(Inflexion2.Domain.Specification.ISpecification{`0})">
             <summary>
             <see cref="T:Inflexion2.Domain.IRepository`2"/>
@@ -4141,6 +4147,220 @@
             <param name="aggregateId"></param>
             <param name="expectedVersion"></param>
         </member>
+        <member name="T:Inflexion2.Domain.BaseValueObjectRepository`1">
+            <summary>
+            Base interface for implement a "Repository Pattern", for
+            more information about this pattern see http://martinfowler.com/eaaCatalog/repository.html
+            or http://blogs.msdn.com/adonet/archive/2009/06/16/using-repository-and-unit-of-work-patterns-with-entity-framework-4-0.aspx
+            </summary>
+            <remarks>
+            Indeed, one might think that IObjectSet is already a generic repository and therefore
+            would not need this item. Using this interface allows us to ensure the persistence
+            of ignorance within our domain model
+            </remarks>
+            <typeparam name="TValueObject">Type of entity for this repository </typeparam>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseValueObjectRepository`1.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Domain.BaseValueObjectRepository`1.Logger">
+            <summary>
+            loger instance for tracing porpouses
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseValueObjectRepository`1.Add(`0)">
+            <summary>
+            Add item into repository
+            </summary>
+            <param name="valueObject">Item to add to repository</param>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseValueObjectRepository`1.Attach(`0)">
+            <summary>
+            Attach entity to this repository.
+            Attach is similar to add but the internal state
+            for this object is not  mark as 'Added, Modifed or Deleted', submit changes
+            in Unit Of Work don't send anything to storage
+            </summary>
+            <param name="valueObject">Item to attach</param>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseValueObjectRepository`1.GetAll">
+            <summary>
+            Get all elements of type {T} in repository
+            </summary>
+            <returns>List of selected elements</returns>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseValueObjectRepository`1.GetBySpec(Inflexion2.Domain.Specification.ISpecification{`0})">
+            <summary>
+            Get all elements of type {T} that matching a
+            Specification <paramref name="specification"/>
+            </summary>
+            <param name="specification">Specification that result meet</param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseValueObjectRepository`1.GetFilteredElements(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Get elements of type {T} in repository
+            </summary>
+            <param name="filter">Filter that each element do match</param>
+            <returns>List of selected elements</returns>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseValueObjectRepository`1.GetFilteredElements``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
+            <summary>
+            Get a collection of filtered and sorted elements of type {T} in repository by pages ascending or descending
+            </summary>
+            <typeparam name="S"></typeparam>
+            <param name="filter"></param>
+            <param name="orderByExpression"></param>
+            <param name="ascending"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseValueObjectRepository`1.GetPagedElements``1(System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
+            <summary>
+            Get a page  of filtered and sorted elements of type {T} in repository 
+            </summary>
+            <typeparam name="S"></typeparam>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="filter"></param>
+            <param name="orderByExpression"></param>
+            <param name="ascending"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseValueObjectRepository`1.GetPagedElements(System.Int32,System.Int32,Inflexion2.Domain.Specification.ISpecification{`0},Inflexion2.Domain.Specification.IOrderBySpecification{`0})">
+            <summary>
+            Get a page  of filtered and sorted elements of type {T} in repository 
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="specification"></param>
+            <param name="orderBySpecification"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseValueObjectRepository`1.Remove(`0)">
+            <summary>
+            Delete item
+            </summary>
+            <param name="valueObject">Item to delete</param>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseValueObjectRepository`1.InternalAdd(`0)">
+            <summary>
+            method to be over writed to add operations
+            </summary>
+            <param name="valueObject"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseValueObjectRepository`1.InternalAttach(`0)">
+            <summary>
+            method to be over writed to attach operations
+            </summary>
+            <param name="valueObject"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseValueObjectRepository`1.InternalModify(`0)">
+            <summary>
+            method to be over writed to modify operations
+            </summary>
+            <param name="valueObject"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseValueObjectRepository`1.InternalRemove(`0)">
+            <summary>
+            method to be over writed to remove operations
+            </summary>
+            <param name="valueObject"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseValueObjectRepository`1.Query">
+            <summary>
+            method to write to query operations
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Domain.IValueObjectRepository`1">
+            <summary>
+            Base interface for implement a "Repository Pattern", for
+            more information about this pattern see http://martinfowler.com/eaaCatalog/repository.html
+            or http://blogs.msdn.com/adonet/archive/2009/06/16/using-repository-and-unit-of-work-patterns-with-entity-framework-4-0.aspx
+            </summary>
+            <remarks>
+            Indeed, one might think that IObjectSet is already a generic repository and therefore
+            would not need this item. Using this interface allows us to ensure the persistence
+            of ignorance within our domain model
+            </remarks>
+            <typeparam name="TValueObject">Type of entity for this repository </typeparam>
+        </member>
+        <member name="M:Inflexion2.Domain.IValueObjectRepository`1.Add(`0)">
+            <summary>
+            Add item into repository
+            </summary>
+            <param name="entity">Item to add to repository</param>
+        </member>
+        <member name="M:Inflexion2.Domain.IValueObjectRepository`1.Attach(`0)">
+            <summary>
+            Attach entity to this repository.
+            Attach is similar to add but the internal state
+            for this object is not  mark as 'Added, Modifed or Deleted', submit changes
+            in Unit Of Work don't send anything to storage
+            </summary>
+            <param name="entity">Item to attach</param>
+        </member>
+        <member name="M:Inflexion2.Domain.IValueObjectRepository`1.GetAll">
+            <summary>
+            Get all elements of type {T} in repository
+            </summary>
+            <returns>List of selected elements</returns>
+        </member>
+        <member name="M:Inflexion2.Domain.IValueObjectRepository`1.GetBySpec(Inflexion2.Domain.Specification.ISpecification{`0})">
+            <summary>
+            Get all elements of type {T} that matching a
+            Specification <paramref name="specification"/>
+            </summary>
+            <param name="specification">Specification that result meet</param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.IValueObjectRepository`1.GetFilteredElements(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Get elements of type {T} in repository
+            </summary>
+            <param name="filter">Filter that each element do match</param>
+            <returns>List of selected elements</returns>
+        </member>
+        <member name="M:Inflexion2.Domain.IValueObjectRepository`1.GetFilteredElements``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
+            <summary>
+            Get a collection of filtered and sorted elements of type {T} in repository by pages ascending or descending
+            </summary>
+            <typeparam name="S"></typeparam>
+            <param name="filter"></param>
+            <param name="orderByExpression"></param>
+            <param name="ascending"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.IValueObjectRepository`1.GetPagedElements``1(System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
+            <summary>
+            Get a page  of filtered and sorted elements of type {T} in repository 
+            </summary>
+            <typeparam name="S"></typeparam>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="filter"></param>
+            <param name="orderByExpression"></param>
+            <param name="ascending"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.IValueObjectRepository`1.GetPagedElements(System.Int32,System.Int32,Inflexion2.Domain.Specification.ISpecification{`0},Inflexion2.Domain.Specification.IOrderBySpecification{`0})">
+            <summary>
+            Get a page  of filtered and sorted elements of type {T} in repository 
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="specification"></param>
+            <param name="orderBySpecification"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.IValueObjectRepository`1.Remove(`0)">
+            <summary>
+            Delete item
+            </summary>
+            <param name="item">Item to delete</param>
+        </member>
         <member name="T:Inflexion2.Domain.IRepository`2">
             <summary>
             Base interface for implement a "Repository Pattern", for
@@ -4175,6 +4395,12 @@
             Get all elements of type {T} in repository
             </summary>
             <returns>List of selected elements</returns>
+        </member>
+        <member name="M:Inflexion2.Domain.IRepository`2.GetById(`1)">
+            <summary>
+            Get one element of type {T} in repository by his Id
+            </summary>
+            <returns> the selected element</returns>
         </member>
         <member name="M:Inflexion2.Domain.IRepository`2.GetBySpec(Inflexion2.Domain.Specification.ISpecification{`0})">
             <summary>
@@ -4391,7 +4617,7 @@
             Sin comentartios especiales.
             </remarks>
         </member>
-        <member name="T:Inflexion2.Domain.IValueObject`1">
+        <member name="T:Inflexion2.Domain.IValueObject">
             <summary>
             Interfaz marcadora para los objetos valor del dominio.
             </summary>
@@ -4402,69 +4628,17 @@
             Sin comentartios especiales.
             </remarks>
         </member>
-        <member name="T:Inflexion2.Domain.ValueObject">
+        <member name="T:Inflexion2.Domain.ValueObject`1">
             <summary>
             Provides a standard base class for facilitating comparison of value objects using all the object's fields.
             </summary>
+            <typeparam name="TValueObject"></typeparam>
             <remarks>
             For a discussion of the implementation of Equals/GetHashCode, see
             http://devlicio.us/blogs/billy_mccafferty/archive/2007/04/25/using-equals-gethashcode-effectively.aspx
             and http://groups.google.com/group/sharp-architecture/browse_thread/thread/f76d1678e68e3ece?hl=en for
             an in depth and conclusive resolution.
             </remarks>
-        </member>
-        <member name="F:Inflexion2.Domain.ValueObject.reflectingFlags">
-            <summary>
-            Flags used to reflect over Generic Equeatable
-            </summary>
-        </member>
-        <member name="F:Inflexion2.Domain.ValueObject.HASH_MULTIPLIER">
-            <summary>
-            To help ensure hashcode uniqueness, a carefully selected random number multiplier
-            is used within the calculation.  Goodrich and Tamassia's Data Structures and
-            Algorithms in Java asserts that 31, 33, 37, 39 and 41 will produce the fewest number
-            of collissions.  See http://computinglife.wordpress.com/2008/11/20/why-do-hash-functions-use-prime-numbers/
-            for more information.
-            </summary>
-        </member>
-        <member name="M:Inflexion2.Domain.ValueObject.op_Inequality(Inflexion2.Domain.ValueObject,Inflexion2.Domain.ValueObject)">
-            <summary>
-            implementation of iequality interface, Definition of distinct operator
-            </summary>
-            <param name="x">first value object to check</param>
-            <param name="y">second value object to check</param>
-            <returns></returns>
-        </member>
-        <member name="M:Inflexion2.Domain.ValueObject.op_Equality(Inflexion2.Domain.ValueObject,Inflexion2.Domain.ValueObject)">
-            <summary>
-            implementation of iequality interface, Definition of equality operator
-            </summary>
-            <param name="x">first value object to check</param>
-            <param name="y">second value object to check</param>
-            <returns></returns>
-        </member>
-        <member name="M:Inflexion2.Domain.ValueObject.Equals(System.Object)">
-            <summary>
-            Indicates whether the current object is equal to another object of the same type.
-            </summary>
-            <param name="other">An object to compare with this object.</param>
-            <returns>
-            true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
-            </returns>
-        </member>
-        <member name="M:Inflexion2.Domain.ValueObject.GetHashCode">
-            <summary>
-            Serves as a hash function for a particular type.
-            </summary>
-            <returns>
-            A hash code for the current <see cref="T:System.Object"/>.
-            </returns>
-        </member>
-        <member name="T:Inflexion2.Domain.ValueObject`1">
-            <summary>
-            Provides a standard base class for facilitating comparison of value objects using all the object's fields.
-            </summary>
-            <typeparam name="T"></typeparam>
         </member>
         <member name="F:Inflexion2.Domain.ValueObject`1.reflectingFlags">
             <summary>
@@ -4504,6 +4678,20 @@
             <returns>
             true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
             </returns>
+        </member>
+        <member name="M:Inflexion2.Domain.ValueObject`1.Equals(Inflexion2.Domain.IValueObject)">
+            <summary>
+            Equalses the specified compare to.
+            </summary>
+            <param name="other">The compare to.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.ValueObject`1.Equals(Inflexion2.Domain.ValueObject{`0})">
+            <summary>
+            Equalses the specified compare to.
+            </summary>
+            <param name="other">The compare to.</param>
+            <returns></returns>
         </member>
         <member name="M:Inflexion2.Domain.ValueObject`1.Equals(System.Object)">
             <summary>
@@ -4969,7 +5157,7 @@
         </member>
         <member name="M:Inflexion2.ReflectionExtensions.IsSubclassOfGeneric(System.Type,System.Type)">
             <summary>
-            nos inidica si el tipo que pasamos deriva de un tipo generico que pasamos como segundo parametro
+            nos indica si el tipo que pasamos deriva de un tipo generico que pasamos como segundo parametro
             </summary>
             <param name="source">type to evaluate</param>
             <param name="generic">the generic type</param>

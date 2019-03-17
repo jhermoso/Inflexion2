@@ -17,6 +17,17 @@
             constructor
             </summary>
         </member>
+        <member name="T:Inflexion2.Domain.ValueObjectConfiguration`1">
+            <summary>
+            Generic Base class for configuration classes of entities in EntityFramework.
+            </summary>
+            <typeparam name="TValueObject"></typeparam>
+        </member>
+        <member name="M:Inflexion2.Domain.ValueObjectConfiguration`1.#ctor">
+            <summary>
+            base configuration entities
+            </summary>
+        </member>
         <member name="T:Inflexion2.Domain.EntityConfiguration`2">
             <summary>
             Generic Base class for configuration classes of entities in EntityFramework.
@@ -28,6 +39,52 @@
             <summary>
             base configuration entities
             </summary>
+        </member>
+        <member name="T:Inflexion2.Domain.EFValueObjectRepository`1">
+            <summary>
+            see the remarks class
+            </summary>
+            <remarks>
+            it just attaches the the entity to the dataContext otherwise you will have to search for the entity using the primary key and then edit the value and save it..
+            If you have an entity that you know already exists in the database but to which changes may have been made then you can tell the context to attach the entity and set its state to Modified.
+            </remarks>
+            <typeparam name="TValueObject"></typeparam>
+        </member>
+        <member name="M:Inflexion2.Domain.EFValueObjectRepository`1.#ctor(System.Data.Entity.DbContext)">
+            <summary>
+            see the remarks
+            </summary>
+            <param name="dbContext"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.EFValueObjectRepository`1.InternalAdd(`0)">
+            <summary>
+            generic add operation adapter 
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.EFValueObjectRepository`1.InternalAttach(`0)">
+            <summary>
+            generic attach operation adapter for EF
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.EFValueObjectRepository`1.InternalModify(`0)">
+            <summary>
+            gerneric 
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.EFValueObjectRepository`1.InternalRemove(`0)">
+            <summary>
+            see the remarks
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:Inflexion2.Domain.EFValueObjectRepository`1.Query">
+            <summary>
+            see the remarks
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Inflexion2.Domain.EFRepository`2">
             <summary>
