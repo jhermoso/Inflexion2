@@ -41,6 +41,15 @@ namespace Inflexion2.Application
         }
 
         /// <summary>
+        /// implementation of IClonable  to help the implementation of IEditableObject.
+        /// </summary>
+        /// <returns></returns>
+        public virtual object Clone()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
@@ -72,7 +81,7 @@ namespace Inflexion2.Application
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="other"></param>
+        /// <param name="otherId"></param>
         /// <returns></returns>
         public int CompareTo(TIdentifier otherId)
         {

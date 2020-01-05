@@ -1,0 +1,898 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Timber</name>
+    </assembly>
+    <members>
+        <member name="T:Inflexion2.Logging.NullLoggerFactory">
+            <summary>
+            Default <see cref="T:Inflexion2.Logging.ILoggerFactory"/> implementation that returns <see cref="T:Inflexion2.Logging.NullLogger"/> 
+            instances that silently drop all log entries
+            
+            This factory is used if configuration is incomplete or invalid
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Logging.NullLoggerFactory.instance">
+            <summary>Singleton, to keep null logger as lightweight as possible</summary>
+        </member>
+        <member name="T:Inflexion2.Logging.ILogger">
+            <summary>
+            Interface for adapters that wrap logger implementations
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Log(Inflexion2.Logging.LogEntry)">
+            <summary>
+            log with a LogEntry
+            </summary>
+            <param name="entry"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Trace(System.Object)">
+            <summary>
+            trace with an object
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Trace(System.String,System.Object[])">
+            <summary>
+            trace with string format template and variable string args
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Trace(System.Object,System.Exception)">
+            <summary>
+            trace with object message and exception
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Trace(System.String,System.Exception,System.Object[])">
+            <summary>
+            trace with string format template, exception and variable string args
+            </summary>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Trace(System.Int32,System.Object)">
+            <summary>
+            trace event with message
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Trace(System.Int32,System.String,System.Object[])">
+            <summary>
+            trace event with string format template and variable string args
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Trace(System.Int32,System.Object,System.Exception)">
+            <summary>
+            trace event with and exception
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Trace(System.Int32,System.String,System.Exception,System.Object[])">
+            <summary>
+            trace event, and exception with string format template and variable string args
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Debug(System.Object)">
+            <summary>
+            Log debug  with object 
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Debug(System.String,System.Object[])">
+            <summary>
+            Log debug  with string format template and variable string args
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Debug(System.Object,System.Exception)">
+            <summary>
+            Log debug  exception
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Debug(System.String,System.Exception,System.Object[])">
+            <summary>
+            Log debug  exception with string format template and variable string args.
+            </summary>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Debug(System.Int32,System.Object)">
+            <summary>
+            Log debug  event
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Debug(System.Int32,System.String,System.Object[])">
+            <summary>
+            Debug event with string format template and variable string args.
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Debug(System.Int32,System.Object,System.Exception)">
+            <summary>
+            Log debug  event and exception.
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Debug(System.Int32,System.String,System.Exception,System.Object[])">
+            <summary>
+            Log debug event and exception with string format template and variable string args.
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Info(System.Object)">
+            <summary>
+            Log info event and exception with string format template and variable string args.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Info(System.String,System.Object[])">
+            <summary>
+            Log info with string format template and variable string args.
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Info(System.Object,System.Exception)">
+            <summary>
+            Log info exception.
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Info(System.String,System.Exception,System.Object[])">
+            <summary>
+            Log info exception with string format template and variable string args.
+            </summary>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Info(System.Int32,System.Object)">
+            <summary>
+            Log info event.
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Info(System.Int32,System.String,System.Object[])">
+            <summary>
+            Log info event and exception with string format template and variable string args
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Info(System.Int32,System.Object,System.Exception)">
+            <summary>
+            Log info event.
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Info(System.Int32,System.String,System.Exception,System.Object[])">
+            <summary>
+            Log info event with string format template and variable string args.
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Warn(System.Object)">
+            <summary>
+            Log warn.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Warn(System.String,System.Object[])">
+            <summary>
+            Log warn with string format template and variable string args.
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Warn(System.Object,System.Exception)">
+            <summary>
+            Log warn exception.
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Warn(System.String,System.Exception,System.Object[])">
+            <summary>
+            Log warn exception with string format template and variable string args.
+            </summary>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Warn(System.Int32,System.Object)">
+            <summary>
+            Log warn event.
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Warn(System.Int32,System.String,System.Object[])">
+            <summary>
+            Log warn event with string format template and variable string args.
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Warn(System.Int32,System.Object,System.Exception)">
+            <summary>
+            Log warn event and exception.
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Warn(System.Int32,System.String,System.Exception,System.Object[])">
+            <summary>
+            Log warn event and exception with string format template and variable string args.
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Error(System.Object)">
+            <summary>
+            Log error.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Error(System.String,System.Object[])">
+            <summary>
+            Log error with string format template and variable string args.
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Error(System.Object,System.Exception)">
+            <summary>
+            Log error exception.
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Error(System.String,System.Exception,System.Object[])">
+            <summary>
+            Log error exception with string format template and variable string args.
+            </summary>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Error(System.Int32,System.Object)">
+            <summary>
+            Log error event.
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Error(System.Int32,System.String,System.Object[])">
+            <summary>
+            Log error event with string format template and variable string args.
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Error(System.Int32,System.Object,System.Exception)">
+            <summary>
+            Log error event and exception.
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Error(System.Int32,System.String,System.Exception,System.Object[])">
+            <summary>
+            Log error event and exception with string format template and variable string args.
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Fatal(System.Object)">
+            <summary>
+            Log fatal error.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Fatal(System.String,System.Object[])">
+            <summary>
+            Log fatal error with string format template and variable string args.
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Fatal(System.Object,System.Exception)">
+            <summary>
+            Log fatal error exception.
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Fatal(System.String,System.Exception,System.Object[])">
+            <summary>
+            Log fatal error exception with string format template and variable string args.
+            </summary>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Fatal(System.Int32,System.Object)">
+            <summary>
+            Log fatal error event.
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Fatal(System.Int32,System.String,System.Object[])">
+            <summary>
+            Log fatal error event with string format template and variable string args.
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Fatal(System.Int32,System.Object,System.Exception)">
+            <summary>
+            Log fatal error event and exception.
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.ILogger.Fatal(System.Int32,System.String,System.Exception,System.Object[])">
+            <summary>
+            Log fatal error event and exception with string format template and variable string args.
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="T:Inflexion2.Logging.ILoggerFactory">
+            <summary>
+            Factory methods for obtaining instances of <see cref="T:Inflexion2.Logging.ILogger"/> adapters
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Logging.LogEntry">
+            <summary>
+            Container for log data that can be consumed by any <see cref="T:Inflexion2.Logging.ILogger"/>
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Logging.LogEntry.LogLevel">
+            <summary>Defaults to <see cref="F:Inflexion2.Logging.LogLevel.Info"/></summary>
+        </member>
+        <member name="P:Inflexion2.Logging.LogEntry.Timestamp">
+            <summary>
+            log time stamp
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Logging.LogEntry.Message">
+            <summary>
+            log message
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Logging.LogEntry.Exception">
+            <summary>
+            log exception
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Logging.LogEntry.EventId">
+            <summary>Windows Event Log event identifier</summary>
+        </member>
+        <member name="T:Inflexion2.Logging.LoggerBase">
+            <summary>
+            ILogger abstract basic common implementation for end adapted implementations.
+            this class avoid to fully implement every adapter, for example the null logger <see cref="T:Inflexion2.Logging.NullLogger"/>
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Log(Inflexion2.Logging.LogEntry)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Log(Inflexion2.Logging.LogEntry)"/>
+            </summary>
+            <param name="entry"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Trace(System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Trace(System.Object)"/>
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Trace(System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Trace(System.String,System.Exception,System.Object[])"/>
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Trace(System.Object,System.Exception)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Trace(System.Object,System.Exception)"/>
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Trace(System.String,System.Exception,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Trace(System.String,System.Exception,System.Object[])"/>
+            </summary>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Trace(System.Int32,System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Trace(System.Int32,System.Object)"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Trace(System.Int32,System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Trace(System.Int32,System.String,System.Exception,System.Object[])"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Trace(System.Int32,System.Object,System.Exception)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Trace(System.Int32,System.String,System.Exception,System.Object[])"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Trace(System.Int32,System.String,System.Exception,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Trace(System.Int32,System.String,System.Exception,System.Object[])"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Debug(System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Debug(System.Object)"/>
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Debug(System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Debug(System.String,System.Object[])"/>
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Debug(System.Object,System.Exception)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Debug(System.Object,System.Exception)"/>
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Debug(System.String,System.Exception,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Debug(System.String,System.Exception,System.Object[])"/>
+            </summary>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Debug(System.Int32,System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Error(System.Int32,System.Object)"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Debug(System.Int32,System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Debug(System.Int32,System.String,System.Object[])"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Debug(System.Int32,System.Object,System.Exception)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Debug(System.Int32,System.String,System.Object[])"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Debug(System.Int32,System.String,System.Exception,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Debug(System.Int32,System.String,System.Exception,System.Object[])"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Info(System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Info(System.Object)"/>
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Info(System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Info(System.String,System.Object[])"/>
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Info(System.Object,System.Exception)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Info(System.Object,System.Exception)"/>
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Info(System.String,System.Exception,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Info(System.String,System.Exception,System.Object[])"/>
+            </summary>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Info(System.Int32,System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Info(System.Int32,System.Object)"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Info(System.Int32,System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Info(System.Int32,System.String,System.Object[])"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Info(System.Int32,System.Object,System.Exception)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Info(System.Int32,System.Object,System.Exception)"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Info(System.Int32,System.String,System.Exception,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Info(System.Int32,System.String,System.Exception,System.Object[])"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Warn(System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Warn(System.Object)"/>
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Warn(System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Warn(System.String,System.Object[])"/>
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Warn(System.Object,System.Exception)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Warn(System.Object,System.Exception)"/>
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Warn(System.String,System.Exception,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Warn(System.String,System.Exception,System.Object[])"/>
+            </summary>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Warn(System.Int32,System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Warn(System.Int32,System.Object)"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Warn(System.Int32,System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Warn(System.Int32,System.String,System.Object[])"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Warn(System.Int32,System.Object,System.Exception)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Warn(System.Int32,System.Object,System.Exception)"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Warn(System.Int32,System.String,System.Exception,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Warn(System.Int32,System.String,System.Exception,System.Object[])"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Error(System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Error(System.Object)"/>
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Error(System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Fatal(System.String,System.Object[])"/>
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Error(System.Object,System.Exception)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Error(System.Object,System.Exception)"/>
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Error(System.String,System.Exception,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Error(System.String,System.Exception,System.Object[])"/>
+            </summary>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Error(System.Int32,System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Fatal(System.Int32,System.Object)"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Error(System.Int32,System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Fatal(System.Int32,System.String,System.Object[])"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Error(System.Int32,System.Object,System.Exception)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Fatal(System.Int32,System.Object,System.Exception)"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Error(System.Int32,System.String,System.Exception,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Fatal(System.Int32,System.String,System.Exception,System.Object[])"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Fatal(System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Fatal(System.Object)"/>
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Fatal(System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Fatal(System.String,System.Object[])"/>
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Fatal(System.Object,System.Exception)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Fatal(System.Object,System.Exception)"/>
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Fatal(System.String,System.Exception,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Fatal(System.String,System.Exception,System.Object[])"/>
+            </summary>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Fatal(System.Int32,System.Object)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Info(System.Int32,System.Object)"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Fatal(System.Int32,System.String,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Fatal(System.Int32,System.String,System.Object[])"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Fatal(System.Int32,System.Object,System.Exception)">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Fatal(System.Int32,System.Object,System.Exception)"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Inflexion2.Logging.LoggerBase.Fatal(System.Int32,System.String,System.Exception,System.Object[])">
+            <summary>
+            <see cref="M:Inflexion2.Logging.ILogger.Fatal(System.Int32,System.String,System.Exception,System.Object[])"/>
+            </summary>
+            <param name="eventId"></param>
+            <param name="format"></param>
+            <param name="exception"></param>
+            <param name="args"></param>
+        </member>
+        <member name="T:Inflexion2.Logging.LogManager">
+            <summary>
+            Provides <see cref="T:Inflexion2.Logging.ILogger"/> instances. Note that the <see cref="M:Inflexion2.Logging.LogManager.GetLogger"/> methods
+            will never return null - if configuration is invalid they will return a <see cref="T:Inflexion2.Logging.NullLogger"/> 
+            instance
+            
+            Can be configured by either code or configuration:
+            
+            Code:
+              Call <see cref="M:Inflexion2.Logging.LogManager.InitialiseLoggerFactory``1"/>, specified an <see cref="T:Inflexion2.Logging.ILoggerFactory"/> as type parameter
+            
+            Configuration:
+              Set 'type' attribute of 'factory' element to the full type name of an <see cref="T:Inflexion2.Logging.ILoggerFactory"/>
+              See samples for an example
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Logging.LogManager.LoggerFactory">
+            <summary>
+            Get the logger factory used to generate <see cref="T:Inflexion2.Logging.ILogger"/> instances
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Logging.LogManager.InitialiseLoggerFactory``1">
+            <summary>
+            Set the logger factory programmatically
+            </summary>
+            <typeparam name="T">Type of logger factory to use</typeparam>
+        </member>
+        <member name="M:Inflexion2.Logging.LogManager.InitialiseLoggerFactory">
+            <summary>
+            Set the logger factory from configuration file (i.e. app.config or web.config)
+            </summary>
+            <remarks>
+            NullLogFactory will be used if a factory was not found or could not be loaded
+            </remarks>
+            <returns>Logger factory instance</returns>
+        </member>
+        <member name="M:Inflexion2.Logging.LogManager.UseDefaultLoggerFactory">
+            <summary>
+            Returns the default logger factory <see cref="T:Inflexion2.Logging.NullLoggerFactory"/>
+            </summary>
+            <returns>Instance of <see cref="T:Inflexion2.Logging.NullLoggerFactory"/></returns>
+        </member>
+        <member name="M:Inflexion2.Logging.LogManager.GetLogger">
+            <summary>
+            Gets a logger from the configured <see cref="T:Inflexion2.Logging.ILoggerFactory"/> for the calling class
+            </summary>
+            <returns>Logger instance from the configured <see cref="T:Inflexion2.Logging.ILoggerFactory"/></returns>
+        </member>
+        <member name="M:Inflexion2.Logging.LogManager.GetLogger``1">
+            <summary>
+            Gets a logger from the configured <see cref="T:Inflexion2.Logging.ILoggerFactory"/> using the specified type
+            </summary>
+            <typeparam name="T">Type of the requested logger</typeparam>
+            <returns>Logger instance from the configured <see cref="T:Inflexion2.Logging.ILoggerFactory"/></returns>
+        </member>
+        <member name="M:Inflexion2.Logging.LogManager.GetLogger(System.Type)">
+            <summary>
+            Gets a logger from the configured <see cref="T:Inflexion2.Logging.ILoggerFactory"/> using the specified type
+            </summary>
+            <param name="type">
+            Type of the requested logger. If null, <see cref="T:Inflexion2.Logging.ILoggerFactory"/> for the calling class 
+            will be returned instead
+            </param>
+            <returns>Logger instance from the configured <see cref="T:Inflexion2.Logging.ILoggerFactory"/></returns>
+        </member>
+        <member name="M:Inflexion2.Logging.LogManager.GetLogger(System.String)">
+            <summary>
+            Gets a logger from the configured <see cref="T:Inflexion2.Logging.ILoggerFactory"/> using the specified name
+            </summary>
+            <param name="name">
+            Name of the requested logger. If null, <see cref="T:Inflexion2.Logging.ILoggerFactory"/> for the calling class 
+            will be returned instead
+            </param>
+            <returns>Logger instance from the configured <see cref="T:Inflexion2.Logging.ILoggerFactory"/></returns>
+        </member>
+        <member name="T:Inflexion2.Logging.NullLogger">
+            <summary>
+            Default <see cref="T:Inflexion2.Logging.ILogger"/> implementation that silently drops all log entries
+            
+            This logger is used if configuration is incomplete or invalid
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Logging.NullLogger.Log(Inflexion2.Logging.LogEntry)">
+            <summary>
+            Does nothing
+            </summary>
+            <param name="entry">Entry to drop</param>
+        </member>
+        <member name="P:Inflexion2.Logging.TestLogger.LogEntries">
+            <summary>All log entries that have been consumed by this logger</summary>
+        </member>
+        <member name="M:Inflexion2.Logging.TestLogger.Log(Inflexion2.Logging.LogEntry)">
+            <summary>
+            Adds the specified log entry to <see cref="P:Inflexion2.Logging.TestLogger.LogEntries"/>
+            </summary>
+            <param name="entry">Entry to log</param>
+        </member>
+        <member name="M:Inflexion2.Logging.TestLogger.Clear">
+            <summary>Clear the list of log entries</summary>
+        </member>
+        <member name="T:Inflexion2.Logging.TestLoggerFactory">
+            <summary>
+            Generates loggers used for testing Inflexion2.Logging
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -15,7 +15,7 @@ namespace Inflexion2.Domain
     /// <typeparam name="TEntity"></typeparam>
     /// <typeparam name="TIdentifier"></typeparam>
     public abstract class ValidatableAggregateRoot<TEntity, TIdentifier> : ValidatableEntity<TEntity, TIdentifier>, IAggregateRoot<TEntity, TIdentifier>, IEntity<TIdentifier>
-        where TEntity : ValidatableAggregateRoot<TEntity, TIdentifier>
+        where TEntity : ValidatableAggregateRoot<TEntity, TIdentifier>, System.IEquatable<TEntity>, System.IComparable<TEntity>
         where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
     {
         

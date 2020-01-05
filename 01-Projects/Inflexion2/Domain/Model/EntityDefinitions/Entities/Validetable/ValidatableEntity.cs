@@ -15,9 +15,9 @@ namespace Inflexion2.Domain
                                 Inflexion2.Domain.Validation.IValidatable,
                                 IEntity<TIdentifier>,
                                 System.IEquatable<IEntity<TIdentifier>>, 
-                                System.IComparable<IEntity<TIdentifier>>, 
+                                System.IComparable<IEntity<TIdentifier>>,
                                 System.IComparable
-        where TEntity : ValidatableEntity<TEntity, TIdentifier>, IValidatable, IEntity<TIdentifier>                        
+        where TEntity : ValidatableEntity<TEntity, TIdentifier>, IValidatable, IEntity<TIdentifier>, System.IEquatable<TEntity>,System.IComparable<TEntity>
         where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
     {
         /// <summary>

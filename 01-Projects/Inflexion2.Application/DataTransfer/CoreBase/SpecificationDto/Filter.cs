@@ -14,9 +14,6 @@ namespace Inflexion2.Application
     /// <summary>
     /// Clase que representa un filtro para las especificaciones.
     /// </summary>
-    /// <remarks>
-    /// Sin comentarios adicionales.
-    /// </remarks>
     [DataContract]
     public class Filter
     {
@@ -25,9 +22,6 @@ namespace Inflexion2.Application
         /// <summary>
         /// Propiedad que obtiene o establece el operador que aplicará en el filtro.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         /// <value>
         /// Valor que es utilizado para obtener o establecer el
         /// operador que aplicará en el filtro.
@@ -43,9 +37,6 @@ namespace Inflexion2.Application
         /// Propiedad que obtiene o establece el nombre de la propiedad
         /// sobre la que se aplicará el filtro.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         /// <value>
         /// Valor que es utilizado para obtener o establecer el nombre de la propiedad
         /// sobre la que se aplicará el filtro.
@@ -60,9 +51,6 @@ namespace Inflexion2.Application
         /// <summary>
         /// Propiedad que obtiene o establece el valor para el filtro.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         /// <value>
         /// Valor que es utilizado para obtener o establecer el valor del filtro.
         /// </value>

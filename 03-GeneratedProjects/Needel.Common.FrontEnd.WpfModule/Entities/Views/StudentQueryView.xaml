@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="Needel.Common.FrontEnd.WpfModule.StudentQueryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:enums ="clr-namespace:Needel.Common.Domain.Data;assembly=Needel.Common.Domain.Data"
+             xmlns:controls="clr-namespace:Inflexion2.UX.WPF.Controls;assembly=Inflexion2.UX.WPF.Controls"
+             xmlns:converter="clr-namespace:Inflexion2.UX.WPF.ValueConverters;assembly=Inflexion2.UX.WPF"
+             xmlns:lex ="http://wpflocalizeextension.codeplex.com"
+             lex:LocalizeDictionary.DesignCulture="en"
+             lex:LocalizeDictionary.OutputMissingKeys="True"
+             lex:ResxLocalizationProvider.DefaultAssembly="Needel.Common.Infrastructure.Resources"
+             lex:ResxLocalizationProvider.DefaultDictionary="CommonResources"
+             FlowDirection="{Binding lex:LocFlowDirection Inflexion2.Resources:FrameworkResource:flow}" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1050" Padding="5">
+    <Grid>
+        <Label Content="{Binding Title}"/>
+        <Label Content="Student Query View"/>
+        <DataGrid x:Name="StudentDgData"
+                  ItemsSource="{Binding Items, Mode=TwoWay}"
+                  SelectedItem="{Binding SelectedItem}" 
+                  AutoGenerateColumns="False"
+                  SelectionMode="Extended"
+                  SelectionUnit="FullRow"
+                  CanUserAddRows="True"
+                  CanUserReorderColumns="True"
+                  CanUserResizeColumns="True"
+                  CanUserResizeRows="True"
+                  CanUserSortColumns="True"
+                  ClipboardCopyMode="ExcludeHeader"
+                  AllowDrop="True" 
+                  PreviewMouseLeftButtonDown="dataGrid_PreviewMouseLeftButtonDown" 
+                  PreviewMouseMove="dataGrid_PreviewMouseMove" 
+                  Drop="dataGrid_Drop" 
+                  PreviewMouseUp="dataGrid_PreviewMouseUp" 
+                  PreviewDragOver="dataGrid_PreviewDragOver"
+                  Margin="0">
+            <!--controls:DataGridRowDoubleClickHandler.MethodName="NavigateToSelectedItem"-->
+            <DataGrid.Columns>
+                <!-- .en columns from properties -->
+                <DataGridTextColumn     Header="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:Student_NameAlias}" Binding="{Binding Name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

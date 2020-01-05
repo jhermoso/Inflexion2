@@ -38,6 +38,7 @@ namespace Inflexion2.Application
         public static ISpecification<TEntity> ToSpecification<TEntity>(this SpecificationDto specificationDto, Inflexion2.Domain.Specification.ISpecification<TEntity> specification)
         where TEntity : class
         {
+            if (specificationDto.CompositeFilter != null)
             foreach (Filter rule in specificationDto.CompositeFilter.Filters)
             {
                 if (rule.Value != "")

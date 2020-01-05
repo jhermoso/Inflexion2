@@ -7,7 +7,7 @@
 namespace Inflexion2.DynamicExtensions
 {
     /// <summary>
-    /// .es extension de refelxion para objetos dinámicos 
+    /// .es extension de reflexion para objetos dinámicos 
     /// .en reflexion extension to dinamic objects
     /// </summary>
     public static class PrivateReflectionDynamicObjectExtensions

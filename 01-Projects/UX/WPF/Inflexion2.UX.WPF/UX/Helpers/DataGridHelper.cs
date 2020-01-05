@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="DataGridHelper.cs" company = Company">
+// <copyright file="DataGridHelper.cs" company = Inflexion2">
 //     Copyright (c) 2014. Company All Rights Reserved.
 // </copyright>
 // -----------------------------------------------------------------------
@@ -16,12 +16,9 @@ namespace Inflexion2.UX.WPF.Helpers
 
 
     /// <summary>
-    /// Clase pública estática utilzada como ayuda adicional a acciones 
+    /// Clase pública estática utilizada como ayuda adicional a acciones 
     /// habituales o generales con los controles DataGrid.
     /// </summary>
-    /// <remarks>
-    /// Sin comentarios adicionales.
-    /// </remarks>
     public static class DataGridHelper
     {
 
@@ -113,6 +110,56 @@ namespace Inflexion2.UX.WPF.Helpers
             {
                 return (DataGridRow)dataGrid.ItemContainerGenerator.ContainerFromItem(dataGrid.SelectedItem);
             } // GetSelectedRow
+
+        /// <summary>
+        /// Event handler for drag in a drag & drop action with a datagrid row source
+        /// </summary>
+        /// <typeparam name="TVm"></typeparam>
+        /// <typeparam name="TDto"></typeparam>
+        /// <typeparam name="TIdentifier"></typeparam>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="_startPoint"></param>
+        public static void DataGridPreviewMouseMoveHandler<TVm, TDto, TIdentifier>(object sender, System.Windows.Input.MouseEventArgs e, Point? _startPoint)
+            where TVm : Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel<TDto, TIdentifier>
+            where TDto : Inflexion2.Application.BaseEntityDataTransferObject<TIdentifier>, Inflexion2.Application.IDataTransferObject
+            where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
+        {
+            if (_startPoint == null)
+                return;
+
+            var dg = sender as DataGrid;
+            if (dg == null) return;
+            // Get the current mouse position
+            Point mousePos = e.GetPosition(null);
+            Vector diff = _startPoint.Value - mousePos;
+            // test for the minimum displacement to begin the drag
+            if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed &&
+                (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
+                Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
+            {
+
+                // Get the dragged DataGridRow
+                var DataGridRow =
+                    Inflexion2.UX.WPF.Helpers.GeneralHelper.FindAnchestor<DataGridRow>((DependencyObject)e.OriginalSource);
+
+                if (DataGridRow == null)
+                    return;
+
+                // Find the data behind the DataGridRow
+                var dataTodrop = (TVm)dg.ItemContainerGenerator.
+                    ItemFromContainer(DataGridRow);
+
+                if (dataTodrop == null) return;
+
+                // Initialize the drag & drop operation
+                var dataObj = new DataObject(dataTodrop.ObjectElement);
+                dataObj.SetData("DragSource", sender);
+                DragDrop.DoDragDrop(dg, dataObj, DragDropEffects.Copy);
+                _startPoint = null;
+            }
+        }
+
 
         #endregion
 

@@ -31,6 +31,16 @@ namespace Inflexion2.Application
         /// </remarks>
         /// <param name="entity">Representa las entidades de negocio.</param>
         /// <returns>Devuelve un objeto de transferencia de datos.</returns>
-        TDto ValueObjecMapping(TValueObjec entity);
+        TDto ValueObjectMapping(TValueObjec entity);
+
+        /// <summary>
+        /// Función encargada de mapear una entidad con un Dto,
+        /// con la opción de seleccionar si se mapean también los hijos y los padres 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="mapParents"></param>
+        /// <param name="mapChildren"></param>
+        /// <returns></returns>
+        TDto ValueObjectMapping(TValueObjec entity, bool mapParents, bool mapChildren);
     }
 }

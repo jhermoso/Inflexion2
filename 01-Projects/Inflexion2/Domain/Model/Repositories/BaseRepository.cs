@@ -6,13 +6,17 @@
 namespace Inflexion2.Domain
 {
     using Inflexion2.Logging;
+    using Inflexion2.Domain.Reflection;
     using Specification;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.Contracts;
     using System.Globalization;
     using System.Linq;
+
     using System.Linq.Expressions;
+    using System.Data;
+    using System.Data.Entity;
 
     /// <summary>
     /// .en Default base class for repositories. This generic repository
@@ -25,10 +29,13 @@ namespace Inflexion2.Domain
     /// <typeparam name="TIdentifier">identifier</typeparam>
 
     public abstract class BaseRepository<TEntity, TIdentifier> : IRepository<TEntity, TIdentifier>
-        where TEntity : class /* AggregateRoot<TEntity, TIdentifier>, IAggregateRoot<TEntity, TIdentifier>*/, IEntity<TIdentifier>
+        where TEntity : class /* Entity<TEntity, TIdentifier>*/, IEntity<TIdentifier>, IEquatable<TEntity>
         where TIdentifier : IComparable<TIdentifier>, IEquatable<TIdentifier>
     {
-        private readonly ILogger logger;
+        /// <summary>
+        /// 
+        /// </summary>
+        protected readonly ILogger logger_;
 
         /// <summary>
         /// Default constructor for GenericRepository
@@ -37,8 +44,8 @@ namespace Inflexion2.Domain
         // <param name="context">A context for this repository</param>
         protected BaseRepository()
         {
-            this.logger = LogManager.GetLogger(GetType());
-            this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Created repository for type: {0}", typeof(TEntity).Name));
+            this.logger_ = LogManager.GetLogger(GetType());
+            this.logger_.Debug(string.Format(CultureInfo.InvariantCulture, "Created repository for type: {0}", typeof(TEntity).Name));
         }
 
         /// <summary>
@@ -48,7 +55,7 @@ namespace Inflexion2.Domain
         {
             get
             {
-                return this.logger;
+                return this.logger_;
             }
         }
 
@@ -58,12 +65,9 @@ namespace Inflexion2.Domain
         /// <param name="entity"><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></param>
         public virtual void Add(TEntity entity)
         {
-            //Guard.IsNotNull(entity, "entity");
-            //Contract.Requires<ArgumentNullException>(entity != null, "entity");
-
             this.InternalAdd(entity);
 
-            this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Added a {0} entity", typeof(TEntity).Name));
+            this.logger_.Debug(string.Format(CultureInfo.InvariantCulture, "Added a {0} entity", typeof(TEntity).Name));
         }
 
         /// <summary>
@@ -72,11 +76,9 @@ namespace Inflexion2.Domain
         /// <param name="entity"><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></param>
         public void Attach(TEntity entity)
         {
-            //Guard.IsNotNull(entity, "entity");
-            //Contract.Requires<ArgumentNullException>(entity != null, "entity");
             this.InternalAttach(entity);
 
-            this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Attached {0} to context.", typeof(TEntity).Name));
+            this.logger_.Debug(string.Format(CultureInfo.InvariantCulture, "Attached {0} to context.", typeof(TEntity).Name));
         }
 
         /// <summary>
@@ -85,8 +87,27 @@ namespace Inflexion2.Domain
         /// <returns><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></returns>
         public IEnumerable<TEntity> GetAll()
         {
-            this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Get all from entity {0}.", typeof(TEntity).Name));
-            return this.Query().ToList();
+            this.logger_.Debug(string.Format(CultureInfo.InvariantCulture, "Get all from entity {0}.", typeof(TEntity).Name));
+            return this.Query();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<TIdentifier> RemoveAll()
+        {
+            this.logger_.Debug(string.Format(CultureInfo.InvariantCulture, "Remove all from entities {0}.", typeof(TEntity).Name));
+            var totalBefore = this.Query().Count();
+
+            foreach (var entity in this.Query())
+            {
+               this.InternalRemove(entity);
+            }
+
+            var result = this.Query().Select(c => c.Id).ToArray();
+            this.logger_.Debug(string.Format(CultureInfo.InvariantCulture, "Deleted {0} from total {1} of entities of type {2} .", totalBefore - result.Count(), totalBefore, typeof(TEntity).Name));
+            return result;
         }
 
         /// <summary>
@@ -95,9 +116,52 @@ namespace Inflexion2.Domain
         /// <returns><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></returns>
         public TEntity GetById(TIdentifier id)
         {
-            this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Get record by Id from entity {0}.", typeof(TEntity).Name));
+            this.logger_.Debug(string.Format(CultureInfo.InvariantCulture, "Get record by Id from entity {0}.", typeof(TEntity).Name));
+
+            return this.Query().SingleOrDefault(c => c.Id.Equals(id));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public virtual TEntity GetAggregateById(TIdentifier id)
+        {
+            this.logger_.Debug(string.Format(CultureInfo.InvariantCulture, "Get record by Id from entity {0}.", typeof(TEntity).Name));
+
+            var query = this.Query().AsQueryable();
+            var includes = EntityReflection<TEntity, TIdentifier>.GetEntityProperties();
+            foreach (var item in includes)
+            {
+                query.Include(item.Name);
+            }
+            return this.Query().First(c => c.Id.Equals(id));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="includes"></param>
+        /// <returns></returns>
+        public virtual TEntity GetByIdIncluding(TIdentifier id, string[] includes = null)
+        {
+            this.logger_.Debug(string.Format(CultureInfo.InvariantCulture, "Get record by Id from entity {0} including .", typeof(TEntity).Name), includes == null? "all": String.Join("; ", includes));
 
             return this.Query().First(c => c.Id.Equals(id));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public IEnumerable<TEntity> GetAllExceptThis(TIdentifier id)
+        {
+            this.logger_.Debug(string.Format(CultureInfo.InvariantCulture, "Get all entities except {0} with Id {1}.", typeof(TEntity).Name, id));
+            var result = this.Query().Where(c => !c.Id.Equals(id)).ToList();
+            return result;
         }
 
         /// <summary>
@@ -107,9 +171,7 @@ namespace Inflexion2.Domain
         /// <returns><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></returns>
         public IEnumerable<TEntity> GetBySpec(ISpecification<TEntity> specification)
         {
-            //Guard.IsNotNull(specification, "specification");
-            //Contract.Requires<ArgumentNullException>(specification != null, "specification");
-            this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Getting {0} by specification", typeof(TEntity).Name));
+            this.logger_.Debug(string.Format(CultureInfo.InvariantCulture, "Getting {0} by specification", typeof(TEntity).Name));
 
             return (this.Query()
                     .Where(specification.IsSatisfiedBy()))
@@ -123,10 +185,7 @@ namespace Inflexion2.Domain
         /// <returns><see cref="Inflexion2.Domain.IRepository{TEntity, TIdentifier}"/></returns>b
         public IEnumerable<TEntity> GetFilteredElements(Expression<Func<TEntity, bool>> filter)
         {
-            // checking query arguments
-            //Guard.IsNotNull(filter, "filter");
-            //Contract.Requires<ArgumentNullException>(filter != null, "filter");
-            this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Getting filtered elements {0} with filer: {1}", typeof(TEntity).Name, filter.ToString()));
+            this.logger_.Debug(string.Format(CultureInfo.InvariantCulture, "Getting filtered elements {0} with filer: {1}", typeof(TEntity).Name, filter.ToString()));
 
             // Create IObjectSet and perform query
             return this.Query()
@@ -146,13 +205,8 @@ namespace Inflexion2.Domain
             Expression<Func<TEntity, S>> orderByExpression,
             bool ascending = true)
         {
-            // Checking query arguments
-            //Guard.IsNotNull(filter, "filter");
-            //Guard.IsNotNull(orderByExpression, "orderByExpression");
-            //Contract.Requires<ArgumentNullException>(filter != null, "filter");
-            //Contract.Requires<ArgumentNullException>(orderByExpression != null, "orderByExpression");
 
-            this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Getting filtered elements {0} with filter: {1}", typeof(TEntity).Name, filter.ToString()));
+            this.logger_.Debug(string.Format(CultureInfo.InvariantCulture, "Getting filtered elements {0} with filter: {1}", typeof(TEntity).Name, filter.ToString()));
 
             // Create IObjectSet for this type and perform query
             var objectSet = this.Query();
@@ -183,18 +237,7 @@ namespace Inflexion2.Domain
             Expression<Func<TEntity, S>> orderByExpression,
             bool ascending = true)
         {
-            // checking arguments for this query
-            //Guard.Against<ArgumentException>(pageIndex < 0, "pageIndex");
-            //Guard.Against<ArgumentException>(pageSize <= 0, "pageSize");
-            //Guard.IsNotNull(orderByExpression, "orderByExpression");
-            //Guard.IsNotNull(filter, "filter");
-
-            //Contract.Requires<ArgumentException>(pageIndex >= 0, "pageIndex");
-            //Contract.Requires<ArgumentException>(pageSize > 0, "pageSize");
-            //Contract.Requires<ArgumentNullException>(filter != null, "filter");
-            //Contract.Requires<ArgumentNullException>(orderByExpression != null, "orderByExpression");
-
-            this.logger.Debug(
+            this.logger_.Debug(
                 string.Format(
                     CultureInfo.InvariantCulture,
                     "Getting paged elements {0}, pageIndex: {1}, pageSize {2}, oderBy {3}",
@@ -206,7 +249,7 @@ namespace Inflexion2.Domain
             var objectSet = this.Query();
 
             IQueryable<TEntity> query = objectSet.Where(filter);
-            int total = query.Count();
+            int total = query != null ? query.Count() : 0;
 
             return ascending
                    ? new PagedElements<TEntity>(
@@ -249,7 +292,7 @@ namespace Inflexion2.Domain
             //Contract.Requires<ArgumentNullException>(specification != null, "specification");
             //Contract.Requires<ArgumentNullException>(orderBySpecification != null, "orderBySpecification");
 
-            this.logger.Debug(
+            this.logger_.Debug(
                 string.Format(
                     CultureInfo.InvariantCulture,
                     "Getting paged elements {0}, pageIndex: {1}, pageSize {2}, oderBy {3}",
@@ -262,7 +305,7 @@ namespace Inflexion2.Domain
             var objectSet = this.Query();
 
             IQueryable<TEntity> query = objectSet.Where(specification.IsSatisfiedBy());
-            int total = query.Count();
+            int total = query != null ? query.Count() : 0;
 
             return new PagedElements<TEntity>(
                        query
@@ -283,7 +326,7 @@ namespace Inflexion2.Domain
             //Contract.Requires<ArgumentNullException>(entity != null, "entity");
             this.InternalModify(entity);
 
-            this.logger.Info(string.Format(CultureInfo.InvariantCulture, "Applied changes to: {0}", typeof(TEntity).Name));
+            this.logger_.Info(string.Format(CultureInfo.InvariantCulture, "Applied changes to: {0}", typeof(TEntity).Name));
         }
 
         /// <summary>
@@ -297,7 +340,17 @@ namespace Inflexion2.Domain
             //Contract.Requires<ArgumentNullException>(entity != null, "entity");
             this.InternalRemove(entity);
 
-            this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Deleted a {0} entity", typeof(TEntity).Name));
+            this.logger_.Debug(string.Format(CultureInfo.InvariantCulture, "Deleted a {0} entity", typeof(TEntity).Name));
+        }
+
+        public virtual void Remove(TIdentifier id)
+        {
+            // check entity
+            //Guard.IsNotNull(entity, "entity");
+            //Contract.Requires<ArgumentNullException>(entity != null, "entity");
+            this.InternalRemove(id);
+
+            this.logger_.Debug(string.Format(CultureInfo.InvariantCulture, "Deleted a {0} entity", typeof(TEntity).Name));
         }
 
         /// <summary>
@@ -325,10 +378,39 @@ namespace Inflexion2.Domain
         protected abstract void InternalRemove(TEntity entity);
 
         /// <summary>
+        /// method to be over writed to remove operations
+        /// </summary>
+        /// <param name="id"></param>
+        protected abstract void InternalRemove(TIdentifier id);
+
+        /// <summary>
         /// method to write to query operations
         /// </summary>
         /// <returns></returns>
         protected abstract IQueryable<TEntity> Query();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        public IEnumerable<TEntity> GetAllExceptThese(IEnumerable<TIdentifier> ids)
+        {
+            this.logger_.Debug(string.Format(CultureInfo.InvariantCulture, "Get all entities {0} except with Ids= {1}.", typeof(TEntity).Name, String.Join(", ", ids)));
+            var result = this.Query().Where(c => !ids.Contains(c.Id)).ToList();
+            return result;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        public IEnumerable<TEntity> GetSelectedThese(IEnumerable<TIdentifier> ids)
+        {
+            this.logger_.Debug(string.Format(CultureInfo.InvariantCulture, "Get all entities {0} with Ids= {1}.", typeof(TEntity).Name, String.Join(", ", ids)));
+            var result = this.Query().Where(c => ids.Contains(c.Id)).ToList();
+            return result;
+        }
     }
 }

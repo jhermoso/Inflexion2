@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Needel.Common.Application.Dtos" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Needel.Common.Application.Dtos" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/Inflexion2.Application" />
+  <xs:complexType name="TeacherDto">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Inflexion2.Application" base="q1:BaseEntityDataTransferObjectOfint">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Students" nillable="true" type="tns:ArrayOfStudentDto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TeacherDto" nillable="true" type="tns:TeacherDto" />
+  <xs:complexType name="ArrayOfStudentDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StudentDto" nillable="true" type="tns:StudentDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStudentDto" nillable="true" type="tns:ArrayOfStudentDto" />
+  <xs:complexType name="StudentDto">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/Inflexion2.Application" base="q2:BaseEntityDataTransferObjectOfint">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Teachers" nillable="true" type="tns:ArrayOfTeacherDto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StudentDto" nillable="true" type="tns:StudentDto" />
+  <xs:complexType name="ArrayOfTeacherDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TeacherDto" nillable="true" type="tns:TeacherDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTeacherDto" nillable="true" type="tns:ArrayOfTeacherDto" />
+</xs:schema>

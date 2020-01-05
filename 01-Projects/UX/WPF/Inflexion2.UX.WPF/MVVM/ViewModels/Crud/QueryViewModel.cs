@@ -15,6 +15,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
     using Microsoft.Practices.Prism.Regions;
     using Microsoft.Practices.Prism.Events;
     using System.Collections.Generic;
+    using System.ComponentModel;
 
     /// <summary>
     /// .en Generic abstract Base class for the Query View Models.
@@ -22,27 +23,34 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
     /// .es Clase generica y abstracta de la que derivan los query view models. 
     /// Este tipo de view models se utiza para manejar conjuntos de entidades que son root aggregates
     /// es decir que puedne tener operaciones CRUD sobre el repositorio.
+    /// 
+    /// El View model ha de tener un constructor vacio, el cual es invocado en el get de la propiedad items.
+    /// Igualmente el user control de la vista también ha de tener un constructor vacio.
     /// </summary>
-    public abstract class QueryViewModel<T, TView, TIdentifier> : WorkspaceViewModel 
-        where T : IEntityViewModel<TIdentifier>
+    public abstract class QueryViewModel<TQueryVm, TView, TIdentifier> : WorkspaceViewModel 
+        where TQueryVm : WorkspaceViewModel, IEntityViewModel<TIdentifier>, IEditableObject, new()
         where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
+        where TView : System.Windows.Controls.UserControl, new()
     {
         #region Fields
 
-        private T item;
-        // esta collección se inicializa en el metodo getRecords de los view models derivados y que se aplican ya entidades concretas
-        private ObservableCollection<T> items ;
+        protected internal TQueryVm item;
+        
+        /// <summary>
+        /// esta colección se inicializa en el metodo getRecords de los view models derivados y que se aplican ya entidades concretas
+        /// </summary>
+        protected internal ObservableCollection<TQueryVm> _items ;
         // La inizialización de este campo hace que se ejecute antes que la cadena de constructores.
         // y debe estar inizializado para evitar que prism genere una excepción de navegación.
-        private SpecificationDto specification = new SpecificationDto() ;
+        protected internal SpecificationDto specification ;
 
         /// <summary>
         /// .es Variable privada utilizada para obtener y establecer el número de 
         /// registros cargados.
         /// </summary>
-        private int totalRecordCount = 0;
-        private int pageIndex = 0;
-        private int pageSize;// = 10
+        protected internal int totalRecordCount;
+        protected internal int pageIndex;
+        protected internal int pageSize;
 
 
         #endregion
@@ -57,10 +65,11 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             if (!this.IsDesignTime)
             {
                 // Inicializamos el objeto colección genérica.
-                this.Items = new ObservableCollection<T>();
-                this.PageSize = 5; // TODO inicializar estos valores con settings/ preferencias
-                this.PageIndex = 0;// TODO inicializar estos valores con settings/preferencias
-                this.Specification = new SpecificationDto() { PageIndex = this.PageIndex, PageSize = this.PageSize };
+                this._items = new ObservableCollection<TQueryVm>();
+                this.totalRecordCount = 0;
+                this.pageSize = 5; // TODO inicializar estos valores con settings/ preferencias
+                this.pageIndex = 0;// TODO inicializar estos valores con settings/preferencias
+                this.Specification = new SpecificationDto() { PageIndex = this.pageIndex, PageSize = this.pageSize };
             }
         }
 
@@ -76,7 +85,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         /// Esta propiedad mantiene una sicronización con el control de usuario (datagrid o cualquier otro tipo)
         /// indicandonos cual es el registro o entidad seleccionado.
         /// </summary>
-        public T SelectedItem
+        public TQueryVm SelectedItem
         {
             get
             {
@@ -96,19 +105,21 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         /// En este caso cada linea de el datagrid o del control seleccionado tiene su propio view model.
         /// Este tiene asu vez la información del registro correspondiente o de la entidad que vamos a mostrar en una linea concreta.
         /// </summary>
-        public ObservableCollection<T> Items
+        public virtual ObservableCollection<TQueryVm> Items
         {
             get
             {
-                return this.items;
+                return this._items;
             }
             set
             {
                 // este set se lleva a acabo en el metodo getrecords de los view models derivados sobre entidades concretas
-                this.items = value;
+                this._items = value;
                 RaisePropertyChanged(() => this.Items);
             }
         }
+
+
 
         /// <summary>
         /// Esta es la propiedad que proporciona el nombre a la ventana o al control de usuario donde 
@@ -282,11 +293,13 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         /// <returns></returns>
         public override bool CanGetFirstPageRecords(object parameter)
         {
-            if (this.totalRecordCount == 0)
+            if (this.TotalRecordCount == 0)
             {
-                return true;
+                return false;
             }
-            return this.PageIndex != 0;
+
+            
+            return this.TotalPagesCount > 0 && this.PageIndex != 0;
         }
 
         /// <summary>
@@ -296,11 +309,12 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         /// <returns></returns>
         public override bool CanGetNextPageRecords(object parameter)
         {
-            if (this.totalRecordCount == 0)
+            if (this.TotalRecordCount == 0)
             {
-                return true;
+                return false;
             }
-            return this.pageIndex >= 0 && this.pageIndex < TotalPagesCount;
+
+            return this.TotalPagesCount > 0 && this.PageIndex >= 0 && this.PageIndex < TotalPagesCount;
         }
 
         /// <summary>
@@ -310,11 +324,12 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         /// <returns></returns>
         public override bool CanGetPreviousPageRecords(object parameter)
         {
-            if (this.totalRecordCount == 0)
+            if (this.TotalRecordCount == 0)
             {
                 return false;
             }
-            return this.pageIndex > 0 && this.pageIndex <= TotalPagesCount;
+
+            return this.TotalPagesCount > 0 && this.pageIndex > 0 && this.pageIndex <= TotalPagesCount;
         }
 
         /// <summary>
@@ -324,11 +339,12 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         /// <returns></returns>
         public override bool CanGetLastPageRecords(object parameter)
         {
-            if (this.totalRecordCount == 0)
+            if (this.TotalRecordCount == 0)
             {
-                return true;
+                return false;
             }
-            return this.pageIndex != TotalPagesCount;
+
+            return this.TotalPagesCount > 0 && this.pageIndex != TotalPagesCount;
         }
 
         #endregion
@@ -337,7 +353,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         /// go to the record with id
         /// </summary>
         /// <param name="id"></param>
-        protected virtual void NavigateToRecord(TIdentifier id)
+        public virtual void NavigateToRecord(TIdentifier id)
         {
             if (this.Specification == null)
             {
@@ -373,7 +389,11 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         /// </summary>
         public virtual void NavigateToSelectedItem()
         {
-            NavigateToRecord(this.item.Id);
+            // todo: add a queryrecordviewmodel  for the rows inthe query viewmodel and field flag to tell if the queryviewmodel is root or is emmbebed inside a parent viewmodel
+            if (this.item != null)
+            {
+                NavigateToRecord(this.item.Id);
+            }
         }
 
 
@@ -428,7 +448,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         /// <summary>
         /// refrescamos los susbcriptores de los comandos CRUD recalculando para cada uno de ellos si se habilita o no.
         /// </summary>
-        protected void RefreshCommands()
+        public void RefreshCommands()
         {
             var cmd = this.deleteRecordCommand as Microsoft.Practices.Prism.Commands.DelegateCommand<object>;
             cmd.RaiseCanExecuteChanged();

@@ -13,7 +13,7 @@ namespace Inflexion2.UX.WPF
         /// <summary>
         /// Esta propiedad es para salvar en la configuración del usuario el idioma seleccionado.
         /// </summary>
-        public static DependencyProperty WindowLanguajeProperty;
+        public static DependencyProperty WindowLanguageProperty;
 
         //private readonly WindowSettings windowSettings;
 
@@ -25,9 +25,9 @@ namespace Inflexion2.UX.WPF
             
             //inicializacion de los settings para memorizar la posición de la ventana y la opcion preferida del lenguaje.
             //windowSettings = new WindowSettings(this);
-            //WindowLanguajeProperty =
+            //WindowLanguageProperty =
             //DependencyProperty.Register(
-            //"WindowLanguaje", typeof(string), typeof(Inflexion2.UX.WPF.MVVM.Views.ShellWindow), /*ApplicationSettings Inflexion2.UX.WPF.MVVM.Views.ShellWindow registramos en los settings de la ventana principal*/
+            //"WindowLanguage", typeof(string), typeof(Inflexion2.UX.WPF.MVVM.Views.ShellWindow), /*ApplicationSettings Inflexion2.UX.WPF.MVVM.Views.ShellWindow registramos en los settings de la ventana principal*/
             //new FrameworkPropertyMetadata("0", FrameworkPropertyMetadataOptions.AffectsRender));
 
 
@@ -36,16 +36,16 @@ namespace Inflexion2.UX.WPF
             this.DataContext = new LoginViewModel();
 
             //windowSettings.Settings.Add(
-            //    new DependencyPropertySetting(this, WindowLanguajeProperty, WindowLanguaje));
+            //    new DependencyPropertySetting(this, WindowLanguageProperty, WindowLanguage));
         }
 
         /// <summary>
         /// Atributo para dar soporte a la propiedad de dependencia en la que almacenamos el lenguaje elegido
         /// </summary>
-        public string WindowLanguaje
+        public string WindowLanguage
         {
-            get { return (string)GetValue(WindowLanguajeProperty); }
-            set { SetValue(WindowLanguajeProperty, value); }
+            get { return (string)GetValue(WindowLanguageProperty); }
+            set { SetValue(WindowLanguageProperty, value); }
         }
     }
 }

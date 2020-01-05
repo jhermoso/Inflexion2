@@ -133,6 +133,15 @@ namespace Needel.Common.Infrastructure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User Address.
+        /// </summary>
+        public static string Address_UserAddressAlias_ {
+            get {
+                return ResourceManager.GetString("Address_UserAddressAlias_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Address.
         /// </summary>
         public static string AddressAlias {
@@ -196,11 +205,11 @@ namespace Needel.Common.Infrastructure.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to App Setting Using.
+        ///   Looks up a localized string similar to App Setting Type.
         /// </summary>
-        public static string AppSetting_AppSettingUsingAlias_ {
+        public static string AppSetting_AppSettingTypeAlias_ {
             get {
-                return ResourceManager.GetString("AppSetting_AppSettingUsingAlias_", resourceCulture);
+                return ResourceManager.GetString("AppSetting_AppSettingTypeAlias_", resourceCulture);
             }
         }
         
@@ -426,6 +435,141 @@ namespace Needel.Common.Infrastructure.Resources {
         public static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Children.
+        /// </summary>
+        public static string Component_ChildrenAlias__ {
+            get {
+                return ResourceManager.GetString("Component_ChildrenAlias__", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string Component_DescriptionAlias {
+            get {
+                return ResourceManager.GetString("Component_DescriptionAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string Component_DescriptionTooltip {
+            get {
+                return ResourceManager.GetString("Component_DescriptionTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string Component_DescriptionUserRemarks {
+            get {
+                return ResourceManager.GetString("Component_DescriptionUserRemarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Component_NameAlias {
+            get {
+                return ResourceManager.GetString("Component_NameAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Component&apos;s name..
+        /// </summary>
+        public static string Component_NameTooltip {
+            get {
+                return ResourceManager.GetString("Component_NameTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Component_NameUserRemarks {
+            get {
+                return ResourceManager.GetString("Component_NameUserRemarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parent.
+        /// </summary>
+        public static string Component_ParentAlias_ {
+            get {
+                return ResourceManager.GetString("Component_ParentAlias_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Part Number.
+        /// </summary>
+        public static string Component_PartNumberAlias {
+            get {
+                return ResourceManager.GetString("Component_PartNumberAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Part Number.
+        /// </summary>
+        public static string Component_PartNumberTooltip {
+            get {
+                return ResourceManager.GetString("Component_PartNumberTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Part Number.
+        /// </summary>
+        public static string Component_PartNumberUserRemarks {
+            get {
+                return ResourceManager.GetString("Component_PartNumberUserRemarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Component.
+        /// </summary>
+        public static string ComponentAlias {
+            get {
+                return ResourceManager.GetString("ComponentAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Components.
+        /// </summary>
+        public static string ComponentPluralEntity {
+            get {
+                return ResourceManager.GetString("ComponentPluralEntity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Component.
+        /// </summary>
+        public static string ComponentRemarks {
+            get {
+                return ResourceManager.GetString("ComponentRemarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Component.
+        /// </summary>
+        public static string ComponentTooltip {
+            get {
+                return ResourceManager.GetString("ComponentTooltip", resourceCulture);
             }
         }
         
@@ -664,6 +808,222 @@ namespace Needel.Common.Infrastructure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string EntityM_NameAlias {
+            get {
+                return ResourceManager.GetString("EntityM_NameAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string EntityM_NameTooltip {
+            get {
+                return ResourceManager.GetString("EntityM_NameTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string EntityM_NameUserRemarks {
+            get {
+                return ResourceManager.GetString("EntityM_NameUserRemarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to N Zs.
+        /// </summary>
+        public static string EntityM_NZsAlias__ {
+            get {
+                return ResourceManager.GetString("EntityM_NZsAlias__", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entity M.
+        /// </summary>
+        public static string EntityMAlias {
+            get {
+                return ResourceManager.GetString("EntityMAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M_Entities.
+        /// </summary>
+        public static string EntityMPluralEntity {
+            get {
+                return ResourceManager.GetString("EntityMPluralEntity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entity M.
+        /// </summary>
+        public static string EntityMRemarks {
+            get {
+                return ResourceManager.GetString("EntityMRemarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entity M.
+        /// </summary>
+        public static string EntityMTooltip {
+            get {
+                return ResourceManager.GetString("EntityMTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M Zs.
+        /// </summary>
+        public static string EntityN_MZsAlias__ {
+            get {
+                return ResourceManager.GetString("EntityN_MZsAlias__", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string EntityN_NameAlias {
+            get {
+                return ResourceManager.GetString("EntityN_NameAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string EntityN_NameTooltip {
+            get {
+                return ResourceManager.GetString("EntityN_NameTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string EntityN_NameUserRemarks {
+            get {
+                return ResourceManager.GetString("EntityN_NameUserRemarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entity N.
+        /// </summary>
+        public static string EntityNAlias {
+            get {
+                return ResourceManager.GetString("EntityNAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EntitiesN.
+        /// </summary>
+        public static string EntityNPluralEntity {
+            get {
+                return ResourceManager.GetString("EntityNPluralEntity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entity N.
+        /// </summary>
+        public static string EntityNRemarks {
+            get {
+                return ResourceManager.GetString("EntityNRemarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entity N.
+        /// </summary>
+        public static string EntityNTooltip {
+            get {
+                return ResourceManager.GetString("EntityNTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M Ns.
+        /// </summary>
+        public static string EntityZ_MNsAlias__ {
+            get {
+                return ResourceManager.GetString("EntityZ_MNsAlias__", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string EntityZ_NameAlias {
+            get {
+                return ResourceManager.GetString("EntityZ_NameAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string EntityZ_NameTooltip {
+            get {
+                return ResourceManager.GetString("EntityZ_NameTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string EntityZ_NameUserRemarks {
+            get {
+                return ResourceManager.GetString("EntityZ_NameUserRemarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EntityZ.
+        /// </summary>
+        public static string EntityZAlias {
+            get {
+                return ResourceManager.GetString("EntityZAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EntitiesZ.
+        /// </summary>
+        public static string EntityZPluralEntity {
+            get {
+                return ResourceManager.GetString("EntityZPluralEntity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entity Z.
+        /// </summary>
+        public static string EntityZRemarks {
+            get {
+                return ResourceManager.GetString("EntityZRemarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entity Z.
+        /// </summary>
+        public static string EntityZTooltip {
+            get {
+                return ResourceManager.GetString("EntityZTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to (es).
         /// </summary>
         public static string es {
@@ -718,6 +1078,123 @@ namespace Needel.Common.Infrastructure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to List of free Addresses.
+        /// </summary>
+        public static string FreeAllAddresses {
+            get {
+                return ResourceManager.GetString("FreeAllAddresses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of free App Settings.
+        /// </summary>
+        public static string FreeAllAppSettings {
+            get {
+                return ResourceManager.GetString("FreeAllAppSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of free AppSettingTypes.
+        /// </summary>
+        public static string FreeAllAppSettingTypes {
+            get {
+                return ResourceManager.GetString("FreeAllAppSettingTypes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of free Components.
+        /// </summary>
+        public static string FreeAllComponents {
+            get {
+                return ResourceManager.GetString("FreeAllComponents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of free Departments.
+        /// </summary>
+        public static string FreeAllDepartments {
+            get {
+                return ResourceManager.GetString("FreeAllDepartments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of free EntitiesN.
+        /// </summary>
+        public static string FreeAllEntitiesN {
+            get {
+                return ResourceManager.GetString("FreeAllEntitiesN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of free EntitiesZ.
+        /// </summary>
+        public static string FreeAllEntitiesZ {
+            get {
+                return ResourceManager.GetString("FreeAllEntitiesZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of free GraphNodes.
+        /// </summary>
+        public static string FreeAllGraphNodes {
+            get {
+                return ResourceManager.GetString("FreeAllGraphNodes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of free M_Entities.
+        /// </summary>
+        public static string FreeAllM_Entities {
+            get {
+                return ResourceManager.GetString("FreeAllM_Entities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of free MNZs.
+        /// </summary>
+        public static string FreeAllMNZs {
+            get {
+                return ResourceManager.GetString("FreeAllMNZs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of free Students.
+        /// </summary>
+        public static string FreeAllStudents {
+            get {
+                return ResourceManager.GetString("FreeAllStudents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of free Teachers.
+        /// </summary>
+        public static string FreeAllTeachers {
+            get {
+                return ResourceManager.GetString("FreeAllTeachers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of free Users.
+        /// </summary>
+        public static string FreeAllUsers {
+            get {
+                return ResourceManager.GetString("FreeAllUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to French.
         /// </summary>
         public static string French {
@@ -741,6 +1218,87 @@ namespace Needel.Common.Infrastructure.Resources {
         public static string GestordeEsquemasdeBD {
             get {
                 return ResourceManager.GetString("GestordeEsquemasdeBD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Left Nodes.
+        /// </summary>
+        public static string GraphNode_LeftNodesAlias_ {
+            get {
+                return ResourceManager.GetString("GraphNode_LeftNodesAlias_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string GraphNode_NameAlias {
+            get {
+                return ResourceManager.GetString("GraphNode_NameAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string GraphNode_NameTooltip {
+            get {
+                return ResourceManager.GetString("GraphNode_NameTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string GraphNode_NameUserRemarks {
+            get {
+                return ResourceManager.GetString("GraphNode_NameUserRemarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Right Nodes.
+        /// </summary>
+        public static string GraphNode_RightNodesAlias__ {
+            get {
+                return ResourceManager.GetString("GraphNode_RightNodesAlias__", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Graph Node.
+        /// </summary>
+        public static string GraphNodeAlias {
+            get {
+                return ResourceManager.GetString("GraphNodeAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GraphNodes.
+        /// </summary>
+        public static string GraphNodePluralEntity {
+            get {
+                return ResourceManager.GetString("GraphNodePluralEntity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Example for M:N self relationships (Graphs).
+        /// </summary>
+        public static string GraphNodeRemarks {
+            get {
+                return ResourceManager.GetString("GraphNodeRemarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Graph Node.
+        /// </summary>
+        public static string GraphNodeTooltip {
+            get {
+                return ResourceManager.GetString("GraphNodeTooltip", resourceCulture);
             }
         }
         
@@ -804,6 +1362,69 @@ namespace Needel.Common.Infrastructure.Resources {
         public static string Japanese {
             get {
                 return ResourceManager.GetString("Japanese", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entity M.
+        /// </summary>
+        public static string MNZ_EntityMAlias_ {
+            get {
+                return ResourceManager.GetString("MNZ_EntityMAlias_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entity N.
+        /// </summary>
+        public static string MNZ_EntityNAlias_ {
+            get {
+                return ResourceManager.GetString("MNZ_EntityNAlias_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entity Z.
+        /// </summary>
+        public static string MNZ_EntityZAlias_ {
+            get {
+                return ResourceManager.GetString("MNZ_EntityZAlias_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MNZ.
+        /// </summary>
+        public static string MNZAlias {
+            get {
+                return ResourceManager.GetString("MNZAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MNZs.
+        /// </summary>
+        public static string MNZPluralEntity {
+            get {
+                return ResourceManager.GetString("MNZPluralEntity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MNZ.
+        /// </summary>
+        public static string MNZRemarks {
+            get {
+                return ResourceManager.GetString("MNZRemarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MNZ.
+        /// </summary>
+        public static string MNZTooltip {
+            get {
+                return ResourceManager.GetString("MNZTooltip", resourceCulture);
             }
         }
         
@@ -979,6 +1600,150 @@ namespace Needel.Common.Infrastructure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Student_NameAlias {
+            get {
+                return ResourceManager.GetString("Student_NameAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Student_NameTooltip {
+            get {
+                return ResourceManager.GetString("Student_NameTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Student_NameUserRemarks {
+            get {
+                return ResourceManager.GetString("Student_NameUserRemarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Teachers.
+        /// </summary>
+        public static string Student_TeachersAlias__ {
+            get {
+                return ResourceManager.GetString("Student_TeachersAlias__", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student.
+        /// </summary>
+        public static string StudentAlias {
+            get {
+                return ResourceManager.GetString("StudentAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Students.
+        /// </summary>
+        public static string StudentPluralEntity {
+            get {
+                return ResourceManager.GetString("StudentPluralEntity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Example for M:N relationships.
+        /// </summary>
+        public static string StudentRemarks {
+            get {
+                return ResourceManager.GetString("StudentRemarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student.
+        /// </summary>
+        public static string StudentTooltip {
+            get {
+                return ResourceManager.GetString("StudentTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Teacher_NameAlias {
+            get {
+                return ResourceManager.GetString("Teacher_NameAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Teacher_NameTooltip {
+            get {
+                return ResourceManager.GetString("Teacher_NameTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Teacher_NameUserRemarks {
+            get {
+                return ResourceManager.GetString("Teacher_NameUserRemarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Students.
+        /// </summary>
+        public static string Teacher_StudentsAlias_ {
+            get {
+                return ResourceManager.GetString("Teacher_StudentsAlias_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Teacher.
+        /// </summary>
+        public static string TeacherAlias {
+            get {
+                return ResourceManager.GetString("TeacherAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Teachers.
+        /// </summary>
+        public static string TeacherPluralEntity {
+            get {
+                return ResourceManager.GetString("TeacherPluralEntity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Example for M:N relationships.
+        /// </summary>
+        public static string TeacherRemarks {
+            get {
+                return ResourceManager.GetString("TeacherRemarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Teacher.
+        /// </summary>
+        public static string TeacherTooltip {
+            get {
+                return ResourceManager.GetString("TeacherTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         public static string Tecnologíadelabasededatos {
@@ -993,15 +1758,6 @@ namespace Needel.Common.Infrastructure.Resources {
         public static string User_AddressesAlias__ {
             get {
                 return ResourceManager.GetString("User_AddressesAlias__", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Department.
-        /// </summary>
-        public static string User_DepartmentAlias_ {
-            get {
-                return ResourceManager.GetString("User_DepartmentAlias_", resourceCulture);
             }
         }
         
@@ -1038,6 +1794,15 @@ namespace Needel.Common.Infrastructure.Resources {
         public static string User_NameUserRemarks {
             get {
                 return ResourceManager.GetString("User_NameUserRemarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Department.
+        /// </summary>
+        public static string User_UserDepartmentAlias_ {
+            get {
+                return ResourceManager.GetString("User_UserDepartmentAlias_", resourceCulture);
             }
         }
         

@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D7EED4AE-E296-4DA6-B49B-55FA775AEB64}</ProjectGuid>
+    <ProjectGuid>{79AE0569-DB1A-40FA-81C8-638161BC4586}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Needel.Common.Application.WcfService.Contracts</RootNamespace>
@@ -114,10 +114,20 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Address\IAddressClient.cs" />
     <Compile Include="Address\IAddressService.cs" />
+    <Compile Include="AppSetting\IAppSettingClient.cs" />
     <Compile Include="AppSetting\IAppSettingService.cs" />
+    <Compile Include="Component\IComponentService.cs" />
     <Compile Include="Department\IDepartmentService.cs" />
+    <Compile Include="EntityM\IEntityMService.cs" />
+    <Compile Include="EntityN\IEntityNService.cs" />
+    <Compile Include="EntityZ\IEntityZService.cs" />
+    <Compile Include="GraphNode\IGraphNodeService.cs" />
+    <Compile Include="MNZ\IMNZService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Student\IStudentService.cs" />
+    <Compile Include="Teacher\ITeacherService.cs" />
     <Compile Include="User\IUserService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -153,27 +163,27 @@
       <Name>Inflexion2</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Application.Dtos\Needel.Common.Application.Dtos.csproj">
-      <Project>{F070AFAF-80CD-4CF7-9E7D-5078A1DE337D}</Project>
+      <Project>{B10EDB2C-57AE-4846-BDD2-A589E1E0797C}</Project>
       <Name>Needel.Common.Application.Dtos</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Application\Needel.Common.Application.csproj">
-      <Project>{0040080F-27DB-465E-846F-3A475414E7AE}</Project>
+      <Project>{48C76203-FBD8-4090-84D3-9F40C711C7B9}</Project>
       <Name>Needel.Common.Application</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Domain.Data\Needel.Common.Domain.Data.csproj">
-      <Project>{0ED1DDBD-0582-43D7-B734-C991620E2234}</Project>
+      <Project>{6E3DC684-8C28-41C6-B471-498417EE0FFA}</Project>
       <Name>Needel.Common.Domain.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Domain\Needel.Common.Domain.csproj">
-      <Project>{621FB143-7170-421C-8545-F0054518FC16}</Project>
+      <Project>{796F9291-10A0-4EC3-9E42-942F3F65A0DD}</Project>
       <Name>Needel.Common.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Infrastructure.Resources\Needel.Common.Infrastructure.Resources.csproj">
-      <Project>{2F3B7720-D784-4541-BB98-39DDECFEA177}</Project>
+      <Project>{0EF0F63E-04E0-4616-B40D-B59AAA646F75}</Project>
       <Name>Needel.Common.Infrastructure.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Infrastructure\Needel.Common.Infrastructure.csproj">
-      <Project>{181D073B-EC7A-4A73-9EFB-49B18FE7D106}</Project>
+      <Project>{E14955B7-3011-4374-A083-72D1AE233FCC}</Project>
       <Name>Needel.Common.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>

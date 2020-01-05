@@ -9,6 +9,15 @@
         <see cref="T:Needel.Common.Domain.Address" />
       </summary>
     </member>
+    <member name="F:Needel.Common.Domain.Address.userAddress">
+      <summary>
+            campo privado que almacena el valor de userAddress.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación userAddress.
+            La relación es de tipo Composición y Asociación
+            </remarks>
+    </member>
     <member name="M:Needel.Common.Domain.Address.#ctor">
       <summary>
             .en Empty Constructor for the class <see cref="T:Needel.Common.Domain.Address" /> it is required by nHibernate and EntityFramework.
@@ -18,6 +27,23 @@
             .en by convention the empty constructor initialize the default values and make the news for the collections.
             .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
             </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.Address.#ctor(System.String,Needel.Common.Domain.User)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Domain.Address" />.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:Needel.Common.Domain.Address" />.
+            </remarks>
+      <param name="streetName"> 
+            Parametro <see cref="P:Needel.Common.Domain.Address.StreetName" /> del constructor de campos mandatory de la clase <see cref="T:Needel.Common.Domain.Address" />
+            Propiedad deducida del rol source de una relación
+            </param>
+      <param name="addresses">
+            Parametro <see cref="!:Address.Addresses" /> del constructor de campos mandatory de la clase <see cref="T:Needel.Common.Domain.Address" />
+            Propiedad de unica instancia deducida del source rol source de una relación
+            </param>
     </member>
     <member name="P:Needel.Common.Domain.Address.StreetName">
       <summary>
@@ -37,6 +63,38 @@
             Valor que es utilizado para establecer y obtener BuildingNumber.
             </value>
     </member>
+    <member name="P:Needel.Common.Domain.Address.UserAddress">
+      <summary>
+            Propiedad pública que permite establecer y obtener UserAddress.
+            </summary>
+      <value>
+            Valor que es utilizado para establecer y obtener UserAddress.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.Address.SetUserAddress(Needel.Common.Domain.User)">
+      <summary>
+            .en Set method for the property UserAddress.
+            .es Método encargado de establecer un nuevo valor para la propiedad UserAddress.
+            </summary>
+      <param name="user"> 
+            Parametro con el que establecemos el nuevo valor de <see cref="P:Needel.Common.Domain.Address.UserAddress" />. de la clase <see cref="T:Needel.Common.Domain.Address" /></param>
+      <returns>
+            .en return value: the own object to allow fluent calls
+            .es Devuelve el propio objeto para facilitar las interfaces 'fluent'/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.Address.Equals(Needel.Common.Domain.IAddress)">
+      <summary>
+            IEquatable implementation
+            </summary>
+      <param name="other" />
+      <returns />
+    </member>
+    <member name="M:Needel.Common.Domain.Address.CompareTo(Needel.Common.Domain.IAddress)">
+      <summary />
+      <param name="other" />
+      <returns />
+    </member>
     <member name="T:Needel.Common.Domain.AddressFactory">
       <summary>
             Clase factoría para la creación de  una entidad de tipo <see cref="T:Needel.Common.Domain.Address" />.
@@ -53,13 +111,17 @@
             Devuelve una instancia de dela clase AddressFactory /&gt;
             </returns>
     </member>
-    <member name="M:Needel.Common.Domain.AddressFactory.Create">
+    <member name="M:Needel.Common.Domain.AddressFactory.Create(System.String,Needel.Common.Domain.User)">
       <summary>
             Función para crear una entidad dentro de la factoría a partir 
             de los argumentos especificados.
             </summary>
       <remarks>
             Crea una entidad de tipo <see cref="T:Needel.Common.Domain.Address" /></remarks>
+      <param name="streetName" />
+      <param name="userAddress"> 
+            referencia al rol source de la relación.
+            </param>
       <returns>
             Devuelve  una entidad de tipo <see cref="T:Needel.Common.Domain.AddressFactory" /></returns>
     </member>
@@ -70,6 +132,30 @@
       <remarks>
             Sin comentarios adicionales.
             </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.AddressSpecifications.FindAllByStreetName(System.String)">
+      <summary>
+            Método que devuelve especificación de aquellos objetos de tipo Address  
+            seleccionados por el valor del campo StreetName.
+            </summary>
+      <param name="streetName">
+            Parámetro que indica el valor del campo StreetName.
+            </param>
+      <returns>
+            Devuelve <see cref="T:Inflexion2.Domain.Specification.Specification`1" /> asociado con este criterio.
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.AddressSpecifications.FindAllByBuildingNumber(System.String)">
+      <summary>
+            Método que devuelve especificación de aquellos objetos de tipo Address  
+            seleccionados por el valor del campo BuildingNumber.
+            </summary>
+      <param name="buildingNumber">
+            Parámetro que indica el valor del campo BuildingNumber.
+            </param>
+      <returns>
+            Devuelve <see cref="T:Inflexion2.Domain.Specification.Specification`1" /> asociado con este criterio.
+            </returns>
     </member>
     <member name="T:Needel.Common.Domain.IAddress">
       <summary>
@@ -102,6 +188,28 @@
       <value>
             .en Value used to get and set BuildingNumber.
             .es Valor que es utilizado para obtener y establecer BuildingNumber.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.IAddress.UserAddress">
+      <summary>
+            .en Public property UserAddress.
+            .es Propiedad pública  UserAddress.
+            </summary>
+      <remarks>
+            .en (SOURCE) This property comes from a relationship Composición y Asociación
+            .es (SOURCE)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener UserAddress.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener UserAddress.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.IAddress.SetUserAddress(Needel.Common.Domain.User)">
+      <summary>
+            .es Método encargado de establecer un nuevo valor para la propiedad UserAddress.
+            </summary>
+      <value>
+            .es Parametro con el que establecemos el nuevo valor de UserAddress.
             </value>
     </member>
     <member name="T:Needel.Common.Domain.IAddressRepository">
@@ -140,13 +248,13 @@
             Please introduce herer how to use this settings or what is his meaning.
             </remarks>
     </member>
-    <member name="F:Needel.Common.Domain.AppSetting.appSettingUsing">
+    <member name="F:Needel.Common.Domain.AppSetting.appSettingType">
       <summary>
-            campo privado que almacena el valor de appSettingUsing.
+            campo privado que almacena el valor de appSettingType.
             </summary>
       <remarks>
-            campo privado proveniente de una relación appSettingUsing.
-            La relación es de tipo Composición y Asociación
+            campo privado proveniente de una relación appSettingType.
+            La relación es de tipo Agregación y Asociación
             </remarks>
     </member>
     <member name="M:Needel.Common.Domain.AppSetting.#ctor">
@@ -159,7 +267,7 @@
             .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
             </remarks>
     </member>
-    <member name="M:Needel.Common.Domain.AppSetting.#ctor(System.String,System.String,Needel.Common.Domain.Data.AppSettingType)">
+    <member name="M:Needel.Common.Domain.AppSetting.#ctor(System.String,System.String)">
       <summary>
             Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Domain.AppSetting" />.
             con un constructor parametrizado con los campos de tipo mandatory.
@@ -207,15 +315,12 @@
             Valor que es utilizado para establecer y obtener Remark.
             </value>
     </member>
-    <member name="P:Needel.Common.Domain.AppSetting.AppSettingUsing">
+    <member name="P:Needel.Common.Domain.AppSetting.AppSettingType">
       <summary>
-            Propiedad pública que permite establecer y obtener AppSettingUsing.
+            Propiedad pública que permite establecer y obtener AppSettingType.
             </summary>
-      <remarks>
-            Nos permite establecer y obtener AppSettingUsing.
-            </remarks>
       <value>
-            Valor que es utilizado para establecer y obtener AppSettingUsing.
+            Valor que es utilizado para establecer y obtener AppSettingType.
             </value>
     </member>
     <member name="M:Needel.Common.Domain.AppSetting.SetRemark(System.String)">
@@ -230,17 +335,29 @@
       <returns>
             Devuelve  una entidad de tipo <see cref="T:Needel.Common.Domain.AppSetting" /></returns>
     </member>
-    <member name="M:Needel.Common.Domain.AppSetting.SetAppSettingUsing(Needel.Common.Domain.Data.AppSettingType)">
+    <member name="M:Needel.Common.Domain.AppSetting.SetAppSettingType(System.Nullable{Needel.Common.Domain.Data.AppSettingType})">
       <summary>
-            .en Set method for the property AppSettingUsing.
-            .es Método encargado de establecer un nuevo valor para la propiedad AppSettingUsing.
+            .en Set method for the property AppSettingType.
+            .es Método encargado de establecer un nuevo valor para la propiedad AppSettingType.
             </summary>
       <param name="appSettingType"> 
-            Parametro con el que establecemos el nuevo valor de <see cref="P:Needel.Common.Domain.AppSetting.AppSettingUsing" />. de la clase <see cref="T:Needel.Common.Domain.AppSetting" /></param>
+            Parametro con el que establecemos el nuevo valor de <see cref="P:Needel.Common.Domain.AppSetting.AppSettingType" />. de la clase <see cref="T:Needel.Common.Domain.AppSetting" /></param>
       <returns>
             .en return value: the own object to allow fluent calls
             .es Devuelve el propio objeto para facilitar las interfaces 'fluent'/&gt;
             </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.AppSetting.Equals(Needel.Common.Domain.IAppSetting)">
+      <summary>
+            IEquatable implementation
+            </summary>
+      <param name="other" />
+      <returns />
+    </member>
+    <member name="M:Needel.Common.Domain.AppSetting.CompareTo(Needel.Common.Domain.IAppSetting)">
+      <summary />
+      <param name="other" />
+      <returns />
     </member>
     <member name="T:Needel.Common.Domain.AppSettingFactory">
       <summary>
@@ -258,7 +375,7 @@
             Devuelve una instancia de dela clase AppSettingFactory /&gt;
             </returns>
     </member>
-    <member name="M:Needel.Common.Domain.AppSettingFactory.Create(System.String,System.String,Needel.Common.Domain.Data.AppSettingType)">
+    <member name="M:Needel.Common.Domain.AppSettingFactory.Create(System.String,System.String)">
       <summary>
             Función para crear una entidad dentro de la factoría a partir 
             de los argumentos especificados.
@@ -285,7 +402,7 @@
             Método que devuelve especificación de aquellos objetos de tipo AppSetting  
             seleccionados por el valor del campo Key.
             </summary>
-      <param name="keyId">
+      <param name="key">
             Parámetro que indica el valor del campo Key.
             </param>
       <returns>
@@ -297,7 +414,7 @@
             Método que devuelve especificación de aquellos objetos de tipo AppSetting  
             seleccionados por el valor del campo Value.
             </summary>
-      <param name="valueId">
+      <param name="value">
             Parámetro que indica el valor del campo Value.
             </param>
       <returns>
@@ -352,18 +469,18 @@
             .es Valor que es utilizado para obtener Remark.
             </value>
     </member>
-    <member name="P:Needel.Common.Domain.IAppSetting.AppSettingUsing">
+    <member name="P:Needel.Common.Domain.IAppSetting.AppSettingType">
       <summary>
-            .en Public property AppSettingUsing.
-            .es Propiedad pública  AppSettingUsing.
+            .en Public property AppSettingType.
+            .es Propiedad pública  AppSettingType.
             </summary>
       <remarks>
-            .en (SOURCE) This property comes from a relationship Composición y Asociación
-            .es (SOURCE)Esta propiedad proviene de una relación de tipo Composición y Asociación
-            Nos permite establecer y obtener AppSettingUsing.
+            .en (SOURCE) This property comes from a relationship Agregación y Asociación
+            .es (SOURCE)Esta propiedad proviene de una relación de tipo Agregación y Asociación
+            Nos permite establecer y obtener AppSettingType.
             </remarks>
       <value>
-            .es Valor que es utilizado para establecer y obtener AppSettingUsing.
+            .es Valor que es utilizado para establecer y obtener AppSettingType.
             </value>
     </member>
     <member name="M:Needel.Common.Domain.IAppSetting.SetRemark(System.String)">
@@ -377,12 +494,12 @@
             .es Parametro con el que establecemos el nuevo valor de Remark.
             </value>
     </member>
-    <member name="M:Needel.Common.Domain.IAppSetting.SetAppSettingUsing(Needel.Common.Domain.Data.AppSettingType)">
+    <member name="M:Needel.Common.Domain.IAppSetting.SetAppSettingType(System.Nullable{Needel.Common.Domain.Data.AppSettingType})">
       <summary>
-            .es Método encargado de establecer un nuevo valor para la propiedad AppSettingUsing.
+            .es Método encargado de establecer un nuevo valor para la propiedad AppSettingType.
             </summary>
       <value>
-            .es Parametro con el que establecemos el nuevo valor de AppSettingUsing.
+            .es Parametro con el que establecemos el nuevo valor de AppSettingType.
             </value>
     </member>
     <member name="T:Needel.Common.Domain.IAppSettingRepository">
@@ -390,6 +507,326 @@
             Interfaz repositorio para persistir y obtener información a partir
             de entidades <see cref="T:Needel.Common.Domain.IAppSetting" />.
             </summary>
+    </member>
+    <member name="T:Needel.Common.Domain.Component">
+      <summary>
+        <see cref="T:Needel.Common.Domain.Component" />
+      </summary>
+    </member>
+    <member name="F:Needel.Common.Domain.Component.parent">
+      <summary>
+            campo privado que almacena el valor de parent.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación parent.
+            La relación es de tipo Agregación y Asociación
+            </remarks>
+    </member>
+    <member name="F:Needel.Common.Domain.Component.children">
+      <summary>
+            Campo privado para almacenar la colección de  children.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación children.
+            La relación es una Asociación  de tipo Agregación 
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.Component.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:Needel.Common.Domain.Component" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:Needel.Common.Domain.Component" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.Component.#ctor(System.String,System.String)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Domain.Component" />.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:Needel.Common.Domain.Component" />.
+            </remarks>
+      <param name="name"> 
+            Parametro <see cref="P:Needel.Common.Domain.Component.Name" /> del constructor de campos mandatory de la clase <see cref="T:Needel.Common.Domain.Component" />
+            Propiedad deducida del rol source de una relación
+            </param>
+      <param name="partNumber"> 
+            Parametro <see cref="P:Needel.Common.Domain.Component.PartNumber" /> del constructor de campos mandatory de la clase <see cref="T:Needel.Common.Domain.Component" />
+            Propiedad deducida del rol source de una relación
+            </param>
+    </member>
+    <member name="P:Needel.Common.Domain.Component.Name">
+      <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+      <remarks>
+            Name of component
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.Component.PartNumber">
+      <summary>
+            Propiedad pública que permite obtener PartNumber.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener PartNumber.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.Component.Description">
+      <summary>
+            Propiedad pública que permite obtener Description.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Description.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.Component.Parent">
+      <summary>
+            Propiedad pública que permite establecer y obtener Parent.
+            </summary>
+      <value>
+            Valor que es utilizado para establecer y obtener Parent.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.Component.Children">
+      <summary>
+            Propiedad pública que provine de una relación (Target) y permite establecer y obtener la coleción de valores Children.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener Children.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener Children.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.Component.SetParent(Needel.Common.Domain.Component)">
+      <summary>
+            .en Set method for the property Parent.
+            .es Método encargado de establecer un nuevo valor para la propiedad Parent.
+            </summary>
+      <param name="component"> 
+            Parametro con el que establecemos el nuevo valor de <see cref="P:Needel.Common.Domain.Component.Parent" />. de la clase <see cref="T:Needel.Common.Domain.Component" /></param>
+      <returns>
+            .en return value: the own object to allow fluent calls
+            .es Devuelve el propio objeto para facilitar las interfaces 'fluent'/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.Component.SetChildren(System.Collections.Generic.List{Needel.Common.Domain.Component})">
+      <summary>
+            Método encargado de establecer la propiedad de Children en la entidad Component.
+            El Component ha de existir previamente.
+            Permite introducir un valor nulo a la colección.
+            </summary>
+      <param name="componentCollection "> 
+            Parametro con el que se proporciona la colección <see cref="T:Needel.Common.Domain.Component" /> a asociar. El valor de este paramentro puede ser null para borrar la relación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.Component" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.Component.AddComponentToChildren(Needel.Common.Domain.Component)">
+      <summary>
+            Método encargado de añadir un elemento a la colección Children en la entidad Component.
+            El Component ha de existir previamente.
+            </summary>
+      <param name="componentCollection "> 
+            Parametro con el que se proporciona la colección Component a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.Component" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.Component.RemoveComponentFromChildren(Needel.Common.Domain.Component)">
+      <summary>
+            Método encargado de eliminar un elemento de la colección Children en la entidad Component.
+            El Component ha de existir previamente.
+            </summary>
+      <param name="componentCollection "> 
+            Identificador a borrar Component a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.Component" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.Component.Equals(Needel.Common.Domain.IComponent)">
+      <summary>
+            IEquatable implementation
+            </summary>
+      <param name="other" />
+      <returns />
+    </member>
+    <member name="M:Needel.Common.Domain.Component.CompareTo(Needel.Common.Domain.IComponent)">
+      <summary />
+      <param name="other" />
+      <returns />
+    </member>
+    <member name="T:Needel.Common.Domain.ComponentFactory">
+      <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:Needel.Common.Domain.Component" />.
+            </summary>
+    </member>
+    <member name="M:Needel.Common.Domain.ComponentFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Domain.ComponentFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:Needel.Common.Domain.ComponentFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase ComponentFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.ComponentFactory.Create(System.String,System.String)">
+      <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Crea una entidad de tipo <see cref="T:Needel.Common.Domain.Component" /></remarks>
+      <param name="name"> 
+            Name of component
+            </param>
+      <param name="partNumber" />
+      <returns>
+            Devuelve  una entidad de tipo <see cref="T:Needel.Common.Domain.ComponentFactory" /></returns>
+    </member>
+    <member name="T:Needel.Common.Domain.ComponentSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:Component" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.ComponentSpecifications.FindAllByName(System.String)">
+      <summary>
+            Método que devuelve especificación de aquellos objetos de tipo Component  
+            seleccionados por el valor del campo Name.
+            </summary>
+      <param name="name">
+            Parámetro que indica el valor del campo Name.
+            </param>
+      <returns>
+            Devuelve <see cref="T:Inflexion2.Domain.Specification.Specification`1" /> asociado con este criterio.
+            </returns>
+    </member>
+    <member name="T:Needel.Common.Domain.IComponent">
+      <summary>
+            .en Interfaz to identify an entidad of type Component in the application.
+            .es Interfaz que identifica una entidad de tipo Component de la aplicación.
+            
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by Component/&gt;.
+            .es Interfaz que representa  una entidad implementado enComponent/&gt;.
+            </remarks>
+    </member>
+    <member name="P:Needel.Common.Domain.IComponent.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks>
+            Name of component
+            </remarks>
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.IComponent.PartNumber">
+      <summary>
+            .en Property to get and set PartNumber.
+            .es Propiedad que permite obtener y establecer PartNumber.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set PartNumber.
+            .es Valor que es utilizado para obtener y establecer PartNumber.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.IComponent.Description">
+      <summary>
+            .en Property to get and set Description.
+            .es Propiedad que permite obtener y establecer Description.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Description.
+            .es Valor que es utilizado para obtener y establecer Description.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.IComponent.Parent">
+      <summary>
+            .en Public property Parent.
+            .es Propiedad pública  Parent.
+            </summary>
+      <remarks>
+            .en (SOURCE) This property comes from a relationship Agregación y Asociación
+            .es (SOURCE)Esta propiedad proviene de una relación de tipo Agregación y Asociación
+            Nos permite establecer y obtener Parent.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener Parent.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.IComponent.Children">
+      <summary>
+            .es Propiedad pública que permite establecer y obtener la colleción de valores Children.
+            </summary>
+      <remarks>
+            .es (TARGET)Esta propiedad proviene de una relación de tipo Agregación y Asociación
+            Nos permite establecer y obtener Children.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener Children.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.IComponent.SetParent(Needel.Common.Domain.Component)">
+      <summary>
+            .es Método encargado de establecer un nuevo valor para la propiedad Parent.
+            </summary>
+      <value>
+            .es Parametro con el que establecemos el nuevo valor de Parent.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.IComponent.AddComponentToChildren(Needel.Common.Domain.Component)">
+      <summary>
+            .es Método encargado de añadir un elemento a la collección Children en la entidad Component.
+            El Component ha de existir previamente.
+            </summary>
+      <value>
+            .es Parametro con el que se proporciona la colección Component a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.IComponent.RemoveComponentFromChildren(Needel.Common.Domain.Component)">
+      <summary>
+            .es Método encargado de eliminar un elemento de la collección Children en la entidad Component.
+            El Component ha de existir previamente.
+            </summary>
+      <value>
+            .es Identificador a borrar Component a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="T:Needel.Common.Domain.IComponentRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:Needel.Common.Domain.IComponent" />.
+            </summary>
+    </member>
+    <member name="M:Needel.Common.Domain.IComponentRepository.GetAllExceptIdAndChildren(System.Int32)">
+      <summary>
+            Get all elements of type Component except those with the id parameter
+            </summary>
+      <param name="id" />
+      <returns />
     </member>
     <member name="T:Needel.Common.Domain.Department">
       <summary>
@@ -433,7 +870,7 @@
             .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
             </remarks>
     </member>
-    <member name="M:Needel.Common.Domain.Department.#ctor(System.String)">
+    <member name="M:Needel.Common.Domain.Department.#ctor(System.String,System.Boolean,System.Nullable{System.DateTime})">
       <summary>
             Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Domain.Department" />.
             con un constructor parametrizado con los campos de tipo mandatory.
@@ -443,6 +880,14 @@
             </remarks>
       <param name="name"> 
             Parametro <see cref="P:Needel.Common.Domain.Department.Name" /> del constructor de campos mandatory de la clase <see cref="T:Needel.Common.Domain.Department" />
+            Propiedad deducida del rol source de una relación
+            </param>
+      <param name="visible"> 
+            Parametro <see cref="P:Needel.Common.Domain.Department.Visible" /> del constructor de campos mandatory de la clase <see cref="T:Needel.Common.Domain.Department" />
+            Propiedad deducida del rol source de una relación
+            </param>
+      <param name="creationTime"> 
+            Parametro <see cref="P:Needel.Common.Domain.Department.CreationTime" /> del constructor de campos mandatory de la clase <see cref="T:Needel.Common.Domain.Department" />
             Propiedad deducida del rol source de una relación
             </param>
     </member>
@@ -508,9 +953,55 @@
             Valor que es utilizado para establecer y obtener Users.
             </value>
     </member>
-    <!-- Badly formed XML comment ignored for member "M:Needel.Common.Domain.Department.SetUsers(System.Collections.Generic.List{Needel.Common.Domain.User})" -->
-    <!-- Badly formed XML comment ignored for member "M:Needel.Common.Domain.Department.AddUserToUsers(Needel.Common.Domain.User)" -->
-    <!-- Badly formed XML comment ignored for member "M:Needel.Common.Domain.Department.RemoveUserFromUsers(Needel.Common.Domain.User)" -->
+    <member name="M:Needel.Common.Domain.Department.SetUsers(System.Collections.Generic.List{Needel.Common.Domain.User})">
+      <summary>
+            Método encargado de establecer la propiedad de Users en la entidad User.
+            El User ha de existir previamente.
+            Permite introducir un valor nulo a la colección.
+            </summary>
+      <param name="userCollection "> 
+            Parametro con el que se proporciona la colección <see cref="T:Needel.Common.Domain.User" /> a asociar. El valor de este paramentro puede ser null para borrar la relación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.Department" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.Department.AddUserToUsers(Needel.Common.Domain.User)">
+      <summary>
+            Método encargado de añadir un elemento a la colección Users en la entidad User.
+            El User ha de existir previamente.
+            </summary>
+      <param name="userCollection "> 
+            Parametro con el que se proporciona la colección User a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.Department" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.Department.RemoveUserFromUsers(Needel.Common.Domain.User)">
+      <summary>
+            Método encargado de eliminar un elemento de la colección Users en la entidad User.
+            El User ha de existir previamente.
+            </summary>
+      <param name="userCollection "> 
+            Identificador a borrar User a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.Department" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.Department.Equals(Needel.Common.Domain.IDepartment)">
+      <summary>
+            IEquatable implementation
+            </summary>
+      <param name="other" />
+      <returns />
+    </member>
+    <member name="M:Needel.Common.Domain.Department.CompareTo(Needel.Common.Domain.IDepartment)">
+      <summary />
+      <param name="other" />
+      <returns />
+    </member>
     <member name="T:Needel.Common.Domain.DepartmentFactory">
       <summary>
             Clase factoría para la creación de  una entidad de tipo <see cref="T:Needel.Common.Domain.Department" />.
@@ -527,7 +1018,7 @@
             Devuelve una instancia de dela clase DepartmentFactory /&gt;
             </returns>
     </member>
-    <member name="M:Needel.Common.Domain.DepartmentFactory.Create(System.String)">
+    <member name="M:Needel.Common.Domain.DepartmentFactory.Create(System.String,System.Boolean,System.Nullable{System.DateTime})">
       <summary>
             Función para crear una entidad dentro de la factoría a partir 
             de los argumentos especificados.
@@ -537,6 +1028,10 @@
       <param name="name"> 
             Name of the department.
             </param>
+      <param name="visible"> 
+            visibility mark
+            </param>
+      <param name="creationTime" />
       <returns>
             Devuelve  una entidad de tipo <see cref="T:Needel.Common.Domain.DepartmentFactory" /></returns>
     </member>
@@ -553,7 +1048,7 @@
             Método que devuelve especificación de aquellos objetos de tipo Department  
             seleccionados por el valor del campo Name.
             </summary>
-      <param name="nameId">
+      <param name="name">
             Parámetro que indica el valor del campo Name.
             </param>
       <returns>
@@ -565,7 +1060,7 @@
             Método que devuelve especificación de aquellos objetos de tipo Department  
             seleccionados por el valor del campo Visible.
             </summary>
-      <param name="visibleId">
+      <param name="visible">
             Parámetro que indica el valor del campo Visible.
             </param>
       <returns>
@@ -680,6 +1175,922 @@
             de entidades <see cref="T:Needel.Common.Domain.IDepartment" />.
             </summary>
     </member>
+    <member name="T:Needel.Common.Domain.EntityM">
+      <summary>
+        <see cref="T:Needel.Common.Domain.EntityM" />
+      </summary>
+    </member>
+    <member name="F:Needel.Common.Domain.EntityM.nZs">
+      <summary>
+            Campo privado para almacenar la colección de  nZs.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación nZs.
+            La relación es una Asociación  de tipo Composición 
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityM.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:Needel.Common.Domain.EntityM" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:Needel.Common.Domain.EntityM" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityM.#ctor(System.String)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Domain.EntityM" />.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:Needel.Common.Domain.EntityM" />.
+            </remarks>
+      <param name="name"> 
+            Parametro <see cref="P:Needel.Common.Domain.EntityM.Name" /> del constructor de campos mandatory de la clase <see cref="T:Needel.Common.Domain.EntityM" />
+            Propiedad deducida del rol source de una relación
+            </param>
+    </member>
+    <member name="P:Needel.Common.Domain.EntityM.Name">
+      <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.EntityM.NZs">
+      <summary>
+            Propiedad pública que provine de una relación (Target) y permite establecer y obtener la coleción de valores NZs.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener NZs.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener NZs.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityM.SetNZs(System.Collections.Generic.List{Needel.Common.Domain.MNZ})">
+      <summary>
+            Método encargado de establecer la propiedad de NZs en la entidad MNZ.
+            El MNZ ha de existir previamente.
+            Permite introducir un valor nulo a la colección.
+            </summary>
+      <param name="mNZCollection "> 
+            Parametro con el que se proporciona la colección <see cref="T:Needel.Common.Domain.MNZ" /> a asociar. El valor de este paramentro puede ser null para borrar la relación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.EntityM" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityM.AddMNZToNZs(Needel.Common.Domain.MNZ)">
+      <summary>
+            Método encargado de añadir un elemento a la colección NZs en la entidad MNZ.
+            El MNZ ha de existir previamente.
+            </summary>
+      <param name="mNZCollection "> 
+            Parametro con el que se proporciona la colección MNZ a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.EntityM" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityM.RemoveMNZFromNZs(Needel.Common.Domain.MNZ)">
+      <summary>
+            Método encargado de eliminar un elemento de la colección NZs en la entidad MNZ.
+            El MNZ ha de existir previamente.
+            </summary>
+      <param name="mNZCollection "> 
+            Identificador a borrar MNZ a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.EntityM" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityM.Equals(Needel.Common.Domain.IEntityM)">
+      <summary>
+            IEquatable implementation
+            </summary>
+      <param name="other" />
+      <returns />
+    </member>
+    <member name="M:Needel.Common.Domain.EntityM.CompareTo(Needel.Common.Domain.IEntityM)">
+      <summary />
+      <param name="other" />
+      <returns />
+    </member>
+    <member name="T:Needel.Common.Domain.EntityMFactory">
+      <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:Needel.Common.Domain.EntityM" />.
+            </summary>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityMFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Domain.EntityMFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:Needel.Common.Domain.EntityMFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase EntityMFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityMFactory.Create(System.String)">
+      <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Crea una entidad de tipo <see cref="T:Needel.Common.Domain.EntityM" /></remarks>
+      <param name="name" />
+      <returns>
+            Devuelve  una entidad de tipo <see cref="T:Needel.Common.Domain.EntityMFactory" /></returns>
+    </member>
+    <member name="T:Needel.Common.Domain.EntityMSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:EntityM" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityMSpecifications.FindAllByName(System.String)">
+      <summary>
+            Método que devuelve especificación de aquellos objetos de tipo EntityM  
+            seleccionados por el valor del campo Name.
+            </summary>
+      <param name="name">
+            Parámetro que indica el valor del campo Name.
+            </param>
+      <returns>
+            Devuelve <see cref="T:Inflexion2.Domain.Specification.Specification`1" /> asociado con este criterio.
+            </returns>
+    </member>
+    <member name="T:Needel.Common.Domain.IEntityM">
+      <summary>
+            .en Interfaz to identify an entidad of type EntityM in the application.
+            .es Interfaz que identifica una entidad de tipo EntityM de la aplicación.
+            
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by EntityM/&gt;.
+            .es Interfaz que representa  una entidad implementado enEntityM/&gt;.
+            </remarks>
+    </member>
+    <member name="P:Needel.Common.Domain.IEntityM.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.IEntityM.NZs">
+      <summary>
+            .es Propiedad pública que permite establecer y obtener la colleción de valores NZs.
+            </summary>
+      <remarks>
+            .es (TARGET)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener NZs.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener NZs.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.IEntityM.AddMNZToNZs(Needel.Common.Domain.MNZ)">
+      <summary>
+            .es Método encargado de añadir un elemento a la collección NZs en la entidad MNZ.
+            El MNZ ha de existir previamente.
+            </summary>
+      <value>
+            .es Parametro con el que se proporciona la colección MNZ a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.IEntityM.RemoveMNZFromNZs(Needel.Common.Domain.MNZ)">
+      <summary>
+            .es Método encargado de eliminar un elemento de la collección NZs en la entidad MNZ.
+            El MNZ ha de existir previamente.
+            </summary>
+      <value>
+            .es Identificador a borrar MNZ a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="T:Needel.Common.Domain.IEntityMRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:Needel.Common.Domain.IEntityM" />.
+            </summary>
+    </member>
+    <member name="T:Needel.Common.Domain.EntityN">
+      <summary>
+        <see cref="T:Needel.Common.Domain.EntityN" />
+      </summary>
+    </member>
+    <member name="F:Needel.Common.Domain.EntityN.mZs">
+      <summary>
+            Campo privado para almacenar la colección de  mZs.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación mZs.
+            La relación es una Asociación  de tipo Composición 
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityN.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:Needel.Common.Domain.EntityN" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:Needel.Common.Domain.EntityN" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityN.#ctor(System.String)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Domain.EntityN" />.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:Needel.Common.Domain.EntityN" />.
+            </remarks>
+      <param name="name"> 
+            Parametro <see cref="P:Needel.Common.Domain.EntityN.Name" /> del constructor de campos mandatory de la clase <see cref="T:Needel.Common.Domain.EntityN" />
+            Propiedad deducida del rol source de una relación
+            </param>
+    </member>
+    <member name="P:Needel.Common.Domain.EntityN.Name">
+      <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.EntityN.MZs">
+      <summary>
+            Propiedad pública que provine de una relación (Target) y permite establecer y obtener la coleción de valores MZs.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener MZs.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener MZs.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityN.SetMZs(System.Collections.Generic.List{Needel.Common.Domain.MNZ})">
+      <summary>
+            Método encargado de establecer la propiedad de MZs en la entidad MNZ.
+            El MNZ ha de existir previamente.
+            Permite introducir un valor nulo a la colección.
+            </summary>
+      <param name="mNZCollection "> 
+            Parametro con el que se proporciona la colección <see cref="T:Needel.Common.Domain.MNZ" /> a asociar. El valor de este paramentro puede ser null para borrar la relación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.EntityN" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityN.AddMNZToMZs(Needel.Common.Domain.MNZ)">
+      <summary>
+            Método encargado de añadir un elemento a la colección MZs en la entidad MNZ.
+            El MNZ ha de existir previamente.
+            </summary>
+      <param name="mNZCollection "> 
+            Parametro con el que se proporciona la colección MNZ a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.EntityN" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityN.RemoveMNZFromMZs(Needel.Common.Domain.MNZ)">
+      <summary>
+            Método encargado de eliminar un elemento de la colección MZs en la entidad MNZ.
+            El MNZ ha de existir previamente.
+            </summary>
+      <param name="mNZCollection "> 
+            Identificador a borrar MNZ a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.EntityN" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityN.Equals(Needel.Common.Domain.IEntityN)">
+      <summary>
+            IEquatable implementation
+            </summary>
+      <param name="other" />
+      <returns />
+    </member>
+    <member name="M:Needel.Common.Domain.EntityN.CompareTo(Needel.Common.Domain.IEntityN)">
+      <summary />
+      <param name="other" />
+      <returns />
+    </member>
+    <member name="T:Needel.Common.Domain.EntityNFactory">
+      <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:Needel.Common.Domain.EntityN" />.
+            </summary>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityNFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Domain.EntityNFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:Needel.Common.Domain.EntityNFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase EntityNFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityNFactory.Create(System.String)">
+      <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Crea una entidad de tipo <see cref="T:Needel.Common.Domain.EntityN" /></remarks>
+      <param name="name" />
+      <returns>
+            Devuelve  una entidad de tipo <see cref="T:Needel.Common.Domain.EntityNFactory" /></returns>
+    </member>
+    <member name="T:Needel.Common.Domain.EntityNSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:EntityN" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityNSpecifications.FindAllByName(System.String)">
+      <summary>
+            Método que devuelve especificación de aquellos objetos de tipo EntityN  
+            seleccionados por el valor del campo Name.
+            </summary>
+      <param name="name">
+            Parámetro que indica el valor del campo Name.
+            </param>
+      <returns>
+            Devuelve <see cref="T:Inflexion2.Domain.Specification.Specification`1" /> asociado con este criterio.
+            </returns>
+    </member>
+    <member name="T:Needel.Common.Domain.IEntityN">
+      <summary>
+            .en Interfaz to identify an entidad of type EntityN in the application.
+            .es Interfaz que identifica una entidad de tipo EntityN de la aplicación.
+            
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by EntityN/&gt;.
+            .es Interfaz que representa  una entidad implementado enEntityN/&gt;.
+            </remarks>
+    </member>
+    <member name="P:Needel.Common.Domain.IEntityN.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.IEntityN.MZs">
+      <summary>
+            .es Propiedad pública que permite establecer y obtener la colleción de valores MZs.
+            </summary>
+      <remarks>
+            .es (TARGET)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener MZs.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener MZs.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.IEntityN.AddMNZToMZs(Needel.Common.Domain.MNZ)">
+      <summary>
+            .es Método encargado de añadir un elemento a la collección MZs en la entidad MNZ.
+            El MNZ ha de existir previamente.
+            </summary>
+      <value>
+            .es Parametro con el que se proporciona la colección MNZ a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.IEntityN.RemoveMNZFromMZs(Needel.Common.Domain.MNZ)">
+      <summary>
+            .es Método encargado de eliminar un elemento de la collección MZs en la entidad MNZ.
+            El MNZ ha de existir previamente.
+            </summary>
+      <value>
+            .es Identificador a borrar MNZ a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="T:Needel.Common.Domain.IEntityNRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:Needel.Common.Domain.IEntityN" />.
+            </summary>
+    </member>
+    <member name="T:Needel.Common.Domain.EntityZ">
+      <summary>
+        <see cref="T:Needel.Common.Domain.EntityZ" />
+      </summary>
+    </member>
+    <member name="F:Needel.Common.Domain.EntityZ.mNs">
+      <summary>
+            Campo privado para almacenar la colección de  mNs.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación mNs.
+            La relación es una Asociación  de tipo Composición 
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityZ.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:Needel.Common.Domain.EntityZ" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:Needel.Common.Domain.EntityZ" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityZ.#ctor(System.String)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Domain.EntityZ" />.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:Needel.Common.Domain.EntityZ" />.
+            </remarks>
+      <param name="name"> 
+            Parametro <see cref="P:Needel.Common.Domain.EntityZ.Name" /> del constructor de campos mandatory de la clase <see cref="T:Needel.Common.Domain.EntityZ" />
+            Propiedad deducida del rol source de una relación
+            </param>
+    </member>
+    <member name="P:Needel.Common.Domain.EntityZ.Name">
+      <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.EntityZ.MNs">
+      <summary>
+            Propiedad pública que provine de una relación (Target) y permite establecer y obtener la coleción de valores MNs.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener MNs.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener MNs.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityZ.SetMNs(System.Collections.Generic.List{Needel.Common.Domain.MNZ})">
+      <summary>
+            Método encargado de establecer la propiedad de MNs en la entidad MNZ.
+            El MNZ ha de existir previamente.
+            Permite introducir un valor nulo a la colección.
+            </summary>
+      <param name="mNZCollection "> 
+            Parametro con el que se proporciona la colección <see cref="T:Needel.Common.Domain.MNZ" /> a asociar. El valor de este paramentro puede ser null para borrar la relación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.EntityZ" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityZ.AddMNZToMNs(Needel.Common.Domain.MNZ)">
+      <summary>
+            Método encargado de añadir un elemento a la colección MNs en la entidad MNZ.
+            El MNZ ha de existir previamente.
+            </summary>
+      <param name="mNZCollection "> 
+            Parametro con el que se proporciona la colección MNZ a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.EntityZ" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityZ.RemoveMNZFromMNs(Needel.Common.Domain.MNZ)">
+      <summary>
+            Método encargado de eliminar un elemento de la colección MNs en la entidad MNZ.
+            El MNZ ha de existir previamente.
+            </summary>
+      <param name="mNZCollection "> 
+            Identificador a borrar MNZ a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.EntityZ" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityZ.Equals(Needel.Common.Domain.IEntityZ)">
+      <summary>
+            IEquatable implementation
+            </summary>
+      <param name="other" />
+      <returns />
+    </member>
+    <member name="M:Needel.Common.Domain.EntityZ.CompareTo(Needel.Common.Domain.IEntityZ)">
+      <summary />
+      <param name="other" />
+      <returns />
+    </member>
+    <member name="T:Needel.Common.Domain.EntityZFactory">
+      <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:Needel.Common.Domain.EntityZ" />.
+            </summary>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityZFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Domain.EntityZFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:Needel.Common.Domain.EntityZFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase EntityZFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityZFactory.Create(System.String)">
+      <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Crea una entidad de tipo <see cref="T:Needel.Common.Domain.EntityZ" /></remarks>
+      <param name="name" />
+      <returns>
+            Devuelve  una entidad de tipo <see cref="T:Needel.Common.Domain.EntityZFactory" /></returns>
+    </member>
+    <member name="T:Needel.Common.Domain.EntityZSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:EntityZ" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.EntityZSpecifications.FindAllByName(System.String)">
+      <summary>
+            Método que devuelve especificación de aquellos objetos de tipo EntityZ  
+            seleccionados por el valor del campo Name.
+            </summary>
+      <param name="name">
+            Parámetro que indica el valor del campo Name.
+            </param>
+      <returns>
+            Devuelve <see cref="T:Inflexion2.Domain.Specification.Specification`1" /> asociado con este criterio.
+            </returns>
+    </member>
+    <member name="T:Needel.Common.Domain.IEntityZ">
+      <summary>
+            .en Interfaz to identify an entidad of type EntityZ in the application.
+            .es Interfaz que identifica una entidad de tipo EntityZ de la aplicación.
+            
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by EntityZ/&gt;.
+            .es Interfaz que representa  una entidad implementado enEntityZ/&gt;.
+            </remarks>
+    </member>
+    <member name="P:Needel.Common.Domain.IEntityZ.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.IEntityZ.MNs">
+      <summary>
+            .es Propiedad pública que permite establecer y obtener la colleción de valores MNs.
+            </summary>
+      <remarks>
+            .es (TARGET)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener MNs.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener MNs.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.IEntityZ.AddMNZToMNs(Needel.Common.Domain.MNZ)">
+      <summary>
+            .es Método encargado de añadir un elemento a la collección MNs en la entidad MNZ.
+            El MNZ ha de existir previamente.
+            </summary>
+      <value>
+            .es Parametro con el que se proporciona la colección MNZ a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.IEntityZ.RemoveMNZFromMNs(Needel.Common.Domain.MNZ)">
+      <summary>
+            .es Método encargado de eliminar un elemento de la collección MNs en la entidad MNZ.
+            El MNZ ha de existir previamente.
+            </summary>
+      <value>
+            .es Identificador a borrar MNZ a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="T:Needel.Common.Domain.IEntityZRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:Needel.Common.Domain.IEntityZ" />.
+            </summary>
+    </member>
+    <member name="T:Needel.Common.Domain.GraphNode">
+      <summary>
+        <see cref="T:Needel.Common.Domain.GraphNode" />
+      </summary>
+    </member>
+    <member name="F:Needel.Common.Domain.GraphNode.leftNodes">
+      <summary>
+            campo privado que almacena el valor de leftNodes.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación leftNodes.
+            La relación es de tipo  y Asociación
+            </remarks>
+    </member>
+    <member name="F:Needel.Common.Domain.GraphNode.rightNodes">
+      <summary>
+            Campo privado para almacenar la colección de  rightNodes.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación rightNodes.
+            La relación es una Asociación  
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.GraphNode.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:Needel.Common.Domain.GraphNode" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:Needel.Common.Domain.GraphNode" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.GraphNode.#ctor(System.String)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Domain.GraphNode" />.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:Needel.Common.Domain.GraphNode" />.
+            </remarks>
+      <param name="name"> 
+            Parametro <see cref="P:Needel.Common.Domain.GraphNode.Name" /> del constructor de campos mandatory de la clase <see cref="T:Needel.Common.Domain.GraphNode" />
+            Propiedad deducida del rol source de una relación
+            </param>
+    </member>
+    <member name="P:Needel.Common.Domain.GraphNode.Name">
+      <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.GraphNode.LeftNodes">
+      <summary>
+            Propiedad pública que permite establecer y obtener LeftNodes.
+            </summary>
+      <value>
+            Valor que es utilizado para establecer y obtener LeftNodes.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.GraphNode.RightNodes">
+      <summary>
+            Propiedad pública que provine de una relación (Target) y permite establecer y obtener la coleción de valores RightNodes.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener RightNodes.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener RightNodes.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.GraphNode.SetLeftNodes(System.Collections.Generic.List{Needel.Common.Domain.GraphNode})">
+      <summary>
+            .en Set method for the property LeftNodes.
+            .es Método encargado de establecer un nuevo valor para la propiedad LeftNodes.
+            </summary>
+      <param name="leftNodes"> 
+            Parametro con el que establecemos el nuevo valor de <see cref="P:Needel.Common.Domain.GraphNode.LeftNodes" />. de la clase <see cref="T:Needel.Common.Domain.GraphNode" /></param>
+      <returns>
+            .en return value: the own object to allow fluent calls
+            .es Devuelve el propio objeto para facilitar las interfaces 'fluent'/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.GraphNode.AddGraphNodeToLeftNodes(Needel.Common.Domain.GraphNode)">
+      <summary>
+            .en add item to M:N
+            </summary>
+      <param name="graphNode" />
+      <returns />
+    </member>
+    <member name="M:Needel.Common.Domain.GraphNode.RemoveGraphNodeFromLeftNodes(Needel.Common.Domain.GraphNode)">
+      <summary>
+            .en remove item from M:N
+            </summary>
+      <param name="graphNode" />
+      <returns />
+    </member>
+    <member name="M:Needel.Common.Domain.GraphNode.SetRightNodes(System.Collections.Generic.List{Needel.Common.Domain.GraphNode})">
+      <summary>
+            Método encargado de establecer la propiedad de RightNodes en la entidad GraphNode.
+            El GraphNode ha de existir previamente.
+            Permite introducir un valor nulo a la colección.
+            </summary>
+      <param name="graphNodeCollection "> 
+            Parametro con el que se proporciona la colección <see cref="T:Needel.Common.Domain.GraphNode" /> a asociar. El valor de este paramentro puede ser null para borrar la relación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.GraphNode" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.GraphNode.AddGraphNodeToRightNodes(Needel.Common.Domain.GraphNode)">
+      <summary>
+            Método encargado de añadir un elemento a la colección RightNodes en la entidad GraphNode.
+            El GraphNode ha de existir previamente.
+            </summary>
+      <param name="graphNodeCollection "> 
+            Parametro con el que se proporciona la colección GraphNode a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.GraphNode" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.GraphNode.RemoveGraphNodeFromRightNodes(Needel.Common.Domain.GraphNode)">
+      <summary>
+            Método encargado de eliminar un elemento de la colección RightNodes en la entidad GraphNode.
+            El GraphNode ha de existir previamente.
+            </summary>
+      <param name="graphNodeCollection "> 
+            Identificador a borrar GraphNode a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.GraphNode" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.GraphNode.Equals(Needel.Common.Domain.IGraphNode)">
+      <summary>
+            IEquatable implementation
+            </summary>
+      <param name="other" />
+      <returns />
+    </member>
+    <member name="M:Needel.Common.Domain.GraphNode.CompareTo(Needel.Common.Domain.IGraphNode)">
+      <summary />
+      <param name="other" />
+      <returns />
+    </member>
+    <member name="T:Needel.Common.Domain.GraphNodeFactory">
+      <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:Needel.Common.Domain.GraphNode" />.
+            </summary>
+    </member>
+    <member name="M:Needel.Common.Domain.GraphNodeFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Domain.GraphNodeFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:Needel.Common.Domain.GraphNodeFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase GraphNodeFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.GraphNodeFactory.Create(System.String)">
+      <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Crea una entidad de tipo <see cref="T:Needel.Common.Domain.GraphNode" /></remarks>
+      <param name="name" />
+      <returns>
+            Devuelve  una entidad de tipo <see cref="T:Needel.Common.Domain.GraphNodeFactory" /></returns>
+    </member>
+    <member name="T:Needel.Common.Domain.GraphNodeSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:GraphNode" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.GraphNodeSpecifications.FindAllByName(System.String)">
+      <summary>
+            Método que devuelve especificación de aquellos objetos de tipo GraphNode  
+            seleccionados por el valor del campo Name.
+            </summary>
+      <param name="name">
+            Parámetro que indica el valor del campo Name.
+            </param>
+      <returns>
+            Devuelve <see cref="T:Inflexion2.Domain.Specification.Specification`1" /> asociado con este criterio.
+            </returns>
+    </member>
+    <member name="T:Needel.Common.Domain.IGraphNode">
+      <summary>
+            .en Interfaz to identify an entidad of type GraphNode in the application.
+            .es Interfaz que identifica una entidad de tipo GraphNode de la aplicación.
+            Example for M:N self relationships  (Graphs)
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by GraphNode/&gt;.
+            .es Interfaz que representa  una entidad implementado enGraphNode/&gt;.
+            </remarks>
+    </member>
+    <member name="P:Needel.Common.Domain.IGraphNode.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.IGraphNode.LeftNodes">
+      <summary>
+            .en Public property LeftNodes.
+            .es Propiedad pública  LeftNodes.
+            </summary>
+      <remarks>
+            .en (SOURCE) This property comes from a relationship  y Asociación
+            .es (SOURCE)Esta propiedad proviene de una relación de tipo  y Asociación
+            Nos permite establecer y obtener LeftNodes.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener LeftNodes.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.IGraphNode.RightNodes">
+      <summary>
+            .es Propiedad pública que permite establecer y obtener la colleción de valores RightNodes.
+            </summary>
+      <remarks>
+            .es (TARGET)Esta propiedad proviene de una relación de tipo  y Asociación
+            Nos permite establecer y obtener RightNodes.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener RightNodes.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.IGraphNode.SetLeftNodes(System.Collections.Generic.List{Needel.Common.Domain.GraphNode})">
+      <summary>
+            .es Método encargado de establecer un nuevo valor para la propiedad LeftNodes.
+            </summary>
+      <value>
+            .es Parametro con el que establecemos el nuevo valor de LeftNodes.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.IGraphNode.AddGraphNodeToRightNodes(Needel.Common.Domain.GraphNode)">
+      <summary>
+            .es Método encargado de añadir un elemento a la collección RightNodes en la entidad GraphNode.
+            El GraphNode ha de existir previamente.
+            </summary>
+      <value>
+            .es Parametro con el que se proporciona la colección GraphNode a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.IGraphNode.RemoveGraphNodeFromRightNodes(Needel.Common.Domain.GraphNode)">
+      <summary>
+            .es Método encargado de eliminar un elemento de la collección RightNodes en la entidad GraphNode.
+            El GraphNode ha de existir previamente.
+            </summary>
+      <value>
+            .es Identificador a borrar GraphNode a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="T:Needel.Common.Domain.IGraphNodeRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:Needel.Common.Domain.IGraphNode" />.
+            </summary>
+    </member>
+    <member name="M:Needel.Common.Domain.IGraphNodeRepository.GetAllExceptIdAndRelated(System.Int32)">
+      <summary>
+            Get all elements of type GraphNode except those with the id parameter
+            </summary>
+      <param name="id" />
+      <returns />
+    </member>
     <member name="T:Needel.Common.Domain.PerLifeTimeManager">
       <summary>
             LifetimeManager implementation
@@ -698,6 +2109,697 @@
     <member name="M:Needel.Common.Domain.PerLifeTimeManager.SetValue(System.Object)">
       <summary />
       <param name="newValue" />
+    </member>
+    <member name="T:Needel.Common.Domain.IMNZ">
+      <summary>
+            .en Interfaz to identify  objeto valor of type MNZ in the application.
+            .es Interfaz que identifica un objeto valor de tipo MNZ de la aplicación.
+            
+            </summary>
+      <remarks>
+            .en Interfaz fora value object implemented by MNZ/&gt;.
+            .es Interfaz que representa un objeto valor implementado enMNZ/&gt;.
+            </remarks>
+    </member>
+    <member name="P:Needel.Common.Domain.IMNZ.EntityM">
+      <summary>
+            .en Public property EntityM.
+            .es Propiedad pública  EntityM.
+            </summary>
+      <remarks>
+            .en (SOURCE) This property comes from a relationship Composición y Asociación
+            .es (SOURCE)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener EntityM.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener EntityM.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.IMNZ.EntityM_Id">
+      <summary>
+            field to help the mapping with the orm this object value
+            </summary>
+    </member>
+    <member name="P:Needel.Common.Domain.IMNZ.EntityN">
+      <summary>
+            .en Public property EntityN.
+            .es Propiedad pública  EntityN.
+            </summary>
+      <remarks>
+            .en (SOURCE) This property comes from a relationship Composición y Asociación
+            .es (SOURCE)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener EntityN.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener EntityN.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.IMNZ.EntityN_Id">
+      <summary>
+            field to help the mapping with the orm this object value
+            </summary>
+    </member>
+    <member name="P:Needel.Common.Domain.IMNZ.EntityZ">
+      <summary>
+            .en Public property EntityZ.
+            .es Propiedad pública  EntityZ.
+            </summary>
+      <remarks>
+            .en (SOURCE) This property comes from a relationship Composición y Asociación
+            .es (SOURCE)Esta propiedad proviene de una relación de tipo Composición y Asociación
+            Nos permite establecer y obtener EntityZ.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener EntityZ.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.IMNZ.EntityZ_Id">
+      <summary>
+            field to help the mapping with the orm this object value
+            </summary>
+    </member>
+    <member name="M:Needel.Common.Domain.IMNZ.SetEntityM(Needel.Common.Domain.EntityM)">
+      <summary>
+            .es Método encargado de establecer un nuevo valor para la propiedad EntityM.
+            </summary>
+      <value>
+            .es Parametro con el que establecemos el nuevo valor de EntityM.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.IMNZ.SetEntityN(Needel.Common.Domain.EntityN)">
+      <summary>
+            .es Método encargado de establecer un nuevo valor para la propiedad EntityN.
+            </summary>
+      <value>
+            .es Parametro con el que establecemos el nuevo valor de EntityN.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.IMNZ.SetEntityZ(Needel.Common.Domain.EntityZ)">
+      <summary>
+            .es Método encargado de establecer un nuevo valor para la propiedad EntityZ.
+            </summary>
+      <value>
+            .es Parametro con el que establecemos el nuevo valor de EntityZ.
+            </value>
+    </member>
+    <member name="T:Needel.Common.Domain.IMNZRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:Needel.Common.Domain.IMNZ" />.
+            </summary>
+    </member>
+    <member name="T:Needel.Common.Domain.MNZ">
+      <summary>
+        <see cref="T:Needel.Common.Domain.MNZ" />
+      </summary>
+    </member>
+    <member name="F:Needel.Common.Domain.MNZ.entityM">
+      <summary>
+            campo privado que almacena el valor de entityM.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación entityM.
+            La relación es de tipo Composición y Asociación
+            </remarks>
+    </member>
+    <member name="F:Needel.Common.Domain.MNZ.entityN">
+      <summary>
+            campo privado que almacena el valor de entityN.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación entityN.
+            La relación es de tipo Composición y Asociación
+            </remarks>
+    </member>
+    <member name="F:Needel.Common.Domain.MNZ.entityZ">
+      <summary>
+            campo privado que almacena el valor de entityZ.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación entityZ.
+            La relación es de tipo Composición y Asociación
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.MNZ.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:Needel.Common.Domain.MNZ" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:Needel.Common.Domain.MNZ" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.MNZ.#ctor(Needel.Common.Domain.EntityM,Needel.Common.Domain.EntityN,Needel.Common.Domain.EntityZ)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Domain.MNZ" />.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:Needel.Common.Domain.MNZ" />.
+            </remarks>
+      <param name="nZs">
+            Parametro <see cref="!:MNZ.NZs" /> del constructor de campos mandatory de la clase <see cref="T:Needel.Common.Domain.MNZ" />
+            Propiedad de unica instancia deducida del source rol source de una relación
+            </param>
+      <param name="mZs">
+            Parametro <see cref="!:MNZ.MZs" /> del constructor de campos mandatory de la clase <see cref="T:Needel.Common.Domain.MNZ" />
+            Propiedad de unica instancia deducida del source rol source de una relación
+            </param>
+      <param name="mNs">
+            Parametro <see cref="!:MNZ.MNs" /> del constructor de campos mandatory de la clase <see cref="T:Needel.Common.Domain.MNZ" />
+            Propiedad de unica instancia deducida del source rol source de una relación
+            </param>
+    </member>
+    <member name="P:Needel.Common.Domain.MNZ.EntityM">
+      <summary>
+            Propiedad pública que permite establecer y obtener EntityM.
+            </summary>
+      <value>
+            Valor que es utilizado para establecer y obtener EntityM.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.MNZ.EntityM_Id">
+      <summary>
+            field to help the mapping with the orm this object value
+            </summary>
+    </member>
+    <member name="P:Needel.Common.Domain.MNZ.EntityN">
+      <summary>
+            Propiedad pública que permite establecer y obtener EntityN.
+            </summary>
+      <value>
+            Valor que es utilizado para establecer y obtener EntityN.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.MNZ.EntityN_Id">
+      <summary>
+            field to help the mapping with the orm this object value
+            </summary>
+    </member>
+    <member name="P:Needel.Common.Domain.MNZ.EntityZ">
+      <summary>
+            Propiedad pública que permite establecer y obtener EntityZ.
+            </summary>
+      <value>
+            Valor que es utilizado para establecer y obtener EntityZ.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.MNZ.EntityZ_Id">
+      <summary>
+            field to help the mapping with the orm this object value
+            </summary>
+    </member>
+    <member name="M:Needel.Common.Domain.MNZ.SetEntityM(Needel.Common.Domain.EntityM)">
+      <summary>
+            .en Set method for the property EntityM.
+            .es Método encargado de establecer un nuevo valor para la propiedad EntityM.
+            </summary>
+      <param name="entityM"> 
+            Parametro con el que establecemos el nuevo valor de <see cref="P:Needel.Common.Domain.MNZ.EntityM" />. de la clase <see cref="T:Needel.Common.Domain.MNZ" /></param>
+      <returns>
+            .en return value: the own object to allow fluent calls
+            .es Devuelve el propio objeto para facilitar las interfaces 'fluent'/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.MNZ.SetEntityN(Needel.Common.Domain.EntityN)">
+      <summary>
+            .en Set method for the property EntityN.
+            .es Método encargado de establecer un nuevo valor para la propiedad EntityN.
+            </summary>
+      <param name="entityN"> 
+            Parametro con el que establecemos el nuevo valor de <see cref="P:Needel.Common.Domain.MNZ.EntityN" />. de la clase <see cref="T:Needel.Common.Domain.MNZ" /></param>
+      <returns>
+            .en return value: the own object to allow fluent calls
+            .es Devuelve el propio objeto para facilitar las interfaces 'fluent'/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.MNZ.SetEntityZ(Needel.Common.Domain.EntityZ)">
+      <summary>
+            .en Set method for the property EntityZ.
+            .es Método encargado de establecer un nuevo valor para la propiedad EntityZ.
+            </summary>
+      <param name="entityZ"> 
+            Parametro con el que establecemos el nuevo valor de <see cref="P:Needel.Common.Domain.MNZ.EntityZ" />. de la clase <see cref="T:Needel.Common.Domain.MNZ" /></param>
+      <returns>
+            .en return value: the own object to allow fluent calls
+            .es Devuelve el propio objeto para facilitar las interfaces 'fluent'/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.MNZ.Equals(Needel.Common.Domain.IMNZ)">
+      <summary>
+            IEquatable implementation
+            </summary>
+      <param name="other" />
+      <returns />
+    </member>
+    <member name="M:Needel.Common.Domain.MNZ.CompareTo(Needel.Common.Domain.MNZ)">
+      <summary />
+      <param name="other" />
+      <returns />
+    </member>
+    <member name="T:Needel.Common.Domain.MNZFactory">
+      <summary>
+            Clase factoría para la creación de un objeto valor. de tipo <see cref="T:Needel.Common.Domain.MNZ" />.
+            </summary>
+    </member>
+    <member name="M:Needel.Common.Domain.MNZFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Domain.MNZFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:Needel.Common.Domain.MNZFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase MNZFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.MNZFactory.Create(Needel.Common.Domain.EntityM,Needel.Common.Domain.EntityN,Needel.Common.Domain.EntityZ)">
+      <summary>
+            Función para crearun objeto valor. dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Creaun objeto valor. de tipo <see cref="T:Needel.Common.Domain.MNZ" /></remarks>
+      <param name="entityM"> 
+            referencia al rol source de la relación.
+            </param>
+      <param name="entityN"> 
+            referencia al rol source de la relación.
+            </param>
+      <param name="entityZ"> 
+            referencia al rol source de la relación.
+            </param>
+      <returns>
+            Devuelve un objeto valor. de tipo <see cref="T:Needel.Common.Domain.MNZFactory" /></returns>
+    </member>
+    <member name="T:Needel.Common.Domain.MNZSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:MNZ" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="T:Needel.Common.Domain.IStudent">
+      <summary>
+            .en Interfaz to identify an entidad of type Student in the application.
+            .es Interfaz que identifica una entidad de tipo Student de la aplicación.
+            Example for M:N relationships
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by Student/&gt;.
+            .es Interfaz que representa  una entidad implementado enStudent/&gt;.
+            </remarks>
+    </member>
+    <member name="P:Needel.Common.Domain.IStudent.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.IStudent.Teachers">
+      <summary>
+            .es Propiedad pública que permite establecer y obtener la colleción de valores Teachers.
+            </summary>
+      <remarks>
+            .es (TARGET)Esta propiedad proviene de una relación de tipo  y Asociación
+            Nos permite establecer y obtener Teachers.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener Teachers.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.IStudent.AddTeacherToTeachers(Needel.Common.Domain.Teacher)">
+      <summary>
+            .es Método encargado de añadir un elemento a la collección Teachers en la entidad Teacher.
+            El Teacher ha de existir previamente.
+            </summary>
+      <value>
+            .es Parametro con el que se proporciona la colección Teacher a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.IStudent.RemoveTeacherFromTeachers(Needel.Common.Domain.Teacher)">
+      <summary>
+            .es Método encargado de eliminar un elemento de la collección Teachers en la entidad Teacher.
+            El Teacher ha de existir previamente.
+            </summary>
+      <value>
+            .es Identificador a borrar Teacher a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </value>
+    </member>
+    <member name="T:Needel.Common.Domain.IStudentRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:Needel.Common.Domain.IStudent" />.
+            </summary>
+    </member>
+    <member name="T:Needel.Common.Domain.Student">
+      <summary>
+        <see cref="T:Needel.Common.Domain.Student" />
+      </summary>
+    </member>
+    <member name="F:Needel.Common.Domain.Student.teachers">
+      <summary>
+            Campo privado para almacenar la colección de  teachers.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación teachers.
+            La relación es una Asociación  
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.Student.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:Needel.Common.Domain.Student" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:Needel.Common.Domain.Student" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.Student.#ctor(System.String)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Domain.Student" />.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:Needel.Common.Domain.Student" />.
+            </remarks>
+      <param name="name"> 
+            Parametro <see cref="P:Needel.Common.Domain.Student.Name" /> del constructor de campos mandatory de la clase <see cref="T:Needel.Common.Domain.Student" />
+            Propiedad deducida del rol source de una relación
+            </param>
+    </member>
+    <member name="P:Needel.Common.Domain.Student.Name">
+      <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.Student.Teachers">
+      <summary>
+            Propiedad pública que provine de una relación (Target) y permite establecer y obtener la coleción de valores Teachers.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener Teachers.
+            </remarks>
+      <value>
+            Valor que es utilizado para establecer y obtener Teachers.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.Student.SetTeachers(System.Collections.Generic.List{Needel.Common.Domain.Teacher})">
+      <summary>
+            Método encargado de establecer la propiedad de Teachers en la entidad Teacher.
+            El Teacher ha de existir previamente.
+            Permite introducir un valor nulo a la colección.
+            </summary>
+      <param name="teacherCollection "> 
+            Parametro con el que se proporciona la colección <see cref="T:Needel.Common.Domain.Teacher" /> a asociar. El valor de este paramentro puede ser null para borrar la relación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.Student" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.Student.AddTeacherToTeachers(Needel.Common.Domain.Teacher)">
+      <summary>
+            Método encargado de añadir un elemento a la colección Teachers en la entidad Teacher.
+            El Teacher ha de existir previamente.
+            </summary>
+      <param name="teacherCollection "> 
+            Parametro con el que se proporciona la colección Teacher a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.Student" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.Student.RemoveTeacherFromTeachers(Needel.Common.Domain.Teacher)">
+      <summary>
+            Método encargado de eliminar un elemento de la colección Teachers en la entidad Teacher.
+            El Teacher ha de existir previamente.
+            </summary>
+      <param name="teacherCollection "> 
+            Identificador a borrar Teacher a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.Student" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.Student.Equals(Needel.Common.Domain.IStudent)">
+      <summary>
+            IEquatable implementation
+            </summary>
+      <param name="other" />
+      <returns />
+    </member>
+    <member name="M:Needel.Common.Domain.Student.CompareTo(Needel.Common.Domain.IStudent)">
+      <summary />
+      <param name="other" />
+      <returns />
+    </member>
+    <member name="T:Needel.Common.Domain.StudentFactory">
+      <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:Needel.Common.Domain.Student" />.
+            </summary>
+    </member>
+    <member name="M:Needel.Common.Domain.StudentFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Domain.StudentFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:Needel.Common.Domain.StudentFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase StudentFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.StudentFactory.Create(System.String)">
+      <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Crea una entidad de tipo <see cref="T:Needel.Common.Domain.Student" /></remarks>
+      <param name="name" />
+      <returns>
+            Devuelve  una entidad de tipo <see cref="T:Needel.Common.Domain.StudentFactory" /></returns>
+    </member>
+    <member name="T:Needel.Common.Domain.StudentSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:Student" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.StudentSpecifications.FindAllByName(System.String)">
+      <summary>
+            Método que devuelve especificación de aquellos objetos de tipo Student  
+            seleccionados por el valor del campo Name.
+            </summary>
+      <param name="name">
+            Parámetro que indica el valor del campo Name.
+            </param>
+      <returns>
+            Devuelve <see cref="T:Inflexion2.Domain.Specification.Specification`1" /> asociado con este criterio.
+            </returns>
+    </member>
+    <member name="T:Needel.Common.Domain.ITeacher">
+      <summary>
+            .en Interfaz to identify an entidad of type Teacher in the application.
+            .es Interfaz que identifica una entidad de tipo Teacher de la aplicación.
+            Example for M:N relationships
+            </summary>
+      <remarks>
+            .en Interfaz for an Entity implemented by Teacher/&gt;.
+            .es Interfaz que representa  una entidad implementado enTeacher/&gt;.
+            </remarks>
+    </member>
+    <member name="P:Needel.Common.Domain.ITeacher.Name">
+      <summary>
+            .en Property to get and set Name.
+            .es Propiedad que permite obtener y establecer Name.
+            </summary>
+      <remarks />
+      <value>
+            .en Value used to get and set Name.
+            .es Valor que es utilizado para obtener y establecer Name.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.ITeacher.Students">
+      <summary>
+            .en Public property Students.
+            .es Propiedad pública  Students.
+            </summary>
+      <remarks>
+            .en (SOURCE) This property comes from a relationship  y Asociación
+            .es (SOURCE)Esta propiedad proviene de una relación de tipo  y Asociación
+            Nos permite establecer y obtener Students.
+            </remarks>
+      <value>
+            .es Valor que es utilizado para establecer y obtener Students.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.ITeacher.SetStudents(System.Collections.Generic.List{Needel.Common.Domain.Student})">
+      <summary>
+            .es Método encargado de establecer un nuevo valor para la propiedad Students.
+            </summary>
+      <value>
+            .es Parametro con el que establecemos el nuevo valor de Students.
+            </value>
+    </member>
+    <member name="T:Needel.Common.Domain.ITeacherRepository">
+      <summary>
+            Interfaz repositorio para persistir y obtener información a partir
+            de entidades <see cref="T:Needel.Common.Domain.ITeacher" />.
+            </summary>
+    </member>
+    <member name="T:Needel.Common.Domain.Teacher">
+      <summary>
+        <see cref="T:Needel.Common.Domain.Teacher" />
+      </summary>
+    </member>
+    <member name="F:Needel.Common.Domain.Teacher.students">
+      <summary>
+            campo privado que almacena el valor de students.
+            </summary>
+      <remarks>
+            campo privado proveniente de una relación students.
+            La relación es de tipo  y Asociación
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.Teacher.#ctor">
+      <summary>
+            .en Empty Constructor for the class <see cref="T:Needel.Common.Domain.Teacher" /> it is required by nHibernate and EntityFramework.
+            .es Constructor vacio de la clase <see cref="T:Needel.Common.Domain.Teacher" /> exigido por nHibernate o EntityFramework.
+            </summary>
+      <remarks>
+            .en by convention the empty constructor initialize the default values and make the news for the collections.
+            .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.Teacher.#ctor(System.String)">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Domain.Teacher" />.
+            con un constructor parametrizado con los campos de tipo mandatory.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:Needel.Common.Domain.Teacher" />.
+            </remarks>
+      <param name="name"> 
+            Parametro <see cref="P:Needel.Common.Domain.Teacher.Name" /> del constructor de campos mandatory de la clase <see cref="T:Needel.Common.Domain.Teacher" />
+            Propiedad deducida del rol source de una relación
+            </param>
+    </member>
+    <member name="P:Needel.Common.Domain.Teacher.Name">
+      <summary>
+            Propiedad pública que permite obtener Name.
+            </summary>
+      <remarks />
+      <value>
+            Valor que es utilizado para establecer y obtener Name.
+            </value>
+    </member>
+    <member name="P:Needel.Common.Domain.Teacher.Students">
+      <summary>
+            Propiedad pública que permite establecer y obtener Students.
+            </summary>
+      <value>
+            Valor que es utilizado para establecer y obtener Students.
+            </value>
+    </member>
+    <member name="M:Needel.Common.Domain.Teacher.SetStudents(System.Collections.Generic.List{Needel.Common.Domain.Student})">
+      <summary>
+            .en Set method for the property Students.
+            .es Método encargado de establecer un nuevo valor para la propiedad Students.
+            </summary>
+      <param name="students"> 
+            Parametro con el que establecemos el nuevo valor de <see cref="P:Needel.Common.Domain.Teacher.Students" />. de la clase <see cref="T:Needel.Common.Domain.Teacher" /></param>
+      <returns>
+            .en return value: the own object to allow fluent calls
+            .es Devuelve el propio objeto para facilitar las interfaces 'fluent'/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.Teacher.AddStudentToStudents(Needel.Common.Domain.Student)">
+      <summary>
+            .en add item to M:N
+            </summary>
+      <param name="student" />
+      <returns />
+    </member>
+    <member name="M:Needel.Common.Domain.Teacher.RemoveStudentFromStudents(Needel.Common.Domain.Student)">
+      <summary>
+            .en remove item from M:N
+            </summary>
+      <param name="student" />
+      <returns />
+    </member>
+    <member name="M:Needel.Common.Domain.Teacher.Equals(Needel.Common.Domain.ITeacher)">
+      <summary>
+            IEquatable implementation
+            </summary>
+      <param name="other" />
+      <returns />
+    </member>
+    <member name="M:Needel.Common.Domain.Teacher.CompareTo(Needel.Common.Domain.ITeacher)">
+      <summary />
+      <param name="other" />
+      <returns />
+    </member>
+    <member name="T:Needel.Common.Domain.TeacherFactory">
+      <summary>
+            Clase factoría para la creación de  una entidad de tipo <see cref="T:Needel.Common.Domain.Teacher" />.
+            </summary>
+    </member>
+    <member name="M:Needel.Common.Domain.TeacherFactory.#cctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Domain.TeacherFactory" />.
+            </summary>
+      <remarks>
+            Constructor vacío de la clase <see cref="T:Needel.Common.Domain.TeacherFactory" />.
+            </remarks>
+      <returns>
+            Devuelve una instancia de dela clase TeacherFactory /&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.TeacherFactory.Create(System.String)">
+      <summary>
+            Función para crear una entidad dentro de la factoría a partir 
+            de los argumentos especificados.
+            </summary>
+      <remarks>
+            Crea una entidad de tipo <see cref="T:Needel.Common.Domain.Teacher" /></remarks>
+      <param name="name" />
+      <returns>
+            Devuelve  una entidad de tipo <see cref="T:Needel.Common.Domain.TeacherFactory" /></returns>
+    </member>
+    <member name="T:Needel.Common.Domain.TeacherSpecifications">
+      <summary>
+            Clase que representa las especificaciones para la entidad <see cref="T:Teacher" />.
+            </summary>
+      <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Domain.TeacherSpecifications.FindAllByName(System.String)">
+      <summary>
+            Método que devuelve especificación de aquellos objetos de tipo Teacher  
+            seleccionados por el valor del campo Name.
+            </summary>
+      <param name="name">
+            Parámetro que indica el valor del campo Name.
+            </param>
+      <returns>
+            Devuelve <see cref="T:Inflexion2.Domain.Specification.Specification`1" /> asociado con este criterio.
+            </returns>
     </member>
     <member name="T:Needel.Common.Domain.IUser">
       <summary>
@@ -723,18 +2825,18 @@
             .es Valor que es utilizado para obtener y establecer Name.
             </value>
     </member>
-    <member name="P:Needel.Common.Domain.IUser.Department">
+    <member name="P:Needel.Common.Domain.IUser.UserDepartment">
       <summary>
-            .en Public property Department.
-            .es Propiedad pública  Department.
+            .en Public property UserDepartment.
+            .es Propiedad pública  UserDepartment.
             </summary>
       <remarks>
             .en (SOURCE) This property comes from a relationship Agregación y Asociación
             .es (SOURCE)Esta propiedad proviene de una relación de tipo Agregación y Asociación
-            Nos permite establecer y obtener Department.
+            Nos permite establecer y obtener UserDepartment.
             </remarks>
       <value>
-            .es Valor que es utilizado para establecer y obtener Department.
+            .es Valor que es utilizado para establecer y obtener UserDepartment.
             </value>
     </member>
     <member name="P:Needel.Common.Domain.IUser.Addresses">
@@ -749,12 +2851,12 @@
             .es Valor que es utilizado para establecer y obtener Addresses.
             </value>
     </member>
-    <member name="M:Needel.Common.Domain.IUser.SetDepartment(Needel.Common.Domain.Department)">
+    <member name="M:Needel.Common.Domain.IUser.SetUserDepartment(Needel.Common.Domain.Department)">
       <summary>
-            .es Método encargado de establecer un nuevo valor para la propiedad Department.
+            .es Método encargado de establecer un nuevo valor para la propiedad UserDepartment.
             </summary>
       <value>
-            .es Parametro con el que establecemos el nuevo valor de Department.
+            .es Parametro con el que establecemos el nuevo valor de UserDepartment.
             </value>
     </member>
     <member name="M:Needel.Common.Domain.IUser.AddAddressToAddresses(Needel.Common.Domain.Address)">
@@ -795,12 +2897,12 @@
             Please explain here what is the meanig of this field.
             </remarks>
     </member>
-    <member name="F:Needel.Common.Domain.User.department">
+    <member name="F:Needel.Common.Domain.User.userDepartment">
       <summary>
-            campo privado que almacena el valor de department.
+            campo privado que almacena el valor de userDepartment.
             </summary>
       <remarks>
-            campo privado proveniente de una relación department.
+            campo privado proveniente de una relación userDepartment.
             La relación es de tipo Agregación y Asociación
             </remarks>
     </member>
@@ -823,7 +2925,7 @@
             .es por convenicón el constructor vacio inizializa los valores por defecto y hace los news de las colecciones.
             </remarks>
     </member>
-    <member name="M:Needel.Common.Domain.User.#ctor(System.String)">
+    <member name="M:Needel.Common.Domain.User.#ctor(System.String,Needel.Common.Domain.Department,System.Collections.Generic.List{Needel.Common.Domain.Address})">
       <summary>
             Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Domain.User" />.
             con un constructor parametrizado con los campos de tipo mandatory.
@@ -834,6 +2936,14 @@
       <param name="name"> 
             Parametro <see cref="P:Needel.Common.Domain.User.Name" /> del constructor de campos mandatory de la clase <see cref="T:Needel.Common.Domain.User" />
             Propiedad deducida del rol source de una relación
+            </param>
+      <param name="users">
+            Parametro <see cref="!:User.Users" /> del constructor de campos mandatory de la clase <see cref="T:Needel.Common.Domain.User" />
+            Propiedad de unica instancia deducida del source rol source de una relación
+            </param>
+      <param name="userAddress">
+            Parametro <see cref="!:User.UserAddress" /> del constructor de campos mandatory de la clase <see cref="T:Needel.Common.Domain.User" />
+            Propiedad  de colección (Target) deducida del target rol source de una relación
             </param>
     </member>
     <member name="P:Needel.Common.Domain.User.Name">
@@ -847,15 +2957,12 @@
             Valor que es utilizado para establecer y obtener Name.
             </value>
     </member>
-    <member name="P:Needel.Common.Domain.User.Department">
+    <member name="P:Needel.Common.Domain.User.UserDepartment">
       <summary>
-            Propiedad pública que permite establecer y obtener Department.
+            Propiedad pública que permite establecer y obtener UserDepartment.
             </summary>
-      <remarks>
-            Nos permite establecer y obtener Department.
-            </remarks>
       <value>
-            Valor que es utilizado para establecer y obtener Department.
+            Valor que es utilizado para establecer y obtener UserDepartment.
             </value>
     </member>
     <member name="P:Needel.Common.Domain.User.Addresses">
@@ -869,21 +2976,67 @@
             Valor que es utilizado para establecer y obtener Addresses.
             </value>
     </member>
-    <member name="M:Needel.Common.Domain.User.SetDepartment(Needel.Common.Domain.Department)">
+    <member name="M:Needel.Common.Domain.User.SetUserDepartment(Needel.Common.Domain.Department)">
       <summary>
-            .en Set method for the property Department.
-            .es Método encargado de establecer un nuevo valor para la propiedad Department.
+            .en Set method for the property UserDepartment.
+            .es Método encargado de establecer un nuevo valor para la propiedad UserDepartment.
             </summary>
       <param name="department"> 
-            Parametro con el que establecemos el nuevo valor de <see cref="P:Needel.Common.Domain.User.Department" />. de la clase <see cref="T:Needel.Common.Domain.User" /></param>
+            Parametro con el que establecemos el nuevo valor de <see cref="P:Needel.Common.Domain.User.UserDepartment" />. de la clase <see cref="T:Needel.Common.Domain.User" /></param>
       <returns>
             .en return value: the own object to allow fluent calls
             .es Devuelve el propio objeto para facilitar las interfaces 'fluent'/&gt;
             </returns>
     </member>
-    <!-- Badly formed XML comment ignored for member "M:Needel.Common.Domain.User.SetAddresses(System.Collections.Generic.List{Needel.Common.Domain.Address})" -->
-    <!-- Badly formed XML comment ignored for member "M:Needel.Common.Domain.User.AddAddressToAddresses(Needel.Common.Domain.Address)" -->
-    <!-- Badly formed XML comment ignored for member "M:Needel.Common.Domain.User.RemoveAddressFromAddresses(Needel.Common.Domain.Address)" -->
+    <member name="M:Needel.Common.Domain.User.SetAddresses(System.Collections.Generic.List{Needel.Common.Domain.Address})">
+      <summary>
+            Método encargado de establecer la propiedad de Addresses en la entidad Address.
+            El Address ha de existir previamente.
+            Permite introducir un valor nulo a la colección.
+            </summary>
+      <param name="addressCollection "> 
+            Parametro con el que se proporciona la colección <see cref="T:Needel.Common.Domain.Address" /> a asociar. El valor de este paramentro puede ser null para borrar la relación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.User" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.User.AddAddressToAddresses(Needel.Common.Domain.Address)">
+      <summary>
+            Método encargado de añadir un elemento a la colección Addresses en la entidad Address.
+            El Address ha de existir previamente.
+            </summary>
+      <param name="addressCollection "> 
+            Parametro con el que se proporciona la colección Address a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.User" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.User.RemoveAddressFromAddresses(Needel.Common.Domain.Address)">
+      <summary>
+            Método encargado de eliminar un elemento de la colección Addresses en la entidad Address.
+            El Address ha de existir previamente.
+            </summary>
+      <param name="addressCollection "> 
+            Identificador a borrar Address a asociar. El valor de este paramentro puede ser null para borrar la relación si es de agregación o asociación.
+            </param>
+      <returns>
+            Devuelve 'this' ( la propia entidad) de tipo <see cref="T:Needel.Common.Domain.User" /> para permitir fluent Interfaces/&gt;
+            </returns>
+    </member>
+    <member name="M:Needel.Common.Domain.User.Equals(Needel.Common.Domain.IUser)">
+      <summary>
+            IEquatable implementation
+            </summary>
+      <param name="other" />
+      <returns />
+    </member>
+    <member name="M:Needel.Common.Domain.User.CompareTo(Needel.Common.Domain.IUser)">
+      <summary />
+      <param name="other" />
+      <returns />
+    </member>
     <member name="T:Needel.Common.Domain.UserFactory">
       <summary>
             Clase factoría para la creación de  una entidad de tipo <see cref="T:Needel.Common.Domain.User" />.
@@ -900,7 +3053,7 @@
             Devuelve una instancia de dela clase UserFactory /&gt;
             </returns>
     </member>
-    <member name="M:Needel.Common.Domain.UserFactory.Create(System.String)">
+    <member name="M:Needel.Common.Domain.UserFactory.Create(System.String,Needel.Common.Domain.Department,System.Collections.Generic.List{Needel.Common.Domain.Address})">
       <summary>
             Función para crear una entidad dentro de la factoría a partir 
             de los argumentos especificados.
@@ -909,6 +3062,9 @@
             Crea una entidad de tipo <see cref="T:Needel.Common.Domain.User" /></remarks>
       <param name="name"> 
             Field to explain the meaning of this key
+            </param>
+      <param name="userDepartment"> 
+            referencia al rol source de la relación.
             </param>
       <param name="addresses"> 
             referencia al rol target de la relación.
@@ -929,7 +3085,7 @@
             Método que devuelve especificación de aquellos objetos de tipo User  
             seleccionados por el valor del campo Name.
             </summary>
-      <param name="nameId">
+      <param name="name">
             Parámetro que indica el valor del campo Name.
             </param>
       <returns>

@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MNZService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Needel.Common.Application.Dtos" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Inflexion2.Application" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Inflexion2.Domain" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IMNZService_Create_InputMessage">
+    <wsdl:part name="parameters" element="tns:Create" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_Create_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_Create_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_Create_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_Create_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_Delete_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_Delete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_Delete_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_Delete_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_Delete_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetAll_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetAll_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetAll_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetPaged_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaged" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetPaged_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPagedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetPaged_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetPaged_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetPaged_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_DeleteAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAll" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_DeleteAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_DeleteAll_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_DeleteAll_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_DeleteAll_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetAllExceptThis_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllExceptThis" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetAllExceptThis_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllExceptThisResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetAllExceptThis_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetAllExceptThis_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetAllExceptThis_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetAllExceptThese_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllExceptThese" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetAllExceptThese_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllExceptTheseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetAllExceptThese_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetAllExceptThese_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetAllExceptThese_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetFiltered_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFiltered" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetFiltered_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilteredResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetFiltered_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetFiltered_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IMNZService_GetFiltered_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:portType name="IMNZService">
+    <wsdl:operation name="Create">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMNZService/Create" message="tns:IMNZService_Create_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMNZService/CreateResponse" message="tns:IMNZService_Create_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/CreateFaultObjectFault" name="FaultObjectFault" message="tns:IMNZService_Create_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/CreateValidationExceptionFault" name="ValidationExceptionFault" message="tns:IMNZService_Create_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/CreateInternalExceptionFault" name="InternalExceptionFault" message="tns:IMNZService_Create_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMNZService/Delete" message="tns:IMNZService_Delete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMNZService/DeleteResponse" message="tns:IMNZService_Delete_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/DeleteFaultObjectFault" name="FaultObjectFault" message="tns:IMNZService_Delete_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/DeleteValidationExceptionFault" name="ValidationExceptionFault" message="tns:IMNZService_Delete_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/DeleteInternalExceptionFault" name="InternalExceptionFault" message="tns:IMNZService_Delete_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMNZService/GetAll" message="tns:IMNZService_GetAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMNZService/GetAllResponse" message="tns:IMNZService_GetAll_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/GetAllFaultObjectFault" name="FaultObjectFault" message="tns:IMNZService_GetAll_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/GetAllValidationExceptionFault" name="ValidationExceptionFault" message="tns:IMNZService_GetAll_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/GetAllInternalExceptionFault" name="InternalExceptionFault" message="tns:IMNZService_GetAll_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaged">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMNZService/GetPaged" message="tns:IMNZService_GetPaged_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMNZService/GetPagedResponse" message="tns:IMNZService_GetPaged_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/GetPagedFaultObjectFault" name="FaultObjectFault" message="tns:IMNZService_GetPaged_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/GetPagedValidationExceptionFault" name="ValidationExceptionFault" message="tns:IMNZService_GetPaged_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/GetPagedInternalExceptionFault" name="InternalExceptionFault" message="tns:IMNZService_GetPaged_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMNZService/DeleteAll" message="tns:IMNZService_DeleteAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMNZService/DeleteAllResponse" message="tns:IMNZService_DeleteAll_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/DeleteAllFaultObjectFault" name="FaultObjectFault" message="tns:IMNZService_DeleteAll_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/DeleteAllValidationExceptionFault" name="ValidationExceptionFault" message="tns:IMNZService_DeleteAll_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/DeleteAllInternalExceptionFault" name="InternalExceptionFault" message="tns:IMNZService_DeleteAll_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllExceptThis">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMNZService/GetAllExceptThis" message="tns:IMNZService_GetAllExceptThis_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMNZService/GetAllExceptThisResponse" message="tns:IMNZService_GetAllExceptThis_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/GetAllExceptThisFaultObjectFault" name="FaultObjectFault" message="tns:IMNZService_GetAllExceptThis_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/GetAllExceptThisValidationExceptionFault" name="ValidationExceptionFault" message="tns:IMNZService_GetAllExceptThis_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/GetAllExceptThisInternalExceptionFault" name="InternalExceptionFault" message="tns:IMNZService_GetAllExceptThis_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllExceptThese">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMNZService/GetAllExceptThese" message="tns:IMNZService_GetAllExceptThese_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMNZService/GetAllExceptTheseResponse" message="tns:IMNZService_GetAllExceptThese_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/GetAllExceptTheseFaultObjectFault" name="FaultObjectFault" message="tns:IMNZService_GetAllExceptThese_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/GetAllExceptTheseValidationExceptionFault" name="ValidationExceptionFault" message="tns:IMNZService_GetAllExceptThese_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/GetAllExceptTheseInternalExceptionFault" name="InternalExceptionFault" message="tns:IMNZService_GetAllExceptThese_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFiltered">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMNZService/GetFiltered" message="tns:IMNZService_GetFiltered_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMNZService/GetFilteredResponse" message="tns:IMNZService_GetFiltered_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/GetFilteredFaultObjectFault" name="FaultObjectFault" message="tns:IMNZService_GetFiltered_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/GetFilteredValidationExceptionFault" name="ValidationExceptionFault" message="tns:IMNZService_GetFiltered_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMNZService/GetFilteredInternalExceptionFault" name="InternalExceptionFault" message="tns:IMNZService_GetFiltered_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IMNZService" type="tns:IMNZService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Create">
+      <soap:operation soapAction="http://tempuri.org/IMNZService/Create" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://tempuri.org/IMNZService/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAll">
+      <soap:operation soapAction="http://tempuri.org/IMNZService/GetAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaged">
+      <soap:operation soapAction="http://tempuri.org/IMNZService/GetPaged" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAll">
+      <soap:operation soapAction="http://tempuri.org/IMNZService/DeleteAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllExceptThis">
+      <soap:operation soapAction="http://tempuri.org/IMNZService/GetAllExceptThis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllExceptThese">
+      <soap:operation soapAction="http://tempuri.org/IMNZService/GetAllExceptThese" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFiltered">
+      <soap:operation soapAction="http://tempuri.org/IMNZService/GetFiltered" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MNZService">
+    <wsdl:port name="BasicHttpBinding_IMNZService" binding="tns:BasicHttpBinding_IMNZService">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/Needel.Common.Application.WcfService/MNZService/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

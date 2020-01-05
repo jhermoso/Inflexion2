@@ -1,1006 +1,2646 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <doc>
-  <assembly>
-    <name>Needel.Common.Application</name>
-  </assembly>
-  <members>
-    <member name="T:Needel.Common.Application.AddressMapper">
-      <summary>
-            .en mapping class from entity to dto <see cref="T:Needel.Common.Application.AddressMapper" />
-            .es Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.AddressMapper" />.
+    <assembly>
+        <name>Needel.Common.Application</name>
+    </assembly>
+    <members>
+        <member name="T:Needel.Common.Application.AddressMapper">
+            <summary>
+            .en mapping class from Entity to dto <see cref="T:Needel.Common.Application.AddressMapper"/>
+            .es Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.AddressMapper"/>.
             </summary>
-    </member>
-    <member name="M:Needel.Common.Application.AddressMapper.#ctor">
-      <summary>
-            .en Get an instance of <see cref="T:Needel.Common.Application.AddressMapper" />
-            .es Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.AddressMapper" />.
+        </member>
+        <member name="M:Needel.Common.Application.AddressMapper.#ctor">
+            <summary>
+            .en Get an instance of <see cref="T:Needel.Common.Application.AddressMapper"/>
+            .es Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.AddressMapper"/>.
             </summary>
-    </member>
-    <member name="M:Needel.Common.Application.AddressMapper.EntityMapping(Needel.Common.Domain.IAddress)">
-      <summary>
-            .en public function mapping from entity to dto
-            .es Función pública que mapea las entidades para devolver el
-            correspondiente Dto.
+        </member>
+        <member name="P:Needel.Common.Application.AddressMapper.UserDtoMapper">
+            <summary>
+            Mapper for Parent
             </summary>
-      <param name="entityAddress">
-            .es Objeto de la entidad <see cref="T:Needel.Common.Domain.Address" />.
+        </member>
+        <member name="M:Needel.Common.Application.AddressMapper.EntityMapping(Needel.Common.Domain.Address)">
+            <summary>
+            Default constructor parameters
+            </summary>
+            <param name="entityAddress"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.AddressMapper.EntityMapping(Needel.Common.Domain.Address,System.Boolean,System.Boolean)">
+            <summary>
+            .en public function mapping from Entity to dto
+            </summary>
+            <param name="entityAddress">
             </param>
-      <exception cref="T:System.ArgumentNullException">
-            .en exception when there is a null value in the parameter.
-            .es Lanzada cuando el valor de <c>entityAddress</c> es null.
-            </exception>
-      <returns>
-            .en returns an object of type <see cref="T:Needel.Common.Application.Dtos.AddressDto" />
-            .es Devuelve un objeto de tipo <see cref="T:Needel.Common.Application.Dtos.AddressDto" /> 
-            con los datos mapeados.
+            <param name="mapParents">
+            .en option to map parent objects
+            </param>
+            <param name="mapChildren">
+            .en option to map children objects
+            </param>
+            <returns>
+            .en returns an DTO of type <see cref="T:Needel.Common.Application.Dtos.AddressDto"/>
             </returns>
-    </member>
-    <member name="T:Needel.Common.Application.AddressServices">
-      <summary>
+        </member>
+        <member name="T:Needel.Common.Application.AddressServices">
+            <summary>
             .en generated with ServiceHeaderClass.tt
             Administration services of the entity Address.
             .es geenrado con la plantilla ServiceHeaderClass.tt
             Representa los servicios de administración de la entidad Address.
             </summary>
-      <remarks>
-            .en Create an object of type <see cref="T:Needel.Common.Domain.Address" />.
-            .es Crea un objeto <see cref="T:Needel.Common.Domain.Address" />.
+            <remarks>
+            .en Create an object of type <see cref="T:Needel.Common.Domain.Address"/>.
+            .es Crea un objeto <see cref="T:Needel.Common.Domain.Address"/>.
              permanent guid = 
             </remarks>
-    </member>
-    <member name="F:Needel.Common.Application.AddressServices.addressMapper">
-      <summary>
-            Referencia al mapeador de la entidad Address.
+        </member>
+        <member name="F:Needel.Common.Application.AddressServices.userMapper">
+            <summary>
+            .en Reference to the mapper of entity user
+            .es Referencia a la factoría de repositorios de la entidad user.
             </summary>
-    </member>
-    <member name="M:Needel.Common.Application.AddressServices.#ctor">
-      <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:Address&gt;Service" />.
+        </member>
+        <member name="M:Needel.Common.Application.AddressServices.#ctor">
+            <summary>
+            .es Inicializa una nueva instancia de la clase <see cref="T:Address>Service"/>.
             </summary>
-      <remarks>
-            Constructor de la clase <see cref="T:AddressServices" />.
+            <remarks>
+            .es Constructor de la clase <see cref="T:AddressServices"/>.
             </remarks>
-    </member>
-    <member name="P:Needel.Common.Application.AddressServices.AddressMapper">
-      <summary>
-            Obtiene la referencia al mapeador de la entidad <see cref="T:IAddress" />.
-            </summary>
-    </member>
-    <member name="M:Needel.Common.Application.AddressServices.Create(Needel.Common.Application.Dtos.AddressDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.AddressServices.Create(Needel.Common.Application.Dtos.AddressDto)">
+            <summary>
             Crea una entidad Address.
             </summary>
-      <param name="addressDto">
+            <param name="addressDto">
             DTO que contiene la información para crear la entidad.
             </param>
-      <returns>
+            <returns>
             El identificador de la entidad creada.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.AddressServices.Delete(System.Int32)">
-      <summary>
-            Elimina una determinada entidad Address.
+        </member>
+        <member name="M:Needel.Common.Application.AddressServices.Delete(System.Int32)">
+            <summary>
+            .es Elimina una determinada entidad Address.
             </summary>
-      <param name="id">
+            <param name="id">
             Identificador de la entidad que se va a eliminar.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.AddressServices.GetAll">
-      <summary>
-            Recupera todas las entidades Address.
+        </member>
+        <member name="M:Needel.Common.Application.AddressServices.Delete(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            .es Elimina las entidades Address seleccionadas por los ids del parametro.
             </summary>
-      <returns>
+            <param name="addressIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.AddressServices.Delete(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.AddressServices.DeleteAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.AddressServices.GetAll">
+            <summary>
+            .es Recupera todas las entidades Address.
+            </summary>
+            <returns>
             Todas las entidades Address.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.AddressServices.GetById(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.AddressServices.GetAllExceptThis(System.Int32)">
+            <summary>
+            .es Recupera todas las instancias de Address excepto la indicada por el parametro. 
+            </summary>
+            <param name="addressId">.es Entidad a evitar.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.AddressServices.GetSelectedThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="addressIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.AddressServices.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="addressIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.AddressServices.GetById(System.Int32)">
+            <summary>
             .es Recupera una entidad Address mediante su identificador correspondiente.
             </summary>
-      <param name="id">
+            <param name="id">
             .es Identificador de la entidad que se va a recuperar.
             </param>
-      <returns>
+            <returns>
             La entidad Address recuperada o valor nulo si no se encuentra.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.AddressServices.GetPaged(Inflexion2.Application.SpecificationDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.AddressServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
             Recupera una lista paginada de entidades Address, según la especificación indicada.
             </summary>
-      <param name="specificationDto">
+            <param name="specificationDto">
             Especificación que se va a aplicar.
             </param>
-      <returns>
+            <returns>
             La lista paginada de entidades 'Address', según la especificación indicada.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.AddressServices.Update(Needel.Common.Application.Dtos.AddressDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.AddressServices.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.AddressServices.Update(Needel.Common.Application.Dtos.AddressDto)">
+            <summary>
             Actualiza una determinada entidad Address.
             </summary>
-      <param name="addressDto">
+            <param name="addressDto">
             DTO que contiene la información de la entidad que se va a actualizar.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.AddressServices.Commit">
-      <summary>
-            adapter of commit operation independent form the ORM
+        </member>
+        <member name="T:Needel.Common.Application.IAddressMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.AddressMapper"/>.
             </summary>
-    </member>
-    <member name="T:Needel.Common.Application.IAddressMapper">
-      <summary>
-            Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.AddressMapper" />.
-            </summary>
-      <remarks>
-            Mapea los datos del Dto <see cref="T:Needel.Common.Application.Dtos.AddressDto" /> con una entidad <see cref="T:Needel.Common.Application.AddressMapper" />.
+            <remarks>
+            Mapea los datos del Dto <see cref="T:Needel.Common.Application.Dtos.AddressDto"/> con una entidad <see cref="T:Needel.Common.Application.AddressMapper"/>.
             </remarks>
-    </member>
-    <member name="T:Needel.Common.Application.IAddressServices">
-      <summary>
+        </member>
+        <member name="T:Needel.Common.Application.IAddressServices">
+            <summary>
              .en Define the contract for the entity's administration services.
              .es Define el contrato para los servicios de administración de la entidad.
-            de tipo <see cref="T:Needel.Common.Application.IAddressServices" />.
+            de tipo <see cref="T:Needel.Common.Application.IAddressServices"/>.
             </summary>
-    </member>
-    <member name="M:Needel.Common.Application.IAddressServices.Create(Needel.Common.Application.Dtos.AddressDto)">
-      <summary>
-            .en Create an entity of type IAddress.
-            .es Función encargada de la creación de una entidad de tipo IAddress.
+        </member>
+        <member name="T:Needel.Common.Application.AppSettingMapper">
+            <summary>
+            .en mapping class from Entity to dto <see cref="T:Needel.Common.Application.AppSettingMapper"/>
+            .es Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.AppSettingMapper"/>.
             </summary>
-      <param name="addressDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.AddressDto" /> con los datos necesarios
-            para la creación de la entidad Address.
-            </param>        /// <exception cref="T:System.ArgumentNullException">
-            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
-            </exception><returns>
-            Devuelve el identificador único de la entidad creada.
-            </returns></member>
-    <member name="M:Needel.Common.Application.IAddressServices.Delete(System.Int32)">
-      <summary>
-            Función encargada del borrado de una entidad de tipo Address.
+        </member>
+        <member name="M:Needel.Common.Application.AppSettingMapper.#ctor">
+            <summary>
+            .en Get an instance of <see cref="T:Needel.Common.Application.AppSettingMapper"/>
+            .es Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.AppSettingMapper"/>.
             </summary>
-      <remarks>
-            Se trata de un borrado lógico.
-            </remarks>
-      <param name="AddressId">
-            Parámetro que indica el identificador único de la entidad.
-            </param>        /// <exception cref="T:System.ArgumentNullException">
-            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
-            </exception><returns>
-            Devuelve <b>True</b> si la eliminación ha sido correcta y
-            <b>False</b> en caso contrario.
-            </returns></member>
-    <member name="M:Needel.Common.Application.IAddressServices.GetAll">
-      <summary>
-            Función encargada de obtener todas las entidades de tipo Address.
+        </member>
+        <member name="M:Needel.Common.Application.AppSettingMapper.EntityMapping(Needel.Common.Domain.AppSetting)">
+            <summary>
+            Default constructor parameters
             </summary>
-      <remarks>
-            Devuelve la totalidad de las entidades.
-            </remarks>        /// <returns>
-            Devuelve listado de Dto´s de tipo <see cref="T:Needel.Common.Application.Dtos.AddressDto" />.
-            </returns></member>
-    <member name="M:Needel.Common.Application.IAddressServices.GetPaged(Inflexion2.Application.SpecificationDto)">
-      <summary>
-            Recupera una lista paginada de entidades Address, según la especificación indicada.
+            <param name="entityAppSetting"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.AppSettingMapper.EntityMapping(Needel.Common.Domain.AppSetting,System.Boolean,System.Boolean)">
+            <summary>
+            .en public function mapping from Entity to dto
             </summary>
-      <param name="specificationDto">
-            Especificación que se va a aplicar.
-            </param>        /// <returns>
-            La lista paginada de entidades Address, según la especificación indicada.
-            </returns></member>
-    <member name="M:Needel.Common.Application.IAddressServices.GetById(System.Int32)">
-      <summary>
-            Función encargada de obtener una entidad Address de acuerdo a
-            su identificador.
-            </summary>
-      <param name="addressId">
-            Parámetro que indica el identificador único de la entidad.
+            <param name="entityAppSetting">
             </param>
-      <returns>
-            Devuelve objeto Dto <see cref="T:Needel.Common.Application.Dtos.AddressDto" /> con la información requerida.
-            </returns>
-    </member>
-    <member name="M:Needel.Common.Application.IAddressServices.Update(Needel.Common.Application.Dtos.AddressDto)">
-      <summary>
-            Actualiza una determinada entidad Address.
-            </summary>
-      <param name="addressDto">
-            DTO que contiene la información de la entidad que se va a actualizar.
-            </param>        /// <returns>
-            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
-            </returns></member>
-    <member name="T:Needel.Common.Application.AppSettingMapper">
-      <summary>
-            .en mapping class from entity to dto <see cref="T:Needel.Common.Application.AppSettingMapper" />
-            .es Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.AppSettingMapper" />.
-            </summary>
-    </member>
-    <member name="M:Needel.Common.Application.AppSettingMapper.#ctor">
-      <summary>
-            .en Get an instance of <see cref="T:Needel.Common.Application.AppSettingMapper" />
-            .es Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.AppSettingMapper" />.
-            </summary>
-    </member>
-    <member name="M:Needel.Common.Application.AppSettingMapper.EntityMapping(Needel.Common.Domain.IAppSetting)">
-      <summary>
-            .en public function mapping from entity to dto
-            .es Función pública que mapea las entidades para devolver el
-            correspondiente Dto.
-            </summary>
-      <param name="entityAppSetting">
-            .es Objeto de la entidad <see cref="T:Needel.Common.Domain.AppSetting" />.
+            <param name="mapParents">
+            .en option to map parent objects
             </param>
-      <exception cref="T:System.ArgumentNullException">
-            .en exception when there is a null value in the parameter.
-            .es Lanzada cuando el valor de <c>entityAppSetting</c> es null.
-            </exception>
-      <returns>
-            .en returns an object of type <see cref="T:Needel.Common.Application.Dtos.AppSettingDto" />
-            .es Devuelve un objeto de tipo <see cref="T:Needel.Common.Application.Dtos.AppSettingDto" /> 
-            con los datos mapeados.
+            <param name="mapChildren">
+            .en option to map children objects
+            </param>
+            <returns>
+            .en returns an DTO of type <see cref="T:Needel.Common.Application.Dtos.AppSettingDto"/>
             </returns>
-    </member>
-    <member name="T:Needel.Common.Application.AppSettingServices">
-      <summary>
+        </member>
+        <member name="T:Needel.Common.Application.AppSettingServices">
+            <summary>
             .en generated with ServiceHeaderClass.tt
             Administration services of the entity AppSetting.
             .es geenrado con la plantilla ServiceHeaderClass.tt
             Representa los servicios de administración de la entidad AppSetting.
             </summary>
-      <remarks>
-            .en Create an object of type <see cref="T:Needel.Common.Domain.AppSetting" />.
-            .es Crea un objeto <see cref="T:Needel.Common.Domain.AppSetting" />.
+            <remarks>
+            .en Create an object of type <see cref="T:Needel.Common.Domain.AppSetting"/>.
+            .es Crea un objeto <see cref="T:Needel.Common.Domain.AppSetting"/>.
              permanent guid = 
             </remarks>
-    </member>
-    <member name="F:Needel.Common.Application.AppSettingServices.appSettingMapper">
-      <summary>
-            Referencia al mapeador de la entidad AppSetting.
+        </member>
+        <member name="M:Needel.Common.Application.AppSettingServices.#ctor">
+            <summary>
+            .es Inicializa una nueva instancia de la clase <see cref="T:AppSetting>Service"/>.
             </summary>
-    </member>
-    <member name="M:Needel.Common.Application.AppSettingServices.#ctor">
-      <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:AppSetting&gt;Service" />.
-            </summary>
-      <remarks>
-            Constructor de la clase <see cref="T:AppSettingServices" />.
+            <remarks>
+            .es Constructor de la clase <see cref="T:AppSettingServices"/>.
             </remarks>
-    </member>
-    <member name="P:Needel.Common.Application.AppSettingServices.AppSettingMapper">
-      <summary>
-            Obtiene la referencia al mapeador de la entidad <see cref="T:IAppSetting" />.
-            </summary>
-    </member>
-    <member name="M:Needel.Common.Application.AppSettingServices.Create(Needel.Common.Application.Dtos.AppSettingDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.AppSettingServices.Create(Needel.Common.Application.Dtos.AppSettingDto)">
+            <summary>
             Crea una entidad AppSetting.
             </summary>
-      <param name="appSettingDto">
+            <param name="appSettingDto">
             DTO que contiene la información para crear la entidad.
             </param>
-      <returns>
+            <returns>
             El identificador de la entidad creada.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.AppSettingServices.Delete(System.Int32)">
-      <summary>
-            Elimina una determinada entidad AppSetting.
+        </member>
+        <member name="M:Needel.Common.Application.AppSettingServices.Delete(System.Int32)">
+            <summary>
+            .es Elimina una determinada entidad AppSetting.
             </summary>
-      <param name="id">
+            <param name="id">
             Identificador de la entidad que se va a eliminar.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.AppSettingServices.GetAll">
-      <summary>
-            Recupera todas las entidades AppSetting.
+        </member>
+        <member name="M:Needel.Common.Application.AppSettingServices.Delete(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            .es Elimina las entidades AppSetting seleccionadas por los ids del parametro.
             </summary>
-      <returns>
+            <param name="appSettingIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.AppSettingServices.Delete(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.AppSettingServices.DeleteAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.AppSettingServices.GetAll">
+            <summary>
+            .es Recupera todas las entidades AppSetting.
+            </summary>
+            <returns>
             Todas las entidades AppSetting.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.AppSettingServices.GetById(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.AppSettingServices.GetAllExceptThis(System.Int32)">
+            <summary>
+            .es Recupera todas las instancias de AppSetting excepto la indicada por el parametro. 
+            </summary>
+            <param name="appSettingId">.es Entidad a evitar.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.AppSettingServices.GetSelectedThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="appSettingIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.AppSettingServices.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="appSettingIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.AppSettingServices.GetById(System.Int32)">
+            <summary>
             .es Recupera una entidad AppSetting mediante su identificador correspondiente.
             </summary>
-      <param name="id">
+            <param name="id">
             .es Identificador de la entidad que se va a recuperar.
             </param>
-      <returns>
+            <returns>
             La entidad AppSetting recuperada o valor nulo si no se encuentra.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.AppSettingServices.GetPaged(Inflexion2.Application.SpecificationDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.AppSettingServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
             Recupera una lista paginada de entidades AppSetting, según la especificación indicada.
             </summary>
-      <param name="specificationDto">
+            <param name="specificationDto">
             Especificación que se va a aplicar.
             </param>
-      <returns>
+            <returns>
             La lista paginada de entidades 'AppSetting', según la especificación indicada.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.AppSettingServices.Update(Needel.Common.Application.Dtos.AppSettingDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.AppSettingServices.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.AppSettingServices.Update(Needel.Common.Application.Dtos.AppSettingDto)">
+            <summary>
             Actualiza una determinada entidad AppSetting.
             </summary>
-      <param name="appSettingDto">
+            <param name="appSettingDto">
             DTO que contiene la información de la entidad que se va a actualizar.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.AppSettingServices.Commit">
-      <summary>
-            adapter of commit operation independent form the ORM
+        </member>
+        <member name="T:Needel.Common.Application.IAppSettingMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.AppSettingMapper"/>.
             </summary>
-    </member>
-    <member name="T:Needel.Common.Application.IAppSettingMapper">
-      <summary>
-            Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.AppSettingMapper" />.
-            </summary>
-      <remarks>
-            Mapea los datos del Dto <see cref="T:Needel.Common.Application.Dtos.AppSettingDto" /> con una entidad <see cref="T:Needel.Common.Application.AppSettingMapper" />.
+            <remarks>
+            Mapea los datos del Dto <see cref="T:Needel.Common.Application.Dtos.AppSettingDto"/> con una entidad <see cref="T:Needel.Common.Application.AppSettingMapper"/>.
             </remarks>
-    </member>
-    <member name="T:Needel.Common.Application.IAppSettingServices">
-      <summary>
+        </member>
+        <member name="T:Needel.Common.Application.IAppSettingServices">
+            <summary>
              .en Define the contract for the entity's administration services.
              .es Define el contrato para los servicios de administración de la entidad.
-            de tipo <see cref="T:Needel.Common.Application.IAppSettingServices" />.
+            de tipo <see cref="T:Needel.Common.Application.IAppSettingServices"/>.
             </summary>
-    </member>
-    <member name="M:Needel.Common.Application.IAppSettingServices.Create(Needel.Common.Application.Dtos.AppSettingDto)">
-      <summary>
-            .en Create an entity of type IAppSetting.
-            .es Función encargada de la creación de una entidad de tipo IAppSetting.
+        </member>
+        <member name="T:Needel.Common.Application.CommonRepositoryLayer">
+            <summary>
+            Registra en el contenedor de Ioc de la capa de aplicacion las clases de acceso al repositorio
             </summary>
-      <param name="appSettingDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.AppSettingDto" /> con los datos necesarios
-            para la creación de la entidad AppSetting.
-            </param>        /// <exception cref="T:System.ArgumentNullException">
-            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
-            </exception><returns>
-            Devuelve el identificador único de la entidad creada.
-            </returns></member>
-    <member name="M:Needel.Common.Application.IAppSettingServices.Delete(System.Int32)">
-      <summary>
-            Función encargada del borrado de una entidad de tipo AppSetting.
+        </member>
+        <member name="F:Needel.Common.Application.CommonRepositoryLayer.NeeddelAppSettings">
+            <summary>
+            
             </summary>
-      <remarks>
-            Se trata de un borrado lógico.
+        </member>
+        <member name="F:Needel.Common.Application.CommonRepositoryLayer.CtxFactory">
+            <summary>
+            UoW instance
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.CommonRepositoryLayer.IocRegistry">
+            <summary>
+            Register in IoC container the repository
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.CommonRepositoryLayer.ConnectionString">
+            <summary>
+            Get the conection string from the App.config or web config file asociated to the project on execution.
+            </summary>
+            <returns>The database connection string </returns>
+        </member>
+        <member name="T:Needel.Common.Application.ComponentMapper">
+            <summary>
+            .en mapping class from Entity to dto <see cref="T:Needel.Common.Application.ComponentMapper"/>
+            .es Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.ComponentMapper"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.ComponentMapper.#ctor">
+            <summary>
+            .en Get an instance of <see cref="T:Needel.Common.Application.ComponentMapper"/>
+            .es Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.ComponentMapper"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.ComponentMapper.EntityMapping(Needel.Common.Domain.Component)">
+            <summary>
+            Default constructor parameters
+            </summary>
+            <param name="entityComponent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.ComponentMapper.EntityMapping(Needel.Common.Domain.Component,System.Boolean,System.Boolean)">
+            <summary>
+            .en public function mapping from Entity to dto
+            </summary>
+            <param name="entityComponent">
+            </param>
+            <param name="mapParents">
+            .en option to map parent objects
+            </param>
+            <param name="mapChildren">
+            .en option to map children objects
+            </param>
+            <returns>
+            .en returns an DTO of type <see cref="T:Needel.Common.Application.Dtos.ComponentDto"/>
+            </returns>
+        </member>
+        <member name="T:Needel.Common.Application.ComponentServices">
+            <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity Component.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad Component.
+            </summary>
+            <remarks>
+            .en Create an object of type <see cref="T:Needel.Common.Domain.Component"/>.
+            .es Crea un objeto <see cref="T:Needel.Common.Domain.Component"/>.
+             permanent guid = 
             </remarks>
-      <param name="AppSettingId">
-            Parámetro que indica el identificador único de la entidad.
-            </param>        /// <exception cref="T:System.ArgumentNullException">
-            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
-            </exception><returns>
-            Devuelve <b>True</b> si la eliminación ha sido correcta y
-            <b>False</b> en caso contrario.
-            </returns></member>
-    <member name="M:Needel.Common.Application.IAppSettingServices.GetAll">
-      <summary>
-            Función encargada de obtener todas las entidades de tipo AppSetting.
+        </member>
+        <member name="M:Needel.Common.Application.ComponentServices.#ctor">
+            <summary>
+            .es Inicializa una nueva instancia de la clase <see cref="T:Component>Service"/>.
             </summary>
-      <remarks>
-            Devuelve la totalidad de las entidades.
-            </remarks>        /// <returns>
-            Devuelve listado de Dto´s de tipo <see cref="T:Needel.Common.Application.Dtos.AppSettingDto" />.
-            </returns></member>
-    <member name="M:Needel.Common.Application.IAppSettingServices.GetPaged(Inflexion2.Application.SpecificationDto)">
-      <summary>
-            Recupera una lista paginada de entidades AppSetting, según la especificación indicada.
+            <remarks>
+            .es Constructor de la clase <see cref="T:ComponentServices"/>.
+            </remarks>
+        </member>
+        <member name="M:Needel.Common.Application.ComponentServices.Create(Needel.Common.Application.Dtos.ComponentDto)">
+            <summary>
+            Crea una entidad Component.
             </summary>
-      <param name="specificationDto">
+            <param name="componentDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+            <returns>
+            El identificador de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.ComponentServices.Delete(System.Int32)">
+            <summary>
+            .es Elimina una determinada entidad Component.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.ComponentServices.Delete(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            .es Elimina las entidades Component seleccionadas por los ids del parametro.
+            </summary>
+            <param name="componentIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.ComponentServices.Delete(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.ComponentServices.DeleteAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.ComponentServices.GetAll">
+            <summary>
+            .es Recupera todas las entidades Component.
+            </summary>
+            <returns>
+            Todas las entidades Component.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.ComponentServices.GetAllExceptThis(System.Int32)">
+            <summary>
+            .es Recupera todas las instancias de Component excepto la indicada por el parametro. 
+            </summary>
+            <param name="componentId">.es Entidad a evitar.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.ComponentServices.GetAllExceptIdAndChildren(System.Int32)">
+            <summary>
+            self relationsships not many 2 many
+            </summary>
+            <param name="componentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.ComponentServices.GetSelectedThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="componentIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.ComponentServices.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="componentIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.ComponentServices.GetById(System.Int32)">
+            <summary>
+            .es Recupera una entidad Component mediante su identificador correspondiente.
+            </summary>
+            <param name="id">
+            .es Identificador de la entidad que se va a recuperar.
+            </param>
+            <returns>
+            La entidad Component recuperada o valor nulo si no se encuentra.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.ComponentServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Component, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
             Especificación que se va a aplicar.
-            </param>        /// <returns>
-            La lista paginada de entidades AppSetting, según la especificación indicada.
-            </returns></member>
-    <member name="M:Needel.Common.Application.IAppSettingServices.GetById(System.Int32)">
-      <summary>
-            Función encargada de obtener una entidad AppSetting de acuerdo a
-            su identificador.
-            </summary>
-      <param name="appSettingId">
-            Parámetro que indica el identificador único de la entidad.
             </param>
-      <returns>
-            Devuelve objeto Dto <see cref="T:Needel.Common.Application.Dtos.AppSettingDto" /> con la información requerida.
+            <returns>
+            La lista paginada de entidades 'Component', según la especificación indicada.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.IAppSettingServices.Update(Needel.Common.Application.Dtos.AppSettingDto)">
-      <summary>
-            Actualiza una determinada entidad AppSetting.
+        </member>
+        <member name="M:Needel.Common.Application.ComponentServices.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
             </summary>
-      <param name="appSettingDto">
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.ComponentServices.GetComponentById(System.Int32)">
+            <summary>
+            Método encargado de obtener una <see cref="T:Needel.Common.Domain.Component"/> a partir 
+            de su identificador.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="componentId">
+            Parámetro que indica el identificador único de la entidad a obtener.
+            </param>
+            <returns>
+            Devuelve la entidad <see cref="T:Needel.Common.Domain.Component"/> según el identificador.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.ComponentServices.Update(Needel.Common.Application.Dtos.ComponentDto)">
+            <summary>
+            Actualiza una determinada entidad Component.
+            </summary>
+            <param name="componentDto">
             DTO que contiene la información de la entidad que se va a actualizar.
-            </param>        /// <returns>
-            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
-            </returns></member>
-    <member name="T:Needel.Common.Application.DepartmentMapper">
-      <summary>
-            .en mapping class from entity to dto <see cref="T:Needel.Common.Application.DepartmentMapper" />
-            .es Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.DepartmentMapper" />.
-            </summary>
-    </member>
-    <member name="M:Needel.Common.Application.DepartmentMapper.#ctor">
-      <summary>
-            .en Get an instance of <see cref="T:Needel.Common.Application.DepartmentMapper" />
-            .es Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.DepartmentMapper" />.
-            </summary>
-    </member>
-    <member name="M:Needel.Common.Application.DepartmentMapper.EntityMapping(Needel.Common.Domain.IDepartment)">
-      <summary>
-            .en public function mapping from entity to dto
-            .es Función pública que mapea las entidades para devolver el
-            correspondiente Dto.
-            </summary>
-      <param name="entityDepartment">
-            .es Objeto de la entidad <see cref="T:Needel.Common.Domain.Department" />.
             </param>
-      <exception cref="T:System.ArgumentNullException">
-            .en exception when there is a null value in the parameter.
-            .es Lanzada cuando el valor de <c>entityDepartment</c> es null.
-            </exception>
-      <returns>
-            .en returns an object of type <see cref="T:Needel.Common.Application.Dtos.DepartmentDto" />
-            .es Devuelve un objeto de tipo <see cref="T:Needel.Common.Application.Dtos.DepartmentDto" /> 
-            con los datos mapeados.
+            <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="T:Needel.Common.Application.DepartmentServices">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.ComponentServices.AddChildren(Needel.Common.Application.Dtos.ComponentDto)">
+            <summary>
+            Función encargada de la añadir a la entidad Component una instancia de la propiedad Children de tipo Component
+            </summary>
+            <param name="childrenDto"> de tipo Component</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.ComponentServices.RemoveChildren(Needel.Common.Application.Dtos.ComponentDto)">
+            <summary>
+            Función encargada de borrar de la entidad Component una instancia de la colección Children de tipo Component
+            </summary>
+            <param name="childrenDto"> de tipo Component</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.ComponentServices.UpdateChildren(Needel.Common.Application.Dtos.ComponentDto)">
+            <summary>
+            Función encargada de actualizar de la entidad Component una instancia de la colección Children de tipo Component
+            </summary>
+            <param name="childrenDto"> de tipo Component</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="T:Needel.Common.Application.IComponentMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.ComponentMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:Needel.Common.Application.Dtos.ComponentDto"/> con una entidad <see cref="T:Needel.Common.Application.ComponentMapper"/>.
+            </remarks>
+        </member>
+        <member name="T:Needel.Common.Application.IComponentServices">
+            <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:Needel.Common.Application.IComponentServices"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.IComponentServices.GetAllExceptIdAndChildren(System.Int32)">
+            <summary>
+            Get all no related objects
+            </summary>
+            <param name="componentId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Needel.Common.Application.DepartmentMapper">
+            <summary>
+            .en mapping class from Entity to dto <see cref="T:Needel.Common.Application.DepartmentMapper"/>
+            .es Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.DepartmentMapper"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.DepartmentMapper.#ctor">
+            <summary>
+            .en Get an instance of <see cref="T:Needel.Common.Application.DepartmentMapper"/>
+            .es Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.DepartmentMapper"/>.
+            </summary>
+        </member>
+        <member name="P:Needel.Common.Application.DepartmentMapper.UserDtoMapper">
+            <summary>
+            Mapper for Children
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.DepartmentMapper.EntityMapping(Needel.Common.Domain.Department)">
+            <summary>
+            Default constructor parameters
+            </summary>
+            <param name="entityDepartment"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.DepartmentMapper.EntityMapping(Needel.Common.Domain.Department,System.Boolean,System.Boolean)">
+            <summary>
+            .en public function mapping from Entity to dto
+            </summary>
+            <param name="entityDepartment">
+            </param>
+            <param name="mapParents">
+            .en option to map parent objects
+            </param>
+            <param name="mapChildren">
+            .en option to map children objects
+            </param>
+            <returns>
+            .en returns an DTO of type <see cref="T:Needel.Common.Application.Dtos.DepartmentDto"/>
+            </returns>
+        </member>
+        <member name="T:Needel.Common.Application.DepartmentServices">
+            <summary>
             .en generated with ServiceHeaderClass.tt
             Administration services of the entity Department.
             .es geenrado con la plantilla ServiceHeaderClass.tt
             Representa los servicios de administración de la entidad Department.
             </summary>
-      <remarks>
-            .en Create an object of type <see cref="T:Needel.Common.Domain.Department" />.
-            .es Crea un objeto <see cref="T:Needel.Common.Domain.Department" />.
+            <remarks>
+            .en Create an object of type <see cref="T:Needel.Common.Domain.Department"/>.
+            .es Crea un objeto <see cref="T:Needel.Common.Domain.Department"/>.
              permanent guid = 
             </remarks>
-    </member>
-    <member name="F:Needel.Common.Application.DepartmentServices.departmentMapper">
-      <summary>
-            Referencia al mapeador de la entidad Department.
+        </member>
+        <member name="F:Needel.Common.Application.DepartmentServices.userMapper">
+            <summary>
+            .en Reference to the mapper of entity user.
+            .es Referencia a la factoría de repositorios de la entidad user.
             </summary>
-    </member>
-    <member name="M:Needel.Common.Application.DepartmentServices.#ctor">
-      <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:Department&gt;Service" />.
+        </member>
+        <member name="M:Needel.Common.Application.DepartmentServices.#ctor">
+            <summary>
+            .es Inicializa una nueva instancia de la clase <see cref="T:Department>Service"/>.
             </summary>
-      <remarks>
-            Constructor de la clase <see cref="T:DepartmentServices" />.
+            <remarks>
+            .es Constructor de la clase <see cref="T:DepartmentServices"/>.
             </remarks>
-    </member>
-    <member name="P:Needel.Common.Application.DepartmentServices.DepartmentMapper">
-      <summary>
-            Obtiene la referencia al mapeador de la entidad <see cref="T:IDepartment" />.
-            </summary>
-    </member>
-    <member name="M:Needel.Common.Application.DepartmentServices.Create(Needel.Common.Application.Dtos.DepartmentDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.DepartmentServices.Create(Needel.Common.Application.Dtos.DepartmentDto)">
+            <summary>
             Crea una entidad Department.
             </summary>
-      <param name="departmentDto">
+            <param name="departmentDto">
             DTO que contiene la información para crear la entidad.
             </param>
-      <returns>
+            <returns>
             El identificador de la entidad creada.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.DepartmentServices.Delete(System.Int32)">
-      <summary>
-            Elimina una determinada entidad Department.
+        </member>
+        <member name="M:Needel.Common.Application.DepartmentServices.Delete(System.Int32)">
+            <summary>
+            .es Elimina una determinada entidad Department.
             </summary>
-      <param name="id">
+            <param name="id">
             Identificador de la entidad que se va a eliminar.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.DepartmentServices.GetAll">
-      <summary>
-            Recupera todas las entidades Department.
+        </member>
+        <member name="M:Needel.Common.Application.DepartmentServices.Delete(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            .es Elimina las entidades Department seleccionadas por los ids del parametro.
             </summary>
-      <returns>
+            <param name="departmentIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.DepartmentServices.Delete(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.DepartmentServices.DeleteAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.DepartmentServices.GetAll">
+            <summary>
+            .es Recupera todas las entidades Department.
+            </summary>
+            <returns>
             Todas las entidades Department.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.DepartmentServices.GetById(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.DepartmentServices.GetAllExceptThis(System.Int32)">
+            <summary>
+            .es Recupera todas las instancias de Department excepto la indicada por el parametro. 
+            </summary>
+            <param name="departmentId">.es Entidad a evitar.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.DepartmentServices.GetSelectedThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="departmentIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.DepartmentServices.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="departmentIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.DepartmentServices.GetById(System.Int32)">
+            <summary>
             .es Recupera una entidad Department mediante su identificador correspondiente.
             </summary>
-      <param name="id">
+            <param name="id">
             .es Identificador de la entidad que se va a recuperar.
             </param>
-      <returns>
+            <returns>
             La entidad Department recuperada o valor nulo si no se encuentra.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.DepartmentServices.GetPaged(Inflexion2.Application.SpecificationDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.DepartmentServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
             Recupera una lista paginada de entidades Department, según la especificación indicada.
             </summary>
-      <param name="specificationDto">
+            <param name="specificationDto">
             Especificación que se va a aplicar.
             </param>
-      <returns>
+            <returns>
             La lista paginada de entidades 'Department', según la especificación indicada.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.DepartmentServices.GetUserById(System.Int32)">
-      <summary>
-            Método encargado de obtener una <see cref="T:Needel.Common.Domain.User" /> a partir 
+        </member>
+        <member name="M:Needel.Common.Application.DepartmentServices.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.DepartmentServices.GetUserById(System.Int32)">
+            <summary>
+            Método encargado de obtener una <see cref="T:Needel.Common.Domain.User"/> a partir 
             de su identificador.
             </summary>
-      <remarks>
+            <remarks>
             Sin comentarios adicionales.
             </remarks>
-      <param name="userId">
+            <param name="userId">
             Parámetro que indica el identificador único de la entidad a obtener.
             </param>
-      <returns>
-            Devuelve la entidad <see cref="T:Needel.Common.Domain.User" /> según el identificador.
+            <returns>
+            Devuelve la entidad <see cref="T:Needel.Common.Domain.User"/> según el identificador.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.DepartmentServices.Update(Needel.Common.Application.Dtos.DepartmentDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.DepartmentServices.Update(Needel.Common.Application.Dtos.DepartmentDto)">
+            <summary>
             Actualiza una determinada entidad Department.
             </summary>
-      <param name="departmentDto">
+            <param name="departmentDto">
             DTO que contiene la información de la entidad que se va a actualizar.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.DepartmentServices.AddUsers(Needel.Common.Application.Dtos.UserDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.DepartmentServices.AddUsers(Needel.Common.Application.Dtos.UserDto)">
+            <summary>
             Función encargada de la añadir a la entidad Department una instancia de la propiedad Users de tipo Department
             </summary>
-      <param name="usersDto"> de tipo User</param>
-      <returns>
+            <param name="usersDto"> de tipo User</param>
+            <returns>
             Devuelve <c>True</c> si se ha añadido correctamente.
             y <c>False</c> en caso contrario.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.DepartmentServices.RemoveUsers(Needel.Common.Application.Dtos.UserDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.DepartmentServices.RemoveUsers(Needel.Common.Application.Dtos.UserDto)">
+            <summary>
             Función encargada de borrar de la entidad Department una instancia de la colección Users de tipo Department
             </summary>
-      <param name="usersDto"> de tipo Department</param>
-      <returns>
+            <param name="usersDto"> de tipo Department</param>
+            <returns>
             Devuelve <c>True</c> si se ha añadido correctamente.
             y <c>False</c> en caso contrario.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.DepartmentServices.UpdateUsers(Needel.Common.Application.Dtos.UserDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.DepartmentServices.UpdateUsers(Needel.Common.Application.Dtos.UserDto)">
+            <summary>
             Función encargada de actualizar de la entidad Department una instancia de la colección Users de tipo Department
             </summary>
-      <param name="usersDto"> de tipo Department</param>
-      <returns>
+            <param name="usersDto"> de tipo Department</param>
+            <returns>
             Devuelve <c>True</c> si se ha añadido correctamente.
             y <c>False</c> en caso contrario.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.DepartmentServices.Commit">
-      <summary>
-            adapter of commit operation independent form the ORM
+        </member>
+        <member name="T:Needel.Common.Application.IDepartmentMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.DepartmentMapper"/>.
             </summary>
-    </member>
-    <member name="T:Needel.Common.Application.IDepartmentMapper">
-      <summary>
-            Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.DepartmentMapper" />.
-            </summary>
-      <remarks>
-            Mapea los datos del Dto <see cref="T:Needel.Common.Application.Dtos.DepartmentDto" /> con una entidad <see cref="T:Needel.Common.Application.DepartmentMapper" />.
+            <remarks>
+            Mapea los datos del Dto <see cref="T:Needel.Common.Application.Dtos.DepartmentDto"/> con una entidad <see cref="T:Needel.Common.Application.DepartmentMapper"/>.
             </remarks>
-    </member>
-    <member name="T:Needel.Common.Application.IDepartmentServices">
-      <summary>
+        </member>
+        <member name="T:Needel.Common.Application.IDepartmentServices">
+            <summary>
              .en Define the contract for the entity's administration services.
              .es Define el contrato para los servicios de administración de la entidad.
-            de tipo <see cref="T:Needel.Common.Application.IDepartmentServices" />.
+            de tipo <see cref="T:Needel.Common.Application.IDepartmentServices"/>.
             </summary>
-    </member>
-    <member name="M:Needel.Common.Application.IDepartmentServices.Create(Needel.Common.Application.Dtos.DepartmentDto)">
-      <summary>
-            .en Create an entity of type IDepartment.
-            .es Función encargada de la creación de una entidad de tipo IDepartment.
+        </member>
+        <member name="T:Needel.Common.Application.EntityMMapper">
+            <summary>
+            .en mapping class from Entity to dto <see cref="T:Needel.Common.Application.EntityMMapper"/>
+            .es Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.EntityMMapper"/>.
             </summary>
-      <param name="departmentDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.DepartmentDto" /> con los datos necesarios
-            para la creación de la entidad Department.
-            </param>        /// <exception cref="T:System.ArgumentNullException">
-            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
-            </exception><returns>
-            Devuelve el identificador único de la entidad creada.
-            </returns></member>
-    <member name="M:Needel.Common.Application.IDepartmentServices.Delete(System.Int32)">
-      <summary>
-            Función encargada del borrado de una entidad de tipo Department.
+        </member>
+        <member name="M:Needel.Common.Application.EntityMMapper.#ctor">
+            <summary>
+            .en Get an instance of <see cref="T:Needel.Common.Application.EntityMMapper"/>
+            .es Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.EntityMMapper"/>.
             </summary>
-      <remarks>
-            Se trata de un borrado lógico.
-            </remarks>
-      <param name="DepartmentId">
-            Parámetro que indica el identificador único de la entidad.
-            </param>        /// <exception cref="T:System.ArgumentNullException">
-            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
-            </exception><returns>
-            Devuelve <b>True</b> si la eliminación ha sido correcta y
-            <b>False</b> en caso contrario.
-            </returns></member>
-    <member name="M:Needel.Common.Application.IDepartmentServices.GetAll">
-      <summary>
-            Función encargada de obtener todas las entidades de tipo Department.
+        </member>
+        <member name="P:Needel.Common.Application.EntityMMapper.MNZDtoMapper">
+            <summary>
+            Mapper for Children
             </summary>
-      <remarks>
-            Devuelve la totalidad de las entidades.
-            </remarks>        /// <returns>
-            Devuelve listado de Dto´s de tipo <see cref="T:Needel.Common.Application.Dtos.DepartmentDto" />.
-            </returns></member>
-    <member name="M:Needel.Common.Application.IDepartmentServices.GetPaged(Inflexion2.Application.SpecificationDto)">
-      <summary>
-            Recupera una lista paginada de entidades Department, según la especificación indicada.
+        </member>
+        <member name="M:Needel.Common.Application.EntityMMapper.EntityMapping(Needel.Common.Domain.EntityM)">
+            <summary>
+            Default constructor parameters
             </summary>
-      <param name="specificationDto">
-            Especificación que se va a aplicar.
-            </param>        /// <returns>
-            La lista paginada de entidades Department, según la especificación indicada.
-            </returns></member>
-    <member name="M:Needel.Common.Application.IDepartmentServices.GetById(System.Int32)">
-      <summary>
-            Función encargada de obtener una entidad Department de acuerdo a
-            su identificador.
+            <param name="entityEntityM"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityMMapper.EntityMapping(Needel.Common.Domain.EntityM,System.Boolean,System.Boolean)">
+            <summary>
+            .en public function mapping from Entity to dto
             </summary>
-      <param name="departmentId">
-            Parámetro que indica el identificador único de la entidad.
+            <param name="entityEntityM">
             </param>
-      <returns>
-            Devuelve objeto Dto <see cref="T:Needel.Common.Application.Dtos.DepartmentDto" /> con la información requerida.
+            <param name="mapParents">
+            .en option to map parent objects
+            </param>
+            <param name="mapChildren">
+            .en option to map children objects
+            </param>
+            <returns>
+            .en returns an DTO of type <see cref="T:Needel.Common.Application.Dtos.EntityMDto"/>
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.IDepartmentServices.Update(Needel.Common.Application.Dtos.DepartmentDto)">
-      <summary>
-            Actualiza una determinada entidad Department.
+        </member>
+        <member name="T:Needel.Common.Application.EntityMServices">
+            <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity EntityM.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad EntityM.
             </summary>
-      <param name="departmentDto">
-            DTO que contiene la información de la entidad que se va a actualizar.
-            </param>        /// <returns>
-            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
-            </returns></member>
-    <member name="M:Needel.Common.Application.IDepartmentServices.AddUsers(Needel.Common.Application.Dtos.UserDto)">
-      <summary>
-            Función encargada de la añadir a la entidad Department una instancia de la propiedad Users de tipo Department
-            </summary>
-      <param name="usersDto"> de tipo User</param>
-      <returns>
-            Devuelve <c>True</c> si se ha añadido correctamente.
-            y <c>False</c> en caso contrario.
-            </returns>
-    </member>
-    <member name="M:Needel.Common.Application.IDepartmentServices.RemoveUsers(Needel.Common.Application.Dtos.UserDto)">
-      <summary>
-            Función encargada de borrar de la entidad Department una instancia de la colección Users de tipo Department
-            </summary>
-      <param name="usersDto"> de tipo Department</param>
-      <returns>
-            Devuelve <c>True</c> si se ha añadido correctamente.
-            y <c>False</c> en caso contrario.
-            </returns>
-    </member>
-    <member name="M:Needel.Common.Application.IDepartmentServices.UpdateUsers(Needel.Common.Application.Dtos.UserDto)">
-      <summary>
-            Función encargada de actualizar de la entidad Department una instancia de la colección Users de tipo Department
-            </summary>
-      <param name="usersDto"> de tipo Department</param>
-      <returns>
-            Devuelve <c>True</c> si se ha añadido correctamente.
-            y <c>False</c> en caso contrario.
-            </returns>
-    </member>
-    <member name="T:Needel.Common.Application.IUserMapper">
-      <summary>
-            Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.UserMapper" />.
-            </summary>
-      <remarks>
-            Mapea los datos del Dto <see cref="T:Needel.Common.Application.Dtos.UserDto" /> con una entidad <see cref="T:Needel.Common.Application.UserMapper" />.
+            <remarks>
+            .en Create an object of type <see cref="T:Needel.Common.Domain.EntityM"/>.
+            .es Crea un objeto <see cref="T:Needel.Common.Domain.EntityM"/>.
+             permanent guid = 
             </remarks>
-    </member>
-    <member name="T:Needel.Common.Application.IUserServices">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.EntityMServices.#ctor">
+            <summary>
+            .es Inicializa una nueva instancia de la clase <see cref="T:EntityM>Service"/>.
+            </summary>
+            <remarks>
+            .es Constructor de la clase <see cref="T:EntityMServices"/>.
+            </remarks>
+        </member>
+        <member name="M:Needel.Common.Application.EntityMServices.Create(Needel.Common.Application.Dtos.EntityMDto)">
+            <summary>
+            Crea una entidad EntityM.
+            </summary>
+            <param name="entityMDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+            <returns>
+            El identificador de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityMServices.Delete(System.Int32)">
+            <summary>
+            .es Elimina una determinada entidad EntityM.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityMServices.Delete(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            .es Elimina las entidades EntityM seleccionadas por los ids del parametro.
+            </summary>
+            <param name="entityMIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityMServices.Delete(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityMServices.DeleteAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityMServices.GetAll">
+            <summary>
+            .es Recupera todas las entidades EntityM.
+            </summary>
+            <returns>
+            Todas las entidades EntityM.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityMServices.GetAllExceptThis(System.Int32)">
+            <summary>
+            .es Recupera todas las instancias de EntityM excepto la indicada por el parametro. 
+            </summary>
+            <param name="entityMId">.es Entidad a evitar.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityMServices.GetSelectedThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="entityMIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityMServices.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="entityMIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityMServices.GetById(System.Int32)">
+            <summary>
+            .es Recupera una entidad EntityM mediante su identificador correspondiente.
+            </summary>
+            <param name="id">
+            .es Identificador de la entidad que se va a recuperar.
+            </param>
+            <returns>
+            La entidad EntityM recuperada o valor nulo si no se encuentra.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityMServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades EntityM, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades 'EntityM', según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityMServices.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityMServices.Update(Needel.Common.Application.Dtos.EntityMDto)">
+            <summary>
+            Actualiza una determinada entidad EntityM.
+            </summary>
+            <param name="entityMDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+            <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityMServices.AddNZs(Needel.Common.Application.Dtos.MNZDto)">
+            <summary>
+            Función encargada de la añadir a la entidad EntityM una instancia de la propiedad NZs de tipo EntityM
+            </summary>
+            <param name="nZsDto"> de tipo MNZ</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityMServices.RemoveNZs(Needel.Common.Application.Dtos.MNZDto)">
+            <summary>
+            Función encargada de borrar de la entidad EntityM una instancia de la colección NZs de tipo EntityM
+            </summary>
+            <param name="nZsDto"> de tipo EntityM</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityMServices.UpdateNZs(Needel.Common.Application.Dtos.MNZDto)">
+            <summary>
+            Función encargada de actualizar de la entidad EntityM una instancia de la colección NZs de tipo EntityM
+            </summary>
+            <param name="nZsDto"> de tipo EntityM</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="T:Needel.Common.Application.IEntityMMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.EntityMMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:Needel.Common.Application.Dtos.EntityMDto"/> con una entidad <see cref="T:Needel.Common.Application.EntityMMapper"/>.
+            </remarks>
+        </member>
+        <member name="T:Needel.Common.Application.IEntityMServices">
+            <summary>
              .en Define the contract for the entity's administration services.
              .es Define el contrato para los servicios de administración de la entidad.
-            de tipo <see cref="T:Needel.Common.Application.IUserServices" />.
+            de tipo <see cref="T:Needel.Common.Application.IEntityMServices"/>.
             </summary>
-    </member>
-    <member name="M:Needel.Common.Application.IUserServices.Create(Needel.Common.Application.Dtos.UserDto)">
-      <summary>
-            .en Create an entity of type IUser.
-            .es Función encargada de la creación de una entidad de tipo IUser.
+        </member>
+        <member name="T:Needel.Common.Application.EntityNMapper">
+            <summary>
+            .en mapping class from Entity to dto <see cref="T:Needel.Common.Application.EntityNMapper"/>
+            .es Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.EntityNMapper"/>.
             </summary>
-      <param name="userDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.UserDto" /> con los datos necesarios
-            para la creación de la entidad User.
-            </param>        /// <exception cref="T:System.ArgumentNullException">
-            Lanzada cuando el valor de alguno de los argumentos de entrada es <b>null</b>.
-            </exception><returns>
-            Devuelve el identificador único de la entidad creada.
-            </returns></member>
-    <member name="M:Needel.Common.Application.IUserServices.Delete(System.Int32)">
-      <summary>
-            Función encargada del borrado de una entidad de tipo User.
+        </member>
+        <member name="M:Needel.Common.Application.EntityNMapper.#ctor">
+            <summary>
+            .en Get an instance of <see cref="T:Needel.Common.Application.EntityNMapper"/>
+            .es Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.EntityNMapper"/>.
             </summary>
-      <remarks>
-            Se trata de un borrado lógico.
+        </member>
+        <member name="P:Needel.Common.Application.EntityNMapper.MNZDtoMapper">
+            <summary>
+            Mapper for Children
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.EntityNMapper.EntityMapping(Needel.Common.Domain.EntityN)">
+            <summary>
+            Default constructor parameters
+            </summary>
+            <param name="entityEntityN"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityNMapper.EntityMapping(Needel.Common.Domain.EntityN,System.Boolean,System.Boolean)">
+            <summary>
+            .en public function mapping from Entity to dto
+            </summary>
+            <param name="entityEntityN">
+            </param>
+            <param name="mapParents">
+            .en option to map parent objects
+            </param>
+            <param name="mapChildren">
+            .en option to map children objects
+            </param>
+            <returns>
+            .en returns an DTO of type <see cref="T:Needel.Common.Application.Dtos.EntityNDto"/>
+            </returns>
+        </member>
+        <member name="T:Needel.Common.Application.EntityNServices">
+            <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity EntityN.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad EntityN.
+            </summary>
+            <remarks>
+            .en Create an object of type <see cref="T:Needel.Common.Domain.EntityN"/>.
+            .es Crea un objeto <see cref="T:Needel.Common.Domain.EntityN"/>.
+             permanent guid = 
             </remarks>
-      <param name="UserId">
-            Parámetro que indica el identificador único de la entidad.
-            </param>        /// <exception cref="T:System.ArgumentNullException">
-            Lanzada cuando el valor del argumento de entrada <c>userContextDto</c> es <b>null</b>.
-            </exception><returns>
-            Devuelve <b>True</b> si la eliminación ha sido correcta y
-            <b>False</b> en caso contrario.
-            </returns></member>
-    <member name="M:Needel.Common.Application.IUserServices.GetAll">
-      <summary>
-            Función encargada de obtener todas las entidades de tipo User.
+        </member>
+        <member name="M:Needel.Common.Application.EntityNServices.#ctor">
+            <summary>
+            .es Inicializa una nueva instancia de la clase <see cref="T:EntityN>Service"/>.
             </summary>
-      <remarks>
-            Devuelve la totalidad de las entidades.
-            </remarks>        /// <returns>
-            Devuelve listado de Dto´s de tipo <see cref="T:Needel.Common.Application.Dtos.UserDto" />.
-            </returns></member>
-    <member name="M:Needel.Common.Application.IUserServices.GetPaged(Inflexion2.Application.SpecificationDto)">
-      <summary>
-            Recupera una lista paginada de entidades User, según la especificación indicada.
+            <remarks>
+            .es Constructor de la clase <see cref="T:EntityNServices"/>.
+            </remarks>
+        </member>
+        <member name="M:Needel.Common.Application.EntityNServices.Create(Needel.Common.Application.Dtos.EntityNDto)">
+            <summary>
+            Crea una entidad EntityN.
             </summary>
-      <param name="specificationDto">
+            <param name="entityNDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+            <returns>
+            El identificador de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityNServices.Delete(System.Int32)">
+            <summary>
+            .es Elimina una determinada entidad EntityN.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityNServices.Delete(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            .es Elimina las entidades EntityN seleccionadas por los ids del parametro.
+            </summary>
+            <param name="entityNIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityNServices.Delete(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityNServices.DeleteAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityNServices.GetAll">
+            <summary>
+            .es Recupera todas las entidades EntityN.
+            </summary>
+            <returns>
+            Todas las entidades EntityN.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityNServices.GetAllExceptThis(System.Int32)">
+            <summary>
+            .es Recupera todas las instancias de EntityN excepto la indicada por el parametro. 
+            </summary>
+            <param name="entityNId">.es Entidad a evitar.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityNServices.GetSelectedThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="entityNIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityNServices.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="entityNIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityNServices.GetById(System.Int32)">
+            <summary>
+            .es Recupera una entidad EntityN mediante su identificador correspondiente.
+            </summary>
+            <param name="id">
+            .es Identificador de la entidad que se va a recuperar.
+            </param>
+            <returns>
+            La entidad EntityN recuperada o valor nulo si no se encuentra.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityNServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades EntityN, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
             Especificación que se va a aplicar.
-            </param>        /// <returns>
-            La lista paginada de entidades User, según la especificación indicada.
-            </returns></member>
-    <member name="M:Needel.Common.Application.IUserServices.GetById(System.Int32)">
-      <summary>
-            Función encargada de obtener una entidad User de acuerdo a
-            su identificador.
-            </summary>
-      <param name="userId">
-            Parámetro que indica el identificador único de la entidad.
             </param>
-      <returns>
-            Devuelve objeto Dto <see cref="T:Needel.Common.Application.Dtos.UserDto" /> con la información requerida.
+            <returns>
+            La lista paginada de entidades 'EntityN', según la especificación indicada.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.IUserServices.Update(Needel.Common.Application.Dtos.UserDto)">
-      <summary>
-            Actualiza una determinada entidad User.
+        </member>
+        <member name="M:Needel.Common.Application.EntityNServices.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
             </summary>
-      <param name="userDto">
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityNServices.Update(Needel.Common.Application.Dtos.EntityNDto)">
+            <summary>
+            Actualiza una determinada entidad EntityN.
+            </summary>
+            <param name="entityNDto">
             DTO que contiene la información de la entidad que se va a actualizar.
-            </param>        /// <returns>
-            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
-            </returns></member>
-    <member name="M:Needel.Common.Application.IUserServices.AddAddresses(Needel.Common.Application.Dtos.AddressDto)">
-      <summary>
-            Función encargada de la añadir a la entidad User una instancia de la propiedad Addresses de tipo User
-            </summary>
-      <param name="addressesDto"> de tipo Address</param>
-      <returns>
-            Devuelve <c>True</c> si se ha añadido correctamente.
-            y <c>False</c> en caso contrario.
-            </returns>
-    </member>
-    <member name="M:Needel.Common.Application.IUserServices.RemoveAddresses(Needel.Common.Application.Dtos.AddressDto)">
-      <summary>
-            Función encargada de borrar de la entidad User una instancia de la colección Addresses de tipo User
-            </summary>
-      <param name="addressesDto"> de tipo User</param>
-      <returns>
-            Devuelve <c>True</c> si se ha añadido correctamente.
-            y <c>False</c> en caso contrario.
-            </returns>
-    </member>
-    <member name="M:Needel.Common.Application.IUserServices.UpdateAddresses(Needel.Common.Application.Dtos.AddressDto)">
-      <summary>
-            Función encargada de actualizar de la entidad User una instancia de la colección Addresses de tipo User
-            </summary>
-      <param name="addressesDto"> de tipo User</param>
-      <returns>
-            Devuelve <c>True</c> si se ha añadido correctamente.
-            y <c>False</c> en caso contrario.
-            </returns>
-    </member>
-    <member name="T:Needel.Common.Application.UserMapper">
-      <summary>
-            .en mapping class from entity to dto <see cref="T:Needel.Common.Application.UserMapper" />
-            .es Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.UserMapper" />.
-            </summary>
-    </member>
-    <member name="M:Needel.Common.Application.UserMapper.#ctor">
-      <summary>
-            .en Get an instance of <see cref="T:Needel.Common.Application.UserMapper" />
-            .es Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.UserMapper" />.
-            </summary>
-    </member>
-    <member name="M:Needel.Common.Application.UserMapper.EntityMapping(Needel.Common.Domain.IUser)">
-      <summary>
-            .en public function mapping from entity to dto
-            .es Función pública que mapea las entidades para devolver el
-            correspondiente Dto.
-            </summary>
-      <param name="entityUser">
-            .es Objeto de la entidad <see cref="T:Needel.Common.Domain.User" />.
             </param>
-      <exception cref="T:System.ArgumentNullException">
-            .en exception when there is a null value in the parameter.
-            .es Lanzada cuando el valor de <c>entityUser</c> es null.
-            </exception>
-      <returns>
-            .en returns an object of type <see cref="T:Needel.Common.Application.Dtos.UserDto" />
-            .es Devuelve un objeto de tipo <see cref="T:Needel.Common.Application.Dtos.UserDto" /> 
-            con los datos mapeados.
+            <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="T:Needel.Common.Application.UserServices">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.EntityNServices.AddMZs(Needel.Common.Application.Dtos.MNZDto)">
+            <summary>
+            Función encargada de la añadir a la entidad EntityN una instancia de la propiedad MZs de tipo EntityN
+            </summary>
+            <param name="mZsDto"> de tipo MNZ</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityNServices.RemoveMZs(Needel.Common.Application.Dtos.MNZDto)">
+            <summary>
+            Función encargada de borrar de la entidad EntityN una instancia de la colección MZs de tipo EntityN
+            </summary>
+            <param name="mZsDto"> de tipo EntityN</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityNServices.UpdateMZs(Needel.Common.Application.Dtos.MNZDto)">
+            <summary>
+            Función encargada de actualizar de la entidad EntityN una instancia de la colección MZs de tipo EntityN
+            </summary>
+            <param name="mZsDto"> de tipo EntityN</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="T:Needel.Common.Application.IEntityNMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.EntityNMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:Needel.Common.Application.Dtos.EntityNDto"/> con una entidad <see cref="T:Needel.Common.Application.EntityNMapper"/>.
+            </remarks>
+        </member>
+        <member name="T:Needel.Common.Application.IEntityNServices">
+            <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:Needel.Common.Application.IEntityNServices"/>.
+            </summary>
+        </member>
+        <member name="T:Needel.Common.Application.EntityZMapper">
+            <summary>
+            .en mapping class from Entity to dto <see cref="T:Needel.Common.Application.EntityZMapper"/>
+            .es Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.EntityZMapper"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.EntityZMapper.#ctor">
+            <summary>
+            .en Get an instance of <see cref="T:Needel.Common.Application.EntityZMapper"/>
+            .es Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.EntityZMapper"/>.
+            </summary>
+        </member>
+        <member name="P:Needel.Common.Application.EntityZMapper.MNZDtoMapper">
+            <summary>
+            Mapper for Children
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.EntityZMapper.EntityMapping(Needel.Common.Domain.EntityZ)">
+            <summary>
+            Default constructor parameters
+            </summary>
+            <param name="entityEntityZ"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityZMapper.EntityMapping(Needel.Common.Domain.EntityZ,System.Boolean,System.Boolean)">
+            <summary>
+            .en public function mapping from Entity to dto
+            </summary>
+            <param name="entityEntityZ">
+            </param>
+            <param name="mapParents">
+            .en option to map parent objects
+            </param>
+            <param name="mapChildren">
+            .en option to map children objects
+            </param>
+            <returns>
+            .en returns an DTO of type <see cref="T:Needel.Common.Application.Dtos.EntityZDto"/>
+            </returns>
+        </member>
+        <member name="T:Needel.Common.Application.EntityZServices">
+            <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity EntityZ.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad EntityZ.
+            </summary>
+            <remarks>
+            .en Create an object of type <see cref="T:Needel.Common.Domain.EntityZ"/>.
+            .es Crea un objeto <see cref="T:Needel.Common.Domain.EntityZ"/>.
+             permanent guid = 
+            </remarks>
+        </member>
+        <member name="M:Needel.Common.Application.EntityZServices.#ctor">
+            <summary>
+            .es Inicializa una nueva instancia de la clase <see cref="T:EntityZ>Service"/>.
+            </summary>
+            <remarks>
+            .es Constructor de la clase <see cref="T:EntityZServices"/>.
+            </remarks>
+        </member>
+        <member name="M:Needel.Common.Application.EntityZServices.Create(Needel.Common.Application.Dtos.EntityZDto)">
+            <summary>
+            Crea una entidad EntityZ.
+            </summary>
+            <param name="entityZDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+            <returns>
+            El identificador de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityZServices.Delete(System.Int32)">
+            <summary>
+            .es Elimina una determinada entidad EntityZ.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityZServices.Delete(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            .es Elimina las entidades EntityZ seleccionadas por los ids del parametro.
+            </summary>
+            <param name="entityZIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityZServices.Delete(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityZServices.DeleteAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityZServices.GetAll">
+            <summary>
+            .es Recupera todas las entidades EntityZ.
+            </summary>
+            <returns>
+            Todas las entidades EntityZ.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityZServices.GetAllExceptThis(System.Int32)">
+            <summary>
+            .es Recupera todas las instancias de EntityZ excepto la indicada por el parametro. 
+            </summary>
+            <param name="entityZId">.es Entidad a evitar.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityZServices.GetSelectedThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="entityZIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityZServices.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="entityZIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityZServices.GetById(System.Int32)">
+            <summary>
+            .es Recupera una entidad EntityZ mediante su identificador correspondiente.
+            </summary>
+            <param name="id">
+            .es Identificador de la entidad que se va a recuperar.
+            </param>
+            <returns>
+            La entidad EntityZ recuperada o valor nulo si no se encuentra.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityZServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades EntityZ, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades 'EntityZ', según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityZServices.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityZServices.Update(Needel.Common.Application.Dtos.EntityZDto)">
+            <summary>
+            Actualiza una determinada entidad EntityZ.
+            </summary>
+            <param name="entityZDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+            <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityZServices.AddMNs(Needel.Common.Application.Dtos.MNZDto)">
+            <summary>
+            Función encargada de la añadir a la entidad EntityZ una instancia de la propiedad MNs de tipo EntityZ
+            </summary>
+            <param name="mNsDto"> de tipo MNZ</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityZServices.RemoveMNs(Needel.Common.Application.Dtos.MNZDto)">
+            <summary>
+            Función encargada de borrar de la entidad EntityZ una instancia de la colección MNs de tipo EntityZ
+            </summary>
+            <param name="mNsDto"> de tipo EntityZ</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.EntityZServices.UpdateMNs(Needel.Common.Application.Dtos.MNZDto)">
+            <summary>
+            Función encargada de actualizar de la entidad EntityZ una instancia de la colección MNs de tipo EntityZ
+            </summary>
+            <param name="mNsDto"> de tipo EntityZ</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="T:Needel.Common.Application.IEntityZMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.EntityZMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:Needel.Common.Application.Dtos.EntityZDto"/> con una entidad <see cref="T:Needel.Common.Application.EntityZMapper"/>.
+            </remarks>
+        </member>
+        <member name="T:Needel.Common.Application.IEntityZServices">
+            <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:Needel.Common.Application.IEntityZServices"/>.
+            </summary>
+        </member>
+        <member name="T:Needel.Common.Application.GraphNodeMapper">
+            <summary>
+            .en mapping class from Entity to dto <see cref="T:Needel.Common.Application.GraphNodeMapper"/>
+            .es Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.GraphNodeMapper"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.GraphNodeMapper.#ctor">
+            <summary>
+            .en Get an instance of <see cref="T:Needel.Common.Application.GraphNodeMapper"/>
+            .es Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.GraphNodeMapper"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.GraphNodeMapper.EntityMapping(Needel.Common.Domain.GraphNode)">
+            <summary>
+            Default constructor parameters
+            </summary>
+            <param name="entityGraphNode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.GraphNodeMapper.EntityMapping(Needel.Common.Domain.GraphNode,System.Boolean,System.Boolean)">
+            <summary>
+            .en public function mapping from Entity to dto
+            </summary>
+            <param name="entityGraphNode">
+            </param>
+            <param name="mapParents">
+            .en option to map parent objects
+            </param>
+            <param name="mapChildren">
+            .en option to map children objects
+            </param>
+            <returns>
+            .en returns an DTO of type <see cref="T:Needel.Common.Application.Dtos.GraphNodeDto"/>
+            </returns>
+        </member>
+        <member name="T:Needel.Common.Application.GraphNodeServices">
+            <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity GraphNode.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad GraphNode.
+            </summary>
+            <remarks>
+            .en Create an object of type <see cref="T:Needel.Common.Domain.GraphNode"/>.
+            .es Crea un objeto <see cref="T:Needel.Common.Domain.GraphNode"/>.
+             permanent guid = 
+            </remarks>
+        </member>
+        <member name="M:Needel.Common.Application.GraphNodeServices.#ctor">
+            <summary>
+            .es Inicializa una nueva instancia de la clase <see cref="T:GraphNode>Service"/>.
+            </summary>
+            <remarks>
+            .es Constructor de la clase <see cref="T:GraphNodeServices"/>.
+            </remarks>
+        </member>
+        <member name="M:Needel.Common.Application.GraphNodeServices.Create(Needel.Common.Application.Dtos.GraphNodeDto)">
+            <summary>
+            Crea una entidad GraphNode.
+            </summary>
+            <param name="graphNodeDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+            <returns>
+            El identificador de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.GraphNodeServices.Delete(System.Int32)">
+            <summary>
+            .es Elimina una determinada entidad GraphNode.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.GraphNodeServices.Delete(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            .es Elimina las entidades GraphNode seleccionadas por los ids del parametro.
+            </summary>
+            <param name="graphNodeIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.GraphNodeServices.Delete(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.GraphNodeServices.DeleteAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.GraphNodeServices.GetAll">
+            <summary>
+            .es Recupera todas las entidades GraphNode.
+            </summary>
+            <returns>
+            Todas las entidades GraphNode.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.GraphNodeServices.GetAllExceptThis(System.Int32)">
+            <summary>
+            .es Recupera todas las instancias de GraphNode excepto la indicada por el parametro. 
+            </summary>
+            <param name="graphNodeId">.es Entidad a evitar.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.GraphNodeServices.GetAllExceptIdAndRelated(System.Int32)">
+            <summary>
+            Get all no related objects
+            </summary>
+            <param name="graphNodeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.GraphNodeServices.GetSelectedThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="graphNodeIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.GraphNodeServices.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="graphNodeIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.GraphNodeServices.GetById(System.Int32)">
+            <summary>
+            .es Recupera una entidad GraphNode mediante su identificador correspondiente.
+            </summary>
+            <param name="id">
+            .es Identificador de la entidad que se va a recuperar.
+            </param>
+            <returns>
+            La entidad GraphNode recuperada o valor nulo si no se encuentra.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.GraphNodeServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades GraphNode, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades 'GraphNode', según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.GraphNodeServices.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.GraphNodeServices.GetGraphNodeById(System.Int32)">
+            <summary>
+            Método encargado de obtener una <see cref="T:Needel.Common.Domain.GraphNode"/> a partir 
+            de su identificador.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="graphNodeId">
+            Parámetro que indica el identificador único de la entidad a obtener.
+            </param>
+            <returns>
+            Devuelve la entidad <see cref="T:Needel.Common.Domain.GraphNode"/> según el identificador.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.GraphNodeServices.Update(Needel.Common.Application.Dtos.GraphNodeDto)">
+            <summary>
+            Actualiza una determinada entidad GraphNode.
+            </summary>
+            <param name="graphNodeDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+            <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.GraphNodeServices.AddRightNodes(Needel.Common.Application.Dtos.GraphNodeDto)">
+            <summary>
+            Función encargada de la añadir a la entidad GraphNode una instancia de la propiedad RightNodes de tipo GraphNode
+            </summary>
+            <param name="rightNodesDto"> de tipo GraphNode</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.GraphNodeServices.RemoveRightNodes(Needel.Common.Application.Dtos.GraphNodeDto)">
+            <summary>
+            Función encargada de borrar de la entidad GraphNode una instancia de la colección RightNodes de tipo GraphNode
+            </summary>
+            <param name="rightNodesDto"> de tipo GraphNode</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.GraphNodeServices.UpdateRightNodes(Needel.Common.Application.Dtos.GraphNodeDto)">
+            <summary>
+            Función encargada de actualizar de la entidad GraphNode una instancia de la colección RightNodes de tipo GraphNode
+            </summary>
+            <param name="rightNodesDto"> de tipo GraphNode</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="T:Needel.Common.Application.IGraphNodeMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.GraphNodeMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:Needel.Common.Application.Dtos.GraphNodeDto"/> con una entidad <see cref="T:Needel.Common.Application.GraphNodeMapper"/>.
+            </remarks>
+        </member>
+        <member name="T:Needel.Common.Application.IGraphNodeServices">
+            <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:Needel.Common.Application.IGraphNodeServices"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.IGraphNodeServices.GetAllExceptIdAndRelated(System.Int32)">
+            <summary>
+            Get all no related objects
+            </summary>
+            <param name="componentId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Needel.Common.Application.IMNZMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.MNZMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:Needel.Common.Application.Dtos.MNZDto"/> con una entidad <see cref="T:Needel.Common.Application.MNZMapper"/>.
+            </remarks>
+        </member>
+        <member name="T:Needel.Common.Application.IMNZServices">
+            <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:Needel.Common.Application.IMNZServices"/>.
+            </summary>
+        </member>
+        <member name="T:Needel.Common.Application.MNZMapper">
+            <summary>
+            .en mapping class from ValueObject to dto <see cref="T:Needel.Common.Application.MNZMapper"/>
+            .es Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.MNZMapper"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.MNZMapper.#ctor">
+            <summary>
+            .en Get an instance of <see cref="T:Needel.Common.Application.MNZMapper"/>
+            .es Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.MNZMapper"/>.
+            </summary>
+        </member>
+        <member name="P:Needel.Common.Application.MNZMapper.EntityMDtoMapper">
+            <summary>
+            Mapper for Parent
+            </summary>
+        </member>
+        <member name="P:Needel.Common.Application.MNZMapper.EntityNDtoMapper">
+            <summary>
+            Mapper for Parent
+            </summary>
+        </member>
+        <member name="P:Needel.Common.Application.MNZMapper.EntityZDtoMapper">
+            <summary>
+            Mapper for Parent
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.MNZMapper.ValueObjectMapping(Needel.Common.Domain.MNZ)">
+            <summary>
+            Default constructor parameters
+            </summary>
+            <param name="valueObjectMNZ"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.MNZMapper.ValueObjectMapping(Needel.Common.Domain.MNZ,System.Boolean,System.Boolean)">
+            <summary>
+            .en public function mapping from ValueObject to dto
+            </summary>
+            <param name="valueObjectMNZ">
+            </param>
+            <param name="mapParents">
+            .en option to map parent objects
+            </param>
+            <param name="mapChildren">
+            .en option to map children objects
+            </param>
+            <returns>
+            .en returns an DTO of type <see cref="T:Needel.Common.Application.Dtos.MNZDto"/>
+            </returns>
+        </member>
+        <member name="T:Needel.Common.Application.MNZServices">
+            <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity MNZ.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad MNZ.
+            </summary>
+            <remarks>
+            .en Create an object of type <see cref="T:Needel.Common.Domain.MNZ"/>.
+            .es Crea un objeto <see cref="T:Needel.Common.Domain.MNZ"/>.
+             permanent guid = 
+            </remarks>
+        </member>
+        <member name="F:Needel.Common.Application.MNZServices.entityMMapper">
+            <summary>
+            .en Reference to the mapper of entity entityM
+            .es Referencia a la factoría de repositorios de la entidad entityM.
+            </summary>
+        </member>
+        <member name="F:Needel.Common.Application.MNZServices.entityNMapper">
+            <summary>
+            .en Reference to the mapper of entity entityN
+            .es Referencia a la factoría de repositorios de la entidad entityN.
+            </summary>
+        </member>
+        <member name="F:Needel.Common.Application.MNZServices.entityZMapper">
+            <summary>
+            .en Reference to the mapper of entity entityZ
+            .es Referencia a la factoría de repositorios de la entidad entityZ.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.MNZServices.#ctor">
+            <summary>
+            .es Inicializa una nueva instancia de la clase <see cref="T:MNZ>Service"/>.
+            </summary>
+            <remarks>
+            .es Constructor de la clase <see cref="T:MNZServices"/>.
+            </remarks>
+        </member>
+        <member name="M:Needel.Common.Application.MNZServices.Create(Needel.Common.Application.Dtos.MNZDto)">
+            <summary>
+            Crea una entidad MNZ.
+            </summary>
+            <param name="mNZDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+            <returns>
+            El identificador de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.MNZServices.Delete(Needel.Common.Application.Dtos.MNZDto)">
+            <summary>
+            .es Elimina una determinada entidad MNZ.
+            </summary>
+            <param name="mNZDto">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.MNZServices.Delete(System.Collections.Generic.IEnumerable{Needel.Common.Application.Dtos.MNZDto})">
+            <summary>
+            .es Elimina las entidades MNZ seleccionadas por los ids del parametro.
+            </summary>
+            <param name="MNZs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.MNZServices.Delete(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.MNZServices.DeleteAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.MNZServices.GetAll">
+            <summary>
+            .es Recupera todas las entidades MNZ.
+            </summary>
+            <returns>
+            Todas las entidades MNZ.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.MNZServices.GetAllExceptThis(Needel.Common.Application.Dtos.MNZDto)">
+            <summary>
+            .es Recupera todas las instancias de MNZ excepto la indicada por el parametro. 
+            </summary>
+            <param name="mNZDto">.es Entidad a evitar.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.MNZServices.GetAllExceptThese(System.Collections.Generic.IEnumerable{Needel.Common.Application.Dtos.MNZDto})">
+            <summary>
+            
+            </summary>
+            <param name="mNZIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.MNZServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades MNZ, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades 'MNZ', según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.MNZServices.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Needel.Common.Application.IStudentMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.StudentMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:Needel.Common.Application.Dtos.StudentDto"/> con una entidad <see cref="T:Needel.Common.Application.StudentMapper"/>.
+            </remarks>
+        </member>
+        <member name="T:Needel.Common.Application.IStudentServices">
+            <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:Needel.Common.Application.IStudentServices"/>.
+            </summary>
+        </member>
+        <member name="T:Needel.Common.Application.StudentMapper">
+            <summary>
+            .en mapping class from Entity to dto <see cref="T:Needel.Common.Application.StudentMapper"/>
+            .es Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.StudentMapper"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.StudentMapper.#ctor">
+            <summary>
+            .en Get an instance of <see cref="T:Needel.Common.Application.StudentMapper"/>
+            .es Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.StudentMapper"/>.
+            </summary>
+        </member>
+        <member name="P:Needel.Common.Application.StudentMapper.TeacherDtoMapper">
+            <summary>
+            Mapper for Children
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.StudentMapper.EntityMapping(Needel.Common.Domain.Student)">
+            <summary>
+            Default constructor parameters
+            </summary>
+            <param name="entityStudent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.StudentMapper.EntityMapping(Needel.Common.Domain.Student,System.Boolean,System.Boolean)">
+            <summary>
+            .en public function mapping from Entity to dto
+            </summary>
+            <param name="entityStudent">
+            </param>
+            <param name="mapParents">
+            .en option to map parent objects
+            </param>
+            <param name="mapChildren">
+            .en option to map children objects
+            </param>
+            <returns>
+            .en returns an DTO of type <see cref="T:Needel.Common.Application.Dtos.StudentDto"/>
+            </returns>
+        </member>
+        <member name="T:Needel.Common.Application.StudentServices">
+            <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity Student.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad Student.
+            </summary>
+            <remarks>
+            .en Create an object of type <see cref="T:Needel.Common.Domain.Student"/>.
+            .es Crea un objeto <see cref="T:Needel.Common.Domain.Student"/>.
+             permanent guid = 
+            </remarks>
+        </member>
+        <member name="F:Needel.Common.Application.StudentServices.teacherMapper">
+            <summary>
+            .en Reference to the mapper of entity teacher.
+            .es Referencia a la factoría de repositorios de la entidad teacher.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.StudentServices.#ctor">
+            <summary>
+            .es Inicializa una nueva instancia de la clase <see cref="T:Student>Service"/>.
+            </summary>
+            <remarks>
+            .es Constructor de la clase <see cref="T:StudentServices"/>.
+            </remarks>
+        </member>
+        <member name="M:Needel.Common.Application.StudentServices.Create(Needel.Common.Application.Dtos.StudentDto)">
+            <summary>
+            Crea una entidad Student.
+            </summary>
+            <param name="studentDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+            <returns>
+            El identificador de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.StudentServices.Delete(System.Int32)">
+            <summary>
+            .es Elimina una determinada entidad Student.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.StudentServices.Delete(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            .es Elimina las entidades Student seleccionadas por los ids del parametro.
+            </summary>
+            <param name="studentIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.StudentServices.Delete(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.StudentServices.DeleteAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.StudentServices.GetAll">
+            <summary>
+            .es Recupera todas las entidades Student.
+            </summary>
+            <returns>
+            Todas las entidades Student.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.StudentServices.GetAllExceptThis(System.Int32)">
+            <summary>
+            .es Recupera todas las instancias de Student excepto la indicada por el parametro. 
+            </summary>
+            <param name="studentId">.es Entidad a evitar.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.StudentServices.GetSelectedThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="studentIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.StudentServices.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="studentIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.StudentServices.GetById(System.Int32)">
+            <summary>
+            .es Recupera una entidad Student mediante su identificador correspondiente.
+            </summary>
+            <param name="id">
+            .es Identificador de la entidad que se va a recuperar.
+            </param>
+            <returns>
+            La entidad Student recuperada o valor nulo si no se encuentra.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.StudentServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Student, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades 'Student', según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.StudentServices.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.StudentServices.GetTeacherById(System.Int32)">
+            <summary>
+            Método encargado de obtener una <see cref="T:Needel.Common.Domain.Teacher"/> a partir 
+            de su identificador.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <param name="teacherId">
+            Parámetro que indica el identificador único de la entidad a obtener.
+            </param>
+            <returns>
+            Devuelve la entidad <see cref="T:Needel.Common.Domain.Teacher"/> según el identificador.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.StudentServices.Update(Needel.Common.Application.Dtos.StudentDto)">
+            <summary>
+            Actualiza una determinada entidad Student.
+            </summary>
+            <param name="studentDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+            <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.StudentServices.AddTeachers(Needel.Common.Application.Dtos.TeacherDto)">
+            <summary>
+            Función encargada de la añadir a la entidad Student una instancia de la propiedad Teachers de tipo Student
+            </summary>
+            <param name="teachersDto"> de tipo Teacher</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.StudentServices.RemoveTeachers(Needel.Common.Application.Dtos.TeacherDto)">
+            <summary>
+            Función encargada de borrar de la entidad Student una instancia de la colección Teachers de tipo Student
+            </summary>
+            <param name="teachersDto"> de tipo Student</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.StudentServices.UpdateTeachers(Needel.Common.Application.Dtos.TeacherDto)">
+            <summary>
+            Función encargada de actualizar de la entidad Student una instancia de la colección Teachers de tipo Student
+            </summary>
+            <param name="teachersDto"> de tipo Student</param>
+            <returns>
+            Devuelve <c>True</c> si se ha añadido correctamente.
+            y <c>False</c> en caso contrario.
+            </returns>
+        </member>
+        <member name="T:Needel.Common.Application.ITeacherMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.TeacherMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:Needel.Common.Application.Dtos.TeacherDto"/> con una entidad <see cref="T:Needel.Common.Application.TeacherMapper"/>.
+            </remarks>
+        </member>
+        <member name="T:Needel.Common.Application.ITeacherServices">
+            <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:Needel.Common.Application.ITeacherServices"/>.
+            </summary>
+        </member>
+        <member name="T:Needel.Common.Application.TeacherMapper">
+            <summary>
+            .en mapping class from Entity to dto <see cref="T:Needel.Common.Application.TeacherMapper"/>
+            .es Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.TeacherMapper"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.TeacherMapper.#ctor">
+            <summary>
+            .en Get an instance of <see cref="T:Needel.Common.Application.TeacherMapper"/>
+            .es Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.TeacherMapper"/>.
+            </summary>
+        </member>
+        <member name="P:Needel.Common.Application.TeacherMapper.StudentDtoMapper">
+            <summary>
+            Mapper for Parent
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.TeacherMapper.EntityMapping(Needel.Common.Domain.Teacher)">
+            <summary>
+            Default constructor parameters
+            </summary>
+            <param name="entityTeacher"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.TeacherMapper.EntityMapping(Needel.Common.Domain.Teacher,System.Boolean,System.Boolean)">
+            <summary>
+            .en public function mapping from Entity to dto
+            </summary>
+            <param name="entityTeacher">
+            </param>
+            <param name="mapParents">
+            .en option to map parent objects
+            </param>
+            <param name="mapChildren">
+            .en option to map children objects
+            </param>
+            <returns>
+            .en returns an DTO of type <see cref="T:Needel.Common.Application.Dtos.TeacherDto"/>
+            </returns>
+        </member>
+        <member name="T:Needel.Common.Application.TeacherServices">
+            <summary>
+            .en generated with ServiceHeaderClass.tt
+            Administration services of the entity Teacher.
+            .es geenrado con la plantilla ServiceHeaderClass.tt
+            Representa los servicios de administración de la entidad Teacher.
+            </summary>
+            <remarks>
+            .en Create an object of type <see cref="T:Needel.Common.Domain.Teacher"/>.
+            .es Crea un objeto <see cref="T:Needel.Common.Domain.Teacher"/>.
+             permanent guid = 
+            </remarks>
+        </member>
+        <member name="F:Needel.Common.Application.TeacherServices.studentMapper">
+            <summary>
+            .en Reference to the mapper of entity student
+            .es Referencia a la factoría de repositorios de la entidad student.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.TeacherServices.#ctor">
+            <summary>
+            .es Inicializa una nueva instancia de la clase <see cref="T:Teacher>Service"/>.
+            </summary>
+            <remarks>
+            .es Constructor de la clase <see cref="T:TeacherServices"/>.
+            </remarks>
+        </member>
+        <member name="M:Needel.Common.Application.TeacherServices.Create(Needel.Common.Application.Dtos.TeacherDto)">
+            <summary>
+            Crea una entidad Teacher.
+            </summary>
+            <param name="teacherDto">
+            DTO que contiene la información para crear la entidad.
+            </param>
+            <returns>
+            El identificador de la entidad creada.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.TeacherServices.Delete(System.Int32)">
+            <summary>
+            .es Elimina una determinada entidad Teacher.
+            </summary>
+            <param name="id">
+            Identificador de la entidad que se va a eliminar.
+            </param>
+            <returns>
+            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.TeacherServices.Delete(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            .es Elimina las entidades Teacher seleccionadas por los ids del parametro.
+            </summary>
+            <param name="teacherIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.TeacherServices.Delete(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.TeacherServices.DeleteAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.TeacherServices.GetAll">
+            <summary>
+            .es Recupera todas las entidades Teacher.
+            </summary>
+            <returns>
+            Todas las entidades Teacher.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.TeacherServices.GetAllExceptThis(System.Int32)">
+            <summary>
+            .es Recupera todas las instancias de Teacher excepto la indicada por el parametro. 
+            </summary>
+            <param name="teacherId">.es Entidad a evitar.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.TeacherServices.GetSelectedThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="teacherIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.TeacherServices.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="teacherIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.TeacherServices.GetById(System.Int32)">
+            <summary>
+            .es Recupera una entidad Teacher mediante su identificador correspondiente.
+            </summary>
+            <param name="id">
+            .es Identificador de la entidad que se va a recuperar.
+            </param>
+            <returns>
+            La entidad Teacher recuperada o valor nulo si no se encuentra.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.TeacherServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            Recupera una lista paginada de entidades Teacher, según la especificación indicada.
+            </summary>
+            <param name="specificationDto">
+            Especificación que se va a aplicar.
+            </param>
+            <returns>
+            La lista paginada de entidades 'Teacher', según la especificación indicada.
+            </returns>
+        </member>
+        <member name="M:Needel.Common.Application.TeacherServices.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.TeacherServices.Update(Needel.Common.Application.Dtos.TeacherDto)">
+            <summary>
+            Actualiza una determinada entidad Teacher.
+            </summary>
+            <param name="teacherDto">
+            DTO que contiene la información de la entidad que se va a actualizar.
+            </param>
+            <returns>
+            Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
+            </returns>
+        </member>
+        <member name="T:Needel.Common.Application.IUserMapper">
+            <summary>
+            Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.UserMapper"/>.
+            </summary>
+            <remarks>
+            Mapea los datos del Dto <see cref="T:Needel.Common.Application.Dtos.UserDto"/> con una entidad <see cref="T:Needel.Common.Application.UserMapper"/>.
+            </remarks>
+        </member>
+        <member name="T:Needel.Common.Application.IUserServices">
+            <summary>
+             .en Define the contract for the entity's administration services.
+             .es Define el contrato para los servicios de administración de la entidad.
+            de tipo <see cref="T:Needel.Common.Application.IUserServices"/>.
+            </summary>
+        </member>
+        <member name="T:Needel.Common.Application.UserMapper">
+            <summary>
+            .en mapping class from Entity to dto <see cref="T:Needel.Common.Application.UserMapper"/>
+            .es Clase pública encargada de mapear los datos de una entidad <see cref="T:Needel.Common.Application.UserMapper"/>.
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.UserMapper.#ctor">
+            <summary>
+            .en Get an instance of <see cref="T:Needel.Common.Application.UserMapper"/>
+            .es Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.UserMapper"/>.
+            </summary>
+        </member>
+        <member name="P:Needel.Common.Application.UserMapper.DepartmentDtoMapper">
+            <summary>
+            Mapper for Parent
+            </summary>
+        </member>
+        <member name="P:Needel.Common.Application.UserMapper.AddressDtoMapper">
+            <summary>
+            Mapper for Children
+            </summary>
+        </member>
+        <member name="M:Needel.Common.Application.UserMapper.EntityMapping(Needel.Common.Domain.User)">
+            <summary>
+            Default constructor parameters
+            </summary>
+            <param name="entityUser"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.UserMapper.EntityMapping(Needel.Common.Domain.User,System.Boolean,System.Boolean)">
+            <summary>
+            .en public function mapping from Entity to dto
+            </summary>
+            <param name="entityUser">
+            </param>
+            <param name="mapParents">
+            .en option to map parent objects
+            </param>
+            <param name="mapChildren">
+            .en option to map children objects
+            </param>
+            <returns>
+            .en returns an DTO of type <see cref="T:Needel.Common.Application.Dtos.UserDto"/>
+            </returns>
+        </member>
+        <member name="T:Needel.Common.Application.UserServices">
+            <summary>
             .en generated with ServiceHeaderClass.tt
             Administration services of the entity User.
             .es geenrado con la plantilla ServiceHeaderClass.tt
             Representa los servicios de administración de la entidad User.
             </summary>
-      <remarks>
-            .en Create an object of type <see cref="T:Needel.Common.Domain.User" />.
-            .es Crea un objeto <see cref="T:Needel.Common.Domain.User" />.
+            <remarks>
+            .en Create an object of type <see cref="T:Needel.Common.Domain.User"/>.
+            .es Crea un objeto <see cref="T:Needel.Common.Domain.User"/>.
              permanent guid = 
             </remarks>
-    </member>
-    <member name="F:Needel.Common.Application.UserServices.userMapper">
-      <summary>
-            Referencia al mapeador de la entidad User.
+        </member>
+        <member name="F:Needel.Common.Application.UserServices.departmentMapper">
+            <summary>
+            .en Reference to the mapper of entity department
+            .es Referencia a la factoría de repositorios de la entidad department.
             </summary>
-    </member>
-    <member name="M:Needel.Common.Application.UserServices.#ctor">
-      <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:User&gt;Service" />.
+        </member>
+        <member name="F:Needel.Common.Application.UserServices.addressMapper">
+            <summary>
+            .en Reference to the mapper of entity address.
+            .es Referencia a la factoría de repositorios de la entidad address.
             </summary>
-      <remarks>
-            Constructor de la clase <see cref="T:UserServices" />.
+        </member>
+        <member name="M:Needel.Common.Application.UserServices.#ctor">
+            <summary>
+            .es Inicializa una nueva instancia de la clase <see cref="T:User>Service"/>.
+            </summary>
+            <remarks>
+            .es Constructor de la clase <see cref="T:UserServices"/>.
             </remarks>
-    </member>
-    <member name="P:Needel.Common.Application.UserServices.UserMapper">
-      <summary>
-            Obtiene la referencia al mapeador de la entidad <see cref="T:IUser" />.
-            </summary>
-    </member>
-    <member name="M:Needel.Common.Application.UserServices.Create(Needel.Common.Application.Dtos.UserDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.UserServices.Create(Needel.Common.Application.Dtos.UserDto)">
+            <summary>
             Crea una entidad User.
             </summary>
-      <param name="userDto">
+            <param name="userDto">
             DTO que contiene la información para crear la entidad.
             </param>
-      <returns>
+            <returns>
             El identificador de la entidad creada.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.UserServices.Delete(System.Int32)">
-      <summary>
-            Elimina una determinada entidad User.
+        </member>
+        <member name="M:Needel.Common.Application.UserServices.Delete(System.Int32)">
+            <summary>
+            .es Elimina una determinada entidad User.
             </summary>
-      <param name="id">
+            <param name="id">
             Identificador de la entidad que se va a eliminar.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.UserServices.GetAll">
-      <summary>
-            Recupera todas las entidades User.
+        </member>
+        <member name="M:Needel.Common.Application.UserServices.Delete(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            .es Elimina las entidades User seleccionadas por los ids del parametro.
             </summary>
-      <returns>
+            <param name="userIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.UserServices.Delete(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.UserServices.DeleteAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.UserServices.GetAll">
+            <summary>
+            .es Recupera todas las entidades User.
+            </summary>
+            <returns>
             Todas las entidades User.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.UserServices.GetById(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.UserServices.GetAllExceptThis(System.Int32)">
+            <summary>
+            .es Recupera todas las instancias de User excepto la indicada por el parametro. 
+            </summary>
+            <param name="userId">.es Entidad a evitar.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.UserServices.GetSelectedThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="userIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.UserServices.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="userIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.UserServices.GetById(System.Int32)">
+            <summary>
             .es Recupera una entidad User mediante su identificador correspondiente.
             </summary>
-      <param name="id">
+            <param name="id">
             .es Identificador de la entidad que se va a recuperar.
             </param>
-      <returns>
+            <returns>
             La entidad User recuperada o valor nulo si no se encuentra.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.UserServices.GetPaged(Inflexion2.Application.SpecificationDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.UserServices.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
             Recupera una lista paginada de entidades User, según la especificación indicada.
             </summary>
-      <param name="specificationDto">
+            <param name="specificationDto">
             Especificación que se va a aplicar.
             </param>
-      <returns>
+            <returns>
             La lista paginada de entidades 'User', según la especificación indicada.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.UserServices.GetAddressById(System.Int32)">
-      <summary>
-            Método encargado de obtener una <see cref="T:Needel.Common.Domain.Address" /> a partir 
+        </member>
+        <member name="M:Needel.Common.Application.UserServices.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.UserServices.GetAddressById(System.Int32)">
+            <summary>
+            Método encargado de obtener una <see cref="T:Needel.Common.Domain.Address"/> a partir 
             de su identificador.
             </summary>
-      <remarks>
+            <remarks>
             Sin comentarios adicionales.
             </remarks>
-      <param name="addressId">
+            <param name="addressId">
             Parámetro que indica el identificador único de la entidad a obtener.
             </param>
-      <returns>
-            Devuelve la entidad <see cref="T:Needel.Common.Domain.Address" /> según el identificador.
+            <returns>
+            Devuelve la entidad <see cref="T:Needel.Common.Domain.Address"/> según el identificador.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.UserServices.Update(Needel.Common.Application.Dtos.UserDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.UserServices.Update(Needel.Common.Application.Dtos.UserDto)">
+            <summary>
             Actualiza una determinada entidad User.
             </summary>
-      <param name="userDto">
+            <param name="userDto">
             DTO que contiene la información de la entidad que se va a actualizar.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la actualización ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.UserServices.AddAddresses(Needel.Common.Application.Dtos.AddressDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.UserServices.AddAddresses(Needel.Common.Application.Dtos.AddressDto)">
+            <summary>
             Función encargada de la añadir a la entidad User una instancia de la propiedad Addresses de tipo User
             </summary>
-      <param name="addressesDto"> de tipo Address</param>
-      <returns>
+            <param name="addressesDto"> de tipo Address</param>
+            <returns>
             Devuelve <c>True</c> si se ha añadido correctamente.
             y <c>False</c> en caso contrario.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.UserServices.RemoveAddresses(Needel.Common.Application.Dtos.AddressDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.UserServices.RemoveAddresses(Needel.Common.Application.Dtos.AddressDto)">
+            <summary>
             Función encargada de borrar de la entidad User una instancia de la colección Addresses de tipo User
             </summary>
-      <param name="addressesDto"> de tipo User</param>
-      <returns>
+            <param name="addressesDto"> de tipo User</param>
+            <returns>
             Devuelve <c>True</c> si se ha añadido correctamente.
             y <c>False</c> en caso contrario.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.UserServices.UpdateAddresses(Needel.Common.Application.Dtos.AddressDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.UserServices.UpdateAddresses(Needel.Common.Application.Dtos.AddressDto)">
+            <summary>
             Función encargada de actualizar de la entidad User una instancia de la colección Addresses de tipo User
             </summary>
-      <param name="addressesDto"> de tipo User</param>
-      <returns>
+            <param name="addressesDto"> de tipo User</param>
+            <returns>
             Devuelve <c>True</c> si se ha añadido correctamente.
             y <c>False</c> en caso contrario.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.UserServices.Commit">
-      <summary>
-            adapter of commit operation independent form the ORM
-            </summary>
-    </member>
-  </members>
+        </member>
+    </members>
 </doc>

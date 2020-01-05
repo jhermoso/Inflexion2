@@ -17,48 +17,58 @@
              FlowDirection="{Binding lex:LocFlowDirection Inflexion2.Resources:FrameworkResource:flow}" 
 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="525" 
+             d:DesignHeight="450" d:DesignWidth="525" 
              Padding="5" Loaded="OnLoaded">
-
+    <UserControl.Resources>
+        <converter:BooleanToVisibilityCollapsedConverter x:Key="BooleanToVisibilityCollapsedConverter"/>
+    </UserControl.Resources>
     <Grid x:Name="MainGrid" Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/><!-- insert here single properties from entity and single identity properties from parents without reflexion -->
+            <RowDefinition Height="Auto"/><!-- insert here all collection properties -->
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+            <Grid x:Name="MainControlGrid" Background="White" Grid.Row="0" GotFocus="OnGotFocusMainViewControl" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-        <!-- .en columns from properties -->
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:Department_NameAlias}" />
-        <TextBlock Grid.Row="2" Grid.Column="0" Text="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:Department_DescriptionAlias}" />
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:Department_CreationTimeAlias}" />
-        <TextBlock Grid.Row="4" Grid.Column="0" Text="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:Department_UpdateTimeAlias}" />
-        <TextBox  x:Name="fieldName" Grid.Row="0" Grid.Column="1" Text="{Binding Name, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="Department's name."/>
-        <CheckBox x:Name="fieldVisible" Grid.Row="1" Grid.Column="1" Content="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:Department_VisibleAlias}" IsChecked="{Binding Visible, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="Allow the visibility/activation of this department." HorizontalAlignment="Left"/>
-        <TextBox x:Name="fieldDescription" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding Description, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="Department's description." SpellCheck.IsEnabled="True" MaxLines="10"/>
-        <DatePicker  x:Name="fieldCreationTime" Grid.Row="3" Grid.Column="1" Text="{Binding CreationTime, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="" HorizontalAlignment="Left"/>
-        <DatePicker  x:Name="fieldUpdateTime" Grid.Row="4" Grid.Column="1" Text="{Binding UpdateTime, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="" HorizontalAlignment="Left"/>
-        <!-- .en Show properties that comes from parent relationships --> 
-        <!-- .es Mostrar las propiedades que provienen the relaciones parentales. --> 
-        <moduleControls:UserQueryView x:Name="UserQueryView" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" DataContext="{Binding UsersQueryVM}" Loaded="OnLoadUsersQueryViewControl" GotFocus="OnGotFocusUserQueryViewControl" LostFocus="OnLostFocusQueryViewControl">
-            <!--<i:Interaction.Triggers>
-                <i:EventTrigger EventName="Loaded">
-                    <i:InvokeCommandAction Command="{Binding OnLoadUserQueryViewControlCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" />
-                </i:EventTrigger>
-                <i:EventTrigger EventName="GotFocus">
-                    <i:InvokeCommandAction Command="{Binding OnGotFocusUserQueryViewControlCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" />
-                </i:EventTrigger>
-                <i:EventTrigger EventName="LostFocus">
-                    <i:InvokeCommandAction Command="{Binding OnLostFocusUserQueryViewControlCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>-->
-        </moduleControls:UserQueryView>
-        <!-- DataContext="{Binding UsersQueryVm}"-->					
+                <!-- .en columns from properties -->
+                <Label Grid.Row="0" Grid.Column="0" Content="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:Department_NameAlias}" Margin="0,0,5,0" />
+                <CheckBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="fieldVisible" Content="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:Department_VisibleAlias}" IsChecked="{Binding Visible, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="Allow the visibility/activation of this department." HorizontalAlignment="Left"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:Department_DescriptionAlias}" Margin="0,0,5,0" />
+                <Label Grid.Row="3" Grid.Column="0" Content="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:Department_CreationTimeAlias}" Margin="0,0,5,0" />
+                <Label Grid.Row="4" Grid.Column="0" Content="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:Department_UpdateTimeAlias}" Margin="0,0,5,0" />
+                <TextBox          Grid.Row="0" Grid.Column="1"  x:Name="fieldName" Text="{Binding Name, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="Department's name."/>
+                <TextBox          Grid.Row="2" Grid.Column="1" x:Name="fieldDescription" TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding Description, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="Department's description." SpellCheck.IsEnabled="True" MaxLines="10"/>
+                <DatePicker       Grid.Row="3" Grid.Column="1" x:Name="fieldCreationTime" Text="{Binding CreationTime, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="" HorizontalAlignment="Left"/>
+                <DatePicker       Grid.Row="4" Grid.Column="1" x:Name="fieldUpdateTime" Text="{Binding UpdateTime, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="" HorizontalAlignment="Left"/>
+        </Grid>
+        <!-- .en Show properties that comes from children relationships or Many to  Many--> 
+        <!-- .es Mostrar las propiedades que provienen the relaciones hijas o Many To Many. -->
+        <Grid x:Name="ChildrenGrid" Background="White" Grid.Row="1">
+            <Grid.RowDefinitions>
+            <!-- One Row per Child entity -->
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <!-- Two columns one for the datagrid entity and one for drag and drop -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" >
+                    <GroupBox Header="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:UserPluralEntity}" Visibility="{Binding IsNotTransient, Converter={StaticResource BooleanToVisibilityCollapsedConverter}}" GotFocus="OnGotFocusUsersQueryViewControl">
+                        <moduleControls:UserQueryView x:Name="UsersQueryView" DataContext="{Binding UsersQueryVM, Mode=TwoWay}" Loaded="OnLoadUsersQueryViewControl" GotFocus="OnGotFocusUsersQueryViewControl" /><!-- * -->
+                    </GroupBox>
+                </StackPanel>
+            </Grid>
     </Grid>
 </UserControl>

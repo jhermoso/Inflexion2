@@ -19,7 +19,7 @@ namespace Inflexion2.Domain
     /// Representación del tipo del identificador de la entidad.
     /// Representation of Entity's type.
     /// </typeparam>
-    public interface IEntity<TIdentifier> : System.IComparable,
+    public interface IEntity<TIdentifier> : Domain.IDomainEntity, System.IComparable,
                                             System.IEquatable<IEntity<TIdentifier>>, 
                                             System.IComparable<IEntity<TIdentifier>>
         where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
@@ -64,5 +64,12 @@ namespace Inflexion2.Domain
         bool IsTransient();
 
         #endregion
+    }
+
+    /// <summary>
+    /// mark interface to use with reflection and get the properties that implement this interface
+    /// </summary>
+    public interface IDomainEntity : IDomainObject
+    {
     }
 }

@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0040080F-27DB-465E-846F-3A475414E7AE}</ProjectGuid>
+    <ProjectGuid>{48C76203-FBD8-4090-84D3-9F40C711C7B9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Needel.Common.Application</RootNamespace>
@@ -28,7 +28,7 @@
     <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
     <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
     <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
-    <CodeContractsRunCodeAnalysis>True</CodeContractsRunCodeAnalysis>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
     <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
     <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
     <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
@@ -45,7 +45,7 @@
     <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
     <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
     <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
-    <CodeContractsEmitXMLDocs>True</CodeContractsEmitXMLDocs>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
     <CodeContractsCustomRewriterAssembly />
     <CodeContractsCustomRewriterClass />
     <CodeContractsLibPaths />
@@ -58,6 +58,18 @@
     <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
     <DocumentationFile>..\..\00-Documentation\Needel.Common.Application.XML</DocumentationFile>
+    <CodeContractsAssertsToContractsCheckBox>True</CodeContractsAssertsToContractsCheckBox>
+    <CodeContractsRedundantTests>True</CodeContractsRedundantTests>
+    <CodeContractsMissingPublicRequiresAsWarnings>True</CodeContractsMissingPublicRequiresAsWarnings>
+    <CodeContractsMissingPublicEnsuresAsWarnings>False</CodeContractsMissingPublicEnsuresAsWarnings>
+    <CodeContractsInferEnsuresAutoProperties>True</CodeContractsInferEnsuresAutoProperties>
+    <CodeContractsSuggestAssumptionsForCallees>False</CodeContractsSuggestAssumptionsForCallees>
+    <CodeContractsNecessaryEnsures>True</CodeContractsNecessaryEnsures>
+    <CodeContractsSuggestReadonly>True</CodeContractsSuggestReadonly>
+    <CodeContractsSQLServerOption />
+    <CodeContractsSkipAnalysisIfCannotConnectToCache>False</CodeContractsSkipAnalysisIfCannotConnectToCache>
+    <CodeContractsFailBuildOnWarnings>False</CodeContractsFailBuildOnWarnings>
+    <CodeContractsBeingOptimisticOnExternal>True</CodeContractsBeingOptimisticOnExternal>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -122,11 +134,44 @@
     <Compile Include="AppSetting\AppSettingServices.cs" />
     <Compile Include="AppSetting\IAppSettingMapper.cs" />
     <Compile Include="AppSetting\IAppSettingServices.cs" />
+    <Compile Include="CommonRepositoryLayer.cs" />
+    <Compile Include="Component\ComponentMapper.cs" />
+    <Compile Include="Component\ComponentServices.cs" />
+    <Compile Include="Component\IComponentMapper.cs" />
+    <Compile Include="Component\IComponentServices.cs" />
     <Compile Include="Department\DepartmentMapper.cs" />
     <Compile Include="Department\DepartmentServices.cs" />
     <Compile Include="Department\IDepartmentMapper.cs" />
     <Compile Include="Department\IDepartmentServices.cs" />
+    <Compile Include="EntityM\EntityMMapper.cs" />
+    <Compile Include="EntityM\EntityMServices.cs" />
+    <Compile Include="EntityM\IEntityMMapper.cs" />
+    <Compile Include="EntityM\IEntityMServices.cs" />
+    <Compile Include="EntityN\EntityNMapper.cs" />
+    <Compile Include="EntityN\EntityNServices.cs" />
+    <Compile Include="EntityN\IEntityNMapper.cs" />
+    <Compile Include="EntityN\IEntityNServices.cs" />
+    <Compile Include="EntityZ\EntityZMapper.cs" />
+    <Compile Include="EntityZ\EntityZServices.cs" />
+    <Compile Include="EntityZ\IEntityZMapper.cs" />
+    <Compile Include="EntityZ\IEntityZServices.cs" />
+    <Compile Include="GraphNode\GraphNodeMapper.cs" />
+    <Compile Include="GraphNode\GraphNodeServices.cs" />
+    <Compile Include="GraphNode\IGraphNodeMapper.cs" />
+    <Compile Include="GraphNode\IGraphNodeServices.cs" />
+    <Compile Include="MNZ\IMNZMapper.cs" />
+    <Compile Include="MNZ\IMNZServices.cs" />
+    <Compile Include="MNZ\MNZMapper.cs" />
+    <Compile Include="MNZ\MNZServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Student\IStudentMapper.cs" />
+    <Compile Include="Student\IStudentServices.cs" />
+    <Compile Include="Student\StudentMapper.cs" />
+    <Compile Include="Student\StudentServices.cs" />
+    <Compile Include="Teacher\ITeacherMapper.cs" />
+    <Compile Include="Teacher\ITeacherServices.cs" />
+    <Compile Include="Teacher\TeacherMapper.cs" />
+    <Compile Include="Teacher\TeacherServices.cs" />
     <Compile Include="User\IUserMapper.cs" />
     <Compile Include="User\IUserServices.cs" />
     <Compile Include="User\UserMapper.cs" />
@@ -135,13 +180,17 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\10-Solutions\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
+      <HintPath>..\..\10-Solutions\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\10-Solutions\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\..\10-Solutions\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\02-Library\Unity\v2.1\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\02-Library\Unity\v2.1\Microsoft.Practices.Unity.dll</HintPath>
@@ -156,43 +205,43 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\01-Projects\Inflexion2.Application\Inflexion2.Application.csproj">
-      <Project>{35331B03-1EF9-488C-964C-42DE594C98F1}</Project>
+      <Project>{35331b03-1ef9-488c-964c-42de594c98f1}</Project>
       <Name>Inflexion2.Application</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\01-Projects\Inflexion2.EF\Inflexion2.EF.csproj">
-      <Project>{0FB2C801-BD90-400A-8D2B-817481985499}</Project>
+      <Project>{0fb2c801-bd90-400a-8d2b-817481985499}</Project>
       <Name>Inflexion2.EF</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\01-Projects\Inflexion2.Logging\Inflexion2.Logging.csproj">
-      <Project>{8C00A051-13CA-4702-B74C-FD672E843BDE}</Project>
+      <Project>{8c00a051-13ca-4702-b74c-fd672e843bde}</Project>
       <Name>Inflexion2.Logging</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\01-Projects\Inflexion2.Resources\Inflexion2.Resources.csproj">
-      <Project>{E5F79D13-0E92-4E5C-9251-6922741AFCAA}</Project>
+      <Project>{e5f79d13-0e92-4e5c-9251-6922741afcaa}</Project>
       <Name>Inflexion2.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\01-Projects\Inflexion2\Inflexion2.csproj">
-      <Project>{BF5456D4-B276-459B-98D4-853FCEF99ADE}</Project>
+      <Project>{bf5456d4-b276-459b-98d4-853fcef99ade}</Project>
       <Name>Inflexion2</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Application.Dtos\Needel.Common.Application.Dtos.csproj">
-      <Project>{F070AFAF-80CD-4CF7-9E7D-5078A1DE337D}</Project>
+      <Project>{B10EDB2C-57AE-4846-BDD2-A589E1E0797C}</Project>
       <Name>Needel.Common.Application.Dtos</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Domain.Data\Needel.Common.Domain.Data.csproj">
-      <Project>{0ED1DDBD-0582-43D7-B734-C991620E2234}</Project>
+      <Project>{6E3DC684-8C28-41C6-B471-498417EE0FFA}</Project>
       <Name>Needel.Common.Domain.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Domain\Needel.Common.Domain.csproj">
-      <Project>{621FB143-7170-421C-8545-F0054518FC16}</Project>
+      <Project>{796F9291-10A0-4EC3-9E42-942F3F65A0DD}</Project>
       <Name>Needel.Common.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Infrastructure.Resources\Needel.Common.Infrastructure.Resources.csproj">
-      <Project>{2F3B7720-D784-4541-BB98-39DDECFEA177}</Project>
+      <Project>{0EF0F63E-04E0-4616-B40D-B59AAA646F75}</Project>
       <Name>Needel.Common.Infrastructure.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Infrastructure\Needel.Common.Infrastructure.csproj">
-      <Project>{181D073B-EC7A-4A73-9EFB-49B18FE7D106}</Project>
+      <Project>{E14955B7-3011-4374-A083-72D1AE233FCC}</Project>
       <Name>Needel.Common.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>

@@ -17,11 +17,19 @@ namespace Inflexion2.Application
     [DataContract]
     public abstract class BaseValueObjectDataTransferObject :
                                             System.IComparable,
-                                            System.IEquatable<BaseValueObjectDataTransferObject>
+                                            System.IEquatable<BaseValueObjectDataTransferObject>,
+                                            IDataTransferObject
 
     {
+
         #region System.IComparable
 
+
+        /// <summary>
+        /// System.IComparable implementation
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public int CompareTo(object obj)
         {
             throw new NotImplementedException();
@@ -30,10 +38,31 @@ namespace Inflexion2.Application
         #endregion System.IComparable
 
         #region
-        public bool Equals(BaseValueObjectDataTransferObject other)
+        /// <summary>
+        /// System.IComparable implementation
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public virtual bool Equals(BaseValueObjectDataTransferObject other)
+        {
+            if (other == null) return false;
+
+            return base.Equals(other);
+        }
+        #endregion
+
+        #region IClonable Implementation
+
+        /// <summary>
+        /// Dto clone implementation to help the implementation of IEditableObject in View Models
+        /// </summary>
+        /// <returns></returns>
+        public virtual object Clone()
         {
             throw new NotImplementedException();
         }
+
         #endregion
+
     }
 }

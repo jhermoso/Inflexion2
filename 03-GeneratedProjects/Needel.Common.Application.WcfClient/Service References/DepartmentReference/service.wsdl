@@ -101,6 +101,81 @@
   <wsdl:message name="IDepartmentService_GetPaged_InternalExceptionFault_FaultMessage">
     <wsdl:part name="detail" element="InternalException" />
   </wsdl:message>
+  <wsdl:message name="IDepartmentService_DeleteAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAll" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_DeleteAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_DeleteAll_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_DeleteAll_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_DeleteAll_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_GetAllExceptThis_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllExceptThis" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_GetAllExceptThis_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllExceptThisResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_GetAllExceptThis_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_GetAllExceptThis_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_GetAllExceptThis_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_GetSelectedThese_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSelectedThese" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_GetSelectedThese_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSelectedTheseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_GetSelectedThese_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_GetSelectedThese_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_GetSelectedThese_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_GetAllExceptThese_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllExceptThese" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_GetAllExceptThese_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllExceptTheseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_GetAllExceptThese_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_GetAllExceptThese_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_GetAllExceptThese_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_GetFiltered_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFiltered" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_GetFiltered_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilteredResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_GetFiltered_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_GetFiltered_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_GetFiltered_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
   <wsdl:portType name="IDepartmentService">
     <wsdl:operation name="Create">
       <wsdl:input wsaw:Action="http://tempuri.org/IDepartmentService/Create" message="tns:IDepartmentService_Create_InputMessage" />
@@ -143,6 +218,41 @@
       <wsdl:fault wsaw:Action="http://tempuri.org/IDepartmentService/GetPagedFaultObjectFault" name="FaultObjectFault" message="tns:IDepartmentService_GetPaged_FaultObjectFault_FaultMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IDepartmentService/GetPagedValidationExceptionFault" name="ValidationExceptionFault" message="tns:IDepartmentService_GetPaged_ValidationExceptionFault_FaultMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IDepartmentService/GetPagedInternalExceptionFault" name="InternalExceptionFault" message="tns:IDepartmentService_GetPaged_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDepartmentService/DeleteAll" message="tns:IDepartmentService_DeleteAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDepartmentService/DeleteAllResponse" message="tns:IDepartmentService_DeleteAll_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IDepartmentService/DeleteAllFaultObjectFault" name="FaultObjectFault" message="tns:IDepartmentService_DeleteAll_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IDepartmentService/DeleteAllValidationExceptionFault" name="ValidationExceptionFault" message="tns:IDepartmentService_DeleteAll_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IDepartmentService/DeleteAllInternalExceptionFault" name="InternalExceptionFault" message="tns:IDepartmentService_DeleteAll_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllExceptThis">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDepartmentService/GetAllExceptThis" message="tns:IDepartmentService_GetAllExceptThis_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDepartmentService/GetAllExceptThisResponse" message="tns:IDepartmentService_GetAllExceptThis_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IDepartmentService/GetAllExceptThisFaultObjectFault" name="FaultObjectFault" message="tns:IDepartmentService_GetAllExceptThis_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IDepartmentService/GetAllExceptThisValidationExceptionFault" name="ValidationExceptionFault" message="tns:IDepartmentService_GetAllExceptThis_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IDepartmentService/GetAllExceptThisInternalExceptionFault" name="InternalExceptionFault" message="tns:IDepartmentService_GetAllExceptThis_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSelectedThese">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDepartmentService/GetSelectedThese" message="tns:IDepartmentService_GetSelectedThese_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDepartmentService/GetSelectedTheseResponse" message="tns:IDepartmentService_GetSelectedThese_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IDepartmentService/GetSelectedTheseFaultObjectFault" name="FaultObjectFault" message="tns:IDepartmentService_GetSelectedThese_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IDepartmentService/GetSelectedTheseValidationExceptionFault" name="ValidationExceptionFault" message="tns:IDepartmentService_GetSelectedThese_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IDepartmentService/GetSelectedTheseInternalExceptionFault" name="InternalExceptionFault" message="tns:IDepartmentService_GetSelectedThese_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllExceptThese">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDepartmentService/GetAllExceptThese" message="tns:IDepartmentService_GetAllExceptThese_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDepartmentService/GetAllExceptTheseResponse" message="tns:IDepartmentService_GetAllExceptThese_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IDepartmentService/GetAllExceptTheseFaultObjectFault" name="FaultObjectFault" message="tns:IDepartmentService_GetAllExceptThese_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IDepartmentService/GetAllExceptTheseValidationExceptionFault" name="ValidationExceptionFault" message="tns:IDepartmentService_GetAllExceptThese_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IDepartmentService/GetAllExceptTheseInternalExceptionFault" name="InternalExceptionFault" message="tns:IDepartmentService_GetAllExceptThese_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFiltered">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDepartmentService/GetFiltered" message="tns:IDepartmentService_GetFiltered_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDepartmentService/GetFilteredResponse" message="tns:IDepartmentService_GetFiltered_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IDepartmentService/GetFilteredFaultObjectFault" name="FaultObjectFault" message="tns:IDepartmentService_GetFiltered_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IDepartmentService/GetFilteredValidationExceptionFault" name="ValidationExceptionFault" message="tns:IDepartmentService_GetFiltered_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IDepartmentService/GetFilteredInternalExceptionFault" name="InternalExceptionFault" message="tns:IDepartmentService_GetFiltered_InternalExceptionFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDepartmentService" type="tns:IDepartmentService">
@@ -239,6 +349,96 @@
     </wsdl:operation>
     <wsdl:operation name="GetPaged">
       <soap:operation soapAction="http://tempuri.org/IDepartmentService/GetPaged" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAll">
+      <soap:operation soapAction="http://tempuri.org/IDepartmentService/DeleteAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllExceptThis">
+      <soap:operation soapAction="http://tempuri.org/IDepartmentService/GetAllExceptThis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSelectedThese">
+      <soap:operation soapAction="http://tempuri.org/IDepartmentService/GetSelectedThese" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllExceptThese">
+      <soap:operation soapAction="http://tempuri.org/IDepartmentService/GetAllExceptThese" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFiltered">
+      <soap:operation soapAction="http://tempuri.org/IDepartmentService/GetFiltered" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

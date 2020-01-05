@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{40F5B396-E5E4-4BB9-BBE5-945C264240D5}</ProjectGuid>
+    <ProjectGuid>{98CC72B5-AB12-4F72-A818-745F9483D1C9}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Needel.Common.FrontEnd.WpfModule</RootNamespace>
@@ -127,8 +127,13 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\10-Solutions\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
@@ -160,12 +165,76 @@
       <DependentUpon>AppSettingView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Entities\Views\ComponentQueryView.xaml.cs">
+      <DependentUpon>ComponentQueryView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Views\ComponentView.xaml.cs">
+      <DependentUpon>ComponentView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Entities\Views\DepartmentQueryView.xaml.cs">
       <DependentUpon>DepartmentQueryView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Entities\Views\DepartmentView.xaml.cs">
       <DependentUpon>DepartmentView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Views\EntityMQueryView.xaml.cs">
+      <DependentUpon>EntityMQueryView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Views\EntityMView.xaml.cs">
+      <DependentUpon>EntityMView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Views\EntityNQueryView.xaml.cs">
+      <DependentUpon>EntityNQueryView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Views\EntityNView.xaml.cs">
+      <DependentUpon>EntityNView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Views\EntityZQueryView.xaml.cs">
+      <DependentUpon>EntityZQueryView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Views\EntityZView.xaml.cs">
+      <DependentUpon>EntityZView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Views\GraphNodeQueryView.xaml.cs">
+      <DependentUpon>GraphNodeQueryView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Views\GraphNodeView.xaml.cs">
+      <DependentUpon>GraphNodeView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Views\MNZQueryView.xaml.cs">
+      <DependentUpon>MNZQueryView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Views\MNZView.xaml.cs">
+      <DependentUpon>MNZView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Views\StudentQueryView.xaml.cs">
+      <DependentUpon>StudentQueryView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Views\StudentView.xaml.cs">
+      <DependentUpon>StudentView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Views\TeacherQueryView.xaml.cs">
+      <DependentUpon>TeacherQueryView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Views\TeacherView.xaml.cs">
+      <DependentUpon>TeacherView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Entities\Views\UserQueryView.xaml.cs">
@@ -180,8 +249,24 @@
     <Compile Include="Entities\VM\AddressViewModel.cs" />
     <Compile Include="Entities\VM\AppSettingQueryViewModel.cs" />
     <Compile Include="Entities\VM\AppSettingViewModel.cs" />
+    <Compile Include="Entities\VM\ComponentQueryViewModel.cs" />
+    <Compile Include="Entities\VM\ComponentViewModel.cs" />
     <Compile Include="Entities\VM\DepartmentQueryViewModel.cs" />
     <Compile Include="Entities\VM\DepartmentViewModel.cs" />
+    <Compile Include="Entities\VM\EntityMQueryViewModel.cs" />
+    <Compile Include="Entities\VM\EntityMViewModel.cs" />
+    <Compile Include="Entities\VM\EntityNQueryViewModel.cs" />
+    <Compile Include="Entities\VM\EntityNViewModel.cs" />
+    <Compile Include="Entities\VM\EntityZQueryViewModel.cs" />
+    <Compile Include="Entities\VM\EntityZViewModel.cs" />
+    <Compile Include="Entities\VM\GraphNodeQueryViewModel.cs" />
+    <Compile Include="Entities\VM\GraphNodeViewModel.cs" />
+    <Compile Include="Entities\VM\MNZQueryViewModel.cs" />
+    <Compile Include="Entities\VM\MNZViewModel.cs" />
+    <Compile Include="Entities\VM\StudentQueryViewModel.cs" />
+    <Compile Include="Entities\VM\StudentViewModel.cs" />
+    <Compile Include="Entities\VM\TeacherQueryViewModel.cs" />
+    <Compile Include="Entities\VM\TeacherViewModel.cs" />
     <Compile Include="Entities\VM\UserQueryViewModel.cs" />
     <Compile Include="Entities\VM\UserViewModel.cs" />
     <Compile Include="NavigationRegions\Views\CommonModuleNavigation.xaml.cs">
@@ -227,23 +312,23 @@
       <Name>Inflexion2.UX.WPF</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Application.Dtos\Needel.Common.Application.Dtos.csproj">
-      <Project>{F070AFAF-80CD-4CF7-9E7D-5078A1DE337D}</Project>
+      <Project>{B10EDB2C-57AE-4846-BDD2-A589E1E0797C}</Project>
       <Name>Needel.Common.Application.Dtos</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Application.WcfClient\Needel.Common.Application.WcfClient.csproj">
-      <Project>{C5FBD076-C9E4-4FB3-B30D-D0B30394F7EA}</Project>
+      <Project>{FA930B59-CD87-4FFF-8FC0-AB03C3710733}</Project>
       <Name>Needel.Common.Application.WcfClient</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Application\Needel.Common.Application.csproj">
-      <Project>{0040080F-27DB-465E-846F-3A475414E7AE}</Project>
+      <Project>{48C76203-FBD8-4090-84D3-9F40C711C7B9}</Project>
       <Name>Needel.Common.Application</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Domain.Data\Needel.Common.Domain.Data.csproj">
-      <Project>{0ED1DDBD-0582-43D7-B734-C991620E2234}</Project>
+      <Project>{6E3DC684-8C28-41C6-B471-498417EE0FFA}</Project>
       <Name>Needel.Common.Domain.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Infrastructure.Resources\Needel.Common.Infrastructure.Resources.csproj">
-      <Project>{2F3B7720-D784-4541-BB98-39DDECFEA177}</Project>
+      <Project>{0EF0F63E-04E0-4616-B40D-B59AAA646F75}</Project>
       <Name>Needel.Common.Infrastructure.Resources</Name>
     </ProjectReference>
   </ItemGroup>
@@ -264,11 +349,75 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Entities\Views\ComponentQueryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Entities\Views\ComponentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Entities\Views\DepartmentQueryView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Entities\Views\DepartmentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Entities\Views\EntityMQueryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Entities\Views\EntityMView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Entities\Views\EntityNQueryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Entities\Views\EntityNView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Entities\Views\EntityZQueryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Entities\Views\EntityZView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Entities\Views\GraphNodeQueryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Entities\Views\GraphNodeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Entities\Views\MNZQueryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Entities\Views\MNZView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Entities\Views\StudentQueryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Entities\Views\StudentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Entities\Views\TeacherQueryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Entities\Views\TeacherView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -292,6 +441,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

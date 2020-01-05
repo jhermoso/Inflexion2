@@ -17,8 +17,8 @@ namespace Inflexion2.Application
     /// <typeparam name="TEntity">Representa las entidades del negocio.</typeparam>
     /// <typeparam name="TIdentifier">Representa un identificador unívoco de entidad.</typeparam>
     public interface IDataEntityMapper<TDto, TEntity, TIdentifier> //: IEntityMapper<TDataTransferObject, TEntity, TIdentifier> //,IDataMapper<TDataTransferObject, TEntity, TIdentifier>
-        where TDto : IDataTransferObject
-        where TEntity : class //, Inflexion2.Domain.IAggregateRoot<TEntity, TIdentifier>
+        where TDto : class, IDataTransferObject
+        where TEntity : class, Inflexion2.Domain.IEntity<TIdentifier> 
         where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
     {
         /// <summary>
@@ -28,7 +28,16 @@ namespace Inflexion2.Application
         /// Con esta función, mapeamos una entidad con un Dto.
         /// </remarks>
         /// <param name="entity">Representa las entidades de negocio.</param>
+        /// <param name="mapChildren"></param>
+        /// <param name="mapParents"></param>
         /// <returns>Devuelve un objeto de transferencia de datos.</returns>
+        TDto EntityMapping(TEntity entity, bool mapParents, bool mapChildren);
+
+        /// <summary>
+        /// wrapper constructor
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         TDto EntityMapping(TEntity entity);
     }
 }

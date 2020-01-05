@@ -18,7 +18,7 @@ namespace Inflexion2.Domain
     /// <typeparam name="TEntity"></typeparam>
     /// <typeparam name="TIdentifier"></typeparam>
     public class NHRepository<TEntity, TIdentifier> : BaseRepository<TEntity, TIdentifier>
-        where TEntity : AggregateRoot<TEntity, TIdentifier>
+        where TEntity : AggregateRoot<TEntity, TIdentifier>, System.IEquatable<TEntity>, System.IComparable<TEntity>
         where TIdentifier : IEquatable<TIdentifier>, IComparable<TIdentifier>
     {
         private readonly ILogger logger;
@@ -63,6 +63,11 @@ namespace Inflexion2.Domain
             {
                 this.session.Update(entity);
             }
+        }
+
+        protected override void InternalRemove(TIdentifier id)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>

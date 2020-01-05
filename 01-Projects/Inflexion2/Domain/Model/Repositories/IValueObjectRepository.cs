@@ -30,23 +30,44 @@ namespace Inflexion2.Domain
         /// <summary>
         /// Add item into repository
         /// </summary>
-        /// <param name="entity">Item to add to repository</param>
-        void Add(TValueObject entity);
+        /// <param name="valueObject">Item to add to repository</param>
+        void Add(TValueObject valueObject);
 
         /// <summary>
-        /// Attach entity to this repository.
+        /// Attach valueObject to this repository.
         /// Attach is similar to add but the internal state
         /// for this object is not  mark as 'Added, Modifed or Deleted', submit changes
         /// in Unit Of Work don't send anything to storage
         /// </summary>
-        /// <param name="entity">Item to attach</param>
-        void Attach(TValueObject entity);
+        /// <param name="valueObject">Item to attach</param>
+        void Attach(TValueObject valueObject);
 
         /// <summary>
         /// Get all elements of type {T} in repository
         /// </summary>
-        /// <returns>List of selected elements</returns>
+        /// <returns>Enumerable collection of selected elements</returns>
         IEnumerable<TValueObject> GetAll();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="valueObject"></param>
+        /// <returns>the collection of object values requested</returns>
+        IEnumerable<TValueObject> GetAllExceptThis(TValueObject valueObject);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="valueObject">the collection of object values requested</param>
+        /// <returns></returns>
+        IEnumerable<TValueObject> GetAllExceptThese(IEnumerable<TValueObject> valueObject);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="valueObject"></param>
+        /// <returns>the collection of object values requested</returns>
+        IEnumerable<TValueObject> GetAllExceptThese(TValueObject[] valueObject);
 
         /// <summary>
         /// Get all elements of type {T} that matching a
@@ -60,7 +81,7 @@ namespace Inflexion2.Domain
         /// Get elements of type {T} in repository
         /// </summary>
         /// <param name="filter">Filter that each element do match</param>
-        /// <returns>List of selected elements</returns>
+        /// <returns>Enumerable collection of selected elements</returns>
         IEnumerable<TValueObject> GetFilteredElements(Expression<Func<TValueObject, bool>> filter);
 
         /// <summary>
@@ -111,7 +132,21 @@ namespace Inflexion2.Domain
         /// <summary>
         /// Delete item
         /// </summary>
-        /// <param name="item">Item to delete</param>
-        void Remove(TValueObject item);
+        /// <param name="valueObject">Item to delete</param>
+        void Remove(TValueObject valueObject);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<TValueObject> RemoveAll();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="valueObjectsToDelete"></param>
+        /// <returns></returns>
+        IEnumerable<TValueObject> RemoveAll(IEnumerable<TValueObject> valueObjectsToDelete);
+        
     }
 }

@@ -86,12 +86,12 @@ namespace Inflexion2.Domain
     /// </code>
     /// </example>
     [Serializable]
-    public abstract class AuditableEntity<TEntity, TIdentifier> :   ValidatableEntity<TEntity, TIdentifier>, 
-                                                                    IAuditableEntity<TIdentifier>, 
-                                                                    System.IEquatable<IEntity<TIdentifier>>, 
-                                                                    System.IComparable<IEntity<TIdentifier>>, 
+    public abstract class AuditableEntity<TEntity, TIdentifier> : ValidatableEntity<TEntity, TIdentifier>,
+                                                                    IAuditableEntity<TIdentifier>,
+                                                                    System.IEquatable<IEntity<TIdentifier>>,
+                                                                    System.IComparable<IEntity<TIdentifier>>,
                                                                     System.IComparable
-        where TEntity : AuditableEntity<TEntity, TIdentifier>
+        where TEntity : AuditableEntity<TEntity, TIdentifier>, System.IEquatable<TEntity>, System.IComparable<TEntity>
         where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
     {
         #region Fields

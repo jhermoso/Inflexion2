@@ -19,13 +19,13 @@ namespace Inflexion2.Testing
         /// <summary>
         /// first entity
         /// </summary>
-        public class Entity1 : Entity<Entity1, Guid>
+        public class Entity1 : Entity<Entity1, Guid>, IEquatable<Entity1>
         { }
 
         /// <summary>
         /// second entity
         /// </summary>
-        public class Entity2 : Entity<Entity2, Guid>
+        public class Entity2 : Entity<Entity2, Guid>, IEquatable<Entity2>
         { }
 
         /// <summary>

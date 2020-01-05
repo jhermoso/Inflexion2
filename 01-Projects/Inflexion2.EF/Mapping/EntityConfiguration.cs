@@ -15,7 +15,7 @@ namespace Inflexion2.Domain
     /// <typeparam name="TEntity"></typeparam>
     /// <typeparam name="TIdentifier"></typeparam>
     public class EntityConfiguration<TEntity, TIdentifier> : EntityTypeConfiguration<TEntity>
-        where TEntity : Entity<TEntity, TIdentifier>, IEntity<TIdentifier> // si no usamos interfaces podemos derivar tambien de "Entity<TEntity, TIdentifier>,"
+        where TEntity : Entity<TEntity, TIdentifier>, IEntity<TIdentifier>, System.IEquatable<TEntity>, System.IComparable<TEntity> // si no usamos interfaces podemos derivar tambien de "Entity<TEntity, TIdentifier>,"
         where TIdentifier : struct, System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
     {
         /// <summary>
@@ -23,7 +23,6 @@ namespace Inflexion2.Domain
         /// </summary>
         public EntityConfiguration()
         {
-            
             this.HasKey(x => x.Id);
 
             this.Property(x => x.Id)

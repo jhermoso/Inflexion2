@@ -42,7 +42,15 @@ namespace Inflexion2.Domain
         /// </param>
         public PagedElements(IEnumerable<TDto> items, int totalElements)
         {
-            this.Elements = new List<TDto>(items);
+            if (items != null)
+            {
+                this.Elements = items.ToList();// new List<TDto>(items);
+            }
+            else
+            {
+                this.Elements = new List<TDto>();
+            }
+
             this.TotalElements = totalElements;
         }
 

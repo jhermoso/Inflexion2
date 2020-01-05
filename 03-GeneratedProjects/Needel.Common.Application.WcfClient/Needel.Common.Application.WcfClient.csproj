@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C5FBD076-C9E4-4FB3-B30D-D0B30394F7EA}</ProjectGuid>
+    <ProjectGuid>{FA930B59-CD87-4FFF-8FC0-AB03C3710733}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Needel.Common.Application.WcfClient</RootNamespace>
@@ -125,7 +125,47 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ComponentReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\DepartmentReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\EntityMReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\EntityNReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\EntityZReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\GraphNodeReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\MNZReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\StudentReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\TeacherReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -157,11 +197,11 @@
       <Name>Inflexion2</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Application.Dtos\Needel.Common.Application.Dtos.csproj">
-      <Project>{F070AFAF-80CD-4CF7-9E7D-5078A1DE337D}</Project>
+      <Project>{B10EDB2C-57AE-4846-BDD2-A589E1E0797C}</Project>
       <Name>Needel.Common.Application.Dtos</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Application\Needel.Common.Application.csproj">
-      <Project>{0040080F-27DB-465E-846F-3A475414E7AE}</Project>
+      <Project>{48C76203-FBD8-4090-84D3-9F40C711C7B9}</Project>
       <Name>Needel.Common.Application</Name>
     </ProjectReference>
   </ItemGroup>
@@ -172,7 +212,15 @@
     <None Include="app.config" />
     <None Include="Properties\DataSources\Needel.Common.Application.Dtos.AddressDto.datasource" />
     <None Include="Properties\DataSources\Needel.Common.Application.Dtos.AppSettingDto.datasource" />
+    <None Include="Properties\DataSources\Needel.Common.Application.Dtos.ComponentDto.datasource" />
     <None Include="Properties\DataSources\Needel.Common.Application.Dtos.DepartmentDto.datasource" />
+    <None Include="Properties\DataSources\Needel.Common.Application.Dtos.EntityMDto.datasource" />
+    <None Include="Properties\DataSources\Needel.Common.Application.Dtos.EntityNDto.datasource" />
+    <None Include="Properties\DataSources\Needel.Common.Application.Dtos.EntityZDto.datasource" />
+    <None Include="Properties\DataSources\Needel.Common.Application.Dtos.GraphNodeDto.datasource" />
+    <None Include="Properties\DataSources\Needel.Common.Application.Dtos.MNZDto.datasource" />
+    <None Include="Properties\DataSources\Needel.Common.Application.Dtos.StudentDto.datasource" />
+    <None Include="Properties\DataSources\Needel.Common.Application.Dtos.TeacherDto.datasource" />
     <None Include="Properties\DataSources\Needel.Common.Application.Dtos.UserDto.datasource" />
     <None Include="Service References\AddressReference\Arrays.xsd">
       <SubType>Designer</SubType>
@@ -221,6 +269,28 @@
     <None Include="Service References\AppSettingReference\service2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ComponentReference\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ComponentReference\Inflexion2.Application.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ComponentReference\Inflexion2.Domain.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ComponentReference\Needel.Common.Application.Dtos.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ComponentReference\service.wsdl" />
+    <None Include="Service References\ComponentReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ComponentReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ComponentReference\service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\DepartmentReference\Arrays.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -241,6 +311,160 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\DepartmentReference\service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityMReference\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityMReference\Inflexion2.Application.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityMReference\Inflexion2.Domain.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityMReference\Needel.Common.Application.Dtos.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityMReference\service.wsdl" />
+    <None Include="Service References\EntityMReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityMReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityMReference\service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityNReference\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityNReference\Inflexion2.Application.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityNReference\Inflexion2.Domain.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityNReference\Needel.Common.Application.Dtos.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityNReference\service.wsdl" />
+    <None Include="Service References\EntityNReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityNReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityNReference\service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityZReference\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityZReference\Inflexion2.Application.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityZReference\Inflexion2.Domain.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityZReference\Needel.Common.Application.Dtos.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityZReference\service.wsdl" />
+    <None Include="Service References\EntityZReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityZReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityZReference\service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GraphNodeReference\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GraphNodeReference\Inflexion2.Application.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GraphNodeReference\Inflexion2.Domain.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GraphNodeReference\Needel.Common.Application.Dtos.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GraphNodeReference\service.wsdl" />
+    <None Include="Service References\GraphNodeReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GraphNodeReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GraphNodeReference\service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MNZReference\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MNZReference\Inflexion2.Application.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MNZReference\Inflexion2.Domain.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MNZReference\Needel.Common.Application.Dtos.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MNZReference\service.wsdl" />
+    <None Include="Service References\MNZReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MNZReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MNZReference\service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StudentReference\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StudentReference\Inflexion2.Application.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StudentReference\Inflexion2.Domain.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StudentReference\Needel.Common.Application.Dtos.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StudentReference\service.wsdl" />
+    <None Include="Service References\StudentReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StudentReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StudentReference\service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TeacherReference\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TeacherReference\Inflexion2.Application.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TeacherReference\Inflexion2.Domain.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TeacherReference\Needel.Common.Application.Dtos.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TeacherReference\service.wsdl" />
+    <None Include="Service References\TeacherReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TeacherReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TeacherReference\service2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UserReference\Arrays.xsd">
@@ -269,7 +493,15 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AddressReference\" />
     <WCFMetadataStorage Include="Service References\AppSettingReference\" />
+    <WCFMetadataStorage Include="Service References\ComponentReference\" />
     <WCFMetadataStorage Include="Service References\DepartmentReference\" />
+    <WCFMetadataStorage Include="Service References\EntityMReference\" />
+    <WCFMetadataStorage Include="Service References\EntityNReference\" />
+    <WCFMetadataStorage Include="Service References\EntityZReference\" />
+    <WCFMetadataStorage Include="Service References\GraphNodeReference\" />
+    <WCFMetadataStorage Include="Service References\MNZReference\" />
+    <WCFMetadataStorage Include="Service References\StudentReference\" />
+    <WCFMetadataStorage Include="Service References\TeacherReference\" />
     <WCFMetadataStorage Include="Service References\UserReference\" />
   </ItemGroup>
   <ItemGroup>
@@ -280,6 +512,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\AddressReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AppSettingReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AppSettingReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AppSettingReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ComponentReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ComponentReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ComponentReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -297,6 +553,30 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\StudentReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StudentReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StudentReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TeacherReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TeacherReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TeacherReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Service References\UserReference\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -309,13 +589,61 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\AppSettingReference\configuration91.svcinfo" />
+    <None Include="Service References\GraphNodeReference\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\AppSettingReference\configuration.svcinfo" />
+    <None Include="Service References\GraphNodeReference\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\AppSettingReference\Reference.svcmap">
+    <None Include="Service References\GraphNodeReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EntityMReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EntityMReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EntityMReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EntityNReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EntityNReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EntityNReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EntityZReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EntityZReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EntityZReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MNZReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MNZReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MNZReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

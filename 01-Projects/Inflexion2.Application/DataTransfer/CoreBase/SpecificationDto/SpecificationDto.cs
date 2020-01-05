@@ -5,29 +5,53 @@
 // -----------------------------------------------------------------------
 namespace Inflexion2.Application
 {
+    using System;
     using System.Linq;
     using System.Runtime.Serialization;
 
     /// <summary>
     /// Clase Dto que representa la especificación para la obtención de datos.
     /// </summary>
-    /// <remarks>
-    /// Sin comentarios adicionales.
-    /// </remarks>
     [DataContract]
     public class SpecificationDto
     {
+
+        #region Fields
+        private CompositeFilter compositeFilter_;
+        #endregion
+
         #region Constructors
 
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="T:SpecificationDto"/>.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         public SpecificationDto()
         {
-            this.CompositeFilter = new CompositeFilter();
+            this.compositeFilter_ = new CompositeFilter();
+        }
+
+        /// <summary>
+        /// Parse filters to
+        /// </summary>
+        /// <remarks>
+        /// the current version of json in the facade needs at least .net of 4.5.2 but this porjects works with .net 4.0.
+        /// the only way to use the deserializer of josn in the constructor is to pass it like a func.
+        /// In this way is also posible to use other deserializers
+        /// </remarks>
+        /// <param name="deserializer"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="filter"></param>
+        /// <param name="sortColum"></param>
+        /// <param name="sortOrder"></param>
+        public SpecificationDto(Func<string, CompositeFilter> deserializer,  int pageIndex, int pageSize, string filter, string sortColum, string sortOrder)
+        {
+            this.PageIndex = pageIndex;
+            this.PageSize = pageSize;
+            this.SortOrder = sortOrder;
+            this.SortColumn = sortColum;
+            if (filter != null)
+                this.compositeFilter_ = deserializer(filter); //JsonConvert.DeserializeObject<CompositeFilter>(filter);
         }
 
         #endregion Constructors
@@ -37,25 +61,25 @@ namespace Inflexion2.Application
         /// <summary>
         /// Propiedad que obtiene el filtro compuesto para la especificación.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         /// <value>
         /// Valor que es utilizado para obtener el filtro compuesto para la especificación.
         /// </value>
         [DataMember]
         public CompositeFilter CompositeFilter
         {
-            get;
-            private set;
+            get
+            {
+                return compositeFilter_;
+            }
+            private set
+            {
+                compositeFilter_ = value;
+            }
         }
 
         /// <summary>
         /// Propiedad de solo lectura que indica si el filtro es de búsqueda.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         /// <value>
         /// Valor que es utilizado para indica si el filtro es de búsqueda.
         /// </value>
@@ -70,9 +94,6 @@ namespace Inflexion2.Application
         /// <summary>
         /// Propiedad que obtiene o establece el índice de la página en la búsqueda.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         /// <value>
         /// Valor utilizado para obtener o establecer el índice de la página en la búsqueda.
         /// </value>
@@ -86,9 +107,6 @@ namespace Inflexion2.Application
         /// <summary>
         /// Propiedad que obtiene o establece el número de páginas que se van a devolver.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         /// <value>
         /// Valor utilizado para obtener o establecer el número de páginas que se van a devolver.
         /// </value>
@@ -102,9 +120,6 @@ namespace Inflexion2.Application
         /// <summary>
         /// Propiedad obtiene o establece el nombre de la columna por la que se ordenará.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         /// <value>
         /// Valor utilizado para obtener o establecer el nombre de la columna por la que se ordenará.
         /// </value>
@@ -119,9 +134,6 @@ namespace Inflexion2.Application
         /// Propiedad obtiene o establece el ordinal
         /// de la columna por la que se ordenará.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         /// <value>
         /// Valor utilizado para obtener o establecer
         /// el ordinal de la columna por la que se ordenará.

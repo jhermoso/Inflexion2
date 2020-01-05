@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{621FB143-7170-421C-8545-F0054518FC16}</ProjectGuid>
+    <ProjectGuid>{796F9291-10A0-4EC3-9E42-942F3F65A0DD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Needel.Common.Domain</RootNamespace>
@@ -124,13 +124,53 @@
     <Compile Include="AppSetting\AppSettingSpecifications.cs" />
     <Compile Include="AppSetting\IAppSetting.cs" />
     <Compile Include="AppSetting\IAppSettingRepository.cs" />
+    <Compile Include="Component\Component.cs" />
+    <Compile Include="Component\ComponentFactory.cs" />
+    <Compile Include="Component\ComponentSpecifications.cs" />
+    <Compile Include="Component\IComponent.cs" />
+    <Compile Include="Component\IComponentRepository.cs" />
     <Compile Include="Department\Department.cs" />
     <Compile Include="Department\DepartmentFactory.cs" />
     <Compile Include="Department\DepartmentSpecifications.cs" />
     <Compile Include="Department\IDepartment.cs" />
     <Compile Include="Department\IDepartmentRepository.cs" />
+    <Compile Include="EntityM\EntityM.cs" />
+    <Compile Include="EntityM\EntityMFactory.cs" />
+    <Compile Include="EntityM\EntityMSpecifications.cs" />
+    <Compile Include="EntityM\IEntityM.cs" />
+    <Compile Include="EntityM\IEntityMRepository.cs" />
+    <Compile Include="EntityN\EntityN.cs" />
+    <Compile Include="EntityN\EntityNFactory.cs" />
+    <Compile Include="EntityN\EntityNSpecifications.cs" />
+    <Compile Include="EntityN\IEntityN.cs" />
+    <Compile Include="EntityN\IEntityNRepository.cs" />
+    <Compile Include="EntityZ\EntityZ.cs" />
+    <Compile Include="EntityZ\EntityZFactory.cs" />
+    <Compile Include="EntityZ\EntityZSpecifications.cs" />
+    <Compile Include="EntityZ\IEntityZ.cs" />
+    <Compile Include="EntityZ\IEntityZRepository.cs" />
+    <Compile Include="GraphNode\GraphNode.cs" />
+    <Compile Include="GraphNode\GraphNodeFactory.cs" />
+    <Compile Include="GraphNode\GraphNodeSpecifications.cs" />
+    <Compile Include="GraphNode\IGraphNode.cs" />
+    <Compile Include="GraphNode\IGraphNodeRepository.cs" />
     <Compile Include="IoC\PerLifeTimeManager.cs" />
+    <Compile Include="MNZ\IMNZ.cs" />
+    <Compile Include="MNZ\IMNZRepository.cs" />
+    <Compile Include="MNZ\MNZ.cs" />
+    <Compile Include="MNZ\MNZFactory.cs" />
+    <Compile Include="MNZ\MNZSpecifications.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Student\IStudent.cs" />
+    <Compile Include="Student\IStudentRepository.cs" />
+    <Compile Include="Student\Student.cs" />
+    <Compile Include="Student\StudentFactory.cs" />
+    <Compile Include="Student\StudentSpecifications.cs" />
+    <Compile Include="Teacher\ITeacher.cs" />
+    <Compile Include="Teacher\ITeacherRepository.cs" />
+    <Compile Include="Teacher\Teacher.cs" />
+    <Compile Include="Teacher\TeacherFactory.cs" />
+    <Compile Include="Teacher\TeacherSpecifications.cs" />
     <Compile Include="User\IUser.cs" />
     <Compile Include="User\IUserRepository.cs" />
     <Compile Include="User\User.cs" />
@@ -152,19 +192,19 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\01-Projects\Inflexion2.Resources\Inflexion2.Resources.csproj">
-      <Project>{E5F79D13-0E92-4E5C-9251-6922741AFCAA}</Project>
+      <Project>{e5f79d13-0e92-4e5c-9251-6922741afcaa}</Project>
       <Name>Inflexion2.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\01-Projects\Inflexion2\Inflexion2.csproj">
-      <Project>{BF5456D4-B276-459B-98D4-853FCEF99ADE}</Project>
+      <Project>{bf5456d4-b276-459b-98d4-853fcef99ade}</Project>
       <Name>Inflexion2</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Domain.Data\Needel.Common.Domain.Data.csproj">
-      <Project>{0ED1DDBD-0582-43D7-B734-C991620E2234}</Project>
+      <Project>{6E3DC684-8C28-41C6-B471-498417EE0FFA}</Project>
       <Name>Needel.Common.Domain.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Infrastructure.Resources\Needel.Common.Infrastructure.Resources.csproj">
-      <Project>{2F3B7720-D784-4541-BB98-39DDECFEA177}</Project>
+      <Project>{0EF0F63E-04E0-4616-B40D-B59AAA646F75}</Project>
       <Name>Needel.Common.Infrastructure.Resources</Name>
     </ProjectReference>
   </ItemGroup>

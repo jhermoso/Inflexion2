@@ -1,0 +1,504 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="GraphNodeService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Needel.Common.Application.Dtos" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Inflexion2.Application" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Inflexion2.Domain" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IGraphNodeService_Create_InputMessage">
+    <wsdl:part name="parameters" element="tns:Create" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_Create_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_Create_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_Create_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_Create_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_Update_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_Update_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_Update_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_Update_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_Update_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_Delete_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_Delete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_Delete_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_Delete_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_Delete_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetAll_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetAll_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetAll_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetById" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetById_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetById_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetById_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetPaged_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaged" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetPaged_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPagedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetPaged_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetPaged_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetPaged_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_DeleteAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAll" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_DeleteAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_DeleteAll_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_DeleteAll_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_DeleteAll_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetAllExceptThis_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllExceptThis" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetAllExceptThis_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllExceptThisResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetAllExceptThis_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetAllExceptThis_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetAllExceptThis_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetAllExceptIdAndRelated_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllExceptIdAndRelated" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetAllExceptIdAndRelated_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllExceptIdAndRelatedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetAllExceptIdAndRelated_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetAllExceptIdAndRelated_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetAllExceptIdAndRelated_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetSelectedThese_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSelectedThese" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetSelectedThese_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSelectedTheseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetSelectedThese_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetSelectedThese_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetSelectedThese_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetAllExceptThese_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllExceptThese" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetAllExceptThese_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllExceptTheseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetAllExceptThese_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetAllExceptThese_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetAllExceptThese_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetFiltered_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFiltered" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetFiltered_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilteredResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetFiltered_FaultObjectFault_FaultMessage">
+    <wsdl:part name="detail" element="FaultObject" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetFiltered_ValidationExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="ValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IGraphNodeService_GetFiltered_InternalExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="InternalException" />
+  </wsdl:message>
+  <wsdl:portType name="IGraphNodeService">
+    <wsdl:operation name="Create">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraphNodeService/Create" message="tns:IGraphNodeService_Create_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraphNodeService/CreateResponse" message="tns:IGraphNodeService_Create_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/CreateFaultObjectFault" name="FaultObjectFault" message="tns:IGraphNodeService_Create_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/CreateValidationExceptionFault" name="ValidationExceptionFault" message="tns:IGraphNodeService_Create_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/CreateInternalExceptionFault" name="InternalExceptionFault" message="tns:IGraphNodeService_Create_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraphNodeService/Update" message="tns:IGraphNodeService_Update_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraphNodeService/UpdateResponse" message="tns:IGraphNodeService_Update_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/UpdateFaultObjectFault" name="FaultObjectFault" message="tns:IGraphNodeService_Update_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/UpdateValidationExceptionFault" name="ValidationExceptionFault" message="tns:IGraphNodeService_Update_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/UpdateInternalExceptionFault" name="InternalExceptionFault" message="tns:IGraphNodeService_Update_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraphNodeService/Delete" message="tns:IGraphNodeService_Delete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraphNodeService/DeleteResponse" message="tns:IGraphNodeService_Delete_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/DeleteFaultObjectFault" name="FaultObjectFault" message="tns:IGraphNodeService_Delete_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/DeleteValidationExceptionFault" name="ValidationExceptionFault" message="tns:IGraphNodeService_Delete_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/DeleteInternalExceptionFault" name="InternalExceptionFault" message="tns:IGraphNodeService_Delete_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraphNodeService/GetAll" message="tns:IGraphNodeService_GetAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraphNodeService/GetAllResponse" message="tns:IGraphNodeService_GetAll_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetAllFaultObjectFault" name="FaultObjectFault" message="tns:IGraphNodeService_GetAll_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetAllValidationExceptionFault" name="ValidationExceptionFault" message="tns:IGraphNodeService_GetAll_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetAllInternalExceptionFault" name="InternalExceptionFault" message="tns:IGraphNodeService_GetAll_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraphNodeService/GetById" message="tns:IGraphNodeService_GetById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraphNodeService/GetByIdResponse" message="tns:IGraphNodeService_GetById_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetByIdFaultObjectFault" name="FaultObjectFault" message="tns:IGraphNodeService_GetById_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetByIdValidationExceptionFault" name="ValidationExceptionFault" message="tns:IGraphNodeService_GetById_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetByIdInternalExceptionFault" name="InternalExceptionFault" message="tns:IGraphNodeService_GetById_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaged">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraphNodeService/GetPaged" message="tns:IGraphNodeService_GetPaged_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraphNodeService/GetPagedResponse" message="tns:IGraphNodeService_GetPaged_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetPagedFaultObjectFault" name="FaultObjectFault" message="tns:IGraphNodeService_GetPaged_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetPagedValidationExceptionFault" name="ValidationExceptionFault" message="tns:IGraphNodeService_GetPaged_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetPagedInternalExceptionFault" name="InternalExceptionFault" message="tns:IGraphNodeService_GetPaged_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraphNodeService/DeleteAll" message="tns:IGraphNodeService_DeleteAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraphNodeService/DeleteAllResponse" message="tns:IGraphNodeService_DeleteAll_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/DeleteAllFaultObjectFault" name="FaultObjectFault" message="tns:IGraphNodeService_DeleteAll_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/DeleteAllValidationExceptionFault" name="ValidationExceptionFault" message="tns:IGraphNodeService_DeleteAll_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/DeleteAllInternalExceptionFault" name="InternalExceptionFault" message="tns:IGraphNodeService_DeleteAll_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllExceptThis">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraphNodeService/GetAllExceptThis" message="tns:IGraphNodeService_GetAllExceptThis_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraphNodeService/GetAllExceptThisResponse" message="tns:IGraphNodeService_GetAllExceptThis_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetAllExceptThisFaultObjectFault" name="FaultObjectFault" message="tns:IGraphNodeService_GetAllExceptThis_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetAllExceptThisValidationExceptionFault" name="ValidationExceptionFault" message="tns:IGraphNodeService_GetAllExceptThis_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetAllExceptThisInternalExceptionFault" name="InternalExceptionFault" message="tns:IGraphNodeService_GetAllExceptThis_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllExceptIdAndRelated">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraphNodeService/GetAllExceptIdAndRelated" message="tns:IGraphNodeService_GetAllExceptIdAndRelated_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraphNodeService/GetAllExceptIdAndRelatedResponse" message="tns:IGraphNodeService_GetAllExceptIdAndRelated_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetAllExceptIdAndRelatedFaultObjectFault" name="FaultObjectFault" message="tns:IGraphNodeService_GetAllExceptIdAndRelated_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetAllExceptIdAndRelatedValidationExceptionFault" name="ValidationExceptionFault" message="tns:IGraphNodeService_GetAllExceptIdAndRelated_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetAllExceptIdAndRelatedInternalExceptionFault" name="InternalExceptionFault" message="tns:IGraphNodeService_GetAllExceptIdAndRelated_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSelectedThese">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraphNodeService/GetSelectedThese" message="tns:IGraphNodeService_GetSelectedThese_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraphNodeService/GetSelectedTheseResponse" message="tns:IGraphNodeService_GetSelectedThese_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetSelectedTheseFaultObjectFault" name="FaultObjectFault" message="tns:IGraphNodeService_GetSelectedThese_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetSelectedTheseValidationExceptionFault" name="ValidationExceptionFault" message="tns:IGraphNodeService_GetSelectedThese_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetSelectedTheseInternalExceptionFault" name="InternalExceptionFault" message="tns:IGraphNodeService_GetSelectedThese_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllExceptThese">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraphNodeService/GetAllExceptThese" message="tns:IGraphNodeService_GetAllExceptThese_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraphNodeService/GetAllExceptTheseResponse" message="tns:IGraphNodeService_GetAllExceptThese_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetAllExceptTheseFaultObjectFault" name="FaultObjectFault" message="tns:IGraphNodeService_GetAllExceptThese_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetAllExceptTheseValidationExceptionFault" name="ValidationExceptionFault" message="tns:IGraphNodeService_GetAllExceptThese_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetAllExceptTheseInternalExceptionFault" name="InternalExceptionFault" message="tns:IGraphNodeService_GetAllExceptThese_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFiltered">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraphNodeService/GetFiltered" message="tns:IGraphNodeService_GetFiltered_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraphNodeService/GetFilteredResponse" message="tns:IGraphNodeService_GetFiltered_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetFilteredFaultObjectFault" name="FaultObjectFault" message="tns:IGraphNodeService_GetFiltered_FaultObjectFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetFilteredValidationExceptionFault" name="ValidationExceptionFault" message="tns:IGraphNodeService_GetFiltered_ValidationExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGraphNodeService/GetFilteredInternalExceptionFault" name="InternalExceptionFault" message="tns:IGraphNodeService_GetFiltered_InternalExceptionFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IGraphNodeService" type="tns:IGraphNodeService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Create">
+      <soap:operation soapAction="http://tempuri.org/IGraphNodeService/Create" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap:operation soapAction="http://tempuri.org/IGraphNodeService/Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://tempuri.org/IGraphNodeService/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAll">
+      <soap:operation soapAction="http://tempuri.org/IGraphNodeService/GetAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetById">
+      <soap:operation soapAction="http://tempuri.org/IGraphNodeService/GetById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaged">
+      <soap:operation soapAction="http://tempuri.org/IGraphNodeService/GetPaged" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAll">
+      <soap:operation soapAction="http://tempuri.org/IGraphNodeService/DeleteAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllExceptThis">
+      <soap:operation soapAction="http://tempuri.org/IGraphNodeService/GetAllExceptThis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllExceptIdAndRelated">
+      <soap:operation soapAction="http://tempuri.org/IGraphNodeService/GetAllExceptIdAndRelated" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSelectedThese">
+      <soap:operation soapAction="http://tempuri.org/IGraphNodeService/GetSelectedThese" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllExceptThese">
+      <soap:operation soapAction="http://tempuri.org/IGraphNodeService/GetAllExceptThese" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFiltered">
+      <soap:operation soapAction="http://tempuri.org/IGraphNodeService/GetFiltered" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultObjectFault">
+        <soap:fault use="literal" name="FaultObjectFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationExceptionFault">
+        <soap:fault use="literal" name="ValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InternalExceptionFault">
+        <soap:fault use="literal" name="InternalExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GraphNodeService">
+    <wsdl:port name="BasicHttpBinding_IGraphNodeService" binding="tns:BasicHttpBinding_IGraphNodeService">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/Needel.Common.Application.WcfService/GraphNodeService/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

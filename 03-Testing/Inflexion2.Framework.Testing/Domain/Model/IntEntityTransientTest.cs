@@ -4,6 +4,7 @@ namespace Inflexion2.Testing
 {
     using Inflexion2.Domain;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
 
     /// <summary>
     /// test equality entities based on int id 
@@ -14,7 +15,7 @@ namespace Inflexion2.Testing
         /// <summary>
         /// first entity
         /// </summary>
-        public class IntEntity1 : Entity<IntEntity1, int>
+        public class IntEntity1 : Entity<IntEntity1, int>, IEquatable<IntEntity1>
         {
             /// <summary>
             /// parameter less constructor
@@ -34,7 +35,7 @@ namespace Inflexion2.Testing
         /// <summary>
         /// second entity
         /// </summary>
-        public class IntEntity2 : Entity<IntEntity1, int>
+        public class IntEntity2 : Entity<IntEntity2, int>, IEquatable<IntEntity2>
         {
             /// <summary>
             /// parameter less constructor

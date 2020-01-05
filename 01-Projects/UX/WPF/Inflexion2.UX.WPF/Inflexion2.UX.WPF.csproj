@@ -227,10 +227,15 @@
     <Compile Include="MVVM\Common\Binding\BindingListener.cs" />
     <Compile Include="MVVM\Common\Commands\MultipleViewsNavigationCommand.cs" />
     <Compile Include="MVVM\Common\Events\UIMessageEvent.cs" />
+    <Compile Include="MVVM\ViewModels\Crud\IValueObjViewModel.cs" />
+    <Compile Include="MVVM\ViewModels\Crud\ValueObjQueryViewModel.cs" />
+    <Compile Include="MVVM\ViewModels\Crud\ValueObjCrudViewModel.cs" />
     <Compile Include="MVVM\Views\ShellWindow.xaml.cs">
       <DependentUpon>ShellWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UX\Helpers\GenericEventHandlers.cs" />
     <Compile Include="UX\Helpers\RangeObservableCollection.cs" />
+    <Compile Include="UX\ValueConverters\InvertedBooleanToVisibilityCollapsedConverter.cs" />
     <Compile Include="UX\ValueConverters\BoolToVisibility.cs" />
     <Compile Include="UX\ValueConverters\MultiplyConverter.cs" />
     <Compile Include="UX\ValueConverters\SelectedToColorConverter.cs" />
@@ -251,7 +256,6 @@
     <Compile Include="MVVM\Common\PropertySupport.cs" />
     <Compile Include="MVVM\ViewModels\Crud\IEntityViewModel.cs" />
     <Compile Include="MVVM\ViewModels\Crud\QueryViewModel.cs" />
-    <Compile Include="MVVM\ViewModels\Crud\CrudModeType.cs" />
     <Compile Include="MVVM\ViewModels\Crud\CrudViewModel.cs" />
     <Compile Include="MVVM\ViewModels\Dialogs\BaseDialogAdapter.cs" />
     <Compile Include="MVVM\ViewModels\Dialogs\BaseDialogViewModel.cs" />
@@ -334,7 +338,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MVVM\ViewModels\Crud\DeudaTécnica.txt" />
     <Content Include="MVVM\Views\Images\Document-01.64.png" />
     <Resource Include="MVVM\Views\Images\LanguageFlags\iv.png" />
     <Resource Include="MVVM\Views\Images\LanguageFlags\ad.png" />

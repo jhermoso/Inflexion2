@@ -13,12 +13,17 @@ namespace Inflexion2.UX.WPF.Services
     using System;
     using System.Collections.Generic;
     using Application;
+    using System.Linq;
 
     /// <summary>
     /// <see cref="INavigationService"/> implementation
     /// </summary>
     public class NavigationService : INavigationService
     {
+        //static string lastRegion;
+        //static string lastView;
+        //static IDictionary<string, string> lastParameters;
+
         /// <summary>
         /// <see cref="INavigationService.NavigateToWorkSpace(string, IDictionary{string, string})"/>
         /// </summary>
@@ -27,6 +32,21 @@ namespace Inflexion2.UX.WPF.Services
         /// <param name="parameters"></param>
         public void NavigateTo(string region, string view, IDictionary<string, string> parameters)
         {
+            // avoid double navigation from begin edit or double click
+            //if (region != lastRegion || view != lastView || (parameters != null && lastParameters != null && !parameters.SequenceEqual(lastParameters)))
+            //{
+            //    if (region != lastRegion )
+            //        lastRegion = region;
+            //    if ( view != lastView )
+            //        lastView = view;
+            //    if (parameters != null && lastParameters != null && !parameters.SequenceEqual(lastParameters))
+            //        lastParameters = parameters;
+            //}
+            //else
+            //{
+            //    return;
+            //}
+
             IRegionManager regionManger = ServiceLocator.Current.GetInstance<IRegionManager>();
 
             var uriQuery = new UriQuery();
@@ -37,7 +57,17 @@ namespace Inflexion2.UX.WPF.Services
 
             Uri uri = new Uri(view + uriQuery.ToString(), UriKind.Relative);
 
-            regionManger.RequestNavigate(region, uri);
+            try
+            {
+                // esta linea lanza el evento de OnNavigatedTo
+                regionManger.RequestNavigate(region, uri); 
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
         }
 
         /// <summary>
@@ -64,15 +94,18 @@ namespace Inflexion2.UX.WPF.Services
             IDictionary<string, string> parameters = new Dictionary<string, string>();
             parameters.Add("Id", id.ToString());
 
+            var entityViewName = view.Split('.').Last();
+            var entityName = entityViewName.Remove(entityViewName.Length - 4); // 4 is the lenght of "View" word in the view string name
             if (specification.CompositeFilter != null)
             {
                foreach (var filter in specification.CompositeFilter.Filters)
                 {
-                    parameters.Add(string.Format("filter;{0}", filter.Property), string.Format("{0};{1}", filter.Operator, filter.Value));
+                    parameters.Add(string.Format("{0};{1}", entityName, filter.Property), string.Format("{0};{1}", filter.Operator, filter.Value));
                 }
             }
  
             this.NavigateTo(RegionNames.WorkspaceRegion, view, parameters);
+ 
         }
 
         /// <summary>

@@ -10,6 +10,37 @@
             .es Interfaz para marcar los objetos de transferencia de datos yde esta forma poder aplicar ciertas restricciones en las construccion de algunos genericos como la de los objetos paginados.
             </summary>
         </member>
+        <member name="T:Inflexion2.Arguments">
+            <summary>
+            Vocabulary of string contants to use like arguments in the application from console or appsetings in config file module
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Arguments.DbConnect">
+            <summary>
+            Argument command to indicate the selected Database by the name of the conecction.
+            </summary>
+            <remarks> The connection string list is usally in xml file for configuration</remarks>
+        </member>
+        <member name="F:Inflexion2.Arguments.AppSetting">
+            <summary>
+            Argument command to enforce the use of any appsetting over the options in the database. 
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Arguments.HelpShort">
+            <summary>
+            Argument command to get help about arguments. 
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Arguments.Help">
+            <summary>
+            Argument command to get help about arguments. 
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Arguments.Admin">
+            <summary>
+            Argument command to get help about arguments. 
+            </summary>
+        </member>
         <member name="T:Inflexion2.Converters.GenericConverters">
             <summary>
             public static service class to hols generic converting methods.
@@ -223,6 +254,44 @@
             </summary>
             <param name="script">The script.</param>
             <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Domain.Data.EnumPopulationType">
+            <summary>
+            .es Esta enumeración se usa para indicar como se ha de rellenar un combobox de entidades parentales. 
+            Por esta razón simpre se usa como parametro en combinación con un parametro de tipo "Id".
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Domain.Data.EnumPopulationType.All">
+            <summary>
+            .es Opción para indicar que se han de cargar todas las entidades parentales.
+            Esta es la opción por defecto.
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Domain.Data.EnumPopulationType.AllExceptOwnId">
+            <summary>
+            .es Opción para indicar que se han de cargar todas las entidades parentales excepto la indicada.
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Domain.Data.EnumPopulationType.AllExceptOwnIdAndChildren">
+            <summary>
+            .es Opción para indicar que se han de cargar todas las entidades parentales excepto la indicada y los hijos. Esta opcion solo es valida cuando es una relacion reflexiva donde los padres son del mismo tipo que los hijos.
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Domain.Data.EnumPopulationType.OnlyId">
+            <summary>
+             .es Opción para indicar que se han de cargar exclusivamente la indicada en el id. 
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Domain.Data.EnumPopulationType.AddNullOrNoneOption">
+            <summary>
+            .es Opción para indicar que despues de cargar la selección hay que añadir una opción al combobox para añadir una opción vacia.
+            Esto nos proporciona la posibilidad de borrar la relación parental (si la relación de es de agregación no de composición)
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Domain.Data.EnumPopulationType.Paged">
+            <summary>
+            .es Opción para cargar de forma paginada. en este caso se necesitara un segundo parametro que indique que página.
+            </summary>
         </member>
         <member name="T:Inflexion2.Domain.Inflector">
             <summary>
@@ -857,6 +926,11 @@
             Removes a validation error from the result.
             </summary>
             <param name="error"></param>
+        </member>
+        <member name="T:Inflexion2.Domain.IDomainObject">
+            <summary>
+            Mark interface to allow reflection operation and select properties defined in the domain.
+            </summary>
         </member>
         <member name="T:Inflexion2.Domain.AuditableEntity`2">
              <summary>
@@ -1594,6 +1668,11 @@
                 Transient objects are not associated with an item already in storage.  For instance,
                 a Customer is transient if its Id is defalut value.  It's virtual to allow NHibernate-backed 
                 objects to be lazily loaded.
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Domain.IDomainEntity">
+            <summary>
+            mark interface to use with reflection and get the properties that implement this interface
             </summary>
         </member>
         <member name="T:Inflexion2.Domain.AggregateRoot`2">
@@ -3839,6 +3918,11 @@
             <typeparam name="TEntity">Type of elements in repostory</typeparam>
             <typeparam name="TIdentifier">identifier</typeparam>
         </member>
+        <member name="F:Inflexion2.Domain.BaseRepository`2.logger_">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:Inflexion2.Domain.BaseRepository`2.#ctor">
             <summary>
             Default constructor for GenericRepository
@@ -3867,11 +3951,39 @@
             </summary>
             <returns><see cref="T:Inflexion2.Domain.IRepository`2"/></returns>
         </member>
+        <member name="M:Inflexion2.Domain.BaseRepository`2.RemoveAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Inflexion2.Domain.BaseRepository`2.GetById(`1)">
             <summary>
             <see cref="T:Inflexion2.Domain.IRepository`2"/>
             </summary>
             <returns><see cref="T:Inflexion2.Domain.IRepository`2"/></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseRepository`2.GetAggregateById(`1)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseRepository`2.GetByIdIncluding(`1,System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <param name="includes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseRepository`2.GetAllExceptThis(`1)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
         </member>
         <member name="M:Inflexion2.Domain.BaseRepository`2.GetBySpec(Inflexion2.Domain.Specification.ISpecification{`0})">
             <summary>
@@ -3954,10 +4066,30 @@
             </summary>
             <param name="entity"></param>
         </member>
+        <member name="M:Inflexion2.Domain.BaseRepository`2.InternalRemove(`1)">
+            <summary>
+            method to be over writed to remove operations
+            </summary>
+            <param name="id"></param>
+        </member>
         <member name="M:Inflexion2.Domain.BaseRepository`2.Query">
             <summary>
             method to write to query operations
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseRepository`2.GetAllExceptThese(System.Collections.Generic.IEnumerable{`1})">
+            <summary>
+            
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseRepository`2.GetSelectedThese(System.Collections.Generic.IEnumerable{`1})">
+            <summary>
+            
+            </summary>
+            <param name="ids"></param>
             <returns></returns>
         </member>
         <member name="T:Inflexion2.Domain.BaseEventStore">
@@ -4244,6 +4376,17 @@
             </summary>
             <param name="valueObject">Item to delete</param>
         </member>
+        <member name="M:Inflexion2.Domain.BaseValueObjectRepository`1.RemoveAll">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.BaseValueObjectRepository`1.RemoveAll(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            
+            </summary>
+            <param name="valueObjectsToDelete"></param>
+        </member>
         <member name="M:Inflexion2.Domain.BaseValueObjectRepository`1.InternalAdd(`0)">
             <summary>
             method to be over writed to add operations
@@ -4291,22 +4434,43 @@
             <summary>
             Add item into repository
             </summary>
-            <param name="entity">Item to add to repository</param>
+            <param name="valueObject">Item to add to repository</param>
         </member>
         <member name="M:Inflexion2.Domain.IValueObjectRepository`1.Attach(`0)">
             <summary>
-            Attach entity to this repository.
+            Attach valueObject to this repository.
             Attach is similar to add but the internal state
             for this object is not  mark as 'Added, Modifed or Deleted', submit changes
             in Unit Of Work don't send anything to storage
             </summary>
-            <param name="entity">Item to attach</param>
+            <param name="valueObject">Item to attach</param>
         </member>
         <member name="M:Inflexion2.Domain.IValueObjectRepository`1.GetAll">
             <summary>
             Get all elements of type {T} in repository
             </summary>
-            <returns>List of selected elements</returns>
+            <returns>Enumerable collection of selected elements</returns>
+        </member>
+        <member name="M:Inflexion2.Domain.IValueObjectRepository`1.GetAllExceptThis(`0)">
+            <summary>
+            
+            </summary>
+            <param name="valueObject"></param>
+            <returns>the collection of object values requested</returns>
+        </member>
+        <member name="M:Inflexion2.Domain.IValueObjectRepository`1.GetAllExceptThese(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            
+            </summary>
+            <param name="valueObject">the collection of object values requested</param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.IValueObjectRepository`1.GetAllExceptThese(`0[])">
+            <summary>
+            
+            </summary>
+            <param name="valueObject"></param>
+            <returns>the collection of object values requested</returns>
         </member>
         <member name="M:Inflexion2.Domain.IValueObjectRepository`1.GetBySpec(Inflexion2.Domain.Specification.ISpecification{`0})">
             <summary>
@@ -4321,7 +4485,7 @@
             Get elements of type {T} in repository
             </summary>
             <param name="filter">Filter that each element do match</param>
-            <returns>List of selected elements</returns>
+            <returns>Enumerable collection of selected elements</returns>
         </member>
         <member name="M:Inflexion2.Domain.IValueObjectRepository`1.GetFilteredElements``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
             <summary>
@@ -4359,7 +4523,20 @@
             <summary>
             Delete item
             </summary>
-            <param name="item">Item to delete</param>
+            <param name="valueObject">Item to delete</param>
+        </member>
+        <member name="M:Inflexion2.Domain.IValueObjectRepository`1.RemoveAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.IValueObjectRepository`1.RemoveAll(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            
+            </summary>
+            <param name="valueObjectsToDelete"></param>
+            <returns></returns>
         </member>
         <member name="T:Inflexion2.Domain.IRepository`2">
             <summary>
@@ -4401,6 +4578,42 @@
             Get one element of type {T} in repository by his Id
             </summary>
             <returns> the selected element</returns>
+        </member>
+        <member name="M:Inflexion2.Domain.IRepository`2.GetAggregateById(`1)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.IRepository`2.GetByIdIncluding(`1,System.String[])">
+            <summary>
+            Dynamic get by identity including the fields with the name in the array string
+            </summary>
+            <param name="id"></param>
+            <param name="includes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.IRepository`2.GetAllExceptThis(`1)">
+            <summary>
+            Get all elements of type {T} except those with the id parameter
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.IRepository`2.GetAllExceptThese(System.Collections.Generic.IEnumerable{`1})">
+            <summary>
+            
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.IRepository`2.GetSelectedThese(System.Collections.Generic.IEnumerable{`1})">
+            <summary>
+            
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
         </member>
         <member name="M:Inflexion2.Domain.IRepository`2.GetBySpec(Inflexion2.Domain.Specification.ISpecification{`0})">
             <summary>
@@ -4465,6 +4678,18 @@
             Delete item
             </summary>
             <param name="item">Item to delete</param>
+        </member>
+        <member name="M:Inflexion2.Domain.IRepository`2.Remove(`1)">
+            <summary>
+            Delete item by identity
+            </summary>
+            <param name="id">Item to delete</param>
+        </member>
+        <member name="M:Inflexion2.Domain.IRepository`2.RemoveAll">
+            <summary>
+            Remove all items
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Inflexion2.Domain.PagedElements`1">
             <summary>
@@ -4621,9 +4846,6 @@
             <summary>
             Interfaz marcadora para los objetos valor del dominio.
             </summary>
-            <typeparam name="TValueObject">
-            Representación del Objeto Valor.
-            </typeparam>
             <remarks>
             Sin comentartios especiales.
             </remarks>
@@ -4713,6 +4935,114 @@
             A hash code for the current <see cref="T:System.Object"/>.
             </returns>
         </member>
+        <member name="T:Inflexion2.Domain.Reflection.ValueObjectReflection`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TValueObject"></typeparam>
+        </member>
+        <member name="M:Inflexion2.Domain.Reflection.ValueObjectReflection`1.GetValueObjectProperties">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.Reflection.ValueObjectReflection`1.GetChildrenProperties">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.Reflection.ValueObjectReflection`1.GetParentProperties">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Domain.Reflection.EntityReflection`2">
+            <summary>
+            
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TIdentifier"></typeparam>
+        </member>
+        <member name="M:Inflexion2.Domain.Reflection.EntityReflection`2.GetEntityProperties">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.Reflection.EntityReflection`2.GetChildrenProperties">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.Reflection.EntityReflection`2.GetParentProperties">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Domain.Reflection.EntityReflectionExtension">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.Reflection.EntityReflectionExtension.ImplementsIEntity(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.Reflection.EntityReflectionExtension.ImplementsIValueObject(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Inflexion2.Domain.Reflection.ExtendedPropertyInfo.PI">
+            <summary>
+            Original property info
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Domain.Reflection.ReflectionTools.GetRecursivePublicPropertiesFromClass(System.Type,System.String[],System.String[],System.Collections.Generic.LinkedList{System.Type})">
+            <summary>
+            Gets the list of all public properties including parents and children from a root aggregate type
+            </summary>
+            <param name="rootType"> the type to study</param>
+            <param name="allowedAggregates">the list of classes names to include in the study parents and childrens</param>
+            <param name="excludedProperties">List of properties that are not included </param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.Reflection.WrapperExtensions.ImplementsIEnumerable(System.Object)">
+            <summary>
+            check if object implemnts ienumerable interface by reflection
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.Reflection.WrapperExtensions.IsAllowed(System.Reflection.PropertyInfo,System.Object,System.Type,System.String[])">
+            <summary>
+            indicates if a property of a class type is in the array of excluded properties or not.
+            </summary>
+            <param name="property"></param>
+            <param name="row"></param>
+            <param name="classType"></param>
+            <param name="excludedProperties"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Domain.Reflection.WrapperExtensions.IsEnumerableGeneric(System.Reflection.PropertyInfo,System.Object,System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="property"></param>
+            <param name="row"></param>
+            <param name="allowedAggregates"></param>
+            <returns></returns>
+        </member>
         <member name="T:Inflexion2.CantDeleteTransientException">
             <summary>
             Try to delete a transient entity Exception
@@ -4745,6 +5075,30 @@
              <exception cref="T:System.ArgumentNullException">The <paramref name="info"/> parameter is null. </exception>
             
              <exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or <see cref="P:System.Exception.HResult"/> is zero (0). </exception>
+        </member>
+        <member name="T:Inflexion2.ActionExtensions">
+            <summary>
+            Extension methods for the <see cref="T:System.Action"/> delegate.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.ActionExtensions.RaiseEvent(System.Action)">
+            <summary>
+            Invokes the specified action (if not null).
+            </summary>
+            <param name="action">The action.</param>
+        </member>
+        <member name="M:Inflexion2.ActionExtensions.RaiseEvent``1(System.Action{``0},``0)">
+            <summary>
+            Invokes the specified action (if not null).
+            </summary>
+            <typeparam name="T">The argument type.</typeparam>
+            <param name="action">The action.</param>
+            <param name="arg">The argument.</param>
+        </member>
+        <member name="T:Inflexion2.EnumerableExtensions">
+            <summary>
+            Extension methods for the <see cref="T:System.Collections.Generic.IEnumerable`1"/> interface.
+            </summary>
         </member>
         <member name="T:Inflexion2.Extensions.SpecificationsLinqExtensions">
             <summary>
@@ -4782,6 +5136,87 @@
             <param name="value"></param>
             <param name="operation"></param>
             <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Extensions.HashHelper">
+            <summary>
+            .es extensiones extaticas para ayudar en el calculo de códigos hash
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Extensions.HashHelper.CalculateMD5Hash(System.String)">
+            <summary>
+            Calculate hash with algorthim MD5
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Extensions.HashHelper.CalculateSHA1Hash(System.String)">
+            <summary>
+            Calculate hash with algorthim SHA1
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Extensions.HashHelper.CalculateHash(System.String,System.Security.Cryptography.HashAlgorithm)">
+            <summary>
+            Calculate hash
+            </summary>
+            <param name="input"></param>
+            <param name="hashAlgorithm"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Extensions.HtmlHelper">
+            <summary>
+            .es Extensiones estaticas para simplifica el uso de cadenas de html
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Extensions.HtmlHelper.StripHtml(System.String)">
+            <summary>
+            remove html marks
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inflexion2.Extensions.StringSlugExtension">
+            <summary>
+            funciones de transformacion de "slug urls"
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Extensions.StringSlugExtension.#cctor">
+            <summary>
+            constructor estatico que inicializa los 
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Extensions.StringSlugExtension.Slugify(System.String)">
+            <summary>
+            .es transformaciones de url feas en urls feas con espacios.
+            .en Will transform "some $ugly ###url wit[]h spaces" into "some-ugly-url-with-spaces"
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Extensions.StringSlugExtension._StrTr(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            .es elimina caracteres con acentos extraños y lo sustituye siguiendo las reglas internas.
+            </summary>
+            <param name="source"></param>
+            <param name="replacements"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Extensions.StringSlugExtension.PascalCase(System.String)">
+            <summary>
+            Get a pascal case version from the string
+            </summary>
+            <param name="origin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Extensions.StringSlugExtension.Substring(System.String,System.String,System.String,System.StringComparison)">
+            <summary>
+            https://stackoverflow.com/questions/17252615/get-string-between-two-strings-in-a-string
+            takes a substring between two anchor strings (or the end of the string if that anchor is null)
+            </summary>
+            <param name="this">a string</param>
+            <param name="from">an optional string to search after</param>
+            <param name="until">an optional string to search before</param>
+            <param name="comparison">an optional comparison for the search</param>
+            <returns>a substring based on the search</returns>
         </member>
         <member name="T:Inflexion2.AggregateNotFoundException">
             <summary>
@@ -5138,7 +5573,7 @@
         </member>
         <member name="T:Inflexion2.DynamicExtensions.PrivateReflectionDynamicObjectExtensions">
             <summary>
-            .es extension de refelxion para objetos dinámicos 
+            .es extension de reflexion para objetos dinámicos 
             .en reflexion extension to dinamic objects
             </summary>
         </member>
@@ -5182,69 +5617,6 @@
             TODO: update comments
             </summary>
             <param name="type"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Inflexion2.HashHelper">
-            <summary>
-            .es extensiones extaticas para ayudar en el calculo de códigos hash
-            </summary>
-        </member>
-        <member name="M:Inflexion2.HashHelper.CalculateMD5Hash(System.String)">
-            <summary>
-            Calculate hash with algorthim MD5
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Inflexion2.HashHelper.CalculateSHA1Hash(System.String)">
-            <summary>
-            Calculate hash with algorthim SHA1
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Inflexion2.HashHelper.CalculateHash(System.String,System.Security.Cryptography.HashAlgorithm)">
-            <summary>
-            Calculate hash
-            </summary>
-            <param name="input"></param>
-            <param name="hashAlgorithm"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Inflexion2.HtmlHelper">
-            <summary>
-            .es Extensiones estaticas para simplifica el uso de cadenas de html
-            </summary>
-        </member>
-        <member name="M:Inflexion2.HtmlHelper.StripHtml(System.String)">
-            <summary>
-            remove html marks
-            </summary>
-            <param name="text"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Inflexion2.StringSlugExtension">
-            <summary>
-            funciones de transformacion de "slug urls"
-            </summary>
-        </member>
-        <member name="M:Inflexion2.StringSlugExtension.#cctor">
-            <summary>
-            constructor estatico que inicializa los 
-            </summary>
-        </member>
-        <member name="M:Inflexion2.StringSlugExtension.Slugify(System.String)">
-            <summary>
-            .es transformaciones de url feas en urls feas con espacios.
-            .en Will transform "some $ugly ###url wit[]h spaces" into "some-ugly-url-with-spaces"
-            </summary>
-        </member>
-        <member name="M:Inflexion2.StringSlugExtension._StrTr(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
-            <summary>
-            .es elimina caracteres con acentos extraños y lo sustituye siguiendo las reglas internas.
-            </summary>
-            <param name="source"></param>
-            <param name="replacements"></param>
             <returns></returns>
         </member>
         <member name="T:Inflexion2.Guard">
@@ -5519,6 +5891,184 @@
             todo: update sumamry
             </summary>
         </member>
+        <member name="T:Inflexion2.Infrastructure.ApplicationSettings">
+            <summary>
+            Singleton instance base class to manage a collection of global key - typed values 
+            from different saved sources like internal configuration files, data bases.
+            Every single module has his own instance.
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Infrastructure.ApplicationSettings.DefaultNameConnection">
+            <summary>
+            Default Name Connection, this name is the only one that has to exist in the 
+            file for database connections configuration;
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Infrastructure.ApplicationSettings.appsettingsKey4DbconfigFile">
+            <summary>
+            Key name in appsettings inside web. config o app.config associated 
+            to the database config file with the possible connection strings.
+            One of the connections string has to have the name default.
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Infrastructure.ApplicationSettings.appsettingsKey4SelectedDb">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Inflexion2.Infrastructure.ApplicationSettings.logger_">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Infrastructure.ApplicationSettings.Logger">
+            <summary>
+            public access to current looger function
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Infrastructure.ApplicationSettings.Instance">
+            <summary>
+            Singleton lazy instance
+            this property help to use an instance class with a constructor and combines static functions and fields. 
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Infrastructure.ApplicationSettings.ModuleEnabled">
+            <summary>
+            Setting to enable or disable the current module
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Infrastructure.ApplicationSettings.ReadOnlyRepository">
+            <summary>
+            This property returns if the current repository is readonly or not
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Infrastructure.ApplicationSettings.FeedbackEmailAddress">
+            <summary>
+            This property returns the email address for help to the end users
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Infrastructure.ApplicationSettings.SelectedRepositoryConnection">
+            <summary>
+            This property returns the name of the current repository selected. 
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Infrastructure.ApplicationSettings.Args">
+            <summary>
+            This property returns the arguments values to execute this module.
+            this arguments can came from the execution of desktop application or from an app.config
+            one of the most important argument is "\db=name of repository to use"
+            In this way is posible to select one of all database enviroments you can have 
+            (development, test, preproduction or production)
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Infrastructure.ApplicationSettings.Config">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Infrastructure.ApplicationSettings.#ctor">
+            <summary>
+            Parameterless constructor to set default values.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Infrastructure.ApplicationSettings.SetLogger(System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="typeinit"></param>
+        </member>
+        <member name="M:Inflexion2.Infrastructure.ApplicationSettings.ReadBasicPropertiesFromConfig(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Infrastructure.ApplicationSettings.SetUpArguments(System.String[])">
+            <summary>
+            SetUp Arguments int the holder field Args reading from .config appsettings or from interactive enviroemnt (console, wpf, etc) arguments
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Inflexion2.Infrastructure.ApplicationSettings.SelectDbConectionFromArguments">
+            <summary>
+            setup the db connection from the Args field or default
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Infrastructure.ApplicationSettings.GetPathRelativeToExecutable(System.String)">
+            <summary>
+            get the current root path from the applications is runnig covering desktop and http apps.
+            </summary>
+            <param name="fileName">file name to combine with root execution path</param>
+            <returns>Executable path combined with the file name in the parameter</returns>
+        </member>
+        <member name="M:Inflexion2.Infrastructure.ApplicationSettings.LoadDatabaseProperties">
+            <summary>
+            override this methood to load specific setting from the current selected repository 
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Infrastructure.ApplicationSettings.DBConfigData">
+            <summary>
+            https://stackoverflow.com/questions/5069099/when-a-class-is-inherited-from-list-xmlserializer-doesnt-serialize-other-att
+            </summary>
+        </member>
+        <member name="T:Inflexion2.Infrastructure.ApplicationSettings.connectionNode">
+            <summary>
+            internal helper class to administrate different conections string from a xml file defined in appsetings of main module
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Infrastructure.ApplicationSettings.connectionNode.name">
+            <summary>
+            Name of the connection in the xml file. The values of the names in the xml file can not be repeated
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Infrastructure.ApplicationSettings.connectionNode.connectionString">
+            <summary>
+            string connection
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Infrastructure.ApplicationSettings.connectionNode.providerName">
+            <summary>
+            database or repository provider
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Infrastructure.ApplicationSettings.connectionNode.encrypted">
+            <summary>
+            flag to indicate if the user id and paswword in the string connection are encripted
+            </summary>
+        </member>
+        <member name="P:Inflexion2.Infrastructure.ApplicationSettings.connectionNode.ConnectedDB">
+            <summary>
+            runtime flag to indicate if this connection is in use
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Infrastructure.ApplicationSettings.connectionNode.EncryptUserPasword">
+            <summary>
+            function to encript the values of user id and password in the xml file for the current connection string
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Infrastructure.ApplicationSettings.connectionNode.GetDecryptedConnectionString">
+            <summary>
+            function to decript the values of user id and password in the xml file for the current connection string
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Infrastructure.ApplicationSettings.connectionNode.GetPassword">
+            <summary>
+            search and get the password value in the current connection string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Infrastructure.ApplicationSettings.connectionNode.GetUser">
+            <summary>
+            search and get the user id value in the current connection string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.Infrastructure.ApplicationSettings.ReadDBConfig(System.String)">
+            <summary>
+            Read and deserialize db config file and save it in the Config property
+            </summary>
+            <param name="fileName"></param>
+        </member>
         <member name="T:Inflexion2.Infrastructure.Manager">
             <summary>
             Clase estática
@@ -5720,6 +6270,11 @@
             </summary>
             <typeparam name="TDependency"></typeparam>
             <returns></returns>
+        </member>
+        <member name="T:System.ObjectExtensions">
+            <summary>
+            https://github.com/Burtsev-Alexey/net-object-deep-copy/blob/master/ObjectExtensions.cs
+            </summary>
         </member>
         <member name="T:Hexa.Core.ObjectExtensions">
             <summary>

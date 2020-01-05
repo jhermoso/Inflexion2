@@ -2,6 +2,7 @@
 {
     using Inflexion2.Domain;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
 
     /// <summary>
     /// creates entities with string id identifier
@@ -12,13 +13,13 @@
         /// <summary>
         /// first entity with string id
         /// </summary>
-        public class Entity1 : Entity<Entity1, string>
+        public class Entity1 : Entity<Entity1, string>, IEquatable<Entity1>
         { }
 
         /// <summary>
         /// second entity with string id entity
         /// </summary>
-        public class Entity2 : Entity<Entity2, string>
+        public class Entity2 : Entity<Entity2, string>, IEquatable<Entity2>
         { }
 
         /// <summary>

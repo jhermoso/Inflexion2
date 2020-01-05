@@ -14,7 +14,6 @@ namespace Inflexion2.Application
     /// <summary>
     /// Clase de excepción interna para el Fault.
     /// </summary>
-
     [DataContract(Namespace = "")]
     public class InternalException : FaultObject
     {

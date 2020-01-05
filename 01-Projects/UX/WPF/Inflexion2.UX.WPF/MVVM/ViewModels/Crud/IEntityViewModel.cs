@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace Inflexion2.UX.WPF.MVVM.CRUD
 {
@@ -6,7 +7,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
     /// Interface base para los viewmodels de entidades
     /// </summary>
     /// <typeparam name="TIdentifier"></typeparam>
-    public interface IEntityViewModel<TIdentifier>
+    public interface IEntityViewModel<TIdentifier>: IEditableObject
     where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
     {
         /// <summary>

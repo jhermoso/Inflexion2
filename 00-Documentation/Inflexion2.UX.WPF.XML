@@ -647,6 +647,721 @@
             User Interface Message to update composite views  inside a module or between modules.
             </summary>
         </member>
+        <member name="T:Inflexion2.UX.WPF.MVVM.CRUD.IValueObjViewModel">
+            <summary>
+            Interface base para los viewmodels de Value Objects
+            </summary>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3">
+            <summary>
+            .en Generic abstract Base class for the Query View Models.
+            this kind of ViewModel are prepared to manage collection of entities whose are Root Aggreagates.
+            .es Clase generica y abstracta de la que derivan los query view models. 
+            Este tipo de view models se utiza para manejar conjuntos de entidades que son root aggregates
+            es decir que puedne tener operaciones CRUD sobre el repositorio.
+            </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.totalRecordCount">
+            <summary>
+            .es Variable privada utilizada para obtener y establecer el número de 
+            registros cargados.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.#ctor">
+            <summary>
+            .es Inicializacion de base para una nueva instancia de un nuevo query view model.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.SelectedItem">
+            <summary>
+            .es todos los viewmodels de query manejan siempre una colleción de entidades 
+            que son root aggregate y que se guardan en un repositorio.
+            Para cualquier collección es importante saber sobre que registro se desea aplicar una operación.
+            Esta propiedad mantiene una sicronización con el control de usuario (datagrid o cualquier otro tipo)
+            indicandonos cual es el registro o entidad seleccionado.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.Items">
+            <summary>
+            .es Mantiene la coleccion de viewmodels de las entidades que deseamos manejar.
+            En este caso cada linea de el datagrid o del control seleccionado tiene su propio view model.
+            Este tiene asu vez la información del registro correspondiente o de la entidad que vamos a mostrar en una linea concreta.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.Title">
+            <summary>
+            Esta es la propiedad que proporciona el nombre a la ventana o al control de usuario donde 
+            se va a visualizar este view model.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.TotalPagesCount">
+            <summary>
+            .en Variable to calculate the total pages.
+            .es Variable calculada para obtener el numero de paginas en función del numero de registros y el numero de registros paginados.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.TotalRecordCount">
+            <summary>
+            Propiedad pública encargada de obtener e indicar el número de registros 
+            cargados en el control de datos.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.PageIndex">
+            <summary>
+            .es Indice actual correspondiente a la página en la que nos encontramos.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.PageSize">
+            <summary>
+            .es Tamaño en registros que se desean visualizar en una página.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.Specification">
+            <summary>
+            This property is used to stablish a common base filtering over the collection of items asociated to the QueryViewModel
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.CanActivateRecord(System.Object)">
+            <summary>
+            method to decide if the record can be activated
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.CanGetRecords(System.Object)">
+            <summary>
+            method to decide if is possible to read the records
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.CanNewRecord(System.Object)">
+            <summary>
+            method to decide if is possible to add a new record
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.CanDeleteRecord(System.Object)">
+            <summary>
+            method to decide if is possible to delete one record
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.CanEditRecord(System.Object)">
+            <summary>
+            method to decide if is possible to edit the record
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.CanGetFirstPageRecords(System.Object)">
+            <summary>
+            method to decide if is possible to go to the first page
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.CanGetNextPageRecords(System.Object)">
+            <summary>
+            .en method to decide if is possible to go to the next page
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.CanGetPreviousPageRecords(System.Object)">
+            <summary>
+            method to decide if is possible to go to the Previous page
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.CanGetLastPageRecords(System.Object)">
+            <summary>
+            method to decide if is possible to go to the last page
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.NavigateToRecord(`2)">
+            <summary>
+            go to the record with dto
+            </summary>
+            <param name="valueObj"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.OnNewRecord(System.Object)">
+            <summary>
+            go to the new record
+            </summary>
+            <param name="parameter"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.OnEditRecord(System.Object)">
+            <summary>
+            edit the record
+            </summary>
+            <param name="parameter"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.NavigateToSelectedItem">
+            <summary>
+            open the selected record
+            this method is invoked from DataGridRowDoubleClickHandler
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.OnGetFirstPageRecords(System.Object)">
+            <summary>
+            .en Get First Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la primera página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.OnGetNextPageRecords(System.Object)">
+            <summary>
+            .en Get Next Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la siguiente página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.OnGetPreviousPageRecords(System.Object)">
+            <summary>
+            .en Get Previus Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la página anterior de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.OnGetLastPageRecords(System.Object)">
+            <summary>
+            .en Get Last Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la ultima página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.RefreshCommands">
+            <summary>
+            refrescamos los susbcriptores de los comandos CRUD recalculando para cada uno de ellos si se habilita o no.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjQueryViewModel`3.RefreshPagingCommands">
+            <summary>
+            refrescamos los subscriptores de los comandos de navegación recalculando para cada uno de ellos 
+            si se habilitan sus suscriptores o no.
+            </summary>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1">
+            <summary>
+            Clase pública que representa la Vista Modelo Base de la cuál tiran el
+            resto de ViewModels.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1.backupEntity">
+            <summary>
+            field for implementation of IEditableObject in the actual View model.
+            his function is to backup the content of current viewmodel dto
+            </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1.inTxn">
+            <summary>
+            field for implementation of IEditableObject in the actual View model
+            his function is to avoid calls when a transsaction is started
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1.#ctor">
+            <summary>
+            .en parameter less constructor 
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1.#ctor(`0)">
+            <summary>
+            .en Typed parameter constructor. 
+            </summary>
+            <param name="valueObj"> domain entity to manage with this constructor</param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1.RaisePropertyChanged``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            TODO: update summary
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="propertyExpresssion"></param>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1.ObjectElement">
+            <summary>
+            .en self reference to the own entity dto to manage with the viemodel derived from this class.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1.Title">
+            <summary>
+            .en store for the title of the derived vm. this property is binded in the view.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1.CanSaveRecord(System.Object)">
+            <summary>
+            .en overridible can method for common command on ribbon to ask is is it possible to save the current record
+            </summary>
+            <param name="parameter">.en addtional info to pass to the method</param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1.CanDeleteRecord(System.Object)">
+            <summary>
+            method to calculate if is possible to delete the current entity.
+            </summary>
+            <param name="parameter">.en addtional info to pass to the method</param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1.CanGetRecords(System.Object)">
+            <summary>
+            .en addtional info to pass to the method
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1.CanActivateRecord(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="parameter"></param>
+            <returns>.en Addtional info to pass to the method.</returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1.OnGetFirstPageRecords(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="parameter"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1.CanGetFirstPageRecords(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1.CanGetNextPageRecords(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1.CanGetPreviousPageRecords(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1.CanGetLastPageRecords(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1.OnNewRecord(System.Object)">
+            <summary>
+            General method.
+            </summary>
+            <param name="parameter">.en Addtional info to pass to the method.</param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1.OnNavigatedTo(Microsoft.Practices.Prism.Regions.NavigationContext)">
+            <summary>
+            .en Navigate method to go to view a record with his id.
+            </summary>
+            <param name="navigationContext">.en Id of the record to go to.</param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1.BeginEdit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1.EndEdit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1.CancelEdit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.ValueObjCrudViewModel`1.Initialization(`0)">
+            <summary>
+            Intialize the View model from a Dto.
+            This method has to be overrided in the derived class
+            </summary>
+            <param name="objectElement"></param>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.MVVM.CRUD.IEntityViewModel`1">
+            <summary>
+            Interface base para los viewmodels de entidades
+            </summary>
+            <typeparam name="TIdentifier"></typeparam>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.IEntityViewModel`1.Id">
+            <summary>
+            Identificador de la entidad
+            </summary>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3">
+            <summary>
+            .en Generic abstract Base class for the Query View Models.
+            this kind of ViewModel are prepared to manage collection of entities whose are Root Aggreagates.
+            .es Clase generica y abstracta de la que derivan los query view models. 
+            Este tipo de view models se utiza para manejar conjuntos de entidades que son root aggregates
+            es decir que puedne tener operaciones CRUD sobre el repositorio.
+            
+            El View model ha de tener un constructor vacio, el cual es invocado en el get de la propiedad items.
+            Igualmente el user control de la vista también ha de tener un constructor vacio.
+            </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3._items">
+            <summary>
+            esta colección se inicializa en el metodo getRecords de los view models derivados y que se aplican ya entidades concretas
+            </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.totalRecordCount">
+            <summary>
+            .es Variable privada utilizada para obtener y establecer el número de 
+            registros cargados.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.#ctor">
+            <summary>
+            .es Inicializacion de base para una nueva instancia de un nuevo query view model.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.SelectedItem">
+            <summary>
+            .es todos los viewmodels de query manejan siempre una colleción de entidades 
+            que son root aggregate y que se guardan en un repositorio.
+            Para cualquier collección es importante saber sobre que registro se desea aplicar una operación.
+            Esta propiedad mantiene una sicronización con el control de usuario (datagrid o cualquier otro tipo)
+            indicandonos cual es el registro o entidad seleccionado.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.Items">
+            <summary>
+            .es Mantiene la coleccion de viewmodels de las entidades que deseamos manejar.
+            En este caso cada linea de el datagrid o del control seleccionado tiene su propio view model.
+            Este tiene asu vez la información del registro correspondiente o de la entidad que vamos a mostrar en una linea concreta.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.Title">
+            <summary>
+            Esta es la propiedad que proporciona el nombre a la ventana o al control de usuario donde 
+            se va a visualizar este view model.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.TotalPagesCount">
+            <summary>
+            .en Variable to calculate the total pages.
+            .es Variable calculada para obtener el numero de paginas en función del numero de registros y el numero de registros paginados.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.TotalRecordCount">
+            <summary>
+            Propiedad pública encargada de obtener e indicar el número de registros 
+            cargados en el control de datos.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.PageIndex">
+            <summary>
+            .es Indice actual correspondiente a la página en la que nos encontramos.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.PageSize">
+            <summary>
+            .es Tamaño en registros que se desean visualizar en una página.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.Specification">
+            <summary>
+            This property is used to stablish a common base filtering over the collection of items asociated to the QueryViewModel
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanActivateRecord(System.Object)">
+            <summary>
+            method to decide if the record can be activated
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanGetRecords(System.Object)">
+            <summary>
+            method to decide if is possible to read the records
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanNewRecord(System.Object)">
+            <summary>
+            method to decide if is possible to add a new record
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanDeleteRecord(System.Object)">
+            <summary>
+            method to decide if is possible to delete one record
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanEditRecord(System.Object)">
+            <summary>
+            method to decide if is possible to edit the record
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanGetFirstPageRecords(System.Object)">
+            <summary>
+            method to decide if is possible to go to the first page
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanGetNextPageRecords(System.Object)">
+            <summary>
+            .en method to decide if is possible to go to the next page
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanGetPreviousPageRecords(System.Object)">
+            <summary>
+            method to decide if is possible to go to the Previous page
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanGetLastPageRecords(System.Object)">
+            <summary>
+            method to decide if is possible to go to the last page
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.NavigateToRecord(`2)">
+            <summary>
+            go to the record with id
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.OnNewRecord(System.Object)">
+            <summary>
+            go to the new record
+            </summary>
+            <param name="parameter"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.OnEditRecord(System.Object)">
+            <summary>
+            edit the record
+            </summary>
+            <param name="parameter"></param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.NavigateToSelectedItem">
+            <summary>
+            open the selected record
+            this method is invoked from DataGridRowDoubleClickHandler
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.OnGetFirstPageRecords(System.Object)">
+            <summary>
+            .en Get First Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la primera página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.OnGetNextPageRecords(System.Object)">
+            <summary>
+            .en Get Next Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la siguiente página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.OnGetPreviousPageRecords(System.Object)">
+            <summary>
+            .en Get Previus Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la página anterior de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.OnGetLastPageRecords(System.Object)">
+            <summary>
+            .en Get Last Page records method. 
+                This command answer to a call from the ribbon region tab.
+            .es ejecutamos el servicio de ir a la ultima página de la lista de registros. 
+                responde al command invocado desde su comando en la region del ribbon.
+            </summary>
+            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.RefreshCommands">
+            <summary>
+            refrescamos los susbcriptores de los comandos CRUD recalculando para cada uno de ellos si se habilita o no.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.RefreshPagingCommands">
+            <summary>
+            refrescamos los subscriptores de los comandos de navegación recalculando para cada uno de ellos 
+            si se habilitan sus suscriptores o no.
+            </summary>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2">
+            <summary>
+            Clase pública que representa la Vista Modelo Base de la cuál tiran el
+            resto de ViewModels.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.backupEntity">
+            <summary>
+            field for implementation of IEditableObject in the actual View model.
+            his function is to backup the content of current viewmodel dto
+            </summary>
+        </member>
+        <member name="F:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.inTxn">
+            <summary>
+            field for implementation of IEditableObject in the actual View model
+            his function is to avoid calls when a transsaction is started
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.#ctor">
+            <summary>
+            .en parameter less constructor 
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.#ctor(`0)">
+            <summary>
+            .en Typed parameter constructor. 
+            </summary>
+            <param name="element"> domain entity to manage with this constructor</param>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.Id">
+            <summary>
+            Propiedad pública encargada de obtener el identificador de la entidad base
+            de la entidad.
+            </summary>
+            <remarks>
+            Sin comentarios adicionales.
+            </remarks>
+            <value>
+            Indica el campo Id de la entidad.
+            </value>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.IsTransient">
+            <summary>
+            true if the entity is transient
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.IsNotTransient">
+            <summary>
+            .en false if the entity is transient
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.RaisePropertyChanged``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            TODO: update summary
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="propertyExpresssion"></param>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.ObjectElement">
+            <summary>
+            .en self reference to the own entity dto to manage with the viemodel derived from this class.
+            </summary>
+        </member>
+        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.Title">
+            <summary>
+            .en store for the title of the derived vm. this property is binded in the view.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.CanSaveRecord(System.Object)">
+            <summary>
+            .en overridible can method for common command on ribbon to ask is is it possible to save the current record
+            </summary>
+            <param name="parameter">.en addtional info to pass to the method</param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.CanDeleteRecord(System.Object)">
+            <summary>
+            method to calculate if is possible to delete the current entity.
+            </summary>
+            <param name="parameter">.en addtional info to pass to the method</param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.CanGetRecords(System.Object)">
+            <summary>
+            .en addtional info to pass to the method
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.CanActivateRecord(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="parameter"></param>
+            <returns>.en Addtional info to pass to the method.</returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.GetById(`1)">
+            <summary>
+            .en General method to get a record by id.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.OnNewRecord(System.Object)">
+            <summary>
+            General method.
+            </summary>
+            <param name="parameter">.en Addtional info to pass to the method.</param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.OnNavigatedTo(Microsoft.Practices.Prism.Regions.NavigationContext)">
+            <summary>
+            .en Navigate method to go to view a record with his id.
+            </summary>
+            <param name="navigationContext">.en Id of the record to go to.</param>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.BeginEdit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.EndEdit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.CancelEdit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.Initialization(`0)">
+            <summary>
+            Intialize the View model from a Dto.
+            This method has to be overrided in the derived class
+            </summary>
+            <param name="objectElement"></param>
+        </member>
         <member name="T:Inflexion2.UX.WPF.MVVM.Views.ShellWindow">
             <summary>
             Representa la ventana principal de aplicación.
@@ -1085,374 +1800,6 @@
             <typeparam name="T"></typeparam>
             <param name="propertyExpresssion"></param>
             <returns></returns>
-        </member>
-        <member name="T:Inflexion2.UX.WPF.MVVM.CRUD.IEntityViewModel`1">
-            <summary>
-            Interface base para los viewmodels de entidades
-            </summary>
-            <typeparam name="TIdentifier"></typeparam>
-        </member>
-        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.IEntityViewModel`1.Id">
-            <summary>
-            Identificador de la entidad
-            </summary>
-        </member>
-        <member name="T:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3">
-            <summary>
-            .en Generic abstract Base class for the Query View Models.
-            this kind of ViewModel are prepared to manage collection of entities whose are Root Aggreagates.
-            .es Clase generica y abstracta de la que derivan los query view models. 
-            Este tipo de view models se utiza para manejar conjuntos de entidades que son root aggregates
-            es decir que puedne tener operaciones CRUD sobre el repositorio.
-            </summary>
-        </member>
-        <member name="F:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.totalRecordCount">
-            <summary>
-            .es Variable privada utilizada para obtener y establecer el número de 
-            registros cargados.
-            </summary>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.#ctor">
-            <summary>
-            .es Inicializacion de base para una nueva instancia de un nuevo query view model.
-            </summary>
-        </member>
-        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.SelectedItem">
-            <summary>
-            .es todos los viewmodels de query manejan siempre una colleción de entidades 
-            que son root aggregate y que se guardan en un repositorio.
-            Para cualquier collección es importante saber sobre que registro se desea aplicar una operación.
-            Esta propiedad mantiene una sicronización con el control de usuario (datagrid o cualquier otro tipo)
-            indicandonos cual es el registro o entidad seleccionado.
-            </summary>
-        </member>
-        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.Items">
-            <summary>
-            .es Mantiene la coleccion de viewmodels de las entidades que deseamos manejar.
-            En este caso cada linea de el datagrid o del control seleccionado tiene su propio view model.
-            Este tiene asu vez la información del registro correspondiente o de la entidad que vamos a mostrar en una linea concreta.
-            </summary>
-        </member>
-        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.Title">
-            <summary>
-            Esta es la propiedad que proporciona el nombre a la ventana o al control de usuario donde 
-            se va a visualizar este view model.
-            </summary>
-        </member>
-        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.TotalPagesCount">
-            <summary>
-            .en Variable to calculate the total pages.
-            .es Variable calculada para obtener el numero de paginas en función del numero de registros y el numero de registros paginados.
-            </summary>
-        </member>
-        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.TotalRecordCount">
-            <summary>
-            Propiedad pública encargada de obtener e indicar el número de registros 
-            cargados en el control de datos.
-            </summary>
-        </member>
-        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.PageIndex">
-            <summary>
-            .es Indice actual correspondiente a la página en la que nos encontramos.
-            </summary>
-        </member>
-        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.PageSize">
-            <summary>
-            .es Tamaño en registros que se desean visualizar en una página.
-            </summary>
-        </member>
-        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.Specification">
-            <summary>
-            This property is used to stablish a common base filtering over the collection of items asociated to the QueryViewModel
-            </summary>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanActivateRecord(System.Object)">
-            <summary>
-            method to decide if the record can be activated
-            </summary>
-            <param name="parameter"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanGetRecords(System.Object)">
-            <summary>
-            method to decide if is possible to read the records
-            </summary>
-            <param name="parameter"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanNewRecord(System.Object)">
-            <summary>
-            method to decide if is possible to add a new record
-            </summary>
-            <param name="parameter"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanDeleteRecord(System.Object)">
-            <summary>
-            method to decide if is possible to delete one record
-            </summary>
-            <param name="parameter"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanEditRecord(System.Object)">
-            <summary>
-            method to decide if is possible to edit the record
-            </summary>
-            <param name="parameter"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanGetFirstPageRecords(System.Object)">
-            <summary>
-            method to decide if is possible to go to the first page
-            </summary>
-            <param name="parameter"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanGetNextPageRecords(System.Object)">
-            <summary>
-            .en method to decide if is possible to go to the next page
-            </summary>
-            <param name="parameter"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanGetPreviousPageRecords(System.Object)">
-            <summary>
-            method to decide if is possible to go to the Previous page
-            </summary>
-            <param name="parameter"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.CanGetLastPageRecords(System.Object)">
-            <summary>
-            method to decide if is possible to go to the last page
-            </summary>
-            <param name="parameter"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.NavigateToRecord(`2)">
-            <summary>
-            go to the record with id
-            </summary>
-            <param name="id"></param>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.OnNewRecord(System.Object)">
-            <summary>
-            go to the new record
-            </summary>
-            <param name="parameter"></param>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.OnEditRecord(System.Object)">
-            <summary>
-            edit the record
-            </summary>
-            <param name="parameter"></param>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.NavigateToSelectedItem">
-            <summary>
-            open the selected record
-            this method is invoked from DataGridRowDoubleClickHandler
-            </summary>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.OnGetFirstPageRecords(System.Object)">
-            <summary>
-            .en Get First Page records method. 
-                This command answer to a call from the ribbon region tab.
-            .es ejecutamos el servicio de ir a la primera página de la lista de registros. 
-                responde al command invocado desde su comando en la region del ribbon.
-            </summary>
-            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.OnGetNextPageRecords(System.Object)">
-            <summary>
-            .en Get Next Page records method. 
-                This command answer to a call from the ribbon region tab.
-            .es ejecutamos el servicio de ir a la siguiente página de la lista de registros. 
-                responde al command invocado desde su comando en la region del ribbon.
-            </summary>
-            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.OnGetPreviousPageRecords(System.Object)">
-            <summary>
-            .en Get Previus Page records method. 
-                This command answer to a call from the ribbon region tab.
-            .es ejecutamos el servicio de ir a la página anterior de la lista de registros. 
-                responde al command invocado desde su comando en la region del ribbon.
-            </summary>
-            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.OnGetLastPageRecords(System.Object)">
-            <summary>
-            .en Get Last Page records method. 
-                This command answer to a call from the ribbon region tab.
-            .es ejecutamos el servicio de ir a la ultima página de la lista de registros. 
-                responde al command invocado desde su comando en la region del ribbon.
-            </summary>
-            <param name="parameter">.en aditional info to pass to this method .es informacion adicional </param>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.RefreshCommands">
-            <summary>
-            refrescamos los susbcriptores de los comandos CRUD recalculando para cada uno de ellos si se habilita o no.
-            </summary>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.QueryViewModel`3.RefreshPagingCommands">
-            <summary>
-            refrescamos los subscriptores de los comandos de navegación recalculando para cada uno de ellos 
-            si se habilitan sus suscriptores o no.
-            </summary>
-        </member>
-        <member name="T:Inflexion2.UX.WPF.MVVM.CRUD.CrudModeType">
-            <summary>
-            Lista pública enumerada del tipo de acción CRUD a acometer.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-        </member>
-        <member name="F:Inflexion2.UX.WPF.MVVM.CRUD.CrudModeType.Add">
-            <summary>
-            Tipo de acción para agregar un nuevo registro.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-        </member>
-        <member name="F:Inflexion2.UX.WPF.MVVM.CRUD.CrudModeType.Update">
-            <summary>
-            Tipo de acción para actualizar un nuevo registro.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-        </member>
-        <member name="F:Inflexion2.UX.WPF.MVVM.CRUD.CrudModeType.Delete">
-            <summary>
-            Tipo de acción para eliminar un nuevo registro.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-        </member>
-        <member name="F:Inflexion2.UX.WPF.MVVM.CRUD.CrudModeType.Fetch">
-            <summary>
-            Tipo de acción para recoger registros.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-        </member>
-        <member name="F:Inflexion2.UX.WPF.MVVM.CRUD.CrudModeType.AllDisabled">
-            <summary>
-            Tipo de acción para deshabilitar todos los posibles comandos.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-        </member>
-        <member name="T:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2">
-            <summary>
-            Clase pública que representa la Vista Modelo Base de la cuál tiran el
-            resto de ViewModels.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.#ctor">
-            <summary>
-            .en parameter less constructor 
-            </summary>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.#ctor(`0)">
-            <summary>
-            .en Typed parameter constructor. 
-            </summary>
-            <param name="element"> domain entity to manage with this constructor</param>
-        </member>
-        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.Id">
-            <summary>
-            Propiedad pública encargada de obtener y establecer el nombre 
-            de la entidad.
-            </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-            <value>
-            Indica el campo Id de la entidad.
-            </value>
-        </member>
-        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.IsTransient">
-            <summary>
-            true if the entity is transient
-            </summary>
-        </member>
-        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.IsNotTransient">
-            <summary>
-            .en false if the entity is transient
-            </summary>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.RaisePropertyChanged``1(System.Linq.Expressions.Expression{System.Func{``0}})">
-            <summary>
-            TODO: update summary
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="propertyExpresssion"></param>
-        </member>
-        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.ObjectElement">
-            <summary>
-            .en self reference to the own entity dto to manage with the viemodel derived from this class.
-            </summary>
-        </member>
-        <member name="P:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.Title">
-            <summary>
-            .en store for the title of the derived vm. this property is binded in the view.
-            </summary>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.CanSaveRecord(System.Object)">
-            <summary>
-            .en overridible can method for common command on ribbon to ask is is it possible to save the current record
-            </summary>
-            <param name="parameter">.en addtional info to pass to the method</param>
-            <returns></returns>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.CanDeleteRecord(System.Object)">
-            <summary>
-            method to calculate if is possible to delete the current entity.
-            </summary>
-            <param name="parameter">.en addtional info to pass to the method</param>
-            <returns></returns>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.CanGetRecords(System.Object)">
-            <summary>
-            .en addtional info to pass to the method
-            </summary>
-            <param name="parameter"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.CanActivateRecord(System.Object)">
-            <summary>
-            
-            </summary>
-            <param name="parameter"></param>
-            <returns>.en Addtional info to pass to the method.</returns>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.GetById(`1)">
-            <summary>
-            .en General method to get a record by id.
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.OnNewRecord(System.Object)">
-            <summary>
-            General method.
-            </summary>
-            <param name="parameter">.en Addtional info to pass to the method.</param>
-        </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.CRUD.CrudViewModel`2.OnNavigatedTo(Microsoft.Practices.Prism.Regions.NavigationContext)">
-            <summary>
-            .en Navigate method to go to view a record with his id.
-            </summary>
-            <param name="navigationContext">.en Id of the record to go to.</param>
         </member>
         <member name="T:Inflexion2.UX.WPF.MVVM.ViewModels.Dialogs.BaseDialogAdapter`1">
             <summary>
@@ -2177,12 +2524,12 @@
             Provoca el evento <see cref="M:IsActiveChanged"/> si es necesario.
             </summary>
         </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.RegisterCommands">
+        <member name="M:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.RegisterCommands(System.Boolean)">
             <summary>
             Registra los comandos globales.
             </summary>
         </member>
-        <member name="M:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.UnregisterCommands">
+        <member name="M:Inflexion2.UX.WPF.MVVM.ViewModels.WorkspaceViewModel.UnregisterCommands(System.Boolean)">
             <summary>
             Cancela el registro de los comandos globales.
             </summary>
@@ -2858,6 +3205,11 @@
             
             </summary>
         </member>
+        <member name="T:Inflexion2.UX.WPF.UX.Helpers.GenericEventHandlers">
+            <summary>
+            Helper class with generic methods helping to write the the event handlers in WPF.
+            </summary>
+        </member>
         <member name="T:Inflexion2.UX.WPF.Helpers.RangeObservableCollection`1">
             <summary>
             Esta clase hereda de ObservableCollection y soporta añadir bloques de entidades.
@@ -2897,7 +3249,7 @@
         </member>
         <member name="T:Inflexion2.UX.WPF.Helpers.AsyncCallResult">
             <summary>
-            A class designed to encapsulate the result of an asynchronous operation.
+            encapsulation of the result of an asynchronous operation.
             </summary>
         </member>
         <member name="P:Inflexion2.UX.WPF.Helpers.AsyncCallResult.Result">
@@ -2929,12 +3281,9 @@
         </member>
         <member name="T:Inflexion2.UX.WPF.Helpers.DataGridHelper">
             <summary>
-            Clase pública estática utilzada como ayuda adicional a acciones 
+            Clase pública estática utilizada como ayuda adicional a acciones 
             habituales o generales con los controles DataGrid.
             </summary>
-            <remarks>
-            Sin comentarios adicionales.
-            </remarks>
         </member>
         <member name="M:Inflexion2.UX.WPF.Helpers.DataGridHelper.GetCell(System.Windows.Controls.DataGridCellInfo)">
             <summary>
@@ -2982,6 +3331,7 @@
             Fila seleccionada.
             </returns>
         </member>
+        <!-- Badly formed XML comment ignored for member "M:Inflexion2.UX.WPF.Helpers.DataGridHelper.DataGridPreviewMouseMoveHandler``3(System.Object,System.Windows.Input.MouseEventArgs,System.Nullable{System.Windows.Point})" -->
         <member name="T:Inflexion2.UX.WPF.Helpers.DialogCloser">
             <summary>
             TODO: Update summary.
@@ -3014,6 +3364,17 @@
             <typeparam name="T"></typeparam>
             <param name="parent"></param>
             <returns></returns>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.Helpers.GeneralHelper.FindAnchestor``1(System.Windows.DependencyObject)">
+            <summary>
+            Helper to search up the VisualTree 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="current"></param>
+            <returns></returns>
+            <remarks>
+            used to implement drag and drop implementation
+            </remarks>
         </member>
         <member name="T:Inflexion2.UX.WPF.Helpers.PasswordHelper">
              <summary>
@@ -3058,6 +3419,57 @@
             </summary>
             <param name="dp"></param>
             <param name="value"></param>
+        </member>
+        <member name="T:Inflexion2.UX.WPF.ValueConverters.InvertedBooleanToVisibilityCollapsedConverter">
+            <summary>
+            Conversor de valores de tipo booleano a estado de presentación de un elemento, y viceversa.
+            </summary>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.InvertedBooleanToVisibilityCollapsedConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Convierte un valor.
+            </summary>
+            <param name="value">
+            Valores generados por el enlace de origen.
+            </param>
+            <param name="targetType">
+            Tipo de la propiedad del destino de enlace.
+            </param>
+            <param name="parameter">
+            Parámetro de convertidor que se va a usar.
+            </param>
+            <param name="culture">
+            Referencia cultural que se va a usar en el convertidor.
+            </param>
+            <returns>
+            collapsed if value is true or not boolean, visible if value is false.
+            </returns>
+            <remarks>
+            Miembro de la interfaz <see cref="T:System.Windows.Data.IValueConverter"/>.
+            </remarks>
+        </member>
+        <member name="M:Inflexion2.UX.WPF.ValueConverters.InvertedBooleanToVisibilityCollapsedConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Convierte un valor.
+            </summary>
+            <param name="value">
+            Valor que genera el destino de enlace.
+            </param>
+            <param name="targetType">
+            Tipo en el que se va a convertir.
+            </param>
+            <param name="parameter">
+            Parámetro de convertidor que se va a usar.
+            </param>
+            <param name="culture">
+            Referencia cultural que se va a usar en el convertidor.
+            </param>
+            <returns>
+            Valor convertido.
+            </returns>
+            <remarks>
+            Miembro de la interfaz <see cref="T:System.Windows.Data.IValueConverter"/>.
+            </remarks>
         </member>
         <member name="T:Inflexion2.UX.WPF.ValueConverters.BoolToVisibility">
             <summary>
@@ -3811,7 +4223,7 @@
             LoginView
             </summary>
         </member>
-        <member name="F:Inflexion2.UX.WPF.LoginView.WindowLanguajeProperty">
+        <member name="F:Inflexion2.UX.WPF.LoginView.WindowLanguageProperty">
             <summary>
             Esta propiedad es para salvar en la configuración del usuario el idioma seleccionado.
             </summary>
@@ -3821,7 +4233,7 @@
             default parameterless constructor for the view of Login.
             </summary>
         </member>
-        <member name="P:Inflexion2.UX.WPF.LoginView.WindowLanguaje">
+        <member name="P:Inflexion2.UX.WPF.LoginView.WindowLanguage">
             <summary>
             Atributo para dar soporte a la propiedad de dependencia en la que almacenamos el lenguaje elegido
             </summary>

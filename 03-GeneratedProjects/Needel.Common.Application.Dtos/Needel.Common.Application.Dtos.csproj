@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F070AFAF-80CD-4CF7-9E7D-5078A1DE337D}</ProjectGuid>
+    <ProjectGuid>{B10EDB2C-57AE-4846-BDD2-A589E1E0797C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Needel.Common.Application.Dtos</RootNamespace>
@@ -116,8 +116,16 @@
   <ItemGroup>
     <Compile Include="Address\AddressDto.cs" />
     <Compile Include="AppSetting\AppSettingDto.cs" />
+    <Compile Include="Component\ComponentDto.cs" />
     <Compile Include="Department\DepartmentDto.cs" />
+    <Compile Include="EntityM\EntityMDto.cs" />
+    <Compile Include="EntityN\EntityNDto.cs" />
+    <Compile Include="EntityZ\EntityZDto.cs" />
+    <Compile Include="GraphNode\GraphNodeDto.cs" />
+    <Compile Include="MNZ\MNZDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Student\StudentDto.cs" />
+    <Compile Include="Teacher\TeacherDto.cs" />
     <Compile Include="User\UserDto.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -132,11 +140,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\01-Projects\Inflexion2.Application\Inflexion2.Application.csproj">
-      <Project>{35331B03-1EF9-488C-964C-42DE594C98F1}</Project>
+      <Project>{35331b03-1ef9-488c-964c-42de594c98f1}</Project>
       <Name>Inflexion2.Application</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Domain.Data\Needel.Common.Domain.Data.csproj">
-      <Project>{0ED1DDBD-0582-43D7-B734-C991620E2234}</Project>
+      <Project>{6E3DC684-8C28-41C6-B471-498417EE0FFA}</Project>
       <Name>Needel.Common.Domain.Data</Name>
     </ProjectReference>
   </ItemGroup>

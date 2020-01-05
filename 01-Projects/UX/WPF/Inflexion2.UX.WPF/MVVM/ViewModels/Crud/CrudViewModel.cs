@@ -10,6 +10,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
     using Inflexion2.Application;
     using Inflexion2.UX.WPF.MVVM.ViewModels;
     using System;
+    using System.ComponentModel;
     using System.Linq.Expressions;
 
     /// <summary>
@@ -19,12 +20,25 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
     /// <remarks>
     /// Sin comentarios adicionales.
     /// </remarks>
-    public abstract class CrudViewModel<T,TIdentifier> : WorkspaceViewModel, IEntityViewModel<TIdentifier> 
-        where T : BaseEntityDataTransferObject<TIdentifier>
+    public abstract class CrudViewModel<TDto,TIdentifier> : WorkspaceViewModel, IEntityViewModel<TIdentifier>, IEditableObject
+        where TDto : BaseEntityDataTransferObject<TIdentifier>, IDataTransferObject
         where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
     {
-        private T entity;
+        private TDto entity;
 
+        /// <summary>
+        /// field for implementation of IEditableObject in the actual View model.
+        /// his function is to backup the content of current viewmodel dto
+        /// </summary>
+        protected internal TDto backupEntity;
+
+        /// <summary>
+        /// field for implementation of IEditableObject in the actual View model
+        /// his function is to avoid calls when a transsaction is started
+        /// </summary>
+        protected internal bool inTxn = false;
+
+        //TODO: fields for using the page actions with detail views and not only with query views
         protected TIdentifier firstEntityId;
         protected TIdentifier lastEntityId;
         protected TIdentifier nextEntityId;
@@ -39,7 +53,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         {
             if (!this.IsDesignTime)
             {
-                this.ObjectElement = Activator.CreateInstance<T>();
+                this.ObjectElement = Activator.CreateInstance<TDto>();
             }
         }
 
@@ -47,7 +61,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         /// .en Typed parameter constructor. 
         /// </summary>
         /// <param name="element"> domain entity to manage with this constructor</param>
-        public CrudViewModel(T element)
+        public CrudViewModel(TDto element)
         {
             if (!this.IsDesignTime)
             {
@@ -60,7 +74,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         #region PROPERTIES
 
         /// <summary>
-        /// Propiedad pública encargada de obtener y establecer el nombre 
+        /// Propiedad pública encargada de obtener el identificador de la entidad base
         /// de la entidad.
         /// </summary>
         /// <remarks>
@@ -72,13 +86,8 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         public virtual TIdentifier Id
         {
             get
-            {
-                if (this.IsDesignTime)
-                {
-                    return default(TIdentifier);
-                }
-                
-                return this.ObjectElement.Id;
+            {         
+                return this.ObjectElement == null || this.IsDesignTime ? default(TIdentifier): this.ObjectElement.Id;
             }
             set
             {
@@ -97,7 +106,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         {
             get
             {
-                return this.ObjectElement.IsTransient();
+                return this.ObjectElement != null && this.ObjectElement.IsTransient();
             }
         }
 
@@ -108,7 +117,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         {
             get
             {
-                return !this.ObjectElement.IsTransient();
+                return this.ObjectElement != null && !this.ObjectElement.IsTransient();
             }
         }
 
@@ -169,7 +178,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         /// <summary>
         /// .en self reference to the own entity dto to manage with the viemodel derived from this class.
         /// </summary>
-        public T ObjectElement
+        public TDto ObjectElement
         {
             get
             {
@@ -177,8 +186,11 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             }
             set
             {
-                this.entity = value;
-                RaisePropertyChanged(() => this.ObjectElement);
+                if (this.entity != value)
+                {
+                    this.entity = value;
+                    RaisePropertyChanged(() => this.ObjectElement);
+                }
             }
         }
 
@@ -200,7 +212,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         /// <returns></returns>
         public override bool CanSaveRecord(object parameter)
         {
-            return this.ObjectElement != null && Validation.ValidateAll().IsValid;// para entidades que no se borran && this.Activo;
+            return this.ObjectElement != null && this.Validation.ValidateAll().IsValid; // para entidades que no se borran && this.Activo;
         }
 
         /// <summary>
@@ -245,6 +257,8 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         }
 
 
+        //TODO: overrrides for using this actions with detail views and not only with query views
+
         public override void OnGetFirstPageRecords(object parameter)
         {
             
@@ -276,7 +290,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public virtual T GetById(TIdentifier id)
+        public virtual TDto GetById(TIdentifier id)
         {
             throw new NotImplementedException();
         }
@@ -287,7 +301,7 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
         /// <param name="parameter">.en Addtional info to pass to the method.</param>
         public override void OnNewRecord(object parameter)
         {
-            this.ObjectElement = Activator.CreateInstance<T>();
+            this.ObjectElement = Activator.CreateInstance<TDto>();
             this.Rebind();
         }
 
@@ -300,15 +314,73 @@ namespace Inflexion2.UX.WPF.MVVM.CRUD
             string id = navigationContext.Parameters["Id"];
             if (string.IsNullOrWhiteSpace(id) || id == default(TIdentifier).ToString())
             {
-                this.ObjectElement = Activator.CreateInstance<T>();
+                this.ObjectElement = Activator.CreateInstance<TDto>();
                 return;
             }
 
             TIdentifier tid = GenericConverters.ChangeType<TIdentifier>(id);
             this.ObjectElement = GetById(tid);
-
+            
             this.Rebind();
         }
+
+        #region IEditableObject implementation
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual void  BeginEdit()
+        {
+            if (!this.inTxn && IsNotTransient)
+            {
+                this.inTxn = true;
+                if (this.backupEntity == null)
+                    this.backupEntity = (TDto)this.ObjectElement.Clone();
+            }
+            else
+            {
+                //this.NavigationService.NavigateToWorkSpace(typeof(TView).FullName, id);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual void EndEdit()
+        {
+            if (this.inTxn)
+            {
+                this.backupEntity = null;
+                this.inTxn = false;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual void CancelEdit()
+        {
+            if (this.inTxn)
+            {
+                this.ObjectElement = this.backupEntity;
+                this.backupEntity = null;
+                this.inTxn = false;
+                System.Windows.Input.Keyboard.ClearFocus();
+            }
+        }
+
+        /// <summary>
+        /// Intialize the View model from a Dto.
+        /// This method has to be overrided in the derived class
+        /// </summary>
+        /// <param name="objectElement"></param>
+        public virtual void Initialization(TDto objectElement)
+        {
+            this.ObjectElement = objectElement;
+        }
+
+        #endregion
+
 
     } // CrudViewModel
 

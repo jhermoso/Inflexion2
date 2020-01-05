@@ -86,6 +86,26 @@ namespace Inflexion2.Domain
             return this.Query().ToList();
         }
 
+        public IEnumerable<TValueObject> GetAllExceptThis(TValueObject valueObject)
+        {
+            this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Get all from entity {0}.", typeof(TValueObject).Name));
+            return this.Query().Where(c => c != valueObject).ToList();
+        }
+
+        public IEnumerable<TValueObject> GetAllExceptThese(IEnumerable<TValueObject> valueObjects)
+        {
+            this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Get all from entity {0}.", typeof(TValueObject).Name));
+            var arrayVO = valueObjects.ToArray();
+            return this.Query().Where(c => !arrayVO.Contains(c)).ToList();
+        }
+
+        public IEnumerable<TValueObject> GetAllExceptThese(TValueObject[] valueObjects)
+        {
+            this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Get all from entity {0}.", typeof(TValueObject).Name));
+
+            return this.Query().Where(c => !valueObjects.Contains(c)).ToList();
+        }
+
         /// <summary>
         /// Get all elements of type {T} that matching a
         /// Specification <paramref name="specification"/>
@@ -152,7 +172,7 @@ namespace Inflexion2.Domain
         /// <param name="orderByExpression"></param>
         /// <param name="ascending"></param>
         /// <returns></returns>
-        public PagedElements<TValueObject> GetPagedElements<S>(
+        public virtual PagedElements<TValueObject> GetPagedElements<S>(
             int pageIndex,
             int pageSize,
             Expression<Func<TValueObject, bool>> filter,
@@ -166,22 +186,32 @@ namespace Inflexion2.Domain
                     typeof(TValueObject).Name,
                     pageIndex,
                     pageSize,
-                    orderByExpression.ToString()));
+                    orderByExpression != null? orderByExpression.ToString() :String.Empty));
 
             var objectSet = this.Query();
 
             IQueryable<TValueObject> query = objectSet.Where(filter);
-            int total = query.Count();
+            int total = query != null? query.Count() : 0 ;
 
-            return ascending
-                   ? new PagedElements<TValueObject>(
-                                                   query.OrderBy(orderByExpression)
+            if (orderByExpression != null)
+            {
+                var temp = (ascending) ?  new PagedElements<TValueObject>( query.OrderBy(orderByExpression)
+                                                    .Skip(pageIndex * pageSize)
+                                                    .Take(pageSize)
+                                                    .ToList(),
+                                                    total)
+
+                                        : new PagedElements<TValueObject>(
+                                                   query.OrderByDescending(orderByExpression)
                                                    .Skip(pageIndex * pageSize)
                                                    .Take(pageSize)
                                                    .ToList(),
-                                                   total)
-                   : new PagedElements<TValueObject>(
-                                                   query.OrderByDescending(orderByExpression)
+                                                   total);
+                return temp;
+            }
+
+            return new PagedElements<TValueObject>(
+                                                   query
                                                    .Skip(pageIndex * pageSize)
                                                    .Take(pageSize)
                                                    .ToList(),
@@ -196,7 +226,7 @@ namespace Inflexion2.Domain
         /// <param name="specification"></param>
         /// <param name="orderBySpecification"></param>
         /// <returns></returns>
-        public PagedElements<TValueObject> GetPagedElements(
+        public virtual PagedElements<TValueObject> GetPagedElements(
             int pageIndex,
             int pageSize,
             ISpecification<TValueObject> specification,
@@ -215,7 +245,7 @@ namespace Inflexion2.Domain
             var objectSet = this.Query();
 
             IQueryable<TValueObject> query = objectSet.Where(specification.IsSatisfiedBy());
-            int total = query.Count();
+            int total = query != null ? query.Count() : 0;
 
             return new PagedElements<TValueObject>(
                        query
@@ -231,11 +261,55 @@ namespace Inflexion2.Domain
         /// Delete item
         /// </summary>
         /// <param name="valueObject">Item to delete</param>
-        public void Remove(TValueObject valueObject)
+        public virtual void Remove(TValueObject valueObject)
         {
             this.InternalRemove(valueObject);
 
             this.logger.Debug(string.Format(CultureInfo.InvariantCulture, "Deleted a {0} Value Object", typeof(TValueObject).Name));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual IEnumerable<TValueObject> RemoveAll()
+        {
+            var allValueObjects = this.GetAll();
+            List<TValueObject> result = new List<TValueObject>();
+            foreach (var valueObject in allValueObjects)
+            {
+                try
+                {
+                    this.Remove(valueObject);
+                }
+                catch (Exception)
+                {
+                    result.Add(valueObject);
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="valueObjectsToDelete"></param>
+        public virtual IEnumerable<TValueObject> RemoveAll(IEnumerable<TValueObject> valueObjectsToDelete)
+        {
+            List<TValueObject> result = new List<TValueObject>();
+            foreach (var valueObject in valueObjectsToDelete)
+            {
+                try
+                {
+                    this.Remove(valueObject);
+                }
+                catch (Exception)
+                {
+                    result.Add(valueObject);
+                }
+            }
+
+            return result;
         }
 
         /// <summary>

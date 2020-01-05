@@ -182,7 +182,7 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
         /// <value>
         /// Referencia al gestor de regiones Prism.
         /// </value>
-        protected IRegionManager RegionManager
+        public IRegionManager RegionManager
         {
             get { return this.regionManager; }
         }

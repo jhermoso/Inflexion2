@@ -17,46 +17,53 @@
              FlowDirection="{Binding lex:LocFlowDirection Inflexion2.Resources:FrameworkResource:flow}" 
 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="525" 
-             Padding="5" Loaded="OnLoaded">
-
+             d:DesignHeight="120" d:DesignWidth="525" 
+             Padding="5" >
+    <UserControl.Resources>
+        <converter:BooleanToVisibilityCollapsedConverter x:Key="BooleanToVisibilityCollapsedConverter"/>
+    </UserControl.Resources>
     <Grid x:Name="MainGrid" Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/><!-- insert here single properties from entity and single identity properties from parents without reflexion -->
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <!-- .en columns from parent relationships --> <!-- .es columnas de entidades padres -->
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:AppSettingTypeAlias}" />
-        <lex:EnumComboBox x:Name="AppSettingUsing" Grid.Row="0" Grid.Column="1" Type="{x:Type enums:AppSettingType}"
-                          SelectedItem="{Binding SelectedAppSettingType}" IsSynchronizedWithCurrentItem="True">
-            <lex:EnumComboBox.Style>
-                <Style TargetType="{x:Type lex:EnumComboBox}">
-                    <Setter Property="ItemTemplate">
-                        <Setter.Value>
-                            <DataTemplate>
-                                <Grid>
-                                    <lex:LocProxy Source="{Binding}" x:Name="Proxy" PrependType="True" />
-                                    <TextBlock Text="{Binding Result, ElementName=Proxy}" Margin="2" FontWeight="Normal" />
-                                </Grid>
-                            </DataTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </lex:EnumComboBox.Style>
-        </lex:EnumComboBox>
+            <Grid x:Name="MainControlGrid" Background="White" Grid.Row="0" GotFocus="OnGotFocusMainViewControl" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!-- .en columns from parent relationships --> <!-- .es columnas de entidades padres -->
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:AppSettingTypeAlias}" Margin="0,0,5,0" />
+                <lex:EnumComboBox Grid.Row="0" Grid.Column="1" x:Name="AppSettingType" Type="{x:Type enums:AppSettingType}" 
+                                  SelectedItem="{Binding AppSettingType}" IsSynchronizedWithCurrentItem="True">
+                    <lex:EnumComboBox.Style>
+                        <Style TargetType="{x:Type lex:EnumComboBox}">
+                            <Setter Property="ItemTemplate">
+                                <Setter.Value>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <lex:LocProxy Source="{Binding}" x:Name="Proxy" PrependType="True" />
+                                            <TextBlock Text="{Binding Result, ElementName=Proxy}" Margin="2" FontWeight="Normal" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </lex:EnumComboBox.Style>
+                </lex:EnumComboBox>
 
-        <!-- .en columns from properties -->
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:AppSetting_KeyAlias}" />
-        <TextBlock Grid.Row="2" Grid.Column="0" Text="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:AppSetting_ValueAlias}" />
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:AppSetting_RemarkAlias}" />
-        <TextBox  x:Name="fieldKey" Grid.Row="1" Grid.Column="1" Text="{Binding Key, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="App setting key"/>
-        <TextBox  x:Name="fieldValue" Grid.Row="2" Grid.Column="1" Text="{Binding Value, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip=""/>
-        <TextBox x:Name="fieldRemark" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding Remark, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="Key value par description." SpellCheck.IsEnabled="True" MaxLines="10"/>
+                <!-- .en columns from properties -->
+                <Label Grid.Row="1" Grid.Column="0" Content="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:AppSetting_KeyAlias}" Margin="0,0,5,0" />
+                <Label Grid.Row="2" Grid.Column="0" Content="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:AppSetting_ValueAlias}" Margin="0,0,5,0" />
+                <Label Grid.Row="3" Grid.Column="0" Content="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:AppSetting_RemarkAlias}" Margin="0,0,5,0" />
+                <TextBox          Grid.Row="1" Grid.Column="1"  x:Name="fieldKey" Text="{Binding Key, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="App setting key"/>
+                <TextBox          Grid.Row="2" Grid.Column="1"  x:Name="fieldValue" Text="{Binding Value, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip=""/>
+                <TextBox          Grid.Row="3" Grid.Column="1" x:Name="fieldRemark" TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding Remark, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="Key value par description." SpellCheck.IsEnabled="True" MaxLines="10"/>
+        </Grid>
     </Grid>
 </UserControl>

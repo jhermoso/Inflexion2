@@ -17,23 +17,36 @@
              FlowDirection="{Binding lex:LocFlowDirection Inflexion2.Resources:FrameworkResource:flow}" 
 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="525" 
+             d:DesignHeight="90" d:DesignWidth="525" 
              Padding="5" >
-
+    <UserControl.Resources>
+        <converter:BooleanToVisibilityCollapsedConverter x:Key="BooleanToVisibilityCollapsedConverter"/>
+    </UserControl.Resources>
     <Grid x:Name="MainGrid" Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/><!-- insert here single properties from entity and single identity properties from parents without reflexion -->
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+            <Grid x:Name="MainControlGrid" Background="White" Grid.Row="0" GotFocus="OnGotFocusMainViewControl" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!-- .en columns from parent relationships --> <!-- .es columnas de entidades padres -->
+                <!-- Column from UserAddress -->
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:UserAlias}" Margin="0,0,5,0" Visibility="{Binding IsNotTransient, Converter={StaticResource BooleanToVisibilityCollapsedConverter}}" />
+                <ComboBox  Grid.Row="0" Grid.Column="1" x:Name="fieldUserAddress" ItemsSource="{Binding UsersCombo}" DisplayMemberPath="Name" SelectedItem="{Binding UserAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding IsNotTransient, Converter={StaticResource BooleanToVisibilityCollapsedConverter}}"/>
+                <!--SelectedItem="{Binding Parent}" IsSynchronizedWithCurrentItem="True"-->
 
-        <!-- .en columns from properties -->
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:Address_StreetNameAlias}" />
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:Address_BuildingNumberAlias}" />
-        <TextBox  x:Name="fieldStreetName" Grid.Row="0" Grid.Column="1" Text="{Binding StreetName, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip=""/>
-        <TextBox  x:Name="fieldBuildingNumber" Grid.Row="1" Grid.Column="1" Text="{Binding BuildingNumber, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip=""/>
+                <!-- .en columns from properties -->
+                <Label Grid.Row="1" Grid.Column="0" Content="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:Address_StreetNameAlias}" Margin="0,0,5,0" />
+                <Label Grid.Row="2" Grid.Column="0" Content="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:Address_BuildingNumberAlias}" Margin="0,0,5,0" />
+                <TextBox          Grid.Row="1" Grid.Column="1"  x:Name="fieldStreetName" Text="{Binding StreetName, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip=""/>
+                <TextBox          Grid.Row="2" Grid.Column="1"  x:Name="fieldBuildingNumber" Text="{Binding BuildingNumber, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip=""/>
+        </Grid>
     </Grid>
 </UserControl>

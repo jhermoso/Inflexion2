@@ -9,7 +9,7 @@ namespace Inflexion2.Application
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// Interfaz para representar los objetos de transferencia de datos para una entidad.
+    /// .es Interfaz para representar los objetos de transferencia de datos para una entidad.
     /// </summary>
     /// <remarks>
     /// <para>
@@ -26,11 +26,8 @@ namespace Inflexion2.Application
         #region Properties
 
         /// <summary>
-        /// Obtiene el Id de la entidad representada por el dto.
+        /// .es Obtiene el Id de la entidad representada por el dto.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios adicionales.
-        /// </remarks>
         TIdentifier Id
         {
             get;

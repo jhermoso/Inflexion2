@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-			 xmlns:lex="http://wpflocalizeextension.codeplex.com"
-			 lex:LocalizeDictionary.DesignCulture="en"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             lex:LocalizeDictionary.DesignCulture="en"
              lex:LocalizeDictionary.OutputMissingKeys="True"
-			 lex:ResxLocalizationProvider.DefaultAssembly="Needel.Common.Infrastructure.Resources"
+             lex:ResxLocalizationProvider.DefaultAssembly="Needel.Common.Infrastructure.Resources"
              lex:ResxLocalizationProvider.DefaultDictionary="CommonResources"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
@@ -15,6 +15,14 @@
             <StackPanel Margin="25,0,0,0" Orientation="Vertical">
                 <Button Command="{Binding ShowAppSettingView}" ToolTip="{lex:Loc AppSettingTooltip}" Content="{lex:Loc AppSettingPluralEntity}"/>
                 <Button Command="{Binding ShowDepartmentView}" ToolTip="{lex:Loc DepartmentTooltip}" Content="{lex:Loc DepartmentPluralEntity}"/>
+                <Button Command="{Binding ShowComponentView}" ToolTip="{lex:Loc ComponentTooltip}" Content="{lex:Loc ComponentPluralEntity}"/>
+                <Button Command="{Binding ShowTeacherView}" ToolTip="{lex:Loc TeacherTooltip}" Content="{lex:Loc TeacherPluralEntity}"/>
+                <Button Command="{Binding ShowStudentView}" ToolTip="{lex:Loc StudentTooltip}" Content="{lex:Loc StudentPluralEntity}"/>
+                <Button Command="{Binding ShowGraphNodeView}" ToolTip="{lex:Loc GraphNodeTooltip}" Content="{lex:Loc GraphNodePluralEntity}"/>
+                <Button Command="{Binding ShowEntityMView}" ToolTip="{lex:Loc EntityMTooltip}" Content="{lex:Loc EntityMPluralEntity}"/>
+                <Button Command="{Binding ShowMNZView}" ToolTip="{lex:Loc MNZTooltip}" Content="{lex:Loc MNZPluralEntity}"/>
+                <Button Command="{Binding ShowEntityNView}" ToolTip="{lex:Loc EntityNTooltip}" Content="{lex:Loc EntityNPluralEntity}"/>
+                <Button Command="{Binding ShowEntityZView}" ToolTip="{lex:Loc EntityZTooltip}" Content="{lex:Loc EntityZPluralEntity}"/>
             </StackPanel>
         </Expander>
     </StackPanel>

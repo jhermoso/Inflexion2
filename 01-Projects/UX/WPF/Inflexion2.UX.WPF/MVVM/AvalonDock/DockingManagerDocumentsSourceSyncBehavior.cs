@@ -157,7 +157,7 @@ namespace Inflexion2.UX.WPF.MVVM
                         if (vm != null)
                         {
                             vm.IsActive = false;
-                            vm.DeactivateChildrenCollections();
+                            //vm.DeactivateChildrenCollections();
                         }
                     }
 

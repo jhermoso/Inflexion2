@@ -6,7 +6,7 @@
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Inflexion2.Application" base="q1:BaseEntityDataTransferObjectOfint">
         <xs:sequence>
-          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Needel.Common.Domain.Data" minOccurs="0" name="AppSettingUsing" type="q2:AppSettingType" />
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Needel.Common.Domain.Data" minOccurs="0" name="AppSettingType" nillable="true" type="q2:AppSettingType" />
           <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />

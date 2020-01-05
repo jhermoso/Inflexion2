@@ -29,7 +29,7 @@ namespace Inflexion2.Domain
     /// <seealso cref="T:Inflexion2.Domain.IEntity{TIdentifier}" />
     [Serializable]
     public abstract class Entity<TEntity, TIdentifier> : IEntity<TIdentifier>
-        where TEntity : IEntity<TIdentifier>
+        where TEntity : IEntity<TIdentifier>, IEquatable<TEntity>, IComparable<TEntity>
         where TIdentifier :  System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
     {
         #region Constants

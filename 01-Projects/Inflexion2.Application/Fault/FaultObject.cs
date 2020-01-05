@@ -23,9 +23,6 @@ namespace Inflexion2.Application
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="T:FaultObject"/>.
         /// </summary>
-        /// <remarks>
-        /// Sin comentarios especiales.
-        /// </remarks>
         public FaultObject(string reason)
         {
             this.Reason = reason;
@@ -40,6 +37,7 @@ namespace Inflexion2.Application
             this.Reason = innerException.Message;
             this.DateException = DateTime.Now;
         }
+
 
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="T:FaultObject"/>.
@@ -125,7 +123,7 @@ namespace Inflexion2.Application
         }
 
         /// <summary>
-        /// Throws the specified exception.
+        /// Throws the specified exception for wcf services.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="exception">The exception.</param>
@@ -136,5 +134,15 @@ namespace Inflexion2.Application
         }
 
         #endregion Methods
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="exception"></param>
+        public static void WebThrow<T>(InternalException exception)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

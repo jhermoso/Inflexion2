@@ -25,8 +25,8 @@ namespace Inflexion2.Domain
     /// <typeparam name="TIdentifier">Type of identity for this repository </typeparam>
     [ContractClass(typeof(IRepositoryContract<,>))]
     public interface IRepository<TEntity, TIdentifier>
-    where TEntity : class /*, IAggregateRoot<TEntity, TIdentifier>*/, IEntity<TIdentifier>
-    where TIdentifier: IComparable<TIdentifier>, IEquatable<TIdentifier>
+    where TEntity : class, Inflexion2.Domain.IEntity<TIdentifier>
+    where TIdentifier: System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
     {
         /// <summary>
         /// Add item into repository
@@ -56,6 +56,41 @@ namespace Inflexion2.Domain
         /// <returns> the selected element</returns>
         TEntity GetById(TIdentifier id);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        TEntity GetAggregateById(TIdentifier id);
+
+        /// <summary>
+        /// Dynamic get by identity including the fields with the name in the array string
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="includes"></param>
+        /// <returns></returns>
+        TEntity GetByIdIncluding(TIdentifier id, string[] includes = null);
+
+        /// <summary>
+        /// Get all elements of type {T} except those with the id parameter
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        IEnumerable<TEntity> GetAllExceptThis(TIdentifier ids);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        IEnumerable<TEntity> GetAllExceptThese(IEnumerable<TIdentifier> ids);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        IEnumerable<TEntity> GetSelectedThese(IEnumerable<TIdentifier> ids);
 
         /// <summary>
         /// Get all elements of type {T} that matching a
@@ -132,5 +167,17 @@ namespace Inflexion2.Domain
         /// </summary>
         /// <param name="item">Item to delete</param>
         void Remove(TEntity item);
+
+        /// <summary>
+        /// Delete item by identity
+        /// </summary>
+        /// <param name="id">Item to delete</param>
+        void Remove(TIdentifier id);
+
+        /// <summary>
+        /// Remove all items
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<TIdentifier> RemoveAll();
     }
 }

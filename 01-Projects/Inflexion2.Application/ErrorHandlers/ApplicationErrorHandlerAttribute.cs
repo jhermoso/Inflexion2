@@ -26,7 +26,7 @@ namespace Inflexion2.Application
     {
         #region Fields
 
-        Type errorHandlerType;
+        readonly Type errorHandlerType;
 
         #endregion
 

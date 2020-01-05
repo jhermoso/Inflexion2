@@ -29,7 +29,8 @@ namespace Inflexion2.UX.WPF.Helpers
             /// <typeparam name="T"></typeparam>
             /// <param name="parent"></param>
             /// <returns></returns>
-            public static T GetVisualChild<T>(Visual parent) where T : Visual
+            public static T GetVisualChild<T>(Visual parent) 
+                where T : Visual
             {
                 T child = default(T);
                 int numVisuals = VisualTreeHelper.GetChildrenCount(parent);
@@ -48,6 +49,32 @@ namespace Inflexion2.UX.WPF.Helpers
                 }
                 return child;
             } // GerVisualChild
+
+        // 
+
+        /// <summary>
+        /// Helper to search up the VisualTree 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="current"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// used to implement drag and drop implementation
+        /// </remarks>
+        public static T FindAnchestor<T>(System.Windows.DependencyObject current)
+            where T : System.Windows.DependencyObject
+        {
+            do
+            {
+                if (current is T)
+                {
+                    return (T)current;
+                }
+                current = VisualTreeHelper.GetParent(current);
+            }
+            while (current != null);
+            return null;
+        }
 
         #endregion
 

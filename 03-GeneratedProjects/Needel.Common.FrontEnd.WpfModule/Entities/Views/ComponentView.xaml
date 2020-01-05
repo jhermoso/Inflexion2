@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="Needel.Common.FrontEnd.WpfModule.ComponentView"
+             xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i = "clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:CommonReference="clr-namespace:Needel.Common.Domain.Data;assembly=Needel.Common.Domain.Data"
+             xmlns:lex = "http://wpflocalizeextension.codeplex.com"
+             xmlns:enums ="clr-namespace:Needel.Common.Domain.Data;assembly=Needel.Common.Domain.Data"
+             xmlns:controls = "clr-namespace:Inflexion2.UX.WPF.Controls;assembly=Inflexion2.UX.WPF.Controls"
+             xmlns:moduleControls ="clr-namespace:Needel.Common.FrontEnd.WpfModule"
+             xmlns:converter = "clr-namespace:Inflexion2.UX.WPF.ValueConverters;assembly=Inflexion2.UX.WPF"
+             lex:LocalizeDictionary.DesignCulture="en"
+             lex:LocalizeDictionary.OutputMissingKeys="True"
+             lex:ResxLocalizationProvider.DefaultAssembly="Needel.Common.Infrastructure.Resources"
+             lex:ResxLocalizationProvider.DefaultDictionary="CommonResources"
+             FlowDirection="{Binding lex:LocFlowDirection Inflexion2.Resources:FrameworkResource:flow}" 
+
+             mc:Ignorable="d" 
+             d:DesignHeight="420" d:DesignWidth="525" 
+             Padding="5" Loaded="OnLoaded">
+    <UserControl.Resources>
+        <converter:BooleanToVisibilityCollapsedConverter x:Key="BooleanToVisibilityCollapsedConverter"/>
+    </UserControl.Resources>
+    <Grid x:Name="MainGrid" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/><!-- insert here single properties from entity and single identity properties from parents without reflexion -->
+            <RowDefinition Height="Auto"/><!-- insert here all collection properties -->
+        </Grid.RowDefinitions>
+            <Grid x:Name="MainControlGrid" Background="White" Grid.Row="0" GotFocus="OnGotFocusMainViewControl" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!-- .en columns from parent relationships --> <!-- .es columnas de entidades padres -->
+                <!-- Column from Parent -->
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:ComponentAlias}" Margin="0,0,5,0" Visibility="{Binding IsNotTransient, Converter={StaticResource BooleanToVisibilityCollapsedConverter}}" />
+                <ComboBox  Grid.Row="0" Grid.Column="1" x:Name="fieldParent" ItemsSource="{Binding ComponentsCombo}" DisplayMemberPath="Name" SelectedItem="{Binding Parent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding IsNotTransient, Converter={StaticResource BooleanToVisibilityCollapsedConverter}}"/>
+                <!--SelectedItem="{Binding Parent}" IsSynchronizedWithCurrentItem="True"-->
+
+                <!-- .en columns from properties -->
+                <Label Grid.Row="1" Grid.Column="0" Content="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:Component_NameAlias}" Margin="0,0,5,0" />
+                <Label Grid.Row="2" Grid.Column="0" Content="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:Component_PartNumberAlias}" Margin="0,0,5,0" />
+                <Label Grid.Row="3" Grid.Column="0" Content="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:Component_DescriptionAlias}" Margin="0,0,5,0" />
+                <TextBox          Grid.Row="1" Grid.Column="1"  x:Name="fieldName" Text="{Binding Name, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="Component's name."/>
+                <TextBox          Grid.Row="2" Grid.Column="1"  x:Name="fieldPartNumber" Text="{Binding PartNumber, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip=""/>
+                <TextBox          Grid.Row="3" Grid.Column="1"  x:Name="fieldDescription" Text="{Binding Description, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" ToolTip=""/>
+        </Grid>
+        <!-- .en Show properties that comes from children relationships or Many to  Many--> 
+        <!-- .es Mostrar las propiedades que provienen the relaciones hijas o Many To Many. -->
+        <Grid x:Name="ChildrenGrid" Background="White" Grid.Row="1">
+            <Grid.RowDefinitions>
+            <!-- One Row per Child entity -->
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <!-- Two columns one for the datagrid entity and one for drag and drop -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" >
+                    <GroupBox Header="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:ComponentPluralEntity}" Visibility="{Binding IsNotTransient, Converter={StaticResource BooleanToVisibilityCollapsedConverter}}" GotFocus="OnGotFocusChildrenQueryViewControl">
+                        <moduleControls:ComponentQueryView x:Name="ChildrenQueryView" DataContext="{Binding ChildrenQueryVM, Mode=TwoWay}" Loaded="OnLoadChildrenQueryViewControl" GotFocus="OnGotFocusChildrenQueryViewControl" /><!-- * -->
+                    </GroupBox>
+                </StackPanel>
+            </Grid>
+    </Grid>
+</UserControl>

@@ -88,6 +88,15 @@ namespace Inflexion2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Added successfully entity.
+        /// </summary>
+        public static string AddedSuccessfullyEntity {
+            get {
+                return ResourceManager.GetString("AddedSuccessfullyEntity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add New Record.
         /// </summary>
         public static string AddNewRecord {
@@ -102,6 +111,15 @@ namespace Inflexion2.Resources {
         public static string AnObjectOfType0WasNotAvailableFromThePool {
             get {
                 return ResourceManager.GetString("AnObjectOfType0WasNotAvailableFromThePool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Argument can&apos;t be null.
+        /// </summary>
+        public static string ArgumentCantBeNull {
+            get {
+                return ResourceManager.GetString("ArgumentCantBeNull", resourceCulture);
             }
         }
         
@@ -808,6 +826,15 @@ namespace Inflexion2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Drag and Drop between the lists of Entities to assign new relations.
+        /// </summary>
+        public static string ToolTipDragAnDropAllFreeEntities {
+            get {
+                return ResourceManager.GetString("ToolTipDragAnDropAllFreeEntities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The type {0} cannot be unregistered because there are active threads waiting for an object..
         /// </summary>
         public static string Type0CannotBeUnregisteredBecauseThereAreActiveThreadsWaitingForAnObject {
@@ -880,6 +907,15 @@ namespace Inflexion2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updated successfully entity.
+        /// </summary>
+        public static string UpdatedSuccessfullyEntity {
+            get {
+                return ResourceManager.GetString("UpdatedSuccessfullyEntity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User  {0}.
         /// </summary>
         public static string User {
@@ -921,6 +957,15 @@ namespace Inflexion2.Resources {
         public static string ValueIsNotOfTheCorrectType {
             get {
                 return ResourceManager.GetString("ValueIsNotOfTheCorrectType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value can&apos;t be zero.
+        /// </summary>
+        public static string ValueIsZero {
+            get {
+                return ResourceManager.GetString("ValueIsZero", resourceCulture);
             }
         }
         

@@ -2,6 +2,7 @@
 {
     using Inflexion2.Domain;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
     using System.ComponentModel.DataAnnotations;
 
     /// <summary>
@@ -13,7 +14,7 @@
         /// <summary>
         /// first class
         /// </summary>
-        public class IntEntity1 : Entity<IntEntity1, int>
+        public class IntEntity1 : Entity<IntEntity1, int>, IEquatable<IntEntity1>
         {
             [Required]
             string Name { get; set; }
@@ -75,7 +76,7 @@
         /// <summary>
         /// inherited entity
         /// </summary>
-        public class IntEntity2 : Entity<IntEntity2, int>
+        public class IntEntity2 : Entity<IntEntity2, int>, IEquatable<IntEntity2>
         {
             /// <summary>
             /// test property

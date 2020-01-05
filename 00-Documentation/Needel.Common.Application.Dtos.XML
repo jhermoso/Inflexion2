@@ -32,6 +32,20 @@
             </summary>
       <remarks />
     </member>
+    <member name="P:Needel.Common.Application.Dtos.AddressDto.UserAddress">
+      <summary>
+            Propiedad que almacena el valor de UserAddress.
+            </summary>
+      <remarks>
+            Propiedad proveniente del rol source de una relación.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Application.Dtos.AddressDto.Clone">
+      <summary>
+            Actual IClonable implementation to help the IEditableObject Implementation 
+            </summary>
+      <returns />
+    </member>
     <member name="T:Needel.Common.Application.Dtos.AppSettingDto">
       <summary>
             Clase que representa a la entidad <see cref="T:Needel.Common.Application.Dtos.AppSettingDto" />.
@@ -70,13 +84,78 @@
             Explanation of the meaning or use of this  key value par.
             </remarks>
     </member>
-    <member name="P:Needel.Common.Application.Dtos.AppSettingDto.AppSettingUsing">
+    <member name="P:Needel.Common.Application.Dtos.AppSettingDto.AppSettingType">
       <summary>
-            Propiedad que almacena el valor de AppSettingUsing.
+            Propiedad que almacena el valor de AppSettingType.
             </summary>
       <remarks>
             Propiedad proveniente del rol source de una relación.
             </remarks>
+    </member>
+    <member name="M:Needel.Common.Application.Dtos.AppSettingDto.Clone">
+      <summary>
+            Actual IClonable implementation to help the IEditableObject Implementation 
+            </summary>
+      <returns />
+    </member>
+    <member name="T:Needel.Common.Application.Dtos.ComponentDto">
+      <summary>
+            Clase que representa a la entidad <see cref="T:Needel.Common.Application.Dtos.ComponentDto" />.
+            </summary>
+      <remarks>
+            Crea un objeto <see cref="T:Needel.Common.Application.Dtos.ComponentDto" />.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Application.Dtos.ComponentDto.#ctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.Dtos.ComponentDto" />.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:Needel.Common.Application.Dtos.ComponentDto" />.
+            </remarks>
+    </member>
+    <member name="P:Needel.Common.Application.Dtos.ComponentDto.Name">
+      <summary>
+            Variable privada que identifica Name.
+            </summary>
+      <remarks>
+            Name of component
+            </remarks>
+    </member>
+    <member name="P:Needel.Common.Application.Dtos.ComponentDto.PartNumber">
+      <summary>
+            Variable privada que identifica PartNumber.
+            </summary>
+      <remarks />
+    </member>
+    <member name="P:Needel.Common.Application.Dtos.ComponentDto.Description">
+      <summary>
+            Variable privada que identifica Description.
+            </summary>
+      <remarks />
+    </member>
+    <member name="P:Needel.Common.Application.Dtos.ComponentDto.Parent">
+      <summary>
+            Propiedad que almacena el valor de Parent.
+            </summary>
+      <remarks>
+            Propiedad proveniente del rol source de una relación.
+            </remarks>
+    </member>
+    <member name="P:Needel.Common.Application.Dtos.ComponentDto.Children">
+      <summary>
+            Campo privado para almacenar la colección de  Children.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener Children.
+            Propiedad proveniente del rol target de una relación.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Application.Dtos.ComponentDto.Clone">
+      <summary>
+            Actual IClonable implementation to help the IEditableObject Implementation 
+            </summary>
+      <returns />
     </member>
     <member name="T:Needel.Common.Application.Dtos.DepartmentDto">
       <summary>
@@ -139,6 +218,302 @@
             Propiedad proveniente del rol target de una relación.
             </remarks>
     </member>
+    <member name="M:Needel.Common.Application.Dtos.DepartmentDto.Clone">
+      <summary>
+            Actual IClonable implementation to help the IEditableObject Implementation 
+            </summary>
+      <returns />
+    </member>
+    <member name="T:Needel.Common.Application.Dtos.EntityMDto">
+      <summary>
+            Clase que representa a la entidad <see cref="T:Needel.Common.Application.Dtos.EntityMDto" />.
+            </summary>
+      <remarks>
+            Crea un objeto <see cref="T:Needel.Common.Application.Dtos.EntityMDto" />.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Application.Dtos.EntityMDto.#ctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.Dtos.EntityMDto" />.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:Needel.Common.Application.Dtos.EntityMDto" />.
+            </remarks>
+    </member>
+    <member name="P:Needel.Common.Application.Dtos.EntityMDto.Name">
+      <summary>
+            Variable privada que identifica Name.
+            </summary>
+      <remarks />
+    </member>
+    <member name="P:Needel.Common.Application.Dtos.EntityMDto.NZs">
+      <summary>
+            Campo privado para almacenar la colección de  NZs.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener NZs.
+            Propiedad proveniente del rol target de una relación.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Application.Dtos.EntityMDto.Clone">
+      <summary>
+            Actual IClonable implementation to help the IEditableObject Implementation 
+            </summary>
+      <returns />
+    </member>
+    <member name="T:Needel.Common.Application.Dtos.EntityNDto">
+      <summary>
+            Clase que representa a la entidad <see cref="T:Needel.Common.Application.Dtos.EntityNDto" />.
+            </summary>
+      <remarks>
+            Crea un objeto <see cref="T:Needel.Common.Application.Dtos.EntityNDto" />.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Application.Dtos.EntityNDto.#ctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.Dtos.EntityNDto" />.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:Needel.Common.Application.Dtos.EntityNDto" />.
+            </remarks>
+    </member>
+    <member name="P:Needel.Common.Application.Dtos.EntityNDto.Name">
+      <summary>
+            Variable privada que identifica Name.
+            </summary>
+      <remarks />
+    </member>
+    <member name="P:Needel.Common.Application.Dtos.EntityNDto.MZs">
+      <summary>
+            Campo privado para almacenar la colección de  MZs.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener MZs.
+            Propiedad proveniente del rol target de una relación.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Application.Dtos.EntityNDto.Clone">
+      <summary>
+            Actual IClonable implementation to help the IEditableObject Implementation 
+            </summary>
+      <returns />
+    </member>
+    <member name="T:Needel.Common.Application.Dtos.EntityZDto">
+      <summary>
+            Clase que representa a la entidad <see cref="T:Needel.Common.Application.Dtos.EntityZDto" />.
+            </summary>
+      <remarks>
+            Crea un objeto <see cref="T:Needel.Common.Application.Dtos.EntityZDto" />.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Application.Dtos.EntityZDto.#ctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.Dtos.EntityZDto" />.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:Needel.Common.Application.Dtos.EntityZDto" />.
+            </remarks>
+    </member>
+    <member name="P:Needel.Common.Application.Dtos.EntityZDto.Name">
+      <summary>
+            Variable privada que identifica Name.
+            </summary>
+      <remarks />
+    </member>
+    <member name="P:Needel.Common.Application.Dtos.EntityZDto.MNs">
+      <summary>
+            Campo privado para almacenar la colección de  MNs.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener MNs.
+            Propiedad proveniente del rol target de una relación.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Application.Dtos.EntityZDto.Clone">
+      <summary>
+            Actual IClonable implementation to help the IEditableObject Implementation 
+            </summary>
+      <returns />
+    </member>
+    <member name="T:Needel.Common.Application.Dtos.GraphNodeDto">
+      <summary>
+            Clase que representa a la entidad <see cref="T:Needel.Common.Application.Dtos.GraphNodeDto" />.
+            </summary>
+      <remarks>
+            Crea un objeto <see cref="T:Needel.Common.Application.Dtos.GraphNodeDto" />.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Application.Dtos.GraphNodeDto.#ctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.Dtos.GraphNodeDto" />.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:Needel.Common.Application.Dtos.GraphNodeDto" />.
+            </remarks>
+    </member>
+    <member name="P:Needel.Common.Application.Dtos.GraphNodeDto.Name">
+      <summary>
+            Variable privada que identifica Name.
+            </summary>
+      <remarks />
+    </member>
+    <member name="P:Needel.Common.Application.Dtos.GraphNodeDto.LeftNodes">
+      <summary>
+            Propiedad que almacena el valor de LeftNodes.
+            </summary>
+      <remarks>
+            Propiedad proveniente del rol source de una relación.
+            </remarks>
+    </member>
+    <member name="P:Needel.Common.Application.Dtos.GraphNodeDto.RightNodes">
+      <summary>
+            Campo privado para almacenar la colección de  RightNodes.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener RightNodes.
+            Propiedad proveniente del rol target de una relación.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Application.Dtos.GraphNodeDto.Clone">
+      <summary>
+            Actual IClonable implementation to help the IEditableObject Implementation 
+            </summary>
+      <returns />
+    </member>
+    <member name="T:Needel.Common.Application.Dtos.MNZDto">
+      <summary>
+            Clase que representa a la entidad <see cref="T:Needel.Common.Application.Dtos.MNZDto" />.
+            </summary>
+      <remarks>
+            Crea un objeto <see cref="T:Needel.Common.Application.Dtos.MNZDto" />.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Application.Dtos.MNZDto.#ctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.Dtos.MNZDto" />.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:Needel.Common.Application.Dtos.MNZDto" />.
+            </remarks>
+    </member>
+    <member name="P:Needel.Common.Application.Dtos.MNZDto.EntityM">
+      <summary>
+            Propiedad que almacena el valor de EntityM.
+            </summary>
+      <remarks>
+            Propiedad proveniente del rol source de una relación.
+            </remarks>
+    </member>
+    <member name="P:Needel.Common.Application.Dtos.MNZDto.EntityN">
+      <summary>
+            Propiedad que almacena el valor de EntityN.
+            </summary>
+      <remarks>
+            Propiedad proveniente del rol source de una relación.
+            </remarks>
+    </member>
+    <member name="P:Needel.Common.Application.Dtos.MNZDto.EntityZ">
+      <summary>
+            Propiedad que almacena el valor de EntityZ.
+            </summary>
+      <remarks>
+            Propiedad proveniente del rol source de una relación.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Application.Dtos.MNZDto.Clone">
+      <summary>
+            Actual IClonable implementation to help the IEditableObject Implementation 
+            </summary>
+      <returns />
+    </member>
+    <member name="M:Needel.Common.Application.Dtos.MNZDto.Equals(System.Object)">
+      <summary />
+      <param name="obj" />
+      <returns />
+    </member>
+    <member name="M:Needel.Common.Application.Dtos.MNZDto.Equals(Inflexion2.Application.BaseValueObjectDataTransferObject)">
+      <summary />
+      <param name="obj" />
+      <returns />
+    </member>
+    <member name="M:Needel.Common.Application.Dtos.MNZDto.Equals(Needel.Common.Application.Dtos.MNZDto)">
+      <summary />
+      <param name="obj" />
+      <returns />
+    </member>
+    <member name="T:Needel.Common.Application.Dtos.StudentDto">
+      <summary>
+            Clase que representa a la entidad <see cref="T:Needel.Common.Application.Dtos.StudentDto" />.
+            </summary>
+      <remarks>
+            Crea un objeto <see cref="T:Needel.Common.Application.Dtos.StudentDto" />.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Application.Dtos.StudentDto.#ctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.Dtos.StudentDto" />.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:Needel.Common.Application.Dtos.StudentDto" />.
+            </remarks>
+    </member>
+    <member name="P:Needel.Common.Application.Dtos.StudentDto.Name">
+      <summary>
+            Variable privada que identifica Name.
+            </summary>
+      <remarks />
+    </member>
+    <member name="P:Needel.Common.Application.Dtos.StudentDto.Teachers">
+      <summary>
+            Campo privado para almacenar la colección de  Teachers.
+            </summary>
+      <remarks>
+            Nos permite establecer y obtener Teachers.
+            Propiedad proveniente del rol target de una relación.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Application.Dtos.StudentDto.Clone">
+      <summary>
+            Actual IClonable implementation to help the IEditableObject Implementation 
+            </summary>
+      <returns />
+    </member>
+    <member name="T:Needel.Common.Application.Dtos.TeacherDto">
+      <summary>
+            Clase que representa a la entidad <see cref="T:Needel.Common.Application.Dtos.TeacherDto" />.
+            </summary>
+      <remarks>
+            Crea un objeto <see cref="T:Needel.Common.Application.Dtos.TeacherDto" />.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Application.Dtos.TeacherDto.#ctor">
+      <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Needel.Common.Application.Dtos.TeacherDto" />.
+            </summary>
+      <remarks>
+            Constructor de la clase <see cref="T:Needel.Common.Application.Dtos.TeacherDto" />.
+            </remarks>
+    </member>
+    <member name="P:Needel.Common.Application.Dtos.TeacherDto.Name">
+      <summary>
+            Variable privada que identifica Name.
+            </summary>
+      <remarks />
+    </member>
+    <member name="P:Needel.Common.Application.Dtos.TeacherDto.Students">
+      <summary>
+            Propiedad que almacena el valor de Students.
+            </summary>
+      <remarks>
+            Propiedad proveniente del rol source de una relación.
+            </remarks>
+    </member>
+    <member name="M:Needel.Common.Application.Dtos.TeacherDto.Clone">
+      <summary>
+            Actual IClonable implementation to help the IEditableObject Implementation 
+            </summary>
+      <returns />
+    </member>
     <member name="T:Needel.Common.Application.Dtos.UserDto">
       <summary>
             Clase que representa a la entidad <see cref="T:Needel.Common.Application.Dtos.UserDto" />.
@@ -163,9 +538,9 @@
             Field to explain the meaning of this key
             </remarks>
     </member>
-    <member name="P:Needel.Common.Application.Dtos.UserDto.Department">
+    <member name="P:Needel.Common.Application.Dtos.UserDto.UserDepartment">
       <summary>
-            Propiedad que almacena el valor de Department.
+            Propiedad que almacena el valor de UserDepartment.
             </summary>
       <remarks>
             Propiedad proveniente del rol source de una relación.
@@ -179,6 +554,12 @@
             Nos permite establecer y obtener Addresses.
             Propiedad proveniente del rol target de una relación.
             </remarks>
+    </member>
+    <member name="M:Needel.Common.Application.Dtos.UserDto.Clone">
+      <summary>
+            Actual IClonable implementation to help the IEditableObject Implementation 
+            </summary>
+      <returns />
     </member>
   </members>
 </doc>

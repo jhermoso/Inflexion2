@@ -18,13 +18,13 @@ namespace Inflexion2.Testing
         /// <summary>
         /// first entity to compare
         /// </summary>
-        public class Entity1 : AuditableEntity<Entity1, Guid>
+        public class Entity1 : AuditableEntity<Entity1, Guid>, IEquatable<Entity1>
         { }
 
         /// <summary>
         /// second entity to compare
         /// </summary>
-        public class Entity2 : AuditableEntity<Entity2, Guid>
+        public class Entity2 : AuditableEntity<Entity2, Guid>, IEquatable<Entity2>
         { }
 
         /// <summary>

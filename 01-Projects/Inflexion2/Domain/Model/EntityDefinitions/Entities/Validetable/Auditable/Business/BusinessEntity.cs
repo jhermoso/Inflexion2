@@ -19,7 +19,7 @@ namespace Inflexion2.Domain
                                                                     System.IEquatable<IEntity<TIdentifier>>, 
                                                                     System.IComparable<IEntity<TIdentifier>>, 
                                                                     System.IComparable
-        where TEntity : BusinessEntity<TEntity, TIdentifier>
+        where TEntity : BusinessEntity<TEntity, TIdentifier>, System.IEquatable<TEntity>, System.IComparable<TEntity>
         where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
     {
         #region Fields

@@ -80,6 +80,61 @@ namespace Needel.Common.Application.WcfClient.UserReference {
         System.IAsyncResult BeginGetPaged(Inflexion2.Application.SpecificationDto specificationDto, System.AsyncCallback callback, object asyncState);
         
         Inflexion2.Domain.PagedElements<Needel.Common.Application.Dtos.UserDto> EndGetPaged(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/DeleteAll", ReplyAction="http://tempuri.org/IUserService/DeleteAllResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.FaultObject), Action="http://tempuri.org/IUserService/DeleteAllFaultObjectFault", Name="FaultObject", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.ValidationException), Action="http://tempuri.org/IUserService/DeleteAllValidationExceptionFault", Name="ValidationException", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.InternalException), Action="http://tempuri.org/IUserService/DeleteAllInternalExceptionFault", Name="InternalException", Namespace="")]
+        System.Collections.ObjectModel.ObservableCollection<int> DeleteAll();
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IUserService/DeleteAll", ReplyAction="http://tempuri.org/IUserService/DeleteAllResponse")]
+        System.IAsyncResult BeginDeleteAll(System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.ObjectModel.ObservableCollection<int> EndDeleteAll(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetAllExceptThis", ReplyAction="http://tempuri.org/IUserService/GetAllExceptThisResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.FaultObject), Action="http://tempuri.org/IUserService/GetAllExceptThisFaultObjectFault", Name="FaultObject", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.ValidationException), Action="http://tempuri.org/IUserService/GetAllExceptThisValidationExceptionFault", Name="ValidationException", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.InternalException), Action="http://tempuri.org/IUserService/GetAllExceptThisInternalExceptionFault", Name="InternalException", Namespace="")]
+        System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> GetAllExceptThis(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IUserService/GetAllExceptThis", ReplyAction="http://tempuri.org/IUserService/GetAllExceptThisResponse")]
+        System.IAsyncResult BeginGetAllExceptThis(int userId, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> EndGetAllExceptThis(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetSelectedThese", ReplyAction="http://tempuri.org/IUserService/GetSelectedTheseResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.FaultObject), Action="http://tempuri.org/IUserService/GetSelectedTheseFaultObjectFault", Name="FaultObject", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.ValidationException), Action="http://tempuri.org/IUserService/GetSelectedTheseValidationExceptionFault", Name="ValidationException", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.InternalException), Action="http://tempuri.org/IUserService/GetSelectedTheseInternalExceptionFault", Name="InternalException", Namespace="")]
+        System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> GetSelectedThese(System.Collections.ObjectModel.ObservableCollection<int> userIds);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IUserService/GetSelectedThese", ReplyAction="http://tempuri.org/IUserService/GetSelectedTheseResponse")]
+        System.IAsyncResult BeginGetSelectedThese(System.Collections.ObjectModel.ObservableCollection<int> userIds, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> EndGetSelectedThese(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetAllExceptThese", ReplyAction="http://tempuri.org/IUserService/GetAllExceptTheseResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.FaultObject), Action="http://tempuri.org/IUserService/GetAllExceptTheseFaultObjectFault", Name="FaultObject", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.ValidationException), Action="http://tempuri.org/IUserService/GetAllExceptTheseValidationExceptionFault", Name="ValidationException", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.InternalException), Action="http://tempuri.org/IUserService/GetAllExceptTheseInternalExceptionFault", Name="InternalException", Namespace="")]
+        System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> GetAllExceptThese(System.Collections.ObjectModel.ObservableCollection<int> userIds);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IUserService/GetAllExceptThese", ReplyAction="http://tempuri.org/IUserService/GetAllExceptTheseResponse")]
+        System.IAsyncResult BeginGetAllExceptThese(System.Collections.ObjectModel.ObservableCollection<int> userIds, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> EndGetAllExceptThese(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetFiltered", ReplyAction="http://tempuri.org/IUserService/GetFilteredResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.FaultObject), Action="http://tempuri.org/IUserService/GetFilteredFaultObjectFault", Name="FaultObject", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.ValidationException), Action="http://tempuri.org/IUserService/GetFilteredValidationExceptionFault", Name="ValidationException", Namespace="")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Inflexion2.Application.InternalException), Action="http://tempuri.org/IUserService/GetFilteredInternalExceptionFault", Name="InternalException", Namespace="")]
+        System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> GetFiltered(Inflexion2.Application.SpecificationDto specificationDto);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IUserService/GetFiltered", ReplyAction="http://tempuri.org/IUserService/GetFilteredResponse")]
+        System.IAsyncResult BeginGetFiltered(Inflexion2.Application.SpecificationDto specificationDto, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> EndGetFiltered(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -202,6 +257,101 @@ namespace Needel.Common.Application.WcfClient.UserReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class DeleteAllCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public DeleteAllCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.ObjectModel.ObservableCollection<int> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.ObjectModel.ObservableCollection<int>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetAllExceptThisCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetAllExceptThisCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetSelectedTheseCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetSelectedTheseCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetAllExceptTheseCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetAllExceptTheseCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetFilteredCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetFilteredCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class UserServiceClient : System.ServiceModel.ClientBase<Needel.Common.Application.WcfClient.UserReference.IUserService>, Needel.Common.Application.WcfClient.UserReference.IUserService {
         
         private BeginOperationDelegate onBeginCreateDelegate;
@@ -240,6 +390,36 @@ namespace Needel.Common.Application.WcfClient.UserReference {
         
         private System.Threading.SendOrPostCallback onGetPagedCompletedDelegate;
         
+        private BeginOperationDelegate onBeginDeleteAllDelegate;
+        
+        private EndOperationDelegate onEndDeleteAllDelegate;
+        
+        private System.Threading.SendOrPostCallback onDeleteAllCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetAllExceptThisDelegate;
+        
+        private EndOperationDelegate onEndGetAllExceptThisDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetAllExceptThisCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetSelectedTheseDelegate;
+        
+        private EndOperationDelegate onEndGetSelectedTheseDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetSelectedTheseCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetAllExceptTheseDelegate;
+        
+        private EndOperationDelegate onEndGetAllExceptTheseDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetAllExceptTheseCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetFilteredDelegate;
+        
+        private EndOperationDelegate onEndGetFilteredDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetFilteredCompletedDelegate;
+        
         public UserServiceClient() {
         }
         
@@ -270,6 +450,16 @@ namespace Needel.Common.Application.WcfClient.UserReference {
         public event System.EventHandler<GetByIdCompletedEventArgs> GetByIdCompleted;
         
         public event System.EventHandler<GetPagedCompletedEventArgs> GetPagedCompleted;
+        
+        public event System.EventHandler<DeleteAllCompletedEventArgs> DeleteAllCompleted;
+        
+        public event System.EventHandler<GetAllExceptThisCompletedEventArgs> GetAllExceptThisCompleted;
+        
+        public event System.EventHandler<GetSelectedTheseCompletedEventArgs> GetSelectedTheseCompleted;
+        
+        public event System.EventHandler<GetAllExceptTheseCompletedEventArgs> GetAllExceptTheseCompleted;
+        
+        public event System.EventHandler<GetFilteredCompletedEventArgs> GetFilteredCompleted;
         
         public int Create(Needel.Common.Application.Dtos.UserDto userDto) {
             return base.Channel.Create(userDto);
@@ -567,6 +757,254 @@ namespace Needel.Common.Application.WcfClient.UserReference {
             }
             base.InvokeAsync(this.onBeginGetPagedDelegate, new object[] {
                         specificationDto}, this.onEndGetPagedDelegate, this.onGetPagedCompletedDelegate, userState);
+        }
+        
+        public System.Collections.ObjectModel.ObservableCollection<int> DeleteAll() {
+            return base.Channel.DeleteAll();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginDeleteAll(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginDeleteAll(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.ObjectModel.ObservableCollection<int> EndDeleteAll(System.IAsyncResult result) {
+            return base.Channel.EndDeleteAll(result);
+        }
+        
+        private System.IAsyncResult OnBeginDeleteAll(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginDeleteAll(callback, asyncState);
+        }
+        
+        private object[] OnEndDeleteAll(System.IAsyncResult result) {
+            System.Collections.ObjectModel.ObservableCollection<int> retVal = this.EndDeleteAll(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnDeleteAllCompleted(object state) {
+            if ((this.DeleteAllCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.DeleteAllCompleted(this, new DeleteAllCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void DeleteAllAsync() {
+            this.DeleteAllAsync(null);
+        }
+        
+        public void DeleteAllAsync(object userState) {
+            if ((this.onBeginDeleteAllDelegate == null)) {
+                this.onBeginDeleteAllDelegate = new BeginOperationDelegate(this.OnBeginDeleteAll);
+            }
+            if ((this.onEndDeleteAllDelegate == null)) {
+                this.onEndDeleteAllDelegate = new EndOperationDelegate(this.OnEndDeleteAll);
+            }
+            if ((this.onDeleteAllCompletedDelegate == null)) {
+                this.onDeleteAllCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnDeleteAllCompleted);
+            }
+            base.InvokeAsync(this.onBeginDeleteAllDelegate, null, this.onEndDeleteAllDelegate, this.onDeleteAllCompletedDelegate, userState);
+        }
+        
+        public System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> GetAllExceptThis(int userId) {
+            return base.Channel.GetAllExceptThis(userId);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetAllExceptThis(int userId, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetAllExceptThis(userId, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> EndGetAllExceptThis(System.IAsyncResult result) {
+            return base.Channel.EndGetAllExceptThis(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetAllExceptThis(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int userId = ((int)(inValues[0]));
+            return this.BeginGetAllExceptThis(userId, callback, asyncState);
+        }
+        
+        private object[] OnEndGetAllExceptThis(System.IAsyncResult result) {
+            System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> retVal = this.EndGetAllExceptThis(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetAllExceptThisCompleted(object state) {
+            if ((this.GetAllExceptThisCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetAllExceptThisCompleted(this, new GetAllExceptThisCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetAllExceptThisAsync(int userId) {
+            this.GetAllExceptThisAsync(userId, null);
+        }
+        
+        public void GetAllExceptThisAsync(int userId, object userState) {
+            if ((this.onBeginGetAllExceptThisDelegate == null)) {
+                this.onBeginGetAllExceptThisDelegate = new BeginOperationDelegate(this.OnBeginGetAllExceptThis);
+            }
+            if ((this.onEndGetAllExceptThisDelegate == null)) {
+                this.onEndGetAllExceptThisDelegate = new EndOperationDelegate(this.OnEndGetAllExceptThis);
+            }
+            if ((this.onGetAllExceptThisCompletedDelegate == null)) {
+                this.onGetAllExceptThisCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetAllExceptThisCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetAllExceptThisDelegate, new object[] {
+                        userId}, this.onEndGetAllExceptThisDelegate, this.onGetAllExceptThisCompletedDelegate, userState);
+        }
+        
+        public System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> GetSelectedThese(System.Collections.ObjectModel.ObservableCollection<int> userIds) {
+            return base.Channel.GetSelectedThese(userIds);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetSelectedThese(System.Collections.ObjectModel.ObservableCollection<int> userIds, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetSelectedThese(userIds, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> EndGetSelectedThese(System.IAsyncResult result) {
+            return base.Channel.EndGetSelectedThese(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetSelectedThese(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            System.Collections.ObjectModel.ObservableCollection<int> userIds = ((System.Collections.ObjectModel.ObservableCollection<int>)(inValues[0]));
+            return this.BeginGetSelectedThese(userIds, callback, asyncState);
+        }
+        
+        private object[] OnEndGetSelectedThese(System.IAsyncResult result) {
+            System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> retVal = this.EndGetSelectedThese(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetSelectedTheseCompleted(object state) {
+            if ((this.GetSelectedTheseCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetSelectedTheseCompleted(this, new GetSelectedTheseCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetSelectedTheseAsync(System.Collections.ObjectModel.ObservableCollection<int> userIds) {
+            this.GetSelectedTheseAsync(userIds, null);
+        }
+        
+        public void GetSelectedTheseAsync(System.Collections.ObjectModel.ObservableCollection<int> userIds, object userState) {
+            if ((this.onBeginGetSelectedTheseDelegate == null)) {
+                this.onBeginGetSelectedTheseDelegate = new BeginOperationDelegate(this.OnBeginGetSelectedThese);
+            }
+            if ((this.onEndGetSelectedTheseDelegate == null)) {
+                this.onEndGetSelectedTheseDelegate = new EndOperationDelegate(this.OnEndGetSelectedThese);
+            }
+            if ((this.onGetSelectedTheseCompletedDelegate == null)) {
+                this.onGetSelectedTheseCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetSelectedTheseCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetSelectedTheseDelegate, new object[] {
+                        userIds}, this.onEndGetSelectedTheseDelegate, this.onGetSelectedTheseCompletedDelegate, userState);
+        }
+        
+        public System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> GetAllExceptThese(System.Collections.ObjectModel.ObservableCollection<int> userIds) {
+            return base.Channel.GetAllExceptThese(userIds);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetAllExceptThese(System.Collections.ObjectModel.ObservableCollection<int> userIds, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetAllExceptThese(userIds, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> EndGetAllExceptThese(System.IAsyncResult result) {
+            return base.Channel.EndGetAllExceptThese(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetAllExceptThese(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            System.Collections.ObjectModel.ObservableCollection<int> userIds = ((System.Collections.ObjectModel.ObservableCollection<int>)(inValues[0]));
+            return this.BeginGetAllExceptThese(userIds, callback, asyncState);
+        }
+        
+        private object[] OnEndGetAllExceptThese(System.IAsyncResult result) {
+            System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> retVal = this.EndGetAllExceptThese(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetAllExceptTheseCompleted(object state) {
+            if ((this.GetAllExceptTheseCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetAllExceptTheseCompleted(this, new GetAllExceptTheseCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetAllExceptTheseAsync(System.Collections.ObjectModel.ObservableCollection<int> userIds) {
+            this.GetAllExceptTheseAsync(userIds, null);
+        }
+        
+        public void GetAllExceptTheseAsync(System.Collections.ObjectModel.ObservableCollection<int> userIds, object userState) {
+            if ((this.onBeginGetAllExceptTheseDelegate == null)) {
+                this.onBeginGetAllExceptTheseDelegate = new BeginOperationDelegate(this.OnBeginGetAllExceptThese);
+            }
+            if ((this.onEndGetAllExceptTheseDelegate == null)) {
+                this.onEndGetAllExceptTheseDelegate = new EndOperationDelegate(this.OnEndGetAllExceptThese);
+            }
+            if ((this.onGetAllExceptTheseCompletedDelegate == null)) {
+                this.onGetAllExceptTheseCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetAllExceptTheseCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetAllExceptTheseDelegate, new object[] {
+                        userIds}, this.onEndGetAllExceptTheseDelegate, this.onGetAllExceptTheseCompletedDelegate, userState);
+        }
+        
+        public System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> GetFiltered(Inflexion2.Application.SpecificationDto specificationDto) {
+            return base.Channel.GetFiltered(specificationDto);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetFiltered(Inflexion2.Application.SpecificationDto specificationDto, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetFiltered(specificationDto, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> EndGetFiltered(System.IAsyncResult result) {
+            return base.Channel.EndGetFiltered(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetFiltered(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            Inflexion2.Application.SpecificationDto specificationDto = ((Inflexion2.Application.SpecificationDto)(inValues[0]));
+            return this.BeginGetFiltered(specificationDto, callback, asyncState);
+        }
+        
+        private object[] OnEndGetFiltered(System.IAsyncResult result) {
+            System.Collections.ObjectModel.ObservableCollection<Needel.Common.Application.Dtos.UserDto> retVal = this.EndGetFiltered(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetFilteredCompleted(object state) {
+            if ((this.GetFilteredCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetFilteredCompleted(this, new GetFilteredCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetFilteredAsync(Inflexion2.Application.SpecificationDto specificationDto) {
+            this.GetFilteredAsync(specificationDto, null);
+        }
+        
+        public void GetFilteredAsync(Inflexion2.Application.SpecificationDto specificationDto, object userState) {
+            if ((this.onBeginGetFilteredDelegate == null)) {
+                this.onBeginGetFilteredDelegate = new BeginOperationDelegate(this.OnBeginGetFiltered);
+            }
+            if ((this.onEndGetFilteredDelegate == null)) {
+                this.onEndGetFilteredDelegate = new EndOperationDelegate(this.OnEndGetFiltered);
+            }
+            if ((this.onGetFilteredCompletedDelegate == null)) {
+                this.onGetFilteredCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetFilteredCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetFilteredDelegate, new object[] {
+                        specificationDto}, this.onEndGetFilteredDelegate, this.onGetFilteredCompletedDelegate, userState);
         }
     }
 }

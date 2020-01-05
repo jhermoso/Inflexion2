@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="Needel.Common.FrontEnd.WpfModule.MNZView"
+             xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i = "clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:CommonReference="clr-namespace:Needel.Common.Domain.Data;assembly=Needel.Common.Domain.Data"
+             xmlns:lex = "http://wpflocalizeextension.codeplex.com"
+             xmlns:enums ="clr-namespace:Needel.Common.Domain.Data;assembly=Needel.Common.Domain.Data"
+             xmlns:controls = "clr-namespace:Inflexion2.UX.WPF.Controls;assembly=Inflexion2.UX.WPF.Controls"
+             xmlns:moduleControls ="clr-namespace:Needel.Common.FrontEnd.WpfModule"
+             xmlns:converter = "clr-namespace:Inflexion2.UX.WPF.ValueConverters;assembly=Inflexion2.UX.WPF"
+             lex:LocalizeDictionary.DesignCulture="en"
+             lex:LocalizeDictionary.OutputMissingKeys="True"
+             lex:ResxLocalizationProvider.DefaultAssembly="Needel.Common.Infrastructure.Resources"
+             lex:ResxLocalizationProvider.DefaultDictionary="CommonResources"
+             FlowDirection="{Binding lex:LocFlowDirection Inflexion2.Resources:FrameworkResource:flow}" 
+
+             mc:Ignorable="d" 
+             d:DesignHeight="90" d:DesignWidth="525" 
+             Padding="5" >
+    <UserControl.Resources>
+        <converter:BooleanToVisibilityCollapsedConverter x:Key="BooleanToVisibilityCollapsedConverter"/>
+    </UserControl.Resources>
+    <Grid x:Name="MainGrid" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/><!-- insert here single properties from entity and single identity properties from parents without reflexion -->
+        </Grid.RowDefinitions>
+            <Grid x:Name="MainControlGrid" Background="White" Grid.Row="0" GotFocus="OnGotFocusMainViewControl" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!-- .en columns from parent relationships --> <!-- .es columnas de entidades padres -->
+                <!-- Column from EntityM -->
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:EntityMAlias}" Margin="0,0,5,0" Visibility="{Binding IsNotTransient, Converter={StaticResource BooleanToVisibilityCollapsedConverter}}" />
+                <ComboBox  Grid.Row="0" Grid.Column="1" x:Name="fieldEntityM" ItemsSource="{Binding M_EntitiesCombo}" DisplayMemberPath="Name" SelectedItem="{Binding EntityM, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding IsNotTransient, Converter={StaticResource BooleanToVisibilityCollapsedConverter}}"/>
+                <!--SelectedItem="{Binding Parent}" IsSynchronizedWithCurrentItem="True"-->
+                <!-- Column from EntityN -->
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:EntityNAlias}" Margin="0,0,5,0" Visibility="{Binding IsNotTransient, Converter={StaticResource BooleanToVisibilityCollapsedConverter}}" />
+                <ComboBox  Grid.Row="1" Grid.Column="1" x:Name="fieldEntityN" ItemsSource="{Binding EntitiesNCombo}" DisplayMemberPath="Name" SelectedItem="{Binding EntityN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding IsNotTransient, Converter={StaticResource BooleanToVisibilityCollapsedConverter}}"/>
+                <!--SelectedItem="{Binding Parent}" IsSynchronizedWithCurrentItem="True"-->
+                <!-- Column from EntityZ -->
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:EntityZAlias}" Margin="0,0,5,0" Visibility="{Binding IsNotTransient, Converter={StaticResource BooleanToVisibilityCollapsedConverter}}" />
+                <ComboBox  Grid.Row="2" Grid.Column="1" x:Name="fieldEntityZ" ItemsSource="{Binding EntitiesZCombo}" DisplayMemberPath="Name" SelectedItem="{Binding EntityZ, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding IsNotTransient, Converter={StaticResource BooleanToVisibilityCollapsedConverter}}"/>
+                <!--SelectedItem="{Binding Parent}" IsSynchronizedWithCurrentItem="True"-->
+
+                <!-- .en columns from properties -->
+        </Grid>
+    </Grid>
+</UserControl>

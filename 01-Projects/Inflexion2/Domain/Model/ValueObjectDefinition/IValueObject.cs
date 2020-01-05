@@ -12,13 +12,10 @@ namespace Inflexion2.Domain
     /// <summary>
     /// Interfaz marcadora para los objetos valor del dominio.
     /// </summary>
-    /// <typeparam name="TValueObject">
-    /// Representación del Objeto Valor.
-    /// </typeparam>
     /// <remarks>
     /// Sin comentartios especiales.
     /// </remarks>
-    public interface IValueObject 
+    public interface IValueObject : IDomainObject
     {
         #region Methods
 

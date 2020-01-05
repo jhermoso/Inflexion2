@@ -637,11 +637,11 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
         {
             if (this.IsActive)
             {
-                this.RegisterCommands();
+                this.RegisterCommands(true);
             }
             else
             {
-                this.UnregisterCommands();
+                this.UnregisterCommands(true);
             }
 
             base.RaiseIsActiveChanged();
@@ -654,37 +654,132 @@ namespace Inflexion2.UX.WPF.MVVM.ViewModels
         /// <summary>
         /// Registra los comandos globales.
         /// </summary>
-        private void RegisterCommands()
+        public void RegisterCommands(bool includeSaveCommand = false)
         {
-            this.EditionCommandsProxy.ActivateRecordCommand.RegisterCommand(this.ActivateRecordCommand);
-            this.EditionCommandsProxy.DeleteRecordCommand.RegisterCommand(this.DeleteRecordCommand);
-            this.EditionCommandsProxy.EditRecordCommand.RegisterCommand(this.EditRecordCommand);
-            this.EditionCommandsProxy.GetRecordsCommand.RegisterCommand(this.GetRecordsCommand);
-            this.EditionCommandsProxy.NewRecordCommand.RegisterCommand(this.NewRecordCommand);
-            this.EditionCommandsProxy.SaveRecordCommand.RegisterCommand(this.SaveRecordCommand);
+            // avoid register the same comand twice checking the first command
+            if (!this.EditionCommandsProxy.ActivateRecordCommand.RegisteredCommands.Any(c => c == this.ActivateRecordCommand))
+            {
+                this.EditionCommandsProxy.ActivateRecordCommand.RegisterCommand(this.ActivateRecordCommand);
+            }
 
-            this.EditionCommandsProxy.GetFirstPageRecordsCommand.RegisterCommand(this.GetFirstPageRecordsCommand);
-            this.EditionCommandsProxy.GetNextPageRecordsCommand.RegisterCommand(this.GetNextPageRecordsCommand);
-            this.EditionCommandsProxy.GetPreviousPageRecordsCommand.RegisterCommand(this.GetPreviousPageRecordsCommand);
-            this.EditionCommandsProxy.GetLastPageRecordsCommand.RegisterCommand(this.GetLastPageRecordsCommand);
+            if (!this.EditionCommandsProxy.DeleteRecordCommand.RegisteredCommands.Any(c => c == this.DeleteRecordCommand))
+            {
+                this.EditionCommandsProxy.DeleteRecordCommand.RegisterCommand(this.DeleteRecordCommand);
+            }
+
+            if (!this.EditionCommandsProxy.EditRecordCommand.RegisteredCommands.Any(c => c == this.EditRecordCommand))
+            {
+                this.EditionCommandsProxy.EditRecordCommand.RegisterCommand(this.EditRecordCommand);
+            }
+
+            if (!this.EditionCommandsProxy.GetRecordsCommand.RegisteredCommands.Any(c => c == this.GetRecordsCommand))
+            {
+                this.EditionCommandsProxy.GetRecordsCommand.RegisterCommand(this.GetRecordsCommand);
+            }
+
+            if (!this.EditionCommandsProxy.NewRecordCommand.RegisteredCommands.Any(c => c == this.NewRecordCommand))
+            {
+                this.EditionCommandsProxy.NewRecordCommand.RegisterCommand(this.NewRecordCommand);
+            }
+
+            // el comando save no se modifica para poder salvar el registro independientemente de donde 
+            // esta el foco
+            if (includeSaveCommand && !this.EditionCommandsProxy.SaveRecordCommand.RegisteredCommands.Any(c => c == this.SaveRecordCommand))
+            {
+                this.EditionCommandsProxy.SaveRecordCommand.RegisterCommand(this.SaveRecordCommand);
+            }
+
+            if (!this.EditionCommandsProxy.GetFirstPageRecordsCommand.RegisteredCommands.Any(c => c == this.GetFirstPageRecordsCommand))
+            {
+                this.EditionCommandsProxy.GetFirstPageRecordsCommand.RegisterCommand(this.GetFirstPageRecordsCommand);
+            }
+
+            if (!this.EditionCommandsProxy.GetNextPageRecordsCommand.RegisteredCommands.Any(c => c == this.GetNextPageRecordsCommand))
+            {
+                this.EditionCommandsProxy.GetNextPageRecordsCommand.RegisterCommand(this.GetNextPageRecordsCommand);
+            }
+
+            if (!this.EditionCommandsProxy.GetPreviousPageRecordsCommand.RegisteredCommands.Any(c => c == this.GetPreviousPageRecordsCommand))
+            {
+                this.EditionCommandsProxy.GetPreviousPageRecordsCommand.RegisterCommand(this.GetPreviousPageRecordsCommand);
+            }
+
+            if (!this.EditionCommandsProxy.GetLastPageRecordsCommand.RegisteredCommands.Any(c => c == this.GetLastPageRecordsCommand))
+            {
+                this.EditionCommandsProxy.GetLastPageRecordsCommand.RegisterCommand(this.GetLastPageRecordsCommand);
+            }
+            
         }
 
         /// <summary>
         /// Cancela el registro de los comandos globales.
         /// </summary>
-        private void UnregisterCommands()
+        public void UnregisterCommands(bool includeSaveCommand = false)
         {
-            this.EditionCommandsProxy.ActivateRecordCommand.UnregisterCommand(this.ActivateRecordCommand);
-            this.EditionCommandsProxy.DeleteRecordCommand.UnregisterCommand(this.DeleteRecordCommand);
-            this.EditionCommandsProxy.EditRecordCommand.UnregisterCommand(this.EditRecordCommand);
-            this.EditionCommandsProxy.GetRecordsCommand.UnregisterCommand(this.GetRecordsCommand);
-            this.EditionCommandsProxy.NewRecordCommand.UnregisterCommand(this.NewRecordCommand);
-            this.EditionCommandsProxy.SaveRecordCommand.UnregisterCommand(this.SaveRecordCommand);
+            foreach (var item in this.EditionCommandsProxy.ActivateRecordCommand.RegisteredCommands)
+            {
+                //this.EditionCommandsProxy.ActivateRecordCommand.UnregisterCommand(this.ActivateRecordCommand);
+                this.EditionCommandsProxy.ActivateRecordCommand.UnregisterCommand(item);
+            }
 
-            this.EditionCommandsProxy.GetFirstPageRecordsCommand.UnregisterCommand(this.GetFirstPageRecordsCommand);
-            this.EditionCommandsProxy.GetNextPageRecordsCommand.UnregisterCommand(this.GetNextPageRecordsCommand);
-            this.EditionCommandsProxy.GetPreviousPageRecordsCommand.UnregisterCommand(this.GetPreviousPageRecordsCommand);
-            this.EditionCommandsProxy.GetLastPageRecordsCommand.UnregisterCommand(this.GetLastPageRecordsCommand);
+            foreach (var item in this.EditionCommandsProxy.DeleteRecordCommand.RegisteredCommands)
+            {
+                //this.EditionCommandsProxy.DeleteRecordCommand.UnregisterCommand(this.DeleteRecordCommand);
+                this.EditionCommandsProxy.DeleteRecordCommand.UnregisterCommand(item);
+            }
+
+            foreach (var item in this.EditionCommandsProxy.EditRecordCommand.RegisteredCommands)
+            {
+                //this.EditionCommandsProxy.EditRecordCommand.UnregisterCommand(this.EditRecordCommand);
+                this.EditionCommandsProxy.EditRecordCommand.UnregisterCommand(item);
+            }
+
+            foreach (var item in this.EditionCommandsProxy.GetRecordsCommand.RegisteredCommands)
+            {
+                //this.EditionCommandsProxy.GetRecordsCommand.UnregisterCommand(this.GetRecordsCommand);
+                this.EditionCommandsProxy.GetRecordsCommand.UnregisterCommand(item);
+            }
+
+            foreach (var item in this.EditionCommandsProxy.NewRecordCommand.RegisteredCommands)
+            {
+                //this.EditionCommandsProxy.NewRecordCommand.UnregisterCommand(this.NewRecordCommand);
+                this.EditionCommandsProxy.NewRecordCommand.UnregisterCommand(item);
+            }
+
+            // el comando save no se modifica para poder salvar el registro independientemente de donde 
+            // esta el foco
+            if (includeSaveCommand)
+            foreach (var item in this.EditionCommandsProxy.SaveRecordCommand.RegisteredCommands)
+            {
+                //this.EditionCommandsProxy.SaveRecordCommand.UnregisterCommand(this.SaveRecordCommand);
+                this.EditionCommandsProxy.SaveRecordCommand.UnregisterCommand(item);
+            }
+
+
+            foreach (var item in this.EditionCommandsProxy.GetFirstPageRecordsCommand.RegisteredCommands)
+            {
+                //this.EditionCommandsProxy.GetFirstPageRecordsCommand.UnregisterCommand(this.GetFirstPageRecordsCommand);
+                this.EditionCommandsProxy.GetFirstPageRecordsCommand.UnregisterCommand(this.GetFirstPageRecordsCommand);
+            }
+
+            foreach (var item in this.EditionCommandsProxy.GetNextPageRecordsCommand.RegisteredCommands)
+            {
+                //this.EditionCommandsProxy.GetNextPageRecordsCommand.UnregisterCommand(this.GetNextPageRecordsCommand);
+                this.EditionCommandsProxy.GetNextPageRecordsCommand.UnregisterCommand(item);
+            }
+
+            foreach (var item in this.EditionCommandsProxy.GetPreviousPageRecordsCommand.RegisteredCommands)
+            {
+                //this.EditionCommandsProxy.GetPreviousPageRecordsCommand.UnregisterCommand(this.GetPreviousPageRecordsCommand);
+                this.EditionCommandsProxy.GetPreviousPageRecordsCommand.UnregisterCommand(item);
+            }
+
+            foreach (var item in this.EditionCommandsProxy.GetLastPageRecordsCommand.RegisteredCommands)
+            {
+                //this.EditionCommandsProxy.GetLastPageRecordsCommand.UnregisterCommand(this.GetLastPageRecordsCommand);
+                this.EditionCommandsProxy.GetLastPageRecordsCommand.UnregisterCommand(item);
+            }
+            
         }
 
         #endregion

@@ -5,7 +5,7 @@
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Inflexion2.Application" base="q1:BaseEntityDataTransferObjectOfint">
         <xs:sequence>
-          <xs:element minOccurs="0" name="CreationTime" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CreationTime" type="xs:dateTime" />
           <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="UpdateTime" nillable="true" type="xs:dateTime" />
@@ -27,8 +27,8 @@
       <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/Inflexion2.Application" base="q2:BaseEntityDataTransferObjectOfint">
         <xs:sequence>
           <xs:element minOccurs="0" name="Addresses" nillable="true" type="tns:ArrayOfAddressDto" />
-          <xs:element minOccurs="0" name="Department" nillable="true" type="tns:DepartmentDto" />
           <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserDepartment" nillable="true" type="tns:DepartmentDto" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -46,6 +46,7 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="BuildingNumber" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="StreetName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserAddress" nillable="true" type="tns:UserDto" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

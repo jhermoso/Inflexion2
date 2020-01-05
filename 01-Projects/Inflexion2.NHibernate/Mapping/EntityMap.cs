@@ -14,7 +14,7 @@ namespace Inflexion2.Domain
     /// <typeparam name="TEntity"></typeparam>
     /// <typeparam name="TKey"></typeparam>
     public class EntityMap<TEntity, TKey> : BaseClassMap<TEntity>
-        where TEntity : Entity<TEntity, TKey>
+        where TEntity : Entity<TEntity, TKey>,  IEquatable<TEntity>, IComparable<TEntity>
         where TKey : struct, IEquatable<TKey>, IComparable<TKey>
     {
         /// <summary>

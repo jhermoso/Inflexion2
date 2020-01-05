@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Timber.NLog</name>
+    </assembly>
+    <members>
+        <member name="F:Inflexion2.Logging.NetLog.NLogLogger.logger">
+            <summary>NLog logger that this adapter wraps</summary>
+        </member>
+        <member name="F:Inflexion2.Logging.NetLog.NLogLogger.declaringType">
+            <summary>Used to exclude Inflexion2.Logging from call site information</summary>
+        </member>
+        <member name="M:Inflexion2.Logging.NetLog.NLogLogger.#ctor(NLog.Logger)">
+            <summary>
+            Wrap an instance of an NLog logger
+            </summary>
+            <param name="logger">NLog logger to wrap</param>
+        </member>
+        <member name="M:Inflexion2.Logging.NetLog.NLogLogger.Log(Inflexion2.Logging.LogEntry)">
+            <summary>
+            Log to the wrapped NLog logger
+            </summary>
+        </member>
+        <member name="M:Inflexion2.Logging.NetLog.NLogLogger.MapLogLevel(Inflexion2.Logging.LogLevel)">
+            <summary>
+            Maps an Inflexion2.Logging log level to an NLog log level
+            </summary>
+            <remarks>
+            NLog has log levels that correspond to the Inflexion2.Logging log levels, so 
+            this is a 1:1 mapping
+            </remarks>
+            <param name="logLevel">Inflexion2.Logging log level to be mapped</param>
+            <returns>NLog log level</returns>
+        </member>
+        <member name="T:Inflexion2.Logging.NetLog.NLogLoggerFactory">
+            <summary>
+            Generates NLog logging adapters
+            </summary>
+        </member>
+    </members>
+</doc>

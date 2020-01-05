@@ -16,7 +16,7 @@ namespace Inflexion2.Domain
     /// <typeparam name="TEntity"></typeparam>
     /// <typeparam name="TIdentifier"></typeparam>
     public abstract class AggregateRoot<TEntity, TIdentifier> : Entity<TEntity, TIdentifier>, IAggregateRoot<TEntity, TIdentifier>, IEntity<TIdentifier>
-        where TEntity : IAggregateRoot<TEntity, TIdentifier>, IEntity<TIdentifier>// si no utilizamos interfaces para los poco podemos restringir con AggregateRoot<TEntity, TIdentifier>
+        where TEntity : IAggregateRoot<TEntity, TIdentifier>, IEntity<TIdentifier>, System.IEquatable<TEntity>, System.IComparable<TEntity>// si no utilizamos interfaces para los poco podemos restringir con AggregateRoot<TEntity, TIdentifier>
         where TIdentifier : System.IEquatable<TIdentifier>, System.IComparable<TIdentifier>
     {
         

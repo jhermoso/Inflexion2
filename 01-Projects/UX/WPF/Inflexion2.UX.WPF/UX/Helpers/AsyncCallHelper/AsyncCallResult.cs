@@ -9,7 +9,7 @@ namespace Inflexion2.UX.WPF.Helpers
     using System;
 
     /// <summary>
-    /// A class designed to encapsulate the result of an asynchronous operation.
+    /// encapsulation of the result of an asynchronous operation.
     /// </summary>
     public class AsyncCallResult
     {

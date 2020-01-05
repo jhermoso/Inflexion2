@@ -168,6 +168,11 @@ namespace Inflexion2.Extensions
             MemberExpression memberAccess = null;
             foreach (string property in column.Split('.'))
             {
+                //if (property == typeToInspect.Name)
+                //{
+                //    continue;
+                //}
+
                 PropertyInfo propertyInfo = typeToInspect.GetProperty(property);
                 if (propertyInfo == null && typeToInspect.IsInterface)
                 {

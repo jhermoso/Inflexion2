@@ -10,6 +10,7 @@ namespace Inflexion2.Domain
     using System.Linq;
     using Inflexion2.Logging;
     using System;
+    using Reflection;
 
     /// <summary>
     /// see the remarks class
@@ -22,8 +23,9 @@ namespace Inflexion2.Domain
     public class EFValueObjectRepository<TValueObject> : BaseValueObjectRepository<TValueObject>, IValueObjectRepository<TValueObject>
         where TValueObject : ValueObject<TValueObject>, IValueObject/*, IComparable<TValueObject>, IEquatable<TValueObject>*/
     {
-        private readonly ILogger logger;
-        private DbContext dbContext;
+        protected readonly ILogger logger;
+        protected DbContext dbContext;
+        private static System.Reflection.PropertyInfo[] includes;
 
         /// <summary>
         /// see the remarks
@@ -70,16 +72,29 @@ namespace Inflexion2.Domain
         /// <param name="entity"></param>
         protected override void InternalRemove(TValueObject entity)
         {
-            this.dbContext.Set<TValueObject>().Remove(entity);
+           var t = this.dbContext.Set<TValueObject>().Remove(entity);
         }
 
         /// <summary>
-        /// see the remarks
+        /// 
         /// </summary>
         /// <returns></returns>
         protected override IQueryable<TValueObject> Query()
         {
-            return this.dbContext.Set<TValueObject>();
+            //return this.dbContext.Set<TValueObject>();
+
+            IQueryable<TValueObject> query = this.dbContext.Set<TValueObject>();
+            if (includes == null || includes.Length == 0)
+            {
+                includes = ValueObjectReflection<TValueObject>.GetValueObjectProperties();
+            }
+
+            foreach (var item in includes)
+            {
+                query.Include(item.Name);
+            }
+
+            return query;
         }
     }
 }

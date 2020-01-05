@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Needel.Common.Application.Dtos" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Needel.Common.Application.Dtos" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/Inflexion2.Application" />
+  <xs:complexType name="MNZDto">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Inflexion2.Application" base="q1:BaseValueObjectDataTransferObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EntityM" nillable="true" type="tns:EntityMDto" />
+          <xs:element minOccurs="0" name="EntityM_Id" type="xs:int" />
+          <xs:element minOccurs="0" name="EntityN" nillable="true" type="tns:EntityNDto" />
+          <xs:element minOccurs="0" name="EntityN_Id" type="xs:int" />
+          <xs:element minOccurs="0" name="EntityZ" nillable="true" type="tns:EntityZDto" />
+          <xs:element minOccurs="0" name="EntityZ_Id" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MNZDto" nillable="true" type="tns:MNZDto" />
+  <xs:complexType name="EntityMDto">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/Inflexion2.Application" base="q2:BaseEntityDataTransferObjectOfint">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="NZs" nillable="true" type="tns:ArrayOfMNZDto" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EntityMDto" nillable="true" type="tns:EntityMDto" />
+  <xs:complexType name="ArrayOfMNZDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MNZDto" nillable="true" type="tns:MNZDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMNZDto" nillable="true" type="tns:ArrayOfMNZDto" />
+  <xs:complexType name="EntityNDto">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/Inflexion2.Application" base="q3:BaseEntityDataTransferObjectOfint">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MZs" nillable="true" type="tns:ArrayOfMNZDto" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EntityNDto" nillable="true" type="tns:EntityNDto" />
+  <xs:complexType name="EntityZDto">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/Inflexion2.Application" base="q4:BaseEntityDataTransferObjectOfint">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MNs" nillable="true" type="tns:ArrayOfMNZDto" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EntityZDto" nillable="true" type="tns:EntityZDto" />
+</xs:schema>

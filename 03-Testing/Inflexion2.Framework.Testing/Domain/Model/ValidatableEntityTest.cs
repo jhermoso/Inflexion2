@@ -18,13 +18,13 @@ namespace Inflexion2.Testing
         /// <summary>
         /// first validatable entity
         /// </summary>
-        public class Entity1 : ValidatableEntity<Entity1, Guid>
+        public class Entity1 : ValidatableEntity<Entity1, Guid>, IEquatable<Entity1>
         { }
 
         /// <summary>
         /// second validatable entity
         /// </summary>
-        public class Entity2 : ValidatableEntity<Entity2, Guid>
+        public class Entity2 : ValidatableEntity<Entity2, Guid>, IEquatable<Entity2>
         { }
 
         /// <summary>

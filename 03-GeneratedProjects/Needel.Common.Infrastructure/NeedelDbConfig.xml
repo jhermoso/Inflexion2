@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<dbconfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <connectionStrings>
+
+    <dbConnection name="Default" connectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NeedelDB2;Integrated Security=True"
+         providerName="System.Data.SqlClient" encripted="False"/>    
+    
+    <dbConnection name="Example1DbContext" connectionString="metadata=res://*/ZeusDBModel.csdl|res://*/ZeusDBModel.ssdl|res://*/ZeusDBModel.msl;provider=Devart.Data.Oracle;provider connection string=&quot;User Id=ZEUS;Password=zeus;Server=orazonemann03p.de.airbusds.corp;Home=OraClient12Home1_32bit;Direct=True;Sid=ZEUSPROD;Port=1672;Persist Security Info=True&quot;"
+         providerName="System.Data.EntityClient" encripted="False"/>
+    <dbConnection name="Example2DbContext" connectionString="metadata=res://*/ZeusDbModel.csdl|res://*/ZeusDbModel.ssdl|res://*/ZeusDbModel.msl;provider=Devart.Data.Oracle;provider connection string=&quot;User Id=ZEUS;Password=zeus;Server=orazonemann04t.de.airbusds.corp;Home=OraClient12Home1_32bit;Direct=True;Sid=ZEUSTEST;Port=1673;Persist Security Info=True&quot;"
+     providerName="System.Data.EntityClient" encripted="False"/>
+    <dbConnection name="HistoricalDbContext" connectionString="metadata=res://*/ZeusDbModel.csdl|res://*/ZeusDbModel.ssdl|res://*/ZeusDbModel.msl;provider=Devart.Data.Oracle;provider connection string=&quot;User Id=ZEUS_2018;Password=zeus2018;Server=orazonemann03p.de.airbusds.corp;Home=OraClient12Home1_32bit;Direct=True;Sid=ZEUSPROD;Port=1672;Persist Security Info=True&quot;" 
+         providerName="System.Data.EntityClient" encripted="False"/>
+    
+    </connectionStrings>
+</dbconfig>

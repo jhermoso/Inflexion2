@@ -11,16 +11,15 @@
              lex:LocalizeDictionary.OutputMissingKeys="True"
              lex:ResxLocalizationProvider.DefaultAssembly="Needel.Common.Infrastructure.Resources"
              lex:ResxLocalizationProvider.DefaultDictionary="CommonResources"
-			 FlowDirection="{Binding lex:LocFlowDirection Inflexion2.Resources:FrameworkResource:flow}" 
-			 mc:Ignorable="d" 
+             FlowDirection="{Binding lex:LocFlowDirection Inflexion2.Resources:FrameworkResource:flow}" 
+             mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1050" Padding="5">
     <Grid>
-		<Label Content="{Binding Title}"/>
+        <Label Content="{Binding Title}"/>
         <Label Content="AppSetting Query View"/>
         <DataGrid x:Name="AppSettingDgData"
-                  ItemsSource="{Binding Items}"
+                  ItemsSource="{Binding Items, Mode=TwoWay}"
                   SelectedItem="{Binding SelectedItem}" 
-                  controls:DataGridRowDoubleClickHandler.MethodName="NavigateToSelectedItem"         
                   AutoGenerateColumns="False"
                   SelectionMode="Extended"
                   SelectionUnit="FullRow"
@@ -31,16 +30,16 @@
                   CanUserSortColumns="True"
                   ClipboardCopyMode="ExcludeHeader"
                   Margin="0">
-			<DataGrid.Columns>
+            <!--controls:DataGridRowDoubleClickHandler.MethodName="NavigateToSelectedItem"-->
+            <DataGrid.Columns>
                 <!-- .en columns from parent relationships --> <!-- .es columnas de entidades padres -->
                 <DataGridTemplateColumn Header="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:AppSettingTypeAlias}" >
-                    <!--Binding="{Binding SelectedAppSettingType}"-->
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <lex:EnumComboBox x:Name="AppSettingUsing" Grid.Row="3" Grid.Column="1" Type="{x:Type enums:AppSettingType}"
-							    SelectedItem="{Binding SelectedAppSettingType}" IsSynchronizedWithCurrentItem="True">
-								<lex:EnumComboBox.Style>
-								    <Style TargetType="{x:Type lex:EnumComboBox}">
+                            <lex:EnumComboBox x:Name="AppSettingType" Grid.Row="3" Grid.Column="1" Type="{x:Type enums:AppSettingType}" IsEnabled="False"
+                                SelectedItem="{Binding AppSettingType}" IsSynchronizedWithCurrentItem="True">
+                                <lex:EnumComboBox.Style>
+                                    <Style TargetType="{x:Type lex:EnumComboBox}">
                                         <Setter Property="ItemTemplate">
                                             <Setter.Value>
                                                 <DataTemplate>
@@ -61,8 +60,6 @@
                 <DataGridTextColumn     Header="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:AppSetting_KeyAlias}" Binding="{Binding Key}"/>
                 <DataGridTextColumn     Header="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:AppSetting_ValueAlias}" Binding="{Binding Value}"/>
                 <DataGridTextColumn     Header="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:AppSetting_RemarkAlias}" Binding="{Binding Remark}"/>
-
-
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
