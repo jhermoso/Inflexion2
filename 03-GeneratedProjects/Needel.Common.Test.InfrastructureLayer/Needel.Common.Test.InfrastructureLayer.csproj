@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9F1DAC9A-37CA-4725-A46D-5D377DD6F843}</ProjectGuid>
+    <ProjectGuid>{3A308B31-5140-43F1-8B53-2BC9DD38EB8A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Needel.Common.Test.InfrastructureLayer</RootNamespace>
@@ -41,11 +41,11 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\10-Solutions\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
+      <HintPath>..\..\10-Solutions\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\10-Solutions\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\..\10-Solutions\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -74,33 +74,33 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\01-Projects\Inflexion2.EF\Inflexion2.EF.csproj">
-      <Project>{0fb2c801-bd90-400a-8d2b-817481985499}</Project>
+      <Project>{0FB2C801-BD90-400A-8D2B-817481985499}</Project>
       <Name>Inflexion2.EF</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\01-Projects\Inflexion2.Resources\Inflexion2.Resources.csproj">
-      <Project>{e5f79d13-0e92-4e5c-9251-6922741afcaa}</Project>
+      <Project>{E5F79D13-0E92-4E5C-9251-6922741AFCAA}</Project>
       <Name>Inflexion2.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\01-Projects\Inflexion2\Inflexion2.csproj">
-      <Project>{bf5456d4-b276-459b-98d4-853fcef99ade}</Project>
+      <Project>{BF5456D4-B276-459B-98D4-853FCEF99ADE}</Project>
       <Name>Inflexion2</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Domain.Data\Needel.Common.Domain.Data.csproj">
-      <Project>{6e3dc684-8c28-41c6-b471-498417ee0ffa}</Project>
+      <Project>{06EE393D-100A-4FE9-962F-97BC2F8232C4}</Project>
       <Name>Needel.Common.Domain.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Domain\Needel.Common.Domain.csproj">
-      <Project>{796f9291-10a0-4ec3-9e42-942f3f65a0dd}</Project>
+      <Project>{260CC7E7-A4BE-41A7-87EC-E5F080720A30}</Project>
       <Name>Needel.Common.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Infrastructure\Needel.Common.Infrastructure.csproj">
-      <Project>{e14955b7-3011-4374-a083-72d1ae233fcc}</Project>
+      <Project>{A0A9719F-69D3-4668-9804-09ECF1F22245}</Project>
       <Name>Needel.Common.Infrastructure</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

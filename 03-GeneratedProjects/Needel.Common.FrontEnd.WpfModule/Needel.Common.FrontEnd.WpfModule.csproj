@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{98CC72B5-AB12-4F72-A818-745F9483D1C9}</ProjectGuid>
+    <ProjectGuid>{BD10C4F7-E4C7-443E-A9B7-21CAA661C2EF}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Needel.Common.FrontEnd.WpfModule</RootNamespace>
@@ -127,24 +127,19 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\10-Solutions\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="WindowsBase" />
     <Reference Include="WPFLocalizeExtension, Version=2.3.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\02-Library\WPFLocalizationExtension-BinWPF\WPFLocalizeExtension.dll</HintPath>
+      <HintPath>..\..\02-Library\WPFLocalization\WPFLocalizeExtension.dll</HintPath>
     </Reference>
     <Reference Include="XAMLMarkupExtensions, Version=1.2.1.3, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\02-Library\WPFLocalizationExtension-BinWPF\XAMLMarkupExtensions.dll</HintPath>
+      <HintPath>..\..\02-Library\WPFLocalization\XAMLMarkupExtensions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -312,23 +307,23 @@
       <Name>Inflexion2.UX.WPF</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Application.Dtos\Needel.Common.Application.Dtos.csproj">
-      <Project>{B10EDB2C-57AE-4846-BDD2-A589E1E0797C}</Project>
+      <Project>{D7C0AF77-EE28-4A0D-AF3A-1FB9BC76FB6F}</Project>
       <Name>Needel.Common.Application.Dtos</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Application.WcfClient\Needel.Common.Application.WcfClient.csproj">
-      <Project>{FA930B59-CD87-4FFF-8FC0-AB03C3710733}</Project>
+      <Project>{05BF414A-486B-4E9D-9244-98DAB9F9002D}</Project>
       <Name>Needel.Common.Application.WcfClient</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Application\Needel.Common.Application.csproj">
-      <Project>{48C76203-FBD8-4090-84D3-9F40C711C7B9}</Project>
+      <Project>{079655E7-7FD7-45DD-8E03-92C94CC19AE3}</Project>
       <Name>Needel.Common.Application</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Domain.Data\Needel.Common.Domain.Data.csproj">
-      <Project>{6E3DC684-8C28-41C6-B471-498417EE0FFA}</Project>
+      <Project>{06EE393D-100A-4FE9-962F-97BC2F8232C4}</Project>
       <Name>Needel.Common.Domain.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Infrastructure.Resources\Needel.Common.Infrastructure.Resources.csproj">
-      <Project>{0EF0F63E-04E0-4616-B40D-B59AAA646F75}</Project>
+      <Project>{4F63DB73-37C1-4513-B8CF-44433EF2DEAE}</Project>
       <Name>Needel.Common.Infrastructure.Resources</Name>
     </ProjectReference>
   </ItemGroup>
@@ -441,10 +436,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

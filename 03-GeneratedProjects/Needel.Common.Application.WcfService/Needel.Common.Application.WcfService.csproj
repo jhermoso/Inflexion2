@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3B2B1EBD-C57F-4126-9981-A51F6D7008E6}</ProjectGuid>
+    <ProjectGuid>{FEB7E540-A1BF-4913-80B0-5E154CC45729}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Needel.Common.Application.WcfService</RootNamespace>
@@ -132,11 +132,11 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\10-Solutions\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
+      <HintPath>..\..\10-Solutions\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\10-Solutions\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\..\10-Solutions\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -231,31 +231,31 @@
       <Name>Inflexion2</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Application.Dtos\Needel.Common.Application.Dtos.csproj">
-      <Project>{B10EDB2C-57AE-4846-BDD2-A589E1E0797C}</Project>
+      <Project>{D7C0AF77-EE28-4A0D-AF3A-1FB9BC76FB6F}</Project>
       <Name>Needel.Common.Application.Dtos</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Application.WcfService.Contracts\Needel.Common.Application.WcfService.Contracts.csproj">
-      <Project>{79ae0569-db1a-40fa-81c8-638161bc4586}</Project>
+      <Project>{9567F1F2-2519-45AE-81BF-4DA9C16BB665}</Project>
       <Name>Needel.Common.Application.WcfService.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Application\Needel.Common.Application.csproj">
-      <Project>{48C76203-FBD8-4090-84D3-9F40C711C7B9}</Project>
+      <Project>{079655E7-7FD7-45DD-8E03-92C94CC19AE3}</Project>
       <Name>Needel.Common.Application</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Domain.Data\Needel.Common.Domain.Data.csproj">
-      <Project>{6E3DC684-8C28-41C6-B471-498417EE0FFA}</Project>
+      <Project>{06EE393D-100A-4FE9-962F-97BC2F8232C4}</Project>
       <Name>Needel.Common.Domain.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Domain\Needel.Common.Domain.csproj">
-      <Project>{796F9291-10A0-4EC3-9E42-942F3F65A0DD}</Project>
+      <Project>{260CC7E7-A4BE-41A7-87EC-E5F080720A30}</Project>
       <Name>Needel.Common.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Infrastructure.Resources\Needel.Common.Infrastructure.Resources.csproj">
-      <Project>{0EF0F63E-04E0-4616-B40D-B59AAA646F75}</Project>
+      <Project>{4F63DB73-37C1-4513-B8CF-44433EF2DEAE}</Project>
       <Name>Needel.Common.Infrastructure.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Infrastructure\Needel.Common.Infrastructure.csproj">
-      <Project>{E14955B7-3011-4374-A083-72D1AE233FCC}</Project>
+      <Project>{A0A9719F-69D3-4668-9804-09ECF1F22245}</Project>
       <Name>Needel.Common.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
@@ -263,7 +263,6 @@
     <Content Include="Address\AddressService.svc" />
     <Content Include="App.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
     </Content>
     <Content Include="AppSetting\AppSettingService.svc" />
     <Content Include="Component\ComponentService.svc" />
@@ -273,6 +272,9 @@
     <Content Include="EntityZ\EntityZService.svc" />
     <Content Include="GraphNode\GraphNodeService.svc" />
     <Content Include="MNZ\MNZService.svc" />
+    <Content Include="NeedelDbConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Student\StudentService.svc" />
     <Content Include="Teacher\TeacherService.svc" />
     <Content Include="User\UserService.svc" />
