@@ -99,13 +99,16 @@ namespace Needel.Common.Application.WcfService
         /// <returns>The database connection string </returns>
         static private string ConnectionString()
         {
-
             System.Diagnostics.Contracts.Contract.Requires<ConfigurationErrorsException>(ConfigurationManager.AppSettings != null, "The configuration file don't exist or is not in the executed project");
-            //System.Diagnostics.Contracts.Contract.Requires<ConfigurationErrorsException>(AppConfigHasTheSection("Suite.Connection"), "The configuration file has not a 'Suite.Connection' name for a connection string ");
             string result;
+
             try
             {
-                result = ConfigurationManager.ConnectionStrings["Needel.Connection"].ConnectionString;
+                result = Needel.Common.Infrastructure.SetupCommonAppSettings.Instance.SelectedConnection.connectionString;
+                if (result == null && ConfigurationManager.ConnectionStrings != null && ConfigurationManager.ConnectionStrings["Needel.Connection"] != null)
+                {
+                    result = ConfigurationManager.ConnectionStrings["Needel.Connection"].ConnectionString;
+                }
             }
             catch (ConfigurationErrorsException)
             {

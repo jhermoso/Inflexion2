@@ -121,7 +121,7 @@ namespace Needel.Common.Domain
             {
                 this.CreationTime = DateTime.Now;
             }
-                        else
+            else
             {
                 this.CreationTime = (DateTime)creationTime;
             }

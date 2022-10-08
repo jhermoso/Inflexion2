@@ -1,1217 +1,1133 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <doc>
-  <assembly>
-    <name>Needel.Common.Application.WcfService.Contracts</name>
-  </assembly>
-  <members>
-    <member name="T:Needel.Common.Application.WcfService.Contracts.IAddressClient">
-      <summary>
+    <assembly>
+        <name>Needel.Common.Application.WcfService.Contracts</name>
+    </assembly>
+    <members>
+        <member name="T:Needel.Common.Application.WcfService.Contracts.IAddressService">
+            <summary>
             Interfaz que permite definir el contrato de servicio para las acciones
             relacionadas con la entidad Address.
             </summary>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressClient.Create(Needel.Common.Application.Dtos.AddressDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressService.Create(Needel.Common.Application.Dtos.AddressDto)">
+            <summary>
             Función encargada de la creación de una entidad de tipo Address.
             </summary>
-      <param name="addressDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.AddressDto" /> con los datos necesarios
+            <param name="addressDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.AddressDto"/> con los datos necesarios
             para la creación de la entidad Address.
             </param>
-      <return>
+            <return>
             Devuelve el identificador único de la entidad creada.
             </return>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressClient.Update(Needel.Common.Application.Dtos.AddressDto)">
-      <summary>
-            Función encargada de la actualziación de una entidad de tipo Address.
-            </summary>
-      <param name="addressDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.AddressDto" /> con los datos necesarios
-            para el borrado de la entidad Addressr.
-            </param>
-      <returns>
-            Devuelve <b>true</b> si la actualización ha sido correcta y
-            <b>false</b> en caso contrario.
-            </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressClient.Delete(System.Int32)">
-      <summary>
-            Elimina una determinada entidad Address.
-            </summary>
-      <param name="id">
-            Identificador de la entidad que se va a eliminar.
-            </param>
-      <returns>
-            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
-            </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressClient.GetAll">
-      <summary>
-            Método encargado de obtener todas las entidades Address.
-            </summary>
-      <returns>
-            Devuelve listado de Dto´s de la entidad Address.
-            </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressClient.GetById(System.Int32)">
-      <summary>
-            Método encargado de obtener una entidad Address de acuerdo a
-            su identificador.
-            </summary>
-      <param name="addressId">
-            Parámetro que indica el identificador único de la entidad cuya
-            información se desea obtener.
-            </param>
-      <returns>
-            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.AddressDto" /> con la información
-            requerida.
-            </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressClient.GetPaged(Inflexion2.Application.SpecificationDto)">
-      <summary>
-            Recupera una lista paginada de entidades Address, según la especificación indicada.
-            </summary>
-      <param name="specificationDto">
-            Especificación que se va a aplicar.
-            </param>
-      <returns>
-            La lista paginada de entidades Address, según la especificación indicada.
-            </returns>
-    </member>
-    <member name="T:Needel.Common.Application.WcfService.Contracts.IAddressService">
-      <summary>
-            Interfaz que permite definir el contrato de servicio para las acciones
-            relacionadas con la entidad Address.
-            </summary>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressService.Create(Needel.Common.Application.Dtos.AddressDto)">
-      <summary>
-            Función encargada de la creación de una entidad de tipo Address.
-            </summary>
-      <param name="addressDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.AddressDto" /> con los datos necesarios
-            para la creación de la entidad Address.
-            </param>
-      <return>
-            Devuelve el identificador único de la entidad creada.
-            </return>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressService.Update(Needel.Common.Application.Dtos.AddressDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressService.Update(Needel.Common.Application.Dtos.AddressDto)">
+            <summary>
             Función encargada de la actualización de una entidad de tipo Address.
             </summary>
-      <param name="addressDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.AddressDto" /> con los datos necesarios
+            <param name="addressDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.AddressDto"/> con los datos necesarios
             para el borrado de la entidad Addressr.
             </param>
-      <returns>
+            <returns>
             Devuelve <b>true</b> si la actualización ha sido correcta y
             <b>false</b> en caso contrario.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressService.Delete(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressService.Delete(System.Int32)">
+            <summary>
             Elimina una determinada entidad Address.
             </summary>
-      <param name="id">
+            <param name="id">
             Identificador de la entidad que se va a eliminar.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressService.GetAll">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressService.GetAll">
+            <summary>
             Método encargado de obtener todas las entidades Address.
             </summary>
-      <returns>
+            <returns>
             Devuelve listado de Dto´s de la entidad Address.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressService.GetById(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressService.GetById(System.Int32)">
+            <summary>
             Método encargado de obtener una entidad Address de acuerdo a
             su identificador.
             </summary>
-      <param name="addressId">
+            <param name="addressId">
             Parámetro que indica el identificador único de la entidad cuya
             información se desea obtener.
             </param>
-      <returns>
-            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.AddressDto" /> con la información
+            <returns>
+            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.AddressDto"/> con la información
             requerida.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressService.GetPaged(Inflexion2.Application.SpecificationDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
             Recupera una lista paginada de entidades Address, según la especificación indicada.
             </summary>
-      <param name="specificationDto">
+            <param name="specificationDto">
             Especificación que se va a aplicar.
             </param>
-      <returns>
+            <returns>
             La lista paginada de entidades Address, según la especificación indicada.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressService.GetAllExceptThis(System.Int32)">
-      <summary />
-      <param name="addressId" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressService.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
-      <summary />
-      <param name="addressIds" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressService.GetFiltered(Inflexion2.Application.SpecificationDto)">
-      <summary />
-      <param name="specificationDto" />
-      <returns />
-    </member>
-    <member name="T:Needel.Common.Application.WcfService.Contracts.IAppSettingClient">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressService.GetAllExceptThis(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="addressId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressService.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="addressIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IAddressService.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Needel.Common.Application.WcfService.Contracts.IAppSettingService">
+            <summary>
             Interfaz que permite definir el contrato de servicio para las acciones
             relacionadas con la entidad AppSetting.
             </summary>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingClient.Create(Needel.Common.Application.Dtos.AppSettingDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingService.Create(Needel.Common.Application.Dtos.AppSettingDto)">
+            <summary>
             Función encargada de la creación de una entidad de tipo AppSetting.
             </summary>
-      <param name="appSettingDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.AppSettingDto" /> con los datos necesarios
+            <param name="appSettingDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.AppSettingDto"/> con los datos necesarios
             para la creación de la entidad AppSetting.
             </param>
-      <return>
+            <return>
             Devuelve el identificador único de la entidad creada.
             </return>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingClient.Update(Needel.Common.Application.Dtos.AppSettingDto)">
-      <summary>
-            Función encargada de la actualziación de una entidad de tipo AppSetting.
-            </summary>
-      <param name="appSettingDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.AppSettingDto" /> con los datos necesarios
-            para el borrado de la entidad AppSettingr.
-            </param>
-      <returns>
-            Devuelve <b>true</b> si la actualización ha sido correcta y
-            <b>false</b> en caso contrario.
-            </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingClient.Delete(System.Int32)">
-      <summary>
-            Elimina una determinada entidad AppSetting.
-            </summary>
-      <param name="id">
-            Identificador de la entidad que se va a eliminar.
-            </param>
-      <returns>
-            Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
-            </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingClient.GetAll">
-      <summary>
-            Método encargado de obtener todas las entidades AppSetting.
-            </summary>
-      <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-      <returns>
-            Devuelve listado de Dto´s de la entidad AppSetting.
-            </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingClient.GetById(System.Int32)">
-      <summary>
-            Método encargado de obtener una entidad AppSetting de acuerdo a
-            su identificador.
-            </summary>
-      <remarks>
-            Sin comentarios adicionales.
-            </remarks>
-      <param name="appSettingId">
-            Parámetro que indica el identificador único de la entidad cuya
-            información se desea obtener.
-            </param>
-      <returns>
-            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.AppSettingDto" /> con la información
-            requerida.
-            </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingClient.GetPaged(Inflexion2.Application.SpecificationDto)">
-      <summary>
-            Recupera una lista paginada de entidades AppSetting, según la especificación indicada.
-            </summary>
-      <param name="specificationDto">
-            Especificación que se va a aplicar.
-            </param>
-      <returns>
-            La lista paginada de entidades AppSetting, según la especificación indicada.
-            </returns>
-    </member>
-    <member name="T:Needel.Common.Application.WcfService.Contracts.IAppSettingService">
-      <summary>
-            Interfaz que permite definir el contrato de servicio para las acciones
-            relacionadas con la entidad AppSetting.
-            </summary>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingService.Create(Needel.Common.Application.Dtos.AppSettingDto)">
-      <summary>
-            Función encargada de la creación de una entidad de tipo AppSetting.
-            </summary>
-      <param name="appSettingDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.AppSettingDto" /> con los datos necesarios
-            para la creación de la entidad AppSetting.
-            </param>
-      <return>
-            Devuelve el identificador único de la entidad creada.
-            </return>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingService.Update(Needel.Common.Application.Dtos.AppSettingDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingService.Update(Needel.Common.Application.Dtos.AppSettingDto)">
+            <summary>
             Función encargada de la actualización de una entidad de tipo AppSetting.
             </summary>
-      <param name="appSettingDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.AppSettingDto" /> con los datos necesarios
+            <param name="appSettingDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.AppSettingDto"/> con los datos necesarios
             para el borrado de la entidad AppSettingr.
             </param>
-      <returns>
+            <returns>
             Devuelve <b>true</b> si la actualización ha sido correcta y
             <b>false</b> en caso contrario.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingService.Delete(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingService.Delete(System.Int32)">
+            <summary>
             Elimina una determinada entidad AppSetting.
             </summary>
-      <param name="id">
+            <param name="id">
             Identificador de la entidad que se va a eliminar.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingService.GetAll">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingService.GetAll">
+            <summary>
             Método encargado de obtener todas las entidades AppSetting.
             </summary>
-      <returns>
+            <returns>
             Devuelve listado de Dto´s de la entidad AppSetting.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingService.GetById(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingService.GetById(System.Int32)">
+            <summary>
             Método encargado de obtener una entidad AppSetting de acuerdo a
             su identificador.
             </summary>
-      <param name="appSettingId">
+            <param name="appSettingId">
             Parámetro que indica el identificador único de la entidad cuya
             información se desea obtener.
             </param>
-      <returns>
-            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.AppSettingDto" /> con la información
+            <returns>
+            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.AppSettingDto"/> con la información
             requerida.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingService.GetPaged(Inflexion2.Application.SpecificationDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
             Recupera una lista paginada de entidades AppSetting, según la especificación indicada.
             </summary>
-      <param name="specificationDto">
+            <param name="specificationDto">
             Especificación que se va a aplicar.
             </param>
-      <returns>
+            <returns>
             La lista paginada de entidades AppSetting, según la especificación indicada.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingService.GetAllExceptThis(System.Int32)">
-      <summary />
-      <param name="appSettingId" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingService.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
-      <summary />
-      <param name="appSettingIds" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingService.GetFiltered(Inflexion2.Application.SpecificationDto)">
-      <summary />
-      <param name="specificationDto" />
-      <returns />
-    </member>
-    <member name="T:Needel.Common.Application.WcfService.Contracts.IComponentService">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingService.GetAllExceptThis(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="appSettingId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingService.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="appSettingIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IAppSettingService.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Needel.Common.Application.WcfService.Contracts.IComponentService">
+            <summary>
             Interfaz que permite definir el contrato de servicio para las acciones
             relacionadas con la entidad Component.
             </summary>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IComponentService.Create(Needel.Common.Application.Dtos.ComponentDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IComponentService.Create(Needel.Common.Application.Dtos.ComponentDto)">
+            <summary>
             Función encargada de la creación de una entidad de tipo Component.
             </summary>
-      <param name="componentDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.ComponentDto" /> con los datos necesarios
+            <param name="componentDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.ComponentDto"/> con los datos necesarios
             para la creación de la entidad Component.
             </param>
-      <return>
+            <return>
             Devuelve el identificador único de la entidad creada.
             </return>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IComponentService.Update(Needel.Common.Application.Dtos.ComponentDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IComponentService.Update(Needel.Common.Application.Dtos.ComponentDto)">
+            <summary>
             Función encargada de la actualización de una entidad de tipo Component.
             </summary>
-      <param name="componentDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.ComponentDto" /> con los datos necesarios
+            <param name="componentDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.ComponentDto"/> con los datos necesarios
             para el borrado de la entidad Componentr.
             </param>
-      <returns>
+            <returns>
             Devuelve <b>true</b> si la actualización ha sido correcta y
             <b>false</b> en caso contrario.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IComponentService.Delete(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IComponentService.Delete(System.Int32)">
+            <summary>
             Elimina una determinada entidad Component.
             </summary>
-      <param name="id">
+            <param name="id">
             Identificador de la entidad que se va a eliminar.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IComponentService.GetAll">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IComponentService.GetAll">
+            <summary>
             Método encargado de obtener todas las entidades Component.
             </summary>
-      <returns>
+            <returns>
             Devuelve listado de Dto´s de la entidad Component.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IComponentService.GetById(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IComponentService.GetById(System.Int32)">
+            <summary>
             Método encargado de obtener una entidad Component de acuerdo a
             su identificador.
             </summary>
-      <param name="componentId">
+            <param name="componentId">
             Parámetro que indica el identificador único de la entidad cuya
             información se desea obtener.
             </param>
-      <returns>
-            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.ComponentDto" /> con la información
+            <returns>
+            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.ComponentDto"/> con la información
             requerida.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IComponentService.GetPaged(Inflexion2.Application.SpecificationDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IComponentService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
             Recupera una lista paginada de entidades Component, según la especificación indicada.
             </summary>
-      <param name="specificationDto">
+            <param name="specificationDto">
             Especificación que se va a aplicar.
             </param>
-      <returns>
+            <returns>
             La lista paginada de entidades Component, según la especificación indicada.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IComponentService.GetAllExceptThis(System.Int32)">
-      <summary />
-      <param name="componentId" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IComponentService.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
-      <summary />
-      <param name="componentIds" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IComponentService.GetFiltered(Inflexion2.Application.SpecificationDto)">
-      <summary />
-      <param name="specificationDto" />
-      <returns />
-    </member>
-    <member name="T:Needel.Common.Application.WcfService.Contracts.IDepartmentService">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IComponentService.GetAllExceptThis(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="componentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IComponentService.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="componentIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IComponentService.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Needel.Common.Application.WcfService.Contracts.IDepartmentService">
+            <summary>
             Interfaz que permite definir el contrato de servicio para las acciones
             relacionadas con la entidad Department.
             </summary>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IDepartmentService.Create(Needel.Common.Application.Dtos.DepartmentDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IDepartmentService.Create(Needel.Common.Application.Dtos.DepartmentDto)">
+            <summary>
             Función encargada de la creación de una entidad de tipo Department.
             </summary>
-      <param name="departmentDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.DepartmentDto" /> con los datos necesarios
+            <param name="departmentDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.DepartmentDto"/> con los datos necesarios
             para la creación de la entidad Department.
             </param>
-      <return>
+            <return>
             Devuelve el identificador único de la entidad creada.
             </return>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IDepartmentService.Update(Needel.Common.Application.Dtos.DepartmentDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IDepartmentService.Update(Needel.Common.Application.Dtos.DepartmentDto)">
+            <summary>
             Función encargada de la actualización de una entidad de tipo Department.
             </summary>
-      <param name="departmentDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.DepartmentDto" /> con los datos necesarios
+            <param name="departmentDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.DepartmentDto"/> con los datos necesarios
             para el borrado de la entidad Departmentr.
             </param>
-      <returns>
+            <returns>
             Devuelve <b>true</b> si la actualización ha sido correcta y
             <b>false</b> en caso contrario.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IDepartmentService.Delete(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IDepartmentService.Delete(System.Int32)">
+            <summary>
             Elimina una determinada entidad Department.
             </summary>
-      <param name="id">
+            <param name="id">
             Identificador de la entidad que se va a eliminar.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IDepartmentService.GetAll">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IDepartmentService.GetAll">
+            <summary>
             Método encargado de obtener todas las entidades Department.
             </summary>
-      <returns>
+            <returns>
             Devuelve listado de Dto´s de la entidad Department.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IDepartmentService.GetById(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IDepartmentService.GetById(System.Int32)">
+            <summary>
             Método encargado de obtener una entidad Department de acuerdo a
             su identificador.
             </summary>
-      <param name="departmentId">
+            <param name="departmentId">
             Parámetro que indica el identificador único de la entidad cuya
             información se desea obtener.
             </param>
-      <returns>
-            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.DepartmentDto" /> con la información
+            <returns>
+            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.DepartmentDto"/> con la información
             requerida.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IDepartmentService.GetPaged(Inflexion2.Application.SpecificationDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IDepartmentService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
             Recupera una lista paginada de entidades Department, según la especificación indicada.
             </summary>
-      <param name="specificationDto">
+            <param name="specificationDto">
             Especificación que se va a aplicar.
             </param>
-      <returns>
+            <returns>
             La lista paginada de entidades Department, según la especificación indicada.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IDepartmentService.GetAllExceptThis(System.Int32)">
-      <summary />
-      <param name="departmentId" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IDepartmentService.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
-      <summary />
-      <param name="departmentIds" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IDepartmentService.GetFiltered(Inflexion2.Application.SpecificationDto)">
-      <summary />
-      <param name="specificationDto" />
-      <returns />
-    </member>
-    <member name="T:Needel.Common.Application.WcfService.Contracts.IEntityMService">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IDepartmentService.GetAllExceptThis(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="departmentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IDepartmentService.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="departmentIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IDepartmentService.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Needel.Common.Application.WcfService.Contracts.IEntityMService">
+            <summary>
             Interfaz que permite definir el contrato de servicio para las acciones
             relacionadas con la entidad EntityM.
             </summary>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityMService.Create(Needel.Common.Application.Dtos.EntityMDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityMService.Create(Needel.Common.Application.Dtos.EntityMDto)">
+            <summary>
             Función encargada de la creación de una entidad de tipo EntityM.
             </summary>
-      <param name="entityMDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.EntityMDto" /> con los datos necesarios
+            <param name="entityMDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.EntityMDto"/> con los datos necesarios
             para la creación de la entidad EntityM.
             </param>
-      <return>
+            <return>
             Devuelve el identificador único de la entidad creada.
             </return>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityMService.Update(Needel.Common.Application.Dtos.EntityMDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityMService.Update(Needel.Common.Application.Dtos.EntityMDto)">
+            <summary>
             Función encargada de la actualización de una entidad de tipo EntityM.
             </summary>
-      <param name="entityMDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.EntityMDto" /> con los datos necesarios
+            <param name="entityMDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.EntityMDto"/> con los datos necesarios
             para el borrado de la entidad EntityMr.
             </param>
-      <returns>
+            <returns>
             Devuelve <b>true</b> si la actualización ha sido correcta y
             <b>false</b> en caso contrario.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityMService.Delete(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityMService.Delete(System.Int32)">
+            <summary>
             Elimina una determinada entidad EntityM.
             </summary>
-      <param name="id">
+            <param name="id">
             Identificador de la entidad que se va a eliminar.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityMService.GetAll">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityMService.GetAll">
+            <summary>
             Método encargado de obtener todas las entidades EntityM.
             </summary>
-      <returns>
+            <returns>
             Devuelve listado de Dto´s de la entidad EntityM.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityMService.GetById(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityMService.GetById(System.Int32)">
+            <summary>
             Método encargado de obtener una entidad EntityM de acuerdo a
             su identificador.
             </summary>
-      <param name="entityMId">
+            <param name="entityMId">
             Parámetro que indica el identificador único de la entidad cuya
             información se desea obtener.
             </param>
-      <returns>
-            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.EntityMDto" /> con la información
+            <returns>
+            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.EntityMDto"/> con la información
             requerida.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityMService.GetPaged(Inflexion2.Application.SpecificationDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityMService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
             Recupera una lista paginada de entidades EntityM, según la especificación indicada.
             </summary>
-      <param name="specificationDto">
+            <param name="specificationDto">
             Especificación que se va a aplicar.
             </param>
-      <returns>
+            <returns>
             La lista paginada de entidades EntityM, según la especificación indicada.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityMService.GetAllExceptThis(System.Int32)">
-      <summary />
-      <param name="entityMId" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityMService.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
-      <summary />
-      <param name="entityMIds" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityMService.GetFiltered(Inflexion2.Application.SpecificationDto)">
-      <summary />
-      <param name="specificationDto" />
-      <returns />
-    </member>
-    <member name="T:Needel.Common.Application.WcfService.Contracts.IEntityNService">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityMService.GetAllExceptThis(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="entityMId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityMService.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="entityMIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityMService.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Needel.Common.Application.WcfService.Contracts.IEntityNService">
+            <summary>
             Interfaz que permite definir el contrato de servicio para las acciones
             relacionadas con la entidad EntityN.
             </summary>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityNService.Create(Needel.Common.Application.Dtos.EntityNDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityNService.Create(Needel.Common.Application.Dtos.EntityNDto)">
+            <summary>
             Función encargada de la creación de una entidad de tipo EntityN.
             </summary>
-      <param name="entityNDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.EntityNDto" /> con los datos necesarios
+            <param name="entityNDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.EntityNDto"/> con los datos necesarios
             para la creación de la entidad EntityN.
             </param>
-      <return>
+            <return>
             Devuelve el identificador único de la entidad creada.
             </return>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityNService.Update(Needel.Common.Application.Dtos.EntityNDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityNService.Update(Needel.Common.Application.Dtos.EntityNDto)">
+            <summary>
             Función encargada de la actualización de una entidad de tipo EntityN.
             </summary>
-      <param name="entityNDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.EntityNDto" /> con los datos necesarios
+            <param name="entityNDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.EntityNDto"/> con los datos necesarios
             para el borrado de la entidad EntityNr.
             </param>
-      <returns>
+            <returns>
             Devuelve <b>true</b> si la actualización ha sido correcta y
             <b>false</b> en caso contrario.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityNService.Delete(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityNService.Delete(System.Int32)">
+            <summary>
             Elimina una determinada entidad EntityN.
             </summary>
-      <param name="id">
+            <param name="id">
             Identificador de la entidad que se va a eliminar.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityNService.GetAll">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityNService.GetAll">
+            <summary>
             Método encargado de obtener todas las entidades EntityN.
             </summary>
-      <returns>
+            <returns>
             Devuelve listado de Dto´s de la entidad EntityN.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityNService.GetById(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityNService.GetById(System.Int32)">
+            <summary>
             Método encargado de obtener una entidad EntityN de acuerdo a
             su identificador.
             </summary>
-      <param name="entityNId">
+            <param name="entityNId">
             Parámetro que indica el identificador único de la entidad cuya
             información se desea obtener.
             </param>
-      <returns>
-            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.EntityNDto" /> con la información
+            <returns>
+            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.EntityNDto"/> con la información
             requerida.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityNService.GetPaged(Inflexion2.Application.SpecificationDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityNService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
             Recupera una lista paginada de entidades EntityN, según la especificación indicada.
             </summary>
-      <param name="specificationDto">
+            <param name="specificationDto">
             Especificación que se va a aplicar.
             </param>
-      <returns>
+            <returns>
             La lista paginada de entidades EntityN, según la especificación indicada.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityNService.GetAllExceptThis(System.Int32)">
-      <summary />
-      <param name="entityNId" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityNService.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
-      <summary />
-      <param name="entityNIds" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityNService.GetFiltered(Inflexion2.Application.SpecificationDto)">
-      <summary />
-      <param name="specificationDto" />
-      <returns />
-    </member>
-    <member name="T:Needel.Common.Application.WcfService.Contracts.IEntityZService">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityNService.GetAllExceptThis(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="entityNId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityNService.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="entityNIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityNService.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Needel.Common.Application.WcfService.Contracts.IEntityZService">
+            <summary>
             Interfaz que permite definir el contrato de servicio para las acciones
             relacionadas con la entidad EntityZ.
             </summary>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityZService.Create(Needel.Common.Application.Dtos.EntityZDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityZService.Create(Needel.Common.Application.Dtos.EntityZDto)">
+            <summary>
             Función encargada de la creación de una entidad de tipo EntityZ.
             </summary>
-      <param name="entityZDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.EntityZDto" /> con los datos necesarios
+            <param name="entityZDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.EntityZDto"/> con los datos necesarios
             para la creación de la entidad EntityZ.
             </param>
-      <return>
+            <return>
             Devuelve el identificador único de la entidad creada.
             </return>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityZService.Update(Needel.Common.Application.Dtos.EntityZDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityZService.Update(Needel.Common.Application.Dtos.EntityZDto)">
+            <summary>
             Función encargada de la actualización de una entidad de tipo EntityZ.
             </summary>
-      <param name="entityZDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.EntityZDto" /> con los datos necesarios
+            <param name="entityZDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.EntityZDto"/> con los datos necesarios
             para el borrado de la entidad EntityZr.
             </param>
-      <returns>
+            <returns>
             Devuelve <b>true</b> si la actualización ha sido correcta y
             <b>false</b> en caso contrario.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityZService.Delete(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityZService.Delete(System.Int32)">
+            <summary>
             Elimina una determinada entidad EntityZ.
             </summary>
-      <param name="id">
+            <param name="id">
             Identificador de la entidad que se va a eliminar.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityZService.GetAll">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityZService.GetAll">
+            <summary>
             Método encargado de obtener todas las entidades EntityZ.
             </summary>
-      <returns>
+            <returns>
             Devuelve listado de Dto´s de la entidad EntityZ.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityZService.GetById(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityZService.GetById(System.Int32)">
+            <summary>
             Método encargado de obtener una entidad EntityZ de acuerdo a
             su identificador.
             </summary>
-      <param name="entityZId">
+            <param name="entityZId">
             Parámetro que indica el identificador único de la entidad cuya
             información se desea obtener.
             </param>
-      <returns>
-            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.EntityZDto" /> con la información
+            <returns>
+            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.EntityZDto"/> con la información
             requerida.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityZService.GetPaged(Inflexion2.Application.SpecificationDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityZService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
             Recupera una lista paginada de entidades EntityZ, según la especificación indicada.
             </summary>
-      <param name="specificationDto">
+            <param name="specificationDto">
             Especificación que se va a aplicar.
             </param>
-      <returns>
+            <returns>
             La lista paginada de entidades EntityZ, según la especificación indicada.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityZService.GetAllExceptThis(System.Int32)">
-      <summary />
-      <param name="entityZId" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityZService.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
-      <summary />
-      <param name="entityZIds" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityZService.GetFiltered(Inflexion2.Application.SpecificationDto)">
-      <summary />
-      <param name="specificationDto" />
-      <returns />
-    </member>
-    <member name="T:Needel.Common.Application.WcfService.Contracts.IGraphNodeService">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityZService.GetAllExceptThis(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="entityZId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityZService.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="entityZIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IEntityZService.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Needel.Common.Application.WcfService.Contracts.IGraphNodeService">
+            <summary>
             Interfaz que permite definir el contrato de servicio para las acciones
             relacionadas con la entidad GraphNode.
             </summary>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IGraphNodeService.Create(Needel.Common.Application.Dtos.GraphNodeDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IGraphNodeService.Create(Needel.Common.Application.Dtos.GraphNodeDto)">
+            <summary>
             Función encargada de la creación de una entidad de tipo GraphNode.
             </summary>
-      <param name="graphNodeDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.GraphNodeDto" /> con los datos necesarios
+            <param name="graphNodeDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.GraphNodeDto"/> con los datos necesarios
             para la creación de la entidad GraphNode.
             </param>
-      <return>
+            <return>
             Devuelve el identificador único de la entidad creada.
             </return>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IGraphNodeService.Update(Needel.Common.Application.Dtos.GraphNodeDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IGraphNodeService.Update(Needel.Common.Application.Dtos.GraphNodeDto)">
+            <summary>
             Función encargada de la actualización de una entidad de tipo GraphNode.
             </summary>
-      <param name="graphNodeDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.GraphNodeDto" /> con los datos necesarios
+            <param name="graphNodeDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.GraphNodeDto"/> con los datos necesarios
             para el borrado de la entidad GraphNoder.
             </param>
-      <returns>
+            <returns>
             Devuelve <b>true</b> si la actualización ha sido correcta y
             <b>false</b> en caso contrario.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IGraphNodeService.Delete(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IGraphNodeService.Delete(System.Int32)">
+            <summary>
             Elimina una determinada entidad GraphNode.
             </summary>
-      <param name="id">
+            <param name="id">
             Identificador de la entidad que se va a eliminar.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IGraphNodeService.GetAll">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IGraphNodeService.GetAll">
+            <summary>
             Método encargado de obtener todas las entidades GraphNode.
             </summary>
-      <returns>
+            <returns>
             Devuelve listado de Dto´s de la entidad GraphNode.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IGraphNodeService.GetById(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IGraphNodeService.GetById(System.Int32)">
+            <summary>
             Método encargado de obtener una entidad GraphNode de acuerdo a
             su identificador.
             </summary>
-      <param name="graphNodeId">
+            <param name="graphNodeId">
             Parámetro que indica el identificador único de la entidad cuya
             información se desea obtener.
             </param>
-      <returns>
-            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.GraphNodeDto" /> con la información
+            <returns>
+            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.GraphNodeDto"/> con la información
             requerida.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IGraphNodeService.GetPaged(Inflexion2.Application.SpecificationDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IGraphNodeService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
             Recupera una lista paginada de entidades GraphNode, según la especificación indicada.
             </summary>
-      <param name="specificationDto">
+            <param name="specificationDto">
             Especificación que se va a aplicar.
             </param>
-      <returns>
+            <returns>
             La lista paginada de entidades GraphNode, según la especificación indicada.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IGraphNodeService.GetAllExceptThis(System.Int32)">
-      <summary />
-      <param name="graphNodeId" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IGraphNodeService.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
-      <summary />
-      <param name="graphNodeIds" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IGraphNodeService.GetFiltered(Inflexion2.Application.SpecificationDto)">
-      <summary />
-      <param name="specificationDto" />
-      <returns />
-    </member>
-    <member name="T:Needel.Common.Application.WcfService.Contracts.IMNZService">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IGraphNodeService.GetAllExceptThis(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="graphNodeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IGraphNodeService.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="graphNodeIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IGraphNodeService.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Needel.Common.Application.WcfService.Contracts.IMNZService">
+            <summary>
             Interfaz que permite definir el contrato de servicio para las acciones
             relacionadas con el objeto valor MNZ.
             </summary>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IMNZService.Create(Needel.Common.Application.Dtos.MNZDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IMNZService.Create(Needel.Common.Application.Dtos.MNZDto)">
+            <summary>
             Función encargada de la creación de una entidad de tipo MNZ.
             </summary>
-      <param name="mNZDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.MNZDto" /> con los datos necesarios
+            <param name="mNZDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.MNZDto"/> con los datos necesarios
             para la creación de la entidad MNZ.
             </param>
-      <return>
+            <return>
             Devuelve el identificador único de la entidad creada.
             </return>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IMNZService.Delete(Needel.Common.Application.Dtos.MNZDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IMNZService.Delete(Needel.Common.Application.Dtos.MNZDto)">
+            <summary>
             Elimina una determinada entidad MNZ.
             </summary>
-      <param name="mNZ">
+            <param name="mNZ">
             Identificador de la entidad que se va a eliminar.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IMNZService.GetAll">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IMNZService.GetAll">
+            <summary>
             Método encargado de obtener todas las entidades MNZ.
             </summary>
-      <returns>
+            <returns>
             Devuelve listado de Dto´s de la entidad MNZ.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IMNZService.GetPaged(Inflexion2.Application.SpecificationDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IMNZService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
             Recupera una lista paginada de entidades MNZ, según la especificación indicada.
             </summary>
-      <param name="specificationDto">
+            <param name="specificationDto">
             Especificación que se va a aplicar.
             </param>
-      <returns>
+            <returns>
             La lista paginada de entidades MNZ, según la especificación indicada.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IMNZService.GetAllExceptThis(Needel.Common.Application.Dtos.MNZDto)">
-      <summary />
-      <param name="mNZDto" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IMNZService.GetAllExceptThese(System.Collections.Generic.IEnumerable{Needel.Common.Application.Dtos.MNZDto})">
-      <summary />
-      <param name="mNZs" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IMNZService.GetFiltered(Inflexion2.Application.SpecificationDto)">
-      <summary />
-      <param name="specificationDto" />
-      <returns />
-    </member>
-    <member name="T:Needel.Common.Application.WcfService.Contracts.IStudentService">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IMNZService.GetAllExceptThis(Needel.Common.Application.Dtos.MNZDto)">
+            <summary>
+            
+            </summary>
+            <param name="mNZDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IMNZService.GetAllExceptThese(System.Collections.Generic.IEnumerable{Needel.Common.Application.Dtos.MNZDto})">
+            <summary>
+            
+            </summary>
+            <param name="mNZs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IMNZService.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Needel.Common.Application.WcfService.Contracts.IStudentService">
+            <summary>
             Interfaz que permite definir el contrato de servicio para las acciones
             relacionadas con la entidad Student.
             </summary>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IStudentService.Create(Needel.Common.Application.Dtos.StudentDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IStudentService.Create(Needel.Common.Application.Dtos.StudentDto)">
+            <summary>
             Función encargada de la creación de una entidad de tipo Student.
             </summary>
-      <param name="studentDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.StudentDto" /> con los datos necesarios
+            <param name="studentDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.StudentDto"/> con los datos necesarios
             para la creación de la entidad Student.
             </param>
-      <return>
+            <return>
             Devuelve el identificador único de la entidad creada.
             </return>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IStudentService.Update(Needel.Common.Application.Dtos.StudentDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IStudentService.Update(Needel.Common.Application.Dtos.StudentDto)">
+            <summary>
             Función encargada de la actualización de una entidad de tipo Student.
             </summary>
-      <param name="studentDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.StudentDto" /> con los datos necesarios
+            <param name="studentDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.StudentDto"/> con los datos necesarios
             para el borrado de la entidad Studentr.
             </param>
-      <returns>
+            <returns>
             Devuelve <b>true</b> si la actualización ha sido correcta y
             <b>false</b> en caso contrario.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IStudentService.Delete(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IStudentService.Delete(System.Int32)">
+            <summary>
             Elimina una determinada entidad Student.
             </summary>
-      <param name="id">
+            <param name="id">
             Identificador de la entidad que se va a eliminar.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IStudentService.GetAll">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IStudentService.GetAll">
+            <summary>
             Método encargado de obtener todas las entidades Student.
             </summary>
-      <returns>
+            <returns>
             Devuelve listado de Dto´s de la entidad Student.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IStudentService.GetById(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IStudentService.GetById(System.Int32)">
+            <summary>
             Método encargado de obtener una entidad Student de acuerdo a
             su identificador.
             </summary>
-      <param name="studentId">
+            <param name="studentId">
             Parámetro que indica el identificador único de la entidad cuya
             información se desea obtener.
             </param>
-      <returns>
-            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.StudentDto" /> con la información
+            <returns>
+            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.StudentDto"/> con la información
             requerida.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IStudentService.GetPaged(Inflexion2.Application.SpecificationDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IStudentService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
             Recupera una lista paginada de entidades Student, según la especificación indicada.
             </summary>
-      <param name="specificationDto">
+            <param name="specificationDto">
             Especificación que se va a aplicar.
             </param>
-      <returns>
+            <returns>
             La lista paginada de entidades Student, según la especificación indicada.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IStudentService.GetAllExceptThis(System.Int32)">
-      <summary />
-      <param name="studentId" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IStudentService.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
-      <summary />
-      <param name="studentIds" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IStudentService.GetFiltered(Inflexion2.Application.SpecificationDto)">
-      <summary />
-      <param name="specificationDto" />
-      <returns />
-    </member>
-    <member name="T:Needel.Common.Application.WcfService.Contracts.ITeacherService">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IStudentService.GetAllExceptThis(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="studentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IStudentService.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="studentIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IStudentService.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Needel.Common.Application.WcfService.Contracts.ITeacherService">
+            <summary>
             Interfaz que permite definir el contrato de servicio para las acciones
             relacionadas con la entidad Teacher.
             </summary>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.ITeacherService.Create(Needel.Common.Application.Dtos.TeacherDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.ITeacherService.Create(Needel.Common.Application.Dtos.TeacherDto)">
+            <summary>
             Función encargada de la creación de una entidad de tipo Teacher.
             </summary>
-      <param name="teacherDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.TeacherDto" /> con los datos necesarios
+            <param name="teacherDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.TeacherDto"/> con los datos necesarios
             para la creación de la entidad Teacher.
             </param>
-      <return>
+            <return>
             Devuelve el identificador único de la entidad creada.
             </return>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.ITeacherService.Update(Needel.Common.Application.Dtos.TeacherDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.ITeacherService.Update(Needel.Common.Application.Dtos.TeacherDto)">
+            <summary>
             Función encargada de la actualización de una entidad de tipo Teacher.
             </summary>
-      <param name="teacherDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.TeacherDto" /> con los datos necesarios
+            <param name="teacherDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.TeacherDto"/> con los datos necesarios
             para el borrado de la entidad Teacherr.
             </param>
-      <returns>
+            <returns>
             Devuelve <b>true</b> si la actualización ha sido correcta y
             <b>false</b> en caso contrario.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.ITeacherService.Delete(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.ITeacherService.Delete(System.Int32)">
+            <summary>
             Elimina una determinada entidad Teacher.
             </summary>
-      <param name="id">
+            <param name="id">
             Identificador de la entidad que se va a eliminar.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.ITeacherService.GetAll">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.ITeacherService.GetAll">
+            <summary>
             Método encargado de obtener todas las entidades Teacher.
             </summary>
-      <returns>
+            <returns>
             Devuelve listado de Dto´s de la entidad Teacher.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.ITeacherService.GetById(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.ITeacherService.GetById(System.Int32)">
+            <summary>
             Método encargado de obtener una entidad Teacher de acuerdo a
             su identificador.
             </summary>
-      <param name="teacherId">
+            <param name="teacherId">
             Parámetro que indica el identificador único de la entidad cuya
             información se desea obtener.
             </param>
-      <returns>
-            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.TeacherDto" /> con la información
+            <returns>
+            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.TeacherDto"/> con la información
             requerida.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.ITeacherService.GetPaged(Inflexion2.Application.SpecificationDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.ITeacherService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
             Recupera una lista paginada de entidades Teacher, según la especificación indicada.
             </summary>
-      <param name="specificationDto">
+            <param name="specificationDto">
             Especificación que se va a aplicar.
             </param>
-      <returns>
+            <returns>
             La lista paginada de entidades Teacher, según la especificación indicada.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.ITeacherService.GetAllExceptThis(System.Int32)">
-      <summary />
-      <param name="teacherId" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.ITeacherService.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
-      <summary />
-      <param name="teacherIds" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.ITeacherService.GetFiltered(Inflexion2.Application.SpecificationDto)">
-      <summary />
-      <param name="specificationDto" />
-      <returns />
-    </member>
-    <member name="T:Needel.Common.Application.WcfService.Contracts.IUserService">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.ITeacherService.GetAllExceptThis(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="teacherId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.ITeacherService.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="teacherIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.ITeacherService.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Needel.Common.Application.WcfService.Contracts.IUserService">
+            <summary>
             Interfaz que permite definir el contrato de servicio para las acciones
             relacionadas con la entidad User.
             </summary>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IUserService.Create(Needel.Common.Application.Dtos.UserDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IUserService.Create(Needel.Common.Application.Dtos.UserDto)">
+            <summary>
             Función encargada de la creación de una entidad de tipo User.
             </summary>
-      <param name="userDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.UserDto" /> con los datos necesarios
+            <param name="userDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.UserDto"/> con los datos necesarios
             para la creación de la entidad User.
             </param>
-      <return>
+            <return>
             Devuelve el identificador único de la entidad creada.
             </return>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IUserService.Update(Needel.Common.Application.Dtos.UserDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IUserService.Update(Needel.Common.Application.Dtos.UserDto)">
+            <summary>
             Función encargada de la actualización de una entidad de tipo User.
             </summary>
-      <param name="userDto">
-            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.UserDto" /> con los datos necesarios
+            <param name="userDto">
+            Parámetro de tipo <see cref="T:Needel.Common.Application.Dtos.UserDto"/> con los datos necesarios
             para el borrado de la entidad Userr.
             </param>
-      <returns>
+            <returns>
             Devuelve <b>true</b> si la actualización ha sido correcta y
             <b>false</b> en caso contrario.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IUserService.Delete(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IUserService.Delete(System.Int32)">
+            <summary>
             Elimina una determinada entidad User.
             </summary>
-      <param name="id">
+            <param name="id">
             Identificador de la entidad que se va a eliminar.
             </param>
-      <returns>
+            <returns>
             Es <b>true</b> si la eliminación ha sido correcta; en caso contrario <b>false</b>.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IUserService.GetAll">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IUserService.GetAll">
+            <summary>
             Método encargado de obtener todas las entidades User.
             </summary>
-      <returns>
+            <returns>
             Devuelve listado de Dto´s de la entidad User.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IUserService.GetById(System.Int32)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IUserService.GetById(System.Int32)">
+            <summary>
             Método encargado de obtener una entidad User de acuerdo a
             su identificador.
             </summary>
-      <param name="userId">
+            <param name="userId">
             Parámetro que indica el identificador único de la entidad cuya
             información se desea obtener.
             </param>
-      <returns>
-            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.UserDto" /> con la información
+            <returns>
+            Devuelve objeto dto <see cref="T:Needel.Common.Application.Dtos.UserDto"/> con la información
             requerida.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IUserService.GetPaged(Inflexion2.Application.SpecificationDto)">
-      <summary>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IUserService.GetPaged(Inflexion2.Application.SpecificationDto)">
+            <summary>
             Recupera una lista paginada de entidades User, según la especificación indicada.
             </summary>
-      <param name="specificationDto">
+            <param name="specificationDto">
             Especificación que se va a aplicar.
             </param>
-      <returns>
+            <returns>
             La lista paginada de entidades User, según la especificación indicada.
             </returns>
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IUserService.GetAllExceptThis(System.Int32)">
-      <summary />
-      <param name="userId" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IUserService.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
-      <summary />
-      <param name="userIds" />
-      <returns />
-    </member>
-    <member name="M:Needel.Common.Application.WcfService.Contracts.IUserService.GetFiltered(Inflexion2.Application.SpecificationDto)">
-      <summary />
-      <param name="specificationDto" />
-      <returns />
-    </member>
-  </members>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IUserService.GetAllExceptThis(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IUserService.GetAllExceptThese(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="userIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Needel.Common.Application.WcfService.Contracts.IUserService.GetFiltered(Inflexion2.Application.SpecificationDto)">
+            <summary>
+            
+            </summary>
+            <param name="specificationDto"></param>
+            <returns></returns>
+        </member>
+    </members>
 </doc>

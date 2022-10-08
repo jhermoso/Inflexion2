@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{15326EA1-A671-43B3-A957-9825AE3F189D}</ProjectGuid>
+    <ProjectGuid>{5F6822CB-C557-401E-AA93-3EB3270C8821}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Needel.Common.FrontEnd.WpfStartUp</RootNamespace>
@@ -159,9 +159,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -186,18 +184,18 @@
       <Name>Inflexion2.UX.WPF</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Domain.Data\Needel.Common.Domain.Data.csproj">
-      <Project>{6E3DC684-8C28-41C6-B471-498417EE0FFA}</Project>
+      <Project>{06EE393D-100A-4FE9-962F-97BC2F8232C4}</Project>
       <Name>Needel.Common.Domain.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Needel.Common.Infrastructure.Resources\Needel.Common.Infrastructure.Resources.csproj">
-      <Project>{0EF0F63E-04E0-4616-B40D-B59AAA646F75}</Project>
+      <Project>{4F63DB73-37C1-4513-B8CF-44433EF2DEAE}</Project>
       <Name>Needel.Common.Infrastructure.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

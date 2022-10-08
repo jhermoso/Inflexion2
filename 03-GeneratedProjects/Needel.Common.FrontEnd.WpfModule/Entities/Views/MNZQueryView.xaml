@@ -33,11 +33,11 @@
             <!--controls:DataGridRowDoubleClickHandler.MethodName="NavigateToSelectedItem"-->
             <DataGrid.Columns>
                 <!-- .en columns from parent relationships --> <!-- .es columnas de entidades padres -->
-                <!-- Column from NZs -->
+                <!-- Column from EntityM -->
                 <DataGridTextColumn     Header="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:MNZ_EntityMAlias_}" Binding="{Binding EntityM.Name }"  />
-                <!-- Column from MZs -->
+                <!-- Column from EntityN -->
                 <DataGridTextColumn     Header="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:MNZ_EntityNAlias_}" Binding="{Binding EntityN.Name }"  />
-                <!-- Column from MNs -->
+                <!-- Column from EntityZ -->
                 <DataGridTextColumn     Header="{lex:Loc Needel.Common.Infrastructure.Resources:CommonResources:MNZ_EntityZAlias_}" Binding="{Binding EntityZ.Name }"  />
             </DataGrid.Columns>
         </DataGrid>
