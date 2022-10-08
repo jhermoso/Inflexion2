@@ -2,7 +2,6 @@
 
 Inflexion is an spanish word that means "change of a tendency or a process" in english is "inflection", and both words has the same pronunciation and the same meanig in both languages. The number "2" is not a version is only the [numeronym](https://en.wikipedia.org/wiki/Numeronym) of 'to' to help to indicate where to change the direction, of your goals.
 
-
 Please consult the wiki to get more information.
 [go to wiki](https://github.com/jhermoso/Inflexion2/wiki)
 
